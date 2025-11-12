@@ -512,6 +512,7 @@ class Config {
   final List<ExternalInputParser>? externalInputParsers;
   final bool useDefaultExternalInputParsers;
   final String? realTimeSyncServerUrl;
+  final bool privateEnabledDefault;
 
   const Config({
     this.apiKey,
@@ -523,6 +524,7 @@ class Config {
     this.externalInputParsers,
     required this.useDefaultExternalInputParsers,
     this.realTimeSyncServerUrl,
+    required this.privateEnabledDefault,
   });
 
   @override
@@ -535,7 +537,8 @@ class Config {
       preferSparkOverLightning.hashCode ^
       externalInputParsers.hashCode ^
       useDefaultExternalInputParsers.hashCode ^
-      realTimeSyncServerUrl.hashCode;
+      realTimeSyncServerUrl.hashCode ^
+      privateEnabledDefault.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -550,7 +553,8 @@ class Config {
           preferSparkOverLightning == other.preferSparkOverLightning &&
           externalInputParsers == other.externalInputParsers &&
           useDefaultExternalInputParsers == other.useDefaultExternalInputParsers &&
-          realTimeSyncServerUrl == other.realTimeSyncServerUrl;
+          realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
+          privateEnabledDefault == other.privateEnabledDefault;
 }
 
 class ConnectRequest {
@@ -2019,6 +2023,22 @@ class TokenMetadata {
           isFreezable == other.isFreezable;
 }
 
+class UpdateUserSettingsRequest {
+  final bool? sparkPrivateModeEnabled;
+
+  const UpdateUserSettingsRequest({this.sparkPrivateModeEnabled});
+
+  @override
+  int get hashCode => sparkPrivateModeEnabled.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UpdateUserSettingsRequest &&
+          runtimeType == other.runtimeType &&
+          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
+}
+
 class UrlSuccessActionData {
   final String description;
   final String url;
@@ -2041,6 +2061,22 @@ class UrlSuccessActionData {
           description == other.description &&
           url == other.url &&
           matchesCallbackDomain == other.matchesCallbackDomain;
+}
+
+class UserSettings {
+  final bool sparkPrivateModeEnabled;
+
+  const UserSettings({required this.sparkPrivateModeEnabled});
+
+  @override
+  int get hashCode => sparkPrivateModeEnabled.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserSettings &&
+          runtimeType == other.runtimeType &&
+          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
 }
 
 @freezed

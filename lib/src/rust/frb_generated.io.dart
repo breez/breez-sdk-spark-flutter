@@ -23,12 +23,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_ArcStoragePtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStoragePtr;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_ArcSyncStoragePtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStoragePtr;
-
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BreezSdkPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr;
 
@@ -37,18 +31,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
-
-  @protected
-  ArcStorage
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    dynamic raw,
-  );
-
-  @protected
-  ArcSyncStorage
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    dynamic raw,
-  );
 
   @protected
   BreezSdk dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
@@ -72,16 +54,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Map<String, TokenBalance> dco_decode_Map_String_token_balance_None(dynamic raw);
-
-  @protected
-  ArcStorage dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    dynamic raw,
-  );
-
-  @protected
-  ArcSyncStorage dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    dynamic raw,
-  );
 
   @protected
   BreezSdk dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(dynamic raw);
@@ -334,6 +306,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BigInt dco_decode_box_autoadd_u_64(dynamic raw);
+
+  @protected
+  UpdateUserSettingsRequest dco_decode_box_autoadd_update_user_settings_request(dynamic raw);
 
   @protected
   UrlSuccessActionData dco_decode_box_autoadd_url_success_action_data(dynamic raw);
@@ -741,7 +716,13 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void dco_decode_unit(dynamic raw);
 
   @protected
+  UpdateUserSettingsRequest dco_decode_update_user_settings_request(dynamic raw);
+
+  @protected
   UrlSuccessActionData dco_decode_url_success_action_data(dynamic raw);
+
+  @protected
+  UserSettings dco_decode_user_settings(dynamic raw);
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
@@ -757,18 +738,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
-
-  @protected
-  ArcStorage
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    SseDeserializer deserializer,
-  );
-
-  @protected
-  ArcSyncStorage
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    SseDeserializer deserializer,
-  );
 
   @protected
   BreezSdk sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
@@ -792,16 +761,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Map<String, TokenBalance> sse_decode_Map_String_token_balance_None(SseDeserializer deserializer);
-
-  @protected
-  ArcStorage sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    SseDeserializer deserializer,
-  );
-
-  @protected
-  ArcSyncStorage sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    SseDeserializer deserializer,
-  );
 
   @protected
   BreezSdk sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
@@ -1076,6 +1035,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BigInt sse_decode_box_autoadd_u_64(SseDeserializer deserializer);
+
+  @protected
+  UpdateUserSettingsRequest sse_decode_box_autoadd_update_user_settings_request(SseDeserializer deserializer);
 
   @protected
   UrlSuccessActionData sse_decode_box_autoadd_url_success_action_data(SseDeserializer deserializer);
@@ -1485,7 +1447,13 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
+  UpdateUserSettingsRequest sse_decode_update_user_settings_request(SseDeserializer deserializer);
+
+  @protected
   UrlSuccessActionData sse_decode_url_success_action_data(SseDeserializer deserializer);
+
+  @protected
+  UserSettings sse_decode_user_settings(SseDeserializer deserializer);
 
   @protected
   BigInt sse_decode_usize(SseDeserializer deserializer);
@@ -1501,18 +1469,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    ArcStorage self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    ArcSyncStorage self,
-    SseSerializer serializer,
-  );
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
@@ -1540,18 +1496,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_Map_String_token_balance_None(Map<String, TokenBalance> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    ArcStorage self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    ArcSyncStorage self,
-    SseSerializer serializer,
-  );
 
   @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
@@ -1861,6 +1805,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_u_64(BigInt self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_update_user_settings_request(
+    UpdateUserSettingsRequest self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_url_success_action_data(UrlSuccessActionData self, SseSerializer serializer);
@@ -2295,7 +2245,13 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
+  void sse_encode_update_user_settings_request(UpdateUserSettingsRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_url_success_action_data(UrlSuccessActionData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_settings(UserSettings self, SseSerializer serializer);
 
   @protected
   void sse_encode_usize(BigInt self, SseSerializer serializer);
@@ -2321,74 +2277,6 @@ class BreezSdkSparkLibWire implements BaseWire {
 
   /// The symbols are looked up in [dynamicLibrary].
   BreezSdkSparkLibWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
-
-  void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage',
-      );
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage',
-      );
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStorage =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage',
-      );
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage',
-      );
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStorage =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcdynSyncStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     ffi.Pointer<ffi.Void> ptr,

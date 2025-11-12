@@ -9,26 +9,16 @@ import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'sdk.dart';
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Arc < dyn Storage >>>
-abstract class ArcStorage implements RustOpaqueInterface {}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Arc < dyn SyncStorage >>>
-abstract class ArcSyncStorage implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>
 abstract class SdkBuilder implements RustOpaqueInterface {
   Future<BreezSdk> build();
 
-  factory SdkBuilder({required Config config, required Seed seed, required ArcStorage storage}) =>
-      BreezSdkSparkLib.instance.api.crateSdkBuilderSdkBuilderNew(
-        config: config,
-        seed: seed,
-        storage: storage,
-      );
+  factory SdkBuilder({required Config config, required Seed seed}) =>
+      BreezSdkSparkLib.instance.api.crateSdkBuilderSdkBuilderNew(config: config, seed: seed);
+
+  SdkBuilder withDefaultStorage({required String storageDir});
 
   SdkBuilder withKeySet({required KeySetType keySetType, required bool useAddressIndex, int? accountNumber});
-
-  SdkBuilder withRealTimeSyncStorage({required ArcSyncStorage storage});
 
   SdkBuilder withRestChainService({required String url, Credentials? credentials});
 }

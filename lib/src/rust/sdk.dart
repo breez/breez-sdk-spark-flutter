@@ -9,16 +9,12 @@ import 'frb_generated.dart';
 import 'logger.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'sdk_builder.dart';
 
 Future<BreezSdk> connect({required ConnectRequest request}) =>
     BreezSdkSparkLib.instance.api.crateSdkConnect(request: request);
 
 Config defaultConfig({required Network network}) =>
     BreezSdkSparkLib.instance.api.crateSdkDefaultConfig(network: network);
-
-ArcStorage defaultStorage({required String dataDir}) =>
-    BreezSdkSparkLib.instance.api.crateSdkDefaultStorage(dataDir: dataDir);
 
 Stream<LogEntry> initLogging({String? logDir, String? logFilter}) =>
     BreezSdkSparkLib.instance.api.crateSdkInitLogging(logDir: logDir, logFilter: logFilter);
@@ -44,6 +40,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<GetPaymentResponse> getPayment({required GetPaymentRequest request});
 
   Future<GetTokensMetadataResponse> getTokensMetadata({required GetTokensMetadataRequest request});
+
+  Future<UserSettings> getUserSettings();
 
   Future<ListFiatCurrenciesResponse> listFiatCurrencies();
 
@@ -78,6 +76,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
+
+  Future<void> updateUserSettings({required UpdateUserSettingsRequest request});
 
   Future<WaitForPaymentResponse> waitForPayment({required WaitForPaymentRequest request});
 }
