@@ -11,8 +11,8 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 async-trait = "0.1.88"
 # Replaced with release commit during publishing
-breez-sdk-common = { git = "https://github.com/breez/spark-sdk.git", rev = "5596c20151aa24b03137e01725c6ff8e9c2e3da5" }
-breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "5596c20151aa24b03137e01725c6ff8e9c2e3da5", features = ["openssl-vendored"] }
+breez-sdk-common = { git = "https://github.com/breez/spark-sdk.git", rev = "81bc84ffec7f796c77ba651f9ff872c573a8fb93" }
+breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "81bc84ffec7f796c77ba651f9ff872c573a8fb93", features = ["openssl-vendored"] }
 extend = "1.2.0"
 flutter_rust_bridge = "=2.9.0"
 
