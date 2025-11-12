@@ -18,9 +18,6 @@ pub enum _SdkEvent {
     PaymentSucceeded {
         payment: Payment,
     },
-    PaymentPending {
-        payment: Payment,
-    },
     PaymentFailed {
         payment: Payment,
     },

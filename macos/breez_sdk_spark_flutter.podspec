@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                = "breez_sdk_spark_flutter"
-  spec.version             = '0.3.6-rc1'
+  spec.version             = '0.4.0-rc1'
   spec.license             = { :file => '../LICENSE' }
   spec.summary             = "Swift bindings to the Breez Spark SDK"
   spec.homepage            = "https://breez.technology"

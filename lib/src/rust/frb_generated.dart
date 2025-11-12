@@ -3003,8 +3003,6 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 4:
         return SdkEvent_PaymentSucceeded(payment: dco_decode_box_autoadd_payment(raw[1]));
       case 5:
-        return SdkEvent_PaymentPending(payment: dco_decode_box_autoadd_payment(raw[1]));
-      case 6:
         return SdkEvent_PaymentFailed(payment: dco_decode_box_autoadd_payment(raw[1]));
       default:
         throw Exception("unreachable");
@@ -5428,9 +5426,6 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return SdkEvent_PaymentSucceeded(payment: var_payment);
       case 5:
         var var_payment = sse_decode_box_autoadd_payment(deserializer);
-        return SdkEvent_PaymentPending(payment: var_payment);
-      case 6:
-        var var_payment = sse_decode_box_autoadd_payment(deserializer);
         return SdkEvent_PaymentFailed(payment: var_payment);
       default:
         throw UnimplementedError('');
@@ -7618,11 +7613,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case SdkEvent_PaymentSucceeded(payment: final payment):
         sse_encode_i_32(4, serializer);
         sse_encode_box_autoadd_payment(payment, serializer);
-      case SdkEvent_PaymentPending(payment: final payment):
-        sse_encode_i_32(5, serializer);
-        sse_encode_box_autoadd_payment(payment, serializer);
       case SdkEvent_PaymentFailed(payment: final payment):
-        sse_encode_i_32(6, serializer);
+        sse_encode_i_32(5, serializer);
         sse_encode_box_autoadd_payment(payment, serializer);
     }
   }

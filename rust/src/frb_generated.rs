@@ -2670,9 +2670,6 @@ const _: fn() = || {
         crate::events::SdkEvent::PaymentSucceeded { payment } => {
             let _: crate::models::Payment = payment;
         }
-        crate::events::SdkEvent::PaymentPending { payment } => {
-            let _: crate::models::Payment = payment;
-        }
         crate::events::SdkEvent::PaymentFailed { payment } => {
             let _: crate::models::Payment = payment;
         }
@@ -4941,12 +4938,6 @@ impl SseDecode for crate::events::SdkEvent {
                 };
             }
             5 => {
-                let mut var_payment = <crate::models::Payment>::sse_decode(deserializer);
-                return crate::events::SdkEvent::PaymentPending {
-                    payment: var_payment,
-                };
-            }
-            6 => {
                 let mut var_payment = <crate::models::Payment>::sse_decode(deserializer);
                 return crate::events::SdkEvent::PaymentFailed {
                     payment: var_payment,
@@ -7555,11 +7546,8 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::SdkEvent> {
             crate::events::SdkEvent::PaymentSucceeded { payment } => {
                 [4.into_dart(), payment.into_into_dart().into_dart()].into_dart()
             }
-            crate::events::SdkEvent::PaymentPending { payment } => {
-                [5.into_dart(), payment.into_into_dart().into_dart()].into_dart()
-            }
             crate::events::SdkEvent::PaymentFailed { payment } => {
-                [6.into_dart(), payment.into_into_dart().into_dart()].into_dart()
+                [5.into_dart(), payment.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -9832,12 +9820,8 @@ impl SseEncode for crate::events::SdkEvent {
                 <i32>::sse_encode(4, serializer);
                 <crate::models::Payment>::sse_encode(payment, serializer);
             }
-            crate::events::SdkEvent::PaymentPending { payment } => {
-                <i32>::sse_encode(5, serializer);
-                <crate::models::Payment>::sse_encode(payment, serializer);
-            }
             crate::events::SdkEvent::PaymentFailed { payment } => {
-                <i32>::sse_encode(6, serializer);
+                <i32>::sse_encode(5, serializer);
                 <crate::models::Payment>::sse_encode(payment, serializer);
             }
             _ => {
