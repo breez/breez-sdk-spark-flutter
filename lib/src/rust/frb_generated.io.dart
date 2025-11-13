@@ -9,6 +9,7 @@ import 'dart:ffi' as ffi;
 import 'errors.dart';
 import 'events.dart';
 import 'frb_generated.dart';
+import 'issuer.dart';
 import 'logger.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
@@ -29,6 +30,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SdkBuilderPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilderPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_TokenIssuerPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr;
+
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
@@ -43,12 +47,22 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  TokenIssuer dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    dynamic raw,
+  );
+
+  @protected
   BreezSdk dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     dynamic raw,
   );
 
   @protected
   SdkBuilder dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    dynamic raw,
+  );
+
+  @protected
+  TokenIssuer dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     dynamic raw,
   );
 
@@ -60,6 +74,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SdkBuilder dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(dynamic raw);
+
+  @protected
+  TokenIssuer dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    dynamic raw,
+  );
 
   @protected
   RustStreamSink<LogEntry> dco_decode_StreamSink_log_entry_Sse(dynamic raw);
@@ -170,6 +189,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool dco_decode_box_autoadd_bool(dynamic raw);
 
   @protected
+  BurnIssuerTokenRequest dco_decode_box_autoadd_burn_issuer_token_request(dynamic raw);
+
+  @protected
   CheckLightningAddressRequest dco_decode_box_autoadd_check_lightning_address_request(dynamic raw);
 
   @protected
@@ -185,6 +207,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest dco_decode_box_autoadd_connect_request(dynamic raw);
 
   @protected
+  CreateIssuerTokenRequest dco_decode_box_autoadd_create_issuer_token_request(dynamic raw);
+
+  @protected
   Credentials dco_decode_box_autoadd_credentials(dynamic raw);
 
   @protected
@@ -192,6 +217,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Fee dco_decode_box_autoadd_fee(dynamic raw);
+
+  @protected
+  FreezeIssuerTokenRequest dco_decode_box_autoadd_freeze_issuer_token_request(dynamic raw);
 
   @protected
   GetInfoRequest dco_decode_box_autoadd_get_info_request(dynamic raw);
@@ -237,6 +265,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   MessageSuccessActionData dco_decode_box_autoadd_message_success_action_data(dynamic raw);
+
+  @protected
+  MintIssuerTokenRequest dco_decode_box_autoadd_mint_issuer_token_request(dynamic raw);
 
   @protected
   Payment dco_decode_box_autoadd_payment(dynamic raw);
@@ -308,6 +339,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BigInt dco_decode_box_autoadd_u_64(dynamic raw);
 
   @protected
+  UnfreezeIssuerTokenRequest dco_decode_box_autoadd_unfreeze_issuer_token_request(dynamic raw);
+
+  @protected
   UpdateUserSettingsRequest dco_decode_box_autoadd_update_user_settings_request(dynamic raw);
 
   @protected
@@ -315,6 +349,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   WaitForPaymentRequest dco_decode_box_autoadd_wait_for_payment_request(dynamic raw);
+
+  @protected
+  BurnIssuerTokenRequest dco_decode_burn_issuer_token_request(dynamic raw);
 
   @protected
   CheckLightningAddressRequest dco_decode_check_lightning_address_request(dynamic raw);
@@ -336,6 +373,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConnectRequest dco_decode_connect_request(dynamic raw);
+
+  @protected
+  CreateIssuerTokenRequest dco_decode_create_issuer_token_request(dynamic raw);
 
   @protected
   Credentials dco_decode_credentials(dynamic raw);
@@ -360,6 +400,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   FiatCurrency dco_decode_fiat_currency(dynamic raw);
+
+  @protected
+  FreezeIssuerTokenRequest dco_decode_freeze_issuer_token_request(dynamic raw);
+
+  @protected
+  FreezeIssuerTokenResponse dco_decode_freeze_issuer_token_response(dynamic raw);
 
   @protected
   GetInfoRequest dco_decode_get_info_request(dynamic raw);
@@ -504,6 +550,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   MessageSuccessActionData dco_decode_message_success_action_data(dynamic raw);
+
+  @protected
+  MintIssuerTokenRequest dco_decode_mint_issuer_token_request(dynamic raw);
 
   @protected
   Network dco_decode_network(dynamic raw);
@@ -713,6 +762,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   int dco_decode_u_8(dynamic raw);
 
   @protected
+  UnfreezeIssuerTokenRequest dco_decode_unfreeze_issuer_token_request(dynamic raw);
+
+  @protected
+  UnfreezeIssuerTokenResponse dco_decode_unfreeze_issuer_token_response(dynamic raw);
+
+  @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
@@ -750,12 +805,22 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  TokenIssuer sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   BreezSdk sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     SseDeserializer deserializer,
   );
 
   @protected
   SdkBuilder sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  TokenIssuer sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     SseDeserializer deserializer,
   );
 
@@ -769,6 +834,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SdkBuilder sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  TokenIssuer sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     SseDeserializer deserializer,
   );
 
@@ -887,6 +957,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool sse_decode_box_autoadd_bool(SseDeserializer deserializer);
 
   @protected
+  BurnIssuerTokenRequest sse_decode_box_autoadd_burn_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
   CheckLightningAddressRequest sse_decode_box_autoadd_check_lightning_address_request(
     SseDeserializer deserializer,
   );
@@ -904,6 +977,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest sse_decode_box_autoadd_connect_request(SseDeserializer deserializer);
 
   @protected
+  CreateIssuerTokenRequest sse_decode_box_autoadd_create_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
   Credentials sse_decode_box_autoadd_credentials(SseDeserializer deserializer);
 
   @protected
@@ -911,6 +987,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Fee sse_decode_box_autoadd_fee(SseDeserializer deserializer);
+
+  @protected
+  FreezeIssuerTokenRequest sse_decode_box_autoadd_freeze_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   GetInfoRequest sse_decode_box_autoadd_get_info_request(SseDeserializer deserializer);
@@ -960,6 +1039,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   MessageSuccessActionData sse_decode_box_autoadd_message_success_action_data(SseDeserializer deserializer);
+
+  @protected
+  MintIssuerTokenRequest sse_decode_box_autoadd_mint_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   Payment sse_decode_box_autoadd_payment(SseDeserializer deserializer);
@@ -1037,6 +1119,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BigInt sse_decode_box_autoadd_u_64(SseDeserializer deserializer);
 
   @protected
+  UnfreezeIssuerTokenRequest sse_decode_box_autoadd_unfreeze_issuer_token_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   UpdateUserSettingsRequest sse_decode_box_autoadd_update_user_settings_request(SseDeserializer deserializer);
 
   @protected
@@ -1044,6 +1131,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   WaitForPaymentRequest sse_decode_box_autoadd_wait_for_payment_request(SseDeserializer deserializer);
+
+  @protected
+  BurnIssuerTokenRequest sse_decode_burn_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   CheckLightningAddressRequest sse_decode_check_lightning_address_request(SseDeserializer deserializer);
@@ -1065,6 +1155,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConnectRequest sse_decode_connect_request(SseDeserializer deserializer);
+
+  @protected
+  CreateIssuerTokenRequest sse_decode_create_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   Credentials sse_decode_credentials(SseDeserializer deserializer);
@@ -1089,6 +1182,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   FiatCurrency sse_decode_fiat_currency(SseDeserializer deserializer);
+
+  @protected
+  FreezeIssuerTokenRequest sse_decode_freeze_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
+  FreezeIssuerTokenResponse sse_decode_freeze_issuer_token_response(SseDeserializer deserializer);
 
   @protected
   GetInfoRequest sse_decode_get_info_request(SseDeserializer deserializer);
@@ -1233,6 +1332,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   MessageSuccessActionData sse_decode_message_success_action_data(SseDeserializer deserializer);
+
+  @protected
+  MintIssuerTokenRequest sse_decode_mint_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   Network sse_decode_network(SseDeserializer deserializer);
@@ -1444,6 +1546,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
+  UnfreezeIssuerTokenRequest sse_decode_unfreeze_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
+  UnfreezeIssuerTokenResponse sse_decode_unfreeze_issuer_token_response(SseDeserializer deserializer);
+
+  @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
@@ -1483,6 +1591,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    TokenIssuer self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
     SseSerializer serializer,
@@ -1491,6 +1605,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
     SdkBuilder self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    TokenIssuer self,
     SseSerializer serializer,
   );
 
@@ -1506,6 +1626,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
     SdkBuilder self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    TokenIssuer self,
     SseSerializer serializer,
   );
 
@@ -1630,6 +1756,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_burn_issuer_token_request(
+    BurnIssuerTokenRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_check_lightning_address_request(
     CheckLightningAddressRequest self,
     SseSerializer serializer,
@@ -1648,6 +1780,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_connect_request(ConnectRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_create_issuer_token_request(
+    CreateIssuerTokenRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_credentials(Credentials self, SseSerializer serializer);
 
   @protected
@@ -1655,6 +1793,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_fee(Fee self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_freeze_issuer_token_request(
+    FreezeIssuerTokenRequest self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_get_info_request(GetInfoRequest self, SseSerializer serializer);
@@ -1719,6 +1863,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_message_success_action_data(
     MessageSuccessActionData self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_mint_issuer_token_request(
+    MintIssuerTokenRequest self,
     SseSerializer serializer,
   );
 
@@ -1807,6 +1957,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_u_64(BigInt self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_unfreeze_issuer_token_request(
+    UnfreezeIssuerTokenRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_update_user_settings_request(
     UpdateUserSettingsRequest self,
     SseSerializer serializer,
@@ -1817,6 +1973,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_wait_for_payment_request(WaitForPaymentRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_burn_issuer_token_request(BurnIssuerTokenRequest self, SseSerializer serializer);
 
   @protected
   void sse_encode_check_lightning_address_request(
@@ -1843,6 +2002,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_connect_request(ConnectRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_create_issuer_token_request(CreateIssuerTokenRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_credentials(Credentials self, SseSerializer serializer);
 
   @protected
@@ -1865,6 +2027,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_fiat_currency(FiatCurrency self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_freeze_issuer_token_request(FreezeIssuerTokenRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_freeze_issuer_token_response(FreezeIssuerTokenResponse self, SseSerializer serializer);
 
   @protected
   void sse_encode_get_info_request(GetInfoRequest self, SseSerializer serializer);
@@ -2021,6 +2189,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_message_success_action_data(MessageSuccessActionData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mint_issuer_token_request(MintIssuerTokenRequest self, SseSerializer serializer);
 
   @protected
   void sse_encode_network(Network self, SseSerializer serializer);
@@ -2242,6 +2413,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
+  void sse_encode_unfreeze_issuer_token_request(UnfreezeIssuerTokenRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unfreeze_issuer_token_response(UnfreezeIssuerTokenResponse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
@@ -2342,5 +2519,39 @@ class BreezSdkSparkLibWire implements BaseWire {
       );
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilderPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer',
+      );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer',
+      );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 }

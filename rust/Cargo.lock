@@ -491,7 +491,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-common"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "aes",
  "anyhow",
@@ -530,7 +530,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2297,7 +2297,7 @@ checksum = "f5e54036fe321fd421e10d732f155734c4e4afd610dd556d9a82833ab3ee0bed"
 [[package]]
 name = "lnurl-models"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "serde",
 ]
@@ -2321,7 +2321,7 @@ checksum = "34080505efa8e45a4b816c349525ebe327ceaa8559756f0356cba97ef3bf7432"
 [[package]]
 name = "macros"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3560,7 +3560,7 @@ dependencies = [
 [[package]]
 name = "spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "async-trait",
  "base64",
@@ -3596,6 +3596,7 @@ dependencies = [
  "tonic-web-wasm-client",
  "tower-service",
  "tracing",
+ "unicode-normalization",
  "uuid",
  "web-time",
 ]
@@ -3603,7 +3604,7 @@ dependencies = [
 [[package]]
 name = "spark-wallet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=4c48a2e5a46617ccf3fd5516cdd93aadc28d72af#4c48a2e5a46617ccf3fd5516cdd93aadc28d72af"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1f2e9995230cd582d6b4aa7d06d76b99defb635e#1f2e9995230cd582d6b4aa7d06d76b99defb635e"
 dependencies = [
  "bitcoin",
  "frost-secp256k1-tr-unofficial",
@@ -4228,9 +4229,9 @@ checksum = "f63a545481291138910575129486daeaf8ac54aee4387fe7906919f7830c7d9d"
 
 [[package]]
 name = "unicode-normalization"
-version = "0.1.24"
+version = "0.1.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5033c97c4262335cded6d6fc3e5c18ab755e1a3dc96376350f3d8e9f009ad956"
+checksum = "5fd4f6878c9cb28d874b009da9e8d183b5abc80117c40bbd187a1fde336be6e8"
 dependencies = [
  "tinyvec",
 ]

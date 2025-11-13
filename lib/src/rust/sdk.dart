@@ -6,6 +6,7 @@
 import 'errors.dart';
 import 'events.dart';
 import 'frb_generated.dart';
+import 'issuer.dart';
 import 'logger.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
@@ -38,6 +39,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<LightningAddressInfo?> getLightningAddress();
 
   Future<GetPaymentResponse> getPayment({required GetPaymentRequest request});
+
+  TokenIssuer getTokenIssuer();
 
   Future<GetTokensMetadataResponse> getTokensMetadata({required GetTokensMetadataRequest request});
 

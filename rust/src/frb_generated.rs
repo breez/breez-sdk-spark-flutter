@@ -25,6 +25,7 @@
 
 // Section: imports
 
+use crate::issuer::*;
 use crate::sdk::*;
 use crate::sdk_builder::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
@@ -39,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1345461327;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2036520248;
 
 // Section: executor
 
@@ -569,6 +570,53 @@ fn wire__crate__sdk__BreezSdk_get_payment_impl(
                     .await,
                 )
             }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_get_token_issuer_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_get_token_issuer",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok =
+                    Result::<_, ()>::Ok(crate::sdk::BreezSdk::get_token_issuer(&*api_that_guard))?;
+                Ok(output_ok)
+            })())
         },
     )
 }
@@ -1938,6 +1986,425 @@ fn wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
         },
     )
 }
+fn wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_burn_issuer_token",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::BurnIssuerTokenRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::issuer::TokenIssuer::burn_issuer_token(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_create_issuer_token",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::CreateIssuerTokenRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::issuer::TokenIssuer::create_issuer_token(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_freeze_issuer_token",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::FreezeIssuerTokenRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::issuer::TokenIssuer::freeze_issuer_token(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_get_issuer_token_balance",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::issuer::TokenIssuer::get_issuer_token_balance(&*api_that_guard)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_get_issuer_token_metadata",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::issuer::TokenIssuer::get_issuer_token_metadata(&*api_that_guard)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_mint_issuer_token",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::MintIssuerTokenRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::issuer::TokenIssuer::mint_issuer_token(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "TokenIssuer_unfreeze_issuer_token",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::UnfreezeIssuerTokenRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::issuer::TokenIssuer::unfreeze_issuer_token(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire__crate__sdk__connect_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2173,6 +2640,10 @@ const _: fn() = || {
         let _: Option<String> = Bolt12OfferDetails.signing_pubkey;
     }
     {
+        let BurnIssuerTokenRequest = None::<crate::models::BurnIssuerTokenRequest>.unwrap();
+        let _: u128 = BurnIssuerTokenRequest.amount;
+    }
+    {
         let CheckLightningAddressRequest =
             None::<crate::models::CheckLightningAddressRequest>.unwrap();
         let _: String = CheckLightningAddressRequest.username;
@@ -2215,6 +2686,14 @@ const _: fn() = || {
         let _: crate::models::Config = ConnectRequest.config;
         let _: crate::models::Seed = ConnectRequest.seed;
         let _: String = ConnectRequest.storage_dir;
+    }
+    {
+        let CreateIssuerTokenRequest = None::<crate::models::CreateIssuerTokenRequest>.unwrap();
+        let _: String = CreateIssuerTokenRequest.name;
+        let _: String = CreateIssuerTokenRequest.ticker;
+        let _: u32 = CreateIssuerTokenRequest.decimals;
+        let _: bool = CreateIssuerTokenRequest.is_freezable;
+        let _: u128 = CreateIssuerTokenRequest.max_supply;
     }
     {
         let Credentials = None::<crate::models::Credentials>.unwrap();
@@ -2278,6 +2757,15 @@ const _: fn() = || {
         let FiatCurrency = None::<crate::models::FiatCurrency>.unwrap();
         let _: String = FiatCurrency.id;
         let _: crate::models::CurrencyInfo = FiatCurrency.info;
+    }
+    {
+        let FreezeIssuerTokenRequest = None::<crate::models::FreezeIssuerTokenRequest>.unwrap();
+        let _: String = FreezeIssuerTokenRequest.address;
+    }
+    {
+        let FreezeIssuerTokenResponse = None::<crate::models::FreezeIssuerTokenResponse>.unwrap();
+        let _: Vec<String> = FreezeIssuerTokenResponse.impacted_output_ids;
+        let _: u128 = FreezeIssuerTokenResponse.impacted_token_amount;
     }
     {
         let GetInfoRequest = None::<crate::models::GetInfoRequest>.unwrap();
@@ -2475,6 +2963,10 @@ const _: fn() = || {
     {
         let MessageSuccessActionData = None::<crate::models::MessageSuccessActionData>.unwrap();
         let _: String = MessageSuccessActionData.message;
+    }
+    {
+        let MintIssuerTokenRequest = None::<crate::models::MintIssuerTokenRequest>.unwrap();
+        let _: u128 = MintIssuerTokenRequest.amount;
     }
     {
         let Payment = None::<crate::models::Payment>.unwrap();
@@ -2847,6 +3339,16 @@ const _: fn() = || {
         let _: bool = TokenMetadata.is_freezable;
     }
     {
+        let UnfreezeIssuerTokenRequest = None::<crate::models::UnfreezeIssuerTokenRequest>.unwrap();
+        let _: String = UnfreezeIssuerTokenRequest.address;
+    }
+    {
+        let UnfreezeIssuerTokenResponse =
+            None::<crate::models::UnfreezeIssuerTokenResponse>.unwrap();
+        let _: Vec<String> = UnfreezeIssuerTokenResponse.impacted_output_ids;
+        let _: u128 = UnfreezeIssuerTokenResponse.impacted_token_amount;
+    }
+    {
         let UpdateUserSettingsRequest = None::<crate::models::UpdateUserSettingsRequest>.unwrap();
         let _: Option<bool> = UpdateUserSettingsRequest.spark_private_mode_enabled;
     }
@@ -2886,6 +3388,9 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>
 );
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>
+);
 
 // Section: dart2rust
 
@@ -2917,6 +3422,16 @@ impl SseDecode for SdkBuilder {
     }
 }
 
+impl SseDecode for TokenIssuer {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
 impl SseDecode for std::collections::HashMap<String, crate::models::TokenBalance> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -2937,6 +3452,16 @@ impl SseDecode
 
 impl SseDecode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -3298,6 +3823,14 @@ impl SseDecode for bool {
     }
 }
 
+impl SseDecode for crate::models::BurnIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_amount = <u128>::sse_decode(deserializer);
+        return crate::models::BurnIssuerTokenRequest { amount: var_amount };
+    }
+}
+
 impl SseDecode for crate::models::CheckLightningAddressRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -3395,6 +3928,24 @@ impl SseDecode for crate::models::ConnectRequest {
             config: var_config,
             seed: var_seed,
             storage_dir: var_storageDir,
+        };
+    }
+}
+
+impl SseDecode for crate::models::CreateIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_ticker = <String>::sse_decode(deserializer);
+        let mut var_decimals = <u32>::sse_decode(deserializer);
+        let mut var_isFreezable = <bool>::sse_decode(deserializer);
+        let mut var_maxSupply = <u128>::sse_decode(deserializer);
+        return crate::models::CreateIssuerTokenRequest {
+            name: var_name,
+            ticker: var_ticker,
+            decimals: var_decimals,
+            is_freezable: var_isFreezable,
+            max_supply: var_maxSupply,
         };
     }
 }
@@ -3544,6 +4095,28 @@ impl SseDecode for crate::models::FiatCurrency {
         return crate::models::FiatCurrency {
             id: var_id,
             info: var_info,
+        };
+    }
+}
+
+impl SseDecode for crate::models::FreezeIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_address = <String>::sse_decode(deserializer);
+        return crate::models::FreezeIssuerTokenRequest {
+            address: var_address,
+        };
+    }
+}
+
+impl SseDecode for crate::models::FreezeIssuerTokenResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_impactedOutputIds = <Vec<String>>::sse_decode(deserializer);
+        let mut var_impactedTokenAmount = <u128>::sse_decode(deserializer);
+        return crate::models::FreezeIssuerTokenResponse {
+            impacted_output_ids: var_impactedOutputIds,
+            impacted_token_amount: var_impactedTokenAmount,
         };
     }
 }
@@ -4225,6 +4798,14 @@ impl SseDecode for crate::models::MessageSuccessActionData {
         return crate::models::MessageSuccessActionData {
             message: var_message,
         };
+    }
+}
+
+impl SseDecode for crate::models::MintIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_amount = <u128>::sse_decode(deserializer);
+        return crate::models::MintIssuerTokenRequest { amount: var_amount };
     }
 }
 
@@ -5351,6 +5932,28 @@ impl SseDecode for u8 {
     }
 }
 
+impl SseDecode for crate::models::UnfreezeIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_address = <String>::sse_decode(deserializer);
+        return crate::models::UnfreezeIssuerTokenRequest {
+            address: var_address,
+        };
+    }
+}
+
+impl SseDecode for crate::models::UnfreezeIssuerTokenResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_impactedOutputIds = <Vec<String>>::sse_decode(deserializer);
+        let mut var_impactedTokenAmount = <u128>::sse_decode(deserializer);
+        return crate::models::UnfreezeIssuerTokenResponse {
+            impacted_output_ids: var_impactedOutputIds,
+            impacted_token_amount: var_impactedTokenAmount,
+        };
+    }
+}
+
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
@@ -5468,48 +6071,90 @@ fn pde_ffi_dispatcher_primary_impl(
             wire__crate__sdk__BreezSdk_get_lightning_address_impl(port, ptr, rust_vec_len, data_len)
         }
         9 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
-        10 => {
+        11 => {
             wire__crate__sdk__BreezSdk_get_tokens_metadata_impl(port, ptr, rust_vec_len, data_len)
         }
-        11 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
-        12 => {
+        12 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
+        13 => {
             wire__crate__sdk__BreezSdk_list_fiat_currencies_impl(port, ptr, rust_vec_len, data_len)
         }
-        13 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
-        14 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
-        15 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
+        14 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
+        15 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
+        16 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        16 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        17 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        18 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        19 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        20 => {
+        17 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        18 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
+        19 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        20 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        21 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        21 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        22 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        23 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        22 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        23 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        24 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        24 => {
+        25 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        25 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        26 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        27 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
-        28 => {
+        26 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        27 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
+        28 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
+        29 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        29 => wire__crate__sdk__BreezSdk_wait_for_payment_impl(port, ptr, rust_vec_len, data_len),
-        30 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        35 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        30 => wire__crate__sdk__BreezSdk_wait_for_payment_impl(port, ptr, rust_vec_len, data_len),
+        31 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        36 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        37 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        38 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        39 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        40 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        41 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        42 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        43 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -5522,20 +6167,21 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        31 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        32 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        10 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
+        32 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        33 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        33 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        34 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
+        35 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        36 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        37 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        44 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        45 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -5568,6 +6214,21 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<
 
 impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<SdkBuilder>> for SdkBuilder {
     fn into_into_dart(self) -> FrbWrapper<SdkBuilder> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<TokenIssuer> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<TokenIssuer> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<TokenIssuer>> for TokenIssuer {
+    fn into_into_dart(self) -> FrbWrapper<TokenIssuer> {
         self.into()
     }
 }
@@ -6019,6 +6680,23 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::Bolt12OfferDeta
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::BurnIssuerTokenRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.amount.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::BurnIssuerTokenRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BurnIssuerTokenRequest>>
+    for crate::models::BurnIssuerTokenRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::BurnIssuerTokenRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::CheckLightningAddressRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.username.into_into_dart().into_dart()].into_dart()
@@ -6170,6 +6848,30 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConnectRequest>
     for crate::models::ConnectRequest
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::ConnectRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::CreateIssuerTokenRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.name.into_into_dart().into_dart(),
+            self.0.ticker.into_into_dart().into_dart(),
+            self.0.decimals.into_into_dart().into_dart(),
+            self.0.is_freezable.into_into_dart().into_dart(),
+            self.0.max_supply.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::CreateIssuerTokenRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::CreateIssuerTokenRequest>>
+    for crate::models::CreateIssuerTokenRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::CreateIssuerTokenRequest> {
         self.into()
     }
 }
@@ -6353,6 +7055,44 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FiatCurrency>>
     for crate::models::FiatCurrency
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::FiatCurrency> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FreezeIssuerTokenRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.address.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::FreezeIssuerTokenRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FreezeIssuerTokenRequest>>
+    for crate::models::FreezeIssuerTokenRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FreezeIssuerTokenRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FreezeIssuerTokenResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.impacted_output_ids.into_into_dart().into_dart(),
+            self.0.impacted_token_amount.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::FreezeIssuerTokenResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FreezeIssuerTokenResponse>>
+    for crate::models::FreezeIssuerTokenResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FreezeIssuerTokenResponse> {
         self.into()
     }
 }
@@ -6982,6 +7722,23 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::MessageSuccessA
     for crate::models::MessageSuccessActionData
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::MessageSuccessActionData> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::MintIssuerTokenRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.amount.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::MintIssuerTokenRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::MintIssuerTokenRequest>>
+    for crate::models::MintIssuerTokenRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::MintIssuerTokenRequest> {
         self.into()
     }
 }
@@ -8087,6 +8844,44 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenMetadata>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::UnfreezeIssuerTokenRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.address.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::UnfreezeIssuerTokenRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::UnfreezeIssuerTokenRequest>>
+    for crate::models::UnfreezeIssuerTokenRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::UnfreezeIssuerTokenRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::UnfreezeIssuerTokenResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.impacted_output_ids.into_into_dart().into_dart(),
+            self.0.impacted_token_amount.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::UnfreezeIssuerTokenResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::UnfreezeIssuerTokenResponse>>
+    for crate::models::UnfreezeIssuerTokenResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::UnfreezeIssuerTokenResponse> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::UpdateUserSettingsRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self
@@ -8235,6 +9030,13 @@ impl SseEncode for SdkBuilder {
     }
 }
 
+impl SseEncode for TokenIssuer {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< TokenIssuer>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+    }
+}
+
 impl SseEncode for std::collections::HashMap<String, crate::models::TokenBalance> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -8258,6 +9060,17 @@ impl SseEncode
 
 impl SseEncode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TokenIssuer>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -8528,6 +9341,13 @@ impl SseEncode for bool {
     }
 }
 
+impl SseEncode for crate::models::BurnIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u128>::sse_encode(self.amount, serializer);
+    }
+}
+
 impl SseEncode for crate::models::CheckLightningAddressRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -8592,6 +9412,17 @@ impl SseEncode for crate::models::ConnectRequest {
         <crate::models::Config>::sse_encode(self.config, serializer);
         <crate::models::Seed>::sse_encode(self.seed, serializer);
         <String>::sse_encode(self.storage_dir, serializer);
+    }
+}
+
+impl SseEncode for crate::models::CreateIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <String>::sse_encode(self.ticker, serializer);
+        <u32>::sse_encode(self.decimals, serializer);
+        <bool>::sse_encode(self.is_freezable, serializer);
+        <u128>::sse_encode(self.max_supply, serializer);
     }
 }
 
@@ -8700,6 +9531,21 @@ impl SseEncode for crate::models::FiatCurrency {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.id, serializer);
         <crate::models::CurrencyInfo>::sse_encode(self.info, serializer);
+    }
+}
+
+impl SseEncode for crate::models::FreezeIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.address, serializer);
+    }
+}
+
+impl SseEncode for crate::models::FreezeIssuerTokenResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<String>>::sse_encode(self.impacted_output_ids, serializer);
+        <u128>::sse_encode(self.impacted_token_amount, serializer);
     }
 }
 
@@ -9210,6 +10056,13 @@ impl SseEncode for crate::models::MessageSuccessActionData {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.message, serializer);
+    }
+}
+
+impl SseEncode for crate::models::MintIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u128>::sse_encode(self.amount, serializer);
     }
 }
 
@@ -10148,6 +11001,21 @@ impl SseEncode for u8 {
     }
 }
 
+impl SseEncode for crate::models::UnfreezeIssuerTokenRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.address, serializer);
+    }
+}
+
+impl SseEncode for crate::models::UnfreezeIssuerTokenResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<String>>::sse_encode(self.impacted_output_ids, serializer);
+        <u128>::sse_encode(self.impacted_token_amount, serializer);
+    }
+}
+
 impl SseEncode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
@@ -10227,6 +11095,7 @@ mod io {
     // Section: imports
 
     use super::*;
+    use crate::issuer::*;
     use crate::sdk::*;
     use crate::sdk_builder::*;
     use flutter_rust_bridge::for_generated::byteorder::{
@@ -10265,6 +11134,20 @@ mod io {
         ptr: *const std::ffi::c_void,
     ) {
         MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>::decrement_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< TokenIssuer>>::increment_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< TokenIssuer>>::decrement_strong_count(ptr as _);
     }
 }
 #[cfg(not(target_family = "wasm"))]

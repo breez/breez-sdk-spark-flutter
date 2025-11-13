@@ -420,6 +420,20 @@ class Bolt12OfferDetails {
           signingPubkey == other.signingPubkey;
 }
 
+class BurnIssuerTokenRequest {
+  final BigInt amount;
+
+  const BurnIssuerTokenRequest({required this.amount});
+
+  @override
+  int get hashCode => amount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BurnIssuerTokenRequest && runtimeType == other.runtimeType && amount == other.amount;
+}
+
 class CheckLightningAddressRequest {
   final String username;
 
@@ -577,6 +591,37 @@ class ConnectRequest {
           storageDir == other.storageDir;
 }
 
+class CreateIssuerTokenRequest {
+  final String name;
+  final String ticker;
+  final int decimals;
+  final bool isFreezable;
+  final BigInt maxSupply;
+
+  const CreateIssuerTokenRequest({
+    required this.name,
+    required this.ticker,
+    required this.decimals,
+    required this.isFreezable,
+    required this.maxSupply,
+  });
+
+  @override
+  int get hashCode =>
+      name.hashCode ^ ticker.hashCode ^ decimals.hashCode ^ isFreezable.hashCode ^ maxSupply.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreateIssuerTokenRequest &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          ticker == other.ticker &&
+          decimals == other.decimals &&
+          isFreezable == other.isFreezable &&
+          maxSupply == other.maxSupply;
+}
+
 class Credentials {
   final String username;
   final String password;
@@ -718,6 +763,38 @@ class FiatCurrency {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is FiatCurrency && runtimeType == other.runtimeType && id == other.id && info == other.info;
+}
+
+class FreezeIssuerTokenRequest {
+  final String address;
+
+  const FreezeIssuerTokenRequest({required this.address});
+
+  @override
+  int get hashCode => address.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FreezeIssuerTokenRequest && runtimeType == other.runtimeType && address == other.address;
+}
+
+class FreezeIssuerTokenResponse {
+  final List<String> impactedOutputIds;
+  final BigInt impactedTokenAmount;
+
+  const FreezeIssuerTokenResponse({required this.impactedOutputIds, required this.impactedTokenAmount});
+
+  @override
+  int get hashCode => impactedOutputIds.hashCode ^ impactedTokenAmount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FreezeIssuerTokenResponse &&
+          runtimeType == other.runtimeType &&
+          impactedOutputIds == other.impactedOutputIds &&
+          impactedTokenAmount == other.impactedTokenAmount;
 }
 
 class GetInfoRequest {
@@ -1290,6 +1367,20 @@ class MessageSuccessActionData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is MessageSuccessActionData && runtimeType == other.runtimeType && message == other.message;
+}
+
+class MintIssuerTokenRequest {
+  final BigInt amount;
+
+  const MintIssuerTokenRequest({required this.amount});
+
+  @override
+  int get hashCode => amount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MintIssuerTokenRequest && runtimeType == other.runtimeType && amount == other.amount;
 }
 
 enum Network { mainnet, regtest }
@@ -2021,6 +2112,38 @@ class TokenMetadata {
           decimals == other.decimals &&
           maxSupply == other.maxSupply &&
           isFreezable == other.isFreezable;
+}
+
+class UnfreezeIssuerTokenRequest {
+  final String address;
+
+  const UnfreezeIssuerTokenRequest({required this.address});
+
+  @override
+  int get hashCode => address.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnfreezeIssuerTokenRequest && runtimeType == other.runtimeType && address == other.address;
+}
+
+class UnfreezeIssuerTokenResponse {
+  final List<String> impactedOutputIds;
+  final BigInt impactedTokenAmount;
+
+  const UnfreezeIssuerTokenResponse({required this.impactedOutputIds, required this.impactedTokenAmount});
+
+  @override
+  int get hashCode => impactedOutputIds.hashCode ^ impactedTokenAmount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnfreezeIssuerTokenResponse &&
+          runtimeType == other.runtimeType &&
+          impactedOutputIds == other.impactedOutputIds &&
+          impactedTokenAmount == other.impactedTokenAmount;
 }
 
 class UpdateUserSettingsRequest {
