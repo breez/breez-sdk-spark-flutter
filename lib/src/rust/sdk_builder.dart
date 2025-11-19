@@ -20,5 +20,9 @@ abstract class SdkBuilder implements RustOpaqueInterface {
 
   SdkBuilder withKeySet({required KeySetType keySetType, required bool useAddressIndex, int? accountNumber});
 
-  SdkBuilder withRestChainService({required String url, Credentials? credentials});
+  SdkBuilder withRestChainService({
+    required String url,
+    required ChainApiType apiType,
+    Credentials? credentials,
+  });
 }

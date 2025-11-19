@@ -1,5 +1,5 @@
-pub use breez_sdk_spark::*;
 pub use breez_sdk_spark::sync_storage::*;
+pub use breez_sdk_spark::*;
 use flutter_rust_bridge::frb;
 use std::collections::HashMap;
 
@@ -202,6 +202,7 @@ pub struct _LnurlPayInfo {
 #[frb(mirror(LnurlPayRequest))]
 pub struct _LnurlPayRequest {
     pub prepare_response: PrepareLnurlPayResponse,
+    pub idempotency_key: Option<String>,
 }
 
 #[frb(mirror(LnurlPayResponse))]
@@ -362,6 +363,7 @@ pub enum _SendPaymentOptions {
 pub struct _SendPaymentRequest {
     pub prepare_response: PrepareSendPaymentResponse,
     pub options: Option<SendPaymentOptions>,
+    pub idempotency_key: Option<String>,
 }
 
 #[frb(mirror(SendPaymentResponse))]
@@ -788,22 +790,6 @@ pub struct _Symbol {
     pub position: Option<u32>,
 }
 
-#[frb(mirror(WaitForPaymentRequest))]
-pub struct _WaitForPaymentRequest {
-    pub identifier: WaitForPaymentIdentifier,
-}
-
-#[frb(mirror(WaitForPaymentIdentifier))]
-pub enum _WaitForPaymentIdentifier {
-    PaymentId(String),
-    PaymentRequest(String),
-}
-
-#[frb(mirror(WaitForPaymentResponse))]
-pub struct _WaitForPaymentResponse {
-    pub payment: Payment,
-}
-
 #[frb(mirror(GetTokensMetadataRequest))]
 pub struct _GetTokensMetadataRequest {
     pub token_identifiers: Vec<String>,
@@ -905,4 +891,19 @@ pub struct _UnfreezeIssuerTokenRequest {
 pub struct _UnfreezeIssuerTokenResponse {
     pub impacted_output_ids: Vec<String>,
     pub impacted_token_amount: u128,
+}
+
+#[frb(mirror(RecommendedFees))]
+pub struct _RecommendedFees {
+    pub fastest_fee: u64,
+    pub half_hour_fee: u64,
+    pub hour_fee: u64,
+    pub economy_fee: u64,
+    pub minimum_fee: u64,
+}
+
+#[frb(mirror(ChainApiType))]
+pub enum _ChainApiType {
+    Esplora,
+    MempoolSpace,
 }

@@ -348,10 +348,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   UrlSuccessActionData dco_decode_box_autoadd_url_success_action_data(dynamic raw);
 
   @protected
-  WaitForPaymentRequest dco_decode_box_autoadd_wait_for_payment_request(dynamic raw);
+  BurnIssuerTokenRequest dco_decode_burn_issuer_token_request(dynamic raw);
 
   @protected
-  BurnIssuerTokenRequest dco_decode_burn_issuer_token_request(dynamic raw);
+  ChainApiType dco_decode_chain_api_type(dynamic raw);
 
   @protected
   CheckLightningAddressRequest dco_decode_check_lightning_address_request(dynamic raw);
@@ -672,6 +672,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ReceivePaymentResponse dco_decode_receive_payment_response(dynamic raw);
 
   @protected
+  RecommendedFees dco_decode_recommended_fees(dynamic raw);
+
+  @protected
   (String, TokenBalance) dco_decode_record_string_token_balance(dynamic raw);
 
   @protected
@@ -781,15 +784,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BigInt dco_decode_usize(dynamic raw);
-
-  @protected
-  WaitForPaymentIdentifier dco_decode_wait_for_payment_identifier(dynamic raw);
-
-  @protected
-  WaitForPaymentRequest dco_decode_wait_for_payment_request(dynamic raw);
-
-  @protected
-  WaitForPaymentResponse dco_decode_wait_for_payment_response(dynamic raw);
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
@@ -1130,10 +1124,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   UrlSuccessActionData sse_decode_box_autoadd_url_success_action_data(SseDeserializer deserializer);
 
   @protected
-  WaitForPaymentRequest sse_decode_box_autoadd_wait_for_payment_request(SseDeserializer deserializer);
+  BurnIssuerTokenRequest sse_decode_burn_issuer_token_request(SseDeserializer deserializer);
 
   @protected
-  BurnIssuerTokenRequest sse_decode_burn_issuer_token_request(SseDeserializer deserializer);
+  ChainApiType sse_decode_chain_api_type(SseDeserializer deserializer);
 
   @protected
   CheckLightningAddressRequest sse_decode_check_lightning_address_request(SseDeserializer deserializer);
@@ -1456,6 +1450,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ReceivePaymentResponse sse_decode_receive_payment_response(SseDeserializer deserializer);
 
   @protected
+  RecommendedFees sse_decode_recommended_fees(SseDeserializer deserializer);
+
+  @protected
   (String, TokenBalance) sse_decode_record_string_token_balance(SseDeserializer deserializer);
 
   @protected
@@ -1565,15 +1562,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BigInt sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
-  WaitForPaymentIdentifier sse_decode_wait_for_payment_identifier(SseDeserializer deserializer);
-
-  @protected
-  WaitForPaymentRequest sse_decode_wait_for_payment_request(SseDeserializer deserializer);
-
-  @protected
-  WaitForPaymentResponse sse_decode_wait_for_payment_response(SseDeserializer deserializer);
 
   @protected
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
@@ -1972,10 +1960,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_url_success_action_data(UrlSuccessActionData self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_wait_for_payment_request(WaitForPaymentRequest self, SseSerializer serializer);
+  void sse_encode_burn_issuer_token_request(BurnIssuerTokenRequest self, SseSerializer serializer);
 
   @protected
-  void sse_encode_burn_issuer_token_request(BurnIssuerTokenRequest self, SseSerializer serializer);
+  void sse_encode_chain_api_type(ChainApiType self, SseSerializer serializer);
 
   @protected
   void sse_encode_check_lightning_address_request(
@@ -2320,6 +2308,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_receive_payment_response(ReceivePaymentResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_recommended_fees(RecommendedFees self, SseSerializer serializer);
+
+  @protected
   void sse_encode_record_string_token_balance((String, TokenBalance) self, SseSerializer serializer);
 
   @protected
@@ -2432,15 +2423,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_usize(BigInt self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_wait_for_payment_identifier(WaitForPaymentIdentifier self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_wait_for_payment_request(WaitForPaymentRequest self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_wait_for_payment_response(WaitForPaymentResponse self, SseSerializer serializer);
 }
 
 // Section: wire_class

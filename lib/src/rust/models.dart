@@ -434,6 +434,8 @@ class BurnIssuerTokenRequest {
       other is BurnIssuerTokenRequest && runtimeType == other.runtimeType && amount == other.amount;
 }
 
+enum ChainApiType { esplora, mempoolSpace }
+
 class CheckLightningAddressRequest {
   final String username;
 
@@ -1139,18 +1141,20 @@ class LnurlPayInfo {
 
 class LnurlPayRequest {
   final PrepareLnurlPayResponse prepareResponse;
+  final String? idempotencyKey;
 
-  const LnurlPayRequest({required this.prepareResponse});
+  const LnurlPayRequest({required this.prepareResponse, this.idempotencyKey});
 
   @override
-  int get hashCode => prepareResponse.hashCode;
+  int get hashCode => prepareResponse.hashCode ^ idempotencyKey.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LnurlPayRequest &&
           runtimeType == other.runtimeType &&
-          prepareResponse == other.prepareResponse;
+          prepareResponse == other.prepareResponse &&
+          idempotencyKey == other.idempotencyKey;
 }
 
 class LnurlPayRequestDetails {
@@ -1654,6 +1658,41 @@ class ReceivePaymentResponse {
           fee == other.fee;
 }
 
+class RecommendedFees {
+  final BigInt fastestFee;
+  final BigInt halfHourFee;
+  final BigInt hourFee;
+  final BigInt economyFee;
+  final BigInt minimumFee;
+
+  const RecommendedFees({
+    required this.fastestFee,
+    required this.halfHourFee,
+    required this.hourFee,
+    required this.economyFee,
+    required this.minimumFee,
+  });
+
+  @override
+  int get hashCode =>
+      fastestFee.hashCode ^
+      halfHourFee.hashCode ^
+      hourFee.hashCode ^
+      economyFee.hashCode ^
+      minimumFee.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RecommendedFees &&
+          runtimeType == other.runtimeType &&
+          fastestFee == other.fastestFee &&
+          halfHourFee == other.halfHourFee &&
+          hourFee == other.hourFee &&
+          economyFee == other.economyFee &&
+          minimumFee == other.minimumFee;
+}
+
 class RefundDepositRequest {
   final String txid;
   final int vout;
@@ -1812,11 +1851,12 @@ sealed class SendPaymentOptions with _$SendPaymentOptions {
 class SendPaymentRequest {
   final PrepareSendPaymentResponse prepareResponse;
   final SendPaymentOptions? options;
+  final String? idempotencyKey;
 
-  const SendPaymentRequest({required this.prepareResponse, this.options});
+  const SendPaymentRequest({required this.prepareResponse, this.options, this.idempotencyKey});
 
   @override
-  int get hashCode => prepareResponse.hashCode ^ options.hashCode;
+  int get hashCode => prepareResponse.hashCode ^ options.hashCode ^ idempotencyKey.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1824,7 +1864,8 @@ class SendPaymentRequest {
       other is SendPaymentRequest &&
           runtimeType == other.runtimeType &&
           prepareResponse == other.prepareResponse &&
-          options == other.options;
+          options == other.options &&
+          idempotencyKey == other.idempotencyKey;
 }
 
 class SendPaymentResponse {
@@ -2200,41 +2241,4 @@ class UserSettings {
       other is UserSettings &&
           runtimeType == other.runtimeType &&
           sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
-}
-
-@freezed
-sealed class WaitForPaymentIdentifier with _$WaitForPaymentIdentifier {
-  const WaitForPaymentIdentifier._();
-
-  const factory WaitForPaymentIdentifier.paymentId(String field0) = WaitForPaymentIdentifier_PaymentId;
-  const factory WaitForPaymentIdentifier.paymentRequest(String field0) =
-      WaitForPaymentIdentifier_PaymentRequest;
-}
-
-class WaitForPaymentRequest {
-  final WaitForPaymentIdentifier identifier;
-
-  const WaitForPaymentRequest({required this.identifier});
-
-  @override
-  int get hashCode => identifier.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is WaitForPaymentRequest && runtimeType == other.runtimeType && identifier == other.identifier;
-}
-
-class WaitForPaymentResponse {
-  final Payment payment;
-
-  const WaitForPaymentResponse({required this.payment});
-
-  @override
-  int get hashCode => payment.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is WaitForPaymentResponse && runtimeType == other.runtimeType && payment == other.payment;
 }
