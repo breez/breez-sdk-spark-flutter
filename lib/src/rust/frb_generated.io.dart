@@ -201,6 +201,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ClaimDepositRequest dco_decode_box_autoadd_claim_deposit_request(dynamic raw);
 
   @protected
+  ClaimHtlcPaymentRequest dco_decode_box_autoadd_claim_htlc_payment_request(dynamic raw);
+
+  @protected
   Config dco_decode_box_autoadd_config(dynamic raw);
 
   @protected
@@ -312,6 +315,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails dco_decode_box_autoadd_spark_address_details(dynamic raw);
 
   @protected
+  SparkHtlcDetails dco_decode_box_autoadd_spark_htlc_details(dynamic raw);
+
+  @protected
+  SparkHtlcOptions dco_decode_box_autoadd_spark_htlc_options(dynamic raw);
+
+  @protected
   SparkInvoiceDetails dco_decode_box_autoadd_spark_invoice_details(dynamic raw);
 
   @protected
@@ -367,6 +376,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ClaimDepositResponse dco_decode_claim_deposit_response(dynamic raw);
+
+  @protected
+  ClaimHtlcPaymentRequest dco_decode_claim_htlc_payment_request(dynamic raw);
+
+  @protected
+  ClaimHtlcPaymentResponse dco_decode_claim_htlc_payment_response(dynamic raw);
 
   @protected
   Config dco_decode_config(dynamic raw);
@@ -504,6 +519,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<(String, TokenBalance)> dco_decode_list_record_string_token_balance(dynamic raw);
 
   @protected
+  List<SparkHtlcStatus> dco_decode_list_spark_htlc_status(dynamic raw);
+
+  @protected
   List<TokenMetadata> dco_decode_list_token_metadata(dynamic raw);
 
   @protected
@@ -603,6 +621,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? dco_decode_opt_box_autoadd_send_payment_options(dynamic raw);
 
   @protected
+  SparkHtlcDetails? dco_decode_opt_box_autoadd_spark_htlc_details(dynamic raw);
+
+  @protected
+  SparkHtlcOptions? dco_decode_opt_box_autoadd_spark_htlc_options(dynamic raw);
+
+  @protected
   SparkInvoicePaymentDetails? dco_decode_opt_box_autoadd_spark_invoice_payment_details(dynamic raw);
 
   @protected
@@ -628,6 +652,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<PaymentType>? dco_decode_opt_list_payment_type(dynamic raw);
+
+  @protected
+  List<SparkHtlcStatus>? dco_decode_opt_list_spark_htlc_status(dynamic raw);
 
   @protected
   Payment dco_decode_payment(dynamic raw);
@@ -724,6 +751,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkAddressDetails dco_decode_spark_address_details(dynamic raw);
+
+  @protected
+  SparkHtlcDetails dco_decode_spark_htlc_details(dynamic raw);
+
+  @protected
+  SparkHtlcOptions dco_decode_spark_htlc_options(dynamic raw);
+
+  @protected
+  SparkHtlcStatus dco_decode_spark_htlc_status(dynamic raw);
 
   @protected
   SparkInvoiceDetails dco_decode_spark_invoice_details(dynamic raw);
@@ -965,6 +1001,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ClaimDepositRequest sse_decode_box_autoadd_claim_deposit_request(SseDeserializer deserializer);
 
   @protected
+  ClaimHtlcPaymentRequest sse_decode_box_autoadd_claim_htlc_payment_request(SseDeserializer deserializer);
+
+  @protected
   Config sse_decode_box_autoadd_config(SseDeserializer deserializer);
 
   @protected
@@ -1084,6 +1123,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails sse_decode_box_autoadd_spark_address_details(SseDeserializer deserializer);
 
   @protected
+  SparkHtlcDetails sse_decode_box_autoadd_spark_htlc_details(SseDeserializer deserializer);
+
+  @protected
+  SparkHtlcOptions sse_decode_box_autoadd_spark_htlc_options(SseDeserializer deserializer);
+
+  @protected
   SparkInvoiceDetails sse_decode_box_autoadd_spark_invoice_details(SseDeserializer deserializer);
 
   @protected
@@ -1143,6 +1188,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ClaimDepositResponse sse_decode_claim_deposit_response(SseDeserializer deserializer);
+
+  @protected
+  ClaimHtlcPaymentRequest sse_decode_claim_htlc_payment_request(SseDeserializer deserializer);
+
+  @protected
+  ClaimHtlcPaymentResponse sse_decode_claim_htlc_payment_response(SseDeserializer deserializer);
 
   @protected
   Config sse_decode_config(SseDeserializer deserializer);
@@ -1280,6 +1331,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<(String, TokenBalance)> sse_decode_list_record_string_token_balance(SseDeserializer deserializer);
 
   @protected
+  List<SparkHtlcStatus> sse_decode_list_spark_htlc_status(SseDeserializer deserializer);
+
+  @protected
   List<TokenMetadata> sse_decode_list_token_metadata(SseDeserializer deserializer);
 
   @protected
@@ -1379,6 +1433,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? sse_decode_opt_box_autoadd_send_payment_options(SseDeserializer deserializer);
 
   @protected
+  SparkHtlcDetails? sse_decode_opt_box_autoadd_spark_htlc_details(SseDeserializer deserializer);
+
+  @protected
+  SparkHtlcOptions? sse_decode_opt_box_autoadd_spark_htlc_options(SseDeserializer deserializer);
+
+  @protected
   SparkInvoicePaymentDetails? sse_decode_opt_box_autoadd_spark_invoice_payment_details(
     SseDeserializer deserializer,
   );
@@ -1406,6 +1466,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<PaymentType>? sse_decode_opt_list_payment_type(SseDeserializer deserializer);
+
+  @protected
+  List<SparkHtlcStatus>? sse_decode_opt_list_spark_htlc_status(SseDeserializer deserializer);
 
   @protected
   Payment sse_decode_payment(SseDeserializer deserializer);
@@ -1502,6 +1565,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkAddressDetails sse_decode_spark_address_details(SseDeserializer deserializer);
+
+  @protected
+  SparkHtlcDetails sse_decode_spark_htlc_details(SseDeserializer deserializer);
+
+  @protected
+  SparkHtlcOptions sse_decode_spark_htlc_options(SseDeserializer deserializer);
+
+  @protected
+  SparkHtlcStatus sse_decode_spark_htlc_status(SseDeserializer deserializer);
 
   @protected
   SparkInvoiceDetails sse_decode_spark_invoice_details(SseDeserializer deserializer);
@@ -1762,6 +1834,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_claim_deposit_request(ClaimDepositRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_claim_htlc_payment_request(
+    ClaimHtlcPaymentRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_config(Config self, SseSerializer serializer);
 
   @protected
@@ -1915,6 +1993,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_spark_address_details(SparkAddressDetails self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_spark_htlc_details(SparkHtlcDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_spark_htlc_options(SparkHtlcOptions self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_spark_invoice_details(SparkInvoiceDetails self, SseSerializer serializer);
 
   @protected
@@ -1982,6 +2066,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_claim_deposit_response(ClaimDepositResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_claim_htlc_payment_request(ClaimHtlcPaymentRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_claim_htlc_payment_response(ClaimHtlcPaymentResponse self, SseSerializer serializer);
 
   @protected
   void sse_encode_config(Config self, SseSerializer serializer);
@@ -2125,6 +2215,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_list_spark_htlc_status(List<SparkHtlcStatus> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_token_metadata(List<TokenMetadata> self, SseSerializer serializer);
 
   @protected
@@ -2233,6 +2326,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_send_payment_options(SendPaymentOptions? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_spark_htlc_details(SparkHtlcDetails? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_spark_htlc_options(SparkHtlcOptions? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_spark_invoice_payment_details(
     SparkInvoicePaymentDetails? self,
     SseSerializer serializer,
@@ -2264,6 +2363,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_list_payment_type(List<PaymentType>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_spark_htlc_status(List<SparkHtlcStatus>? self, SseSerializer serializer);
 
   @protected
   void sse_encode_payment(Payment self, SseSerializer serializer);
@@ -2363,6 +2465,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_spark_address_details(SparkAddressDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_spark_htlc_details(SparkHtlcDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_spark_htlc_options(SparkHtlcOptions self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_spark_htlc_status(SparkHtlcStatus self, SseSerializer serializer);
 
   @protected
   void sse_encode_spark_invoice_details(SparkInvoiceDetails self, SseSerializer serializer);

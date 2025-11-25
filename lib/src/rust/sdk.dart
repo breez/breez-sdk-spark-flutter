@@ -30,6 +30,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<ClaimDepositResponse> claimDeposit({required ClaimDepositRequest request});
 
+  Future<ClaimHtlcPaymentResponse> claimHtlcPayment({required ClaimHtlcPaymentRequest request});
+
   Future<void> deleteLightningAddress();
 
   Future<void> disconnect();

@@ -518,6 +518,34 @@ class ClaimDepositResponse {
       other is ClaimDepositResponse && runtimeType == other.runtimeType && payment == other.payment;
 }
 
+class ClaimHtlcPaymentRequest {
+  final String preimage;
+
+  const ClaimHtlcPaymentRequest({required this.preimage});
+
+  @override
+  int get hashCode => preimage.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ClaimHtlcPaymentRequest && runtimeType == other.runtimeType && preimage == other.preimage;
+}
+
+class ClaimHtlcPaymentResponse {
+  final Payment payment;
+
+  const ClaimHtlcPaymentResponse({required this.payment});
+
+  @override
+  int get hashCode => payment.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ClaimHtlcPaymentResponse && runtimeType == other.runtimeType && payment == other.payment;
+}
+
 class Config {
   final String? apiKey;
   final Network network;
@@ -994,6 +1022,7 @@ class ListPaymentsRequest {
   final List<PaymentType>? typeFilter;
   final List<PaymentStatus>? statusFilter;
   final AssetFilter? assetFilter;
+  final List<SparkHtlcStatus>? sparkHtlcStatusFilter;
   final BigInt? fromTimestamp;
   final BigInt? toTimestamp;
   final int? offset;
@@ -1004,6 +1033,7 @@ class ListPaymentsRequest {
     this.typeFilter,
     this.statusFilter,
     this.assetFilter,
+    this.sparkHtlcStatusFilter,
     this.fromTimestamp,
     this.toTimestamp,
     this.offset,
@@ -1016,6 +1046,7 @@ class ListPaymentsRequest {
       typeFilter.hashCode ^
       statusFilter.hashCode ^
       assetFilter.hashCode ^
+      sparkHtlcStatusFilter.hashCode ^
       fromTimestamp.hashCode ^
       toTimestamp.hashCode ^
       offset.hashCode ^
@@ -1030,6 +1061,7 @@ class ListPaymentsRequest {
           typeFilter == other.typeFilter &&
           statusFilter == other.statusFilter &&
           assetFilter == other.assetFilter &&
+          sparkHtlcStatusFilter == other.sparkHtlcStatusFilter &&
           fromTimestamp == other.fromTimestamp &&
           toTimestamp == other.toTimestamp &&
           offset == other.offset &&
@@ -1442,7 +1474,10 @@ class Payment {
 sealed class PaymentDetails with _$PaymentDetails {
   const PaymentDetails._();
 
-  const factory PaymentDetails.spark({SparkInvoicePaymentDetails? invoiceDetails}) = PaymentDetails_Spark;
+  const factory PaymentDetails.spark({
+    SparkInvoicePaymentDetails? invoiceDetails,
+    SparkHtlcDetails? htlcDetails,
+  }) = PaymentDetails_Spark;
   const factory PaymentDetails.token({
     required TokenMetadata metadata,
     required String txHash,
@@ -1846,6 +1881,8 @@ sealed class SendPaymentOptions with _$SendPaymentOptions {
       SendPaymentOptions_BitcoinAddress;
   const factory SendPaymentOptions.bolt11Invoice({required bool preferSpark, int? completionTimeoutSecs}) =
       SendPaymentOptions_Bolt11Invoice;
+  const factory SendPaymentOptions.sparkAddress({SparkHtlcOptions? htlcOptions}) =
+      SendPaymentOptions_SparkAddress;
 }
 
 class SendPaymentRequest {
@@ -1964,6 +2001,53 @@ class SparkAddressDetails {
           network == other.network &&
           source == other.source;
 }
+
+class SparkHtlcDetails {
+  final String paymentHash;
+  final String? preimage;
+  final BigInt expiryTime;
+  final SparkHtlcStatus status;
+
+  const SparkHtlcDetails({
+    required this.paymentHash,
+    this.preimage,
+    required this.expiryTime,
+    required this.status,
+  });
+
+  @override
+  int get hashCode => paymentHash.hashCode ^ preimage.hashCode ^ expiryTime.hashCode ^ status.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkHtlcDetails &&
+          runtimeType == other.runtimeType &&
+          paymentHash == other.paymentHash &&
+          preimage == other.preimage &&
+          expiryTime == other.expiryTime &&
+          status == other.status;
+}
+
+class SparkHtlcOptions {
+  final String paymentHash;
+  final BigInt expiryDurationSecs;
+
+  const SparkHtlcOptions({required this.paymentHash, required this.expiryDurationSecs});
+
+  @override
+  int get hashCode => paymentHash.hashCode ^ expiryDurationSecs.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkHtlcOptions &&
+          runtimeType == other.runtimeType &&
+          paymentHash == other.paymentHash &&
+          expiryDurationSecs == other.expiryDurationSecs;
+}
+
+enum SparkHtlcStatus { waitingForPreimage, preimageShared, returned }
 
 class SparkInvoiceDetails {
   final String invoice;
