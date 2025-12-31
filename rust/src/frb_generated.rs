@@ -40,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 528104417;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1524253863;
 
 // Section: executor
 
@@ -105,6 +105,63 @@ fn wire__crate__sdk__BreezSdk_add_event_listener_impl(
                             )
                             .await,
                         )?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_cancel_leaf_optimization_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_cancel_leaf_optimization",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::sdk::BreezSdk::cancel_leaf_optimization(&*api_that_guard)
+                                .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -515,6 +572,54 @@ fn wire__crate__sdk__BreezSdk_get_info_impl(
                     .await,
                 )
             }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_get_leaf_optimization_progress_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_get_leaf_optimization_progress",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::sdk::BreezSdk::get_leaf_optimization_progress(&*api_that_guard),
+                )?;
+                Ok(output_ok)
+            })())
         },
     )
 }
@@ -1727,6 +1832,54 @@ fn wire__crate__sdk__BreezSdk_sign_message_impl(
         },
     )
 }
+fn wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_start_leaf_optimization",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok({
+                    crate::sdk::BreezSdk::start_leaf_optimization(&*api_that_guard);
+                })?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__sdk__BreezSdk_sync_wallet_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2747,6 +2900,7 @@ const _: fn() = || {
         let _: bool = Config.use_default_external_input_parsers;
         let _: Option<String> = Config.real_time_sync_server_url;
         let _: bool = Config.private_enabled_default;
+        let _: crate::models::OptimizationConfig = Config.optimization_config;
     }
     {
         let ConnectRequest = None::<crate::models::ConnectRequest>.unwrap();
@@ -3060,6 +3214,35 @@ const _: fn() = || {
         let _: u128 = MintIssuerTokenRequest.amount;
     }
     {
+        let OptimizationConfig = None::<crate::models::OptimizationConfig>.unwrap();
+        let _: bool = OptimizationConfig.auto_enabled;
+        let _: u8 = OptimizationConfig.multiplicity;
+    }
+    match None::<crate::events::OptimizationEvent>.unwrap() {
+        crate::events::OptimizationEvent::Started { total_rounds } => {
+            let _: u32 = total_rounds;
+        }
+        crate::events::OptimizationEvent::RoundCompleted {
+            current_round,
+            total_rounds,
+        } => {
+            let _: u32 = current_round;
+            let _: u32 = total_rounds;
+        }
+        crate::events::OptimizationEvent::Completed => {}
+        crate::events::OptimizationEvent::Cancelled => {}
+        crate::events::OptimizationEvent::Failed { error } => {
+            let _: String = error;
+        }
+        crate::events::OptimizationEvent::Skipped => {}
+    }
+    {
+        let OptimizationProgress = None::<crate::models::OptimizationProgress>.unwrap();
+        let _: bool = OptimizationProgress.is_running;
+        let _: u32 = OptimizationProgress.current_round;
+        let _: u32 = OptimizationProgress.total_rounds;
+    }
+    {
         let Payment = None::<crate::models::Payment>.unwrap();
         let _: String = Payment.id;
         let _: crate::models::PaymentType = Payment.payment_type;
@@ -3170,9 +3353,11 @@ const _: fn() = || {
         crate::models::ReceivePaymentMethod::Bolt11Invoice {
             description,
             amount_sats,
+            expiry_secs,
         } => {
             let _: String = description;
             let _: Option<u64> = amount_sats;
+            let _: Option<u32> = expiry_secs;
         }
     }
     {
@@ -3269,6 +3454,9 @@ const _: fn() = || {
         }
         crate::events::SdkEvent::PaymentFailed { payment } => {
             let _: crate::models::Payment = payment;
+        }
+        crate::events::SdkEvent::Optimization { optimization_event } => {
+            let _: crate::events::OptimizationEvent = optimization_event;
         }
     }
     match None::<crate::models::Seed>.unwrap() {
@@ -4037,6 +4225,8 @@ impl SseDecode for crate::models::Config {
         let mut var_useDefaultExternalInputParsers = <bool>::sse_decode(deserializer);
         let mut var_realTimeSyncServerUrl = <Option<String>>::sse_decode(deserializer);
         let mut var_privateEnabledDefault = <bool>::sse_decode(deserializer);
+        let mut var_optimizationConfig =
+            <crate::models::OptimizationConfig>::sse_decode(deserializer);
         return crate::models::Config {
             api_key: var_apiKey,
             network: var_network,
@@ -4048,6 +4238,7 @@ impl SseDecode for crate::models::Config {
             use_default_external_input_parsers: var_useDefaultExternalInputParsers,
             real_time_sync_server_url: var_realTimeSyncServerUrl,
             private_enabled_default: var_privateEnabledDefault,
+            optimization_config: var_optimizationConfig,
         };
     }
 }
@@ -5353,6 +5544,71 @@ impl SseDecode for Option<Vec<crate::models::SparkHtlcStatus>> {
     }
 }
 
+impl SseDecode for crate::models::OptimizationConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_autoEnabled = <bool>::sse_decode(deserializer);
+        let mut var_multiplicity = <u8>::sse_decode(deserializer);
+        return crate::models::OptimizationConfig {
+            auto_enabled: var_autoEnabled,
+            multiplicity: var_multiplicity,
+        };
+    }
+}
+
+impl SseDecode for crate::events::OptimizationEvent {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_totalRounds = <u32>::sse_decode(deserializer);
+                return crate::events::OptimizationEvent::Started {
+                    total_rounds: var_totalRounds,
+                };
+            }
+            1 => {
+                let mut var_currentRound = <u32>::sse_decode(deserializer);
+                let mut var_totalRounds = <u32>::sse_decode(deserializer);
+                return crate::events::OptimizationEvent::RoundCompleted {
+                    current_round: var_currentRound,
+                    total_rounds: var_totalRounds,
+                };
+            }
+            2 => {
+                return crate::events::OptimizationEvent::Completed;
+            }
+            3 => {
+                return crate::events::OptimizationEvent::Cancelled;
+            }
+            4 => {
+                let mut var_error = <String>::sse_decode(deserializer);
+                return crate::events::OptimizationEvent::Failed { error: var_error };
+            }
+            5 => {
+                return crate::events::OptimizationEvent::Skipped;
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::OptimizationProgress {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_isRunning = <bool>::sse_decode(deserializer);
+        let mut var_currentRound = <u32>::sse_decode(deserializer);
+        let mut var_totalRounds = <u32>::sse_decode(deserializer);
+        return crate::models::OptimizationProgress {
+            is_running: var_isRunning,
+            current_round: var_currentRound,
+            total_rounds: var_totalRounds,
+        };
+    }
+}
+
 impl SseDecode for crate::models::Payment {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -5600,9 +5856,11 @@ impl SseDecode for crate::models::ReceivePaymentMethod {
             3 => {
                 let mut var_description = <String>::sse_decode(deserializer);
                 let mut var_amountSats = <Option<u64>>::sse_decode(deserializer);
+                let mut var_expirySecs = <Option<u32>>::sse_decode(deserializer);
                 return crate::models::ReceivePaymentMethod::Bolt11Invoice {
                     description: var_description,
                     amount_sats: var_amountSats,
+                    expiry_secs: var_expirySecs,
                 };
             }
             _ => {
@@ -5805,6 +6063,13 @@ impl SseDecode for crate::events::SdkEvent {
                 let mut var_payment = <crate::models::Payment>::sse_decode(deserializer);
                 return crate::events::SdkEvent::PaymentFailed {
                     payment: var_payment,
+                };
+            }
+            6 => {
+                let mut var_optimizationEvent =
+                    <crate::events::OptimizationEvent>::sse_decode(deserializer);
+                return crate::events::SdkEvent::Optimization {
+                    optimization_event: var_optimizationEvent,
                 };
             }
             _ => {
@@ -6334,111 +6599,117 @@ fn pde_ffi_dispatcher_primary_impl(
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         1 => wire__crate__sdk__BreezSdk_add_event_listener_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire__crate__sdk__BreezSdk_check_lightning_address_available_impl(
+        2 => wire__crate__sdk__BreezSdk_cancel_leaf_optimization_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        3 => wire__crate__sdk__BreezSdk_check_message_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__sdk__BreezSdk_claim_deposit_impl(port, ptr, rust_vec_len, data_len),
-        5 => wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(port, ptr, rust_vec_len, data_len),
-        6 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
+        3 => wire__crate__sdk__BreezSdk_check_lightning_address_available_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        7 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
-        8 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
-        9 => {
+        4 => wire__crate__sdk__BreezSdk_check_message_impl(port, ptr, rust_vec_len, data_len),
+        5 => wire__crate__sdk__BreezSdk_claim_deposit_impl(port, ptr, rust_vec_len, data_len),
+        6 => wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(port, ptr, rust_vec_len, data_len),
+        7 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        8 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
+        9 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
+        11 => {
             wire__crate__sdk__BreezSdk_get_lightning_address_impl(port, ptr, rust_vec_len, data_len)
         }
-        10 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
-        12 => {
+        12 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
+        14 => {
             wire__crate__sdk__BreezSdk_get_tokens_metadata_impl(port, ptr, rust_vec_len, data_len)
         }
-        13 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
-        14 => {
+        15 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
+        16 => {
             wire__crate__sdk__BreezSdk_list_fiat_currencies_impl(port, ptr, rust_vec_len, data_len)
         }
-        15 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
-        16 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
-        17 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
+        17 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
+        18 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
+        19 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        18 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        19 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        20 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        21 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        22 => {
+        20 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        21 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
+        22 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        23 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        24 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        23 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        24 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
-        25 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        26 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        25 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        26 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
+        27 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        28 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        27 => {
+        29 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        28 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        30 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
-        31 => {
+        30 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        31 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
+        33 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
+        34 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        32 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        37 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+        35 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        40 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        38 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+        41 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        39 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+        42 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        40 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+        43 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        41 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+        44 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        42 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+        45 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        43 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+        46 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        44 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        47 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -6451,21 +6722,27 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        11 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
-        33 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        10 => wire__crate__sdk__BreezSdk_get_leaf_optimization_progress_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        35 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
-        36 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        13 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
+        32 => wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(ptr, rust_vec_len, data_len),
+        36 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        37 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        45 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        46 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        38 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
+        39 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        48 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        49 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -7153,6 +7430,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
                 .into_into_dart()
                 .into_dart(),
             self.0.private_enabled_default.into_into_dart().into_dart(),
+            self.0.optimization_config.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -8188,6 +8466,88 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OnchainConfirma
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizationConfig> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.auto_enabled.into_into_dart().into_dart(),
+            self.0.multiplicity.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::OptimizationConfig>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationConfig>>
+    for crate::models::OptimizationConfig
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizationConfig> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::OptimizationEvent> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::events::OptimizationEvent::Started { total_rounds } => {
+                [0.into_dart(), total_rounds.into_into_dart().into_dart()].into_dart()
+            }
+            crate::events::OptimizationEvent::RoundCompleted {
+                current_round,
+                total_rounds,
+            } => [
+                1.into_dart(),
+                current_round.into_into_dart().into_dart(),
+                total_rounds.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::events::OptimizationEvent::Completed => [2.into_dart()].into_dart(),
+            crate::events::OptimizationEvent::Cancelled => [3.into_dart()].into_dart(),
+            crate::events::OptimizationEvent::Failed { error } => {
+                [4.into_dart(), error.into_into_dart().into_dart()].into_dart()
+            }
+            crate::events::OptimizationEvent::Skipped => [5.into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::events::OptimizationEvent>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::events::OptimizationEvent>>
+    for crate::events::OptimizationEvent
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::events::OptimizationEvent> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizationProgress> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.is_running.into_into_dart().into_dart(),
+            self.0.current_round.into_into_dart().into_dart(),
+            self.0.total_rounds.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::OptimizationProgress>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationProgress>>
+    for crate::models::OptimizationProgress
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizationProgress> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Payment> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -8509,10 +8869,12 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ReceivePaymentM
             crate::models::ReceivePaymentMethod::Bolt11Invoice {
                 description,
                 amount_sats,
+                expiry_secs,
             } => [
                 3.into_dart(),
                 description.into_into_dart().into_dart(),
                 amount_sats.into_into_dart().into_dart(),
+                expiry_secs.into_into_dart().into_dart(),
             ]
             .into_dart(),
             _ => {
@@ -8747,6 +9109,11 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::SdkEvent> {
             crate::events::SdkEvent::PaymentFailed { payment } => {
                 [5.into_dart(), payment.into_into_dart().into_dart()].into_dart()
             }
+            crate::events::SdkEvent::Optimization { optimization_event } => [
+                6.into_dart(),
+                optimization_event.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -9871,6 +10238,7 @@ impl SseEncode for crate::models::Config {
         <bool>::sse_encode(self.use_default_external_input_parsers, serializer);
         <Option<String>>::sse_encode(self.real_time_sync_server_url, serializer);
         <bool>::sse_encode(self.private_enabled_default, serializer);
+        <crate::models::OptimizationConfig>::sse_encode(self.optimization_config, serializer);
     }
 }
 
@@ -10898,6 +11266,59 @@ impl SseEncode for Option<Vec<crate::models::SparkHtlcStatus>> {
     }
 }
 
+impl SseEncode for crate::models::OptimizationConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.auto_enabled, serializer);
+        <u8>::sse_encode(self.multiplicity, serializer);
+    }
+}
+
+impl SseEncode for crate::events::OptimizationEvent {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::events::OptimizationEvent::Started { total_rounds } => {
+                <i32>::sse_encode(0, serializer);
+                <u32>::sse_encode(total_rounds, serializer);
+            }
+            crate::events::OptimizationEvent::RoundCompleted {
+                current_round,
+                total_rounds,
+            } => {
+                <i32>::sse_encode(1, serializer);
+                <u32>::sse_encode(current_round, serializer);
+                <u32>::sse_encode(total_rounds, serializer);
+            }
+            crate::events::OptimizationEvent::Completed => {
+                <i32>::sse_encode(2, serializer);
+            }
+            crate::events::OptimizationEvent::Cancelled => {
+                <i32>::sse_encode(3, serializer);
+            }
+            crate::events::OptimizationEvent::Failed { error } => {
+                <i32>::sse_encode(4, serializer);
+                <String>::sse_encode(error, serializer);
+            }
+            crate::events::OptimizationEvent::Skipped => {
+                <i32>::sse_encode(5, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::OptimizationProgress {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_running, serializer);
+        <u32>::sse_encode(self.current_round, serializer);
+        <u32>::sse_encode(self.total_rounds, serializer);
+    }
+}
+
 impl SseEncode for crate::models::Payment {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -11117,10 +11538,12 @@ impl SseEncode for crate::models::ReceivePaymentMethod {
             crate::models::ReceivePaymentMethod::Bolt11Invoice {
                 description,
                 amount_sats,
+                expiry_secs,
             } => {
                 <i32>::sse_encode(3, serializer);
                 <String>::sse_encode(description, serializer);
                 <Option<u64>>::sse_encode(amount_sats, serializer);
+                <Option<u32>>::sse_encode(expiry_secs, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -11277,6 +11700,10 @@ impl SseEncode for crate::events::SdkEvent {
             crate::events::SdkEvent::PaymentFailed { payment } => {
                 <i32>::sse_encode(5, serializer);
                 <crate::models::Payment>::sse_encode(payment, serializer);
+            }
+            crate::events::SdkEvent::Optimization { optimization_event } => {
+                <i32>::sse_encode(6, serializer);
+                <crate::events::OptimizationEvent>::sse_encode(optimization_event, serializer);
             }
             _ => {
                 unimplemented!("");

@@ -24,6 +24,8 @@ Stream<LogEntry> initLogging({String? logDir, String? logFilter}) =>
 abstract class BreezSdk implements RustOpaqueInterface {
   Stream<SdkEvent> addEventListener();
 
+  Future<void> cancelLeafOptimization();
+
   Future<bool> checkLightningAddressAvailable({required CheckLightningAddressRequest request});
 
   Future<CheckMessageResponse> checkMessage({required CheckMessageRequest request});
@@ -37,6 +39,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<void> disconnect();
 
   Future<GetInfoResponse> getInfo({required GetInfoRequest request});
+
+  OptimizationProgress getLeafOptimizationProgress();
 
   Future<LightningAddressInfo?> getLightningAddress();
 
@@ -81,6 +85,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<SendPaymentResponse> sendPayment({required SendPaymentRequest request});
 
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
+
+  void startLeafOptimization();
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
 

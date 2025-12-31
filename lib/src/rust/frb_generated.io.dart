@@ -279,6 +279,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   MintIssuerTokenRequest dco_decode_box_autoadd_mint_issuer_token_request(dynamic raw);
 
   @protected
+  OptimizationEvent dco_decode_box_autoadd_optimization_event(dynamic raw);
+
+  @protected
   Payment dco_decode_box_autoadd_payment(dynamic raw);
 
   @protected
@@ -673,6 +676,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<SparkHtlcStatus>? dco_decode_opt_list_spark_htlc_status(dynamic raw);
+
+  @protected
+  OptimizationConfig dco_decode_optimization_config(dynamic raw);
+
+  @protected
+  OptimizationEvent dco_decode_optimization_event(dynamic raw);
+
+  @protected
+  OptimizationProgress dco_decode_optimization_progress(dynamic raw);
 
   @protected
   Payment dco_decode_payment(dynamic raw);
@@ -1101,6 +1113,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   MintIssuerTokenRequest sse_decode_box_autoadd_mint_issuer_token_request(SseDeserializer deserializer);
 
   @protected
+  OptimizationEvent sse_decode_box_autoadd_optimization_event(SseDeserializer deserializer);
+
+  @protected
   Payment sse_decode_box_autoadd_payment(SseDeserializer deserializer);
 
   @protected
@@ -1505,6 +1520,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<SparkHtlcStatus>? sse_decode_opt_list_spark_htlc_status(SseDeserializer deserializer);
+
+  @protected
+  OptimizationConfig sse_decode_optimization_config(SseDeserializer deserializer);
+
+  @protected
+  OptimizationEvent sse_decode_optimization_event(SseDeserializer deserializer);
+
+  @protected
+  OptimizationProgress sse_decode_optimization_progress(SseDeserializer deserializer);
 
   @protected
   Payment sse_decode_payment(SseDeserializer deserializer);
@@ -1981,6 +2005,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_optimization_event(OptimizationEvent self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_payment(Payment self, SseSerializer serializer);
 
   @protected
@@ -2423,6 +2450,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_list_spark_htlc_status(List<SparkHtlcStatus>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_optimization_config(OptimizationConfig self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_optimization_event(OptimizationEvent self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_optimization_progress(OptimizationProgress self, SseSerializer serializer);
 
   @protected
   void sse_encode_payment(Payment self, SseSerializer serializer);

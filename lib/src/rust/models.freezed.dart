@@ -3309,13 +3309,13 @@ return bolt11Invoice(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function()?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function()?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);case _:
   return orElse();
 
 }
@@ -3333,13 +3333,13 @@ return bolt11Invoice(_that.description,_that.amountSats);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function()  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats)  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function()  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs)  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress():
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice():
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress():
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice():
-return bolt11Invoice(_that.description,_that.amountSats);}
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -3353,13 +3353,13 @@ return bolt11Invoice(_that.description,_that.amountSats);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function()?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats)?  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function()?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs)?  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);case _:
   return null;
 
 }
@@ -3509,11 +3509,12 @@ String toString() {
 
 
 class ReceivePaymentMethod_Bolt11Invoice extends ReceivePaymentMethod {
-  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats}): super._();
+  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats, this.expirySecs}): super._();
   
 
  final  String description;
  final  BigInt? amountSats;
+ final  int? expirySecs;
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -3525,16 +3526,16 @@ $ReceivePaymentMethod_Bolt11InvoiceCopyWith<ReceivePaymentMethod_Bolt11Invoice> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats)&&(identical(other.expirySecs, expirySecs) || other.expirySecs == expirySecs));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description,amountSats);
+int get hashCode => Object.hash(runtimeType,description,amountSats,expirySecs);
 
 @override
 String toString() {
-  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats)';
+  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats, expirySecs: $expirySecs)';
 }
 
 
@@ -3545,7 +3546,7 @@ abstract mixin class $ReceivePaymentMethod_Bolt11InvoiceCopyWith<$Res> implement
   factory $ReceivePaymentMethod_Bolt11InvoiceCopyWith(ReceivePaymentMethod_Bolt11Invoice value, $Res Function(ReceivePaymentMethod_Bolt11Invoice) _then) = _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl;
 @useResult
 $Res call({
- String description, BigInt? amountSats
+ String description, BigInt? amountSats, int? expirySecs
 });
 
 
@@ -3562,11 +3563,12 @@ class _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl<$Res>
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,Object? expirySecs = freezed,}) {
   return _then(ReceivePaymentMethod_Bolt11Invoice(
 description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,amountSats: freezed == amountSats ? _self.amountSats : amountSats // ignore: cast_nullable_to_non_nullable
-as BigInt?,
+as BigInt?,expirySecs: freezed == expirySecs ? _self.expirySecs : expirySecs // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

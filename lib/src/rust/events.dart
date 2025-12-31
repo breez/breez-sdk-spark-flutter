@@ -14,6 +14,19 @@ part 'events.freezed.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `on_event`
 
 @freezed
+sealed class OptimizationEvent with _$OptimizationEvent {
+  const OptimizationEvent._();
+
+  const factory OptimizationEvent.started({required int totalRounds}) = OptimizationEvent_Started;
+  const factory OptimizationEvent.roundCompleted({required int currentRound, required int totalRounds}) =
+      OptimizationEvent_RoundCompleted;
+  const factory OptimizationEvent.completed() = OptimizationEvent_Completed;
+  const factory OptimizationEvent.cancelled() = OptimizationEvent_Cancelled;
+  const factory OptimizationEvent.failed({required String error}) = OptimizationEvent_Failed;
+  const factory OptimizationEvent.skipped() = OptimizationEvent_Skipped;
+}
+
+@freezed
 sealed class SdkEvent with _$SdkEvent {
   const SdkEvent._();
 
@@ -25,4 +38,5 @@ sealed class SdkEvent with _$SdkEvent {
   const factory SdkEvent.paymentSucceeded({required Payment payment}) = SdkEvent_PaymentSucceeded;
   const factory SdkEvent.paymentPending({required Payment payment}) = SdkEvent_PaymentPending;
   const factory SdkEvent.paymentFailed({required Payment payment}) = SdkEvent_PaymentFailed;
+  const factory SdkEvent.optimization({required OptimizationEvent optimizationEvent}) = SdkEvent_Optimization;
 }

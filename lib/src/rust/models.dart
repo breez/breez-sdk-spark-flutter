@@ -557,6 +557,7 @@ class Config {
   final bool useDefaultExternalInputParsers;
   final String? realTimeSyncServerUrl;
   final bool privateEnabledDefault;
+  final OptimizationConfig optimizationConfig;
 
   const Config({
     this.apiKey,
@@ -569,6 +570,7 @@ class Config {
     required this.useDefaultExternalInputParsers,
     this.realTimeSyncServerUrl,
     required this.privateEnabledDefault,
+    required this.optimizationConfig,
   });
 
   @override
@@ -582,7 +584,8 @@ class Config {
       externalInputParsers.hashCode ^
       useDefaultExternalInputParsers.hashCode ^
       realTimeSyncServerUrl.hashCode ^
-      privateEnabledDefault.hashCode;
+      privateEnabledDefault.hashCode ^
+      optimizationConfig.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -598,7 +601,8 @@ class Config {
           externalInputParsers == other.externalInputParsers &&
           useDefaultExternalInputParsers == other.useDefaultExternalInputParsers &&
           realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
-          privateEnabledDefault == other.privateEnabledDefault;
+          privateEnabledDefault == other.privateEnabledDefault &&
+          optimizationConfig == other.optimizationConfig;
 }
 
 class ConnectRequest {
@@ -1452,6 +1456,48 @@ enum Network { mainnet, regtest }
 
 enum OnchainConfirmationSpeed { fast, medium, slow }
 
+class OptimizationConfig {
+  final bool autoEnabled;
+  final int multiplicity;
+
+  const OptimizationConfig({required this.autoEnabled, required this.multiplicity});
+
+  @override
+  int get hashCode => autoEnabled.hashCode ^ multiplicity.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OptimizationConfig &&
+          runtimeType == other.runtimeType &&
+          autoEnabled == other.autoEnabled &&
+          multiplicity == other.multiplicity;
+}
+
+class OptimizationProgress {
+  final bool isRunning;
+  final int currentRound;
+  final int totalRounds;
+
+  const OptimizationProgress({
+    required this.isRunning,
+    required this.currentRound,
+    required this.totalRounds,
+  });
+
+  @override
+  int get hashCode => isRunning.hashCode ^ currentRound.hashCode ^ totalRounds.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OptimizationProgress &&
+          runtimeType == other.runtimeType &&
+          isRunning == other.isRunning &&
+          currentRound == other.currentRound &&
+          totalRounds == other.totalRounds;
+}
+
 class Payment {
   final String id;
   final PaymentType paymentType;
@@ -1685,8 +1731,11 @@ sealed class ReceivePaymentMethod with _$ReceivePaymentMethod {
     String? senderPublicKey,
   }) = ReceivePaymentMethod_SparkInvoice;
   const factory ReceivePaymentMethod.bitcoinAddress() = ReceivePaymentMethod_BitcoinAddress;
-  const factory ReceivePaymentMethod.bolt11Invoice({required String description, BigInt? amountSats}) =
-      ReceivePaymentMethod_Bolt11Invoice;
+  const factory ReceivePaymentMethod.bolt11Invoice({
+    required String description,
+    BigInt? amountSats,
+    int? expirySecs,
+  }) = ReceivePaymentMethod_Bolt11Invoice;
 }
 
 class ReceivePaymentRequest {
