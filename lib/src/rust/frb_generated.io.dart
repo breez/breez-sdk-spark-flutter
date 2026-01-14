@@ -210,6 +210,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest dco_decode_box_autoadd_connect_request(dynamic raw);
 
   @protected
+  ConversionEstimate dco_decode_box_autoadd_conversion_estimate(dynamic raw);
+
+  @protected
+  ConversionInfo dco_decode_box_autoadd_conversion_info(dynamic raw);
+
+  @protected
+  ConversionOptions dco_decode_box_autoadd_conversion_options(dynamic raw);
+
+  @protected
+  ConversionPurpose dco_decode_box_autoadd_conversion_purpose(dynamic raw);
+
+  @protected
   CreateIssuerTokenRequest dco_decode_box_autoadd_create_issuer_token_request(dynamic raw);
 
   @protected
@@ -222,7 +234,7 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Fee dco_decode_box_autoadd_fee(dynamic raw);
 
   @protected
-  FetchTokenConversionLimitsRequest dco_decode_box_autoadd_fetch_token_conversion_limits_request(dynamic raw);
+  FetchConversionLimitsRequest dco_decode_box_autoadd_fetch_conversion_limits_request(dynamic raw);
 
   @protected
   FreezeIssuerTokenRequest dco_decode_box_autoadd_freeze_issuer_token_request(dynamic raw);
@@ -354,12 +366,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SyncWalletRequest dco_decode_box_autoadd_sync_wallet_request(dynamic raw);
 
   @protected
-  TokenConversionInfo dco_decode_box_autoadd_token_conversion_info(dynamic raw);
-
-  @protected
-  TokenConversionOptions dco_decode_box_autoadd_token_conversion_options(dynamic raw);
-
-  @protected
   TokenMetadata dco_decode_box_autoadd_token_metadata(dynamic raw);
 
   @protected
@@ -411,6 +417,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest dco_decode_connect_request(dynamic raw);
 
   @protected
+  ConversionEstimate dco_decode_conversion_estimate(dynamic raw);
+
+  @protected
+  ConversionInfo dco_decode_conversion_info(dynamic raw);
+
+  @protected
+  ConversionOptions dco_decode_conversion_options(dynamic raw);
+
+  @protected
+  ConversionPurpose dco_decode_conversion_purpose(dynamic raw);
+
+  @protected
+  ConversionStatus dco_decode_conversion_status(dynamic raw);
+
+  @protected
+  ConversionType dco_decode_conversion_type(dynamic raw);
+
+  @protected
   CreateIssuerTokenRequest dco_decode_create_issuer_token_request(dynamic raw);
 
   @protected
@@ -435,10 +459,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Fee dco_decode_fee(dynamic raw);
 
   @protected
-  FetchTokenConversionLimitsRequest dco_decode_fetch_token_conversion_limits_request(dynamic raw);
+  FetchConversionLimitsRequest dco_decode_fetch_conversion_limits_request(dynamic raw);
 
   @protected
-  FetchTokenConversionLimitsResponse dco_decode_fetch_token_conversion_limits_response(dynamic raw);
+  FetchConversionLimitsResponse dco_decode_fetch_conversion_limits_response(dynamic raw);
 
   @protected
   FiatCurrency dco_decode_fiat_currency(dynamic raw);
@@ -633,6 +657,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool? dco_decode_opt_box_autoadd_bool(dynamic raw);
 
   @protected
+  ConversionEstimate? dco_decode_opt_box_autoadd_conversion_estimate(dynamic raw);
+
+  @protected
+  ConversionInfo? dco_decode_opt_box_autoadd_conversion_info(dynamic raw);
+
+  @protected
+  ConversionOptions? dco_decode_opt_box_autoadd_conversion_options(dynamic raw);
+
+  @protected
+  ConversionPurpose? dco_decode_opt_box_autoadd_conversion_purpose(dynamic raw);
+
+  @protected
   Credentials? dco_decode_opt_box_autoadd_credentials(dynamic raw);
 
   @protected
@@ -682,12 +718,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw);
-
-  @protected
-  TokenConversionInfo? dco_decode_opt_box_autoadd_token_conversion_info(dynamic raw);
-
-  @protected
-  TokenConversionOptions? dco_decode_opt_box_autoadd_token_conversion_options(dynamic raw);
 
   @protected
   int? dco_decode_opt_box_autoadd_u_32(dynamic raw);
@@ -850,15 +880,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   TokenBalance dco_decode_token_balance(dynamic raw);
-
-  @protected
-  TokenConversionInfo dco_decode_token_conversion_info(dynamic raw);
-
-  @protected
-  TokenConversionOptions dco_decode_token_conversion_options(dynamic raw);
-
-  @protected
-  TokenConversionType dco_decode_token_conversion_type(dynamic raw);
 
   @protected
   TokenMetadata dco_decode_token_metadata(dynamic raw);
@@ -1085,6 +1106,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest sse_decode_box_autoadd_connect_request(SseDeserializer deserializer);
 
   @protected
+  ConversionEstimate sse_decode_box_autoadd_conversion_estimate(SseDeserializer deserializer);
+
+  @protected
+  ConversionInfo sse_decode_box_autoadd_conversion_info(SseDeserializer deserializer);
+
+  @protected
+  ConversionOptions sse_decode_box_autoadd_conversion_options(SseDeserializer deserializer);
+
+  @protected
+  ConversionPurpose sse_decode_box_autoadd_conversion_purpose(SseDeserializer deserializer);
+
+  @protected
   CreateIssuerTokenRequest sse_decode_box_autoadd_create_issuer_token_request(SseDeserializer deserializer);
 
   @protected
@@ -1097,7 +1130,7 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Fee sse_decode_box_autoadd_fee(SseDeserializer deserializer);
 
   @protected
-  FetchTokenConversionLimitsRequest sse_decode_box_autoadd_fetch_token_conversion_limits_request(
+  FetchConversionLimitsRequest sse_decode_box_autoadd_fetch_conversion_limits_request(
     SseDeserializer deserializer,
   );
 
@@ -1241,12 +1274,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SyncWalletRequest sse_decode_box_autoadd_sync_wallet_request(SseDeserializer deserializer);
 
   @protected
-  TokenConversionInfo sse_decode_box_autoadd_token_conversion_info(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionOptions sse_decode_box_autoadd_token_conversion_options(SseDeserializer deserializer);
-
-  @protected
   TokenMetadata sse_decode_box_autoadd_token_metadata(SseDeserializer deserializer);
 
   @protected
@@ -1300,6 +1327,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConnectRequest sse_decode_connect_request(SseDeserializer deserializer);
 
   @protected
+  ConversionEstimate sse_decode_conversion_estimate(SseDeserializer deserializer);
+
+  @protected
+  ConversionInfo sse_decode_conversion_info(SseDeserializer deserializer);
+
+  @protected
+  ConversionOptions sse_decode_conversion_options(SseDeserializer deserializer);
+
+  @protected
+  ConversionPurpose sse_decode_conversion_purpose(SseDeserializer deserializer);
+
+  @protected
+  ConversionStatus sse_decode_conversion_status(SseDeserializer deserializer);
+
+  @protected
+  ConversionType sse_decode_conversion_type(SseDeserializer deserializer);
+
+  @protected
   CreateIssuerTokenRequest sse_decode_create_issuer_token_request(SseDeserializer deserializer);
 
   @protected
@@ -1324,14 +1369,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Fee sse_decode_fee(SseDeserializer deserializer);
 
   @protected
-  FetchTokenConversionLimitsRequest sse_decode_fetch_token_conversion_limits_request(
-    SseDeserializer deserializer,
-  );
+  FetchConversionLimitsRequest sse_decode_fetch_conversion_limits_request(SseDeserializer deserializer);
 
   @protected
-  FetchTokenConversionLimitsResponse sse_decode_fetch_token_conversion_limits_response(
-    SseDeserializer deserializer,
-  );
+  FetchConversionLimitsResponse sse_decode_fetch_conversion_limits_response(SseDeserializer deserializer);
 
   @protected
   FiatCurrency sse_decode_fiat_currency(SseDeserializer deserializer);
@@ -1526,6 +1567,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer);
 
   @protected
+  ConversionEstimate? sse_decode_opt_box_autoadd_conversion_estimate(SseDeserializer deserializer);
+
+  @protected
+  ConversionInfo? sse_decode_opt_box_autoadd_conversion_info(SseDeserializer deserializer);
+
+  @protected
+  ConversionOptions? sse_decode_opt_box_autoadd_conversion_options(SseDeserializer deserializer);
+
+  @protected
+  ConversionPurpose? sse_decode_opt_box_autoadd_conversion_purpose(SseDeserializer deserializer);
+
+  @protected
   Credentials? sse_decode_opt_box_autoadd_credentials(SseDeserializer deserializer);
 
   @protected
@@ -1577,12 +1630,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol? sse_decode_opt_box_autoadd_symbol(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionInfo? sse_decode_opt_box_autoadd_token_conversion_info(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionOptions? sse_decode_opt_box_autoadd_token_conversion_options(SseDeserializer deserializer);
 
   @protected
   int? sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer);
@@ -1745,15 +1792,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   TokenBalance sse_decode_token_balance(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionInfo sse_decode_token_conversion_info(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionOptions sse_decode_token_conversion_options(SseDeserializer deserializer);
-
-  @protected
-  TokenConversionType sse_decode_token_conversion_type(SseDeserializer deserializer);
 
   @protected
   TokenMetadata sse_decode_token_metadata(SseDeserializer deserializer);
@@ -2002,6 +2040,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_connect_request(ConnectRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_conversion_estimate(ConversionEstimate self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_conversion_info(ConversionInfo self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_conversion_options(ConversionOptions self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_conversion_purpose(ConversionPurpose self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_create_issuer_token_request(
     CreateIssuerTokenRequest self,
     SseSerializer serializer,
@@ -2017,8 +2067,8 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_fee(Fee self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_fetch_token_conversion_limits_request(
-    FetchTokenConversionLimitsRequest self,
+  void sse_encode_box_autoadd_fetch_conversion_limits_request(
+    FetchConversionLimitsRequest self,
     SseSerializer serializer,
   );
 
@@ -2194,12 +2244,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_sync_wallet_request(SyncWalletRequest self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_token_conversion_info(TokenConversionInfo self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_token_conversion_options(TokenConversionOptions self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_token_metadata(TokenMetadata self, SseSerializer serializer);
 
   @protected
@@ -2260,6 +2304,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_connect_request(ConnectRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_conversion_estimate(ConversionEstimate self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_info(ConversionInfo self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_options(ConversionOptions self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_purpose(ConversionPurpose self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_status(ConversionStatus self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_type(ConversionType self, SseSerializer serializer);
+
+  @protected
   void sse_encode_create_issuer_token_request(CreateIssuerTokenRequest self, SseSerializer serializer);
 
   @protected
@@ -2284,14 +2346,14 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_fee(Fee self, SseSerializer serializer);
 
   @protected
-  void sse_encode_fetch_token_conversion_limits_request(
-    FetchTokenConversionLimitsRequest self,
+  void sse_encode_fetch_conversion_limits_request(
+    FetchConversionLimitsRequest self,
     SseSerializer serializer,
   );
 
   @protected
-  void sse_encode_fetch_token_conversion_limits_response(
-    FetchTokenConversionLimitsResponse self,
+  void sse_encode_fetch_conversion_limits_response(
+    FetchConversionLimitsResponse self,
     SseSerializer serializer,
   );
 
@@ -2500,6 +2562,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_conversion_estimate(ConversionEstimate? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_conversion_info(ConversionInfo? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_conversion_options(ConversionOptions? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_conversion_purpose(ConversionPurpose? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_credentials(Credentials? self, SseSerializer serializer);
 
   @protected
@@ -2561,15 +2635,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_box_autoadd_symbol(Symbol? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_token_conversion_info(TokenConversionInfo? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_token_conversion_options(
-    TokenConversionOptions? self,
-    SseSerializer serializer,
-  );
 
   @protected
   void sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer);
@@ -2735,15 +2800,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_token_balance(TokenBalance self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_token_conversion_info(TokenConversionInfo self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_token_conversion_options(TokenConversionOptions self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_token_conversion_type(TokenConversionType self, SseSerializer serializer);
 
   @protected
   void sse_encode_token_metadata(TokenMetadata self, SseSerializer serializer);

@@ -40,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -818086730;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -931368184;
 
 // Section: executor
 
@@ -518,7 +518,7 @@ fn wire__crate__sdk__BreezSdk_disconnect_impl(
         },
     )
 }
-fn wire__crate__sdk__BreezSdk_fetch_token_conversion_limits_impl(
+fn wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -526,7 +526,7 @@ fn wire__crate__sdk__BreezSdk_fetch_token_conversion_limits_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BreezSdk_fetch_token_conversion_limits",
+            debug_name: "BreezSdk_fetch_conversion_limits",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -544,7 +544,7 @@ fn wire__crate__sdk__BreezSdk_fetch_token_conversion_limits_impl(
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
             >>::sse_decode(&mut deserializer);
             let api_request =
-                <crate::models::FetchTokenConversionLimitsRequest>::sse_decode(&mut deserializer);
+                <crate::models::FetchConversionLimitsRequest>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::SdkError>(
@@ -566,7 +566,7 @@ fn wire__crate__sdk__BreezSdk_fetch_token_conversion_limits_impl(
                             }
                         }
                         let api_that_guard = api_that_guard.unwrap();
-                        let output_ok = crate::sdk::BreezSdk::fetch_token_conversion_limits(
+                        let output_ok = crate::sdk::BreezSdk::fetch_conversion_limits(
                             &*api_that_guard,
                             api_request,
                         )
@@ -2965,6 +2965,40 @@ const _: fn() = || {
         let _: String = ConnectRequest.storage_dir;
     }
     {
+        let ConversionEstimate = None::<crate::models::ConversionEstimate>.unwrap();
+        let _: crate::models::ConversionOptions = ConversionEstimate.options;
+        let _: u128 = ConversionEstimate.amount;
+        let _: u128 = ConversionEstimate.fee;
+    }
+    {
+        let ConversionInfo = None::<crate::models::ConversionInfo>.unwrap();
+        let _: String = ConversionInfo.pool_id;
+        let _: String = ConversionInfo.conversion_id;
+        let _: crate::models::ConversionStatus = ConversionInfo.status;
+        let _: Option<u128> = ConversionInfo.fee;
+        let _: Option<crate::models::ConversionPurpose> = ConversionInfo.purpose;
+    }
+    {
+        let ConversionOptions = None::<crate::models::ConversionOptions>.unwrap();
+        let _: crate::models::ConversionType = ConversionOptions.conversion_type;
+        let _: Option<u32> = ConversionOptions.max_slippage_bps;
+        let _: Option<u32> = ConversionOptions.completion_timeout_secs;
+    }
+    match None::<crate::models::ConversionPurpose>.unwrap() {
+        crate::models::ConversionPurpose::OngoingPayment { payment_request } => {
+            let _: String = payment_request;
+        }
+        crate::models::ConversionPurpose::SelfTransfer => {}
+    }
+    match None::<crate::models::ConversionType>.unwrap() {
+        crate::models::ConversionType::FromBitcoin => {}
+        crate::models::ConversionType::ToBitcoin {
+            from_token_identifier,
+        } => {
+            let _: String = from_token_identifier;
+        }
+    }
+    {
         let CreateIssuerTokenRequest = None::<crate::models::CreateIssuerTokenRequest>.unwrap();
         let _: String = CreateIssuerTokenRequest.name;
         let _: String = CreateIssuerTokenRequest.ticker;
@@ -3033,17 +3067,16 @@ const _: fn() = || {
         }
     }
     {
-        let FetchTokenConversionLimitsRequest =
-            None::<crate::models::FetchTokenConversionLimitsRequest>.unwrap();
-        let _: crate::models::TokenConversionType =
-            FetchTokenConversionLimitsRequest.conversion_type;
-        let _: Option<String> = FetchTokenConversionLimitsRequest.token_identifier;
+        let FetchConversionLimitsRequest =
+            None::<crate::models::FetchConversionLimitsRequest>.unwrap();
+        let _: crate::models::ConversionType = FetchConversionLimitsRequest.conversion_type;
+        let _: Option<String> = FetchConversionLimitsRequest.token_identifier;
     }
     {
-        let FetchTokenConversionLimitsResponse =
-            None::<crate::models::FetchTokenConversionLimitsResponse>.unwrap();
-        let _: Option<u128> = FetchTokenConversionLimitsResponse.min_from_amount;
-        let _: Option<u128> = FetchTokenConversionLimitsResponse.min_to_amount;
+        let FetchConversionLimitsResponse =
+            None::<crate::models::FetchConversionLimitsResponse>.unwrap();
+        let _: Option<u128> = FetchConversionLimitsResponse.min_from_amount;
+        let _: Option<u128> = FetchConversionLimitsResponse.min_to_amount;
     }
     {
         let FiatCurrency = None::<crate::models::FiatCurrency>.unwrap();
@@ -3332,22 +3365,22 @@ const _: fn() = || {
         crate::models::PaymentDetails::Spark {
             invoice_details,
             htlc_details,
-            token_conversion_info,
+            conversion_info,
         } => {
             let _: Option<crate::models::SparkInvoicePaymentDetails> = invoice_details;
             let _: Option<crate::models::SparkHtlcDetails> = htlc_details;
-            let _: Option<crate::models::TokenConversionInfo> = token_conversion_info;
+            let _: Option<crate::models::ConversionInfo> = conversion_info;
         }
         crate::models::PaymentDetails::Token {
             metadata,
             tx_hash,
             invoice_details,
-            token_conversion_info,
+            conversion_info,
         } => {
             let _: crate::models::TokenMetadata = metadata;
             let _: String = tx_hash;
             let _: Option<crate::models::SparkInvoicePaymentDetails> = invoice_details;
-            let _: Option<crate::models::TokenConversionInfo> = token_conversion_info;
+            let _: Option<crate::models::ConversionInfo> = conversion_info;
         }
         crate::models::PaymentDetails::Lightning {
             description,
@@ -3417,17 +3450,16 @@ const _: fn() = || {
         let _: String = PrepareSendPaymentRequest.payment_request;
         let _: Option<u128> = PrepareSendPaymentRequest.amount;
         let _: Option<String> = PrepareSendPaymentRequest.token_identifier;
-        let _: Option<crate::models::TokenConversionOptions> =
-            PrepareSendPaymentRequest.token_conversion_options;
+        let _: Option<crate::models::ConversionOptions> =
+            PrepareSendPaymentRequest.conversion_options;
     }
     {
         let PrepareSendPaymentResponse = None::<crate::models::PrepareSendPaymentResponse>.unwrap();
         let _: crate::models::SendPaymentMethod = PrepareSendPaymentResponse.payment_method;
         let _: u128 = PrepareSendPaymentResponse.amount;
         let _: Option<String> = PrepareSendPaymentResponse.token_identifier;
-        let _: Option<crate::models::TokenConversionOptions> =
-            PrepareSendPaymentResponse.token_conversion_options;
-        let _: Option<u128> = PrepareSendPaymentResponse.token_conversion_fee;
+        let _: Option<crate::models::ConversionEstimate> =
+            PrepareSendPaymentResponse.conversion_estimate;
     }
     {
         let Rate = None::<crate::models::Rate>.unwrap();
@@ -3737,27 +3769,6 @@ const _: fn() = || {
         let TokenBalance = None::<crate::models::TokenBalance>.unwrap();
         let _: u128 = TokenBalance.balance;
         let _: crate::models::TokenMetadata = TokenBalance.token_metadata;
-    }
-    {
-        let TokenConversionInfo = None::<crate::models::TokenConversionInfo>.unwrap();
-        let _: String = TokenConversionInfo.pool_id;
-        let _: Option<String> = TokenConversionInfo.payment_id;
-        let _: Option<u128> = TokenConversionInfo.fee;
-        let _: Option<String> = TokenConversionInfo.refund_identifier;
-    }
-    {
-        let TokenConversionOptions = None::<crate::models::TokenConversionOptions>.unwrap();
-        let _: crate::models::TokenConversionType = TokenConversionOptions.conversion_type;
-        let _: Option<u32> = TokenConversionOptions.max_slippage_bps;
-        let _: Option<u32> = TokenConversionOptions.completion_timeout_secs;
-    }
-    match None::<crate::models::TokenConversionType>.unwrap() {
-        crate::models::TokenConversionType::FromBitcoin => {}
-        crate::models::TokenConversionType::ToBitcoin {
-            from_token_identifier,
-        } => {
-            let _: String = from_token_identifier;
-        }
     }
     {
         let TokenMetadata = None::<crate::models::TokenMetadata>.unwrap();
@@ -4382,6 +4393,107 @@ impl SseDecode for crate::models::ConnectRequest {
     }
 }
 
+impl SseDecode for crate::models::ConversionEstimate {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_options = <crate::models::ConversionOptions>::sse_decode(deserializer);
+        let mut var_amount = <u128>::sse_decode(deserializer);
+        let mut var_fee = <u128>::sse_decode(deserializer);
+        return crate::models::ConversionEstimate {
+            options: var_options,
+            amount: var_amount,
+            fee: var_fee,
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConversionInfo {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_poolId = <String>::sse_decode(deserializer);
+        let mut var_conversionId = <String>::sse_decode(deserializer);
+        let mut var_status = <crate::models::ConversionStatus>::sse_decode(deserializer);
+        let mut var_fee = <Option<u128>>::sse_decode(deserializer);
+        let mut var_purpose = <Option<crate::models::ConversionPurpose>>::sse_decode(deserializer);
+        return crate::models::ConversionInfo {
+            pool_id: var_poolId,
+            conversion_id: var_conversionId,
+            status: var_status,
+            fee: var_fee,
+            purpose: var_purpose,
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConversionOptions {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_conversionType = <crate::models::ConversionType>::sse_decode(deserializer);
+        let mut var_maxSlippageBps = <Option<u32>>::sse_decode(deserializer);
+        let mut var_completionTimeoutSecs = <Option<u32>>::sse_decode(deserializer);
+        return crate::models::ConversionOptions {
+            conversion_type: var_conversionType,
+            max_slippage_bps: var_maxSlippageBps,
+            completion_timeout_secs: var_completionTimeoutSecs,
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConversionPurpose {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_paymentRequest = <String>::sse_decode(deserializer);
+                return crate::models::ConversionPurpose::OngoingPayment {
+                    payment_request: var_paymentRequest,
+                };
+            }
+            1 => {
+                return crate::models::ConversionPurpose::SelfTransfer;
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::ConversionStatus {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::models::ConversionStatus::Completed,
+            1 => crate::models::ConversionStatus::RefundNeeded,
+            2 => crate::models::ConversionStatus::Refunded,
+            _ => unreachable!("Invalid variant for ConversionStatus: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConversionType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return crate::models::ConversionType::FromBitcoin;
+            }
+            1 => {
+                let mut var_fromTokenIdentifier = <String>::sse_decode(deserializer);
+                return crate::models::ConversionType::ToBitcoin {
+                    from_token_identifier: var_fromTokenIdentifier,
+                };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for crate::models::CreateIssuerTokenRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -4539,24 +4651,24 @@ impl SseDecode for crate::models::Fee {
     }
 }
 
-impl SseDecode for crate::models::FetchTokenConversionLimitsRequest {
+impl SseDecode for crate::models::FetchConversionLimitsRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_conversionType = <crate::models::TokenConversionType>::sse_decode(deserializer);
+        let mut var_conversionType = <crate::models::ConversionType>::sse_decode(deserializer);
         let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
-        return crate::models::FetchTokenConversionLimitsRequest {
+        return crate::models::FetchConversionLimitsRequest {
             conversion_type: var_conversionType,
             token_identifier: var_tokenIdentifier,
         };
     }
 }
 
-impl SseDecode for crate::models::FetchTokenConversionLimitsResponse {
+impl SseDecode for crate::models::FetchConversionLimitsResponse {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_minFromAmount = <Option<u128>>::sse_decode(deserializer);
         let mut var_minToAmount = <Option<u128>>::sse_decode(deserializer);
-        return crate::models::FetchTokenConversionLimitsResponse {
+        return crate::models::FetchConversionLimitsResponse {
             min_from_amount: var_minFromAmount,
             min_to_amount: var_minToAmount,
         };
@@ -5452,6 +5564,52 @@ impl SseDecode for Option<bool> {
     }
 }
 
+impl SseDecode for Option<crate::models::ConversionEstimate> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ConversionEstimate>::sse_decode(
+                deserializer,
+            ));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::ConversionInfo> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ConversionInfo>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::ConversionOptions> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ConversionOptions>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::ConversionPurpose> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ConversionPurpose>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<crate::models::Credentials> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -5649,32 +5807,6 @@ impl SseDecode for Option<crate::models::Symbol> {
     }
 }
 
-impl SseDecode for Option<crate::models::TokenConversionInfo> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        if (<bool>::sse_decode(deserializer)) {
-            return Some(<crate::models::TokenConversionInfo>::sse_decode(
-                deserializer,
-            ));
-        } else {
-            return None;
-        }
-    }
-}
-
-impl SseDecode for Option<crate::models::TokenConversionOptions> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        if (<bool>::sse_decode(deserializer)) {
-            return Some(<crate::models::TokenConversionOptions>::sse_decode(
-                deserializer,
-            ));
-        } else {
-            return None;
-        }
-    }
-}
-
 impl SseDecode for Option<u32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -5859,12 +5991,12 @@ impl SseDecode for crate::models::PaymentDetails {
                     <Option<crate::models::SparkInvoicePaymentDetails>>::sse_decode(deserializer);
                 let mut var_htlcDetails =
                     <Option<crate::models::SparkHtlcDetails>>::sse_decode(deserializer);
-                let mut var_tokenConversionInfo =
-                    <Option<crate::models::TokenConversionInfo>>::sse_decode(deserializer);
+                let mut var_conversionInfo =
+                    <Option<crate::models::ConversionInfo>>::sse_decode(deserializer);
                 return crate::models::PaymentDetails::Spark {
                     invoice_details: var_invoiceDetails,
                     htlc_details: var_htlcDetails,
-                    token_conversion_info: var_tokenConversionInfo,
+                    conversion_info: var_conversionInfo,
                 };
             }
             1 => {
@@ -5872,13 +6004,13 @@ impl SseDecode for crate::models::PaymentDetails {
                 let mut var_txHash = <String>::sse_decode(deserializer);
                 let mut var_invoiceDetails =
                     <Option<crate::models::SparkInvoicePaymentDetails>>::sse_decode(deserializer);
-                let mut var_tokenConversionInfo =
-                    <Option<crate::models::TokenConversionInfo>>::sse_decode(deserializer);
+                let mut var_conversionInfo =
+                    <Option<crate::models::ConversionInfo>>::sse_decode(deserializer);
                 return crate::models::PaymentDetails::Token {
                     metadata: var_metadata,
                     tx_hash: var_txHash,
                     invoice_details: var_invoiceDetails,
-                    token_conversion_info: var_tokenConversionInfo,
+                    conversion_info: var_conversionInfo,
                 };
             }
             2 => {
@@ -6045,13 +6177,13 @@ impl SseDecode for crate::models::PrepareSendPaymentRequest {
         let mut var_paymentRequest = <String>::sse_decode(deserializer);
         let mut var_amount = <Option<u128>>::sse_decode(deserializer);
         let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
-        let mut var_tokenConversionOptions =
-            <Option<crate::models::TokenConversionOptions>>::sse_decode(deserializer);
+        let mut var_conversionOptions =
+            <Option<crate::models::ConversionOptions>>::sse_decode(deserializer);
         return crate::models::PrepareSendPaymentRequest {
             payment_request: var_paymentRequest,
             amount: var_amount,
             token_identifier: var_tokenIdentifier,
-            token_conversion_options: var_tokenConversionOptions,
+            conversion_options: var_conversionOptions,
         };
     }
 }
@@ -6062,15 +6194,13 @@ impl SseDecode for crate::models::PrepareSendPaymentResponse {
         let mut var_paymentMethod = <crate::models::SendPaymentMethod>::sse_decode(deserializer);
         let mut var_amount = <u128>::sse_decode(deserializer);
         let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
-        let mut var_tokenConversionOptions =
-            <Option<crate::models::TokenConversionOptions>>::sse_decode(deserializer);
-        let mut var_tokenConversionFee = <Option<u128>>::sse_decode(deserializer);
+        let mut var_conversionEstimate =
+            <Option<crate::models::ConversionEstimate>>::sse_decode(deserializer);
         return crate::models::PrepareSendPaymentResponse {
             payment_method: var_paymentMethod,
             amount: var_amount,
             token_identifier: var_tokenIdentifier,
-            token_conversion_options: var_tokenConversionOptions,
-            token_conversion_fee: var_tokenConversionFee,
+            conversion_estimate: var_conversionEstimate,
         };
     }
 }
@@ -6737,57 +6867,6 @@ impl SseDecode for crate::models::TokenBalance {
     }
 }
 
-impl SseDecode for crate::models::TokenConversionInfo {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_poolId = <String>::sse_decode(deserializer);
-        let mut var_paymentId = <Option<String>>::sse_decode(deserializer);
-        let mut var_fee = <Option<u128>>::sse_decode(deserializer);
-        let mut var_refundIdentifier = <Option<String>>::sse_decode(deserializer);
-        return crate::models::TokenConversionInfo {
-            pool_id: var_poolId,
-            payment_id: var_paymentId,
-            fee: var_fee,
-            refund_identifier: var_refundIdentifier,
-        };
-    }
-}
-
-impl SseDecode for crate::models::TokenConversionOptions {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_conversionType = <crate::models::TokenConversionType>::sse_decode(deserializer);
-        let mut var_maxSlippageBps = <Option<u32>>::sse_decode(deserializer);
-        let mut var_completionTimeoutSecs = <Option<u32>>::sse_decode(deserializer);
-        return crate::models::TokenConversionOptions {
-            conversion_type: var_conversionType,
-            max_slippage_bps: var_maxSlippageBps,
-            completion_timeout_secs: var_completionTimeoutSecs,
-        };
-    }
-}
-
-impl SseDecode for crate::models::TokenConversionType {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                return crate::models::TokenConversionType::FromBitcoin;
-            }
-            1 => {
-                let mut var_fromTokenIdentifier = <String>::sse_decode(deserializer);
-                return crate::models::TokenConversionType::ToBitcoin {
-                    from_token_identifier: var_fromTokenIdentifier,
-                };
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
 impl SseDecode for crate::models::TokenMetadata {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -6938,7 +7017,7 @@ fn pde_ffi_dispatcher_primary_impl(
             data_len,
         ),
         8 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
-        9 => wire__crate__sdk__BreezSdk_fetch_token_conversion_limits_impl(
+        9 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
             port,
             ptr,
             rust_vec_len,
@@ -7792,6 +7871,150 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConnectRequest>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionEstimate> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.options.into_into_dart().into_dart(),
+            self.0.amount.into_into_dart().into_dart(),
+            self.0.fee.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionEstimate>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionEstimate>>
+    for crate::models::ConversionEstimate
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionEstimate> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionInfo> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.pool_id.into_into_dart().into_dart(),
+            self.0.conversion_id.into_into_dart().into_dart(),
+            self.0.status.into_into_dart().into_dart(),
+            self.0.fee.into_into_dart().into_dart(),
+            self.0.purpose.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionInfo>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionInfo>>
+    for crate::models::ConversionInfo
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionInfo> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionOptions> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.conversion_type.into_into_dart().into_dart(),
+            self.0.max_slippage_bps.into_into_dart().into_dart(),
+            self.0.completion_timeout_secs.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionOptions>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionOptions>>
+    for crate::models::ConversionOptions
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionOptions> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionPurpose> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::ConversionPurpose::OngoingPayment { payment_request } => {
+                [0.into_dart(), payment_request.into_into_dart().into_dart()].into_dart()
+            }
+            crate::models::ConversionPurpose::SelfTransfer => [1.into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionPurpose>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionPurpose>>
+    for crate::models::ConversionPurpose
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionPurpose> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionStatus> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::ConversionStatus::Completed => 0.into_dart(),
+            crate::models::ConversionStatus::RefundNeeded => 1.into_dart(),
+            crate::models::ConversionStatus::Refunded => 2.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionStatus>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionStatus>>
+    for crate::models::ConversionStatus
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionStatus> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionType> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::ConversionType::FromBitcoin => [0.into_dart()].into_dart(),
+            crate::models::ConversionType::ToBitcoin {
+                from_token_identifier,
+            } => [
+                1.into_dart(),
+                from_token_identifier.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConversionType>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConversionType>>
+    for crate::models::ConversionType
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConversionType> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::CreateIssuerTokenRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -7980,9 +8203,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::Fee>> for crate
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for FrbWrapper<crate::models::FetchTokenConversionLimitsRequest>
-{
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FetchConversionLimitsRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.conversion_type.into_into_dart().into_dart(),
@@ -7992,20 +8213,18 @@ impl flutter_rust_bridge::IntoDart
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::FetchTokenConversionLimitsRequest>
+    for FrbWrapper<crate::models::FetchConversionLimitsRequest>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchTokenConversionLimitsRequest>>
-    for crate::models::FetchTokenConversionLimitsRequest
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchConversionLimitsRequest>>
+    for crate::models::FetchConversionLimitsRequest
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchTokenConversionLimitsRequest> {
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchConversionLimitsRequest> {
         self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart
-    for FrbWrapper<crate::models::FetchTokenConversionLimitsResponse>
-{
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FetchConversionLimitsResponse> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.min_from_amount.into_into_dart().into_dart(),
@@ -8015,14 +8234,13 @@ impl flutter_rust_bridge::IntoDart
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::FetchTokenConversionLimitsResponse>
+    for FrbWrapper<crate::models::FetchConversionLimitsResponse>
 {
 }
-impl
-    flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchTokenConversionLimitsResponse>>
-    for crate::models::FetchTokenConversionLimitsResponse
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchConversionLimitsResponse>>
+    for crate::models::FetchConversionLimitsResponse
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchTokenConversionLimitsResponse> {
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchConversionLimitsResponse> {
         self.into()
     }
 }
@@ -8973,25 +9191,25 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PaymentDetails>
             crate::models::PaymentDetails::Spark {
                 invoice_details,
                 htlc_details,
-                token_conversion_info,
+                conversion_info,
             } => [
                 0.into_dart(),
                 invoice_details.into_into_dart().into_dart(),
                 htlc_details.into_into_dart().into_dart(),
-                token_conversion_info.into_into_dart().into_dart(),
+                conversion_info.into_into_dart().into_dart(),
             ]
             .into_dart(),
             crate::models::PaymentDetails::Token {
                 metadata,
                 tx_hash,
                 invoice_details,
-                token_conversion_info,
+                conversion_info,
             } => [
                 1.into_dart(),
                 metadata.into_into_dart().into_dart(),
                 tx_hash.into_into_dart().into_dart(),
                 invoice_details.into_into_dart().into_dart(),
-                token_conversion_info.into_into_dart().into_dart(),
+                conversion_info.into_into_dart().into_dart(),
             ]
             .into_dart(),
             crate::models::PaymentDetails::Lightning {
@@ -9224,7 +9442,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PrepareSendPaym
             self.0.payment_request.into_into_dart().into_dart(),
             self.0.amount.into_into_dart().into_dart(),
             self.0.token_identifier.into_into_dart().into_dart(),
-            self.0.token_conversion_options.into_into_dart().into_dart(),
+            self.0.conversion_options.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -9247,8 +9465,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PrepareSendPaym
             self.0.payment_method.into_into_dart().into_dart(),
             self.0.amount.into_into_dart().into_dart(),
             self.0.token_identifier.into_into_dart().into_dart(),
-            self.0.token_conversion_options.into_into_dart().into_dart(),
-            self.0.token_conversion_fee.into_into_dart().into_dart(),
+            self.0.conversion_estimate.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -10126,80 +10343,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenBalance>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::TokenConversionInfo> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.0.pool_id.into_into_dart().into_dart(),
-            self.0.payment_id.into_into_dart().into_dart(),
-            self.0.fee.into_into_dart().into_dart(),
-            self.0.refund_identifier.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::TokenConversionInfo>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenConversionInfo>>
-    for crate::models::TokenConversionInfo
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::TokenConversionInfo> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::TokenConversionOptions> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.0.conversion_type.into_into_dart().into_dart(),
-            self.0.max_slippage_bps.into_into_dart().into_dart(),
-            self.0.completion_timeout_secs.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::TokenConversionOptions>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenConversionOptions>>
-    for crate::models::TokenConversionOptions
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::TokenConversionOptions> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::TokenConversionType> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self.0 {
-            crate::models::TokenConversionType::FromBitcoin => [0.into_dart()].into_dart(),
-            crate::models::TokenConversionType::ToBitcoin {
-                from_token_identifier,
-            } => [
-                1.into_dart(),
-                from_token_identifier.into_into_dart().into_dart(),
-            ]
-            .into_dart(),
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::TokenConversionType>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenConversionType>>
-    for crate::models::TokenConversionType
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::TokenConversionType> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::TokenMetadata> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -10767,6 +10910,90 @@ impl SseEncode for crate::models::ConnectRequest {
     }
 }
 
+impl SseEncode for crate::models::ConversionEstimate {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::ConversionOptions>::sse_encode(self.options, serializer);
+        <u128>::sse_encode(self.amount, serializer);
+        <u128>::sse_encode(self.fee, serializer);
+    }
+}
+
+impl SseEncode for crate::models::ConversionInfo {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.pool_id, serializer);
+        <String>::sse_encode(self.conversion_id, serializer);
+        <crate::models::ConversionStatus>::sse_encode(self.status, serializer);
+        <Option<u128>>::sse_encode(self.fee, serializer);
+        <Option<crate::models::ConversionPurpose>>::sse_encode(self.purpose, serializer);
+    }
+}
+
+impl SseEncode for crate::models::ConversionOptions {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::ConversionType>::sse_encode(self.conversion_type, serializer);
+        <Option<u32>>::sse_encode(self.max_slippage_bps, serializer);
+        <Option<u32>>::sse_encode(self.completion_timeout_secs, serializer);
+    }
+}
+
+impl SseEncode for crate::models::ConversionPurpose {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::ConversionPurpose::OngoingPayment { payment_request } => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(payment_request, serializer);
+            }
+            crate::models::ConversionPurpose::SelfTransfer => {
+                <i32>::sse_encode(1, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::ConversionStatus {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::models::ConversionStatus::Completed => 0,
+                crate::models::ConversionStatus::RefundNeeded => 1,
+                crate::models::ConversionStatus::Refunded => 2,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for crate::models::ConversionType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::ConversionType::FromBitcoin => {
+                <i32>::sse_encode(0, serializer);
+            }
+            crate::models::ConversionType::ToBitcoin {
+                from_token_identifier,
+            } => {
+                <i32>::sse_encode(1, serializer);
+                <String>::sse_encode(from_token_identifier, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for crate::models::CreateIssuerTokenRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -10880,15 +11107,15 @@ impl SseEncode for crate::models::Fee {
     }
 }
 
-impl SseEncode for crate::models::FetchTokenConversionLimitsRequest {
+impl SseEncode for crate::models::FetchConversionLimitsRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::models::TokenConversionType>::sse_encode(self.conversion_type, serializer);
+        <crate::models::ConversionType>::sse_encode(self.conversion_type, serializer);
         <Option<String>>::sse_encode(self.token_identifier, serializer);
     }
 }
 
-impl SseEncode for crate::models::FetchTokenConversionLimitsResponse {
+impl SseEncode for crate::models::FetchConversionLimitsResponse {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Option<u128>>::sse_encode(self.min_from_amount, serializer);
@@ -11587,6 +11814,46 @@ impl SseEncode for Option<bool> {
     }
 }
 
+impl SseEncode for Option<crate::models::ConversionEstimate> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ConversionEstimate>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::ConversionInfo> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ConversionInfo>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::ConversionOptions> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ConversionOptions>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::ConversionPurpose> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ConversionPurpose>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<crate::models::Credentials> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -11757,26 +12024,6 @@ impl SseEncode for Option<crate::models::Symbol> {
     }
 }
 
-impl SseEncode for Option<crate::models::TokenConversionInfo> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_some(), serializer);
-        if let Some(value) = self {
-            <crate::models::TokenConversionInfo>::sse_encode(value, serializer);
-        }
-    }
-}
-
-impl SseEncode for Option<crate::models::TokenConversionOptions> {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_some(), serializer);
-        if let Some(value) = self {
-            <crate::models::TokenConversionOptions>::sse_encode(value, serializer);
-        }
-    }
-}
-
 impl SseEncode for Option<u32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -11921,7 +12168,7 @@ impl SseEncode for crate::models::PaymentDetails {
             crate::models::PaymentDetails::Spark {
                 invoice_details,
                 htlc_details,
-                token_conversion_info,
+                conversion_info,
             } => {
                 <i32>::sse_encode(0, serializer);
                 <Option<crate::models::SparkInvoicePaymentDetails>>::sse_encode(
@@ -11929,16 +12176,13 @@ impl SseEncode for crate::models::PaymentDetails {
                     serializer,
                 );
                 <Option<crate::models::SparkHtlcDetails>>::sse_encode(htlc_details, serializer);
-                <Option<crate::models::TokenConversionInfo>>::sse_encode(
-                    token_conversion_info,
-                    serializer,
-                );
+                <Option<crate::models::ConversionInfo>>::sse_encode(conversion_info, serializer);
             }
             crate::models::PaymentDetails::Token {
                 metadata,
                 tx_hash,
                 invoice_details,
-                token_conversion_info,
+                conversion_info,
             } => {
                 <i32>::sse_encode(1, serializer);
                 <crate::models::TokenMetadata>::sse_encode(metadata, serializer);
@@ -11947,10 +12191,7 @@ impl SseEncode for crate::models::PaymentDetails {
                     invoice_details,
                     serializer,
                 );
-                <Option<crate::models::TokenConversionInfo>>::sse_encode(
-                    token_conversion_info,
-                    serializer,
-                );
+                <Option<crate::models::ConversionInfo>>::sse_encode(conversion_info, serializer);
             }
             crate::models::PaymentDetails::Lightning {
                 description,
@@ -12109,10 +12350,7 @@ impl SseEncode for crate::models::PrepareSendPaymentRequest {
         <String>::sse_encode(self.payment_request, serializer);
         <Option<u128>>::sse_encode(self.amount, serializer);
         <Option<String>>::sse_encode(self.token_identifier, serializer);
-        <Option<crate::models::TokenConversionOptions>>::sse_encode(
-            self.token_conversion_options,
-            serializer,
-        );
+        <Option<crate::models::ConversionOptions>>::sse_encode(self.conversion_options, serializer);
     }
 }
 
@@ -12122,11 +12360,10 @@ impl SseEncode for crate::models::PrepareSendPaymentResponse {
         <crate::models::SendPaymentMethod>::sse_encode(self.payment_method, serializer);
         <u128>::sse_encode(self.amount, serializer);
         <Option<String>>::sse_encode(self.token_identifier, serializer);
-        <Option<crate::models::TokenConversionOptions>>::sse_encode(
-            self.token_conversion_options,
+        <Option<crate::models::ConversionEstimate>>::sse_encode(
+            self.conversion_estimate,
             serializer,
         );
-        <Option<u128>>::sse_encode(self.token_conversion_fee, serializer);
     }
 }
 
@@ -12643,45 +12880,6 @@ impl SseEncode for crate::models::TokenBalance {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <u128>::sse_encode(self.balance, serializer);
         <crate::models::TokenMetadata>::sse_encode(self.token_metadata, serializer);
-    }
-}
-
-impl SseEncode for crate::models::TokenConversionInfo {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.pool_id, serializer);
-        <Option<String>>::sse_encode(self.payment_id, serializer);
-        <Option<u128>>::sse_encode(self.fee, serializer);
-        <Option<String>>::sse_encode(self.refund_identifier, serializer);
-    }
-}
-
-impl SseEncode for crate::models::TokenConversionOptions {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::models::TokenConversionType>::sse_encode(self.conversion_type, serializer);
-        <Option<u32>>::sse_encode(self.max_slippage_bps, serializer);
-        <Option<u32>>::sse_encode(self.completion_timeout_secs, serializer);
-    }
-}
-
-impl SseEncode for crate::models::TokenConversionType {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::models::TokenConversionType::FromBitcoin => {
-                <i32>::sse_encode(0, serializer);
-            }
-            crate::models::TokenConversionType::ToBitcoin {
-                from_token_identifier,
-            } => {
-                <i32>::sse_encode(1, serializer);
-                <String>::sse_encode(from_token_identifier, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
     }
 }
 

@@ -856,6 +856,522 @@ as String?,
 }
 
 /// @nodoc
+mixin _$ConversionPurpose {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionPurpose);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConversionPurpose()';
+}
+
+
+}
+
+/// @nodoc
+class $ConversionPurposeCopyWith<$Res>  {
+$ConversionPurposeCopyWith(ConversionPurpose _, $Res Function(ConversionPurpose) __);
+}
+
+
+/// Adds pattern-matching-related methods to [ConversionPurpose].
+extension ConversionPurposePatterns on ConversionPurpose {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
+return ongoingPayment(_that);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
+return selfTransfer(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ConversionPurpose_OngoingPayment value)  ongoingPayment,required TResult Function( ConversionPurpose_SelfTransfer value)  selfTransfer,}){
+final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment():
+return ongoingPayment(_that);case ConversionPurpose_SelfTransfer():
+return selfTransfer(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult? Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,}){
+final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
+return ongoingPayment(_that);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
+return selfTransfer(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String paymentRequest)?  ongoingPayment,TResult Function()?  selfTransfer,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
+return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
+return selfTransfer();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String paymentRequest)  ongoingPayment,required TResult Function()  selfTransfer,}) {final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment():
+return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer():
+return selfTransfer();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String paymentRequest)?  ongoingPayment,TResult? Function()?  selfTransfer,}) {final _that = this;
+switch (_that) {
+case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
+return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
+return selfTransfer();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ConversionPurpose_OngoingPayment extends ConversionPurpose {
+  const ConversionPurpose_OngoingPayment({required this.paymentRequest}): super._();
+  
+
+ final  String paymentRequest;
+
+/// Create a copy of ConversionPurpose
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ConversionPurpose_OngoingPaymentCopyWith<ConversionPurpose_OngoingPayment> get copyWith => _$ConversionPurpose_OngoingPaymentCopyWithImpl<ConversionPurpose_OngoingPayment>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionPurpose_OngoingPayment&&(identical(other.paymentRequest, paymentRequest) || other.paymentRequest == paymentRequest));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,paymentRequest);
+
+@override
+String toString() {
+  return 'ConversionPurpose.ongoingPayment(paymentRequest: $paymentRequest)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ConversionPurpose_OngoingPaymentCopyWith<$Res> implements $ConversionPurposeCopyWith<$Res> {
+  factory $ConversionPurpose_OngoingPaymentCopyWith(ConversionPurpose_OngoingPayment value, $Res Function(ConversionPurpose_OngoingPayment) _then) = _$ConversionPurpose_OngoingPaymentCopyWithImpl;
+@useResult
+$Res call({
+ String paymentRequest
+});
+
+
+
+
+}
+/// @nodoc
+class _$ConversionPurpose_OngoingPaymentCopyWithImpl<$Res>
+    implements $ConversionPurpose_OngoingPaymentCopyWith<$Res> {
+  _$ConversionPurpose_OngoingPaymentCopyWithImpl(this._self, this._then);
+
+  final ConversionPurpose_OngoingPayment _self;
+  final $Res Function(ConversionPurpose_OngoingPayment) _then;
+
+/// Create a copy of ConversionPurpose
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? paymentRequest = null,}) {
+  return _then(ConversionPurpose_OngoingPayment(
+paymentRequest: null == paymentRequest ? _self.paymentRequest : paymentRequest // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ConversionPurpose_SelfTransfer extends ConversionPurpose {
+  const ConversionPurpose_SelfTransfer(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionPurpose_SelfTransfer);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConversionPurpose.selfTransfer()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$ConversionType {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionType);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConversionType()';
+}
+
+
+}
+
+/// @nodoc
+class $ConversionTypeCopyWith<$Res>  {
+$ConversionTypeCopyWith(ConversionType _, $Res Function(ConversionType) __);
+}
+
+
+/// Adds pattern-matching-related methods to [ConversionType].
+extension ConversionTypePatterns on ConversionType {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ConversionType_FromBitcoin value)?  fromBitcoin,TResult Function( ConversionType_ToBitcoin value)?  toBitcoin,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin() when fromBitcoin != null:
+return fromBitcoin(_that);case ConversionType_ToBitcoin() when toBitcoin != null:
+return toBitcoin(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ConversionType_FromBitcoin value)  fromBitcoin,required TResult Function( ConversionType_ToBitcoin value)  toBitcoin,}){
+final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin():
+return fromBitcoin(_that);case ConversionType_ToBitcoin():
+return toBitcoin(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ConversionType_FromBitcoin value)?  fromBitcoin,TResult? Function( ConversionType_ToBitcoin value)?  toBitcoin,}){
+final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin() when fromBitcoin != null:
+return fromBitcoin(_that);case ConversionType_ToBitcoin() when toBitcoin != null:
+return toBitcoin(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fromBitcoin,TResult Function( String fromTokenIdentifier)?  toBitcoin,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin() when fromBitcoin != null:
+return fromBitcoin();case ConversionType_ToBitcoin() when toBitcoin != null:
+return toBitcoin(_that.fromTokenIdentifier);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fromBitcoin,required TResult Function( String fromTokenIdentifier)  toBitcoin,}) {final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin():
+return fromBitcoin();case ConversionType_ToBitcoin():
+return toBitcoin(_that.fromTokenIdentifier);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fromBitcoin,TResult? Function( String fromTokenIdentifier)?  toBitcoin,}) {final _that = this;
+switch (_that) {
+case ConversionType_FromBitcoin() when fromBitcoin != null:
+return fromBitcoin();case ConversionType_ToBitcoin() when toBitcoin != null:
+return toBitcoin(_that.fromTokenIdentifier);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ConversionType_FromBitcoin extends ConversionType {
+  const ConversionType_FromBitcoin(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionType_FromBitcoin);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConversionType.fromBitcoin()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ConversionType_ToBitcoin extends ConversionType {
+  const ConversionType_ToBitcoin({required this.fromTokenIdentifier}): super._();
+  
+
+ final  String fromTokenIdentifier;
+
+/// Create a copy of ConversionType
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ConversionType_ToBitcoinCopyWith<ConversionType_ToBitcoin> get copyWith => _$ConversionType_ToBitcoinCopyWithImpl<ConversionType_ToBitcoin>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionType_ToBitcoin&&(identical(other.fromTokenIdentifier, fromTokenIdentifier) || other.fromTokenIdentifier == fromTokenIdentifier));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,fromTokenIdentifier);
+
+@override
+String toString() {
+  return 'ConversionType.toBitcoin(fromTokenIdentifier: $fromTokenIdentifier)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ConversionType_ToBitcoinCopyWith<$Res> implements $ConversionTypeCopyWith<$Res> {
+  factory $ConversionType_ToBitcoinCopyWith(ConversionType_ToBitcoin value, $Res Function(ConversionType_ToBitcoin) _then) = _$ConversionType_ToBitcoinCopyWithImpl;
+@useResult
+$Res call({
+ String fromTokenIdentifier
+});
+
+
+
+
+}
+/// @nodoc
+class _$ConversionType_ToBitcoinCopyWithImpl<$Res>
+    implements $ConversionType_ToBitcoinCopyWith<$Res> {
+  _$ConversionType_ToBitcoinCopyWithImpl(this._self, this._then);
+
+  final ConversionType_ToBitcoin _self;
+  final $Res Function(ConversionType_ToBitcoin) _then;
+
+/// Create a copy of ConversionType
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? fromTokenIdentifier = null,}) {
+  return _then(ConversionType_ToBitcoin(
+fromTokenIdentifier: null == fromTokenIdentifier ? _self.fromTokenIdentifier : fromTokenIdentifier // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$Fee {
 
 
@@ -2784,11 +3300,11 @@ return deposit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  TokenConversionInfo? tokenConversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  TokenConversionInfo? tokenConversionInfo)?  token,TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
-return spark(_that.invoiceDetails,_that.htlcDetails,_that.tokenConversionInfo);case PaymentDetails_Token() when token != null:
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.tokenConversionInfo);case PaymentDetails_Lightning() when lightning != null:
+return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
+return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
@@ -2809,11 +3325,11 @@ return deposit(_that.txId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  TokenConversionInfo? tokenConversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  TokenConversionInfo? tokenConversionInfo)  token,required TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark():
-return spark(_that.invoiceDetails,_that.htlcDetails,_that.tokenConversionInfo);case PaymentDetails_Token():
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.tokenConversionInfo);case PaymentDetails_Lightning():
+return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token():
+return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning():
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw():
 return withdraw(_that.txId);case PaymentDetails_Deposit():
 return deposit(_that.txId);}
@@ -2830,11 +3346,11 @@ return deposit(_that.txId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  TokenConversionInfo? tokenConversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  TokenConversionInfo? tokenConversionInfo)?  token,TResult? Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
-return spark(_that.invoiceDetails,_that.htlcDetails,_that.tokenConversionInfo);case PaymentDetails_Token() when token != null:
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.tokenConversionInfo);case PaymentDetails_Lightning() when lightning != null:
+return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
+return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
@@ -2849,12 +3365,12 @@ return deposit(_that.txId);case _:
 
 
 class PaymentDetails_Spark extends PaymentDetails {
-  const PaymentDetails_Spark({this.invoiceDetails, this.htlcDetails, this.tokenConversionInfo}): super._();
+  const PaymentDetails_Spark({this.invoiceDetails, this.htlcDetails, this.conversionInfo}): super._();
   
 
  final  SparkInvoicePaymentDetails? invoiceDetails;
  final  SparkHtlcDetails? htlcDetails;
- final  TokenConversionInfo? tokenConversionInfo;
+ final  ConversionInfo? conversionInfo;
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
@@ -2866,16 +3382,16 @@ $PaymentDetails_SparkCopyWith<PaymentDetails_Spark> get copyWith => _$PaymentDet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Spark&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.htlcDetails, htlcDetails) || other.htlcDetails == htlcDetails)&&(identical(other.tokenConversionInfo, tokenConversionInfo) || other.tokenConversionInfo == tokenConversionInfo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Spark&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.htlcDetails, htlcDetails) || other.htlcDetails == htlcDetails)&&(identical(other.conversionInfo, conversionInfo) || other.conversionInfo == conversionInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,invoiceDetails,htlcDetails,tokenConversionInfo);
+int get hashCode => Object.hash(runtimeType,invoiceDetails,htlcDetails,conversionInfo);
 
 @override
 String toString() {
-  return 'PaymentDetails.spark(invoiceDetails: $invoiceDetails, htlcDetails: $htlcDetails, tokenConversionInfo: $tokenConversionInfo)';
+  return 'PaymentDetails.spark(invoiceDetails: $invoiceDetails, htlcDetails: $htlcDetails, conversionInfo: $conversionInfo)';
 }
 
 
@@ -2886,7 +3402,7 @@ abstract mixin class $PaymentDetails_SparkCopyWith<$Res> implements $PaymentDeta
   factory $PaymentDetails_SparkCopyWith(PaymentDetails_Spark value, $Res Function(PaymentDetails_Spark) _then) = _$PaymentDetails_SparkCopyWithImpl;
 @useResult
 $Res call({
- SparkInvoicePaymentDetails? invoiceDetails, SparkHtlcDetails? htlcDetails, TokenConversionInfo? tokenConversionInfo
+ SparkInvoicePaymentDetails? invoiceDetails, SparkHtlcDetails? htlcDetails, ConversionInfo? conversionInfo
 });
 
 
@@ -2903,12 +3419,12 @@ class _$PaymentDetails_SparkCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? invoiceDetails = freezed,Object? htlcDetails = freezed,Object? tokenConversionInfo = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? invoiceDetails = freezed,Object? htlcDetails = freezed,Object? conversionInfo = freezed,}) {
   return _then(PaymentDetails_Spark(
 invoiceDetails: freezed == invoiceDetails ? _self.invoiceDetails : invoiceDetails // ignore: cast_nullable_to_non_nullable
 as SparkInvoicePaymentDetails?,htlcDetails: freezed == htlcDetails ? _self.htlcDetails : htlcDetails // ignore: cast_nullable_to_non_nullable
-as SparkHtlcDetails?,tokenConversionInfo: freezed == tokenConversionInfo ? _self.tokenConversionInfo : tokenConversionInfo // ignore: cast_nullable_to_non_nullable
-as TokenConversionInfo?,
+as SparkHtlcDetails?,conversionInfo: freezed == conversionInfo ? _self.conversionInfo : conversionInfo // ignore: cast_nullable_to_non_nullable
+as ConversionInfo?,
   ));
 }
 
@@ -2919,13 +3435,13 @@ as TokenConversionInfo?,
 
 
 class PaymentDetails_Token extends PaymentDetails {
-  const PaymentDetails_Token({required this.metadata, required this.txHash, this.invoiceDetails, this.tokenConversionInfo}): super._();
+  const PaymentDetails_Token({required this.metadata, required this.txHash, this.invoiceDetails, this.conversionInfo}): super._();
   
 
  final  TokenMetadata metadata;
  final  String txHash;
  final  SparkInvoicePaymentDetails? invoiceDetails;
- final  TokenConversionInfo? tokenConversionInfo;
+ final  ConversionInfo? conversionInfo;
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
@@ -2937,16 +3453,16 @@ $PaymentDetails_TokenCopyWith<PaymentDetails_Token> get copyWith => _$PaymentDet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Token&&(identical(other.metadata, metadata) || other.metadata == metadata)&&(identical(other.txHash, txHash) || other.txHash == txHash)&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.tokenConversionInfo, tokenConversionInfo) || other.tokenConversionInfo == tokenConversionInfo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Token&&(identical(other.metadata, metadata) || other.metadata == metadata)&&(identical(other.txHash, txHash) || other.txHash == txHash)&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.conversionInfo, conversionInfo) || other.conversionInfo == conversionInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,metadata,txHash,invoiceDetails,tokenConversionInfo);
+int get hashCode => Object.hash(runtimeType,metadata,txHash,invoiceDetails,conversionInfo);
 
 @override
 String toString() {
-  return 'PaymentDetails.token(metadata: $metadata, txHash: $txHash, invoiceDetails: $invoiceDetails, tokenConversionInfo: $tokenConversionInfo)';
+  return 'PaymentDetails.token(metadata: $metadata, txHash: $txHash, invoiceDetails: $invoiceDetails, conversionInfo: $conversionInfo)';
 }
 
 
@@ -2957,7 +3473,7 @@ abstract mixin class $PaymentDetails_TokenCopyWith<$Res> implements $PaymentDeta
   factory $PaymentDetails_TokenCopyWith(PaymentDetails_Token value, $Res Function(PaymentDetails_Token) _then) = _$PaymentDetails_TokenCopyWithImpl;
 @useResult
 $Res call({
- TokenMetadata metadata, String txHash, SparkInvoicePaymentDetails? invoiceDetails, TokenConversionInfo? tokenConversionInfo
+ TokenMetadata metadata, String txHash, SparkInvoicePaymentDetails? invoiceDetails, ConversionInfo? conversionInfo
 });
 
 
@@ -2974,13 +3490,13 @@ class _$PaymentDetails_TokenCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? metadata = null,Object? txHash = null,Object? invoiceDetails = freezed,Object? tokenConversionInfo = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? metadata = null,Object? txHash = null,Object? invoiceDetails = freezed,Object? conversionInfo = freezed,}) {
   return _then(PaymentDetails_Token(
 metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as TokenMetadata,txHash: null == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
 as String,invoiceDetails: freezed == invoiceDetails ? _self.invoiceDetails : invoiceDetails // ignore: cast_nullable_to_non_nullable
-as SparkInvoicePaymentDetails?,tokenConversionInfo: freezed == tokenConversionInfo ? _self.tokenConversionInfo : tokenConversionInfo // ignore: cast_nullable_to_non_nullable
-as TokenConversionInfo?,
+as SparkInvoicePaymentDetails?,conversionInfo: freezed == conversionInfo ? _self.conversionInfo : conversionInfo // ignore: cast_nullable_to_non_nullable
+as ConversionInfo?,
   ));
 }
 
@@ -5755,264 +6271,6 @@ class _$SuccessActionProcessed_UrlCopyWithImpl<$Res>
   return _then(SuccessActionProcessed_Url(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as UrlSuccessActionData,
-  ));
-}
-
-
-}
-
-/// @nodoc
-mixin _$TokenConversionType {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenConversionType);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'TokenConversionType()';
-}
-
-
-}
-
-/// @nodoc
-class $TokenConversionTypeCopyWith<$Res>  {
-$TokenConversionTypeCopyWith(TokenConversionType _, $Res Function(TokenConversionType) __);
-}
-
-
-/// Adds pattern-matching-related methods to [TokenConversionType].
-extension TokenConversionTypePatterns on TokenConversionType {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TokenConversionType_FromBitcoin value)?  fromBitcoin,TResult Function( TokenConversionType_ToBitcoin value)?  toBitcoin,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin() when fromBitcoin != null:
-return fromBitcoin(_that);case TokenConversionType_ToBitcoin() when toBitcoin != null:
-return toBitcoin(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TokenConversionType_FromBitcoin value)  fromBitcoin,required TResult Function( TokenConversionType_ToBitcoin value)  toBitcoin,}){
-final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin():
-return fromBitcoin(_that);case TokenConversionType_ToBitcoin():
-return toBitcoin(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TokenConversionType_FromBitcoin value)?  fromBitcoin,TResult? Function( TokenConversionType_ToBitcoin value)?  toBitcoin,}){
-final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin() when fromBitcoin != null:
-return fromBitcoin(_that);case TokenConversionType_ToBitcoin() when toBitcoin != null:
-return toBitcoin(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fromBitcoin,TResult Function( String fromTokenIdentifier)?  toBitcoin,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin() when fromBitcoin != null:
-return fromBitcoin();case TokenConversionType_ToBitcoin() when toBitcoin != null:
-return toBitcoin(_that.fromTokenIdentifier);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fromBitcoin,required TResult Function( String fromTokenIdentifier)  toBitcoin,}) {final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin():
-return fromBitcoin();case TokenConversionType_ToBitcoin():
-return toBitcoin(_that.fromTokenIdentifier);}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fromBitcoin,TResult? Function( String fromTokenIdentifier)?  toBitcoin,}) {final _that = this;
-switch (_that) {
-case TokenConversionType_FromBitcoin() when fromBitcoin != null:
-return fromBitcoin();case TokenConversionType_ToBitcoin() when toBitcoin != null:
-return toBitcoin(_that.fromTokenIdentifier);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-
-class TokenConversionType_FromBitcoin extends TokenConversionType {
-  const TokenConversionType_FromBitcoin(): super._();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenConversionType_FromBitcoin);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'TokenConversionType.fromBitcoin()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class TokenConversionType_ToBitcoin extends TokenConversionType {
-  const TokenConversionType_ToBitcoin({required this.fromTokenIdentifier}): super._();
-  
-
- final  String fromTokenIdentifier;
-
-/// Create a copy of TokenConversionType
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$TokenConversionType_ToBitcoinCopyWith<TokenConversionType_ToBitcoin> get copyWith => _$TokenConversionType_ToBitcoinCopyWithImpl<TokenConversionType_ToBitcoin>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenConversionType_ToBitcoin&&(identical(other.fromTokenIdentifier, fromTokenIdentifier) || other.fromTokenIdentifier == fromTokenIdentifier));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,fromTokenIdentifier);
-
-@override
-String toString() {
-  return 'TokenConversionType.toBitcoin(fromTokenIdentifier: $fromTokenIdentifier)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $TokenConversionType_ToBitcoinCopyWith<$Res> implements $TokenConversionTypeCopyWith<$Res> {
-  factory $TokenConversionType_ToBitcoinCopyWith(TokenConversionType_ToBitcoin value, $Res Function(TokenConversionType_ToBitcoin) _then) = _$TokenConversionType_ToBitcoinCopyWithImpl;
-@useResult
-$Res call({
- String fromTokenIdentifier
-});
-
-
-
-
-}
-/// @nodoc
-class _$TokenConversionType_ToBitcoinCopyWithImpl<$Res>
-    implements $TokenConversionType_ToBitcoinCopyWith<$Res> {
-  _$TokenConversionType_ToBitcoinCopyWithImpl(this._self, this._then);
-
-  final TokenConversionType_ToBitcoin _self;
-  final $Res Function(TokenConversionType_ToBitcoin) _then;
-
-/// Create a copy of TokenConversionType
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? fromTokenIdentifier = null,}) {
-  return _then(TokenConversionType_ToBitcoin(
-fromTokenIdentifier: null == fromTokenIdentifier ? _self.fromTokenIdentifier : fromTokenIdentifier // ignore: cast_nullable_to_non_nullable
-as String,
   ));
 }
 

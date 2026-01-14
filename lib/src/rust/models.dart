@@ -625,6 +625,96 @@ class ConnectRequest {
           storageDir == other.storageDir;
 }
 
+class ConversionEstimate {
+  final ConversionOptions options;
+  final BigInt amount;
+  final BigInt fee;
+
+  const ConversionEstimate({required this.options, required this.amount, required this.fee});
+
+  @override
+  int get hashCode => options.hashCode ^ amount.hashCode ^ fee.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionEstimate &&
+          runtimeType == other.runtimeType &&
+          options == other.options &&
+          amount == other.amount &&
+          fee == other.fee;
+}
+
+class ConversionInfo {
+  final String poolId;
+  final String conversionId;
+  final ConversionStatus status;
+  final BigInt? fee;
+  final ConversionPurpose? purpose;
+
+  const ConversionInfo({
+    required this.poolId,
+    required this.conversionId,
+    required this.status,
+    this.fee,
+    this.purpose,
+  });
+
+  @override
+  int get hashCode =>
+      poolId.hashCode ^ conversionId.hashCode ^ status.hashCode ^ fee.hashCode ^ purpose.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionInfo &&
+          runtimeType == other.runtimeType &&
+          poolId == other.poolId &&
+          conversionId == other.conversionId &&
+          status == other.status &&
+          fee == other.fee &&
+          purpose == other.purpose;
+}
+
+class ConversionOptions {
+  final ConversionType conversionType;
+  final int? maxSlippageBps;
+  final int? completionTimeoutSecs;
+
+  const ConversionOptions({required this.conversionType, this.maxSlippageBps, this.completionTimeoutSecs});
+
+  @override
+  int get hashCode => conversionType.hashCode ^ maxSlippageBps.hashCode ^ completionTimeoutSecs.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionOptions &&
+          runtimeType == other.runtimeType &&
+          conversionType == other.conversionType &&
+          maxSlippageBps == other.maxSlippageBps &&
+          completionTimeoutSecs == other.completionTimeoutSecs;
+}
+
+@freezed
+sealed class ConversionPurpose with _$ConversionPurpose {
+  const ConversionPurpose._();
+
+  const factory ConversionPurpose.ongoingPayment({required String paymentRequest}) =
+      ConversionPurpose_OngoingPayment;
+  const factory ConversionPurpose.selfTransfer() = ConversionPurpose_SelfTransfer;
+}
+
+enum ConversionStatus { completed, refundNeeded, refunded }
+
+@freezed
+sealed class ConversionType with _$ConversionType {
+  const ConversionType._();
+
+  const factory ConversionType.fromBitcoin() = ConversionType_FromBitcoin;
+  const factory ConversionType.toBitcoin({required String fromTokenIdentifier}) = ConversionType_ToBitcoin;
+}
+
 class CreateIssuerTokenRequest {
   final String name;
   final String ticker;
@@ -784,11 +874,11 @@ sealed class Fee with _$Fee {
   const factory Fee.rate({required BigInt satPerVbyte}) = Fee_Rate;
 }
 
-class FetchTokenConversionLimitsRequest {
-  final TokenConversionType conversionType;
+class FetchConversionLimitsRequest {
+  final ConversionType conversionType;
   final String? tokenIdentifier;
 
-  const FetchTokenConversionLimitsRequest({required this.conversionType, this.tokenIdentifier});
+  const FetchConversionLimitsRequest({required this.conversionType, this.tokenIdentifier});
 
   @override
   int get hashCode => conversionType.hashCode ^ tokenIdentifier.hashCode;
@@ -796,17 +886,17 @@ class FetchTokenConversionLimitsRequest {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FetchTokenConversionLimitsRequest &&
+      other is FetchConversionLimitsRequest &&
           runtimeType == other.runtimeType &&
           conversionType == other.conversionType &&
           tokenIdentifier == other.tokenIdentifier;
 }
 
-class FetchTokenConversionLimitsResponse {
+class FetchConversionLimitsResponse {
   final BigInt? minFromAmount;
   final BigInt? minToAmount;
 
-  const FetchTokenConversionLimitsResponse({this.minFromAmount, this.minToAmount});
+  const FetchConversionLimitsResponse({this.minFromAmount, this.minToAmount});
 
   @override
   int get hashCode => minFromAmount.hashCode ^ minToAmount.hashCode;
@@ -814,7 +904,7 @@ class FetchTokenConversionLimitsResponse {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FetchTokenConversionLimitsResponse &&
+      other is FetchConversionLimitsResponse &&
           runtimeType == other.runtimeType &&
           minFromAmount == other.minFromAmount &&
           minToAmount == other.minToAmount;
@@ -1608,13 +1698,13 @@ sealed class PaymentDetails with _$PaymentDetails {
   const factory PaymentDetails.spark({
     SparkInvoicePaymentDetails? invoiceDetails,
     SparkHtlcDetails? htlcDetails,
-    TokenConversionInfo? tokenConversionInfo,
+    ConversionInfo? conversionInfo,
   }) = PaymentDetails_Spark;
   const factory PaymentDetails.token({
     required TokenMetadata metadata,
     required String txHash,
     SparkInvoicePaymentDetails? invoiceDetails,
-    TokenConversionInfo? tokenConversionInfo,
+    ConversionInfo? conversionInfo,
   }) = PaymentDetails_Token;
   const factory PaymentDetails.lightning({
     String? description,
@@ -1737,18 +1827,18 @@ class PrepareSendPaymentRequest {
   final String paymentRequest;
   final BigInt? amount;
   final String? tokenIdentifier;
-  final TokenConversionOptions? tokenConversionOptions;
+  final ConversionOptions? conversionOptions;
 
   const PrepareSendPaymentRequest({
     required this.paymentRequest,
     this.amount,
     this.tokenIdentifier,
-    this.tokenConversionOptions,
+    this.conversionOptions,
   });
 
   @override
   int get hashCode =>
-      paymentRequest.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode ^ tokenConversionOptions.hashCode;
+      paymentRequest.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode ^ conversionOptions.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1758,31 +1848,25 @@ class PrepareSendPaymentRequest {
           paymentRequest == other.paymentRequest &&
           amount == other.amount &&
           tokenIdentifier == other.tokenIdentifier &&
-          tokenConversionOptions == other.tokenConversionOptions;
+          conversionOptions == other.conversionOptions;
 }
 
 class PrepareSendPaymentResponse {
   final SendPaymentMethod paymentMethod;
   final BigInt amount;
   final String? tokenIdentifier;
-  final TokenConversionOptions? tokenConversionOptions;
-  final BigInt? tokenConversionFee;
+  final ConversionEstimate? conversionEstimate;
 
   const PrepareSendPaymentResponse({
     required this.paymentMethod,
     required this.amount,
     this.tokenIdentifier,
-    this.tokenConversionOptions,
-    this.tokenConversionFee,
+    this.conversionEstimate,
   });
 
   @override
   int get hashCode =>
-      paymentMethod.hashCode ^
-      amount.hashCode ^
-      tokenIdentifier.hashCode ^
-      tokenConversionOptions.hashCode ^
-      tokenConversionFee.hashCode;
+      paymentMethod.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode ^ conversionEstimate.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1792,8 +1876,7 @@ class PrepareSendPaymentResponse {
           paymentMethod == other.paymentMethod &&
           amount == other.amount &&
           tokenIdentifier == other.tokenIdentifier &&
-          tokenConversionOptions == other.tokenConversionOptions &&
-          tokenConversionFee == other.tokenConversionFee;
+          conversionEstimate == other.conversionEstimate;
 }
 
 class Rate {
@@ -2366,61 +2449,6 @@ class TokenBalance {
           runtimeType == other.runtimeType &&
           balance == other.balance &&
           tokenMetadata == other.tokenMetadata;
-}
-
-class TokenConversionInfo {
-  final String poolId;
-  final String? paymentId;
-  final BigInt? fee;
-  final String? refundIdentifier;
-
-  const TokenConversionInfo({required this.poolId, this.paymentId, this.fee, this.refundIdentifier});
-
-  @override
-  int get hashCode => poolId.hashCode ^ paymentId.hashCode ^ fee.hashCode ^ refundIdentifier.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TokenConversionInfo &&
-          runtimeType == other.runtimeType &&
-          poolId == other.poolId &&
-          paymentId == other.paymentId &&
-          fee == other.fee &&
-          refundIdentifier == other.refundIdentifier;
-}
-
-class TokenConversionOptions {
-  final TokenConversionType conversionType;
-  final int? maxSlippageBps;
-  final int? completionTimeoutSecs;
-
-  const TokenConversionOptions({
-    required this.conversionType,
-    this.maxSlippageBps,
-    this.completionTimeoutSecs,
-  });
-
-  @override
-  int get hashCode => conversionType.hashCode ^ maxSlippageBps.hashCode ^ completionTimeoutSecs.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TokenConversionOptions &&
-          runtimeType == other.runtimeType &&
-          conversionType == other.conversionType &&
-          maxSlippageBps == other.maxSlippageBps &&
-          completionTimeoutSecs == other.completionTimeoutSecs;
-}
-
-@freezed
-sealed class TokenConversionType with _$TokenConversionType {
-  const TokenConversionType._();
-
-  const factory TokenConversionType.fromBitcoin() = TokenConversionType_FromBitcoin;
-  const factory TokenConversionType.toBitcoin({required String fromTokenIdentifier}) =
-      TokenConversionType_ToBitcoin;
 }
 
 class TokenMetadata {

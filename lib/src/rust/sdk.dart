@@ -38,8 +38,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<void> disconnect();
 
-  Future<FetchTokenConversionLimitsResponse> fetchTokenConversionLimits({
-    required FetchTokenConversionLimitsRequest request,
+  Future<FetchConversionLimitsResponse> fetchConversionLimits({
+    required FetchConversionLimitsRequest request,
   });
 
   Future<GetInfoResponse> getInfo({required GetInfoRequest request});
