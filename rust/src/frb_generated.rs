@@ -40,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -931368184;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 960669938;
 
 // Section: executor
 
@@ -1185,6 +1185,65 @@ fn wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
                             api_request,
                         )
                         .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_lnurl_auth_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_lnurl_auth",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request_data =
+                <crate::models::LnurlAuthRequestDetails>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::sdk::BreezSdk::lnurl_auth(&*api_that_guard, api_request_data)
+                                .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -3221,6 +3280,16 @@ const _: fn() = || {
         let _: String = LnurlAuthRequestDetails.domain;
         let _: String = LnurlAuthRequestDetails.url;
     }
+    match None::<crate::models::LnurlCallbackStatus>.unwrap() {
+        crate::models::LnurlCallbackStatus::Ok => {}
+        crate::models::LnurlCallbackStatus::ErrorStatus { error_details } => {
+            let _: crate::models::LnurlErrorDetails = error_details;
+        }
+    }
+    {
+        let LnurlErrorDetails = None::<crate::models::LnurlErrorDetails>.unwrap();
+        let _: String = LnurlErrorDetails.reason;
+    }
     {
         let LnurlPayInfo = None::<crate::models::LnurlPayInfo>.unwrap();
         let _: Option<String> = LnurlPayInfo.ln_address;
@@ -5255,6 +5324,36 @@ impl SseDecode for crate::models::LnurlAuthRequestDetails {
     }
 }
 
+impl SseDecode for crate::models::LnurlCallbackStatus {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return crate::models::LnurlCallbackStatus::Ok;
+            }
+            1 => {
+                let mut var_errorDetails =
+                    <crate::models::LnurlErrorDetails>::sse_decode(deserializer);
+                return crate::models::LnurlCallbackStatus::ErrorStatus {
+                    error_details: var_errorDetails,
+                };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::LnurlErrorDetails {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_reason = <String>::sse_decode(deserializer);
+        return crate::models::LnurlErrorDetails { reason: var_reason };
+    }
+}
+
 impl SseDecode for crate::models::LnurlPayInfo {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -7043,75 +7142,76 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        21 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        22 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        23 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        24 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        25 => {
+        21 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
+        22 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        23 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
+        24 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        25 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        26 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        26 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        27 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
-        28 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        27 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        28 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
+        29 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        30 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        30 => {
+        31 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        31 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        32 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
-        35 => {
+        32 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        33 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
+        35 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
+        36 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        36 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        41 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+        37 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        42 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        42 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+        43 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        43 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+        44 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        44 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+        45 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        45 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+        46 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        46 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+        47 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        47 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+        48 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        48 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        49 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -7130,21 +7230,21 @@ fn pde_ffi_dispatcher_sync_impl(
             data_len,
         ),
         14 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
-        33 => wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(ptr, rust_vec_len, data_len),
-        37 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        38 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        34 => wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(ptr, rust_vec_len, data_len),
+        38 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        39 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        39 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
-        40 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        40 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
+        41 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        49 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        50 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        50 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        51 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -8695,6 +8795,48 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::LnurlAuthReques
     for crate::models::LnurlAuthRequestDetails
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::LnurlAuthRequestDetails> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::LnurlCallbackStatus> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::LnurlCallbackStatus::Ok => [0.into_dart()].into_dart(),
+            crate::models::LnurlCallbackStatus::ErrorStatus { error_details } => {
+                [1.into_dart(), error_details.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::LnurlCallbackStatus>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::LnurlCallbackStatus>>
+    for crate::models::LnurlCallbackStatus
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::LnurlCallbackStatus> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::LnurlErrorDetails> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.reason.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::LnurlErrorDetails>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::LnurlErrorDetails>>
+    for crate::models::LnurlErrorDetails
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::LnurlErrorDetails> {
         self.into()
     }
 }
@@ -11570,6 +11712,31 @@ impl SseEncode for crate::models::LnurlAuthRequestDetails {
         <Option<String>>::sse_encode(self.action, serializer);
         <String>::sse_encode(self.domain, serializer);
         <String>::sse_encode(self.url, serializer);
+    }
+}
+
+impl SseEncode for crate::models::LnurlCallbackStatus {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::LnurlCallbackStatus::Ok => {
+                <i32>::sse_encode(0, serializer);
+            }
+            crate::models::LnurlCallbackStatus::ErrorStatus { error_details } => {
+                <i32>::sse_encode(1, serializer);
+                <crate::models::LnurlErrorDetails>::sse_encode(error_details, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::LnurlErrorDetails {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.reason, serializer);
     }
 }
 

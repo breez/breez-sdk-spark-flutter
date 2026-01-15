@@ -267,6 +267,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   LnurlAuthRequestDetails dco_decode_box_autoadd_lnurl_auth_request_details(dynamic raw);
 
   @protected
+  LnurlErrorDetails dco_decode_box_autoadd_lnurl_error_details(dynamic raw);
+
+  @protected
   LnurlPayInfo dco_decode_box_autoadd_lnurl_pay_info(dynamic raw);
 
   @protected
@@ -589,6 +592,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlAuthRequestDetails dco_decode_lnurl_auth_request_details(dynamic raw);
+
+  @protected
+  LnurlCallbackStatus dco_decode_lnurl_callback_status(dynamic raw);
+
+  @protected
+  LnurlErrorDetails dco_decode_lnurl_error_details(dynamic raw);
 
   @protected
   LnurlPayInfo dco_decode_lnurl_pay_info(dynamic raw);
@@ -1167,6 +1176,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   LnurlAuthRequestDetails sse_decode_box_autoadd_lnurl_auth_request_details(SseDeserializer deserializer);
 
   @protected
+  LnurlErrorDetails sse_decode_box_autoadd_lnurl_error_details(SseDeserializer deserializer);
+
+  @protected
   LnurlPayInfo sse_decode_box_autoadd_lnurl_pay_info(SseDeserializer deserializer);
 
   @protected
@@ -1499,6 +1511,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlAuthRequestDetails sse_decode_lnurl_auth_request_details(SseDeserializer deserializer);
+
+  @protected
+  LnurlCallbackStatus sse_decode_lnurl_callback_status(SseDeserializer deserializer);
+
+  @protected
+  LnurlErrorDetails sse_decode_lnurl_error_details(SseDeserializer deserializer);
 
   @protected
   LnurlPayInfo sse_decode_lnurl_pay_info(SseDeserializer deserializer);
@@ -2118,6 +2136,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_lnurl_error_details(LnurlErrorDetails self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_lnurl_pay_info(LnurlPayInfo self, SseSerializer serializer);
 
   @protected
@@ -2494,6 +2515,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_lnurl_auth_request_details(LnurlAuthRequestDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_lnurl_callback_status(LnurlCallbackStatus self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_lnurl_error_details(LnurlErrorDetails self, SseSerializer serializer);
 
   @protected
   void sse_encode_lnurl_pay_info(LnurlPayInfo self, SseSerializer serializer);

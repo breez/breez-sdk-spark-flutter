@@ -66,6 +66,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required ListUnclaimedDepositsRequest request,
   });
 
+  Future<LnurlCallbackStatus> lnurlAuth({required LnurlAuthRequestDetails requestData});
+
   Future<LnurlPayResponse> lnurlPay({required LnurlPayRequest request});
 
   Future<LnurlWithdrawResponse> lnurlWithdraw({required LnurlWithdrawRequest request});

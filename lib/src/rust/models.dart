@@ -1282,6 +1282,29 @@ class LnurlAuthRequestDetails {
           url == other.url;
 }
 
+@freezed
+sealed class LnurlCallbackStatus with _$LnurlCallbackStatus {
+  const LnurlCallbackStatus._();
+
+  const factory LnurlCallbackStatus.ok() = LnurlCallbackStatus_Ok;
+  const factory LnurlCallbackStatus.errorStatus({required LnurlErrorDetails errorDetails}) =
+      LnurlCallbackStatus_ErrorStatus;
+}
+
+class LnurlErrorDetails {
+  final String reason;
+
+  const LnurlErrorDetails({required this.reason});
+
+  @override
+  int get hashCode => reason.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LnurlErrorDetails && runtimeType == other.runtimeType && reason == other.reason;
+}
+
 class LnurlPayInfo {
   final String? lnAddress;
   final String? comment;

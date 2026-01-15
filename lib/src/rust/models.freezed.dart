@@ -2820,6 +2820,264 @@ as SparkInvoiceDetails,
 }
 
 /// @nodoc
+mixin _$LnurlCallbackStatus {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LnurlCallbackStatus);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'LnurlCallbackStatus()';
+}
+
+
+}
+
+/// @nodoc
+class $LnurlCallbackStatusCopyWith<$Res>  {
+$LnurlCallbackStatusCopyWith(LnurlCallbackStatus _, $Res Function(LnurlCallbackStatus) __);
+}
+
+
+/// Adds pattern-matching-related methods to [LnurlCallbackStatus].
+extension LnurlCallbackStatusPatterns on LnurlCallbackStatus {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LnurlCallbackStatus_Ok value)?  ok,TResult Function( LnurlCallbackStatus_ErrorStatus value)?  errorStatus,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok() when ok != null:
+return ok(_that);case LnurlCallbackStatus_ErrorStatus() when errorStatus != null:
+return errorStatus(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LnurlCallbackStatus_Ok value)  ok,required TResult Function( LnurlCallbackStatus_ErrorStatus value)  errorStatus,}){
+final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok():
+return ok(_that);case LnurlCallbackStatus_ErrorStatus():
+return errorStatus(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LnurlCallbackStatus_Ok value)?  ok,TResult? Function( LnurlCallbackStatus_ErrorStatus value)?  errorStatus,}){
+final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok() when ok != null:
+return ok(_that);case LnurlCallbackStatus_ErrorStatus() when errorStatus != null:
+return errorStatus(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  ok,TResult Function( LnurlErrorDetails errorDetails)?  errorStatus,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok() when ok != null:
+return ok();case LnurlCallbackStatus_ErrorStatus() when errorStatus != null:
+return errorStatus(_that.errorDetails);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  ok,required TResult Function( LnurlErrorDetails errorDetails)  errorStatus,}) {final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok():
+return ok();case LnurlCallbackStatus_ErrorStatus():
+return errorStatus(_that.errorDetails);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  ok,TResult? Function( LnurlErrorDetails errorDetails)?  errorStatus,}) {final _that = this;
+switch (_that) {
+case LnurlCallbackStatus_Ok() when ok != null:
+return ok();case LnurlCallbackStatus_ErrorStatus() when errorStatus != null:
+return errorStatus(_that.errorDetails);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class LnurlCallbackStatus_Ok extends LnurlCallbackStatus {
+  const LnurlCallbackStatus_Ok(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LnurlCallbackStatus_Ok);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'LnurlCallbackStatus.ok()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class LnurlCallbackStatus_ErrorStatus extends LnurlCallbackStatus {
+  const LnurlCallbackStatus_ErrorStatus({required this.errorDetails}): super._();
+  
+
+ final  LnurlErrorDetails errorDetails;
+
+/// Create a copy of LnurlCallbackStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LnurlCallbackStatus_ErrorStatusCopyWith<LnurlCallbackStatus_ErrorStatus> get copyWith => _$LnurlCallbackStatus_ErrorStatusCopyWithImpl<LnurlCallbackStatus_ErrorStatus>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LnurlCallbackStatus_ErrorStatus&&(identical(other.errorDetails, errorDetails) || other.errorDetails == errorDetails));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorDetails);
+
+@override
+String toString() {
+  return 'LnurlCallbackStatus.errorStatus(errorDetails: $errorDetails)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $LnurlCallbackStatus_ErrorStatusCopyWith<$Res> implements $LnurlCallbackStatusCopyWith<$Res> {
+  factory $LnurlCallbackStatus_ErrorStatusCopyWith(LnurlCallbackStatus_ErrorStatus value, $Res Function(LnurlCallbackStatus_ErrorStatus) _then) = _$LnurlCallbackStatus_ErrorStatusCopyWithImpl;
+@useResult
+$Res call({
+ LnurlErrorDetails errorDetails
+});
+
+
+
+
+}
+/// @nodoc
+class _$LnurlCallbackStatus_ErrorStatusCopyWithImpl<$Res>
+    implements $LnurlCallbackStatus_ErrorStatusCopyWith<$Res> {
+  _$LnurlCallbackStatus_ErrorStatusCopyWithImpl(this._self, this._then);
+
+  final LnurlCallbackStatus_ErrorStatus _self;
+  final $Res Function(LnurlCallbackStatus_ErrorStatus) _then;
+
+/// Create a copy of LnurlCallbackStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorDetails = null,}) {
+  return _then(LnurlCallbackStatus_ErrorStatus(
+errorDetails: null == errorDetails ? _self.errorDetails : errorDetails // ignore: cast_nullable_to_non_nullable
+as LnurlErrorDetails,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$MaxFee {
 
 
