@@ -46,6 +46,7 @@ pub enum _SdkError {
 
 #[frb(mirror(StorageError))]
 pub enum _StorageError {
+    Connection(String),
     Implementation(String),
     InitializationError(String),
     Serialization(String),

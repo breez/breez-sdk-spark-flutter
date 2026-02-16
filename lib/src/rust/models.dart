@@ -434,6 +434,38 @@ class BurnIssuerTokenRequest {
       other is BurnIssuerTokenRequest && runtimeType == other.runtimeType && amount == other.amount;
 }
 
+class BuyBitcoinRequest {
+  final BigInt? lockedAmountSat;
+  final String? redirectUrl;
+
+  const BuyBitcoinRequest({this.lockedAmountSat, this.redirectUrl});
+
+  @override
+  int get hashCode => lockedAmountSat.hashCode ^ redirectUrl.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuyBitcoinRequest &&
+          runtimeType == other.runtimeType &&
+          lockedAmountSat == other.lockedAmountSat &&
+          redirectUrl == other.redirectUrl;
+}
+
+class BuyBitcoinResponse {
+  final String url;
+
+  const BuyBitcoinResponse({required this.url});
+
+  @override
+  int get hashCode => url.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuyBitcoinResponse && runtimeType == other.runtimeType && url == other.url;
+}
+
 enum ChainApiType { esplora, mempoolSpace }
 
 class CheckLightningAddressRequest {
@@ -625,6 +657,21 @@ class ConnectRequest {
           storageDir == other.storageDir;
 }
 
+class ConversionDetails {
+  final ConversionStep from;
+  final ConversionStep to;
+
+  const ConversionDetails({required this.from, required this.to});
+
+  @override
+  int get hashCode => from.hashCode ^ to.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionDetails && runtimeType == other.runtimeType && from == other.from && to == other.to;
+}
+
 class ConversionEstimate {
   final ConversionOptions options;
   final BigInt amount;
@@ -706,6 +753,37 @@ sealed class ConversionPurpose with _$ConversionPurpose {
 }
 
 enum ConversionStatus { completed, refundNeeded, refunded }
+
+class ConversionStep {
+  final String paymentId;
+  final BigInt amount;
+  final BigInt fee;
+  final PaymentMethod method;
+  final TokenMetadata? tokenMetadata;
+
+  const ConversionStep({
+    required this.paymentId,
+    required this.amount,
+    required this.fee,
+    required this.method,
+    this.tokenMetadata,
+  });
+
+  @override
+  int get hashCode =>
+      paymentId.hashCode ^ amount.hashCode ^ fee.hashCode ^ method.hashCode ^ tokenMetadata.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionStep &&
+          runtimeType == other.runtimeType &&
+          paymentId == other.paymentId &&
+          amount == other.amount &&
+          fee == other.fee &&
+          method == other.method &&
+          tokenMetadata == other.tokenMetadata;
+}
 
 @freezed
 sealed class ConversionType with _$ConversionType {
@@ -874,6 +952,14 @@ sealed class Fee with _$Fee {
   const factory Fee.rate({required BigInt satPerVbyte}) = Fee_Rate;
 }
 
+enum FeePolicy {
+  /// Fees are added on top of the specified amount (default behavior).
+  feesExcluded,
+
+  /// Fees are deducted from the specified amount.
+  feesIncluded,
+}
+
 class FetchConversionLimitsRequest {
   final ConversionType conversionType;
   final String? tokenIdentifier;
@@ -972,19 +1058,25 @@ class GetInfoRequest {
 }
 
 class GetInfoResponse {
+  final String identityPubkey;
   final BigInt balanceSats;
   final Map<String, TokenBalance> tokenBalances;
 
-  const GetInfoResponse({required this.balanceSats, required this.tokenBalances});
+  const GetInfoResponse({
+    required this.identityPubkey,
+    required this.balanceSats,
+    required this.tokenBalances,
+  });
 
   @override
-  int get hashCode => balanceSats.hashCode ^ tokenBalances.hashCode;
+  int get hashCode => identityPubkey.hashCode ^ balanceSats.hashCode ^ tokenBalances.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is GetInfoResponse &&
           runtimeType == other.runtimeType &&
+          identityPubkey == other.identityPubkey &&
           balanceSats == other.balanceSats &&
           tokenBalances == other.tokenBalances;
 }
@@ -1114,7 +1206,7 @@ class LightningAddressDetails {
 class LightningAddressInfo {
   final String description;
   final String lightningAddress;
-  final String lnurl;
+  final LnurlInfo lnurl;
   final String username;
 
   const LightningAddressInfo({
@@ -1303,6 +1395,21 @@ class LnurlErrorDetails {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LnurlErrorDetails && runtimeType == other.runtimeType && reason == other.reason;
+}
+
+class LnurlInfo {
+  final String url;
+  final String bech32;
+
+  const LnurlInfo({required this.url, required this.bech32});
+
+  @override
+  int get hashCode => url.hashCode ^ bech32.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LnurlInfo && runtimeType == other.runtimeType && url == other.url && bech32 == other.bech32;
 }
 
 class LnurlPayInfo {
@@ -1676,6 +1783,7 @@ class Payment {
   final BigInt timestamp;
   final PaymentMethod method;
   final PaymentDetails? details;
+  final ConversionDetails? conversionDetails;
 
   const Payment({
     required this.id,
@@ -1686,6 +1794,7 @@ class Payment {
     required this.timestamp,
     required this.method,
     this.details,
+    this.conversionDetails,
   });
 
   @override
@@ -1697,7 +1806,8 @@ class Payment {
       fees.hashCode ^
       timestamp.hashCode ^
       method.hashCode ^
-      details.hashCode;
+      details.hashCode ^
+      conversionDetails.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1711,7 +1821,8 @@ class Payment {
           fees == other.fees &&
           timestamp == other.timestamp &&
           method == other.method &&
-          details == other.details;
+          details == other.details &&
+          conversionDetails == other.conversionDetails;
 }
 
 @freezed
@@ -1726,6 +1837,7 @@ sealed class PaymentDetails with _$PaymentDetails {
   const factory PaymentDetails.token({
     required TokenMetadata metadata,
     required String txHash,
+    required TokenTransactionType txType,
     SparkInvoicePaymentDetails? invoiceDetails,
     ConversionInfo? conversionInfo,
   }) = PaymentDetails_Token;
@@ -1751,8 +1863,11 @@ sealed class PaymentDetailsFilter with _$PaymentDetailsFilter {
     List<SparkHtlcStatus>? htlcStatus,
     bool? conversionRefundNeeded,
   }) = PaymentDetailsFilter_Spark;
-  const factory PaymentDetailsFilter.token({bool? conversionRefundNeeded, String? txHash}) =
-      PaymentDetailsFilter_Token;
+  const factory PaymentDetailsFilter.token({
+    bool? conversionRefundNeeded,
+    String? txHash,
+    TokenTransactionType? txType,
+  }) = PaymentDetailsFilter_Token;
 }
 
 enum PaymentMethod { lightning, spark, token, deposit, withdraw, unknown }
@@ -1784,17 +1899,26 @@ class PrepareLnurlPayRequest {
   final LnurlPayRequestDetails payRequest;
   final String? comment;
   final bool? validateSuccessActionUrl;
+  final ConversionOptions? conversionOptions;
+  final FeePolicy? feePolicy;
 
   const PrepareLnurlPayRequest({
     required this.amountSats,
     required this.payRequest,
     this.comment,
     this.validateSuccessActionUrl,
+    this.conversionOptions,
+    this.feePolicy,
   });
 
   @override
   int get hashCode =>
-      amountSats.hashCode ^ payRequest.hashCode ^ comment.hashCode ^ validateSuccessActionUrl.hashCode;
+      amountSats.hashCode ^
+      payRequest.hashCode ^
+      comment.hashCode ^
+      validateSuccessActionUrl.hashCode ^
+      conversionOptions.hashCode ^
+      feePolicy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1804,7 +1928,9 @@ class PrepareLnurlPayRequest {
           amountSats == other.amountSats &&
           payRequest == other.payRequest &&
           comment == other.comment &&
-          validateSuccessActionUrl == other.validateSuccessActionUrl;
+          validateSuccessActionUrl == other.validateSuccessActionUrl &&
+          conversionOptions == other.conversionOptions &&
+          feePolicy == other.feePolicy;
 }
 
 class PrepareLnurlPayResponse {
@@ -1814,6 +1940,8 @@ class PrepareLnurlPayResponse {
   final BigInt feeSats;
   final Bolt11InvoiceDetails invoiceDetails;
   final SuccessAction? successAction;
+  final ConversionEstimate? conversionEstimate;
+  final FeePolicy feePolicy;
 
   const PrepareLnurlPayResponse({
     required this.amountSats,
@@ -1822,6 +1950,8 @@ class PrepareLnurlPayResponse {
     required this.feeSats,
     required this.invoiceDetails,
     this.successAction,
+    this.conversionEstimate,
+    required this.feePolicy,
   });
 
   @override
@@ -1831,7 +1961,9 @@ class PrepareLnurlPayResponse {
       payRequest.hashCode ^
       feeSats.hashCode ^
       invoiceDetails.hashCode ^
-      successAction.hashCode;
+      successAction.hashCode ^
+      conversionEstimate.hashCode ^
+      feePolicy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1843,7 +1975,9 @@ class PrepareLnurlPayResponse {
           payRequest == other.payRequest &&
           feeSats == other.feeSats &&
           invoiceDetails == other.invoiceDetails &&
-          successAction == other.successAction;
+          successAction == other.successAction &&
+          conversionEstimate == other.conversionEstimate &&
+          feePolicy == other.feePolicy;
 }
 
 class PrepareSendPaymentRequest {
@@ -1851,17 +1985,23 @@ class PrepareSendPaymentRequest {
   final BigInt? amount;
   final String? tokenIdentifier;
   final ConversionOptions? conversionOptions;
+  final FeePolicy? feePolicy;
 
   const PrepareSendPaymentRequest({
     required this.paymentRequest,
     this.amount,
     this.tokenIdentifier,
     this.conversionOptions,
+    this.feePolicy,
   });
 
   @override
   int get hashCode =>
-      paymentRequest.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode ^ conversionOptions.hashCode;
+      paymentRequest.hashCode ^
+      amount.hashCode ^
+      tokenIdentifier.hashCode ^
+      conversionOptions.hashCode ^
+      feePolicy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1871,7 +2011,8 @@ class PrepareSendPaymentRequest {
           paymentRequest == other.paymentRequest &&
           amount == other.amount &&
           tokenIdentifier == other.tokenIdentifier &&
-          conversionOptions == other.conversionOptions;
+          conversionOptions == other.conversionOptions &&
+          feePolicy == other.feePolicy;
 }
 
 class PrepareSendPaymentResponse {
@@ -1879,17 +2020,23 @@ class PrepareSendPaymentResponse {
   final BigInt amount;
   final String? tokenIdentifier;
   final ConversionEstimate? conversionEstimate;
+  final FeePolicy feePolicy;
 
   const PrepareSendPaymentResponse({
     required this.paymentMethod,
     required this.amount,
     this.tokenIdentifier,
     this.conversionEstimate,
+    required this.feePolicy,
   });
 
   @override
   int get hashCode =>
-      paymentMethod.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode ^ conversionEstimate.hashCode;
+      paymentMethod.hashCode ^
+      amount.hashCode ^
+      tokenIdentifier.hashCode ^
+      conversionEstimate.hashCode ^
+      feePolicy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1899,7 +2046,8 @@ class PrepareSendPaymentResponse {
           paymentMethod == other.paymentMethod &&
           amount == other.amount &&
           tokenIdentifier == other.tokenIdentifier &&
-          conversionEstimate == other.conversionEstimate;
+          conversionEstimate == other.conversionEstimate &&
+          feePolicy == other.feePolicy;
 }
 
 class Rate {
@@ -2197,6 +2345,8 @@ class SendPaymentResponse {
       other is SendPaymentResponse && runtimeType == other.runtimeType && payment == other.payment;
 }
 
+enum ServiceStatus { operational, degraded, partial, unknown, major }
+
 class SignMessageRequest {
   final String message;
   final bool compact;
@@ -2392,6 +2542,24 @@ class SparkInvoicePaymentDetails {
           invoice == other.invoice;
 }
 
+class SparkStatus {
+  final ServiceStatus status;
+  final BigInt lastUpdated;
+
+  const SparkStatus({required this.status, required this.lastUpdated});
+
+  @override
+  int get hashCode => status.hashCode ^ lastUpdated.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkStatus &&
+          runtimeType == other.runtimeType &&
+          status == other.status &&
+          lastUpdated == other.lastUpdated;
+}
+
 @freezed
 sealed class SuccessAction with _$SuccessAction {
   const SuccessAction._();
@@ -2516,6 +2684,8 @@ class TokenMetadata {
           maxSupply == other.maxSupply &&
           isFreezable == other.isFreezable;
 }
+
+enum TokenTransactionType { transfer, mint, burn }
 
 class UnfreezeIssuerTokenRequest {
   final String address;

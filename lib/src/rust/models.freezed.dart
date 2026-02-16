@@ -3558,11 +3558,11 @@ return deposit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
+return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
@@ -3583,11 +3583,11 @@ return deposit(_that.txId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark():
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token():
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning():
+return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning():
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw():
 return withdraw(_that.txId);case PaymentDetails_Deposit():
 return deposit(_that.txId);}
@@ -3604,11 +3604,11 @@ return deposit(_that.txId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
-return token(_that.metadata,_that.txHash,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
+return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
@@ -3693,11 +3693,12 @@ as ConversionInfo?,
 
 
 class PaymentDetails_Token extends PaymentDetails {
-  const PaymentDetails_Token({required this.metadata, required this.txHash, this.invoiceDetails, this.conversionInfo}): super._();
+  const PaymentDetails_Token({required this.metadata, required this.txHash, required this.txType, this.invoiceDetails, this.conversionInfo}): super._();
   
 
  final  TokenMetadata metadata;
  final  String txHash;
+ final  TokenTransactionType txType;
  final  SparkInvoicePaymentDetails? invoiceDetails;
  final  ConversionInfo? conversionInfo;
 
@@ -3711,16 +3712,16 @@ $PaymentDetails_TokenCopyWith<PaymentDetails_Token> get copyWith => _$PaymentDet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Token&&(identical(other.metadata, metadata) || other.metadata == metadata)&&(identical(other.txHash, txHash) || other.txHash == txHash)&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.conversionInfo, conversionInfo) || other.conversionInfo == conversionInfo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Token&&(identical(other.metadata, metadata) || other.metadata == metadata)&&(identical(other.txHash, txHash) || other.txHash == txHash)&&(identical(other.txType, txType) || other.txType == txType)&&(identical(other.invoiceDetails, invoiceDetails) || other.invoiceDetails == invoiceDetails)&&(identical(other.conversionInfo, conversionInfo) || other.conversionInfo == conversionInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,metadata,txHash,invoiceDetails,conversionInfo);
+int get hashCode => Object.hash(runtimeType,metadata,txHash,txType,invoiceDetails,conversionInfo);
 
 @override
 String toString() {
-  return 'PaymentDetails.token(metadata: $metadata, txHash: $txHash, invoiceDetails: $invoiceDetails, conversionInfo: $conversionInfo)';
+  return 'PaymentDetails.token(metadata: $metadata, txHash: $txHash, txType: $txType, invoiceDetails: $invoiceDetails, conversionInfo: $conversionInfo)';
 }
 
 
@@ -3731,7 +3732,7 @@ abstract mixin class $PaymentDetails_TokenCopyWith<$Res> implements $PaymentDeta
   factory $PaymentDetails_TokenCopyWith(PaymentDetails_Token value, $Res Function(PaymentDetails_Token) _then) = _$PaymentDetails_TokenCopyWithImpl;
 @useResult
 $Res call({
- TokenMetadata metadata, String txHash, SparkInvoicePaymentDetails? invoiceDetails, ConversionInfo? conversionInfo
+ TokenMetadata metadata, String txHash, TokenTransactionType txType, SparkInvoicePaymentDetails? invoiceDetails, ConversionInfo? conversionInfo
 });
 
 
@@ -3748,11 +3749,12 @@ class _$PaymentDetails_TokenCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? metadata = null,Object? txHash = null,Object? invoiceDetails = freezed,Object? conversionInfo = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? metadata = null,Object? txHash = null,Object? txType = null,Object? invoiceDetails = freezed,Object? conversionInfo = freezed,}) {
   return _then(PaymentDetails_Token(
 metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as TokenMetadata,txHash: null == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
-as String,invoiceDetails: freezed == invoiceDetails ? _self.invoiceDetails : invoiceDetails // ignore: cast_nullable_to_non_nullable
+as String,txType: null == txType ? _self.txType : txType // ignore: cast_nullable_to_non_nullable
+as TokenTransactionType,invoiceDetails: freezed == invoiceDetails ? _self.invoiceDetails : invoiceDetails // ignore: cast_nullable_to_non_nullable
 as SparkInvoicePaymentDetails?,conversionInfo: freezed == conversionInfo ? _self.conversionInfo : conversionInfo // ignore: cast_nullable_to_non_nullable
 as ConversionInfo?,
   ));
@@ -4112,11 +4114,11 @@ return token(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult Function( bool? conversionRefundNeeded,  String? txHash)?  token,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token() when token != null:
-return token(_that.conversionRefundNeeded,_that.txHash);case _:
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case _:
   return orElse();
 
 }
@@ -4134,11 +4136,11 @@ return token(_that.conversionRefundNeeded,_that.txHash);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)  spark,required TResult Function( bool? conversionRefundNeeded,  String? txHash)  token,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)  spark,required TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)  token,}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark():
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token():
-return token(_that.conversionRefundNeeded,_that.txHash);}
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -4152,11 +4154,11 @@ return token(_that.conversionRefundNeeded,_that.txHash);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult? Function( bool? conversionRefundNeeded,  String? txHash)?  token,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult? Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token() when token != null:
-return token(_that.conversionRefundNeeded,_that.txHash);case _:
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case _:
   return null;
 
 }
@@ -4244,11 +4246,12 @@ as bool?,
 
 
 class PaymentDetailsFilter_Token extends PaymentDetailsFilter {
-  const PaymentDetailsFilter_Token({this.conversionRefundNeeded, this.txHash}): super._();
+  const PaymentDetailsFilter_Token({this.conversionRefundNeeded, this.txHash, this.txType}): super._();
   
 
 @override final  bool? conversionRefundNeeded;
  final  String? txHash;
+ final  TokenTransactionType? txType;
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
@@ -4260,16 +4263,16 @@ $PaymentDetailsFilter_TokenCopyWith<PaymentDetailsFilter_Token> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetailsFilter_Token&&(identical(other.conversionRefundNeeded, conversionRefundNeeded) || other.conversionRefundNeeded == conversionRefundNeeded)&&(identical(other.txHash, txHash) || other.txHash == txHash));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetailsFilter_Token&&(identical(other.conversionRefundNeeded, conversionRefundNeeded) || other.conversionRefundNeeded == conversionRefundNeeded)&&(identical(other.txHash, txHash) || other.txHash == txHash)&&(identical(other.txType, txType) || other.txType == txType));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,conversionRefundNeeded,txHash);
+int get hashCode => Object.hash(runtimeType,conversionRefundNeeded,txHash,txType);
 
 @override
 String toString() {
-  return 'PaymentDetailsFilter.token(conversionRefundNeeded: $conversionRefundNeeded, txHash: $txHash)';
+  return 'PaymentDetailsFilter.token(conversionRefundNeeded: $conversionRefundNeeded, txHash: $txHash, txType: $txType)';
 }
 
 
@@ -4280,7 +4283,7 @@ abstract mixin class $PaymentDetailsFilter_TokenCopyWith<$Res> implements $Payme
   factory $PaymentDetailsFilter_TokenCopyWith(PaymentDetailsFilter_Token value, $Res Function(PaymentDetailsFilter_Token) _then) = _$PaymentDetailsFilter_TokenCopyWithImpl;
 @override @useResult
 $Res call({
- bool? conversionRefundNeeded, String? txHash
+ bool? conversionRefundNeeded, String? txHash, TokenTransactionType? txType
 });
 
 
@@ -4297,11 +4300,12 @@ class _$PaymentDetailsFilter_TokenCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? conversionRefundNeeded = freezed,Object? txHash = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? conversionRefundNeeded = freezed,Object? txHash = freezed,Object? txType = freezed,}) {
   return _then(PaymentDetailsFilter_Token(
 conversionRefundNeeded: freezed == conversionRefundNeeded ? _self.conversionRefundNeeded : conversionRefundNeeded // ignore: cast_nullable_to_non_nullable
 as bool?,txHash: freezed == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,txType: freezed == txType ? _self.txType : txType // ignore: cast_nullable_to_non_nullable
+as TokenTransactionType?,
   ));
 }
 

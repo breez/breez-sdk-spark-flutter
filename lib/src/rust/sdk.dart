@@ -11,6 +11,8 @@ import 'logger.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<SparkStatus> getSparkStatus() => BreezSdkSparkLib.instance.api.crateSdkGetSparkStatus();
+
 Future<BreezSdk> connect({required ConnectRequest request}) =>
     BreezSdkSparkLib.instance.api.crateSdkConnect(request: request);
 
@@ -23,6 +25,8 @@ Stream<LogEntry> initLogging({String? logDir, String? logFilter}) =>
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>>
 abstract class BreezSdk implements RustOpaqueInterface {
   Stream<SdkEvent> addEventListener();
+
+  Future<BuyBitcoinResponse> buyBitcoin({required BuyBitcoinRequest request});
 
   Future<void> cancelLeafOptimization();
 

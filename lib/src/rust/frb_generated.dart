@@ -62,7 +62,7 @@ class BreezSdkSparkLib
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => 960669938;
+  int get rustContentHash => -2100815580;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'breez_sdk_spark_flutter',
@@ -73,6 +73,11 @@ class BreezSdkSparkLib
 
 abstract class BreezSdkSparkLibApi extends BaseApi {
   Stream<SdkEvent> crateSdkBreezSdkAddEventListener({required BreezSdk that});
+
+  Future<BuyBitcoinResponse> crateSdkBreezSdkBuyBitcoin({
+    required BreezSdk that,
+    required BuyBitcoinRequest request,
+  });
 
   Future<void> crateSdkBreezSdkCancelLeafOptimization({required BreezSdk that});
 
@@ -258,6 +263,8 @@ abstract class BreezSdkSparkLibApi extends BaseApi {
 
   Config crateSdkDefaultConfig({required Network network});
 
+  Future<SparkStatus> crateSdkGetSparkStatus();
+
   Stream<LogEntry> crateSdkInitLogging({String? logDir, String? logFilter});
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_BreezSdk;
@@ -316,6 +323,36 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       const TaskConstMeta(debugName: "BreezSdk_add_event_listener", argNames: ["that", "listener"]);
 
   @override
+  Future<BuyBitcoinResponse> crateSdkBreezSdkBuyBitcoin({
+    required BreezSdk that,
+    required BuyBitcoinRequest request,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+            that,
+            serializer,
+          );
+          sse_encode_box_autoadd_buy_bitcoin_request(request, serializer);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2, port: port_);
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_buy_bitcoin_response,
+          decodeErrorData: sse_decode_sdk_error,
+        ),
+        constMeta: kCrateSdkBreezSdkBuyBitcoinConstMeta,
+        argValues: [that, request],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateSdkBreezSdkBuyBitcoinConstMeta =>
+      const TaskConstMeta(debugName: "BreezSdk_buy_bitcoin", argNames: ["that", "request"]);
+
+  @override
   Future<void> crateSdkBreezSdkCancelLeafOptimization({required BreezSdk that}) {
     return handler.executeNormal(
       NormalTask(
@@ -325,7 +362,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkCancelLeafOptimizationConstMeta,
@@ -352,7 +389,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_check_lightning_address_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_bool, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkCheckLightningAddressAvailableConstMeta,
@@ -381,7 +418,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_check_message_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_check_message_response,
@@ -411,7 +448,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_claim_deposit_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_claim_deposit_response,
@@ -441,7 +478,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_claim_htlc_payment_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_claim_htlc_payment_response,
@@ -467,7 +504,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkDeleteLightningAddressConstMeta,
@@ -490,7 +527,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 9, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkDisconnectConstMeta,
@@ -517,7 +554,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_fetch_conversion_limits_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 9, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_fetch_conversion_limits_response,
@@ -544,7 +581,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_get_info_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_get_info_response,
@@ -570,7 +607,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 12)!;
         },
         codec: SseCodec(decodeSuccessData: sse_decode_optimization_progress, decodeErrorData: null),
         constMeta: kCrateSdkBreezSdkGetLeafOptimizationProgressConstMeta,
@@ -593,7 +630,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 12, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 13, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_opt_box_autoadd_lightning_address_info,
@@ -623,7 +660,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_get_payment_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 13, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 14, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_get_payment_response,
@@ -649,7 +686,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 14)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 15)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -680,7 +717,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_get_tokens_metadata_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 15, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_get_tokens_metadata_response,
@@ -706,7 +743,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 17, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_user_settings, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkGetUserSettingsConstMeta,
@@ -729,7 +766,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 17, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 18, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_list_fiat_currencies_response,
@@ -755,7 +792,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 18, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 19, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_list_fiat_rates_response,
@@ -785,7 +822,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_list_payments_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 19, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 20, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_list_payments_response,
@@ -815,7 +852,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_list_unclaimed_deposits_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 20, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 21, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_list_unclaimed_deposits_response,
@@ -845,7 +882,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_lnurl_auth_request_details(requestData, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 21, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 22, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_lnurl_callback_status,
@@ -875,7 +912,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_lnurl_pay_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 22, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 23, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_lnurl_pay_response,
@@ -905,7 +942,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_lnurl_withdraw_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 23, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 24, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_lnurl_withdraw_response,
@@ -932,7 +969,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_String(input, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 24, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 25, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_input_type, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkParseConstMeta,
@@ -959,7 +996,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_prepare_lnurl_pay_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 25, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 26, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_prepare_lnurl_pay_response,
@@ -989,7 +1026,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_prepare_send_payment_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 26, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 27, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_prepare_send_payment_response,
@@ -1019,7 +1056,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_receive_payment_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 27, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 28, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_receive_payment_response,
@@ -1045,7 +1082,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 28, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 29, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_recommended_fees,
@@ -1075,7 +1112,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_refund_deposit_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 29, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 30, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_refund_deposit_response,
@@ -1105,7 +1142,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_register_lightning_address_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 30, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 31, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_lightning_address_info,
@@ -1132,7 +1169,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_String(id, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 31, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 32, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_bool, decodeErrorData: null),
         constMeta: kCrateSdkBreezSdkRemoveEventListenerConstMeta,
@@ -1159,7 +1196,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_send_payment_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 32, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 33, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_send_payment_response,
@@ -1189,7 +1226,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_sign_message_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 33, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 34, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_sign_message_response,
@@ -1215,7 +1252,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 34)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 35)!;
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: null),
         constMeta: kCrateSdkBreezSdkStartLeafOptimizationConstMeta,
@@ -1242,7 +1279,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_sync_wallet_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 35, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 36, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_sync_wallet_response,
@@ -1272,7 +1309,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_update_user_settings_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 36, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 37, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkBreezSdkUpdateUserSettingsConstMeta,
@@ -1295,7 +1332,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 37, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 38, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1320,7 +1357,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_box_autoadd_config(config, serializer);
           sse_encode_box_autoadd_seed(seed, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 38)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 39)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1351,7 +1388,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_String(storageDir, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 39)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 40)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1379,7 +1416,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_key_set_config(config, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 40)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 41)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1414,7 +1451,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           sse_encode_String(url, serializer);
           sse_encode_chain_api_type(apiType, serializer);
           sse_encode_opt_box_autoadd_credentials(credentials, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 41)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 42)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1447,7 +1484,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_burn_issuer_token_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 42, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 43, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_payment, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateIssuerTokenIssuerBurnIssuerTokenConstMeta,
@@ -1474,7 +1511,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_create_issuer_token_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 43, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 44, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_token_metadata, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateIssuerTokenIssuerCreateIssuerTokenConstMeta,
@@ -1501,7 +1538,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_freeze_issuer_token_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 44, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 45, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_freeze_issuer_token_response,
@@ -1527,7 +1564,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 45, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 46, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_token_balance, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateIssuerTokenIssuerGetIssuerTokenBalanceConstMeta,
@@ -1550,7 +1587,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 46, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 47, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_token_metadata, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateIssuerTokenIssuerGetIssuerTokenMetadataConstMeta,
@@ -1577,7 +1614,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_mint_issuer_token_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 47, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 48, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_payment, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateIssuerTokenIssuerMintIssuerTokenConstMeta,
@@ -1604,7 +1641,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             serializer,
           );
           sse_encode_box_autoadd_unfreeze_issuer_token_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 48, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 49, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_unfreeze_issuer_token_response,
@@ -1627,7 +1664,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         callFfi: (port_) {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_box_autoadd_connect_request(request, serializer);
-          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 49, port: port_);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 50, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -1651,7 +1688,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_network(network, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 50)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 51)!;
         },
         codec: SseCodec(decodeSuccessData: sse_decode_config, decodeErrorData: null),
         constMeta: kCrateSdkDefaultConfigConstMeta,
@@ -1665,6 +1702,25 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       const TaskConstMeta(debugName: "default_config", argNames: ["network"]);
 
   @override
+  Future<SparkStatus> crateSdkGetSparkStatus() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 52, port: port_);
+        },
+        codec: SseCodec(decodeSuccessData: sse_decode_spark_status, decodeErrorData: sse_decode_sdk_error),
+        constMeta: kCrateSdkGetSparkStatusConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateSdkGetSparkStatusConstMeta =>
+      const TaskConstMeta(debugName: "get_spark_status", argNames: []);
+
+  @override
   Stream<LogEntry> crateSdkInitLogging({String? logDir, String? logFilter}) {
     final appLogger = RustStreamSink<LogEntry>();
     handler.executeSync(
@@ -1674,7 +1730,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           sse_encode_opt_String(logDir, serializer);
           sse_encode_StreamSink_log_entry_Sse(appLogger, serializer);
           sse_encode_opt_String(logFilter, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 51)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 53)!;
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_sdk_error),
         constMeta: kCrateSdkInitLoggingConstMeta,
@@ -2125,6 +2181,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  BuyBitcoinRequest dco_decode_box_autoadd_buy_bitcoin_request(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_buy_bitcoin_request(raw);
+  }
+
+  @protected
   CheckLightningAddressRequest dco_decode_box_autoadd_check_lightning_address_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_check_lightning_address_request(raw);
@@ -2158,6 +2220,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   ConnectRequest dco_decode_box_autoadd_connect_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_connect_request(raw);
+  }
+
+  @protected
+  ConversionDetails dco_decode_box_autoadd_conversion_details(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_conversion_details(raw);
   }
 
   @protected
@@ -2206,6 +2274,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Fee dco_decode_box_autoadd_fee(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_fee(raw);
+  }
+
+  @protected
+  FeePolicy dco_decode_box_autoadd_fee_policy(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_fee_policy(raw);
   }
 
   @protected
@@ -2485,6 +2559,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  TokenTransactionType dco_decode_box_autoadd_token_transaction_type(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_token_transaction_type(raw);
+  }
+
+  @protected
   int dco_decode_box_autoadd_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
@@ -2520,6 +2600,25 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BurnIssuerTokenRequest(amount: dco_decode_U128(arr[0]));
+  }
+
+  @protected
+  BuyBitcoinRequest dco_decode_buy_bitcoin_request(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BuyBitcoinRequest(
+      lockedAmountSat: dco_decode_opt_box_autoadd_u_64(arr[0]),
+      redirectUrl: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  BuyBitcoinResponse dco_decode_buy_bitcoin_response(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BuyBitcoinResponse(url: dco_decode_String(arr[0]));
   }
 
   @protected
@@ -2625,6 +2724,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ConversionDetails dco_decode_conversion_details(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ConversionDetails(
+      from: dco_decode_conversion_step(arr[0]),
+      to: dco_decode_conversion_step(arr[1]),
+    );
+  }
+
+  @protected
   ConversionEstimate dco_decode_conversion_estimate(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -2679,6 +2789,20 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   ConversionStatus dco_decode_conversion_status(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return ConversionStatus.values[raw as int];
+  }
+
+  @protected
+  ConversionStep dco_decode_conversion_step(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 5) throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    return ConversionStep(
+      paymentId: dco_decode_String(arr[0]),
+      amount: dco_decode_U128(arr[1]),
+      fee: dco_decode_U128(arr[2]),
+      method: dco_decode_payment_method(arr[3]),
+      tokenMetadata: dco_decode_opt_box_autoadd_token_metadata(arr[4]),
+    );
   }
 
   @protected
@@ -2800,6 +2924,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  FeePolicy dco_decode_fee_policy(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return FeePolicy.values[raw as int];
+  }
+
+  @protected
   FetchConversionLimitsRequest dco_decode_fetch_conversion_limits_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -2860,10 +2990,11 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   GetInfoResponse dco_decode_get_info_response(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return GetInfoResponse(
-      balanceSats: dco_decode_u_64(arr[0]),
-      tokenBalances: dco_decode_Map_String_token_balance_None(arr[1]),
+      identityPubkey: dco_decode_String(arr[0]),
+      balanceSats: dco_decode_u_64(arr[1]),
+      tokenBalances: dco_decode_Map_String_token_balance_None(arr[2]),
     );
   }
 
@@ -2979,7 +3110,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     return LightningAddressInfo(
       description: dco_decode_String(arr[0]),
       lightningAddress: dco_decode_String(arr[1]),
-      lnurl: dco_decode_String(arr[2]),
+      lnurl: dco_decode_lnurl_info(arr[2]),
       username: dco_decode_String(arr[3]),
     );
   }
@@ -3199,6 +3330,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  LnurlInfo dco_decode_lnurl_info(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LnurlInfo(url: dco_decode_String(arr[0]), bech32: dco_decode_String(arr[1]));
+  }
+
+  @protected
   LnurlPayInfo dco_decode_lnurl_pay_info(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -3413,6 +3552,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ConversionDetails? dco_decode_opt_box_autoadd_conversion_details(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_conversion_details(raw);
+  }
+
+  @protected
   ConversionEstimate? dco_decode_opt_box_autoadd_conversion_estimate(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_conversion_estimate(raw);
@@ -3452,6 +3597,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Fee? dco_decode_opt_box_autoadd_fee(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_fee(raw);
+  }
+
+  @protected
+  FeePolicy? dco_decode_opt_box_autoadd_fee_policy(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_fee_policy(raw);
   }
 
   @protected
@@ -3536,6 +3687,18 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_symbol(raw);
+  }
+
+  @protected
+  TokenMetadata? dco_decode_opt_box_autoadd_token_metadata(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_token_metadata(raw);
+  }
+
+  @protected
+  TokenTransactionType? dco_decode_opt_box_autoadd_token_transaction_type(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_token_transaction_type(raw);
   }
 
   @protected
@@ -3628,7 +3791,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Payment dco_decode_payment(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 8) throw Exception('unexpected arr length: expect 8 but see ${arr.length}');
+    if (arr.length != 9) throw Exception('unexpected arr length: expect 9 but see ${arr.length}');
     return Payment(
       id: dco_decode_String(arr[0]),
       paymentType: dco_decode_payment_type(arr[1]),
@@ -3638,6 +3801,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       timestamp: dco_decode_u_64(arr[5]),
       method: dco_decode_payment_method(arr[6]),
       details: dco_decode_opt_box_autoadd_payment_details(arr[7]),
+      conversionDetails: dco_decode_opt_box_autoadd_conversion_details(arr[8]),
     );
   }
 
@@ -3655,8 +3819,9 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return PaymentDetails_Token(
           metadata: dco_decode_box_autoadd_token_metadata(raw[1]),
           txHash: dco_decode_String(raw[2]),
-          invoiceDetails: dco_decode_opt_box_autoadd_spark_invoice_payment_details(raw[3]),
-          conversionInfo: dco_decode_opt_box_autoadd_conversion_info(raw[4]),
+          txType: dco_decode_token_transaction_type(raw[3]),
+          invoiceDetails: dco_decode_opt_box_autoadd_spark_invoice_payment_details(raw[4]),
+          conversionInfo: dco_decode_opt_box_autoadd_conversion_info(raw[5]),
         );
       case 2:
         return PaymentDetails_Lightning(
@@ -3691,6 +3856,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return PaymentDetailsFilter_Token(
           conversionRefundNeeded: dco_decode_opt_box_autoadd_bool(raw[1]),
           txHash: dco_decode_opt_String(raw[2]),
+          txType: dco_decode_opt_box_autoadd_token_transaction_type(raw[3]),
         );
       default:
         throw Exception("unreachable");
@@ -3730,12 +3896,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   PrepareLnurlPayRequest dco_decode_prepare_lnurl_pay_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return PrepareLnurlPayRequest(
       amountSats: dco_decode_u_64(arr[0]),
       payRequest: dco_decode_lnurl_pay_request_details(arr[1]),
       comment: dco_decode_opt_String(arr[2]),
       validateSuccessActionUrl: dco_decode_opt_box_autoadd_bool(arr[3]),
+      conversionOptions: dco_decode_opt_box_autoadd_conversion_options(arr[4]),
+      feePolicy: dco_decode_opt_box_autoadd_fee_policy(arr[5]),
     );
   }
 
@@ -3743,7 +3911,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   PrepareLnurlPayResponse dco_decode_prepare_lnurl_pay_response(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 6) throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
+    if (arr.length != 8) throw Exception('unexpected arr length: expect 8 but see ${arr.length}');
     return PrepareLnurlPayResponse(
       amountSats: dco_decode_u_64(arr[0]),
       comment: dco_decode_opt_String(arr[1]),
@@ -3751,6 +3919,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       feeSats: dco_decode_u_64(arr[3]),
       invoiceDetails: dco_decode_bolt_11_invoice_details(arr[4]),
       successAction: dco_decode_opt_box_autoadd_success_action(arr[5]),
+      conversionEstimate: dco_decode_opt_box_autoadd_conversion_estimate(arr[6]),
+      feePolicy: dco_decode_fee_policy(arr[7]),
     );
   }
 
@@ -3758,12 +3928,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   PrepareSendPaymentRequest dco_decode_prepare_send_payment_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5) throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return PrepareSendPaymentRequest(
       paymentRequest: dco_decode_String(arr[0]),
       amount: dco_decode_opt_U128(arr[1]),
       tokenIdentifier: dco_decode_opt_String(arr[2]),
       conversionOptions: dco_decode_opt_box_autoadd_conversion_options(arr[3]),
+      feePolicy: dco_decode_opt_box_autoadd_fee_policy(arr[4]),
     );
   }
 
@@ -3771,12 +3942,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   PrepareSendPaymentResponse dco_decode_prepare_send_payment_response(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5) throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return PrepareSendPaymentResponse(
       paymentMethod: dco_decode_send_payment_method(arr[0]),
       amount: dco_decode_U128(arr[1]),
       tokenIdentifier: dco_decode_opt_String(arr[2]),
       conversionEstimate: dco_decode_opt_box_autoadd_conversion_estimate(arr[3]),
+      feePolicy: dco_decode_fee_policy(arr[4]),
     );
   }
 
@@ -4062,6 +4234,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ServiceStatus dco_decode_service_status(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ServiceStatus.values[raw as int];
+  }
+
+  @protected
   SignMessageRequest dco_decode_sign_message_request(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -4161,6 +4339,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SparkStatus dco_decode_spark_status(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return SparkStatus(status: dco_decode_service_status(arr[0]), lastUpdated: dco_decode_u_64(arr[1]));
+  }
+
+  @protected
   SuccessAction dco_decode_success_action(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     switch (raw[0]) {
@@ -4245,6 +4431,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       maxSupply: dco_decode_U128(arr[5]),
       isFreezable: dco_decode_bool(arr[6]),
     );
+  }
+
+  @protected
+  TokenTransactionType dco_decode_token_transaction_type(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return TokenTransactionType.values[raw as int];
   }
 
   @protected
@@ -4782,6 +4974,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  BuyBitcoinRequest sse_decode_box_autoadd_buy_bitcoin_request(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_buy_bitcoin_request(deserializer));
+  }
+
+  @protected
   CheckLightningAddressRequest sse_decode_box_autoadd_check_lightning_address_request(
     SseDeserializer deserializer,
   ) {
@@ -4817,6 +5015,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   ConnectRequest sse_decode_box_autoadd_connect_request(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_connect_request(deserializer));
+  }
+
+  @protected
+  ConversionDetails sse_decode_box_autoadd_conversion_details(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_conversion_details(deserializer));
   }
 
   @protected
@@ -4865,6 +5069,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Fee sse_decode_box_autoadd_fee(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_fee(deserializer));
+  }
+
+  @protected
+  FeePolicy sse_decode_box_autoadd_fee_policy(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_fee_policy(deserializer));
   }
 
   @protected
@@ -5158,6 +5368,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  TokenTransactionType sse_decode_box_autoadd_token_transaction_type(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_token_transaction_type(deserializer));
+  }
+
+  @protected
   int sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_u_32(deserializer));
@@ -5196,6 +5412,21 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_amount = sse_decode_U128(deserializer);
     return BurnIssuerTokenRequest(amount: var_amount);
+  }
+
+  @protected
+  BuyBitcoinRequest sse_decode_buy_bitcoin_request(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_lockedAmountSat = sse_decode_opt_box_autoadd_u_64(deserializer);
+    var var_redirectUrl = sse_decode_opt_String(deserializer);
+    return BuyBitcoinRequest(lockedAmountSat: var_lockedAmountSat, redirectUrl: var_redirectUrl);
+  }
+
+  @protected
+  BuyBitcoinResponse sse_decode_buy_bitcoin_response(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_url = sse_decode_String(deserializer);
+    return BuyBitcoinResponse(url: var_url);
   }
 
   @protected
@@ -5297,6 +5528,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ConversionDetails sse_decode_conversion_details(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_from = sse_decode_conversion_step(deserializer);
+    var var_to = sse_decode_conversion_step(deserializer);
+    return ConversionDetails(from: var_from, to: var_to);
+  }
+
+  @protected
   ConversionEstimate sse_decode_conversion_estimate(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_options = sse_decode_conversion_options(deserializer);
@@ -5356,6 +5595,23 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_32(deserializer);
     return ConversionStatus.values[inner];
+  }
+
+  @protected
+  ConversionStep sse_decode_conversion_step(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_paymentId = sse_decode_String(deserializer);
+    var var_amount = sse_decode_U128(deserializer);
+    var var_fee = sse_decode_U128(deserializer);
+    var var_method = sse_decode_payment_method(deserializer);
+    var var_tokenMetadata = sse_decode_opt_box_autoadd_token_metadata(deserializer);
+    return ConversionStep(
+      paymentId: var_paymentId,
+      amount: var_amount,
+      fee: var_fee,
+      method: var_method,
+      tokenMetadata: var_tokenMetadata,
+    );
   }
 
   @protected
@@ -5507,6 +5763,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  FeePolicy sse_decode_fee_policy(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return FeePolicy.values[inner];
+  }
+
+  @protected
   FetchConversionLimitsRequest sse_decode_fetch_conversion_limits_request(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_conversionType = sse_decode_conversion_type(deserializer);
@@ -5561,9 +5824,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   @protected
   GetInfoResponse sse_decode_get_info_response(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_identityPubkey = sse_decode_String(deserializer);
     var var_balanceSats = sse_decode_u_64(deserializer);
     var var_tokenBalances = sse_decode_Map_String_token_balance_None(deserializer);
-    return GetInfoResponse(balanceSats: var_balanceSats, tokenBalances: var_tokenBalances);
+    return GetInfoResponse(
+      identityPubkey: var_identityPubkey,
+      balanceSats: var_balanceSats,
+      tokenBalances: var_tokenBalances,
+    );
   }
 
   @protected
@@ -5686,7 +5954,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_description = sse_decode_String(deserializer);
     var var_lightningAddress = sse_decode_String(deserializer);
-    var var_lnurl = sse_decode_String(deserializer);
+    var var_lnurl = sse_decode_lnurl_info(deserializer);
     var var_username = sse_decode_String(deserializer);
     return LightningAddressInfo(
       description: var_description,
@@ -6024,6 +6292,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  LnurlInfo sse_decode_lnurl_info(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_url = sse_decode_String(deserializer);
+    var var_bech32 = sse_decode_String(deserializer);
+    return LnurlInfo(url: var_url, bech32: var_bech32);
+  }
+
+  @protected
   LnurlPayInfo sse_decode_lnurl_pay_info(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_lnAddress = sse_decode_opt_String(deserializer);
@@ -6272,6 +6548,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ConversionDetails? sse_decode_opt_box_autoadd_conversion_details(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_conversion_details(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   ConversionEstimate? sse_decode_opt_box_autoadd_conversion_estimate(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -6343,6 +6630,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_fee(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  FeePolicy? sse_decode_opt_box_autoadd_fee_policy(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_fee_policy(deserializer));
     } else {
       return null;
     }
@@ -6505,6 +6803,28 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  TokenMetadata? sse_decode_opt_box_autoadd_token_metadata(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_token_metadata(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  TokenTransactionType? sse_decode_opt_box_autoadd_token_transaction_type(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_token_transaction_type(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   int? sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -6640,6 +6960,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_timestamp = sse_decode_u_64(deserializer);
     var var_method = sse_decode_payment_method(deserializer);
     var var_details = sse_decode_opt_box_autoadd_payment_details(deserializer);
+    var var_conversionDetails = sse_decode_opt_box_autoadd_conversion_details(deserializer);
     return Payment(
       id: var_id,
       paymentType: var_paymentType,
@@ -6649,6 +6970,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       timestamp: var_timestamp,
       method: var_method,
       details: var_details,
+      conversionDetails: var_conversionDetails,
     );
   }
 
@@ -6670,11 +6992,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 1:
         var var_metadata = sse_decode_box_autoadd_token_metadata(deserializer);
         var var_txHash = sse_decode_String(deserializer);
+        var var_txType = sse_decode_token_transaction_type(deserializer);
         var var_invoiceDetails = sse_decode_opt_box_autoadd_spark_invoice_payment_details(deserializer);
         var var_conversionInfo = sse_decode_opt_box_autoadd_conversion_info(deserializer);
         return PaymentDetails_Token(
           metadata: var_metadata,
           txHash: var_txHash,
+          txType: var_txType,
           invoiceDetails: var_invoiceDetails,
           conversionInfo: var_conversionInfo,
         );
@@ -6724,9 +7048,11 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 1:
         var var_conversionRefundNeeded = sse_decode_opt_box_autoadd_bool(deserializer);
         var var_txHash = sse_decode_opt_String(deserializer);
+        var var_txType = sse_decode_opt_box_autoadd_token_transaction_type(deserializer);
         return PaymentDetailsFilter_Token(
           conversionRefundNeeded: var_conversionRefundNeeded,
           txHash: var_txHash,
+          txType: var_txType,
         );
       default:
         throw UnimplementedError('');
@@ -6769,11 +7095,15 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_payRequest = sse_decode_lnurl_pay_request_details(deserializer);
     var var_comment = sse_decode_opt_String(deserializer);
     var var_validateSuccessActionUrl = sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_conversionOptions = sse_decode_opt_box_autoadd_conversion_options(deserializer);
+    var var_feePolicy = sse_decode_opt_box_autoadd_fee_policy(deserializer);
     return PrepareLnurlPayRequest(
       amountSats: var_amountSats,
       payRequest: var_payRequest,
       comment: var_comment,
       validateSuccessActionUrl: var_validateSuccessActionUrl,
+      conversionOptions: var_conversionOptions,
+      feePolicy: var_feePolicy,
     );
   }
 
@@ -6786,6 +7116,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_feeSats = sse_decode_u_64(deserializer);
     var var_invoiceDetails = sse_decode_bolt_11_invoice_details(deserializer);
     var var_successAction = sse_decode_opt_box_autoadd_success_action(deserializer);
+    var var_conversionEstimate = sse_decode_opt_box_autoadd_conversion_estimate(deserializer);
+    var var_feePolicy = sse_decode_fee_policy(deserializer);
     return PrepareLnurlPayResponse(
       amountSats: var_amountSats,
       comment: var_comment,
@@ -6793,6 +7125,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       feeSats: var_feeSats,
       invoiceDetails: var_invoiceDetails,
       successAction: var_successAction,
+      conversionEstimate: var_conversionEstimate,
+      feePolicy: var_feePolicy,
     );
   }
 
@@ -6803,11 +7137,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_amount = sse_decode_opt_U128(deserializer);
     var var_tokenIdentifier = sse_decode_opt_String(deserializer);
     var var_conversionOptions = sse_decode_opt_box_autoadd_conversion_options(deserializer);
+    var var_feePolicy = sse_decode_opt_box_autoadd_fee_policy(deserializer);
     return PrepareSendPaymentRequest(
       paymentRequest: var_paymentRequest,
       amount: var_amount,
       tokenIdentifier: var_tokenIdentifier,
       conversionOptions: var_conversionOptions,
+      feePolicy: var_feePolicy,
     );
   }
 
@@ -6818,11 +7154,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_amount = sse_decode_U128(deserializer);
     var var_tokenIdentifier = sse_decode_opt_String(deserializer);
     var var_conversionEstimate = sse_decode_opt_box_autoadd_conversion_estimate(deserializer);
+    var var_feePolicy = sse_decode_fee_policy(deserializer);
     return PrepareSendPaymentResponse(
       paymentMethod: var_paymentMethod,
       amount: var_amount,
       tokenIdentifier: var_tokenIdentifier,
       conversionEstimate: var_conversionEstimate,
+      feePolicy: var_feePolicy,
     );
   }
 
@@ -7162,6 +7500,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  ServiceStatus sse_decode_service_status(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return ServiceStatus.values[inner];
+  }
+
+  @protected
   SignMessageRequest sse_decode_sign_message_request(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_message = sse_decode_String(deserializer);
@@ -7263,6 +7608,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SparkStatus sse_decode_spark_status(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_status = sse_decode_service_status(deserializer);
+    var var_lastUpdated = sse_decode_u_64(deserializer);
+    return SparkStatus(status: var_status, lastUpdated: var_lastUpdated);
+  }
+
+  @protected
   SuccessAction sse_decode_success_action(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -7351,6 +7704,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       maxSupply: var_maxSupply,
       isFreezable: var_isFreezable,
     );
+  }
+
+  @protected
+  TokenTransactionType sse_decode_token_transaction_type(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return TokenTransactionType.values[inner];
   }
 
   @protected
@@ -7840,6 +8200,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_box_autoadd_buy_bitcoin_request(BuyBitcoinRequest self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_buy_bitcoin_request(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_check_lightning_address_request(
     CheckLightningAddressRequest self,
     SseSerializer serializer,
@@ -7879,6 +8245,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   void sse_encode_box_autoadd_connect_request(ConnectRequest self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_connect_request(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_conversion_details(ConversionDetails self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_conversion_details(self, serializer);
   }
 
   @protected
@@ -7930,6 +8302,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   void sse_encode_box_autoadd_fee(Fee self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_fee(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_fee_policy(FeePolicy self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_fee_policy(self, serializer);
   }
 
   @protected
@@ -8257,6 +8635,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_box_autoadd_token_transaction_type(TokenTransactionType self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_token_transaction_type(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_32(self, serializer);
@@ -8296,6 +8680,19 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   void sse_encode_burn_issuer_token_request(BurnIssuerTokenRequest self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_U128(self.amount, serializer);
+  }
+
+  @protected
+  void sse_encode_buy_bitcoin_request(BuyBitcoinRequest self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_opt_box_autoadd_u_64(self.lockedAmountSat, serializer);
+    sse_encode_opt_String(self.redirectUrl, serializer);
+  }
+
+  @protected
+  void sse_encode_buy_bitcoin_response(BuyBitcoinResponse self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.url, serializer);
   }
 
   @protected
@@ -8378,6 +8775,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_conversion_details(ConversionDetails self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_conversion_step(self.from, serializer);
+    sse_encode_conversion_step(self.to, serializer);
+  }
+
+  @protected
   void sse_encode_conversion_estimate(ConversionEstimate self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_conversion_options(self.options, serializer);
@@ -8419,6 +8823,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   void sse_encode_conversion_status(ConversionStatus self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_conversion_step(ConversionStep self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.paymentId, serializer);
+    sse_encode_U128(self.amount, serializer);
+    sse_encode_U128(self.fee, serializer);
+    sse_encode_payment_method(self.method, serializer);
+    sse_encode_opt_box_autoadd_token_metadata(self.tokenMetadata, serializer);
   }
 
   @protected
@@ -8528,6 +8942,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_fee_policy(FeePolicy self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
   void sse_encode_fetch_conversion_limits_request(
     FetchConversionLimitsRequest self,
     SseSerializer serializer,
@@ -8576,6 +8996,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   @protected
   void sse_encode_get_info_response(GetInfoResponse self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.identityPubkey, serializer);
     sse_encode_u_64(self.balanceSats, serializer);
     sse_encode_Map_String_token_balance_None(self.tokenBalances, serializer);
   }
@@ -8685,7 +9106,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.description, serializer);
     sse_encode_String(self.lightningAddress, serializer);
-    sse_encode_String(self.lnurl, serializer);
+    sse_encode_lnurl_info(self.lnurl, serializer);
     sse_encode_String(self.username, serializer);
   }
 
@@ -8950,6 +9371,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_lnurl_info(LnurlInfo self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.url, serializer);
+    sse_encode_String(self.bech32, serializer);
+  }
+
+  @protected
   void sse_encode_lnurl_pay_info(LnurlPayInfo self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_String(self.lnAddress, serializer);
@@ -9141,6 +9569,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_conversion_details(ConversionDetails? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_conversion_details(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_conversion_estimate(ConversionEstimate? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -9207,6 +9645,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_fee(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_fee_policy(FeePolicy? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_fee_policy(self, serializer);
     }
   }
 
@@ -9363,6 +9811,29 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_token_metadata(TokenMetadata? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_token_metadata(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_token_transaction_type(
+    TokenTransactionType? self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_token_transaction_type(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -9484,6 +9955,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_u_64(self.timestamp, serializer);
     sse_encode_payment_method(self.method, serializer);
     sse_encode_opt_box_autoadd_payment_details(self.details, serializer);
+    sse_encode_opt_box_autoadd_conversion_details(self.conversionDetails, serializer);
   }
 
   @protected
@@ -9502,12 +9974,14 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case PaymentDetails_Token(
         metadata: final metadata,
         txHash: final txHash,
+        txType: final txType,
         invoiceDetails: final invoiceDetails,
         conversionInfo: final conversionInfo,
       ):
         sse_encode_i_32(1, serializer);
         sse_encode_box_autoadd_token_metadata(metadata, serializer);
         sse_encode_String(txHash, serializer);
+        sse_encode_token_transaction_type(txType, serializer);
         sse_encode_opt_box_autoadd_spark_invoice_payment_details(invoiceDetails, serializer);
         sse_encode_opt_box_autoadd_conversion_info(conversionInfo, serializer);
       case PaymentDetails_Lightning(
@@ -9552,10 +10026,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case PaymentDetailsFilter_Token(
         conversionRefundNeeded: final conversionRefundNeeded,
         txHash: final txHash,
+        txType: final txType,
       ):
         sse_encode_i_32(1, serializer);
         sse_encode_opt_box_autoadd_bool(conversionRefundNeeded, serializer);
         sse_encode_opt_String(txHash, serializer);
+        sse_encode_opt_box_autoadd_token_transaction_type(txType, serializer);
     }
   }
 
@@ -9591,6 +10067,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_lnurl_pay_request_details(self.payRequest, serializer);
     sse_encode_opt_String(self.comment, serializer);
     sse_encode_opt_box_autoadd_bool(self.validateSuccessActionUrl, serializer);
+    sse_encode_opt_box_autoadd_conversion_options(self.conversionOptions, serializer);
+    sse_encode_opt_box_autoadd_fee_policy(self.feePolicy, serializer);
   }
 
   @protected
@@ -9602,6 +10080,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_u_64(self.feeSats, serializer);
     sse_encode_bolt_11_invoice_details(self.invoiceDetails, serializer);
     sse_encode_opt_box_autoadd_success_action(self.successAction, serializer);
+    sse_encode_opt_box_autoadd_conversion_estimate(self.conversionEstimate, serializer);
+    sse_encode_fee_policy(self.feePolicy, serializer);
   }
 
   @protected
@@ -9611,6 +10091,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_opt_U128(self.amount, serializer);
     sse_encode_opt_String(self.tokenIdentifier, serializer);
     sse_encode_opt_box_autoadd_conversion_options(self.conversionOptions, serializer);
+    sse_encode_opt_box_autoadd_fee_policy(self.feePolicy, serializer);
   }
 
   @protected
@@ -9620,6 +10101,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_U128(self.amount, serializer);
     sse_encode_opt_String(self.tokenIdentifier, serializer);
     sse_encode_opt_box_autoadd_conversion_estimate(self.conversionEstimate, serializer);
+    sse_encode_fee_policy(self.feePolicy, serializer);
   }
 
   @protected
@@ -9902,6 +10384,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_service_status(ServiceStatus self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
   void sse_encode_sign_message_request(SignMessageRequest self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
@@ -9975,6 +10463,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_spark_status(SparkStatus self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_service_status(self.status, serializer);
+    sse_encode_u_64(self.lastUpdated, serializer);
+  }
+
+  @protected
   void sse_encode_success_action(SuccessAction self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
@@ -10042,6 +10537,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_u_32(self.decimals, serializer);
     sse_encode_U128(self.maxSupply, serializer);
     sse_encode_bool(self.isFreezable, serializer);
+  }
+
+  @protected
+  void sse_encode_token_transaction_type(TokenTransactionType self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
   }
 
   @protected
@@ -10130,6 +10631,9 @@ class BreezSdkImpl extends RustOpaque implements BreezSdk {
 
   Stream<SdkEvent> addEventListener() =>
       BreezSdkSparkLib.instance.api.crateSdkBreezSdkAddEventListener(that: this);
+
+  Future<BuyBitcoinResponse> buyBitcoin({required BuyBitcoinRequest request}) =>
+      BreezSdkSparkLib.instance.api.crateSdkBreezSdkBuyBitcoin(that: this, request: request);
 
   Future<void> cancelLeafOptimization() =>
       BreezSdkSparkLib.instance.api.crateSdkBreezSdkCancelLeafOptimization(that: this);

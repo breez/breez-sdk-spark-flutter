@@ -130,6 +130,7 @@ pub struct _GetInfoRequest {
 
 #[frb(mirror(GetInfoResponse))]
 pub struct _GetInfoResponse {
+    pub identity_pubkey: String,
     pub balance_sats: u64,
     pub token_balances: HashMap<String, TokenBalance>,
 }
@@ -188,6 +189,7 @@ pub enum _PaymentDetailsFilter {
     Token {
         conversion_refund_needed: Option<bool>,
         tx_hash: Option<String>,
+        tx_type: Option<TokenTransactionType>,
     },
 }
 
@@ -288,12 +290,22 @@ pub enum _OnchainConfirmationSpeed {
     Slow,
 }
 
+#[frb(mirror(FeePolicy))]
+pub enum _FeePolicy {
+    /// Fees are added on top of the specified amount (default behavior).
+    FeesExcluded,
+    /// Fees are deducted from the specified amount.
+    FeesIncluded,
+}
+
 #[frb(mirror(PrepareLnurlPayRequest))]
 pub struct _PrepareLnurlPayRequest {
     pub amount_sats: u64,
     pub pay_request: LnurlPayRequestDetails,
     pub comment: Option<String>,
     pub validate_success_action_url: Option<bool>,
+    pub conversion_options: Option<ConversionOptions>,
+    pub fee_policy: Option<FeePolicy>,
 }
 
 #[frb(mirror(PrepareLnurlPayResponse))]
@@ -304,6 +316,8 @@ pub struct _PrepareLnurlPayResponse {
     pub fee_sats: u64,
     pub invoice_details: Bolt11InvoiceDetails,
     pub success_action: Option<SuccessAction>,
+    pub conversion_estimate: Option<ConversionEstimate>,
+    pub fee_policy: FeePolicy,
 }
 
 #[frb(mirror(PrepareSendPaymentRequest))]
@@ -312,6 +326,7 @@ pub struct _PrepareSendPaymentRequest {
     pub amount: Option<u128>,
     pub token_identifier: Option<String>,
     pub conversion_options: Option<ConversionOptions>,
+    pub fee_policy: Option<FeePolicy>,
 }
 
 #[frb(mirror(PrepareSendPaymentResponse))]
@@ -320,6 +335,7 @@ pub struct _PrepareSendPaymentResponse {
     pub amount: u128,
     pub token_identifier: Option<String>,
     pub conversion_estimate: Option<ConversionEstimate>,
+    pub fee_policy: FeePolicy,
 }
 
 #[frb(mirror(ReceivePaymentMethod))]
@@ -514,6 +530,22 @@ pub struct _Payment {
     pub timestamp: u64,
     pub method: PaymentMethod,
     pub details: Option<PaymentDetails>,
+    pub conversion_details: Option<ConversionDetails>,
+}
+
+#[frb(mirror(ConversionDetails))]
+pub struct _ConversionDetails {
+    pub from: ConversionStep,
+    pub to: ConversionStep,
+}
+
+#[frb(mirror(ConversionStep))]
+pub struct _ConversionStep {
+    pub payment_id: String,
+    pub amount: u128,
+    pub fee: u128,
+    pub method: PaymentMethod,
+    pub token_metadata: Option<TokenMetadata>,
 }
 
 #[frb(mirror(PaymentDetails))]
@@ -526,6 +558,7 @@ pub enum _PaymentDetails {
     Token {
         metadata: TokenMetadata,
         tx_hash: String,
+        tx_type: TokenTransactionType,
         invoice_details: Option<SparkInvoicePaymentDetails>,
         conversion_info: Option<ConversionInfo>,
     },
@@ -545,6 +578,13 @@ pub enum _PaymentDetails {
     Deposit {
         tx_id: String,
     },
+}
+
+#[frb(mirror(TokenTransactionType))]
+pub enum _TokenTransactionType {
+    Transfer,
+    Mint,
+    Burn,
 }
 
 #[frb(mirror(SparkInvoicePaymentDetails))]
@@ -803,11 +843,17 @@ pub struct _RegisterLightningAddressRequest {
     pub description: Option<String>,
 }
 
+#[frb(mirror(LnurlInfo))]
+pub struct _LnurlInfo {
+    pub url: String,
+    pub bech32: String,
+}
+
 #[frb(mirror(LightningAddressInfo))]
 pub struct _LightningAddressInfo {
     pub description: String,
     pub lightning_address: String,
-    pub lnurl: String,
+    pub lnurl: LnurlInfo,
     pub username: String,
 }
 
@@ -1063,4 +1109,30 @@ pub struct _FetchConversionLimitsRequest {
 pub struct _FetchConversionLimitsResponse {
     pub min_from_amount: Option<u128>,
     pub min_to_amount: Option<u128>,
+}
+
+#[frb(mirror(BuyBitcoinRequest))]
+pub struct _BuyBitcoinRequest {
+    pub locked_amount_sat: Option<u64>,
+    pub redirect_url: Option<String>,
+}
+
+#[frb(mirror(BuyBitcoinResponse))]
+pub struct _BuyBitcoinResponse {
+    pub url: String,
+}
+
+#[frb(mirror(ServiceStatus))]
+pub enum _ServiceStatus {
+    Operational,
+    Degraded,
+    Partial,
+    Unknown,
+    Major,
+}
+
+#[frb(mirror(SparkStatus))]
+pub struct _SparkStatus {
+    pub status: ServiceStatus,
+    pub last_updated: u64,
 }
