@@ -899,12 +899,13 @@ extension ConversionPurposePatterns on ConversionPurpose {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,TResult Function( ConversionPurpose_AutoConversion value)?  autoConversion,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
 return ongoingPayment(_that);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
-return selfTransfer(_that);case _:
+return selfTransfer(_that);case ConversionPurpose_AutoConversion() when autoConversion != null:
+return autoConversion(_that);case _:
   return orElse();
 
 }
@@ -922,12 +923,13 @@ return selfTransfer(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ConversionPurpose_OngoingPayment value)  ongoingPayment,required TResult Function( ConversionPurpose_SelfTransfer value)  selfTransfer,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ConversionPurpose_OngoingPayment value)  ongoingPayment,required TResult Function( ConversionPurpose_SelfTransfer value)  selfTransfer,required TResult Function( ConversionPurpose_AutoConversion value)  autoConversion,}){
 final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment():
 return ongoingPayment(_that);case ConversionPurpose_SelfTransfer():
-return selfTransfer(_that);}
+return selfTransfer(_that);case ConversionPurpose_AutoConversion():
+return autoConversion(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -941,12 +943,13 @@ return selfTransfer(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult? Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ConversionPurpose_OngoingPayment value)?  ongoingPayment,TResult? Function( ConversionPurpose_SelfTransfer value)?  selfTransfer,TResult? Function( ConversionPurpose_AutoConversion value)?  autoConversion,}){
 final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
 return ongoingPayment(_that);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
-return selfTransfer(_that);case _:
+return selfTransfer(_that);case ConversionPurpose_AutoConversion() when autoConversion != null:
+return autoConversion(_that);case _:
   return null;
 
 }
@@ -963,11 +966,12 @@ return selfTransfer(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String paymentRequest)?  ongoingPayment,TResult Function()?  selfTransfer,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String paymentRequest)?  ongoingPayment,TResult Function()?  selfTransfer,TResult Function()?  autoConversion,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
 return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
-return selfTransfer();case _:
+return selfTransfer();case ConversionPurpose_AutoConversion() when autoConversion != null:
+return autoConversion();case _:
   return orElse();
 
 }
@@ -985,11 +989,12 @@ return selfTransfer();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String paymentRequest)  ongoingPayment,required TResult Function()  selfTransfer,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String paymentRequest)  ongoingPayment,required TResult Function()  selfTransfer,required TResult Function()  autoConversion,}) {final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment():
 return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer():
-return selfTransfer();}
+return selfTransfer();case ConversionPurpose_AutoConversion():
+return autoConversion();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -1003,11 +1008,12 @@ return selfTransfer();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String paymentRequest)?  ongoingPayment,TResult? Function()?  selfTransfer,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String paymentRequest)?  ongoingPayment,TResult? Function()?  selfTransfer,TResult? Function()?  autoConversion,}) {final _that = this;
 switch (_that) {
 case ConversionPurpose_OngoingPayment() when ongoingPayment != null:
 return ongoingPayment(_that.paymentRequest);case ConversionPurpose_SelfTransfer() when selfTransfer != null:
-return selfTransfer();case _:
+return selfTransfer();case ConversionPurpose_AutoConversion() when autoConversion != null:
+return autoConversion();case _:
   return null;
 
 }
@@ -1105,6 +1111,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'ConversionPurpose.selfTransfer()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ConversionPurpose_AutoConversion extends ConversionPurpose {
+  const ConversionPurpose_AutoConversion(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionPurpose_AutoConversion);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConversionPurpose.autoConversion()';
 }
 
 
@@ -3558,12 +3596,12 @@ return deposit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
-return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
+return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
   return orElse();
@@ -3583,12 +3621,12 @@ return deposit(_that.txId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark():
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token():
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning():
-return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw():
+return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw():
 return withdraw(_that.txId);case PaymentDetails_Deposit():
 return deposit(_that.txId);}
 }
@@ -3604,12 +3642,12 @@ return deposit(_that.txId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String? preimage,  String invoice,  String paymentHash,  String destinationPubkey,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
-return lightning(_that.description,_that.preimage,_that.invoice,_that.paymentHash,_that.destinationPubkey,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
+return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
 return deposit(_that.txId);case _:
   return null;
@@ -3767,14 +3805,13 @@ as ConversionInfo?,
 
 
 class PaymentDetails_Lightning extends PaymentDetails {
-  const PaymentDetails_Lightning({this.description, this.preimage, required this.invoice, required this.paymentHash, required this.destinationPubkey, this.lnurlPayInfo, this.lnurlWithdrawInfo, this.lnurlReceiveMetadata}): super._();
+  const PaymentDetails_Lightning({this.description, required this.invoice, required this.destinationPubkey, required this.htlcDetails, this.lnurlPayInfo, this.lnurlWithdrawInfo, this.lnurlReceiveMetadata}): super._();
   
 
  final  String? description;
- final  String? preimage;
  final  String invoice;
- final  String paymentHash;
  final  String destinationPubkey;
+ final  SparkHtlcDetails htlcDetails;
  final  LnurlPayInfo? lnurlPayInfo;
  final  LnurlWithdrawInfo? lnurlWithdrawInfo;
  final  LnurlReceiveMetadata? lnurlReceiveMetadata;
@@ -3789,16 +3826,16 @@ $PaymentDetails_LightningCopyWith<PaymentDetails_Lightning> get copyWith => _$Pa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Lightning&&(identical(other.description, description) || other.description == description)&&(identical(other.preimage, preimage) || other.preimage == preimage)&&(identical(other.invoice, invoice) || other.invoice == invoice)&&(identical(other.paymentHash, paymentHash) || other.paymentHash == paymentHash)&&(identical(other.destinationPubkey, destinationPubkey) || other.destinationPubkey == destinationPubkey)&&(identical(other.lnurlPayInfo, lnurlPayInfo) || other.lnurlPayInfo == lnurlPayInfo)&&(identical(other.lnurlWithdrawInfo, lnurlWithdrawInfo) || other.lnurlWithdrawInfo == lnurlWithdrawInfo)&&(identical(other.lnurlReceiveMetadata, lnurlReceiveMetadata) || other.lnurlReceiveMetadata == lnurlReceiveMetadata));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Lightning&&(identical(other.description, description) || other.description == description)&&(identical(other.invoice, invoice) || other.invoice == invoice)&&(identical(other.destinationPubkey, destinationPubkey) || other.destinationPubkey == destinationPubkey)&&(identical(other.htlcDetails, htlcDetails) || other.htlcDetails == htlcDetails)&&(identical(other.lnurlPayInfo, lnurlPayInfo) || other.lnurlPayInfo == lnurlPayInfo)&&(identical(other.lnurlWithdrawInfo, lnurlWithdrawInfo) || other.lnurlWithdrawInfo == lnurlWithdrawInfo)&&(identical(other.lnurlReceiveMetadata, lnurlReceiveMetadata) || other.lnurlReceiveMetadata == lnurlReceiveMetadata));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description,preimage,invoice,paymentHash,destinationPubkey,lnurlPayInfo,lnurlWithdrawInfo,lnurlReceiveMetadata);
+int get hashCode => Object.hash(runtimeType,description,invoice,destinationPubkey,htlcDetails,lnurlPayInfo,lnurlWithdrawInfo,lnurlReceiveMetadata);
 
 @override
 String toString() {
-  return 'PaymentDetails.lightning(description: $description, preimage: $preimage, invoice: $invoice, paymentHash: $paymentHash, destinationPubkey: $destinationPubkey, lnurlPayInfo: $lnurlPayInfo, lnurlWithdrawInfo: $lnurlWithdrawInfo, lnurlReceiveMetadata: $lnurlReceiveMetadata)';
+  return 'PaymentDetails.lightning(description: $description, invoice: $invoice, destinationPubkey: $destinationPubkey, htlcDetails: $htlcDetails, lnurlPayInfo: $lnurlPayInfo, lnurlWithdrawInfo: $lnurlWithdrawInfo, lnurlReceiveMetadata: $lnurlReceiveMetadata)';
 }
 
 
@@ -3809,7 +3846,7 @@ abstract mixin class $PaymentDetails_LightningCopyWith<$Res> implements $Payment
   factory $PaymentDetails_LightningCopyWith(PaymentDetails_Lightning value, $Res Function(PaymentDetails_Lightning) _then) = _$PaymentDetails_LightningCopyWithImpl;
 @useResult
 $Res call({
- String? description, String? preimage, String invoice, String paymentHash, String destinationPubkey, LnurlPayInfo? lnurlPayInfo, LnurlWithdrawInfo? lnurlWithdrawInfo, LnurlReceiveMetadata? lnurlReceiveMetadata
+ String? description, String invoice, String destinationPubkey, SparkHtlcDetails htlcDetails, LnurlPayInfo? lnurlPayInfo, LnurlWithdrawInfo? lnurlWithdrawInfo, LnurlReceiveMetadata? lnurlReceiveMetadata
 });
 
 
@@ -3826,14 +3863,13 @@ class _$PaymentDetails_LightningCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = freezed,Object? preimage = freezed,Object? invoice = null,Object? paymentHash = null,Object? destinationPubkey = null,Object? lnurlPayInfo = freezed,Object? lnurlWithdrawInfo = freezed,Object? lnurlReceiveMetadata = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? description = freezed,Object? invoice = null,Object? destinationPubkey = null,Object? htlcDetails = null,Object? lnurlPayInfo = freezed,Object? lnurlWithdrawInfo = freezed,Object? lnurlReceiveMetadata = freezed,}) {
   return _then(PaymentDetails_Lightning(
 description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,preimage: freezed == preimage ? _self.preimage : preimage // ignore: cast_nullable_to_non_nullable
 as String?,invoice: null == invoice ? _self.invoice : invoice // ignore: cast_nullable_to_non_nullable
-as String,paymentHash: null == paymentHash ? _self.paymentHash : paymentHash // ignore: cast_nullable_to_non_nullable
 as String,destinationPubkey: null == destinationPubkey ? _self.destinationPubkey : destinationPubkey // ignore: cast_nullable_to_non_nullable
-as String,lnurlPayInfo: freezed == lnurlPayInfo ? _self.lnurlPayInfo : lnurlPayInfo // ignore: cast_nullable_to_non_nullable
+as String,htlcDetails: null == htlcDetails ? _self.htlcDetails : htlcDetails // ignore: cast_nullable_to_non_nullable
+as SparkHtlcDetails,lnurlPayInfo: freezed == lnurlPayInfo ? _self.lnurlPayInfo : lnurlPayInfo // ignore: cast_nullable_to_non_nullable
 as LnurlPayInfo?,lnurlWithdrawInfo: freezed == lnurlWithdrawInfo ? _self.lnurlWithdrawInfo : lnurlWithdrawInfo // ignore: cast_nullable_to_non_nullable
 as LnurlWithdrawInfo?,lnurlReceiveMetadata: freezed == lnurlReceiveMetadata ? _self.lnurlReceiveMetadata : lnurlReceiveMetadata // ignore: cast_nullable_to_non_nullable
 as LnurlReceiveMetadata?,
@@ -3978,61 +4014,30 @@ as String,
 /// @nodoc
 mixin _$PaymentDetailsFilter {
 
- bool? get conversionRefundNeeded;
-/// Create a copy of PaymentDetailsFilter
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$PaymentDetailsFilterCopyWith<PaymentDetailsFilter> get copyWith => _$PaymentDetailsFilterCopyWithImpl<PaymentDetailsFilter>(this as PaymentDetailsFilter, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetailsFilter&&(identical(other.conversionRefundNeeded, conversionRefundNeeded) || other.conversionRefundNeeded == conversionRefundNeeded));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetailsFilter);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,conversionRefundNeeded);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PaymentDetailsFilter(conversionRefundNeeded: $conversionRefundNeeded)';
+  return 'PaymentDetailsFilter()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PaymentDetailsFilterCopyWith<$Res>  {
-  factory $PaymentDetailsFilterCopyWith(PaymentDetailsFilter value, $Res Function(PaymentDetailsFilter) _then) = _$PaymentDetailsFilterCopyWithImpl;
-@useResult
-$Res call({
- bool? conversionRefundNeeded
-});
-
-
-
-
-}
-/// @nodoc
-class _$PaymentDetailsFilterCopyWithImpl<$Res>
-    implements $PaymentDetailsFilterCopyWith<$Res> {
-  _$PaymentDetailsFilterCopyWithImpl(this._self, this._then);
-
-  final PaymentDetailsFilter _self;
-  final $Res Function(PaymentDetailsFilter) _then;
-
-/// Create a copy of PaymentDetailsFilter
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? conversionRefundNeeded = freezed,}) {
-  return _then(_self.copyWith(
-conversionRefundNeeded: freezed == conversionRefundNeeded ? _self.conversionRefundNeeded : conversionRefundNeeded // ignore: cast_nullable_to_non_nullable
-as bool?,
-  ));
-}
-
+class $PaymentDetailsFilterCopyWith<$Res>  {
+$PaymentDetailsFilterCopyWith(PaymentDetailsFilter _, $Res Function(PaymentDetailsFilter) __);
 }
 
 
@@ -4050,12 +4055,13 @@ extension PaymentDetailsFilterPatterns on PaymentDetailsFilter {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PaymentDetailsFilter_Spark value)?  spark,TResult Function( PaymentDetailsFilter_Token value)?  token,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PaymentDetailsFilter_Spark value)?  spark,TResult Function( PaymentDetailsFilter_Token value)?  token,TResult Function( PaymentDetailsFilter_Lightning value)?  lightning,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that);case PaymentDetailsFilter_Token() when token != null:
-return token(_that);case _:
+return token(_that);case PaymentDetailsFilter_Lightning() when lightning != null:
+return lightning(_that);case _:
   return orElse();
 
 }
@@ -4073,12 +4079,13 @@ return token(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PaymentDetailsFilter_Spark value)  spark,required TResult Function( PaymentDetailsFilter_Token value)  token,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PaymentDetailsFilter_Spark value)  spark,required TResult Function( PaymentDetailsFilter_Token value)  token,required TResult Function( PaymentDetailsFilter_Lightning value)  lightning,}){
 final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark():
 return spark(_that);case PaymentDetailsFilter_Token():
-return token(_that);}
+return token(_that);case PaymentDetailsFilter_Lightning():
+return lightning(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -4092,12 +4099,13 @@ return token(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PaymentDetailsFilter_Spark value)?  spark,TResult? Function( PaymentDetailsFilter_Token value)?  token,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PaymentDetailsFilter_Spark value)?  spark,TResult? Function( PaymentDetailsFilter_Token value)?  token,TResult? Function( PaymentDetailsFilter_Lightning value)?  lightning,}){
 final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that);case PaymentDetailsFilter_Token() when token != null:
-return token(_that);case _:
+return token(_that);case PaymentDetailsFilter_Lightning() when lightning != null:
+return lightning(_that);case _:
   return null;
 
 }
@@ -4114,11 +4122,12 @@ return token(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,TResult Function( List<SparkHtlcStatus>? htlcStatus)?  lightning,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token() when token != null:
-return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case _:
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case PaymentDetailsFilter_Lightning() when lightning != null:
+return lightning(_that.htlcStatus);case _:
   return orElse();
 
 }
@@ -4136,11 +4145,12 @@ return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)  spark,required TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)  token,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)  spark,required TResult Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)  token,required TResult Function( List<SparkHtlcStatus>? htlcStatus)  lightning,}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark():
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token():
-return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);}
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case PaymentDetailsFilter_Lightning():
+return lightning(_that.htlcStatus);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -4154,11 +4164,12 @@ return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult? Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<SparkHtlcStatus>? htlcStatus,  bool? conversionRefundNeeded)?  spark,TResult? Function( bool? conversionRefundNeeded,  String? txHash,  TokenTransactionType? txType)?  token,TResult? Function( List<SparkHtlcStatus>? htlcStatus)?  lightning,}) {final _that = this;
 switch (_that) {
 case PaymentDetailsFilter_Spark() when spark != null:
 return spark(_that.htlcStatus,_that.conversionRefundNeeded);case PaymentDetailsFilter_Token() when token != null:
-return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case _:
+return token(_that.conversionRefundNeeded,_that.txHash,_that.txType);case PaymentDetailsFilter_Lightning() when lightning != null:
+return lightning(_that.htlcStatus);case _:
   return null;
 
 }
@@ -4182,11 +4193,11 @@ class PaymentDetailsFilter_Spark extends PaymentDetailsFilter {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  bool? conversionRefundNeeded;
+ final  bool? conversionRefundNeeded;
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PaymentDetailsFilter_SparkCopyWith<PaymentDetailsFilter_Spark> get copyWith => _$PaymentDetailsFilter_SparkCopyWithImpl<PaymentDetailsFilter_Spark>(this, _$identity);
 
@@ -4212,7 +4223,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $PaymentDetailsFilter_SparkCopyWith<$Res> implements $PaymentDetailsFilterCopyWith<$Res> {
   factory $PaymentDetailsFilter_SparkCopyWith(PaymentDetailsFilter_Spark value, $Res Function(PaymentDetailsFilter_Spark) _then) = _$PaymentDetailsFilter_SparkCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  List<SparkHtlcStatus>? htlcStatus, bool? conversionRefundNeeded
 });
@@ -4231,7 +4242,7 @@ class _$PaymentDetailsFilter_SparkCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? htlcStatus = freezed,Object? conversionRefundNeeded = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? htlcStatus = freezed,Object? conversionRefundNeeded = freezed,}) {
   return _then(PaymentDetailsFilter_Spark(
 htlcStatus: freezed == htlcStatus ? _self._htlcStatus : htlcStatus // ignore: cast_nullable_to_non_nullable
 as List<SparkHtlcStatus>?,conversionRefundNeeded: freezed == conversionRefundNeeded ? _self.conversionRefundNeeded : conversionRefundNeeded // ignore: cast_nullable_to_non_nullable
@@ -4249,13 +4260,13 @@ class PaymentDetailsFilter_Token extends PaymentDetailsFilter {
   const PaymentDetailsFilter_Token({this.conversionRefundNeeded, this.txHash, this.txType}): super._();
   
 
-@override final  bool? conversionRefundNeeded;
+ final  bool? conversionRefundNeeded;
  final  String? txHash;
  final  TokenTransactionType? txType;
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PaymentDetailsFilter_TokenCopyWith<PaymentDetailsFilter_Token> get copyWith => _$PaymentDetailsFilter_TokenCopyWithImpl<PaymentDetailsFilter_Token>(this, _$identity);
 
@@ -4281,7 +4292,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $PaymentDetailsFilter_TokenCopyWith<$Res> implements $PaymentDetailsFilterCopyWith<$Res> {
   factory $PaymentDetailsFilter_TokenCopyWith(PaymentDetailsFilter_Token value, $Res Function(PaymentDetailsFilter_Token) _then) = _$PaymentDetailsFilter_TokenCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  bool? conversionRefundNeeded, String? txHash, TokenTransactionType? txType
 });
@@ -4300,12 +4311,86 @@ class _$PaymentDetailsFilter_TokenCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetailsFilter
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? conversionRefundNeeded = freezed,Object? txHash = freezed,Object? txType = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? conversionRefundNeeded = freezed,Object? txHash = freezed,Object? txType = freezed,}) {
   return _then(PaymentDetailsFilter_Token(
 conversionRefundNeeded: freezed == conversionRefundNeeded ? _self.conversionRefundNeeded : conversionRefundNeeded // ignore: cast_nullable_to_non_nullable
 as bool?,txHash: freezed == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
 as String?,txType: freezed == txType ? _self.txType : txType // ignore: cast_nullable_to_non_nullable
 as TokenTransactionType?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PaymentDetailsFilter_Lightning extends PaymentDetailsFilter {
+  const PaymentDetailsFilter_Lightning({final  List<SparkHtlcStatus>? htlcStatus}): _htlcStatus = htlcStatus,super._();
+  
+
+ final  List<SparkHtlcStatus>? _htlcStatus;
+ List<SparkHtlcStatus>? get htlcStatus {
+  final value = _htlcStatus;
+  if (value == null) return null;
+  if (_htlcStatus is EqualUnmodifiableListView) return _htlcStatus;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+
+/// Create a copy of PaymentDetailsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PaymentDetailsFilter_LightningCopyWith<PaymentDetailsFilter_Lightning> get copyWith => _$PaymentDetailsFilter_LightningCopyWithImpl<PaymentDetailsFilter_Lightning>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetailsFilter_Lightning&&const DeepCollectionEquality().equals(other._htlcStatus, _htlcStatus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_htlcStatus));
+
+@override
+String toString() {
+  return 'PaymentDetailsFilter.lightning(htlcStatus: $htlcStatus)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PaymentDetailsFilter_LightningCopyWith<$Res> implements $PaymentDetailsFilterCopyWith<$Res> {
+  factory $PaymentDetailsFilter_LightningCopyWith(PaymentDetailsFilter_Lightning value, $Res Function(PaymentDetailsFilter_Lightning) _then) = _$PaymentDetailsFilter_LightningCopyWithImpl;
+@useResult
+$Res call({
+ List<SparkHtlcStatus>? htlcStatus
+});
+
+
+
+
+}
+/// @nodoc
+class _$PaymentDetailsFilter_LightningCopyWithImpl<$Res>
+    implements $PaymentDetailsFilter_LightningCopyWith<$Res> {
+  _$PaymentDetailsFilter_LightningCopyWithImpl(this._self, this._then);
+
+  final PaymentDetailsFilter_Lightning _self;
+  final $Res Function(PaymentDetailsFilter_Lightning) _then;
+
+/// Create a copy of PaymentDetailsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? htlcStatus = freezed,}) {
+  return _then(PaymentDetailsFilter_Lightning(
+htlcStatus: freezed == htlcStatus ? _self._htlcStatus : htlcStatus // ignore: cast_nullable_to_non_nullable
+as List<SparkHtlcStatus>?,
   ));
 }
 
@@ -4426,13 +4511,13 @@ return bolt11Invoice(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function()?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function()?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);case _:
   return orElse();
 
 }
@@ -4450,13 +4535,13 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function()  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs)  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function()  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress():
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice():
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress():
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice():
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);}
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -4470,13 +4555,13 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function()?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs)?  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function()?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)?  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress();case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);case _:
   return null;
 
 }
@@ -4626,12 +4711,13 @@ String toString() {
 
 
 class ReceivePaymentMethod_Bolt11Invoice extends ReceivePaymentMethod {
-  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats, this.expirySecs}): super._();
+  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats, this.expirySecs, this.paymentHash}): super._();
   
 
  final  String description;
  final  BigInt? amountSats;
  final  int? expirySecs;
+ final  String? paymentHash;
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -4643,16 +4729,16 @@ $ReceivePaymentMethod_Bolt11InvoiceCopyWith<ReceivePaymentMethod_Bolt11Invoice> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats)&&(identical(other.expirySecs, expirySecs) || other.expirySecs == expirySecs));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats)&&(identical(other.expirySecs, expirySecs) || other.expirySecs == expirySecs)&&(identical(other.paymentHash, paymentHash) || other.paymentHash == paymentHash));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description,amountSats,expirySecs);
+int get hashCode => Object.hash(runtimeType,description,amountSats,expirySecs,paymentHash);
 
 @override
 String toString() {
-  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats, expirySecs: $expirySecs)';
+  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats, expirySecs: $expirySecs, paymentHash: $paymentHash)';
 }
 
 
@@ -4663,7 +4749,7 @@ abstract mixin class $ReceivePaymentMethod_Bolt11InvoiceCopyWith<$Res> implement
   factory $ReceivePaymentMethod_Bolt11InvoiceCopyWith(ReceivePaymentMethod_Bolt11Invoice value, $Res Function(ReceivePaymentMethod_Bolt11Invoice) _then) = _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl;
 @useResult
 $Res call({
- String description, BigInt? amountSats, int? expirySecs
+ String description, BigInt? amountSats, int? expirySecs, String? paymentHash
 });
 
 
@@ -4680,12 +4766,13 @@ class _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl<$Res>
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,Object? expirySecs = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,Object? expirySecs = freezed,Object? paymentHash = freezed,}) {
   return _then(ReceivePaymentMethod_Bolt11Invoice(
 description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,amountSats: freezed == amountSats ? _self.amountSats : amountSats // ignore: cast_nullable_to_non_nullable
 as BigInt?,expirySecs: freezed == expirySecs ? _self.expirySecs : expirySecs // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,paymentHash: freezed == paymentHash ? _self.paymentHash : paymentHash // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

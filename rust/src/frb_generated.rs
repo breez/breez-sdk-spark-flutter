@@ -3118,6 +3118,7 @@ const _: fn() = || {
         let _: Option<String> = Config.real_time_sync_server_url;
         let _: bool = Config.private_enabled_default;
         let _: crate::models::OptimizationConfig = Config.optimization_config;
+        let _: Option<crate::models::StableBalanceConfig> = Config.stable_balance_config;
     }
     {
         let ConnectRequest = None::<crate::models::ConnectRequest>.unwrap();
@@ -3155,6 +3156,7 @@ const _: fn() = || {
             let _: String = payment_request;
         }
         crate::models::ConversionPurpose::SelfTransfer => {}
+        crate::models::ConversionPurpose::AutoConversion => {}
     }
     {
         let ConversionStep = None::<crate::models::ConversionStep>.unwrap();
@@ -3577,19 +3579,17 @@ const _: fn() = || {
         }
         crate::models::PaymentDetails::Lightning {
             description,
-            preimage,
             invoice,
-            payment_hash,
             destination_pubkey,
+            htlc_details,
             lnurl_pay_info,
             lnurl_withdraw_info,
             lnurl_receive_metadata,
         } => {
             let _: Option<String> = description;
-            let _: Option<String> = preimage;
             let _: String = invoice;
-            let _: String = payment_hash;
             let _: String = destination_pubkey;
+            let _: crate::models::SparkHtlcDetails = htlc_details;
             let _: Option<crate::models::LnurlPayInfo> = lnurl_pay_info;
             let _: Option<crate::models::LnurlWithdrawInfo> = lnurl_withdraw_info;
             let _: Option<crate::models::LnurlReceiveMetadata> = lnurl_receive_metadata;
@@ -3617,6 +3617,9 @@ const _: fn() = || {
             let _: Option<bool> = conversion_refund_needed;
             let _: Option<String> = tx_hash;
             let _: Option<crate::models::TokenTransactionType> = tx_type;
+        }
+        crate::models::PaymentDetailsFilter::Lightning { htlc_status } => {
+            let _: Option<Vec<crate::models::SparkHtlcStatus>> = htlc_status;
         }
     }
     {
@@ -3688,10 +3691,12 @@ const _: fn() = || {
             description,
             amount_sats,
             expiry_secs,
+            payment_hash,
         } => {
             let _: String = description;
             let _: Option<u64> = amount_sats;
             let _: Option<u32> = expiry_secs;
+            let _: Option<String> = payment_hash;
         }
     }
     {
@@ -3936,6 +3941,13 @@ const _: fn() = || {
         let SparkStatus = None::<crate::models::SparkStatus>.unwrap();
         let _: crate::models::ServiceStatus = SparkStatus.status;
         let _: u64 = SparkStatus.last_updated;
+    }
+    {
+        let StableBalanceConfig = None::<crate::models::StableBalanceConfig>.unwrap();
+        let _: String = StableBalanceConfig.token_identifier;
+        let _: Option<u64> = StableBalanceConfig.threshold_sats;
+        let _: Option<u32> = StableBalanceConfig.max_slippage_bps;
+        let _: Option<u64> = StableBalanceConfig.reserved_sats;
     }
     match None::<crate::models::SuccessAction>.unwrap() {
         crate::models::SuccessAction::Aes { data } => {
@@ -4590,6 +4602,8 @@ impl SseDecode for crate::models::Config {
         let mut var_privateEnabledDefault = <bool>::sse_decode(deserializer);
         let mut var_optimizationConfig =
             <crate::models::OptimizationConfig>::sse_decode(deserializer);
+        let mut var_stableBalanceConfig =
+            <Option<crate::models::StableBalanceConfig>>::sse_decode(deserializer);
         return crate::models::Config {
             api_key: var_apiKey,
             network: var_network,
@@ -4602,6 +4616,7 @@ impl SseDecode for crate::models::Config {
             real_time_sync_server_url: var_realTimeSyncServerUrl,
             private_enabled_default: var_privateEnabledDefault,
             optimization_config: var_optimizationConfig,
+            stable_balance_config: var_stableBalanceConfig,
         };
     }
 }
@@ -4691,6 +4706,9 @@ impl SseDecode for crate::models::ConversionPurpose {
             }
             1 => {
                 return crate::models::ConversionPurpose::SelfTransfer;
+            }
+            2 => {
+                return crate::models::ConversionPurpose::AutoConversion;
             }
             _ => {
                 unimplemented!("");
@@ -6108,6 +6126,19 @@ impl SseDecode for Option<crate::models::SparkInvoicePaymentDetails> {
     }
 }
 
+impl SseDecode for Option<crate::models::StableBalanceConfig> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::StableBalanceConfig>::sse_decode(
+                deserializer,
+            ));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<crate::models::SuccessAction> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -6381,10 +6412,10 @@ impl SseDecode for crate::models::PaymentDetails {
             }
             2 => {
                 let mut var_description = <Option<String>>::sse_decode(deserializer);
-                let mut var_preimage = <Option<String>>::sse_decode(deserializer);
                 let mut var_invoice = <String>::sse_decode(deserializer);
-                let mut var_paymentHash = <String>::sse_decode(deserializer);
                 let mut var_destinationPubkey = <String>::sse_decode(deserializer);
+                let mut var_htlcDetails =
+                    <crate::models::SparkHtlcDetails>::sse_decode(deserializer);
                 let mut var_lnurlPayInfo =
                     <Option<crate::models::LnurlPayInfo>>::sse_decode(deserializer);
                 let mut var_lnurlWithdrawInfo =
@@ -6393,10 +6424,9 @@ impl SseDecode for crate::models::PaymentDetails {
                     <Option<crate::models::LnurlReceiveMetadata>>::sse_decode(deserializer);
                 return crate::models::PaymentDetails::Lightning {
                     description: var_description,
-                    preimage: var_preimage,
                     invoice: var_invoice,
-                    payment_hash: var_paymentHash,
                     destination_pubkey: var_destinationPubkey,
+                    htlc_details: var_htlcDetails,
                     lnurl_pay_info: var_lnurlPayInfo,
                     lnurl_withdraw_info: var_lnurlWithdrawInfo,
                     lnurl_receive_metadata: var_lnurlReceiveMetadata,
@@ -6440,6 +6470,13 @@ impl SseDecode for crate::models::PaymentDetailsFilter {
                     conversion_refund_needed: var_conversionRefundNeeded,
                     tx_hash: var_txHash,
                     tx_type: var_txType,
+                };
+            }
+            2 => {
+                let mut var_htlcStatus =
+                    <Option<Vec<crate::models::SparkHtlcStatus>>>::sse_decode(deserializer);
+                return crate::models::PaymentDetailsFilter::Lightning {
+                    htlc_status: var_htlcStatus,
                 };
             }
             _ => {
@@ -6629,10 +6666,12 @@ impl SseDecode for crate::models::ReceivePaymentMethod {
                 let mut var_description = <String>::sse_decode(deserializer);
                 let mut var_amountSats = <Option<u64>>::sse_decode(deserializer);
                 let mut var_expirySecs = <Option<u32>>::sse_decode(deserializer);
+                let mut var_paymentHash = <Option<String>>::sse_decode(deserializer);
                 return crate::models::ReceivePaymentMethod::Bolt11Invoice {
                     description: var_description,
                     amount_sats: var_amountSats,
                     expiry_secs: var_expirySecs,
+                    payment_hash: var_paymentHash,
                 };
             }
             _ => {
@@ -7180,6 +7219,22 @@ impl SseDecode for crate::models::SparkStatus {
         return crate::models::SparkStatus {
             status: var_status,
             last_updated: var_lastUpdated,
+        };
+    }
+}
+
+impl SseDecode for crate::models::StableBalanceConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_tokenIdentifier = <String>::sse_decode(deserializer);
+        let mut var_thresholdSats = <Option<u64>>::sse_decode(deserializer);
+        let mut var_maxSlippageBps = <Option<u32>>::sse_decode(deserializer);
+        let mut var_reservedSats = <Option<u64>>::sse_decode(deserializer);
+        return crate::models::StableBalanceConfig {
+            token_identifier: var_tokenIdentifier,
+            threshold_sats: var_thresholdSats,
+            max_slippage_bps: var_maxSlippageBps,
+            reserved_sats: var_reservedSats,
         };
     }
 }
@@ -8297,6 +8352,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
                 .into_dart(),
             self.0.private_enabled_default.into_into_dart().into_dart(),
             self.0.optimization_config.into_into_dart().into_dart(),
+            self.0.stable_balance_config.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -8431,6 +8487,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionPurpo
                 [0.into_dart(), payment_request.into_into_dart().into_dart()].into_dart()
             }
             crate::models::ConversionPurpose::SelfTransfer => [1.into_dart()].into_dart(),
+            crate::models::ConversionPurpose::AutoConversion => [2.into_dart()].into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -9811,20 +9868,18 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PaymentDetails>
             .into_dart(),
             crate::models::PaymentDetails::Lightning {
                 description,
-                preimage,
                 invoice,
-                payment_hash,
                 destination_pubkey,
+                htlc_details,
                 lnurl_pay_info,
                 lnurl_withdraw_info,
                 lnurl_receive_metadata,
             } => [
                 2.into_dart(),
                 description.into_into_dart().into_dart(),
-                preimage.into_into_dart().into_dart(),
                 invoice.into_into_dart().into_dart(),
-                payment_hash.into_into_dart().into_dart(),
                 destination_pubkey.into_into_dart().into_dart(),
+                htlc_details.into_into_dart().into_dart(),
                 lnurl_pay_info.into_into_dart().into_dart(),
                 lnurl_withdraw_info.into_into_dart().into_dart(),
                 lnurl_receive_metadata.into_into_dart().into_dart(),
@@ -9877,6 +9932,9 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PaymentDetailsF
                 tx_type.into_into_dart().into_dart(),
             ]
             .into_dart(),
+            crate::models::PaymentDetailsFilter::Lightning { htlc_status } => {
+                [2.into_dart(), htlc_status.into_into_dart().into_dart()].into_dart()
+            }
             _ => {
                 unimplemented!("");
             }
@@ -10130,11 +10188,13 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ReceivePaymentM
                 description,
                 amount_sats,
                 expiry_secs,
+                payment_hash,
             } => [
                 3.into_dart(),
                 description.into_into_dart().into_dart(),
                 amount_sats.into_into_dart().into_dart(),
                 expiry_secs.into_into_dart().into_dart(),
+                payment_hash.into_into_dart().into_dart(),
             ]
             .into_dart(),
             _ => {
@@ -10851,6 +10911,29 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SparkStatus>>
     for crate::models::SparkStatus
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::SparkStatus> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::StableBalanceConfig> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.token_identifier.into_into_dart().into_dart(),
+            self.0.threshold_sats.into_into_dart().into_dart(),
+            self.0.max_slippage_bps.into_into_dart().into_dart(),
+            self.0.reserved_sats.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::StableBalanceConfig>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::StableBalanceConfig>>
+    for crate::models::StableBalanceConfig
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::StableBalanceConfig> {
         self.into()
     }
 }
@@ -11585,6 +11668,10 @@ impl SseEncode for crate::models::Config {
         <Option<String>>::sse_encode(self.real_time_sync_server_url, serializer);
         <bool>::sse_encode(self.private_enabled_default, serializer);
         <crate::models::OptimizationConfig>::sse_encode(self.optimization_config, serializer);
+        <Option<crate::models::StableBalanceConfig>>::sse_encode(
+            self.stable_balance_config,
+            serializer,
+        );
     }
 }
 
@@ -11644,6 +11731,9 @@ impl SseEncode for crate::models::ConversionPurpose {
             }
             crate::models::ConversionPurpose::SelfTransfer => {
                 <i32>::sse_encode(1, serializer);
+            }
+            crate::models::ConversionPurpose::AutoConversion => {
+                <i32>::sse_encode(2, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -12770,6 +12860,16 @@ impl SseEncode for Option<crate::models::SparkInvoicePaymentDetails> {
     }
 }
 
+impl SseEncode for Option<crate::models::StableBalanceConfig> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::StableBalanceConfig>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<crate::models::SuccessAction> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -12994,20 +13094,18 @@ impl SseEncode for crate::models::PaymentDetails {
             }
             crate::models::PaymentDetails::Lightning {
                 description,
-                preimage,
                 invoice,
-                payment_hash,
                 destination_pubkey,
+                htlc_details,
                 lnurl_pay_info,
                 lnurl_withdraw_info,
                 lnurl_receive_metadata,
             } => {
                 <i32>::sse_encode(2, serializer);
                 <Option<String>>::sse_encode(description, serializer);
-                <Option<String>>::sse_encode(preimage, serializer);
                 <String>::sse_encode(invoice, serializer);
-                <String>::sse_encode(payment_hash, serializer);
                 <String>::sse_encode(destination_pubkey, serializer);
+                <crate::models::SparkHtlcDetails>::sse_encode(htlc_details, serializer);
                 <Option<crate::models::LnurlPayInfo>>::sse_encode(lnurl_pay_info, serializer);
                 <Option<crate::models::LnurlWithdrawInfo>>::sse_encode(
                     lnurl_withdraw_info,
@@ -13054,6 +13152,10 @@ impl SseEncode for crate::models::PaymentDetailsFilter {
                 <Option<bool>>::sse_encode(conversion_refund_needed, serializer);
                 <Option<String>>::sse_encode(tx_hash, serializer);
                 <Option<crate::models::TokenTransactionType>>::sse_encode(tx_type, serializer);
+            }
+            crate::models::PaymentDetailsFilter::Lightning { htlc_status } => {
+                <i32>::sse_encode(2, serializer);
+                <Option<Vec<crate::models::SparkHtlcStatus>>>::sse_encode(htlc_status, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -13213,11 +13315,13 @@ impl SseEncode for crate::models::ReceivePaymentMethod {
                 description,
                 amount_sats,
                 expiry_secs,
+                payment_hash,
             } => {
                 <i32>::sse_encode(3, serializer);
                 <String>::sse_encode(description, serializer);
                 <Option<u64>>::sse_encode(amount_sats, serializer);
                 <Option<u32>>::sse_encode(expiry_secs, serializer);
+                <Option<String>>::sse_encode(payment_hash, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -13643,6 +13747,16 @@ impl SseEncode for crate::models::SparkStatus {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <crate::models::ServiceStatus>::sse_encode(self.status, serializer);
         <u64>::sse_encode(self.last_updated, serializer);
+    }
+}
+
+impl SseEncode for crate::models::StableBalanceConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.token_identifier, serializer);
+        <Option<u64>>::sse_encode(self.threshold_sats, serializer);
+        <Option<u32>>::sse_encode(self.max_slippage_bps, serializer);
+        <Option<u64>>::sse_encode(self.reserved_sats, serializer);
     }
 }
 

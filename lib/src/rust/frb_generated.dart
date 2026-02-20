@@ -2529,6 +2529,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  StableBalanceConfig dco_decode_box_autoadd_stable_balance_config(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_stable_balance_config(raw);
+  }
+
+  @protected
   SuccessAction dco_decode_box_autoadd_success_action(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_success_action(raw);
@@ -2695,7 +2701,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Config dco_decode_config(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 11) throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    if (arr.length != 12) throw Exception('unexpected arr length: expect 12 but see ${arr.length}');
     return Config(
       apiKey: dco_decode_opt_String(arr[0]),
       network: dco_decode_network(arr[1]),
@@ -2708,6 +2714,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       realTimeSyncServerUrl: dco_decode_opt_String(arr[8]),
       privateEnabledDefault: dco_decode_bool(arr[9]),
       optimizationConfig: dco_decode_optimization_config(arr[10]),
+      stableBalanceConfig: dco_decode_opt_box_autoadd_stable_balance_config(arr[11]),
     );
   }
 
@@ -2780,6 +2787,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return ConversionPurpose_OngoingPayment(paymentRequest: dco_decode_String(raw[1]));
       case 1:
         return ConversionPurpose_SelfTransfer();
+      case 2:
+        return ConversionPurpose_AutoConversion();
       default:
         throw Exception("unreachable");
     }
@@ -3672,6 +3681,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  StableBalanceConfig? dco_decode_opt_box_autoadd_stable_balance_config(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_stable_balance_config(raw);
+  }
+
+  @protected
   SuccessAction? dco_decode_opt_box_autoadd_success_action(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_success_action(raw);
@@ -3826,13 +3841,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 2:
         return PaymentDetails_Lightning(
           description: dco_decode_opt_String(raw[1]),
-          preimage: dco_decode_opt_String(raw[2]),
-          invoice: dco_decode_String(raw[3]),
-          paymentHash: dco_decode_String(raw[4]),
-          destinationPubkey: dco_decode_String(raw[5]),
-          lnurlPayInfo: dco_decode_opt_box_autoadd_lnurl_pay_info(raw[6]),
-          lnurlWithdrawInfo: dco_decode_opt_box_autoadd_lnurl_withdraw_info(raw[7]),
-          lnurlReceiveMetadata: dco_decode_opt_box_autoadd_lnurl_receive_metadata(raw[8]),
+          invoice: dco_decode_String(raw[2]),
+          destinationPubkey: dco_decode_String(raw[3]),
+          htlcDetails: dco_decode_box_autoadd_spark_htlc_details(raw[4]),
+          lnurlPayInfo: dco_decode_opt_box_autoadd_lnurl_pay_info(raw[5]),
+          lnurlWithdrawInfo: dco_decode_opt_box_autoadd_lnurl_withdraw_info(raw[6]),
+          lnurlReceiveMetadata: dco_decode_opt_box_autoadd_lnurl_receive_metadata(raw[7]),
         );
       case 3:
         return PaymentDetails_Withdraw(txId: dco_decode_String(raw[1]));
@@ -3858,6 +3872,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           txHash: dco_decode_opt_String(raw[2]),
           txType: dco_decode_opt_box_autoadd_token_transaction_type(raw[3]),
         );
+      case 2:
+        return PaymentDetailsFilter_Lightning(htlcStatus: dco_decode_opt_list_spark_htlc_status(raw[1]));
       default:
         throw Exception("unreachable");
     }
@@ -3981,6 +3997,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           description: dco_decode_String(raw[1]),
           amountSats: dco_decode_opt_box_autoadd_u_64(raw[2]),
           expirySecs: dco_decode_opt_box_autoadd_u_32(raw[3]),
+          paymentHash: dco_decode_opt_String(raw[4]),
         );
       default:
         throw Exception("unreachable");
@@ -4344,6 +4361,19 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return SparkStatus(status: dco_decode_service_status(arr[0]), lastUpdated: dco_decode_u_64(arr[1]));
+  }
+
+  @protected
+  StableBalanceConfig dco_decode_stable_balance_config(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return StableBalanceConfig(
+      tokenIdentifier: dco_decode_String(arr[0]),
+      thresholdSats: dco_decode_opt_box_autoadd_u_64(arr[1]),
+      maxSlippageBps: dco_decode_opt_box_autoadd_u_32(arr[2]),
+      reservedSats: dco_decode_opt_box_autoadd_u_64(arr[3]),
+    );
   }
 
   @protected
@@ -5338,6 +5368,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  StableBalanceConfig sse_decode_box_autoadd_stable_balance_config(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_stable_balance_config(deserializer));
+  }
+
+  @protected
   SuccessAction sse_decode_box_autoadd_success_action(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_success_action(deserializer));
@@ -5503,6 +5539,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_realTimeSyncServerUrl = sse_decode_opt_String(deserializer);
     var var_privateEnabledDefault = sse_decode_bool(deserializer);
     var var_optimizationConfig = sse_decode_optimization_config(deserializer);
+    var var_stableBalanceConfig = sse_decode_opt_box_autoadd_stable_balance_config(deserializer);
     return Config(
       apiKey: var_apiKey,
       network: var_network,
@@ -5515,6 +5552,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       realTimeSyncServerUrl: var_realTimeSyncServerUrl,
       privateEnabledDefault: var_privateEnabledDefault,
       optimizationConfig: var_optimizationConfig,
+      stableBalanceConfig: var_stableBalanceConfig,
     );
   }
 
@@ -5585,6 +5623,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return ConversionPurpose_OngoingPayment(paymentRequest: var_paymentRequest);
       case 1:
         return ConversionPurpose_SelfTransfer();
+      case 2:
+        return ConversionPurpose_AutoConversion();
       default:
         throw UnimplementedError('');
     }
@@ -6770,6 +6810,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  StableBalanceConfig? sse_decode_opt_box_autoadd_stable_balance_config(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_stable_balance_config(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   SuccessAction? sse_decode_opt_box_autoadd_success_action(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -7004,19 +7055,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         );
       case 2:
         var var_description = sse_decode_opt_String(deserializer);
-        var var_preimage = sse_decode_opt_String(deserializer);
         var var_invoice = sse_decode_String(deserializer);
-        var var_paymentHash = sse_decode_String(deserializer);
         var var_destinationPubkey = sse_decode_String(deserializer);
+        var var_htlcDetails = sse_decode_box_autoadd_spark_htlc_details(deserializer);
         var var_lnurlPayInfo = sse_decode_opt_box_autoadd_lnurl_pay_info(deserializer);
         var var_lnurlWithdrawInfo = sse_decode_opt_box_autoadd_lnurl_withdraw_info(deserializer);
         var var_lnurlReceiveMetadata = sse_decode_opt_box_autoadd_lnurl_receive_metadata(deserializer);
         return PaymentDetails_Lightning(
           description: var_description,
-          preimage: var_preimage,
           invoice: var_invoice,
-          paymentHash: var_paymentHash,
           destinationPubkey: var_destinationPubkey,
+          htlcDetails: var_htlcDetails,
           lnurlPayInfo: var_lnurlPayInfo,
           lnurlWithdrawInfo: var_lnurlWithdrawInfo,
           lnurlReceiveMetadata: var_lnurlReceiveMetadata,
@@ -7054,6 +7103,9 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           txHash: var_txHash,
           txType: var_txType,
         );
+      case 2:
+        var var_htlcStatus = sse_decode_opt_list_spark_htlc_status(deserializer);
+        return PaymentDetailsFilter_Lightning(htlcStatus: var_htlcStatus);
       default:
         throw UnimplementedError('');
     }
@@ -7199,10 +7251,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_description = sse_decode_String(deserializer);
         var var_amountSats = sse_decode_opt_box_autoadd_u_64(deserializer);
         var var_expirySecs = sse_decode_opt_box_autoadd_u_32(deserializer);
+        var var_paymentHash = sse_decode_opt_String(deserializer);
         return ReceivePaymentMethod_Bolt11Invoice(
           description: var_description,
           amountSats: var_amountSats,
           expirySecs: var_expirySecs,
+          paymentHash: var_paymentHash,
         );
       default:
         throw UnimplementedError('');
@@ -7613,6 +7667,21 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_status = sse_decode_service_status(deserializer);
     var var_lastUpdated = sse_decode_u_64(deserializer);
     return SparkStatus(status: var_status, lastUpdated: var_lastUpdated);
+  }
+
+  @protected
+  StableBalanceConfig sse_decode_stable_balance_config(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_tokenIdentifier = sse_decode_String(deserializer);
+    var var_thresholdSats = sse_decode_opt_box_autoadd_u_64(deserializer);
+    var var_maxSlippageBps = sse_decode_opt_box_autoadd_u_32(deserializer);
+    var var_reservedSats = sse_decode_opt_box_autoadd_u_64(deserializer);
+    return StableBalanceConfig(
+      tokenIdentifier: var_tokenIdentifier,
+      thresholdSats: var_thresholdSats,
+      maxSlippageBps: var_maxSlippageBps,
+      reservedSats: var_reservedSats,
+    );
   }
 
   @protected
@@ -8602,6 +8671,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_box_autoadd_stable_balance_config(StableBalanceConfig self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_stable_balance_config(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_success_action(SuccessAction self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_success_action(self, serializer);
@@ -8764,6 +8839,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_opt_String(self.realTimeSyncServerUrl, serializer);
     sse_encode_bool(self.privateEnabledDefault, serializer);
     sse_encode_optimization_config(self.optimizationConfig, serializer);
+    sse_encode_opt_box_autoadd_stable_balance_config(self.stableBalanceConfig, serializer);
   }
 
   @protected
@@ -8816,6 +8892,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_String(paymentRequest, serializer);
       case ConversionPurpose_SelfTransfer():
         sse_encode_i_32(1, serializer);
+      case ConversionPurpose_AutoConversion():
+        sse_encode_i_32(2, serializer);
     }
   }
 
@@ -9778,6 +9856,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_stable_balance_config(StableBalanceConfig? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_stable_balance_config(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_success_action(SuccessAction? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -9986,20 +10074,18 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_opt_box_autoadd_conversion_info(conversionInfo, serializer);
       case PaymentDetails_Lightning(
         description: final description,
-        preimage: final preimage,
         invoice: final invoice,
-        paymentHash: final paymentHash,
         destinationPubkey: final destinationPubkey,
+        htlcDetails: final htlcDetails,
         lnurlPayInfo: final lnurlPayInfo,
         lnurlWithdrawInfo: final lnurlWithdrawInfo,
         lnurlReceiveMetadata: final lnurlReceiveMetadata,
       ):
         sse_encode_i_32(2, serializer);
         sse_encode_opt_String(description, serializer);
-        sse_encode_opt_String(preimage, serializer);
         sse_encode_String(invoice, serializer);
-        sse_encode_String(paymentHash, serializer);
         sse_encode_String(destinationPubkey, serializer);
+        sse_encode_box_autoadd_spark_htlc_details(htlcDetails, serializer);
         sse_encode_opt_box_autoadd_lnurl_pay_info(lnurlPayInfo, serializer);
         sse_encode_opt_box_autoadd_lnurl_withdraw_info(lnurlWithdrawInfo, serializer);
         sse_encode_opt_box_autoadd_lnurl_receive_metadata(lnurlReceiveMetadata, serializer);
@@ -10032,6 +10118,9 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_opt_box_autoadd_bool(conversionRefundNeeded, serializer);
         sse_encode_opt_String(txHash, serializer);
         sse_encode_opt_box_autoadd_token_transaction_type(txType, serializer);
+      case PaymentDetailsFilter_Lightning(htlcStatus: final htlcStatus):
+        sse_encode_i_32(2, serializer);
+        sse_encode_opt_list_spark_htlc_status(htlcStatus, serializer);
     }
   }
 
@@ -10136,11 +10225,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         description: final description,
         amountSats: final amountSats,
         expirySecs: final expirySecs,
+        paymentHash: final paymentHash,
       ):
         sse_encode_i_32(3, serializer);
         sse_encode_String(description, serializer);
         sse_encode_opt_box_autoadd_u_64(amountSats, serializer);
         sse_encode_opt_box_autoadd_u_32(expirySecs, serializer);
+        sse_encode_opt_String(paymentHash, serializer);
     }
   }
 
@@ -10467,6 +10558,15 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_service_status(self.status, serializer);
     sse_encode_u_64(self.lastUpdated, serializer);
+  }
+
+  @protected
+  void sse_encode_stable_balance_config(StableBalanceConfig self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.tokenIdentifier, serializer);
+    sse_encode_opt_box_autoadd_u_64(self.thresholdSats, serializer);
+    sse_encode_opt_box_autoadd_u_32(self.maxSlippageBps, serializer);
+    sse_encode_opt_box_autoadd_u_64(self.reservedSats, serializer);
   }
 
   @protected

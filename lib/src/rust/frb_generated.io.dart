@@ -366,6 +366,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkInvoicePaymentDetails dco_decode_box_autoadd_spark_invoice_payment_details(dynamic raw);
 
   @protected
+  StableBalanceConfig dco_decode_box_autoadd_stable_balance_config(dynamic raw);
+
+  @protected
   SuccessAction dco_decode_box_autoadd_success_action(dynamic raw);
 
   @protected
@@ -756,6 +759,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkInvoicePaymentDetails? dco_decode_opt_box_autoadd_spark_invoice_payment_details(dynamic raw);
 
   @protected
+  StableBalanceConfig? dco_decode_opt_box_autoadd_stable_balance_config(dynamic raw);
+
+  @protected
   SuccessAction? dco_decode_opt_box_autoadd_success_action(dynamic raw);
 
   @protected
@@ -919,6 +925,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkStatus dco_decode_spark_status(dynamic raw);
+
+  @protected
+  StableBalanceConfig dco_decode_stable_balance_config(dynamic raw);
 
   @protected
   SuccessAction dco_decode_success_action(dynamic raw);
@@ -1334,6 +1343,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  StableBalanceConfig sse_decode_box_autoadd_stable_balance_config(SseDeserializer deserializer);
+
+  @protected
   SuccessAction sse_decode_box_autoadd_success_action(SseDeserializer deserializer);
 
   @protected
@@ -1728,6 +1740,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  StableBalanceConfig? sse_decode_opt_box_autoadd_stable_balance_config(SseDeserializer deserializer);
+
+  @protected
   SuccessAction? sse_decode_opt_box_autoadd_success_action(SseDeserializer deserializer);
 
   @protected
@@ -1891,6 +1906,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkStatus sse_decode_spark_status(SseDeserializer deserializer);
+
+  @protected
+  StableBalanceConfig sse_decode_stable_balance_config(SseDeserializer deserializer);
 
   @protected
   SuccessAction sse_decode_success_action(SseDeserializer deserializer);
@@ -2364,6 +2382,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_stable_balance_config(StableBalanceConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_success_action(SuccessAction self, SseSerializer serializer);
 
   @protected
@@ -2790,6 +2811,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_opt_box_autoadd_stable_balance_config(StableBalanceConfig? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_success_action(SuccessAction? self, SseSerializer serializer);
 
   @protected
@@ -2962,6 +2986,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_spark_status(SparkStatus self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_stable_balance_config(StableBalanceConfig self, SseSerializer serializer);
 
   @protected
   void sse_encode_success_action(SuccessAction self, SseSerializer serializer);

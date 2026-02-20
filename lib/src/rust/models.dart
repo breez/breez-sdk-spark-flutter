@@ -590,6 +590,7 @@ class Config {
   final String? realTimeSyncServerUrl;
   final bool privateEnabledDefault;
   final OptimizationConfig optimizationConfig;
+  final StableBalanceConfig? stableBalanceConfig;
 
   const Config({
     this.apiKey,
@@ -603,6 +604,7 @@ class Config {
     this.realTimeSyncServerUrl,
     required this.privateEnabledDefault,
     required this.optimizationConfig,
+    this.stableBalanceConfig,
   });
 
   @override
@@ -617,7 +619,8 @@ class Config {
       useDefaultExternalInputParsers.hashCode ^
       realTimeSyncServerUrl.hashCode ^
       privateEnabledDefault.hashCode ^
-      optimizationConfig.hashCode;
+      optimizationConfig.hashCode ^
+      stableBalanceConfig.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -634,7 +637,8 @@ class Config {
           useDefaultExternalInputParsers == other.useDefaultExternalInputParsers &&
           realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
           privateEnabledDefault == other.privateEnabledDefault &&
-          optimizationConfig == other.optimizationConfig;
+          optimizationConfig == other.optimizationConfig &&
+          stableBalanceConfig == other.stableBalanceConfig;
 }
 
 class ConnectRequest {
@@ -750,6 +754,7 @@ sealed class ConversionPurpose with _$ConversionPurpose {
   const factory ConversionPurpose.ongoingPayment({required String paymentRequest}) =
       ConversionPurpose_OngoingPayment;
   const factory ConversionPurpose.selfTransfer() = ConversionPurpose_SelfTransfer;
+  const factory ConversionPurpose.autoConversion() = ConversionPurpose_AutoConversion;
 }
 
 enum ConversionStatus { completed, refundNeeded, refunded }
@@ -1843,10 +1848,9 @@ sealed class PaymentDetails with _$PaymentDetails {
   }) = PaymentDetails_Token;
   const factory PaymentDetails.lightning({
     String? description,
-    String? preimage,
     required String invoice,
-    required String paymentHash,
     required String destinationPubkey,
+    required SparkHtlcDetails htlcDetails,
     LnurlPayInfo? lnurlPayInfo,
     LnurlWithdrawInfo? lnurlWithdrawInfo,
     LnurlReceiveMetadata? lnurlReceiveMetadata,
@@ -1868,6 +1872,8 @@ sealed class PaymentDetailsFilter with _$PaymentDetailsFilter {
     String? txHash,
     TokenTransactionType? txType,
   }) = PaymentDetailsFilter_Token;
+  const factory PaymentDetailsFilter.lightning({List<SparkHtlcStatus>? htlcStatus}) =
+      PaymentDetailsFilter_Lightning;
 }
 
 enum PaymentMethod { lightning, spark, token, deposit, withdraw, unknown }
@@ -2082,6 +2088,7 @@ sealed class ReceivePaymentMethod with _$ReceivePaymentMethod {
     required String description,
     BigInt? amountSats,
     int? expirySecs,
+    String? paymentHash,
   }) = ReceivePaymentMethod_Bolt11Invoice;
 }
 
@@ -2558,6 +2565,34 @@ class SparkStatus {
           runtimeType == other.runtimeType &&
           status == other.status &&
           lastUpdated == other.lastUpdated;
+}
+
+class StableBalanceConfig {
+  final String tokenIdentifier;
+  final BigInt? thresholdSats;
+  final int? maxSlippageBps;
+  final BigInt? reservedSats;
+
+  const StableBalanceConfig({
+    required this.tokenIdentifier,
+    this.thresholdSats,
+    this.maxSlippageBps,
+    this.reservedSats,
+  });
+
+  @override
+  int get hashCode =>
+      tokenIdentifier.hashCode ^ thresholdSats.hashCode ^ maxSlippageBps.hashCode ^ reservedSats.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StableBalanceConfig &&
+          runtimeType == other.runtimeType &&
+          tokenIdentifier == other.tokenIdentifier &&
+          thresholdSats == other.thresholdSats &&
+          maxSlippageBps == other.maxSlippageBps &&
+          reservedSats == other.reservedSats;
 }
 
 @freezed
