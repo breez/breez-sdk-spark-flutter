@@ -592,6 +592,13 @@ class Config {
   final OptimizationConfig optimizationConfig;
   final StableBalanceConfig? stableBalanceConfig;
 
+  /// Maximum number of concurrent transfer claims.
+  ///
+  /// Controls how many pending Spark transfers can be claimed in parallel.
+  /// Default is 4. Increase for server environments with high incoming
+  /// payment volume to improve throughput.
+  final int maxConcurrentClaims;
+
   const Config({
     this.apiKey,
     required this.network,
@@ -605,6 +612,7 @@ class Config {
     required this.privateEnabledDefault,
     required this.optimizationConfig,
     this.stableBalanceConfig,
+    required this.maxConcurrentClaims,
   });
 
   @override
@@ -620,7 +628,8 @@ class Config {
       realTimeSyncServerUrl.hashCode ^
       privateEnabledDefault.hashCode ^
       optimizationConfig.hashCode ^
-      stableBalanceConfig.hashCode;
+      stableBalanceConfig.hashCode ^
+      maxConcurrentClaims.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -638,7 +647,8 @@ class Config {
           realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
           privateEnabledDefault == other.privateEnabledDefault &&
           optimizationConfig == other.optimizationConfig &&
-          stableBalanceConfig == other.stableBalanceConfig;
+          stableBalanceConfig == other.stableBalanceConfig &&
+          maxConcurrentClaims == other.maxConcurrentClaims;
 }
 
 class ConnectRequest {

@@ -2701,7 +2701,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Config dco_decode_config(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 12) throw Exception('unexpected arr length: expect 12 but see ${arr.length}');
+    if (arr.length != 13) throw Exception('unexpected arr length: expect 13 but see ${arr.length}');
     return Config(
       apiKey: dco_decode_opt_String(arr[0]),
       network: dco_decode_network(arr[1]),
@@ -2715,6 +2715,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       privateEnabledDefault: dco_decode_bool(arr[9]),
       optimizationConfig: dco_decode_optimization_config(arr[10]),
       stableBalanceConfig: dco_decode_opt_box_autoadd_stable_balance_config(arr[11]),
+      maxConcurrentClaims: dco_decode_u_32(arr[12]),
     );
   }
 
@@ -5540,6 +5541,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     var var_privateEnabledDefault = sse_decode_bool(deserializer);
     var var_optimizationConfig = sse_decode_optimization_config(deserializer);
     var var_stableBalanceConfig = sse_decode_opt_box_autoadd_stable_balance_config(deserializer);
+    var var_maxConcurrentClaims = sse_decode_u_32(deserializer);
     return Config(
       apiKey: var_apiKey,
       network: var_network,
@@ -5553,6 +5555,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       privateEnabledDefault: var_privateEnabledDefault,
       optimizationConfig: var_optimizationConfig,
       stableBalanceConfig: var_stableBalanceConfig,
+      maxConcurrentClaims: var_maxConcurrentClaims,
     );
   }
 
@@ -8840,6 +8843,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_bool(self.privateEnabledDefault, serializer);
     sse_encode_optimization_config(self.optimizationConfig, serializer);
     sse_encode_opt_box_autoadd_stable_balance_config(self.stableBalanceConfig, serializer);
+    sse_encode_u_32(self.maxConcurrentClaims, serializer);
   }
 
   @protected

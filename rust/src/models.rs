@@ -33,6 +33,12 @@ pub struct _Config {
     pub private_enabled_default: bool,
     pub optimization_config: OptimizationConfig,
     pub stable_balance_config: Option<StableBalanceConfig>,
+    /// Maximum number of concurrent transfer claims.
+    ///
+    /// Controls how many pending Spark transfers can be claimed in parallel.
+    /// Default is 4. Increase for server environments with high incoming
+    /// payment volume to improve throughput.
+    pub max_concurrent_claims: u32,
 }
 
 #[frb(mirror(OptimizationConfig))]
@@ -1076,9 +1082,7 @@ pub struct _ConversionEstimate {
 
 #[frb(mirror(ConversionPurpose))]
 pub enum _ConversionPurpose {
-    OngoingPayment {
-        payment_request: String,
-    },
+    OngoingPayment { payment_request: String },
     SelfTransfer,
     AutoConversion,
 }

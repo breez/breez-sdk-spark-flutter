@@ -3119,6 +3119,7 @@ const _: fn() = || {
         let _: bool = Config.private_enabled_default;
         let _: crate::models::OptimizationConfig = Config.optimization_config;
         let _: Option<crate::models::StableBalanceConfig> = Config.stable_balance_config;
+        let _: u32 = Config.max_concurrent_claims;
     }
     {
         let ConnectRequest = None::<crate::models::ConnectRequest>.unwrap();
@@ -4604,6 +4605,7 @@ impl SseDecode for crate::models::Config {
             <crate::models::OptimizationConfig>::sse_decode(deserializer);
         let mut var_stableBalanceConfig =
             <Option<crate::models::StableBalanceConfig>>::sse_decode(deserializer);
+        let mut var_maxConcurrentClaims = <u32>::sse_decode(deserializer);
         return crate::models::Config {
             api_key: var_apiKey,
             network: var_network,
@@ -4617,6 +4619,7 @@ impl SseDecode for crate::models::Config {
             private_enabled_default: var_privateEnabledDefault,
             optimization_config: var_optimizationConfig,
             stable_balance_config: var_stableBalanceConfig,
+            max_concurrent_claims: var_maxConcurrentClaims,
         };
     }
 }
@@ -8353,6 +8356,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
             self.0.private_enabled_default.into_into_dart().into_dart(),
             self.0.optimization_config.into_into_dart().into_dart(),
             self.0.stable_balance_config.into_into_dart().into_dart(),
+            self.0.max_concurrent_claims.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -11672,6 +11676,7 @@ impl SseEncode for crate::models::Config {
             self.stable_balance_config,
             serializer,
         );
+        <u32>::sse_encode(self.max_concurrent_claims, serializer);
     }
 }
 
