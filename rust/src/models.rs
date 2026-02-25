@@ -39,6 +39,7 @@ pub struct _Config {
     /// Default is 4. Increase for server environments with high incoming
     /// payment volume to improve throughput.
     pub max_concurrent_claims: u32,
+    pub support_lnurl_verify: bool,
 }
 
 #[frb(mirror(OptimizationConfig))]

@@ -437,7 +437,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-common"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "aes",
  "anyhow",
@@ -474,7 +474,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -492,7 +492,6 @@ dependencies = [
  "k256",
  "lnurl-models",
  "macros",
- "nostr",
  "openssl",
  "platform-utils",
  "rusqlite",
@@ -587,30 +586,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
-name = "chacha20"
-version = "0.9.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c3613f74bd2eac03dad61bd53dbe620703d4371614fe0bc3b9f04dd36fe4e818"
-dependencies = [
- "cfg-if",
- "cipher",
- "cpufeatures",
-]
-
-[[package]]
-name = "chacha20poly1305"
-version = "0.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10cd79432192d1c0f4e1a0fef9527696cc039165d729fb41b3f4f4f354c2dc35"
-dependencies = [
- "aead",
- "chacha20",
- "cipher",
- "poly1305",
- "zeroize",
-]
-
-[[package]]
 name = "chrono"
 version = "0.4.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -632,7 +607,6 @@ checksum = "773f3b9af64447d2ce9850330c473515014aa235e6a783b02db81ff39e4a3dad"
 dependencies = [
  "crypto-common",
  "inout",
- "zeroize",
 ]
 
 [[package]]
@@ -742,7 +716,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a"
 dependencies = [
  "generic-array",
- "rand_core",
  "typenum",
 ]
 
@@ -1112,7 +1085,7 @@ checksum = "1d674e81391d1e1ab681a28d99df07927c6d4aa5b027d7da16ba32d1d21ecd99"
 [[package]]
 name = "flashnet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "bitcoin",
  "getrandom 0.2.16",
@@ -1903,18 +1876,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "instant"
-version = "0.1.13"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0242819d153cba4b4b05a5a8f2a7e9bbf97b6055b2a002b395c96b5ff3c0222"
-dependencies = [
- "cfg-if",
- "js-sys",
- "wasm-bindgen",
- "web-sys",
-]
-
-[[package]]
 name = "ipnet"
 version = "2.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2149,9 +2110,8 @@ checksum = "11d3d7f243d5c5a8b9bb5d6dd2b1602c0cb0b9db1621bafc7ed66e35ff9fe092"
 [[package]]
 name = "lnurl-models"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
- "nostr",
  "serde",
 ]
 
@@ -2174,7 +2134,7 @@ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 [[package]]
 name = "macros"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2258,30 +2218,6 @@ checksum = "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a"
 dependencies = [
  "memchr",
  "minimal-lexical",
-]
-
-[[package]]
-name = "nostr"
-version = "0.43.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62a97d745f1bd8d5e05a978632bbb87b0614567d5142906fe7c86fb2440faac6"
-dependencies = [
- "aes",
- "base64 0.22.1",
- "bech32",
- "bip39",
- "bitcoin_hashes",
- "cbc",
- "chacha20",
- "chacha20poly1305",
- "getrandom 0.2.16",
- "instant",
- "scrypt",
- "secp256k1",
- "serde",
- "serde_json",
- "unicode-normalization",
- "url",
 ]
 
 [[package]]
@@ -2437,27 +2373,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "password-hash"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "346f04948ba92c43e8469c1ee6736c7563d71012b17d40745260fe106aac2166"
-dependencies = [
- "base64ct",
- "rand_core",
- "subtle",
-]
-
-[[package]]
-name = "pbkdf2"
-version = "0.12.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8ed6a7761f76e3b9f92dfb0a60a6a6477c61024b775147ff0973a02653abaf2"
-dependencies = [
- "digest 0.10.7",
- "hmac",
-]
-
-[[package]]
 name = "percent-encoding"
 version = "2.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2524,7 +2439,7 @@ checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
 [[package]]
 name = "platform-utils"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -2535,17 +2450,6 @@ dependencies = [
  "serde_json",
  "thiserror 2.0.17",
  "tracing",
-]
-
-[[package]]
-name = "poly1305"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8159bd90725d2df49889a078b54f4f79e87f1f8a8444194cdca81d38f5393abf"
-dependencies = [
- "cpufeatures",
- "opaque-debug",
- "universal-hash",
 ]
 
 [[package]]
@@ -2988,15 +2892,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a50f4cf475b65d88e057964e0e9bb1f0aa9bbb2036dc65c64596b42932536984"
 
 [[package]]
-name = "salsa20"
-version = "0.10.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97a22f5af31f73a954c10289c93e8a50cc23d971e80ee446f1f6f7137a088213"
-dependencies = [
- "cipher",
-]
-
-[[package]]
 name = "schannel"
 version = "0.1.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3034,18 +2929,6 @@ name = "scopeguard"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
-
-[[package]]
-name = "scrypt"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0516a385866c09368f0b5bcd1caff3366aace790fcd46e2bb032697bb172fd1f"
-dependencies = [
- "password-hash",
- "pbkdf2",
- "salsa20",
- "sha2",
-]
 
 [[package]]
 name = "sct"
@@ -3301,7 +3184,7 @@ dependencies = [
 [[package]]
 name = "spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -3346,7 +3229,7 @@ dependencies = [
 [[package]]
 name = "spark-wallet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=182db68cb400daf44f2ab08d356d0165f43b6f77#182db68cb400daf44f2ab08d356d0165f43b6f77"
+source = "git+https://github.com/breez/spark-sdk.git?rev=1000f276d2f16592b5f6eb8fce29228f34ff88bf#1000f276d2f16592b5f6eb8fce29228f34ff88bf"
 dependencies = [
  "bitcoin",
  "frost-secp256k1-tr-unofficial",
@@ -3977,7 +3860,6 @@ dependencies = [
  "idna",
  "percent-encoding",
  "serde",
- "serde_derive",
 ]
 
 [[package]]

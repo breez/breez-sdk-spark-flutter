@@ -598,6 +598,7 @@ class Config {
   /// Default is 4. Increase for server environments with high incoming
   /// payment volume to improve throughput.
   final int maxConcurrentClaims;
+  final bool supportLnurlVerify;
 
   const Config({
     this.apiKey,
@@ -613,6 +614,7 @@ class Config {
     required this.optimizationConfig,
     this.stableBalanceConfig,
     required this.maxConcurrentClaims,
+    required this.supportLnurlVerify,
   });
 
   @override
@@ -629,7 +631,8 @@ class Config {
       privateEnabledDefault.hashCode ^
       optimizationConfig.hashCode ^
       stableBalanceConfig.hashCode ^
-      maxConcurrentClaims.hashCode;
+      maxConcurrentClaims.hashCode ^
+      supportLnurlVerify.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -648,7 +651,8 @@ class Config {
           privateEnabledDefault == other.privateEnabledDefault &&
           optimizationConfig == other.optimizationConfig &&
           stableBalanceConfig == other.stableBalanceConfig &&
-          maxConcurrentClaims == other.maxConcurrentClaims;
+          maxConcurrentClaims == other.maxConcurrentClaims &&
+          supportLnurlVerify == other.supportLnurlVerify;
 }
 
 class ConnectRequest {
