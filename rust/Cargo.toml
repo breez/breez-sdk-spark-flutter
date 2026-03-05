@@ -1,6 +1,6 @@
 [package]
 name = "breez_sdk_spark_flutter"
-version = "0.10.0"
+version = "0.11.0-dev1"
 edition = "2024"
 
 [workspace]
@@ -11,9 +11,9 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 async-trait = "0.1.88"
 # Replaced with release commit during publishing
-breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "1000f276d2f16592b5f6eb8fce29228f34ff88bf", features = ["openssl-vendored"] }
+breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "37a7228995d62dd1de4da47e48165a1ce5d32e4e", features = ["openssl-vendored"] }
 extend = "1.2.0"
-flutter_rust_bridge = "=2.9.0"
+flutter_rust_bridge = "=2.11.1"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
