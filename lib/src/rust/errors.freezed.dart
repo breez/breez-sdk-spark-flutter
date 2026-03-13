@@ -398,6 +398,1289 @@ as String,
 }
 
 /// @nodoc
+mixin _$PasskeyError {
+
+ Object get field0;
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError&&const DeepCollectionEquality().equals(other.field0, field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(field0));
+
+@override
+String toString() {
+  return 'PasskeyError(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+class $PasskeyErrorCopyWith<$Res>  {
+$PasskeyErrorCopyWith(PasskeyError _, $Res Function(PasskeyError) __);
+}
+
+
+/// Adds pattern-matching-related methods to [PasskeyError].
+extension PasskeyErrorPatterns on PasskeyError {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_PrfError value)?  prfError,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PasskeyError_PrfError() when prfError != null:
+return prfError(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
+return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
+return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
+return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
+return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
+return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
+return invalidSalt(_that);case PasskeyError_Generic() when generic != null:
+return generic(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_PrfError value)  prfError,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_Generic value)  generic,}){
+final _that = this;
+switch (_that) {
+case PasskeyError_PrfError():
+return prfError(_that);case PasskeyError_RelayConnectionFailed():
+return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed():
+return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed():
+return nostrReadFailed(_that);case PasskeyError_KeyDerivationError():
+return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput():
+return invalidPrfOutput(_that);case PasskeyError_MnemonicError():
+return mnemonicError(_that);case PasskeyError_InvalidSalt():
+return invalidSalt(_that);case PasskeyError_Generic():
+return generic(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_PrfError value)?  prfError,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_Generic value)?  generic,}){
+final _that = this;
+switch (_that) {
+case PasskeyError_PrfError() when prfError != null:
+return prfError(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
+return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
+return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
+return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
+return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
+return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
+return invalidSalt(_that);case PasskeyError_Generic() when generic != null:
+return generic(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PasskeyPrfError field0)?  prfError,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PasskeyError_PrfError() when prfError != null:
+return prfError(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
+return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
+return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
+return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
+return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
+return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
+return invalidSalt(_that.field0);case PasskeyError_Generic() when generic != null:
+return generic(_that.field0);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PasskeyPrfError field0)  prfError,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( String field0)  generic,}) {final _that = this;
+switch (_that) {
+case PasskeyError_PrfError():
+return prfError(_that.field0);case PasskeyError_RelayConnectionFailed():
+return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed():
+return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed():
+return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError():
+return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput():
+return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError():
+return mnemonicError(_that.field0);case PasskeyError_InvalidSalt():
+return invalidSalt(_that.field0);case PasskeyError_Generic():
+return generic(_that.field0);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PasskeyPrfError field0)?  prfError,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( String field0)?  generic,}) {final _that = this;
+switch (_that) {
+case PasskeyError_PrfError() when prfError != null:
+return prfError(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
+return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
+return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
+return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
+return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
+return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
+return invalidSalt(_that.field0);case PasskeyError_Generic() when generic != null:
+return generic(_that.field0);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_PrfError extends PasskeyError {
+  const PasskeyError_PrfError(this.field0): super._();
+  
+
+@override final  PasskeyPrfError field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_PrfErrorCopyWith<PasskeyError_PrfError> get copyWith => _$PasskeyError_PrfErrorCopyWithImpl<PasskeyError_PrfError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_PrfError&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.prfError(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_PrfErrorCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_PrfErrorCopyWith(PasskeyError_PrfError value, $Res Function(PasskeyError_PrfError) _then) = _$PasskeyError_PrfErrorCopyWithImpl;
+@useResult
+$Res call({
+ PasskeyPrfError field0
+});
+
+
+$PasskeyPrfErrorCopyWith<$Res> get field0;
+
+}
+/// @nodoc
+class _$PasskeyError_PrfErrorCopyWithImpl<$Res>
+    implements $PasskeyError_PrfErrorCopyWith<$Res> {
+  _$PasskeyError_PrfErrorCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_PrfError _self;
+  final $Res Function(PasskeyError_PrfError) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_PrfError(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as PasskeyPrfError,
+  ));
+}
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PasskeyPrfErrorCopyWith<$Res> get field0 {
+  
+  return $PasskeyPrfErrorCopyWith<$Res>(_self.field0, (value) {
+    return _then(_self.copyWith(field0: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class PasskeyError_RelayConnectionFailed extends PasskeyError {
+  const PasskeyError_RelayConnectionFailed(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_RelayConnectionFailedCopyWith<PasskeyError_RelayConnectionFailed> get copyWith => _$PasskeyError_RelayConnectionFailedCopyWithImpl<PasskeyError_RelayConnectionFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_RelayConnectionFailed&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.relayConnectionFailed(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_RelayConnectionFailedCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_RelayConnectionFailedCopyWith(PasskeyError_RelayConnectionFailed value, $Res Function(PasskeyError_RelayConnectionFailed) _then) = _$PasskeyError_RelayConnectionFailedCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_RelayConnectionFailedCopyWithImpl<$Res>
+    implements $PasskeyError_RelayConnectionFailedCopyWith<$Res> {
+  _$PasskeyError_RelayConnectionFailedCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_RelayConnectionFailed _self;
+  final $Res Function(PasskeyError_RelayConnectionFailed) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_RelayConnectionFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_NostrWriteFailed extends PasskeyError {
+  const PasskeyError_NostrWriteFailed(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_NostrWriteFailedCopyWith<PasskeyError_NostrWriteFailed> get copyWith => _$PasskeyError_NostrWriteFailedCopyWithImpl<PasskeyError_NostrWriteFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_NostrWriteFailed&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.nostrWriteFailed(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_NostrWriteFailedCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_NostrWriteFailedCopyWith(PasskeyError_NostrWriteFailed value, $Res Function(PasskeyError_NostrWriteFailed) _then) = _$PasskeyError_NostrWriteFailedCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_NostrWriteFailedCopyWithImpl<$Res>
+    implements $PasskeyError_NostrWriteFailedCopyWith<$Res> {
+  _$PasskeyError_NostrWriteFailedCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_NostrWriteFailed _self;
+  final $Res Function(PasskeyError_NostrWriteFailed) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_NostrWriteFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_NostrReadFailed extends PasskeyError {
+  const PasskeyError_NostrReadFailed(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_NostrReadFailedCopyWith<PasskeyError_NostrReadFailed> get copyWith => _$PasskeyError_NostrReadFailedCopyWithImpl<PasskeyError_NostrReadFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_NostrReadFailed&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.nostrReadFailed(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_NostrReadFailedCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_NostrReadFailedCopyWith(PasskeyError_NostrReadFailed value, $Res Function(PasskeyError_NostrReadFailed) _then) = _$PasskeyError_NostrReadFailedCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_NostrReadFailedCopyWithImpl<$Res>
+    implements $PasskeyError_NostrReadFailedCopyWith<$Res> {
+  _$PasskeyError_NostrReadFailedCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_NostrReadFailed _self;
+  final $Res Function(PasskeyError_NostrReadFailed) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_NostrReadFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_KeyDerivationError extends PasskeyError {
+  const PasskeyError_KeyDerivationError(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_KeyDerivationErrorCopyWith<PasskeyError_KeyDerivationError> get copyWith => _$PasskeyError_KeyDerivationErrorCopyWithImpl<PasskeyError_KeyDerivationError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_KeyDerivationError&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.keyDerivationError(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_KeyDerivationErrorCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_KeyDerivationErrorCopyWith(PasskeyError_KeyDerivationError value, $Res Function(PasskeyError_KeyDerivationError) _then) = _$PasskeyError_KeyDerivationErrorCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_KeyDerivationErrorCopyWithImpl<$Res>
+    implements $PasskeyError_KeyDerivationErrorCopyWith<$Res> {
+  _$PasskeyError_KeyDerivationErrorCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_KeyDerivationError _self;
+  final $Res Function(PasskeyError_KeyDerivationError) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_KeyDerivationError(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_InvalidPrfOutput extends PasskeyError {
+  const PasskeyError_InvalidPrfOutput(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_InvalidPrfOutputCopyWith<PasskeyError_InvalidPrfOutput> get copyWith => _$PasskeyError_InvalidPrfOutputCopyWithImpl<PasskeyError_InvalidPrfOutput>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_InvalidPrfOutput&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.invalidPrfOutput(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_InvalidPrfOutputCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_InvalidPrfOutputCopyWith(PasskeyError_InvalidPrfOutput value, $Res Function(PasskeyError_InvalidPrfOutput) _then) = _$PasskeyError_InvalidPrfOutputCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_InvalidPrfOutputCopyWithImpl<$Res>
+    implements $PasskeyError_InvalidPrfOutputCopyWith<$Res> {
+  _$PasskeyError_InvalidPrfOutputCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_InvalidPrfOutput _self;
+  final $Res Function(PasskeyError_InvalidPrfOutput) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_InvalidPrfOutput(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_MnemonicError extends PasskeyError {
+  const PasskeyError_MnemonicError(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_MnemonicErrorCopyWith<PasskeyError_MnemonicError> get copyWith => _$PasskeyError_MnemonicErrorCopyWithImpl<PasskeyError_MnemonicError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_MnemonicError&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.mnemonicError(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_MnemonicErrorCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_MnemonicErrorCopyWith(PasskeyError_MnemonicError value, $Res Function(PasskeyError_MnemonicError) _then) = _$PasskeyError_MnemonicErrorCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_MnemonicErrorCopyWithImpl<$Res>
+    implements $PasskeyError_MnemonicErrorCopyWith<$Res> {
+  _$PasskeyError_MnemonicErrorCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_MnemonicError _self;
+  final $Res Function(PasskeyError_MnemonicError) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_MnemonicError(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_InvalidSalt extends PasskeyError {
+  const PasskeyError_InvalidSalt(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_InvalidSaltCopyWith<PasskeyError_InvalidSalt> get copyWith => _$PasskeyError_InvalidSaltCopyWithImpl<PasskeyError_InvalidSalt>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_InvalidSalt&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.invalidSalt(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_InvalidSaltCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_InvalidSaltCopyWith(PasskeyError_InvalidSalt value, $Res Function(PasskeyError_InvalidSalt) _then) = _$PasskeyError_InvalidSaltCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_InvalidSaltCopyWithImpl<$Res>
+    implements $PasskeyError_InvalidSaltCopyWith<$Res> {
+  _$PasskeyError_InvalidSaltCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_InvalidSalt _self;
+  final $Res Function(PasskeyError_InvalidSalt) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_InvalidSalt(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyError_Generic extends PasskeyError {
+  const PasskeyError_Generic(this.field0): super._();
+  
+
+@override final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_GenericCopyWith<PasskeyError_Generic> get copyWith => _$PasskeyError_GenericCopyWithImpl<PasskeyError_Generic>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_Generic&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.generic(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_GenericCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_GenericCopyWith(PasskeyError_Generic value, $Res Function(PasskeyError_Generic) _then) = _$PasskeyError_GenericCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_GenericCopyWithImpl<$Res>
+    implements $PasskeyError_GenericCopyWith<$Res> {
+  _$PasskeyError_GenericCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_Generic _self;
+  final $Res Function(PasskeyError_Generic) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_Generic(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$PasskeyPrfError {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyPrfError()';
+}
+
+
+}
+
+/// @nodoc
+class $PasskeyPrfErrorCopyWith<$Res>  {
+$PasskeyPrfErrorCopyWith(PasskeyPrfError _, $Res Function(PasskeyPrfError) __);
+}
+
+
+/// Adds pattern-matching-related methods to [PasskeyPrfError].
+extension PasskeyPrfErrorPatterns on PasskeyPrfError {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyPrfError_PrfNotSupported value)?  prfNotSupported,TResult Function( PasskeyPrfError_UserCancelled value)?  userCancelled,TResult Function( PasskeyPrfError_CredentialNotFound value)?  credentialNotFound,TResult Function( PasskeyPrfError_AuthenticationFailed value)?  authenticationFailed,TResult Function( PasskeyPrfError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult Function( PasskeyPrfError_Generic value)?  generic,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported(_that);case PasskeyPrfError_UserCancelled() when userCancelled != null:
+return userCancelled(_that);case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that);case PasskeyPrfError_Generic() when generic != null:
+return generic(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyPrfError_PrfNotSupported value)  prfNotSupported,required TResult Function( PasskeyPrfError_UserCancelled value)  userCancelled,required TResult Function( PasskeyPrfError_CredentialNotFound value)  credentialNotFound,required TResult Function( PasskeyPrfError_AuthenticationFailed value)  authenticationFailed,required TResult Function( PasskeyPrfError_PrfEvaluationFailed value)  prfEvaluationFailed,required TResult Function( PasskeyPrfError_Generic value)  generic,}){
+final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported():
+return prfNotSupported(_that);case PasskeyPrfError_UserCancelled():
+return userCancelled(_that);case PasskeyPrfError_CredentialNotFound():
+return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed():
+return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed():
+return prfEvaluationFailed(_that);case PasskeyPrfError_Generic():
+return generic(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyPrfError_PrfNotSupported value)?  prfNotSupported,TResult? Function( PasskeyPrfError_UserCancelled value)?  userCancelled,TResult? Function( PasskeyPrfError_CredentialNotFound value)?  credentialNotFound,TResult? Function( PasskeyPrfError_AuthenticationFailed value)?  authenticationFailed,TResult? Function( PasskeyPrfError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult? Function( PasskeyPrfError_Generic value)?  generic,}){
+final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported(_that);case PasskeyPrfError_UserCancelled() when userCancelled != null:
+return userCancelled(_that);case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that);case PasskeyPrfError_Generic() when generic != null:
+return generic(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  prfNotSupported,TResult Function()?  userCancelled,TResult Function()?  credentialNotFound,TResult Function( String field0)?  authenticationFailed,TResult Function( String field0)?  prfEvaluationFailed,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported();case PasskeyPrfError_UserCancelled() when userCancelled != null:
+return userCancelled();case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound();case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic() when generic != null:
+return generic(_that.field0);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  prfNotSupported,required TResult Function()  userCancelled,required TResult Function()  credentialNotFound,required TResult Function( String field0)  authenticationFailed,required TResult Function( String field0)  prfEvaluationFailed,required TResult Function( String field0)  generic,}) {final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported():
+return prfNotSupported();case PasskeyPrfError_UserCancelled():
+return userCancelled();case PasskeyPrfError_CredentialNotFound():
+return credentialNotFound();case PasskeyPrfError_AuthenticationFailed():
+return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed():
+return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic():
+return generic(_that.field0);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  prfNotSupported,TResult? Function()?  userCancelled,TResult? Function()?  credentialNotFound,TResult? Function( String field0)?  authenticationFailed,TResult? Function( String field0)?  prfEvaluationFailed,TResult? Function( String field0)?  generic,}) {final _that = this;
+switch (_that) {
+case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported();case PasskeyPrfError_UserCancelled() when userCancelled != null:
+return userCancelled();case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound();case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic() when generic != null:
+return generic(_that.field0);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class PasskeyPrfError_PrfNotSupported extends PasskeyPrfError {
+  const PasskeyPrfError_PrfNotSupported(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_PrfNotSupported);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyPrfError.prfNotSupported()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PasskeyPrfError_UserCancelled extends PasskeyPrfError {
+  const PasskeyPrfError_UserCancelled(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_UserCancelled);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyPrfError.userCancelled()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PasskeyPrfError_CredentialNotFound extends PasskeyPrfError {
+  const PasskeyPrfError_CredentialNotFound(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_CredentialNotFound);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyPrfError.credentialNotFound()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PasskeyPrfError_AuthenticationFailed extends PasskeyPrfError {
+  const PasskeyPrfError_AuthenticationFailed(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyPrfError_AuthenticationFailedCopyWith<PasskeyPrfError_AuthenticationFailed> get copyWith => _$PasskeyPrfError_AuthenticationFailedCopyWithImpl<PasskeyPrfError_AuthenticationFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_AuthenticationFailed&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyPrfError.authenticationFailed(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyPrfError_AuthenticationFailedCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
+  factory $PasskeyPrfError_AuthenticationFailedCopyWith(PasskeyPrfError_AuthenticationFailed value, $Res Function(PasskeyPrfError_AuthenticationFailed) _then) = _$PasskeyPrfError_AuthenticationFailedCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyPrfError_AuthenticationFailedCopyWithImpl<$Res>
+    implements $PasskeyPrfError_AuthenticationFailedCopyWith<$Res> {
+  _$PasskeyPrfError_AuthenticationFailedCopyWithImpl(this._self, this._then);
+
+  final PasskeyPrfError_AuthenticationFailed _self;
+  final $Res Function(PasskeyPrfError_AuthenticationFailed) _then;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyPrfError_AuthenticationFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyPrfError_PrfEvaluationFailed extends PasskeyPrfError {
+  const PasskeyPrfError_PrfEvaluationFailed(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyPrfError_PrfEvaluationFailedCopyWith<PasskeyPrfError_PrfEvaluationFailed> get copyWith => _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl<PasskeyPrfError_PrfEvaluationFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_PrfEvaluationFailed&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyPrfError.prfEvaluationFailed(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyPrfError_PrfEvaluationFailedCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
+  factory $PasskeyPrfError_PrfEvaluationFailedCopyWith(PasskeyPrfError_PrfEvaluationFailed value, $Res Function(PasskeyPrfError_PrfEvaluationFailed) _then) = _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl<$Res>
+    implements $PasskeyPrfError_PrfEvaluationFailedCopyWith<$Res> {
+  _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl(this._self, this._then);
+
+  final PasskeyPrfError_PrfEvaluationFailed _self;
+  final $Res Function(PasskeyPrfError_PrfEvaluationFailed) _then;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyPrfError_PrfEvaluationFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyPrfError_Generic extends PasskeyPrfError {
+  const PasskeyPrfError_Generic(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyPrfError_GenericCopyWith<PasskeyPrfError_Generic> get copyWith => _$PasskeyPrfError_GenericCopyWithImpl<PasskeyPrfError_Generic>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_Generic&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyPrfError.generic(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyPrfError_GenericCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
+  factory $PasskeyPrfError_GenericCopyWith(PasskeyPrfError_Generic value, $Res Function(PasskeyPrfError_Generic) _then) = _$PasskeyPrfError_GenericCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyPrfError_GenericCopyWithImpl<$Res>
+    implements $PasskeyPrfError_GenericCopyWith<$Res> {
+  _$PasskeyPrfError_GenericCopyWithImpl(this._self, this._then);
+
+  final PasskeyPrfError_Generic _self;
+  final $Res Function(PasskeyPrfError_Generic) _then;
+
+/// Create a copy of PasskeyPrfError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyPrfError_Generic(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$SdkError {
 
 

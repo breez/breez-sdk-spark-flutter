@@ -1816,6 +1816,24 @@ class MintIssuerTokenRequest {
 
 enum Network { mainnet, regtest }
 
+class NostrRelayConfig {
+  final String? breezApiKey;
+  final int? timeoutSecs;
+
+  const NostrRelayConfig({this.breezApiKey, this.timeoutSecs});
+
+  @override
+  int get hashCode => breezApiKey.hashCode ^ timeoutSecs.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NostrRelayConfig &&
+          runtimeType == other.runtimeType &&
+          breezApiKey == other.breezApiKey &&
+          timeoutSecs == other.timeoutSecs;
+}
+
 enum OnchainConfirmationSpeed { fast, medium, slow }
 
 class OptimizationConfig {
@@ -2909,4 +2927,19 @@ class UserSettings {
       other is UserSettings &&
           runtimeType == other.runtimeType &&
           sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
+}
+
+class Wallet {
+  final Seed seed;
+  final String name;
+
+  const Wallet({required this.seed, required this.name});
+
+  @override
+  int get hashCode => seed.hashCode ^ name.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Wallet && runtimeType == other.runtimeType && seed == other.seed && name == other.name;
 }

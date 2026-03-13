@@ -39,4 +39,6 @@ sealed class SdkEvent with _$SdkEvent {
   const factory SdkEvent.paymentPending({required Payment payment}) = SdkEvent_PaymentPending;
   const factory SdkEvent.paymentFailed({required Payment payment}) = SdkEvent_PaymentFailed;
   const factory SdkEvent.optimization({required OptimizationEvent optimizationEvent}) = SdkEvent_Optimization;
+  const factory SdkEvent.lightningAddressChanged({LightningAddressInfo? lightningAddress}) =
+      SdkEvent_LightningAddressChanged;
 }

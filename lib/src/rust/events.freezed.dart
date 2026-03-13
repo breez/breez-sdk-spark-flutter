@@ -535,7 +535,7 @@ extension SdkEventPatterns on SdkEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_Optimization value)?  optimization,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_Optimization value)?  optimization,TResult Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -545,7 +545,8 @@ return claimedDeposits(_that);case SdkEvent_PaymentSucceeded() when paymentSucce
 return paymentSucceeded(_that);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that);case SdkEvent_PaymentFailed() when paymentFailed != null:
 return paymentFailed(_that);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that);case _:
+return optimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return lightningAddressChanged(_that);case _:
   return orElse();
 
 }
@@ -563,7 +564,7 @@ return optimization(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_Optimization value)  optimization,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_Optimization value)  optimization,required TResult Function( SdkEvent_LightningAddressChanged value)  lightningAddressChanged,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
@@ -573,7 +574,8 @@ return claimedDeposits(_that);case SdkEvent_PaymentSucceeded():
 return paymentSucceeded(_that);case SdkEvent_PaymentPending():
 return paymentPending(_that);case SdkEvent_PaymentFailed():
 return paymentFailed(_that);case SdkEvent_Optimization():
-return optimization(_that);}
+return optimization(_that);case SdkEvent_LightningAddressChanged():
+return lightningAddressChanged(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -587,7 +589,7 @@ return optimization(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_Optimization value)?  optimization,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_Optimization value)?  optimization,TResult? Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -597,7 +599,8 @@ return claimedDeposits(_that);case SdkEvent_PaymentSucceeded() when paymentSucce
 return paymentSucceeded(_that);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that);case SdkEvent_PaymentFailed() when paymentFailed != null:
 return paymentFailed(_that);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that);case _:
+return optimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return lightningAddressChanged(_that);case _:
   return null;
 
 }
@@ -614,7 +617,7 @@ return optimization(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( OptimizationEvent optimizationEvent)?  optimization,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( OptimizationEvent optimizationEvent)?  optimization,TResult Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -623,7 +626,8 @@ return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded() w
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed() when paymentFailed != null:
 return paymentFailed(_that.payment);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that.optimizationEvent);case _:
+return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return lightningAddressChanged(_that.lightningAddress);case _:
   return orElse();
 
 }
@@ -641,7 +645,7 @@ return optimization(_that.optimizationEvent);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( OptimizationEvent optimizationEvent)  optimization,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( OptimizationEvent optimizationEvent)  optimization,required TResult Function( LightningAddressInfo? lightningAddress)  lightningAddressChanged,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
 return synced();case SdkEvent_UnclaimedDeposits():
@@ -650,7 +654,8 @@ return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded():
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending():
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed():
 return paymentFailed(_that.payment);case SdkEvent_Optimization():
-return optimization(_that.optimizationEvent);}
+return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged():
+return lightningAddressChanged(_that.lightningAddress);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -664,7 +669,7 @@ return optimization(_that.optimizationEvent);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( OptimizationEvent optimizationEvent)?  optimization,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( OptimizationEvent optimizationEvent)?  optimization,TResult? Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -673,7 +678,8 @@ return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded() w
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed() when paymentFailed != null:
 return paymentFailed(_that.payment);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that.optimizationEvent);case _:
+return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return lightningAddressChanged(_that.lightningAddress);case _:
   return null;
 
 }
@@ -1128,6 +1134,72 @@ $OptimizationEventCopyWith<$Res> get optimizationEvent {
     return _then(_self.copyWith(optimizationEvent: value));
   });
 }
+}
+
+/// @nodoc
+
+
+class SdkEvent_LightningAddressChanged extends SdkEvent {
+  const SdkEvent_LightningAddressChanged({this.lightningAddress}): super._();
+  
+
+ final  LightningAddressInfo? lightningAddress;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkEvent_LightningAddressChangedCopyWith<SdkEvent_LightningAddressChanged> get copyWith => _$SdkEvent_LightningAddressChangedCopyWithImpl<SdkEvent_LightningAddressChanged>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkEvent_LightningAddressChanged&&(identical(other.lightningAddress, lightningAddress) || other.lightningAddress == lightningAddress));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,lightningAddress);
+
+@override
+String toString() {
+  return 'SdkEvent.lightningAddressChanged(lightningAddress: $lightningAddress)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkEvent_LightningAddressChangedCopyWith<$Res> implements $SdkEventCopyWith<$Res> {
+  factory $SdkEvent_LightningAddressChangedCopyWith(SdkEvent_LightningAddressChanged value, $Res Function(SdkEvent_LightningAddressChanged) _then) = _$SdkEvent_LightningAddressChangedCopyWithImpl;
+@useResult
+$Res call({
+ LightningAddressInfo? lightningAddress
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkEvent_LightningAddressChangedCopyWithImpl<$Res>
+    implements $SdkEvent_LightningAddressChangedCopyWith<$Res> {
+  _$SdkEvent_LightningAddressChangedCopyWithImpl(this._self, this._then);
+
+  final SdkEvent_LightningAddressChanged _self;
+  final $Res Function(SdkEvent_LightningAddressChanged) _then;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? lightningAddress = freezed,}) {
+  return _then(SdkEvent_LightningAddressChanged(
+lightningAddress: freezed == lightningAddress ? _self.lightningAddress : lightningAddress // ignore: cast_nullable_to_non_nullable
+as LightningAddressInfo?,
+  ));
+}
+
+
 }
 
 // dart format on

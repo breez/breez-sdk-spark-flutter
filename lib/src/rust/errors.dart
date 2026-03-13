@@ -28,6 +28,33 @@ sealed class DepositClaimError with _$DepositClaimError {
 }
 
 @freezed
+sealed class PasskeyError with _$PasskeyError implements FrbException {
+  const PasskeyError._();
+
+  const factory PasskeyError.prfError(PasskeyPrfError field0) = PasskeyError_PrfError;
+  const factory PasskeyError.relayConnectionFailed(String field0) = PasskeyError_RelayConnectionFailed;
+  const factory PasskeyError.nostrWriteFailed(String field0) = PasskeyError_NostrWriteFailed;
+  const factory PasskeyError.nostrReadFailed(String field0) = PasskeyError_NostrReadFailed;
+  const factory PasskeyError.keyDerivationError(String field0) = PasskeyError_KeyDerivationError;
+  const factory PasskeyError.invalidPrfOutput(String field0) = PasskeyError_InvalidPrfOutput;
+  const factory PasskeyError.mnemonicError(String field0) = PasskeyError_MnemonicError;
+  const factory PasskeyError.invalidSalt(String field0) = PasskeyError_InvalidSalt;
+  const factory PasskeyError.generic(String field0) = PasskeyError_Generic;
+}
+
+@freezed
+sealed class PasskeyPrfError with _$PasskeyPrfError {
+  const PasskeyPrfError._();
+
+  const factory PasskeyPrfError.prfNotSupported() = PasskeyPrfError_PrfNotSupported;
+  const factory PasskeyPrfError.userCancelled() = PasskeyPrfError_UserCancelled;
+  const factory PasskeyPrfError.credentialNotFound() = PasskeyPrfError_CredentialNotFound;
+  const factory PasskeyPrfError.authenticationFailed(String field0) = PasskeyPrfError_AuthenticationFailed;
+  const factory PasskeyPrfError.prfEvaluationFailed(String field0) = PasskeyPrfError_PrfEvaluationFailed;
+  const factory PasskeyPrfError.generic(String field0) = PasskeyPrfError_Generic;
+}
+
+@freezed
 sealed class SdkError with _$SdkError implements FrbException {
   const SdkError._();
 
