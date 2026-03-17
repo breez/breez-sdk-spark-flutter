@@ -2931,15 +2931,15 @@ class UserSettings {
 
 class Wallet {
   final Seed seed;
-  final String name;
+  final String label;
 
-  const Wallet({required this.seed, required this.name});
+  const Wallet({required this.seed, required this.label});
 
   @override
-  int get hashCode => seed.hashCode ^ name.hashCode;
+  int get hashCode => seed.hashCode ^ label.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Wallet && runtimeType == other.runtimeType && seed == other.seed && name == other.name;
+      other is Wallet && runtimeType == other.runtimeType && seed == other.seed && label == other.label;
 }

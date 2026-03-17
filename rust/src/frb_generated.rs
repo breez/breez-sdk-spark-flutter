@@ -41,7 +41,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1450152945;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1760599076;
 
 // Section: executor
 
@@ -2434,7 +2434,7 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
             >>::sse_decode(&mut deserializer);
-            let api_wallet_name = <Option<String>>::sse_decode(&mut deserializer);
+            let api_label = <Option<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::PasskeyError>(
@@ -2457,7 +2457,7 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
                         }
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok =
-                            crate::passkey::Passkey::get_wallet(&*api_that_guard, api_wallet_name)
+                            crate::passkey::Passkey::get_wallet(&*api_that_guard, api_label)
                                 .await?;
                         Ok(output_ok)
                     })()
@@ -2523,7 +2523,7 @@ fn wire__crate__passkey__Passkey_is_available_impl(
         },
     )
 }
-fn wire__crate__passkey__Passkey_list_wallet_names_impl(
+fn wire__crate__passkey__Passkey_list_labels_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2531,7 +2531,7 @@ fn wire__crate__passkey__Passkey_list_wallet_names_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_list_wallet_names",
+            debug_name: "Passkey_list_labels",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -2570,7 +2570,7 @@ fn wire__crate__passkey__Passkey_list_wallet_names_impl(
                         }
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok =
-                            crate::passkey::Passkey::list_wallet_names(&*api_that_guard).await?;
+                            crate::passkey::Passkey::list_labels(&*api_that_guard).await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -2621,7 +2621,7 @@ fn wire__crate__passkey__Passkey_new_impl(
         },
     )
 }
-fn wire__crate__passkey__Passkey_store_wallet_name_impl(
+fn wire__crate__passkey__Passkey_store_label_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2629,7 +2629,7 @@ fn wire__crate__passkey__Passkey_store_wallet_name_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_store_wallet_name",
+            debug_name: "Passkey_store_label",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -2646,7 +2646,7 @@ fn wire__crate__passkey__Passkey_store_wallet_name_impl(
             let api_that = <RustOpaqueMoi<
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
             >>::sse_decode(&mut deserializer);
-            let api_wallet_name = <String>::sse_decode(&mut deserializer);
+            let api_label = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::PasskeyError>(
@@ -2668,11 +2668,9 @@ fn wire__crate__passkey__Passkey_store_wallet_name_impl(
                             }
                         }
                         let api_that_guard = api_that_guard.unwrap();
-                        let output_ok = crate::passkey::Passkey::store_wallet_name(
-                            &*api_that_guard,
-                            api_wallet_name,
-                        )
-                        .await?;
+                        let output_ok =
+                            crate::passkey::Passkey::store_label(&*api_that_guard, api_label)
+                                .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -4607,7 +4605,7 @@ const _: fn() = || {
     {
         let Wallet = None::<crate::models::Wallet>.unwrap();
         let _: crate::models::Seed = Wallet.seed;
-        let _: String = Wallet.name;
+        let _: String = Wallet.label;
     }
 };
 
@@ -8333,10 +8331,10 @@ impl SseDecode for crate::models::Wallet {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_seed = <crate::models::Seed>::sse_decode(deserializer);
-        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_label = <String>::sse_decode(deserializer);
         return crate::models::Wallet {
             seed: var_seed,
-            name: var_name,
+            label: var_label,
         };
     }
 }
@@ -8432,12 +8430,8 @@ fn pde_ffi_dispatcher_primary_impl(
         }
         42 => wire__crate__passkey__Passkey_get_wallet_impl(port, ptr, rust_vec_len, data_len),
         43 => wire__crate__passkey__Passkey_is_available_impl(port, ptr, rust_vec_len, data_len),
-        44 => {
-            wire__crate__passkey__Passkey_list_wallet_names_impl(port, ptr, rust_vec_len, data_len)
-        }
-        46 => {
-            wire__crate__passkey__Passkey_store_wallet_name_impl(port, ptr, rust_vec_len, data_len)
-        }
+        44 => wire__crate__passkey__Passkey_list_labels_impl(port, ptr, rust_vec_len, data_len),
+        46 => wire__crate__passkey__Passkey_store_label_impl(port, ptr, rust_vec_len, data_len),
         47 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
         52 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
@@ -12335,7 +12329,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Wallet> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.seed.into_into_dart().into_dart(),
-            self.0.name.into_into_dart().into_dart(),
+            self.0.label.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -15258,7 +15252,7 @@ impl SseEncode for crate::models::Wallet {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <crate::models::Seed>::sse_encode(self.seed, serializer);
-        <String>::sse_encode(self.name, serializer);
+        <String>::sse_encode(self.label, serializer);
     }
 }
 

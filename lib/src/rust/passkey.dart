@@ -14,22 +14,22 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>>
 abstract class Passkey implements RustOpaqueInterface {
-  /// Derive a wallet for a given wallet name.
+  /// Derive a wallet for a given label.
   ///
-  /// Uses the passkey PRF to derive a wallet from the wallet name.
+  /// Uses the passkey PRF to derive a wallet from the label.
   /// This works for both creating a new wallet and restoring an existing one.
   ///
   /// # Arguments
-  /// * `wallet_name` - Optional wallet name string (defaults to "Default")
-  Future<Wallet> getWallet({String? walletName});
+  /// * `label` - Optional label string (defaults to "Default")
+  Future<Wallet> getWallet({String? label});
 
   /// Check if passkey PRF is available on this device.
   Future<bool> isAvailable();
 
-  /// List all wallet names published to Nostr for this passkey's identity.
+  /// List all labels published to Nostr for this passkey's identity.
   ///
   /// Requires 1 PRF call (for Nostr identity derivation).
-  Future<List<String>> listWalletNames();
+  Future<List<String>> listLabels();
 
   /// Create a new Passkey instance using Dart callbacks.
   ///
@@ -47,9 +47,9 @@ abstract class Passkey implements RustOpaqueInterface {
     relayConfig: relayConfig,
   );
 
-  /// Publish a wallet name to Nostr relays for this passkey's identity.
+  /// Publish a label to Nostr relays for this passkey's identity.
   ///
-  /// Idempotent: if the wallet name already exists, it is not published again.
+  /// Idempotent: if the label already exists, it is not published again.
   /// Requires 1 PRF call.
-  Future<void> storeWalletName({required String walletName});
+  Future<void> storeLabel({required String label});
 }

@@ -69,7 +69,7 @@ class BreezSdkSparkLib
   String get codegenVersion => '2.11.1';
 
   @override
-  int get rustContentHash => 1450152945;
+  int get rustContentHash => -1760599076;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'breez_sdk_spark_flutter',
@@ -233,11 +233,11 @@ abstract class BreezSdkSparkLibApi extends BaseApi {
     required UpdateUserSettingsRequest request,
   });
 
-  Future<Wallet> cratePasskeyPasskeyGetWallet({required Passkey that, String? walletName});
+  Future<Wallet> cratePasskeyPasskeyGetWallet({required Passkey that, String? label});
 
   Future<bool> cratePasskeyPasskeyIsAvailable({required Passkey that});
 
-  Future<List<String>> cratePasskeyPasskeyListWalletNames({required Passkey that});
+  Future<List<String>> cratePasskeyPasskeyListLabels({required Passkey that});
 
   Passkey cratePasskeyPasskeyNew({
     required FutureOr<Uint8List> Function(String) derivePrfSeed,
@@ -245,7 +245,7 @@ abstract class BreezSdkSparkLibApi extends BaseApi {
     NostrRelayConfig? relayConfig,
   });
 
-  Future<void> cratePasskeyPasskeyStoreWalletName({required Passkey that, required String walletName});
+  Future<void> cratePasskeyPasskeyStoreLabel({required Passkey that, required String label});
 
   Future<BreezSdk> crateSdkBuilderSdkBuilderBuild({required SdkBuilder that});
 
@@ -1466,7 +1466,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       const TaskConstMeta(debugName: "BreezSdk_update_user_settings", argNames: ["that", "request"]);
 
   @override
-  Future<Wallet> cratePasskeyPasskeyGetWallet({required Passkey that, String? walletName}) {
+  Future<Wallet> cratePasskeyPasskeyGetWallet({required Passkey that, String? label}) {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -1475,19 +1475,19 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          sse_encode_opt_String(walletName, serializer);
+          sse_encode_opt_String(label, serializer);
           pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 42, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_wallet, decodeErrorData: sse_decode_passkey_error),
         constMeta: kCratePasskeyPasskeyGetWalletConstMeta,
-        argValues: [that, walletName],
+        argValues: [that, label],
         apiImpl: this,
       ),
     );
   }
 
   TaskConstMeta get kCratePasskeyPasskeyGetWalletConstMeta =>
-      const TaskConstMeta(debugName: "Passkey_get_wallet", argNames: ["that", "walletName"]);
+      const TaskConstMeta(debugName: "Passkey_get_wallet", argNames: ["that", "label"]);
 
   @override
   Future<bool> cratePasskeyPasskeyIsAvailable({required Passkey that}) {
@@ -1513,7 +1513,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       const TaskConstMeta(debugName: "Passkey_is_available", argNames: ["that"]);
 
   @override
-  Future<List<String>> cratePasskeyPasskeyListWalletNames({required Passkey that}) {
+  Future<List<String>> cratePasskeyPasskeyListLabels({required Passkey that}) {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -1525,15 +1525,15 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 44, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_list_String, decodeErrorData: sse_decode_passkey_error),
-        constMeta: kCratePasskeyPasskeyListWalletNamesConstMeta,
+        constMeta: kCratePasskeyPasskeyListLabelsConstMeta,
         argValues: [that],
         apiImpl: this,
       ),
     );
   }
 
-  TaskConstMeta get kCratePasskeyPasskeyListWalletNamesConstMeta =>
-      const TaskConstMeta(debugName: "Passkey_list_wallet_names", argNames: ["that"]);
+  TaskConstMeta get kCratePasskeyPasskeyListLabelsConstMeta =>
+      const TaskConstMeta(debugName: "Passkey_list_labels", argNames: ["that"]);
 
   @override
   Passkey cratePasskeyPasskeyNew({
@@ -1571,7 +1571,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   );
 
   @override
-  Future<void> cratePasskeyPasskeyStoreWalletName({required Passkey that, required String walletName}) {
+  Future<void> cratePasskeyPasskeyStoreLabel({required Passkey that, required String label}) {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -1580,19 +1580,19 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
             that,
             serializer,
           );
-          sse_encode_String(walletName, serializer);
+          sse_encode_String(label, serializer);
           pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 46, port: port_);
         },
         codec: SseCodec(decodeSuccessData: sse_decode_unit, decodeErrorData: sse_decode_passkey_error),
-        constMeta: kCratePasskeyPasskeyStoreWalletNameConstMeta,
-        argValues: [that, walletName],
+        constMeta: kCratePasskeyPasskeyStoreLabelConstMeta,
+        argValues: [that, label],
         apiImpl: this,
       ),
     );
   }
 
-  TaskConstMeta get kCratePasskeyPasskeyStoreWalletNameConstMeta =>
-      const TaskConstMeta(debugName: "Passkey_store_wallet_name", argNames: ["that", "walletName"]);
+  TaskConstMeta get kCratePasskeyPasskeyStoreLabelConstMeta =>
+      const TaskConstMeta(debugName: "Passkey_store_label", argNames: ["that", "label"]);
 
   @override
   Future<BreezSdk> crateSdkBuilderSdkBuilderBuild({required SdkBuilder that}) {
@@ -5100,7 +5100,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Wallet(seed: dco_decode_seed(arr[0]), name: dco_decode_String(arr[1]));
+    return Wallet(seed: dco_decode_seed(arr[0]), label: dco_decode_String(arr[1]));
   }
 
   @protected
@@ -8628,8 +8628,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   Wallet sse_decode_wallet(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_seed = sse_decode_seed(deserializer);
-    var var_name = sse_decode_String(deserializer);
-    return Wallet(seed: var_seed, name: var_name);
+    var var_label = sse_decode_String(deserializer);
+    return Wallet(seed: var_seed, label: var_label);
   }
 
   @protected
@@ -11701,7 +11701,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   void sse_encode_wallet(Wallet self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_seed(self.seed, serializer);
-    sse_encode_String(self.name, serializer);
+    sse_encode_String(self.label, serializer);
   }
 }
 
@@ -11862,31 +11862,31 @@ class PasskeyImpl extends RustOpaque implements Passkey {
     rustArcDecrementStrongCountPtr: BreezSdkSparkLib.instance.api.rust_arc_decrement_strong_count_PasskeyPtr,
   );
 
-  /// Derive a wallet for a given wallet name.
+  /// Derive a wallet for a given label.
   ///
-  /// Uses the passkey PRF to derive a wallet from the wallet name.
+  /// Uses the passkey PRF to derive a wallet from the label.
   /// This works for both creating a new wallet and restoring an existing one.
   ///
   /// # Arguments
-  /// * `wallet_name` - Optional wallet name string (defaults to "Default")
-  Future<Wallet> getWallet({String? walletName}) =>
-      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyGetWallet(that: this, walletName: walletName);
+  /// * `label` - Optional label string (defaults to "Default")
+  Future<Wallet> getWallet({String? label}) =>
+      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyGetWallet(that: this, label: label);
 
   /// Check if passkey PRF is available on this device.
   Future<bool> isAvailable() => BreezSdkSparkLib.instance.api.cratePasskeyPasskeyIsAvailable(that: this);
 
-  /// List all wallet names published to Nostr for this passkey's identity.
+  /// List all labels published to Nostr for this passkey's identity.
   ///
   /// Requires 1 PRF call (for Nostr identity derivation).
-  Future<List<String>> listWalletNames() =>
-      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyListWalletNames(that: this);
+  Future<List<String>> listLabels() =>
+      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyListLabels(that: this);
 
-  /// Publish a wallet name to Nostr relays for this passkey's identity.
+  /// Publish a label to Nostr relays for this passkey's identity.
   ///
-  /// Idempotent: if the wallet name already exists, it is not published again.
+  /// Idempotent: if the label already exists, it is not published again.
   /// Requires 1 PRF call.
-  Future<void> storeWalletName({required String walletName}) =>
-      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyStoreWalletName(that: this, walletName: walletName);
+  Future<void> storeLabel({required String label}) =>
+      BreezSdkSparkLib.instance.api.cratePasskeyPasskeyStoreLabel(that: this, label: label);
 }
 
 @sealed
