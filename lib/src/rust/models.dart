@@ -86,6 +86,8 @@ sealed class Amount with _$Amount {
       Amount_Currency;
 }
 
+enum AmountAdjustmentReason { flooredToMinLimit, increasedToAvoidDust }
+
 @freezed
 sealed class AssetFilter with _$AssetFilter {
   const AssetFilter._();
@@ -452,22 +454,13 @@ class BurnIssuerTokenRequest {
       other is BurnIssuerTokenRequest && runtimeType == other.runtimeType && amount == other.amount;
 }
 
-class BuyBitcoinRequest {
-  final BigInt? lockedAmountSat;
-  final String? redirectUrl;
+@freezed
+sealed class BuyBitcoinRequest with _$BuyBitcoinRequest {
+  const BuyBitcoinRequest._();
 
-  const BuyBitcoinRequest({this.lockedAmountSat, this.redirectUrl});
-
-  @override
-  int get hashCode => lockedAmountSat.hashCode ^ redirectUrl.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BuyBitcoinRequest &&
-          runtimeType == other.runtimeType &&
-          lockedAmountSat == other.lockedAmountSat &&
-          redirectUrl == other.redirectUrl;
+  const factory BuyBitcoinRequest.moonpay({BigInt? lockedAmountSat, String? redirectUrl}) =
+      BuyBitcoinRequest_Moonpay;
+  const factory BuyBitcoinRequest.cashApp({BigInt? amountSats}) = BuyBitcoinRequest_CashApp;
 }
 
 class BuyBitcoinResponse {
@@ -616,7 +609,7 @@ class Config {
   /// Default is 4. Increase for server environments with high incoming
   /// payment volume to improve throughput.
   final int maxConcurrentClaims;
-  final bool supportLnurlVerify;
+  final SparkConfig? sparkConfig;
 
   const Config({
     this.apiKey,
@@ -632,7 +625,7 @@ class Config {
     required this.optimizationConfig,
     this.stableBalanceConfig,
     required this.maxConcurrentClaims,
-    required this.supportLnurlVerify,
+    this.sparkConfig,
   });
 
   @override
@@ -650,7 +643,7 @@ class Config {
       optimizationConfig.hashCode ^
       stableBalanceConfig.hashCode ^
       maxConcurrentClaims.hashCode ^
-      supportLnurlVerify.hashCode;
+      sparkConfig.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -670,7 +663,7 @@ class Config {
           optimizationConfig == other.optimizationConfig &&
           stableBalanceConfig == other.stableBalanceConfig &&
           maxConcurrentClaims == other.maxConcurrentClaims &&
-          supportLnurlVerify == other.supportLnurlVerify;
+          sparkConfig == other.sparkConfig;
 }
 
 class ConnectRequest {
@@ -725,29 +718,40 @@ class Contact {
 }
 
 class ConversionDetails {
-  final ConversionStep from;
-  final ConversionStep to;
+  final ConversionStatus status;
+  final ConversionStep? from;
+  final ConversionStep? to;
 
-  const ConversionDetails({required this.from, required this.to});
+  const ConversionDetails({required this.status, this.from, this.to});
 
   @override
-  int get hashCode => from.hashCode ^ to.hashCode;
+  int get hashCode => status.hashCode ^ from.hashCode ^ to.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConversionDetails && runtimeType == other.runtimeType && from == other.from && to == other.to;
+      other is ConversionDetails &&
+          runtimeType == other.runtimeType &&
+          status == other.status &&
+          from == other.from &&
+          to == other.to;
 }
 
 class ConversionEstimate {
   final ConversionOptions options;
   final BigInt amount;
   final BigInt fee;
+  final AmountAdjustmentReason? amountAdjustment;
 
-  const ConversionEstimate({required this.options, required this.amount, required this.fee});
+  const ConversionEstimate({
+    required this.options,
+    required this.amount,
+    required this.fee,
+    this.amountAdjustment,
+  });
 
   @override
-  int get hashCode => options.hashCode ^ amount.hashCode ^ fee.hashCode;
+  int get hashCode => options.hashCode ^ amount.hashCode ^ fee.hashCode ^ amountAdjustment.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -756,7 +760,8 @@ class ConversionEstimate {
           runtimeType == other.runtimeType &&
           options == other.options &&
           amount == other.amount &&
-          fee == other.fee;
+          fee == other.fee &&
+          amountAdjustment == other.amountAdjustment;
 }
 
 class ConversionInfo {
@@ -765,6 +770,7 @@ class ConversionInfo {
   final ConversionStatus status;
   final BigInt? fee;
   final ConversionPurpose? purpose;
+  final AmountAdjustmentReason? amountAdjustment;
 
   const ConversionInfo({
     required this.poolId,
@@ -772,11 +778,17 @@ class ConversionInfo {
     required this.status,
     this.fee,
     this.purpose,
+    this.amountAdjustment,
   });
 
   @override
   int get hashCode =>
-      poolId.hashCode ^ conversionId.hashCode ^ status.hashCode ^ fee.hashCode ^ purpose.hashCode;
+      poolId.hashCode ^
+      conversionId.hashCode ^
+      status.hashCode ^
+      fee.hashCode ^
+      purpose.hashCode ^
+      amountAdjustment.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -787,7 +799,8 @@ class ConversionInfo {
           conversionId == other.conversionId &&
           status == other.status &&
           fee == other.fee &&
-          purpose == other.purpose;
+          purpose == other.purpose &&
+          amountAdjustment == other.amountAdjustment;
 }
 
 class ConversionOptions {
@@ -820,7 +833,7 @@ sealed class ConversionPurpose with _$ConversionPurpose {
   const factory ConversionPurpose.autoConversion() = ConversionPurpose_AutoConversion;
 }
 
-enum ConversionStatus { completed, refundNeeded, refunded }
+enum ConversionStatus { pending, completed, failed, refundNeeded, refunded }
 
 class ConversionStep {
   final String paymentId;
@@ -828,6 +841,7 @@ class ConversionStep {
   final BigInt fee;
   final PaymentMethod method;
   final TokenMetadata? tokenMetadata;
+  final AmountAdjustmentReason? amountAdjustment;
 
   const ConversionStep({
     required this.paymentId,
@@ -835,11 +849,17 @@ class ConversionStep {
     required this.fee,
     required this.method,
     this.tokenMetadata,
+    this.amountAdjustment,
   });
 
   @override
   int get hashCode =>
-      paymentId.hashCode ^ amount.hashCode ^ fee.hashCode ^ method.hashCode ^ tokenMetadata.hashCode;
+      paymentId.hashCode ^
+      amount.hashCode ^
+      fee.hashCode ^
+      method.hashCode ^
+      tokenMetadata.hashCode ^
+      amountAdjustment.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -850,7 +870,8 @@ class ConversionStep {
           amount == other.amount &&
           fee == other.fee &&
           method == other.method &&
-          tokenMetadata == other.tokenMetadata;
+          tokenMetadata == other.tokenMetadata &&
+          amountAdjustment == other.amountAdjustment;
 }
 
 @freezed
@@ -957,6 +978,7 @@ class DepositInfo {
   final String txid;
   final int vout;
   final BigInt amountSats;
+  final bool isMature;
   final String? refundTx;
   final String? refundTxId;
   final DepositClaimError? claimError;
@@ -965,6 +987,7 @@ class DepositInfo {
     required this.txid,
     required this.vout,
     required this.amountSats,
+    required this.isMature,
     this.refundTx,
     this.refundTxId,
     this.claimError,
@@ -975,6 +998,7 @@ class DepositInfo {
       txid.hashCode ^
       vout.hashCode ^
       amountSats.hashCode ^
+      isMature.hashCode ^
       refundTx.hashCode ^
       refundTxId.hashCode ^
       claimError.hashCode;
@@ -987,6 +1011,7 @@ class DepositInfo {
           txid == other.txid &&
           vout == other.vout &&
           amountSats == other.amountSats &&
+          isMature == other.isMature &&
           refundTx == other.refundTx &&
           refundTxId == other.refundTxId &&
           claimError == other.claimError;
@@ -2182,7 +2207,7 @@ sealed class ReceivePaymentMethod with _$ReceivePaymentMethod {
     String? description,
     String? senderPublicKey,
   }) = ReceivePaymentMethod_SparkInvoice;
-  const factory ReceivePaymentMethod.bitcoinAddress() = ReceivePaymentMethod_BitcoinAddress;
+  const factory ReceivePaymentMethod.bitcoinAddress({bool? newAddress}) = ReceivePaymentMethod_BitcoinAddress;
   const factory ReceivePaymentMethod.bolt11Invoice({
     required String description,
     BigInt? amountSats,
@@ -2321,6 +2346,40 @@ class RegisterLightningAddressRequest {
           runtimeType == other.runtimeType &&
           username == other.username &&
           description == other.description;
+}
+
+class RegisterWebhookRequest {
+  final String url;
+  final String secret;
+  final List<WebhookEventType> eventTypes;
+
+  const RegisterWebhookRequest({required this.url, required this.secret, required this.eventTypes});
+
+  @override
+  int get hashCode => url.hashCode ^ secret.hashCode ^ eventTypes.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegisterWebhookRequest &&
+          runtimeType == other.runtimeType &&
+          url == other.url &&
+          secret == other.secret &&
+          eventTypes == other.eventTypes;
+}
+
+class RegisterWebhookResponse {
+  final String webhookId;
+
+  const RegisterWebhookResponse({required this.webhookId});
+
+  @override
+  int get hashCode => webhookId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegisterWebhookResponse && runtimeType == other.runtimeType && webhookId == other.webhookId;
 }
 
 @freezed
@@ -2536,6 +2595,45 @@ class SparkAddressDetails {
           source == other.source;
 }
 
+class SparkConfig {
+  final String coordinatorIdentifier;
+  final int threshold;
+  final List<SparkSigningOperator> signingOperators;
+  final SparkSspConfig sspConfig;
+  final BigInt expectedWithdrawBondSats;
+  final BigInt expectedWithdrawRelativeBlockLocktime;
+
+  const SparkConfig({
+    required this.coordinatorIdentifier,
+    required this.threshold,
+    required this.signingOperators,
+    required this.sspConfig,
+    required this.expectedWithdrawBondSats,
+    required this.expectedWithdrawRelativeBlockLocktime,
+  });
+
+  @override
+  int get hashCode =>
+      coordinatorIdentifier.hashCode ^
+      threshold.hashCode ^
+      signingOperators.hashCode ^
+      sspConfig.hashCode ^
+      expectedWithdrawBondSats.hashCode ^
+      expectedWithdrawRelativeBlockLocktime.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkConfig &&
+          runtimeType == other.runtimeType &&
+          coordinatorIdentifier == other.coordinatorIdentifier &&
+          threshold == other.threshold &&
+          signingOperators == other.signingOperators &&
+          sspConfig == other.sspConfig &&
+          expectedWithdrawBondSats == other.expectedWithdrawBondSats &&
+          expectedWithdrawRelativeBlockLocktime == other.expectedWithdrawRelativeBlockLocktime;
+}
+
 class SparkHtlcDetails {
   final String paymentHash;
   final String? preimage;
@@ -2648,6 +2746,53 @@ class SparkInvoicePaymentDetails {
           invoice == other.invoice;
 }
 
+class SparkSigningOperator {
+  final int id;
+  final String identifier;
+  final String address;
+  final String identityPublicKey;
+
+  const SparkSigningOperator({
+    required this.id,
+    required this.identifier,
+    required this.address,
+    required this.identityPublicKey,
+  });
+
+  @override
+  int get hashCode => id.hashCode ^ identifier.hashCode ^ address.hashCode ^ identityPublicKey.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkSigningOperator &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          identifier == other.identifier &&
+          address == other.address &&
+          identityPublicKey == other.identityPublicKey;
+}
+
+class SparkSspConfig {
+  final String baseUrl;
+  final String identityPublicKey;
+  final String? schemaEndpoint;
+
+  const SparkSspConfig({required this.baseUrl, required this.identityPublicKey, this.schemaEndpoint});
+
+  @override
+  int get hashCode => baseUrl.hashCode ^ identityPublicKey.hashCode ^ schemaEndpoint.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SparkSspConfig &&
+          runtimeType == other.runtimeType &&
+          baseUrl == other.baseUrl &&
+          identityPublicKey == other.identityPublicKey &&
+          schemaEndpoint == other.schemaEndpoint;
+}
+
 class SparkStatus {
   final ServiceStatus status;
   final BigInt lastUpdated;
@@ -2666,32 +2811,58 @@ class SparkStatus {
           lastUpdated == other.lastUpdated;
 }
 
+@freezed
+sealed class StableBalanceActiveLabel with _$StableBalanceActiveLabel {
+  const StableBalanceActiveLabel._();
+
+  const factory StableBalanceActiveLabel.set_({required String label}) = StableBalanceActiveLabel_Set;
+  const factory StableBalanceActiveLabel.unset() = StableBalanceActiveLabel_Unset;
+}
+
 class StableBalanceConfig {
-  final String tokenIdentifier;
+  final List<StableBalanceToken> tokens;
+  final String? defaultActiveLabel;
   final BigInt? thresholdSats;
   final int? maxSlippageBps;
-  final BigInt? reservedSats;
 
   const StableBalanceConfig({
-    required this.tokenIdentifier,
+    required this.tokens,
+    this.defaultActiveLabel,
     this.thresholdSats,
     this.maxSlippageBps,
-    this.reservedSats,
   });
 
   @override
   int get hashCode =>
-      tokenIdentifier.hashCode ^ thresholdSats.hashCode ^ maxSlippageBps.hashCode ^ reservedSats.hashCode;
+      tokens.hashCode ^ defaultActiveLabel.hashCode ^ thresholdSats.hashCode ^ maxSlippageBps.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StableBalanceConfig &&
           runtimeType == other.runtimeType &&
-          tokenIdentifier == other.tokenIdentifier &&
+          tokens == other.tokens &&
+          defaultActiveLabel == other.defaultActiveLabel &&
           thresholdSats == other.thresholdSats &&
-          maxSlippageBps == other.maxSlippageBps &&
-          reservedSats == other.reservedSats;
+          maxSlippageBps == other.maxSlippageBps;
+}
+
+class StableBalanceToken {
+  final String label;
+  final String tokenIdentifier;
+
+  const StableBalanceToken({required this.label, required this.tokenIdentifier});
+
+  @override
+  int get hashCode => label.hashCode ^ tokenIdentifier.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StableBalanceToken &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          tokenIdentifier == other.tokenIdentifier;
 }
 
 @freezed
@@ -2853,6 +3024,20 @@ class UnfreezeIssuerTokenResponse {
           impactedTokenAmount == other.impactedTokenAmount;
 }
 
+class UnregisterWebhookRequest {
+  final String webhookId;
+
+  const UnregisterWebhookRequest({required this.webhookId});
+
+  @override
+  int get hashCode => webhookId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnregisterWebhookRequest && runtimeType == other.runtimeType && webhookId == other.webhookId;
+}
+
 class UpdateContactRequest {
   final String id;
   final String name;
@@ -2875,18 +3060,20 @@ class UpdateContactRequest {
 
 class UpdateUserSettingsRequest {
   final bool? sparkPrivateModeEnabled;
+  final StableBalanceActiveLabel? stableBalanceActiveLabel;
 
-  const UpdateUserSettingsRequest({this.sparkPrivateModeEnabled});
+  const UpdateUserSettingsRequest({this.sparkPrivateModeEnabled, this.stableBalanceActiveLabel});
 
   @override
-  int get hashCode => sparkPrivateModeEnabled.hashCode;
+  int get hashCode => sparkPrivateModeEnabled.hashCode ^ stableBalanceActiveLabel.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UpdateUserSettingsRequest &&
           runtimeType == other.runtimeType &&
-          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
+          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled &&
+          stableBalanceActiveLabel == other.stableBalanceActiveLabel;
 }
 
 class UrlSuccessActionData {
@@ -2915,18 +3102,20 @@ class UrlSuccessActionData {
 
 class UserSettings {
   final bool sparkPrivateModeEnabled;
+  final String? stableBalanceActiveLabel;
 
-  const UserSettings({required this.sparkPrivateModeEnabled});
+  const UserSettings({required this.sparkPrivateModeEnabled, this.stableBalanceActiveLabel});
 
   @override
-  int get hashCode => sparkPrivateModeEnabled.hashCode;
+  int get hashCode => sparkPrivateModeEnabled.hashCode ^ stableBalanceActiveLabel.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UserSettings &&
           runtimeType == other.runtimeType &&
-          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled;
+          sparkPrivateModeEnabled == other.sparkPrivateModeEnabled &&
+          stableBalanceActiveLabel == other.stableBalanceActiveLabel;
 }
 
 class Wallet {
@@ -2942,4 +3131,35 @@ class Wallet {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Wallet && runtimeType == other.runtimeType && seed == other.seed && label == other.label;
+}
+
+class Webhook {
+  final String id;
+  final String url;
+  final List<WebhookEventType> eventTypes;
+
+  const Webhook({required this.id, required this.url, required this.eventTypes});
+
+  @override
+  int get hashCode => id.hashCode ^ url.hashCode ^ eventTypes.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Webhook &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          url == other.url &&
+          eventTypes == other.eventTypes;
+}
+
+@freezed
+sealed class WebhookEventType with _$WebhookEventType {
+  const WebhookEventType._();
+
+  const factory WebhookEventType.lightningReceiveFinished() = WebhookEventType_LightningReceiveFinished;
+  const factory WebhookEventType.lightningSendFinished() = WebhookEventType_LightningSendFinished;
+  const factory WebhookEventType.coopExitFinished() = WebhookEventType_CoopExitFinished;
+  const factory WebhookEventType.staticDepositFinished() = WebhookEventType_StaticDepositFinished;
+  const factory WebhookEventType.unknown(String field0) = WebhookEventType_Unknown;
 }
