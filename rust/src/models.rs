@@ -41,32 +41,7 @@ pub struct _Config {
     /// Default is 4. Increase for server environments with high incoming
     /// payment volume to improve throughput.
     pub max_concurrent_claims: u32,
-    pub spark_config: Option<SparkConfig>,
-}
-
-#[frb(mirror(SparkConfig))]
-pub struct _SparkConfig {
-    pub coordinator_identifier: String,
-    pub threshold: u32,
-    pub signing_operators: Vec<SparkSigningOperator>,
-    pub ssp_config: SparkSspConfig,
-    pub expected_withdraw_bond_sats: u64,
-    pub expected_withdraw_relative_block_locktime: u64,
-}
-
-#[frb(mirror(SparkSigningOperator))]
-pub struct _SparkSigningOperator {
-    pub id: u32,
-    pub identifier: String,
-    pub address: String,
-    pub identity_public_key: String,
-}
-
-#[frb(mirror(SparkSspConfig))]
-pub struct _SparkSspConfig {
-    pub base_url: String,
-    pub identity_public_key: String,
-    pub schema_endpoint: Option<String>,
+    pub support_lnurl_verify: bool,
 }
 
 #[frb(mirror(OptimizationConfig))]
@@ -75,18 +50,12 @@ pub struct _OptimizationConfig {
     pub multiplicity: u8,
 }
 
-#[frb(mirror(StableBalanceToken))]
-pub struct _StableBalanceToken {
-    pub label: String,
-    pub token_identifier: String,
-}
-
 #[frb(mirror(StableBalanceConfig))]
 pub struct _StableBalanceConfig {
-    pub tokens: Vec<StableBalanceToken>,
-    pub default_active_label: Option<String>,
+    pub token_identifier: String,
     pub threshold_sats: Option<u64>,
     pub max_slippage_bps: Option<u32>,
+    pub reserved_sats: Option<u64>,
 }
 
 #[frb(mirror(ExternalInputParser))]
@@ -154,7 +123,6 @@ pub struct _DepositInfo {
     pub txid: String,
     pub vout: u32,
     pub amount_sats: u64,
-    pub is_mature: bool,
     pub refund_tx: Option<String>,
     pub refund_tx_id: Option<String>,
     pub claim_error: Option<DepositClaimError>,
@@ -401,9 +369,7 @@ pub enum _ReceivePaymentMethod {
         description: Option<String>,
         sender_public_key: Option<String>,
     },
-    BitcoinAddress {
-        new_address: Option<bool>,
-    },
+    BitcoinAddress,
     Bolt11Invoice {
         description: String,
         amount_sats: Option<u64>,
@@ -591,9 +557,8 @@ pub struct _Payment {
 
 #[frb(mirror(ConversionDetails))]
 pub struct _ConversionDetails {
-    pub status: ConversionStatus,
-    pub from: Option<ConversionStep>,
-    pub to: Option<ConversionStep>,
+    pub from: ConversionStep,
+    pub to: ConversionStep,
 }
 
 #[frb(mirror(ConversionStep))]
@@ -603,13 +568,6 @@ pub struct _ConversionStep {
     pub fee: u128,
     pub method: PaymentMethod,
     pub token_metadata: Option<TokenMetadata>,
-    pub amount_adjustment: Option<AmountAdjustmentReason>,
-}
-
-#[frb(mirror(AmountAdjustmentReason))]
-pub enum _AmountAdjustmentReason {
-    FlooredToMinLimit,
-    IncreasedToAvoidDust,
 }
 
 #[frb(mirror(PaymentDetails))]
@@ -1038,19 +996,11 @@ pub struct _RecordChange {
 #[frb(mirror(UserSettings))]
 pub struct _UserSettings {
     pub spark_private_mode_enabled: bool,
-    pub stable_balance_active_label: Option<String>,
-}
-
-#[frb(mirror(StableBalanceActiveLabel))]
-pub enum _StableBalanceActiveLabel {
-    Set { label: String },
-    Unset,
 }
 
 #[frb(mirror(UpdateUserSettingsRequest))]
 pub struct _UpdateUserSettingsRequest {
     pub spark_private_mode_enabled: Option<bool>,
-    pub stable_balance_active_label: Option<StableBalanceActiveLabel>,
 }
 
 #[frb(mirror(CreateIssuerTokenRequest))]
@@ -1131,7 +1081,6 @@ pub struct _ConversionEstimate {
     pub options: ConversionOptions,
     pub amount: u128,
     pub fee: u128,
-    pub amount_adjustment: Option<AmountAdjustmentReason>,
 }
 
 #[frb(mirror(ConversionPurpose))]
@@ -1143,9 +1092,7 @@ pub enum _ConversionPurpose {
 
 #[frb(mirror(ConversionStatus))]
 pub enum _ConversionStatus {
-    Pending,
     Completed,
-    Failed,
     RefundNeeded,
     Refunded,
 }
@@ -1157,7 +1104,6 @@ pub struct _ConversionInfo {
     pub status: ConversionStatus,
     pub fee: Option<u128>,
     pub purpose: Option<ConversionPurpose>,
-    pub amount_adjustment: Option<AmountAdjustmentReason>,
 }
 
 #[frb(mirror(ConversionOptions))]
@@ -1186,14 +1132,9 @@ pub struct _FetchConversionLimitsResponse {
 }
 
 #[frb(mirror(BuyBitcoinRequest))]
-pub enum _BuyBitcoinRequest {
-    Moonpay {
-        locked_amount_sat: Option<u64>,
-        redirect_url: Option<String>,
-    },
-    CashApp {
-        amount_sats: Option<u64>,
-    },
+pub struct _BuyBitcoinRequest {
+    pub locked_amount_sat: Option<u64>,
+    pub redirect_url: Option<String>,
 }
 
 #[frb(mirror(BuyBitcoinResponse))]
@@ -1242,39 +1183,6 @@ pub struct _UpdateContactRequest {
 pub struct _ListContactsRequest {
     pub offset: Option<u32>,
     pub limit: Option<u32>,
-}
-
-#[frb(mirror(WebhookEventType))]
-pub enum _WebhookEventType {
-    LightningReceiveFinished,
-    LightningSendFinished,
-    CoopExitFinished,
-    StaticDepositFinished,
-    Unknown(String),
-}
-
-#[frb(mirror(Webhook))]
-pub struct _Webhook {
-    pub id: String,
-    pub url: String,
-    pub event_types: Vec<WebhookEventType>,
-}
-
-#[frb(mirror(RegisterWebhookRequest))]
-pub struct _RegisterWebhookRequest {
-    pub url: String,
-    pub secret: String,
-    pub event_types: Vec<WebhookEventType>,
-}
-
-#[frb(mirror(RegisterWebhookResponse))]
-pub struct _RegisterWebhookResponse {
-    pub webhook_id: String,
-}
-
-#[frb(mirror(UnregisterWebhookRequest))]
-pub struct _UnregisterWebhookRequest {
-    pub webhook_id: String,
 }
 
 #[frb(mirror(NostrRelayConfig))]

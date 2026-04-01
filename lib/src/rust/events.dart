@@ -41,5 +41,4 @@ sealed class SdkEvent with _$SdkEvent {
   const factory SdkEvent.optimization({required OptimizationEvent optimizationEvent}) = SdkEvent_Optimization;
   const factory SdkEvent.lightningAddressChanged({LightningAddressInfo? lightningAddress}) =
       SdkEvent_LightningAddressChanged;
-  const factory SdkEvent.newDeposits({required List<DepositInfo> newDeposits}) = SdkEvent_NewDeposits;
 }

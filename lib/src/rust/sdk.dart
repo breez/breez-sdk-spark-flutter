@@ -76,8 +76,6 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required ListUnclaimedDepositsRequest request,
   });
 
-  Future<List<Webhook>> listWebhooks();
-
   Future<LnurlCallbackStatus> lnurlAuth({required LnurlAuthRequestDetails requestData});
 
   Future<LnurlPayResponse> lnurlPay({required LnurlPayRequest request});
@@ -98,19 +96,15 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<LightningAddressInfo> registerLightningAddress({required RegisterLightningAddressRequest request});
 
-  Future<RegisterWebhookResponse> registerWebhook({required RegisterWebhookRequest request});
-
   Future<bool> removeEventListener({required String id});
 
   Future<SendPaymentResponse> sendPayment({required SendPaymentRequest request});
 
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
 
-  Future<void> startLeafOptimization();
+  void startLeafOptimization();
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
-
-  Future<void> unregisterWebhook({required UnregisterWebhookRequest request});
 
   Future<Contact> updateContact({required UpdateContactRequest request});
 

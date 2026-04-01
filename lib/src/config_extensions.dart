@@ -20,7 +20,7 @@ extension ConfigCopyWith on Config {
     OptimizationConfig? optimizationConfig,
     StableBalanceConfig? stableBalanceConfig,
     int? maxConcurrentClaims,
-    SparkConfig? sparkConfig,
+    bool? supportLnurlVerify,
   }) {
     return Config(
       apiKey: apiKey ?? this.apiKey,
@@ -36,7 +36,7 @@ extension ConfigCopyWith on Config {
       optimizationConfig: optimizationConfig ?? this.optimizationConfig,
       stableBalanceConfig: stableBalanceConfig ?? this.stableBalanceConfig,
       maxConcurrentClaims: maxConcurrentClaims ?? this.maxConcurrentClaims,
-      sparkConfig: sparkConfig ?? this.sparkConfig,
+      supportLnurlVerify: supportLnurlVerify ?? this.supportLnurlVerify,
     );
   }
 }

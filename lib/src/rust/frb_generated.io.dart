@@ -135,9 +135,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount dco_decode_amount(dynamic raw);
 
   @protected
-  AmountAdjustmentReason dco_decode_amount_adjustment_reason(dynamic raw);
-
-  @protected
   AssetFilter dco_decode_asset_filter(dynamic raw);
 
   @protected
@@ -201,9 +198,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount dco_decode_box_autoadd_amount(dynamic raw);
 
   @protected
-  AmountAdjustmentReason dco_decode_box_autoadd_amount_adjustment_reason(dynamic raw);
-
-  @protected
   AssetFilter dco_decode_box_autoadd_asset_filter(dynamic raw);
 
   @protected
@@ -265,9 +259,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConversionPurpose dco_decode_box_autoadd_conversion_purpose(dynamic raw);
-
-  @protected
-  ConversionStep dco_decode_box_autoadd_conversion_step(dynamic raw);
 
   @protected
   CreateIssuerTokenRequest dco_decode_box_autoadd_create_issuer_token_request(dynamic raw);
@@ -384,9 +375,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterLightningAddressRequest dco_decode_box_autoadd_register_lightning_address_request(dynamic raw);
 
   @protected
-  RegisterWebhookRequest dco_decode_box_autoadd_register_webhook_request(dynamic raw);
-
-  @protected
   Seed dco_decode_box_autoadd_seed(dynamic raw);
 
   @protected
@@ -408,9 +396,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails dco_decode_box_autoadd_spark_address_details(dynamic raw);
 
   @protected
-  SparkConfig dco_decode_box_autoadd_spark_config(dynamic raw);
-
-  @protected
   SparkHtlcDetails dco_decode_box_autoadd_spark_htlc_details(dynamic raw);
 
   @protected
@@ -421,9 +406,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkInvoicePaymentDetails dco_decode_box_autoadd_spark_invoice_payment_details(dynamic raw);
-
-  @protected
-  StableBalanceActiveLabel dco_decode_box_autoadd_stable_balance_active_label(dynamic raw);
 
   @protected
   StableBalanceConfig dco_decode_box_autoadd_stable_balance_config(dynamic raw);
@@ -454,9 +436,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UnfreezeIssuerTokenRequest dco_decode_box_autoadd_unfreeze_issuer_token_request(dynamic raw);
-
-  @protected
-  UnregisterWebhookRequest dco_decode_box_autoadd_unregister_webhook_request(dynamic raw);
 
   @protected
   UpdateContactRequest dco_decode_box_autoadd_update_contact_request(dynamic raw);
@@ -690,12 +669,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<SparkHtlcStatus> dco_decode_list_spark_htlc_status(dynamic raw);
 
   @protected
-  List<SparkSigningOperator> dco_decode_list_spark_signing_operator(dynamic raw);
-
-  @protected
-  List<StableBalanceToken> dco_decode_list_stable_balance_token(dynamic raw);
-
-  @protected
   List<TokenMetadata> dco_decode_list_token_metadata(dynamic raw);
 
   @protected
@@ -703,12 +676,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListUnclaimedDepositsResponse dco_decode_list_unclaimed_deposits_response(dynamic raw);
-
-  @protected
-  List<Webhook> dco_decode_list_webhook(dynamic raw);
-
-  @protected
-  List<WebhookEventType> dco_decode_list_webhook_event_type(dynamic raw);
 
   @protected
   LnurlAuthRequestDetails dco_decode_lnurl_auth_request_details(dynamic raw);
@@ -786,9 +753,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount? dco_decode_opt_box_autoadd_amount(dynamic raw);
 
   @protected
-  AmountAdjustmentReason? dco_decode_opt_box_autoadd_amount_adjustment_reason(dynamic raw);
-
-  @protected
   AssetFilter? dco_decode_opt_box_autoadd_asset_filter(dynamic raw);
 
   @protected
@@ -808,9 +772,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConversionPurpose? dco_decode_opt_box_autoadd_conversion_purpose(dynamic raw);
-
-  @protected
-  ConversionStep? dco_decode_opt_box_autoadd_conversion_step(dynamic raw);
 
   @protected
   Credentials? dco_decode_opt_box_autoadd_credentials(dynamic raw);
@@ -852,9 +813,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? dco_decode_opt_box_autoadd_send_payment_options(dynamic raw);
 
   @protected
-  SparkConfig? dco_decode_opt_box_autoadd_spark_config(dynamic raw);
-
-  @protected
   SparkHtlcDetails? dco_decode_opt_box_autoadd_spark_htlc_details(dynamic raw);
 
   @protected
@@ -862,9 +820,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkInvoicePaymentDetails? dco_decode_opt_box_autoadd_spark_invoice_payment_details(dynamic raw);
-
-  @protected
-  StableBalanceActiveLabel? dco_decode_opt_box_autoadd_stable_balance_active_label(dynamic raw);
 
   @protected
   StableBalanceConfig? dco_decode_opt_box_autoadd_stable_balance_config(dynamic raw);
@@ -981,12 +936,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterLightningAddressRequest dco_decode_register_lightning_address_request(dynamic raw);
 
   @protected
-  RegisterWebhookRequest dco_decode_register_webhook_request(dynamic raw);
-
-  @protected
-  RegisterWebhookResponse dco_decode_register_webhook_response(dynamic raw);
-
-  @protected
   SdkError dco_decode_sdk_error(dynamic raw);
 
   @protected
@@ -1029,9 +978,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails dco_decode_spark_address_details(dynamic raw);
 
   @protected
-  SparkConfig dco_decode_spark_config(dynamic raw);
-
-  @protected
   SparkHtlcDetails dco_decode_spark_htlc_details(dynamic raw);
 
   @protected
@@ -1047,22 +993,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkInvoicePaymentDetails dco_decode_spark_invoice_payment_details(dynamic raw);
 
   @protected
-  SparkSigningOperator dco_decode_spark_signing_operator(dynamic raw);
-
-  @protected
-  SparkSspConfig dco_decode_spark_ssp_config(dynamic raw);
-
-  @protected
   SparkStatus dco_decode_spark_status(dynamic raw);
 
   @protected
-  StableBalanceActiveLabel dco_decode_stable_balance_active_label(dynamic raw);
-
-  @protected
   StableBalanceConfig dco_decode_stable_balance_config(dynamic raw);
-
-  @protected
-  StableBalanceToken dco_decode_stable_balance_token(dynamic raw);
 
   @protected
   SuccessAction dco_decode_success_action(dynamic raw);
@@ -1110,9 +1044,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void dco_decode_unit(dynamic raw);
 
   @protected
-  UnregisterWebhookRequest dco_decode_unregister_webhook_request(dynamic raw);
-
-  @protected
   UpdateContactRequest dco_decode_update_contact_request(dynamic raw);
 
   @protected
@@ -1129,12 +1060,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Wallet dco_decode_wallet(dynamic raw);
-
-  @protected
-  Webhook dco_decode_webhook(dynamic raw);
-
-  @protected
-  WebhookEventType dco_decode_webhook_event_type(dynamic raw);
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
@@ -1233,9 +1158,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount sse_decode_amount(SseDeserializer deserializer);
 
   @protected
-  AmountAdjustmentReason sse_decode_amount_adjustment_reason(SseDeserializer deserializer);
-
-  @protected
   AssetFilter sse_decode_asset_filter(SseDeserializer deserializer);
 
   @protected
@@ -1303,9 +1225,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount sse_decode_box_autoadd_amount(SseDeserializer deserializer);
 
   @protected
-  AmountAdjustmentReason sse_decode_box_autoadd_amount_adjustment_reason(SseDeserializer deserializer);
-
-  @protected
   AssetFilter sse_decode_box_autoadd_asset_filter(SseDeserializer deserializer);
 
   @protected
@@ -1371,9 +1290,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConversionPurpose sse_decode_box_autoadd_conversion_purpose(SseDeserializer deserializer);
-
-  @protected
-  ConversionStep sse_decode_box_autoadd_conversion_step(SseDeserializer deserializer);
 
   @protected
   CreateIssuerTokenRequest sse_decode_box_autoadd_create_issuer_token_request(SseDeserializer deserializer);
@@ -1498,9 +1414,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  RegisterWebhookRequest sse_decode_box_autoadd_register_webhook_request(SseDeserializer deserializer);
-
-  @protected
   Seed sse_decode_box_autoadd_seed(SseDeserializer deserializer);
 
   @protected
@@ -1524,9 +1437,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails sse_decode_box_autoadd_spark_address_details(SseDeserializer deserializer);
 
   @protected
-  SparkConfig sse_decode_box_autoadd_spark_config(SseDeserializer deserializer);
-
-  @protected
   SparkHtlcDetails sse_decode_box_autoadd_spark_htlc_details(SseDeserializer deserializer);
 
   @protected
@@ -1539,9 +1449,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkInvoicePaymentDetails sse_decode_box_autoadd_spark_invoice_payment_details(
     SseDeserializer deserializer,
   );
-
-  @protected
-  StableBalanceActiveLabel sse_decode_box_autoadd_stable_balance_active_label(SseDeserializer deserializer);
 
   @protected
   StableBalanceConfig sse_decode_box_autoadd_stable_balance_config(SseDeserializer deserializer);
@@ -1574,9 +1481,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   UnfreezeIssuerTokenRequest sse_decode_box_autoadd_unfreeze_issuer_token_request(
     SseDeserializer deserializer,
   );
-
-  @protected
-  UnregisterWebhookRequest sse_decode_box_autoadd_unregister_webhook_request(SseDeserializer deserializer);
 
   @protected
   UpdateContactRequest sse_decode_box_autoadd_update_contact_request(SseDeserializer deserializer);
@@ -1810,12 +1714,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<SparkHtlcStatus> sse_decode_list_spark_htlc_status(SseDeserializer deserializer);
 
   @protected
-  List<SparkSigningOperator> sse_decode_list_spark_signing_operator(SseDeserializer deserializer);
-
-  @protected
-  List<StableBalanceToken> sse_decode_list_stable_balance_token(SseDeserializer deserializer);
-
-  @protected
   List<TokenMetadata> sse_decode_list_token_metadata(SseDeserializer deserializer);
 
   @protected
@@ -1823,12 +1721,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListUnclaimedDepositsResponse sse_decode_list_unclaimed_deposits_response(SseDeserializer deserializer);
-
-  @protected
-  List<Webhook> sse_decode_list_webhook(SseDeserializer deserializer);
-
-  @protected
-  List<WebhookEventType> sse_decode_list_webhook_event_type(SseDeserializer deserializer);
 
   @protected
   LnurlAuthRequestDetails sse_decode_lnurl_auth_request_details(SseDeserializer deserializer);
@@ -1906,9 +1798,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Amount? sse_decode_opt_box_autoadd_amount(SseDeserializer deserializer);
 
   @protected
-  AmountAdjustmentReason? sse_decode_opt_box_autoadd_amount_adjustment_reason(SseDeserializer deserializer);
-
-  @protected
   AssetFilter? sse_decode_opt_box_autoadd_asset_filter(SseDeserializer deserializer);
 
   @protected
@@ -1928,9 +1817,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ConversionPurpose? sse_decode_opt_box_autoadd_conversion_purpose(SseDeserializer deserializer);
-
-  @protected
-  ConversionStep? sse_decode_opt_box_autoadd_conversion_step(SseDeserializer deserializer);
 
   @protected
   Credentials? sse_decode_opt_box_autoadd_credentials(SseDeserializer deserializer);
@@ -1972,9 +1858,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? sse_decode_opt_box_autoadd_send_payment_options(SseDeserializer deserializer);
 
   @protected
-  SparkConfig? sse_decode_opt_box_autoadd_spark_config(SseDeserializer deserializer);
-
-  @protected
   SparkHtlcDetails? sse_decode_opt_box_autoadd_spark_htlc_details(SseDeserializer deserializer);
 
   @protected
@@ -1982,11 +1865,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SparkInvoicePaymentDetails? sse_decode_opt_box_autoadd_spark_invoice_payment_details(
-    SseDeserializer deserializer,
-  );
-
-  @protected
-  StableBalanceActiveLabel? sse_decode_opt_box_autoadd_stable_balance_active_label(
     SseDeserializer deserializer,
   );
 
@@ -2105,12 +1983,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterLightningAddressRequest sse_decode_register_lightning_address_request(SseDeserializer deserializer);
 
   @protected
-  RegisterWebhookRequest sse_decode_register_webhook_request(SseDeserializer deserializer);
-
-  @protected
-  RegisterWebhookResponse sse_decode_register_webhook_response(SseDeserializer deserializer);
-
-  @protected
   SdkError sse_decode_sdk_error(SseDeserializer deserializer);
 
   @protected
@@ -2153,9 +2025,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkAddressDetails sse_decode_spark_address_details(SseDeserializer deserializer);
 
   @protected
-  SparkConfig sse_decode_spark_config(SseDeserializer deserializer);
-
-  @protected
   SparkHtlcDetails sse_decode_spark_htlc_details(SseDeserializer deserializer);
 
   @protected
@@ -2171,22 +2040,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SparkInvoicePaymentDetails sse_decode_spark_invoice_payment_details(SseDeserializer deserializer);
 
   @protected
-  SparkSigningOperator sse_decode_spark_signing_operator(SseDeserializer deserializer);
-
-  @protected
-  SparkSspConfig sse_decode_spark_ssp_config(SseDeserializer deserializer);
-
-  @protected
   SparkStatus sse_decode_spark_status(SseDeserializer deserializer);
 
   @protected
-  StableBalanceActiveLabel sse_decode_stable_balance_active_label(SseDeserializer deserializer);
-
-  @protected
   StableBalanceConfig sse_decode_stable_balance_config(SseDeserializer deserializer);
-
-  @protected
-  StableBalanceToken sse_decode_stable_balance_token(SseDeserializer deserializer);
 
   @protected
   SuccessAction sse_decode_success_action(SseDeserializer deserializer);
@@ -2234,9 +2091,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  UnregisterWebhookRequest sse_decode_unregister_webhook_request(SseDeserializer deserializer);
-
-  @protected
   UpdateContactRequest sse_decode_update_contact_request(SseDeserializer deserializer);
 
   @protected
@@ -2253,12 +2107,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Wallet sse_decode_wallet(SseDeserializer deserializer);
-
-  @protected
-  Webhook sse_decode_webhook(SseDeserializer deserializer);
-
-  @protected
-  WebhookEventType sse_decode_webhook_event_type(SseDeserializer deserializer);
 
   @protected
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
@@ -2384,9 +2232,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_amount(Amount self, SseSerializer serializer);
 
   @protected
-  void sse_encode_amount_adjustment_reason(AmountAdjustmentReason self, SseSerializer serializer);
-
-  @protected
   void sse_encode_asset_filter(AssetFilter self, SseSerializer serializer);
 
   @protected
@@ -2454,9 +2299,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_amount(Amount self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_amount_adjustment_reason(AmountAdjustmentReason self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_asset_filter(AssetFilter self, SseSerializer serializer);
@@ -2532,9 +2374,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_conversion_purpose(ConversionPurpose self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_conversion_step(ConversionStep self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_create_issuer_token_request(
@@ -2693,9 +2532,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_box_autoadd_register_webhook_request(RegisterWebhookRequest self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_seed(Seed self, SseSerializer serializer);
 
   @protected
@@ -2720,9 +2556,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_spark_address_details(SparkAddressDetails self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_spark_config(SparkConfig self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_spark_htlc_details(SparkHtlcDetails self, SseSerializer serializer);
 
   @protected
@@ -2734,12 +2567,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_spark_invoice_payment_details(
     SparkInvoicePaymentDetails self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_box_autoadd_stable_balance_active_label(
-    StableBalanceActiveLabel self,
     SseSerializer serializer,
   );
 
@@ -2773,12 +2600,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_unfreeze_issuer_token_request(
     UnfreezeIssuerTokenRequest self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_box_autoadd_unregister_webhook_request(
-    UnregisterWebhookRequest self,
     SseSerializer serializer,
   );
 
@@ -3032,12 +2853,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_list_spark_htlc_status(List<SparkHtlcStatus> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_spark_signing_operator(List<SparkSigningOperator> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_stable_balance_token(List<StableBalanceToken> self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_token_metadata(List<TokenMetadata> self, SseSerializer serializer);
 
   @protected
@@ -3051,12 +2866,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     ListUnclaimedDepositsResponse self,
     SseSerializer serializer,
   );
-
-  @protected
-  void sse_encode_list_webhook(List<Webhook> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_webhook_event_type(List<WebhookEventType> self, SseSerializer serializer);
 
   @protected
   void sse_encode_lnurl_auth_request_details(LnurlAuthRequestDetails self, SseSerializer serializer);
@@ -3134,12 +2943,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_amount(Amount? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_amount_adjustment_reason(
-    AmountAdjustmentReason? self,
-    SseSerializer serializer,
-  );
-
-  @protected
   void sse_encode_opt_box_autoadd_asset_filter(AssetFilter? self, SseSerializer serializer);
 
   @protected
@@ -3159,9 +2962,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_box_autoadd_conversion_purpose(ConversionPurpose? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_conversion_step(ConversionStep? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_credentials(Credentials? self, SseSerializer serializer);
@@ -3209,9 +3009,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_send_payment_options(SendPaymentOptions? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_spark_config(SparkConfig? self, SseSerializer serializer);
-
-  @protected
   void sse_encode_opt_box_autoadd_spark_htlc_details(SparkHtlcDetails? self, SseSerializer serializer);
 
   @protected
@@ -3220,12 +3017,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_opt_box_autoadd_spark_invoice_payment_details(
     SparkInvoicePaymentDetails? self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_opt_box_autoadd_stable_balance_active_label(
-    StableBalanceActiveLabel? self,
     SseSerializer serializer,
   );
 
@@ -3353,12 +3144,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_register_webhook_request(RegisterWebhookRequest self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_register_webhook_response(RegisterWebhookResponse self, SseSerializer serializer);
-
-  @protected
   void sse_encode_sdk_error(SdkError self, SseSerializer serializer);
 
   @protected
@@ -3401,9 +3186,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_spark_address_details(SparkAddressDetails self, SseSerializer serializer);
 
   @protected
-  void sse_encode_spark_config(SparkConfig self, SseSerializer serializer);
-
-  @protected
   void sse_encode_spark_htlc_details(SparkHtlcDetails self, SseSerializer serializer);
 
   @protected
@@ -3419,22 +3201,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_spark_invoice_payment_details(SparkInvoicePaymentDetails self, SseSerializer serializer);
 
   @protected
-  void sse_encode_spark_signing_operator(SparkSigningOperator self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_spark_ssp_config(SparkSspConfig self, SseSerializer serializer);
-
-  @protected
   void sse_encode_spark_status(SparkStatus self, SseSerializer serializer);
 
   @protected
-  void sse_encode_stable_balance_active_label(StableBalanceActiveLabel self, SseSerializer serializer);
-
-  @protected
   void sse_encode_stable_balance_config(StableBalanceConfig self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_stable_balance_token(StableBalanceToken self, SseSerializer serializer);
 
   @protected
   void sse_encode_success_action(SuccessAction self, SseSerializer serializer);
@@ -3482,9 +3252,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
-  void sse_encode_unregister_webhook_request(UnregisterWebhookRequest self, SseSerializer serializer);
-
-  @protected
   void sse_encode_update_contact_request(UpdateContactRequest self, SseSerializer serializer);
 
   @protected
@@ -3501,12 +3268,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_wallet(Wallet self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_webhook(Webhook self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_webhook_event_type(WebhookEventType self, SseSerializer serializer);
 }
 
 // Section: wire_class
