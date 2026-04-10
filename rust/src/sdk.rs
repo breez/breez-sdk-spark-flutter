@@ -229,9 +229,8 @@ impl BreezSdk {
         }
     }
 
-    #[frb(sync)]
-    pub fn start_leaf_optimization(&self) {
-        self.inner.start_leaf_optimization();
+    pub async fn start_leaf_optimization(&self) {
+        self.inner.start_leaf_optimization().await;
     }
 
     pub async fn cancel_leaf_optimization(&self) -> Result<(), SdkError> {
@@ -255,6 +254,24 @@ impl BreezSdk {
         request: BuyBitcoinRequest,
     ) -> Result<BuyBitcoinResponse, SdkError> {
         self.inner.buy_bitcoin(request).await
+    }
+
+    pub async fn register_webhook(
+        &self,
+        request: RegisterWebhookRequest,
+    ) -> Result<RegisterWebhookResponse, SdkError> {
+        self.inner.register_webhook(request).await
+    }
+
+    pub async fn unregister_webhook(
+        &self,
+        request: UnregisterWebhookRequest,
+    ) -> Result<(), SdkError> {
+        self.inner.unregister_webhook(request).await
+    }
+
+    pub async fn list_webhooks(&self) -> Result<Vec<Webhook>, SdkError> {
+        self.inner.list_webhooks().await
     }
 
     pub async fn add_contact(&self, request: AddContactRequest) -> Result<Contact, SdkError> {
