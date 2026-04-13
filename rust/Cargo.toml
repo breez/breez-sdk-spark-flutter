@@ -1,6 +1,6 @@
 [package]
 name = "breez_sdk_spark_flutter"
-version = "0.13.0"
+version = "0.13.1"
 edition = "2024"
 
 [workspace]
