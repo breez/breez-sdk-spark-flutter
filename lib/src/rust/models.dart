@@ -460,7 +460,7 @@ sealed class BuyBitcoinRequest with _$BuyBitcoinRequest {
 
   const factory BuyBitcoinRequest.moonpay({BigInt? lockedAmountSat, String? redirectUrl}) =
       BuyBitcoinRequest_Moonpay;
-  const factory BuyBitcoinRequest.cashApp({BigInt? amountSats}) = BuyBitcoinRequest_CashApp;
+  const factory BuyBitcoinRequest.cashApp({required BigInt amountSats}) = BuyBitcoinRequest_CashApp;
 }
 
 class BuyBitcoinResponse {

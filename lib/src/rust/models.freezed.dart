@@ -963,7 +963,7 @@ return cashApp(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( BigInt? lockedAmountSat,  String? redirectUrl)?  moonpay,TResult Function( BigInt? amountSats)?  cashApp,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( BigInt? lockedAmountSat,  String? redirectUrl)?  moonpay,TResult Function( BigInt amountSats)?  cashApp,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case BuyBitcoinRequest_Moonpay() when moonpay != null:
 return moonpay(_that.lockedAmountSat,_that.redirectUrl);case BuyBitcoinRequest_CashApp() when cashApp != null:
@@ -985,7 +985,7 @@ return cashApp(_that.amountSats);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( BigInt? lockedAmountSat,  String? redirectUrl)  moonpay,required TResult Function( BigInt? amountSats)  cashApp,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( BigInt? lockedAmountSat,  String? redirectUrl)  moonpay,required TResult Function( BigInt amountSats)  cashApp,}) {final _that = this;
 switch (_that) {
 case BuyBitcoinRequest_Moonpay():
 return moonpay(_that.lockedAmountSat,_that.redirectUrl);case BuyBitcoinRequest_CashApp():
@@ -1003,7 +1003,7 @@ return cashApp(_that.amountSats);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( BigInt? lockedAmountSat,  String? redirectUrl)?  moonpay,TResult? Function( BigInt? amountSats)?  cashApp,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( BigInt? lockedAmountSat,  String? redirectUrl)?  moonpay,TResult? Function( BigInt amountSats)?  cashApp,}) {final _that = this;
 switch (_that) {
 case BuyBitcoinRequest_Moonpay() when moonpay != null:
 return moonpay(_that.lockedAmountSat,_that.redirectUrl);case BuyBitcoinRequest_CashApp() when cashApp != null:
@@ -1087,10 +1087,10 @@ as String?,
 
 
 class BuyBitcoinRequest_CashApp extends BuyBitcoinRequest {
-  const BuyBitcoinRequest_CashApp({this.amountSats}): super._();
+  const BuyBitcoinRequest_CashApp({required this.amountSats}): super._();
   
 
- final  BigInt? amountSats;
+ final  BigInt amountSats;
 
 /// Create a copy of BuyBitcoinRequest
 /// with the given fields replaced by the non-null parameter values.
@@ -1122,7 +1122,7 @@ abstract mixin class $BuyBitcoinRequest_CashAppCopyWith<$Res> implements $BuyBit
   factory $BuyBitcoinRequest_CashAppCopyWith(BuyBitcoinRequest_CashApp value, $Res Function(BuyBitcoinRequest_CashApp) _then) = _$BuyBitcoinRequest_CashAppCopyWithImpl;
 @useResult
 $Res call({
- BigInt? amountSats
+ BigInt amountSats
 });
 
 
@@ -1139,10 +1139,10 @@ class _$BuyBitcoinRequest_CashAppCopyWithImpl<$Res>
 
 /// Create a copy of BuyBitcoinRequest
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? amountSats = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? amountSats = null,}) {
   return _then(BuyBitcoinRequest_CashApp(
-amountSats: freezed == amountSats ? _self.amountSats : amountSats // ignore: cast_nullable_to_non_nullable
-as BigInt?,
+amountSats: null == amountSats ? _self.amountSats : amountSats // ignore: cast_nullable_to_non_nullable
+as BigInt,
   ));
 }
 

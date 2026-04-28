@@ -3175,7 +3175,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           redirectUrl: dco_decode_opt_String(raw[2]),
         );
       case 1:
-        return BuyBitcoinRequest_CashApp(amountSats: dco_decode_opt_box_autoadd_u_64(raw[1]));
+        return BuyBitcoinRequest_CashApp(amountSats: dco_decode_u_64(raw[1]));
       default:
         throw Exception("unreachable");
     }
@@ -6446,7 +6446,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_redirectUrl = sse_decode_opt_String(deserializer);
         return BuyBitcoinRequest_Moonpay(lockedAmountSat: var_lockedAmountSat, redirectUrl: var_redirectUrl);
       case 1:
-        var var_amountSats = sse_decode_opt_box_autoadd_u_64(deserializer);
+        var var_amountSats = sse_decode_u_64(deserializer);
         return BuyBitcoinRequest_CashApp(amountSats: var_amountSats);
       default:
         throw UnimplementedError('');
@@ -10310,7 +10310,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_opt_String(redirectUrl, serializer);
       case BuyBitcoinRequest_CashApp(amountSats: final amountSats):
         sse_encode_i_32(1, serializer);
-        sse_encode_opt_box_autoadd_u_64(amountSats, serializer);
+        sse_encode_u_64(amountSats, serializer);
     }
   }
 

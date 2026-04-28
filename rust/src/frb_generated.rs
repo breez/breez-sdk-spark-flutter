@@ -3762,7 +3762,7 @@ const _: fn() = || {
             let _: Option<String> = redirect_url;
         }
         crate::models::BuyBitcoinRequest::CashApp { amount_sats } => {
-            let _: Option<u64> = amount_sats;
+            let _: u64 = amount_sats;
         }
     }
     {
@@ -5455,7 +5455,7 @@ impl SseDecode for crate::models::BuyBitcoinRequest {
                 };
             }
             1 => {
-                let mut var_amountSats = <Option<u64>>::sse_decode(deserializer);
+                let mut var_amountSats = <u64>::sse_decode(deserializer);
                 return crate::models::BuyBitcoinRequest::CashApp {
                     amount_sats: var_amountSats,
                 };
@@ -13626,7 +13626,7 @@ impl SseEncode for crate::models::BuyBitcoinRequest {
             }
             crate::models::BuyBitcoinRequest::CashApp { amount_sats } => {
                 <i32>::sse_encode(1, serializer);
-                <Option<u64>>::sse_encode(amount_sats, serializer);
+                <u64>::sse_encode(amount_sats, serializer);
             }
             _ => {
                 unimplemented!("");
