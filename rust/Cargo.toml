@@ -1,6 +1,6 @@
 [package]
 name = "breez_sdk_spark_flutter"
-version = "0.13.6"
+version = "0.13.10-dev"
 edition = "2024"
 
 [workspace]
@@ -11,7 +11,7 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 async-trait = "0.1.88"
 # Replaced with release commit during publishing
-breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "8cd8bdab88a2da26acd893aa19a810c78ee8e6aa", features = [
+breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "5bbd4ce6b48fbb6a01e3ac34c75111b7dba73f18", features = [
     "passkey",
 ] }
 extend = "1.2.0"
