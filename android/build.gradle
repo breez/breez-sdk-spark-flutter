@@ -1,7 +1,7 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
 group 'technology.breez.spark'
-version '0.13.10-dev'
+version '0.13.11-dev1'
 
 buildscript {
     repositories {
