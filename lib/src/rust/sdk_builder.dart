@@ -3,11 +3,14 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import 'chain_service.dart';
+import 'connection_manager.dart';
 import 'errors.dart';
 import 'frb_generated.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'sdk.dart';
+import 'ssp_connection_manager.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>
 abstract class SdkBuilder implements RustOpaqueInterface {
@@ -15,6 +18,13 @@ abstract class SdkBuilder implements RustOpaqueInterface {
 
   factory SdkBuilder({required Config config, required Seed seed}) =>
       BreezSdkSparkLib.instance.api.crateSdkBuilderSdkBuilderNew(config: config, seed: seed);
+
+  /// Sets a Rust-built chain service. Pass a handle from
+  /// [`new_rest_chain_service`](crate::chain_service::new_rest_chain_service)
+  /// to multiple `SdkBuilder`s to share one HTTP client across SDK instances.
+  SdkBuilder withChainService({required BitcoinChainServiceHandle handle});
+
+  SdkBuilder withConnectionManager({required ConnectionManager connectionManager});
 
   SdkBuilder withDefaultStorage({required String storageDir});
 
@@ -25,4 +35,17 @@ abstract class SdkBuilder implements RustOpaqueInterface {
     required ChainApiType apiType,
     Credentials? credentials,
   });
+
+  /// Provide a custom session manager backed by Dart callbacks.
+  ///
+  /// Both callbacks receive the service identity public key as a
+  /// hex-encoded string. `getSession` returns `null` when no session is
+  /// cached (which the SDK treats as "needs authentication"). Throwing from
+  /// either callback surfaces as a generic session manager error.
+  SdkBuilder withSessionManager({
+    required FutureOr<Session?> Function(String) getSession,
+    required FutureOr<void> Function(String, Session) setSession,
+  });
+
+  SdkBuilder withSspConnectionManager({required SspConnectionManager manager});
 }

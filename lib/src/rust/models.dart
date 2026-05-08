@@ -2520,6 +2520,24 @@ class SendPaymentResponse {
 
 enum ServiceStatus { operational, degraded, partial, unknown, major }
 
+class Session {
+  final String token;
+  final BigInt expiration;
+
+  const Session({required this.token, required this.expiration});
+
+  @override
+  int get hashCode => token.hashCode ^ expiration.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Session &&
+          runtimeType == other.runtimeType &&
+          token == other.token &&
+          expiration == other.expiration;
+}
+
 class SignMessageRequest {
   final String message;
   final bool compact;

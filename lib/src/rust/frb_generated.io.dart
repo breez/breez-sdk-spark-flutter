@@ -3,6 +3,8 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
+import 'chain_service.dart';
+import 'connection_manager.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
@@ -16,6 +18,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'passkey.dart';
 import 'sdk.dart';
 import 'sdk_builder.dart';
+import 'ssp_connection_manager.dart';
 
 abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSparkLibWire> {
   BreezSdkSparkLibApiImplPlatform({
@@ -25,14 +28,23 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BitcoinChainServiceHandlePtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandlePtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BreezSdkPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_ConnectionManagerPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PasskeyPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SdkBuilderPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilderPtr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SspConnectionManagerPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_TokenIssuerPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr;
@@ -41,7 +53,19 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
   @protected
+  BitcoinChainServiceHandle
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    dynamic raw,
+  );
+
+  @protected
   BreezSdk dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    dynamic raw,
+  );
+
+  @protected
+  ConnectionManager
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
     dynamic raw,
   );
 
@@ -56,12 +80,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  SspConnectionManager
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    dynamic raw,
+  );
+
+  @protected
   TokenIssuer dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     dynamic raw,
   );
 
   @protected
+  BitcoinChainServiceHandle
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    dynamic raw,
+  );
+
+  @protected
   BreezSdk dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    dynamic raw,
+  );
+
+  @protected
+  ConnectionManager
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
     dynamic raw,
   );
 
@@ -85,6 +127,14 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   dco_decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(dynamic raw);
 
   @protected
+  FutureOr<Session?> Function(String)
+  dco_decode_DartFn_Inputs_String_Output_opt_box_autoadd_session_AnyhowException(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String, Session)
+  dco_decode_DartFn_Inputs_String_session_Output_unit_AnyhowException(dynamic raw);
+
+  @protected
   FutureOr<bool> Function() dco_decode_DartFn_Inputs__Output_bool_AnyhowException(dynamic raw);
 
   @protected
@@ -94,13 +144,27 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Map<String, TokenBalance> dco_decode_Map_String_token_balance_None(dynamic raw);
 
   @protected
+  BitcoinChainServiceHandle
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    dynamic raw,
+  );
+
+  @protected
   BreezSdk dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(dynamic raw);
+
+  @protected
+  ConnectionManager
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(dynamic raw);
 
   @protected
   Passkey dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(dynamic raw);
 
   @protected
   SdkBuilder dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(dynamic raw);
+
+  @protected
+  SspConnectionManager
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(dynamic raw);
 
   @protected
   TokenIssuer dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
@@ -397,6 +461,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SendPaymentRequest dco_decode_box_autoadd_send_payment_request(dynamic raw);
+
+  @protected
+  Session dco_decode_box_autoadd_session(dynamic raw);
 
   @protected
   SignMessageRequest dco_decode_box_autoadd_sign_message_request(dynamic raw);
@@ -852,6 +919,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? dco_decode_opt_box_autoadd_send_payment_options(dynamic raw);
 
   @protected
+  Session? dco_decode_opt_box_autoadd_session(dynamic raw);
+
+  @protected
   SparkConfig? dco_decode_opt_box_autoadd_spark_config(dynamic raw);
 
   @protected
@@ -1017,6 +1087,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ServiceStatus dco_decode_service_status(dynamic raw);
 
   @protected
+  Session dco_decode_session(dynamic raw);
+
+  @protected
   SignMessageRequest dco_decode_sign_message_request(dynamic raw);
 
   @protected
@@ -1140,7 +1213,19 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
+  BitcoinChainServiceHandle
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   BreezSdk sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ConnectionManager
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
     SseDeserializer deserializer,
   );
 
@@ -1155,12 +1240,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  SspConnectionManager
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   TokenIssuer sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     SseDeserializer deserializer,
   );
 
   @protected
+  BitcoinChainServiceHandle
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   BreezSdk sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ConnectionManager
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
     SseDeserializer deserializer,
   );
 
@@ -1186,7 +1289,19 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Map<String, TokenBalance> sse_decode_Map_String_token_balance_None(SseDeserializer deserializer);
 
   @protected
+  BitcoinChainServiceHandle
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   BreezSdk sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ConnectionManager
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
     SseDeserializer deserializer,
   );
 
@@ -1197,6 +1312,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SdkBuilder sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  SspConnectionManager
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
     SseDeserializer deserializer,
   );
 
@@ -1511,6 +1632,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SendPaymentRequest sse_decode_box_autoadd_send_payment_request(SseDeserializer deserializer);
+
+  @protected
+  Session sse_decode_box_autoadd_session(SseDeserializer deserializer);
 
   @protected
   SignMessageRequest sse_decode_box_autoadd_sign_message_request(SseDeserializer deserializer);
@@ -1972,6 +2096,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? sse_decode_opt_box_autoadd_send_payment_options(SseDeserializer deserializer);
 
   @protected
+  Session? sse_decode_opt_box_autoadd_session(SseDeserializer deserializer);
+
+  @protected
   SparkConfig? sse_decode_opt_box_autoadd_spark_config(SseDeserializer deserializer);
 
   @protected
@@ -2141,6 +2268,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ServiceStatus sse_decode_service_status(SseDeserializer deserializer);
 
   @protected
+  Session sse_decode_session(SseDeserializer deserializer);
+
+  @protected
   SignMessageRequest sse_decode_sign_message_request(SseDeserializer deserializer);
 
   @protected
@@ -2264,8 +2394,21 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
 
   @protected
+  void
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    BitcoinChainServiceHandle self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+    ConnectionManager self,
     SseSerializer serializer,
   );
 
@@ -2282,14 +2425,34 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    SspConnectionManager self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     TokenIssuer self,
     SseSerializer serializer,
   );
 
   @protected
+  void
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    BitcoinChainServiceHandle self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+    ConnectionManager self,
     SseSerializer serializer,
   );
 
@@ -2318,6 +2481,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_DartFn_Inputs_String_Output_opt_box_autoadd_session_AnyhowException(
+    FutureOr<Session?> Function(String) self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_DartFn_Inputs_String_session_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, Session) self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_DartFn_Inputs__Output_bool_AnyhowException(
     FutureOr<bool> Function() self,
     SseSerializer serializer,
@@ -2330,8 +2505,20 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_Map_String_token_balance_None(Map<String, TokenBalance> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    BitcoinChainServiceHandle self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+    ConnectionManager self,
     SseSerializer serializer,
   );
 
@@ -2344,6 +2531,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
     SdkBuilder self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    SspConnectionManager self,
     SseSerializer serializer,
   );
 
@@ -2706,6 +2899,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_send_payment_request(SendPaymentRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_session(Session self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_sign_message_request(SignMessageRequest self, SseSerializer serializer);
@@ -3209,6 +3405,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_send_payment_options(SendPaymentOptions? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_session(Session? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_spark_config(SparkConfig? self, SseSerializer serializer);
 
   @protected
@@ -3389,6 +3588,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_service_status(ServiceStatus self, SseSerializer serializer);
 
   @protected
+  void sse_encode_session(Session self, SseSerializer serializer);
+
+  @protected
   void sse_encode_sign_message_request(SignMessageRequest self, SseSerializer serializer);
 
   @protected
@@ -3521,6 +3723,40 @@ class BreezSdkSparkLibWire implements BaseWire {
   /// The symbols are looked up in [dynamicLibrary].
   BreezSdkSparkLibWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandlePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle',
+      );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandlePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandlePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle',
+      );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandle =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBitcoinChainServiceHandlePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3551,6 +3787,40 @@ class BreezSdkSparkLibWire implements BaseWire {
       );
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager',
+      );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager',
+      );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
@@ -3617,6 +3887,40 @@ class BreezSdkSparkLibWire implements BaseWire {
       );
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilderPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager',
+      );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager',
+      );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
