@@ -340,7 +340,7 @@ abstract class BreezSdkSparkLibApi extends BaseApi {
 
   ConnectionManager crateConnectionManagerNewConnectionManager({int? connectionsPerOperator});
 
-  BitcoinChainServiceHandle crateChainServiceNewRestChainService({
+  Future<BitcoinChainServiceHandle> crateChainServiceNewRestChainService({
     required String url,
     required Network network,
     required ChainApiType apiType,
@@ -2328,21 +2328,21 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       const TaskConstMeta(debugName: "new_connection_manager", argNames: ["connectionsPerOperator"]);
 
   @override
-  BitcoinChainServiceHandle crateChainServiceNewRestChainService({
+  Future<BitcoinChainServiceHandle> crateChainServiceNewRestChainService({
     required String url,
     required Network network,
     required ChainApiType apiType,
     Credentials? credentials,
   }) {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(url, serializer);
           sse_encode_network(network, serializer);
           sse_encode_chain_api_type(apiType, serializer);
           sse_encode_opt_box_autoadd_credentials(credentials, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 71)!;
+          pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 71, port: port_);
         },
         codec: SseCodec(
           decodeSuccessData:

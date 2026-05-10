@@ -14,7 +14,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 /// must use the same `network`.
 ///
 /// For one-off, non-shared use, prefer `with_rest_chain_service`.
-BitcoinChainServiceHandle newRestChainService({
+Future<BitcoinChainServiceHandle> newRestChainService({
   required String url,
   required Network network,
   required ChainApiType apiType,

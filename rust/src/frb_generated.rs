@@ -3835,15 +3835,16 @@ fn wire__crate__connection_manager__new_connection_manager_impl(
     )
 }
 fn wire__crate__chain_service__new_rest_chain_service_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "new_rest_chain_service",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let message = unsafe {
@@ -3861,15 +3862,23 @@ fn wire__crate__chain_service__new_rest_chain_service_impl(
             let api_credentials =
                 <Option<crate::models::Credentials>>::sse_decode(&mut deserializer);
             deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::chain_service::new_rest_chain_service(
-                    api_url,
-                    api_network,
-                    api_api_type,
-                    api_credentials,
-                ))?;
-                Ok(output_ok)
-            })())
+            move |context| async move {
+                transform_result_sse::<_, ()>(
+                    (move || async move {
+                        let output_ok = Result::<_, ()>::Ok(
+                            crate::chain_service::new_rest_chain_service(
+                                api_url,
+                                api_network,
+                                api_api_type,
+                                api_credentials,
+                            )
+                            .await,
+                        )?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
         },
     )
 }
@@ -9540,6 +9549,12 @@ fn pde_ffi_dispatcher_primary_impl(
         ),
         66 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
         68 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
+        71 => wire__crate__chain_service__new_rest_chain_service_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
         _ => unreachable!(),
     }
 }
@@ -9598,7 +9613,6 @@ fn pde_ffi_dispatcher_sync_impl(
             rust_vec_len,
             data_len,
         ),
-        71 => wire__crate__chain_service__new_rest_chain_service_impl(ptr, rust_vec_len, data_len),
         72 => wire__crate__ssp_connection_manager__new_ssp_connection_manager_impl(
             ptr,
             rust_vec_len,
