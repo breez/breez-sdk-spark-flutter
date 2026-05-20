@@ -600,7 +600,8 @@ class Config {
   final bool useDefaultExternalInputParsers;
   final String? realTimeSyncServerUrl;
   final bool privateEnabledDefault;
-  final OptimizationConfig optimizationConfig;
+  final LeafOptimizationConfig leafOptimizationConfig;
+  final TokenOptimizationConfig tokenOptimizationConfig;
   final StableBalanceConfig? stableBalanceConfig;
 
   /// Maximum number of concurrent transfer claims.
@@ -610,6 +611,7 @@ class Config {
   /// payment volume to improve throughput.
   final int maxConcurrentClaims;
   final SparkConfig? sparkConfig;
+  final bool backgroundTasksEnabled;
 
   const Config({
     this.apiKey,
@@ -622,10 +624,12 @@ class Config {
     required this.useDefaultExternalInputParsers,
     this.realTimeSyncServerUrl,
     required this.privateEnabledDefault,
-    required this.optimizationConfig,
+    required this.leafOptimizationConfig,
+    required this.tokenOptimizationConfig,
     this.stableBalanceConfig,
     required this.maxConcurrentClaims,
     this.sparkConfig,
+    required this.backgroundTasksEnabled,
   });
 
   @override
@@ -640,10 +644,12 @@ class Config {
       useDefaultExternalInputParsers.hashCode ^
       realTimeSyncServerUrl.hashCode ^
       privateEnabledDefault.hashCode ^
-      optimizationConfig.hashCode ^
+      leafOptimizationConfig.hashCode ^
+      tokenOptimizationConfig.hashCode ^
       stableBalanceConfig.hashCode ^
       maxConcurrentClaims.hashCode ^
-      sparkConfig.hashCode;
+      sparkConfig.hashCode ^
+      backgroundTasksEnabled.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -660,10 +666,12 @@ class Config {
           useDefaultExternalInputParsers == other.useDefaultExternalInputParsers &&
           realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
           privateEnabledDefault == other.privateEnabledDefault &&
-          optimizationConfig == other.optimizationConfig &&
+          leafOptimizationConfig == other.leafOptimizationConfig &&
+          tokenOptimizationConfig == other.tokenOptimizationConfig &&
           stableBalanceConfig == other.stableBalanceConfig &&
           maxConcurrentClaims == other.maxConcurrentClaims &&
-          sparkConfig == other.sparkConfig;
+          sparkConfig == other.sparkConfig &&
+          backgroundTasksEnabled == other.backgroundTasksEnabled;
 }
 
 class ConnectRequest {
@@ -1282,6 +1290,24 @@ class KeySetConfig {
 
 enum KeySetType { default_, taproot, nativeSegwit, wrappedSegwit, legacy }
 
+class LeafOptimizationConfig {
+  final bool autoEnabled;
+  final int multiplicity;
+
+  const LeafOptimizationConfig({required this.autoEnabled, required this.multiplicity});
+
+  @override
+  int get hashCode => autoEnabled.hashCode ^ multiplicity.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LeafOptimizationConfig &&
+          runtimeType == other.runtimeType &&
+          autoEnabled == other.autoEnabled &&
+          multiplicity == other.multiplicity;
+}
+
 class LightningAddressDetails {
   final String address;
   final LnurlPayRequestDetails payRequest;
@@ -1865,24 +1891,6 @@ class NostrRelayConfig {
 
 enum OnchainConfirmationSpeed { fast, medium, slow }
 
-class OptimizationConfig {
-  final bool autoEnabled;
-  final int multiplicity;
-
-  const OptimizationConfig({required this.autoEnabled, required this.multiplicity});
-
-  @override
-  int get hashCode => autoEnabled.hashCode ^ multiplicity.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OptimizationConfig &&
-          runtimeType == other.runtimeType &&
-          autoEnabled == other.autoEnabled &&
-          multiplicity == other.multiplicity;
-}
-
 class OptimizationProgress {
   final bool isRunning;
   final int currentRound;
@@ -2390,6 +2398,26 @@ class RegisterWebhookResponse {
       other is RegisterWebhookResponse && runtimeType == other.runtimeType && webhookId == other.webhookId;
 }
 
+class SdkContextConfig {
+  final Network network;
+  final String? apiKey;
+  final int? connectionsPerOperator;
+
+  const SdkContextConfig({required this.network, this.apiKey, this.connectionsPerOperator});
+
+  @override
+  int get hashCode => network.hashCode ^ apiKey.hashCode ^ connectionsPerOperator.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SdkContextConfig &&
+          runtimeType == other.runtimeType &&
+          network == other.network &&
+          apiKey == other.apiKey &&
+          connectionsPerOperator == other.connectionsPerOperator;
+}
+
 @freezed
 sealed class Seed with _$Seed {
   const Seed._();
@@ -2519,24 +2547,6 @@ class SendPaymentResponse {
 }
 
 enum ServiceStatus { operational, degraded, partial, unknown, major }
-
-class Session {
-  final String token;
-  final BigInt expiration;
-
-  const Session({required this.token, required this.expiration});
-
-  @override
-  int get hashCode => token.hashCode ^ expiration.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Session &&
-          runtimeType == other.runtimeType &&
-          token == other.token &&
-          expiration == other.expiration;
-}
 
 class SignMessageRequest {
   final String message;
@@ -3014,6 +3024,30 @@ class TokenMetadata {
           decimals == other.decimals &&
           maxSupply == other.maxSupply &&
           isFreezable == other.isFreezable;
+}
+
+class TokenOptimizationConfig {
+  final bool autoEnabled;
+  final int targetOutputCount;
+  final int minOutputsThreshold;
+
+  const TokenOptimizationConfig({
+    required this.autoEnabled,
+    required this.targetOutputCount,
+    required this.minOutputsThreshold,
+  });
+
+  @override
+  int get hashCode => autoEnabled.hashCode ^ targetOutputCount.hashCode ^ minOutputsThreshold.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TokenOptimizationConfig &&
+          runtimeType == other.runtimeType &&
+          autoEnabled == other.autoEnabled &&
+          targetOutputCount == other.targetOutputCount &&
+          minOutputsThreshold == other.minOutputsThreshold;
 }
 
 enum TokenTransactionType { transfer, mint, burn }

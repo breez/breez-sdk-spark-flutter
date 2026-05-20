@@ -19,6 +19,9 @@ Future<BreezSdk> connect({required ConnectRequest request}) =>
 Config defaultConfig({required Network network}) =>
     BreezSdkSparkLib.instance.api.crateSdkDefaultConfig(network: network);
 
+Config defaultServerConfig({required Network network}) =>
+    BreezSdkSparkLib.instance.api.crateSdkDefaultServerConfig(network: network);
+
 Stream<LogEntry> initLogging({String? logDir, String? logFilter}) =>
     BreezSdkSparkLib.instance.api.crateSdkInitLogging(logDir: logDir, logFilter: logFilter);
 
@@ -95,6 +98,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<RecommendedFees> recommendedFees();
 
   Future<RefundDepositResponse> refundDeposit({required RefundDepositRequest request});
+
+  Future<void> refundPendingConversions();
 
   Future<LightningAddressInfo> registerLightningAddress({required RegisterLightningAddressRequest request});
 

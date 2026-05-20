@@ -4,13 +4,12 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import 'chain_service.dart';
-import 'connection_manager.dart';
 import 'errors.dart';
 import 'frb_generated.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'sdk.dart';
-import 'ssp_connection_manager.dart';
+import 'sdk_context.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>>
 abstract class SdkBuilder implements RustOpaqueInterface {
@@ -24,8 +23,6 @@ abstract class SdkBuilder implements RustOpaqueInterface {
   /// to multiple `SdkBuilder`s to share one HTTP client across SDK instances.
   SdkBuilder withChainService({required BitcoinChainServiceHandle handle});
 
-  SdkBuilder withConnectionManager({required ConnectionManager connectionManager});
-
   SdkBuilder withDefaultStorage({required String storageDir});
 
   SdkBuilder withKeySet({required KeySetConfig config});
@@ -36,16 +33,11 @@ abstract class SdkBuilder implements RustOpaqueInterface {
     Credentials? credentials,
   });
 
-  /// Provide a custom session manager backed by Dart callbacks.
+  /// Threads a shared [`SdkContext`] into the builder.
   ///
-  /// Both callbacks receive the service identity public key as a
-  /// hex-encoded string. `getSession` returns `null` when no session is
-  /// cached (which the SDK treats as "needs authentication"). Throwing from
-  /// either callback surfaces as a generic session manager error.
-  SdkBuilder withSessionManager({
-    required FutureOr<Session?> Function(String) getSession,
-    required FutureOr<void> Function(String, Session) setSession,
-  });
-
-  SdkBuilder withSspConnectionManager({required SspConnectionManager manager});
+  /// Construct the context once via
+  /// [`new_shared_sdk_context`](crate::sdk_context::new_shared_sdk_context)
+  /// and pass the same handle to every `SdkBuilder` whose SDKs should share
+  /// its HTTP client, operator gRPC channels, and Breez backend gRPC client.
+  SdkBuilder withSharedContext({required SdkContext context});
 }

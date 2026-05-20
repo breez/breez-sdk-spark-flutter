@@ -4,7 +4,6 @@
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
 import 'chain_service.dart';
-import 'connection_manager.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
@@ -18,7 +17,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'passkey.dart';
 import 'sdk.dart';
 import 'sdk_builder.dart';
-import 'ssp_connection_manager.dart';
+import 'sdk_context.dart';
 
 abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSparkLibWire> {
   BreezSdkSparkLibApiImplPlatform({
@@ -34,17 +33,14 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BreezSdkPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_ConnectionManagerPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr;
-
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PasskeyPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SdkBuilderPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilderPtr;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SspConnectionManagerPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SdkContextPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContextPtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_TokenIssuerPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuerPtr;
@@ -64,12 +60,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  ConnectionManager
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    dynamic raw,
-  );
-
-  @protected
   Passkey dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     dynamic raw,
   );
@@ -80,8 +70,7 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  SspConnectionManager
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+  SdkContext dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     dynamic raw,
   );
 
@@ -102,18 +91,17 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  ConnectionManager
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    dynamic raw,
-  );
-
-  @protected
   Passkey dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     dynamic raw,
   );
 
   @protected
   SdkBuilder dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    dynamic raw,
+  );
+
+  @protected
+  SdkContext dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     dynamic raw,
   );
 
@@ -125,14 +113,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   FutureOr<Uint8List> Function(String)
   dco_decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(dynamic raw);
-
-  @protected
-  FutureOr<Session?> Function(String)
-  dco_decode_DartFn_Inputs_String_Output_opt_box_autoadd_session_AnyhowException(dynamic raw);
-
-  @protected
-  FutureOr<void> Function(String, Session)
-  dco_decode_DartFn_Inputs_String_session_Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<bool> Function() dco_decode_DartFn_Inputs__Output_bool_AnyhowException(dynamic raw);
@@ -153,18 +133,13 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BreezSdk dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(dynamic raw);
 
   @protected
-  ConnectionManager
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(dynamic raw);
-
-  @protected
   Passkey dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(dynamic raw);
 
   @protected
   SdkBuilder dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(dynamic raw);
 
   @protected
-  SspConnectionManager
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(dynamic raw);
+  SdkContext dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(dynamic raw);
 
   @protected
   TokenIssuer dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
@@ -451,6 +426,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookRequest dco_decode_box_autoadd_register_webhook_request(dynamic raw);
 
   @protected
+  SdkContextConfig dco_decode_box_autoadd_sdk_context_config(dynamic raw);
+
+  @protected
   Seed dco_decode_box_autoadd_seed(dynamic raw);
 
   @protected
@@ -461,9 +439,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SendPaymentRequest dco_decode_box_autoadd_send_payment_request(dynamic raw);
-
-  @protected
-  Session dco_decode_box_autoadd_session(dynamic raw);
 
   @protected
   SignMessageRequest dco_decode_box_autoadd_sign_message_request(dynamic raw);
@@ -674,6 +649,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   KeySetType dco_decode_key_set_type(dynamic raw);
+
+  @protected
+  LeafOptimizationConfig dco_decode_leaf_optimization_config(dynamic raw);
 
   @protected
   LightningAddressDetails dco_decode_lightning_address_details(dynamic raw);
@@ -919,9 +897,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? dco_decode_opt_box_autoadd_send_payment_options(dynamic raw);
 
   @protected
-  Session? dco_decode_opt_box_autoadd_session(dynamic raw);
-
-  @protected
   SparkConfig? dco_decode_opt_box_autoadd_spark_config(dynamic raw);
 
   @protected
@@ -974,9 +949,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<SparkHtlcStatus>? dco_decode_opt_list_spark_htlc_status(dynamic raw);
-
-  @protected
-  OptimizationConfig dco_decode_optimization_config(dynamic raw);
 
   @protected
   OptimizationEvent dco_decode_optimization_event(dynamic raw);
@@ -1057,6 +1029,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookResponse dco_decode_register_webhook_response(dynamic raw);
 
   @protected
+  SdkContextConfig dco_decode_sdk_context_config(dynamic raw);
+
+  @protected
   SdkError dco_decode_sdk_error(dynamic raw);
 
   @protected
@@ -1085,9 +1060,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ServiceStatus dco_decode_service_status(dynamic raw);
-
-  @protected
-  Session dco_decode_session(dynamic raw);
 
   @protected
   SignMessageRequest dco_decode_sign_message_request(dynamic raw);
@@ -1159,6 +1131,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TokenMetadata dco_decode_token_metadata(dynamic raw);
 
   @protected
+  TokenOptimizationConfig dco_decode_token_optimization_config(dynamic raw);
+
+  @protected
   TokenTransactionType dco_decode_token_transaction_type(dynamic raw);
 
   @protected
@@ -1224,12 +1199,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  ConnectionManager
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    SseDeserializer deserializer,
-  );
-
-  @protected
   Passkey sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     SseDeserializer deserializer,
   );
@@ -1240,8 +1209,7 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  SspConnectionManager
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+  SdkContext sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     SseDeserializer deserializer,
   );
 
@@ -1262,18 +1230,17 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  ConnectionManager
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    SseDeserializer deserializer,
-  );
-
-  @protected
   Passkey sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     SseDeserializer deserializer,
   );
 
   @protected
   SdkBuilder sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkBuilder(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  SdkContext sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     SseDeserializer deserializer,
   );
 
@@ -1300,12 +1267,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  ConnectionManager
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    SseDeserializer deserializer,
-  );
-
-  @protected
   Passkey sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     SseDeserializer deserializer,
   );
@@ -1316,8 +1277,7 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  SspConnectionManager
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+  SdkContext sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     SseDeserializer deserializer,
   );
 
@@ -1622,6 +1582,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookRequest sse_decode_box_autoadd_register_webhook_request(SseDeserializer deserializer);
 
   @protected
+  SdkContextConfig sse_decode_box_autoadd_sdk_context_config(SseDeserializer deserializer);
+
+  @protected
   Seed sse_decode_box_autoadd_seed(SseDeserializer deserializer);
 
   @protected
@@ -1632,9 +1595,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SendPaymentRequest sse_decode_box_autoadd_send_payment_request(SseDeserializer deserializer);
-
-  @protected
-  Session sse_decode_box_autoadd_session(SseDeserializer deserializer);
 
   @protected
   SignMessageRequest sse_decode_box_autoadd_sign_message_request(SseDeserializer deserializer);
@@ -1851,6 +1811,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   KeySetType sse_decode_key_set_type(SseDeserializer deserializer);
+
+  @protected
+  LeafOptimizationConfig sse_decode_leaf_optimization_config(SseDeserializer deserializer);
 
   @protected
   LightningAddressDetails sse_decode_lightning_address_details(SseDeserializer deserializer);
@@ -2096,9 +2059,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SendPaymentOptions? sse_decode_opt_box_autoadd_send_payment_options(SseDeserializer deserializer);
 
   @protected
-  Session? sse_decode_opt_box_autoadd_session(SseDeserializer deserializer);
-
-  @protected
   SparkConfig? sse_decode_opt_box_autoadd_spark_config(SseDeserializer deserializer);
 
   @protected
@@ -2155,9 +2115,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<SparkHtlcStatus>? sse_decode_opt_list_spark_htlc_status(SseDeserializer deserializer);
-
-  @protected
-  OptimizationConfig sse_decode_optimization_config(SseDeserializer deserializer);
 
   @protected
   OptimizationEvent sse_decode_optimization_event(SseDeserializer deserializer);
@@ -2238,6 +2195,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookResponse sse_decode_register_webhook_response(SseDeserializer deserializer);
 
   @protected
+  SdkContextConfig sse_decode_sdk_context_config(SseDeserializer deserializer);
+
+  @protected
   SdkError sse_decode_sdk_error(SseDeserializer deserializer);
 
   @protected
@@ -2266,9 +2226,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ServiceStatus sse_decode_service_status(SseDeserializer deserializer);
-
-  @protected
-  Session sse_decode_session(SseDeserializer deserializer);
 
   @protected
   SignMessageRequest sse_decode_sign_message_request(SseDeserializer deserializer);
@@ -2340,6 +2297,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TokenMetadata sse_decode_token_metadata(SseDeserializer deserializer);
 
   @protected
+  TokenOptimizationConfig sse_decode_token_optimization_config(SseDeserializer deserializer);
+
+  @protected
   TokenTransactionType sse_decode_token_transaction_type(SseDeserializer deserializer);
 
   @protected
@@ -2407,12 +2367,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    ConnectionManager self,
-    SseSerializer serializer,
-  );
-
-  @protected
   void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     Passkey self,
     SseSerializer serializer,
@@ -2425,9 +2379,8 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
-    SspConnectionManager self,
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
+    SdkContext self,
     SseSerializer serializer,
   );
 
@@ -2451,12 +2404,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    ConnectionManager self,
-    SseSerializer serializer,
-  );
-
-  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     Passkey self,
     SseSerializer serializer,
@@ -2469,6 +2416,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
+    SdkContext self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTokenIssuer(
     TokenIssuer self,
     SseSerializer serializer,
@@ -2477,18 +2430,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
     FutureOr<Uint8List> Function(String) self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_DartFn_Inputs_String_Output_opt_box_autoadd_session_AnyhowException(
-    FutureOr<Session?> Function(String) self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_DartFn_Inputs_String_session_Output_unit_AnyhowException(
-    FutureOr<void> Function(String, Session) self,
     SseSerializer serializer,
   );
 
@@ -2517,12 +2458,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    ConnectionManager self,
-    SseSerializer serializer,
-  );
-
-  @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     Passkey self,
     SseSerializer serializer,
@@ -2535,8 +2470,8 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
-    SspConnectionManager self,
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
+    SdkContext self,
     SseSerializer serializer,
   );
 
@@ -2889,6 +2824,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_register_webhook_request(RegisterWebhookRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_sdk_context_config(SdkContextConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_seed(Seed self, SseSerializer serializer);
 
   @protected
@@ -2899,9 +2837,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_send_payment_request(SendPaymentRequest self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_session(Session self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_sign_message_request(SignMessageRequest self, SseSerializer serializer);
@@ -3139,6 +3074,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_key_set_type(KeySetType self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_leaf_optimization_config(LeafOptimizationConfig self, SseSerializer serializer);
 
   @protected
   void sse_encode_lightning_address_details(LightningAddressDetails self, SseSerializer serializer);
@@ -3405,9 +3343,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_send_payment_options(SendPaymentOptions? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_session(Session? self, SseSerializer serializer);
-
-  @protected
   void sse_encode_opt_box_autoadd_spark_config(SparkConfig? self, SseSerializer serializer);
 
   @protected
@@ -3472,9 +3407,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_list_spark_htlc_status(List<SparkHtlcStatus>? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_optimization_config(OptimizationConfig self, SseSerializer serializer);
 
   @protected
   void sse_encode_optimization_event(OptimizationEvent self, SseSerializer serializer);
@@ -3558,6 +3490,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_register_webhook_response(RegisterWebhookResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_sdk_context_config(SdkContextConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_sdk_error(SdkError self, SseSerializer serializer);
 
   @protected
@@ -3586,9 +3521,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_service_status(ServiceStatus self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_session(Session self, SseSerializer serializer);
 
   @protected
   void sse_encode_sign_message_request(SignMessageRequest self, SseSerializer serializer);
@@ -3658,6 +3590,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_token_metadata(TokenMetadata self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_token_optimization_config(TokenOptimizationConfig self, SseSerializer serializer);
 
   @protected
   void sse_encode_token_transaction_type(TokenTransactionType self, SseSerializer serializer);
@@ -3789,40 +3724,6 @@ class BreezSdkSparkLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager',
-      );
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager',
-      );
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManager =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConnectionManagerPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -3890,37 +3791,37 @@ class BreezSdkSparkLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager',
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext',
       );
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager(
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager',
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext',
       );
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManager =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSspConnectionManagerPtr
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContext =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerSdkContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
