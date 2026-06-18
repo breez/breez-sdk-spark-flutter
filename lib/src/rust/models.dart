@@ -96,6 +96,22 @@ sealed class AssetFilter with _$AssetFilter {
   const factory AssetFilter.token({String? tokenIdentifier}) = AssetFilter_Token;
 }
 
+class AuthorizeTransferRequest {
+  final String transfereePubkey;
+
+  const AuthorizeTransferRequest({required this.transfereePubkey});
+
+  @override
+  int get hashCode => transfereePubkey.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AuthorizeTransferRequest &&
+          runtimeType == other.runtimeType &&
+          transfereePubkey == other.transfereePubkey;
+}
+
 class Bip21Details {
   final BigInt? amountSat;
   final String? assetId;
@@ -589,6 +605,24 @@ class ClaimHtlcPaymentResponse {
       other is ClaimHtlcPaymentResponse && runtimeType == other.runtimeType && payment == other.payment;
 }
 
+class ClaimTransferRequest {
+  final TransferAuthorization authorization;
+  final String? description;
+
+  const ClaimTransferRequest({required this.authorization, this.description});
+
+  @override
+  int get hashCode => authorization.hashCode ^ description.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ClaimTransferRequest &&
+          runtimeType == other.runtimeType &&
+          authorization == other.authorization &&
+          description == other.description;
+}
+
 class Config {
   final String? apiKey;
   final Network network;
@@ -692,6 +726,44 @@ class ConnectRequest {
           config == other.config &&
           seed == other.seed &&
           storageDir == other.storageDir;
+}
+
+class ConnectWithPasskeyRequest {
+  final String? label;
+  final List<Uint8List>? allowCredentials;
+  final List<Uint8List>? excludeCredentials;
+
+  const ConnectWithPasskeyRequest({this.label, this.allowCredentials, this.excludeCredentials});
+
+  @override
+  int get hashCode => label.hashCode ^ allowCredentials.hashCode ^ excludeCredentials.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConnectWithPasskeyRequest &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          allowCredentials == other.allowCredentials &&
+          excludeCredentials == other.excludeCredentials;
+}
+
+class ConnectWithPasskeyResponse {
+  final Wallet wallet;
+  final PasskeyCredential? credential;
+
+  const ConnectWithPasskeyResponse({required this.wallet, this.credential});
+
+  @override
+  int get hashCode => wallet.hashCode ^ credential.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConnectWithPasskeyResponse &&
+          runtimeType == other.runtimeType &&
+          wallet == other.wallet &&
+          credential == other.credential;
 }
 
 class Contact {
@@ -1029,6 +1101,49 @@ class DepositInfo {
           claimError == other.claimError;
 }
 
+class DeriveSeedsOutput {
+  final List<Uint8List> seeds;
+  final Uint8List? credentialId;
+
+  const DeriveSeedsOutput({required this.seeds, this.credentialId});
+
+  @override
+  int get hashCode => seeds.hashCode ^ credentialId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DeriveSeedsOutput &&
+          runtimeType == other.runtimeType &&
+          seeds == other.seeds &&
+          credentialId == other.credentialId;
+}
+
+class DeriveSeedsRequest {
+  final List<String> salts;
+  final List<Uint8List> allowCredentials;
+  final bool? preferImmediatelyAvailableCredentials;
+
+  const DeriveSeedsRequest({
+    required this.salts,
+    required this.allowCredentials,
+    this.preferImmediatelyAvailableCredentials,
+  });
+
+  @override
+  int get hashCode =>
+      salts.hashCode ^ allowCredentials.hashCode ^ preferImmediatelyAvailableCredentials.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DeriveSeedsRequest &&
+          runtimeType == other.runtimeType &&
+          salts == other.salts &&
+          allowCredentials == other.allowCredentials &&
+          preferImmediatelyAvailableCredentials == other.preferImmediatelyAvailableCredentials;
+}
+
 class ExternalInputParser {
   final String providerId;
   final String inputRegex;
@@ -1267,28 +1382,6 @@ sealed class InputType with _$InputType {
   const factory InputType.sparkAddress(SparkAddressDetails field0) = InputType_SparkAddress;
   const factory InputType.sparkInvoice(SparkInvoiceDetails field0) = InputType_SparkInvoice;
 }
-
-class KeySetConfig {
-  final KeySetType keySetType;
-  final bool useAddressIndex;
-  final int? accountNumber;
-
-  const KeySetConfig({required this.keySetType, required this.useAddressIndex, this.accountNumber});
-
-  @override
-  int get hashCode => keySetType.hashCode ^ useAddressIndex.hashCode ^ accountNumber.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is KeySetConfig &&
-          runtimeType == other.runtimeType &&
-          keySetType == other.keySetType &&
-          useAddressIndex == other.useAddressIndex &&
-          accountNumber == other.accountNumber;
-}
-
-enum KeySetType { default_, taproot, nativeSegwit, wrappedSegwit, legacy }
 
 class LeafOptimizationConfig {
   final bool autoEnabled;
@@ -1871,48 +1964,117 @@ class MintIssuerTokenRequest {
 
 enum Network { mainnet, regtest }
 
-class NostrRelayConfig {
-  final String? breezApiKey;
-  final int? timeoutSecs;
-
-  const NostrRelayConfig({this.breezApiKey, this.timeoutSecs});
-
-  @override
-  int get hashCode => breezApiKey.hashCode ^ timeoutSecs.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NostrRelayConfig &&
-          runtimeType == other.runtimeType &&
-          breezApiKey == other.breezApiKey &&
-          timeoutSecs == other.timeoutSecs;
-}
-
 enum OnchainConfirmationSpeed { fast, medium, slow }
 
-class OptimizationProgress {
-  final bool isRunning;
-  final int currentRound;
-  final int totalRounds;
+enum OptimizationMode { full, singleRound }
 
-  const OptimizationProgress({
-    required this.isRunning,
-    required this.currentRound,
-    required this.totalRounds,
-  });
+@freezed
+sealed class OptimizationOutcome with _$OptimizationOutcome {
+  const OptimizationOutcome._();
+
+  const factory OptimizationOutcome.completed({required int roundsExecuted}) = OptimizationOutcome_Completed;
+  const factory OptimizationOutcome.inProgress() = OptimizationOutcome_InProgress;
+}
+
+class OptimizeLeavesRequest {
+  final OptimizationMode mode;
+
+  const OptimizeLeavesRequest({required this.mode});
 
   @override
-  int get hashCode => isRunning.hashCode ^ currentRound.hashCode ^ totalRounds.hashCode;
+  int get hashCode => mode.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is OptimizationProgress &&
+      other is OptimizeLeavesRequest && runtimeType == other.runtimeType && mode == other.mode;
+}
+
+class OptimizeLeavesResponse {
+  final OptimizationOutcome outcome;
+
+  const OptimizeLeavesResponse({required this.outcome});
+
+  @override
+  int get hashCode => outcome.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OptimizeLeavesResponse && runtimeType == other.runtimeType && outcome == other.outcome;
+}
+
+@freezed
+sealed class PasskeyAvailability with _$PasskeyAvailability {
+  const PasskeyAvailability._();
+
+  const factory PasskeyAvailability.available() = PasskeyAvailability_Available;
+  const factory PasskeyAvailability.prfUnsupported() = PasskeyAvailability_PrfUnsupported;
+  const factory PasskeyAvailability.notAssociated({required String source, required String reason}) =
+      PasskeyAvailability_NotAssociated;
+  const factory PasskeyAvailability.skipped({required String reason}) = PasskeyAvailability_Skipped;
+}
+
+class PasskeyConfig {
+  final String? defaultLabel;
+  final PasskeyProviderOptions? providerOptions;
+
+  const PasskeyConfig({this.defaultLabel, this.providerOptions});
+
+  @override
+  int get hashCode => defaultLabel.hashCode ^ providerOptions.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PasskeyConfig &&
           runtimeType == other.runtimeType &&
-          isRunning == other.isRunning &&
-          currentRound == other.currentRound &&
-          totalRounds == other.totalRounds;
+          defaultLabel == other.defaultLabel &&
+          providerOptions == other.providerOptions;
+}
+
+class PasskeyCredential {
+  final Uint8List credentialId;
+  final Uint8List? userId;
+  final Uint8List? aaguid;
+  final bool? backupEligible;
+
+  const PasskeyCredential({required this.credentialId, this.userId, this.aaguid, this.backupEligible});
+
+  @override
+  int get hashCode => credentialId.hashCode ^ userId.hashCode ^ aaguid.hashCode ^ backupEligible.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PasskeyCredential &&
+          runtimeType == other.runtimeType &&
+          credentialId == other.credentialId &&
+          userId == other.userId &&
+          aaguid == other.aaguid &&
+          backupEligible == other.backupEligible;
+}
+
+class PasskeyProviderOptions {
+  final String? rpId;
+  final String? rpName;
+  final String? userName;
+  final String? userDisplayName;
+
+  const PasskeyProviderOptions({this.rpId, this.rpName, this.userName, this.userDisplayName});
+
+  @override
+  int get hashCode => rpId.hashCode ^ rpName.hashCode ^ userName.hashCode ^ userDisplayName.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PasskeyProviderOptions &&
+          runtimeType == other.runtimeType &&
+          rpId == other.rpId &&
+          rpName == other.rpName &&
+          userName == other.userName &&
+          userDisplayName == other.userDisplayName;
 }
 
 class Payment {
@@ -1992,7 +2154,7 @@ sealed class PaymentDetails with _$PaymentDetails {
     LnurlReceiveMetadata? lnurlReceiveMetadata,
   }) = PaymentDetails_Lightning;
   const factory PaymentDetails.withdraw({required String txId}) = PaymentDetails_Withdraw;
-  const factory PaymentDetails.deposit({required String txId}) = PaymentDetails_Deposit;
+  const factory PaymentDetails.deposit({required String txId, required int vout}) = PaymentDetails_Deposit;
 }
 
 @freezed
@@ -2364,6 +2526,42 @@ class RegisterLightningAddressRequest {
           description == other.description;
 }
 
+class RegisterRequest {
+  final String? label;
+  final List<Uint8List>? excludeCredentials;
+
+  const RegisterRequest({this.label, this.excludeCredentials});
+
+  @override
+  int get hashCode => label.hashCode ^ excludeCredentials.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegisterRequest &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          excludeCredentials == other.excludeCredentials;
+}
+
+class RegisterResponse {
+  final Wallet wallet;
+  final PasskeyCredential? credential;
+
+  const RegisterResponse({required this.wallet, this.credential});
+
+  @override
+  int get hashCode => wallet.hashCode ^ credential.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegisterResponse &&
+          runtimeType == other.runtimeType &&
+          wallet == other.wallet &&
+          credential == other.credential;
+}
+
 class RegisterWebhookRequest {
   final String url;
   final String secret;
@@ -2398,6 +2596,13 @@ class RegisterWebhookResponse {
       other is RegisterWebhookResponse && runtimeType == other.runtimeType && webhookId == other.webhookId;
 }
 
+/// Flutter-side counterpart of
+/// [`breez_sdk_spark::SdkContextConfig`](breez_sdk_spark::SdkContextConfig).
+///
+/// Not a mirror: the upstream type carries an `Arc<dyn StorageBackend>` that
+/// the Flutter bridge doesn't bridge today. Storage is configured per-SDK via
+/// [`SdkBuilder::with_default_storage`](crate::sdk_builder::SdkBuilder::with_default_storage)
+/// instead.
 class SdkContextConfig {
   final Network network;
   final String? apiKey;
@@ -2547,6 +2752,47 @@ class SendPaymentResponse {
 }
 
 enum ServiceStatus { operational, degraded, partial, unknown, major }
+
+class SignInRequest {
+  final String? label;
+  final List<Uint8List>? allowCredentials;
+  final bool? preferImmediatelyAvailableCredentials;
+
+  const SignInRequest({this.label, this.allowCredentials, this.preferImmediatelyAvailableCredentials});
+
+  @override
+  int get hashCode =>
+      label.hashCode ^ allowCredentials.hashCode ^ preferImmediatelyAvailableCredentials.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SignInRequest &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          allowCredentials == other.allowCredentials &&
+          preferImmediatelyAvailableCredentials == other.preferImmediatelyAvailableCredentials;
+}
+
+class SignInResponse {
+  final Wallet wallet;
+  final List<String> labels;
+  final PasskeyCredential? credential;
+
+  const SignInResponse({required this.wallet, required this.labels, this.credential});
+
+  @override
+  int get hashCode => wallet.hashCode ^ labels.hashCode ^ credential.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SignInResponse &&
+          runtimeType == other.runtimeType &&
+          wallet == other.wallet &&
+          labels == other.labels &&
+          credential == other.credential;
+}
 
 class SignMessageRequest {
   final String message;
@@ -3051,6 +3297,26 @@ class TokenOptimizationConfig {
 }
 
 enum TokenTransactionType { transfer, mint, burn }
+
+class TransferAuthorization {
+  final String username;
+  final String pubkey;
+  final String signature;
+
+  const TransferAuthorization({required this.username, required this.pubkey, required this.signature});
+
+  @override
+  int get hashCode => username.hashCode ^ pubkey.hashCode ^ signature.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TransferAuthorization &&
+          runtimeType == other.runtimeType &&
+          username == other.username &&
+          pubkey == other.pubkey &&
+          signature == other.signature;
+}
 
 class UnfreezeIssuerTokenRequest {
   final String address;

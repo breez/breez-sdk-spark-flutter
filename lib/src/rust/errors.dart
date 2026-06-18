@@ -31,7 +31,7 @@ sealed class DepositClaimError with _$DepositClaimError {
 sealed class PasskeyError with _$PasskeyError implements FrbException {
   const PasskeyError._();
 
-  const factory PasskeyError.prfError(PasskeyPrfError field0) = PasskeyError_PrfError;
+  const factory PasskeyError.prf(PrfProviderError field0) = PasskeyError_Prf;
   const factory PasskeyError.relayConnectionFailed(String field0) = PasskeyError_RelayConnectionFailed;
   const factory PasskeyError.nostrWriteFailed(String field0) = PasskeyError_NostrWriteFailed;
   const factory PasskeyError.nostrReadFailed(String field0) = PasskeyError_NostrReadFailed;
@@ -43,15 +43,19 @@ sealed class PasskeyError with _$PasskeyError implements FrbException {
 }
 
 @freezed
-sealed class PasskeyPrfError with _$PasskeyPrfError {
-  const PasskeyPrfError._();
+sealed class PrfProviderError with _$PrfProviderError {
+  const PrfProviderError._();
 
-  const factory PasskeyPrfError.prfNotSupported() = PasskeyPrfError_PrfNotSupported;
-  const factory PasskeyPrfError.userCancelled() = PasskeyPrfError_UserCancelled;
-  const factory PasskeyPrfError.credentialNotFound() = PasskeyPrfError_CredentialNotFound;
-  const factory PasskeyPrfError.authenticationFailed(String field0) = PasskeyPrfError_AuthenticationFailed;
-  const factory PasskeyPrfError.prfEvaluationFailed(String field0) = PasskeyPrfError_PrfEvaluationFailed;
-  const factory PasskeyPrfError.generic(String field0) = PasskeyPrfError_Generic;
+  const factory PrfProviderError.prfNotSupported() = PrfProviderError_PrfNotSupported;
+  const factory PrfProviderError.userCancelled() = PrfProviderError_UserCancelled;
+  const factory PrfProviderError.userTimedOut() = PrfProviderError_UserTimedOut;
+  const factory PrfProviderError.credentialNotFound(String field0) = PrfProviderError_CredentialNotFound;
+  const factory PrfProviderError.authenticationFailed(String field0) = PrfProviderError_AuthenticationFailed;
+  const factory PrfProviderError.prfEvaluationFailed(String field0) = PrfProviderError_PrfEvaluationFailed;
+  const factory PrfProviderError.configuration(String field0) = PrfProviderError_Configuration;
+  const factory PrfProviderError.credentialAlreadyExists(String field0) =
+      PrfProviderError_CredentialAlreadyExists;
+  const factory PrfProviderError.generic(String field0) = PrfProviderError_Generic;
 }
 
 @freezed
@@ -75,5 +79,7 @@ sealed class SdkError with _$SdkError implements FrbException {
   const factory SdkError.missingUtxo({required String tx, required int vout}) = SdkError_MissingUtxo;
   const factory SdkError.lnurlError(String field0) = SdkError_LnurlError;
   const factory SdkError.signer(String field0) = SdkError_Signer;
+  const factory SdkError.optimizationAlreadyRunning() = SdkError_OptimizationAlreadyRunning;
+  const factory SdkError.optimizationCancelled() = SdkError_OptimizationCancelled;
   const factory SdkError.generic(String field0) = SdkError_Generic;
 }

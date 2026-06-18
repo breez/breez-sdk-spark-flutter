@@ -43,7 +43,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1475858896;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -878229635;
 
 // Section: executor
 
@@ -174,6 +174,67 @@ fn wire__crate__sdk__BreezSdk_add_event_listener_impl(
         },
     )
 }
+fn wire__crate__sdk__BreezSdk_authorize_lightning_address_transfer_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_authorize_lightning_address_transfer",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::AuthorizeTransferRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::sdk::BreezSdk::authorize_lightning_address_transfer(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire__crate__sdk__BreezSdk_buy_bitcoin_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -223,63 +284,6 @@ fn wire__crate__sdk__BreezSdk_buy_bitcoin_impl(
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok =
                             crate::sdk::BreezSdk::buy_bitcoin(&*api_that_guard, api_request)
-                                .await?;
-                        Ok(output_ok)
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
-}
-fn wire__crate__sdk__BreezSdk_cancel_leaf_optimization_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BreezSdk_cancel_leaf_optimization",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| async move {
-                transform_result_sse::<_, crate::errors::SdkError>(
-                    (move || async move {
-                        let mut api_that_guard = None;
-                        let decode_indices_ =
-                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
-                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                    &api_that, 0, false,
-                                )],
-                            );
-                        for i in decode_indices_ {
-                            match i {
-                                0 => {
-                                    api_that_guard =
-                                        Some(api_that.lockable_decode_async_ref().await)
-                                }
-                                _ => unreachable!(),
-                            }
-                        }
-                        let api_that_guard = api_that_guard.unwrap();
-                        let output_ok =
-                            crate::sdk::BreezSdk::cancel_leaf_optimization(&*api_that_guard)
                                 .await?;
                         Ok(output_ok)
                     })()
@@ -517,6 +521,66 @@ fn wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(
                         let output_ok =
                             crate::sdk::BreezSdk::claim_htlc_payment(&*api_that_guard, api_request)
                                 .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_claim_lightning_address_transfer_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_claim_lightning_address_transfer",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request = <crate::models::ClaimTransferRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::sdk::BreezSdk::claim_lightning_address_transfer(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -809,54 +873,6 @@ fn wire__crate__sdk__BreezSdk_get_info_impl(
                     .await,
                 )
             }
-        },
-    )
-}
-fn wire__crate__sdk__BreezSdk_get_leaf_optimization_progress_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BreezSdk_get_leaf_optimization_progress",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let mut api_that_guard = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_that, 0, false,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
-                        _ => unreachable!(),
-                    }
-                }
-                let api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok(
-                    crate::sdk::BreezSdk::get_leaf_optimization_progress(&*api_that_guard),
-                )?;
-                Ok(output_ok)
-            })())
         },
     )
 }
@@ -1657,6 +1673,64 @@ fn wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(
         },
     )
 }
+fn wire__crate__sdk__BreezSdk_optimize_leaves_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_optimize_leaves",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request = <crate::models::OptimizeLeavesRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::sdk::BreezSdk::optimize_leaves(&*api_that_guard, api_request)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire__crate__sdk__BreezSdk_parse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2358,63 +2432,6 @@ fn wire__crate__sdk__BreezSdk_sign_message_impl(
         },
     )
 }
-fn wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BreezSdk_start_leaf_optimization",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| async move {
-                transform_result_sse::<_, ()>(
-                    (move || async move {
-                        let mut api_that_guard = None;
-                        let decode_indices_ =
-                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
-                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                    &api_that, 0, false,
-                                )],
-                            );
-                        for i in decode_indices_ {
-                            match i {
-                                0 => {
-                                    api_that_guard =
-                                        Some(api_that.lockable_decode_async_ref().await)
-                                }
-                                _ => unreachable!(),
-                            }
-                        }
-                        let api_that_guard = api_that_guard.unwrap();
-                        let output_ok = Result::<_, ()>::Ok({
-                            crate::sdk::BreezSdk::start_leaf_optimization(&*api_that_guard).await;
-                        })?;
-                        Ok(output_ok)
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
-}
 fn wire__crate__sdk__BreezSdk_sync_wallet_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2651,7 +2668,7 @@ fn wire__crate__sdk__BreezSdk_update_user_settings_impl(
         },
     )
 }
-fn wire__crate__passkey__Passkey_get_wallet_impl(
+fn wire__crate__passkey__PasskeyClient_check_availability_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2659,7 +2676,7 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_get_wallet",
+            debug_name: "PasskeyClient_check_availability",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -2674,9 +2691,8 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
             >>::sse_decode(&mut deserializer);
-            let api_label = <Option<String>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::PasskeyError>(
@@ -2699,7 +2715,7 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
                         }
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok =
-                            crate::passkey::Passkey::get_wallet(&*api_that_guard, api_label)
+                            crate::passkey::PasskeyClient::check_availability(&*api_that_guard)
                                 .await?;
                         Ok(output_ok)
                     })()
@@ -2709,7 +2725,7 @@ fn wire__crate__passkey__Passkey_get_wallet_impl(
         },
     )
 }
-fn wire__crate__passkey__Passkey_is_available_impl(
+fn wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2717,7 +2733,7 @@ fn wire__crate__passkey__Passkey_is_available_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_is_available",
+            debug_name: "PasskeyClient_connect_with_passkey",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -2732,8 +2748,10 @@ fn wire__crate__passkey__Passkey_is_available_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
             >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::ConnectWithPasskeyRequest>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::PasskeyError>(
@@ -2755,8 +2773,11 @@ fn wire__crate__passkey__Passkey_is_available_impl(
                             }
                         }
                         let api_that_guard = api_that_guard.unwrap();
-                        let output_ok =
-                            crate::passkey::Passkey::is_available(&*api_that_guard).await?;
+                        let output_ok = crate::passkey::PasskeyClient::connect_with_passkey(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -2765,70 +2786,14 @@ fn wire__crate__passkey__Passkey_is_available_impl(
         },
     )
 }
-fn wire__crate__passkey__Passkey_list_labels_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_list_labels",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
-            >>::sse_decode(&mut deserializer);
-            deserializer.end();
-            move |context| async move {
-                transform_result_sse::<_, crate::errors::PasskeyError>(
-                    (move || async move {
-                        let mut api_that_guard = None;
-                        let decode_indices_ =
-                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
-                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                                    &api_that, 0, false,
-                                )],
-                            );
-                        for i in decode_indices_ {
-                            match i {
-                                0 => {
-                                    api_that_guard =
-                                        Some(api_that.lockable_decode_async_ref().await)
-                                }
-                                _ => unreachable!(),
-                            }
-                        }
-                        let api_that_guard = api_that_guard.unwrap();
-                        let output_ok =
-                            crate::passkey::Passkey::list_labels(&*api_that_guard).await?;
-                        Ok(output_ok)
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
-}
-fn wire__crate__passkey__Passkey_new_impl(
+fn wire__crate__passkey__PasskeyClient_labels_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_new",
+            debug_name: "PasskeyClient_labels",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -2842,28 +2807,50 @@ fn wire__crate__passkey__Passkey_new_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_derive_prf_seed =
-                decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-                    <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
-                );
-            let api_is_prf_available = decode_DartFn_Inputs__Output_bool_AnyhowException(
-                <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
-            );
-            let api_relay_config =
-                <Option<crate::models::NostrRelayConfig>>::sse_decode(&mut deserializer);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::passkey::Passkey::new(
-                    api_derive_prf_seed,
-                    api_is_prf_available,
-                    api_relay_config,
-                ))?;
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok =
+                    Result::<_, ()>::Ok(crate::passkey::PasskeyClient::labels(&*api_that_guard))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__passkey__Passkey_store_label_impl(
+fn wire__crate__passkey__PasskeyClient_new_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "PasskeyClient_new", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_derive_seeds = decode_DartFn_Inputs_derive_seeds_request_Output_derive_seeds_output_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_is_supported = decode_DartFn_Inputs__Output_bool_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_create_passkey = decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_breez_api_key = <Option<String>>::sse_decode(&mut deserializer);
+let api_config = <Option<crate::models::PasskeyConfig>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::passkey::PasskeyClient::new(api_derive_seeds, api_is_supported, api_create_passkey, api_breez_api_key, api_config))?;   Ok(output_ok)
+                })()) })
+}
+fn wire__crate__passkey__PasskeyClient_register_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -2871,7 +2858,7 @@ fn wire__crate__passkey__Passkey_store_label_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "Passkey_store_label",
+            debug_name: "PasskeyClient_register",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -2886,7 +2873,179 @@ fn wire__crate__passkey__Passkey_store_label_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
+            >>::sse_decode(&mut deserializer);
+            let api_request = <crate::models::RegisterRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::PasskeyError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::passkey::PasskeyClient::register(&*api_that_guard, api_request)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__passkey__PasskeyClient_sign_in_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "PasskeyClient_sign_in",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
+            >>::sse_decode(&mut deserializer);
+            let api_request = <crate::models::SignInRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::PasskeyError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::passkey::PasskeyClient::sign_in(&*api_that_guard, api_request)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__passkey__PasskeyLabels_list_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "PasskeyLabels_list",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>,
+            >>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::PasskeyError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::passkey::PasskeyLabels::list(&*api_that_guard).await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__passkey__PasskeyLabels_store_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "PasskeyLabels_store",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>,
             >>::sse_decode(&mut deserializer);
             let api_label = <String>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -2911,7 +3070,7 @@ fn wire__crate__passkey__Passkey_store_label_impl(
                         }
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok =
-                            crate::passkey::Passkey::store_label(&*api_that_guard, api_label)
+                            crate::passkey::PasskeyLabels::store(&*api_that_guard, api_label)
                                 .await?;
                         Ok(output_ok)
                     })()
@@ -3009,6 +3168,41 @@ fn wire__crate__sdk_builder__SdkBuilder_new_impl(
         },
     )
 }
+fn wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "SdkBuilder_with_account_number",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <SdkBuilder>::sse_decode(&mut deserializer);
+            let api_account_number = <u32>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let output_ok =
+                    Result::<_, ()>::Ok(crate::sdk_builder::SdkBuilder::with_account_number(
+                        api_that,
+                        api_account_number,
+                    ))?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -3090,39 +3284,6 @@ fn wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
                 let output_ok = Result::<_, ()>::Ok(
                     crate::sdk_builder::SdkBuilder::with_default_storage(api_that, api_storage_dir),
                 )?;
-                Ok(output_ok)
-            })())
-        },
-    )
-}
-fn wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "SdkBuilder_with_key_set",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <SdkBuilder>::sse_decode(&mut deserializer);
-            let api_config = <crate::models::KeySetConfig>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::sdk_builder::SdkBuilder::with_key_set(
-                    api_that, api_config,
-                ))?;
                 Ok(output_ok)
             })())
         },
@@ -3942,6 +4103,28 @@ const _: fn() = || {
         }
     }
     {
+        let AuthorizeTransferRequest = None::<crate::models::AuthorizeTransferRequest>.unwrap();
+        let _: String = AuthorizeTransferRequest.transferee_pubkey;
+    }
+    match None::<crate::events::AutoOptimizationEvent>.unwrap() {
+        crate::events::AutoOptimizationEvent::Started { total_rounds } => {
+            let _: u32 = total_rounds;
+        }
+        crate::events::AutoOptimizationEvent::RoundCompleted {
+            current_round,
+            total_rounds,
+        } => {
+            let _: u32 = current_round;
+            let _: u32 = total_rounds;
+        }
+        crate::events::AutoOptimizationEvent::Completed => {}
+        crate::events::AutoOptimizationEvent::Cancelled => {}
+        crate::events::AutoOptimizationEvent::Failed { error } => {
+            let _: String = error;
+        }
+        crate::events::AutoOptimizationEvent::Skipped => {}
+    }
+    {
         let Bip21Details = None::<crate::models::Bip21Details>.unwrap();
         let _: Option<u64> = Bip21Details.amount_sat;
         let _: Option<String> = Bip21Details.asset_id;
@@ -4084,6 +4267,11 @@ const _: fn() = || {
         let _: crate::models::Payment = ClaimHtlcPaymentResponse.payment;
     }
     {
+        let ClaimTransferRequest = None::<crate::models::ClaimTransferRequest>.unwrap();
+        let _: crate::models::TransferAuthorization = ClaimTransferRequest.authorization;
+        let _: Option<String> = ClaimTransferRequest.description;
+    }
+    {
         let Config = None::<crate::models::Config>.unwrap();
         let _: Option<String> = Config.api_key;
         let _: crate::models::Network = Config.network;
@@ -4107,6 +4295,17 @@ const _: fn() = || {
         let _: crate::models::Config = ConnectRequest.config;
         let _: crate::models::Seed = ConnectRequest.seed;
         let _: String = ConnectRequest.storage_dir;
+    }
+    {
+        let ConnectWithPasskeyRequest = None::<crate::models::ConnectWithPasskeyRequest>.unwrap();
+        let _: Option<String> = ConnectWithPasskeyRequest.label;
+        let _: Option<Vec<Vec<u8>>> = ConnectWithPasskeyRequest.allow_credentials;
+        let _: Option<Vec<Vec<u8>>> = ConnectWithPasskeyRequest.exclude_credentials;
+    }
+    {
+        let ConnectWithPasskeyResponse = None::<crate::models::ConnectWithPasskeyResponse>.unwrap();
+        let _: crate::models::Wallet = ConnectWithPasskeyResponse.wallet;
+        let _: Option<crate::models::PasskeyCredential> = ConnectWithPasskeyResponse.credential;
     }
     {
         let Contact = None::<crate::models::Contact>.unwrap();
@@ -4225,6 +4424,17 @@ const _: fn() = || {
         let _: Option<crate::errors::DepositClaimError> = DepositInfo.claim_error;
     }
     {
+        let DeriveSeedsOutput = None::<crate::models::DeriveSeedsOutput>.unwrap();
+        let _: Vec<Vec<u8>> = DeriveSeedsOutput.seeds;
+        let _: Option<Vec<u8>> = DeriveSeedsOutput.credential_id;
+    }
+    {
+        let DeriveSeedsRequest = None::<crate::models::DeriveSeedsRequest>.unwrap();
+        let _: Vec<String> = DeriveSeedsRequest.salts;
+        let _: Vec<Vec<u8>> = DeriveSeedsRequest.allow_credentials;
+        let _: Option<bool> = DeriveSeedsRequest.prefer_immediately_available_credentials;
+    }
+    {
         let ExternalInputParser = None::<crate::models::ExternalInputParser>.unwrap();
         let _: String = ExternalInputParser.provider_id;
         let _: String = ExternalInputParser.input_regex;
@@ -4334,12 +4544,6 @@ const _: fn() = || {
         crate::models::InputType::SparkInvoice(field0) => {
             let _: crate::models::SparkInvoiceDetails = field0;
         }
-    }
-    {
-        let KeySetConfig = None::<crate::models::KeySetConfig>.unwrap();
-        let _: crate::models::KeySetType = KeySetConfig.key_set_type;
-        let _: bool = KeySetConfig.use_address_index;
-        let _: Option<u32> = KeySetConfig.account_number;
     }
     {
         let LeafOptimizationConfig = None::<crate::models::LeafOptimizationConfig>.unwrap();
@@ -4519,38 +4723,46 @@ const _: fn() = || {
         let MintIssuerTokenRequest = None::<crate::models::MintIssuerTokenRequest>.unwrap();
         let _: u128 = MintIssuerTokenRequest.amount;
     }
-    {
-        let NostrRelayConfig = None::<crate::models::NostrRelayConfig>.unwrap();
-        let _: Option<String> = NostrRelayConfig.breez_api_key;
-        let _: Option<u32> = NostrRelayConfig.timeout_secs;
-    }
-    match None::<crate::events::OptimizationEvent>.unwrap() {
-        crate::events::OptimizationEvent::Started { total_rounds } => {
-            let _: u32 = total_rounds;
+    match None::<crate::models::OptimizationOutcome>.unwrap() {
+        crate::models::OptimizationOutcome::Completed { rounds_executed } => {
+            let _: u32 = rounds_executed;
         }
-        crate::events::OptimizationEvent::RoundCompleted {
-            current_round,
-            total_rounds,
-        } => {
-            let _: u32 = current_round;
-            let _: u32 = total_rounds;
-        }
-        crate::events::OptimizationEvent::Completed => {}
-        crate::events::OptimizationEvent::Cancelled => {}
-        crate::events::OptimizationEvent::Failed { error } => {
-            let _: String = error;
-        }
-        crate::events::OptimizationEvent::Skipped => {}
+        crate::models::OptimizationOutcome::InProgress => {}
     }
     {
-        let OptimizationProgress = None::<crate::models::OptimizationProgress>.unwrap();
-        let _: bool = OptimizationProgress.is_running;
-        let _: u32 = OptimizationProgress.current_round;
-        let _: u32 = OptimizationProgress.total_rounds;
+        let OptimizeLeavesRequest = None::<crate::models::OptimizeLeavesRequest>.unwrap();
+        let _: crate::models::OptimizationMode = OptimizeLeavesRequest.mode;
+    }
+    {
+        let OptimizeLeavesResponse = None::<crate::models::OptimizeLeavesResponse>.unwrap();
+        let _: crate::models::OptimizationOutcome = OptimizeLeavesResponse.outcome;
+    }
+    match None::<crate::models::PasskeyAvailability>.unwrap() {
+        crate::models::PasskeyAvailability::Available => {}
+        crate::models::PasskeyAvailability::PrfUnsupported => {}
+        crate::models::PasskeyAvailability::NotAssociated { source, reason } => {
+            let _: String = source;
+            let _: String = reason;
+        }
+        crate::models::PasskeyAvailability::Skipped { reason } => {
+            let _: String = reason;
+        }
+    }
+    {
+        let PasskeyConfig = None::<crate::models::PasskeyConfig>.unwrap();
+        let _: Option<String> = PasskeyConfig.default_label;
+        let _: Option<crate::models::PasskeyProviderOptions> = PasskeyConfig.provider_options;
+    }
+    {
+        let PasskeyCredential = None::<crate::models::PasskeyCredential>.unwrap();
+        let _: Vec<u8> = PasskeyCredential.credential_id;
+        let _: Option<Vec<u8>> = PasskeyCredential.user_id;
+        let _: Option<Vec<u8>> = PasskeyCredential.aaguid;
+        let _: Option<bool> = PasskeyCredential.backup_eligible;
     }
     match None::<crate::errors::PasskeyError>.unwrap() {
-        crate::errors::PasskeyError::PrfError(field0) => {
-            let _: crate::errors::PasskeyPrfError = field0;
+        crate::errors::PasskeyError::Prf(field0) => {
+            let _: crate::errors::PrfProviderError = field0;
         }
         crate::errors::PasskeyError::RelayConnectionFailed(field0) => {
             let _: String = field0;
@@ -4577,19 +4789,12 @@ const _: fn() = || {
             let _: String = field0;
         }
     }
-    match None::<crate::errors::PasskeyPrfError>.unwrap() {
-        crate::errors::PasskeyPrfError::PrfNotSupported => {}
-        crate::errors::PasskeyPrfError::UserCancelled => {}
-        crate::errors::PasskeyPrfError::CredentialNotFound => {}
-        crate::errors::PasskeyPrfError::AuthenticationFailed(field0) => {
-            let _: String = field0;
-        }
-        crate::errors::PasskeyPrfError::PrfEvaluationFailed(field0) => {
-            let _: String = field0;
-        }
-        crate::errors::PasskeyPrfError::Generic(field0) => {
-            let _: String = field0;
-        }
+    {
+        let PasskeyProviderOptions = None::<crate::models::PasskeyProviderOptions>.unwrap();
+        let _: Option<String> = PasskeyProviderOptions.rp_id;
+        let _: Option<String> = PasskeyProviderOptions.rp_name;
+        let _: Option<String> = PasskeyProviderOptions.user_name;
+        let _: Option<String> = PasskeyProviderOptions.user_display_name;
     }
     {
         let Payment = None::<crate::models::Payment>.unwrap();
@@ -4646,8 +4851,9 @@ const _: fn() = || {
         crate::models::PaymentDetails::Withdraw { tx_id } => {
             let _: String = tx_id;
         }
-        crate::models::PaymentDetails::Deposit { tx_id } => {
+        crate::models::PaymentDetails::Deposit { tx_id, vout } => {
             let _: String = tx_id;
+            let _: u32 = vout;
         }
     }
     match None::<crate::models::PaymentDetailsFilter>.unwrap() {
@@ -4715,6 +4921,29 @@ const _: fn() = || {
         let _: Option<crate::models::ConversionEstimate> =
             PrepareSendPaymentResponse.conversion_estimate;
         let _: crate::models::FeePolicy = PrepareSendPaymentResponse.fee_policy;
+    }
+    match None::<crate::errors::PrfProviderError>.unwrap() {
+        crate::errors::PrfProviderError::PrfNotSupported => {}
+        crate::errors::PrfProviderError::UserCancelled => {}
+        crate::errors::PrfProviderError::UserTimedOut => {}
+        crate::errors::PrfProviderError::CredentialNotFound(field0) => {
+            let _: String = field0;
+        }
+        crate::errors::PrfProviderError::AuthenticationFailed(field0) => {
+            let _: String = field0;
+        }
+        crate::errors::PrfProviderError::PrfEvaluationFailed(field0) => {
+            let _: String = field0;
+        }
+        crate::errors::PrfProviderError::Configuration(field0) => {
+            let _: String = field0;
+        }
+        crate::errors::PrfProviderError::CredentialAlreadyExists(field0) => {
+            let _: String = field0;
+        }
+        crate::errors::PrfProviderError::Generic(field0) => {
+            let _: String = field0;
+        }
     }
     {
         let Rate = None::<crate::models::Rate>.unwrap();
@@ -4787,6 +5016,16 @@ const _: fn() = || {
         let _: Option<String> = RegisterLightningAddressRequest.description;
     }
     {
+        let RegisterRequest = None::<crate::models::RegisterRequest>.unwrap();
+        let _: Option<String> = RegisterRequest.label;
+        let _: Option<Vec<Vec<u8>>> = RegisterRequest.exclude_credentials;
+    }
+    {
+        let RegisterResponse = None::<crate::models::RegisterResponse>.unwrap();
+        let _: crate::models::Wallet = RegisterResponse.wallet;
+        let _: Option<crate::models::PasskeyCredential> = RegisterResponse.credential;
+    }
+    {
         let RegisterWebhookRequest = None::<crate::models::RegisterWebhookRequest>.unwrap();
         let _: String = RegisterWebhookRequest.url;
         let _: String = RegisterWebhookRequest.secret;
@@ -4795,12 +5034,6 @@ const _: fn() = || {
     {
         let RegisterWebhookResponse = None::<crate::models::RegisterWebhookResponse>.unwrap();
         let _: String = RegisterWebhookResponse.webhook_id;
-    }
-    {
-        let SdkContextConfig = None::<crate::models::SdkContextConfig>.unwrap();
-        let _: crate::models::Network = SdkContextConfig.network;
-        let _: Option<String> = SdkContextConfig.api_key;
-        let _: Option<u32> = SdkContextConfig.connections_per_operator;
     }
     match None::<crate::errors::SdkError>.unwrap() {
         crate::errors::SdkError::SparkError(field0) => {
@@ -4845,6 +5078,8 @@ const _: fn() = || {
         crate::errors::SdkError::Signer(field0) => {
             let _: String = field0;
         }
+        crate::errors::SdkError::OptimizationAlreadyRunning => {}
+        crate::errors::SdkError::OptimizationCancelled => {}
         crate::errors::SdkError::Generic(field0) => {
             let _: String = field0;
         }
@@ -4866,8 +5101,8 @@ const _: fn() = || {
         crate::events::SdkEvent::PaymentFailed { payment } => {
             let _: crate::models::Payment = payment;
         }
-        crate::events::SdkEvent::Optimization { optimization_event } => {
-            let _: crate::events::OptimizationEvent = optimization_event;
+        crate::events::SdkEvent::AutoOptimization { optimization_event } => {
+            let _: crate::events::AutoOptimizationEvent = optimization_event;
         }
         crate::events::SdkEvent::LightningAddressChanged { lightning_address } => {
             let _: Option<crate::models::LightningAddressInfo> = lightning_address;
@@ -4958,6 +5193,18 @@ const _: fn() = || {
     {
         let SendPaymentResponse = None::<crate::models::SendPaymentResponse>.unwrap();
         let _: crate::models::Payment = SendPaymentResponse.payment;
+    }
+    {
+        let SignInRequest = None::<crate::models::SignInRequest>.unwrap();
+        let _: Option<String> = SignInRequest.label;
+        let _: Option<Vec<Vec<u8>>> = SignInRequest.allow_credentials;
+        let _: Option<bool> = SignInRequest.prefer_immediately_available_credentials;
+    }
+    {
+        let SignInResponse = None::<crate::models::SignInResponse>.unwrap();
+        let _: crate::models::Wallet = SignInResponse.wallet;
+        let _: Vec<String> = SignInResponse.labels;
+        let _: Option<crate::models::PasskeyCredential> = SignInResponse.credential;
     }
     {
         let SignMessageRequest = None::<crate::models::SignMessageRequest>.unwrap();
@@ -5113,6 +5360,12 @@ const _: fn() = || {
         let _: u32 = TokenOptimizationConfig.min_outputs_threshold;
     }
     {
+        let TransferAuthorization = None::<crate::models::TransferAuthorization>.unwrap();
+        let _: String = TransferAuthorization.username;
+        let _: String = TransferAuthorization.pubkey;
+        let _: String = TransferAuthorization.signature;
+    }
+    {
         let UnfreezeIssuerTokenRequest = None::<crate::models::UnfreezeIssuerTokenRequest>.unwrap();
         let _: String = UnfreezeIssuerTokenRequest.address;
     }
@@ -5173,44 +5426,16 @@ const _: fn() = || {
 
 // Section: related_funcs
 
-fn decode_DartFn_Inputs_String_Output_list_prim_u_8_strict_AnyhowException(
-    dart_opaque: flutter_rust_bridge::DartOpaque,
-) -> impl Fn(String) -> flutter_rust_bridge::DartFnFuture<Vec<u8>> {
-    use flutter_rust_bridge::IntoDart;
-
-    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: String) -> Vec<u8> {
-        let args = vec![arg0.into_into_dart().into_dart()];
-        let message = FLUTTER_RUST_BRIDGE_HANDLER
-            .dart_fn_invoke(dart_opaque, args)
-            .await;
-
-        let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-        let action = deserializer.cursor.read_u8().unwrap();
-        let ans = match action {
-            0 => std::result::Result::Ok(<Vec<u8>>::sse_decode(&mut deserializer)),
-            1 => std::result::Result::Err(
-                <flutter_rust_bridge::for_generated::anyhow::Error>::sse_decode(&mut deserializer),
-            ),
-            _ => unreachable!(),
-        };
-        deserializer.end();
-        let ans = ans.expect("Dart throws exception but Rust side assume it is not failable");
-        ans
-    }
-
-    move |arg0: String| {
-        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
-            dart_opaque.clone(),
-            arg0,
-        ))
-    }
-}
 fn decode_DartFn_Inputs__Output_bool_AnyhowException(
     dart_opaque: flutter_rust_bridge::DartOpaque,
-) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<bool> {
+) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<
+    std::result::Result<bool, flutter_rust_bridge::for_generated::anyhow::Error>,
+> {
     use flutter_rust_bridge::IntoDart;
 
-    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque) -> bool {
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+    ) -> std::result::Result<bool, flutter_rust_bridge::for_generated::anyhow::Error> {
         let args = vec![];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
@@ -5226,12 +5451,103 @@ fn decode_DartFn_Inputs__Output_bool_AnyhowException(
             _ => unreachable!(),
         };
         deserializer.end();
-        let ans = ans.expect("Dart throws exception but Rust side assume it is not failable");
         ans
     }
 
     move || {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_opaque.clone()))
+    }
+}
+fn decode_DartFn_Inputs_derive_seeds_request_Output_derive_seeds_output_AnyhowException(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    crate::models::DeriveSeedsRequest,
+) -> flutter_rust_bridge::DartFnFuture<
+    std::result::Result<
+        crate::models::DeriveSeedsOutput,
+        flutter_rust_bridge::for_generated::anyhow::Error,
+    >,
+> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: crate::models::DeriveSeedsRequest,
+    ) -> std::result::Result<
+        crate::models::DeriveSeedsOutput,
+        flutter_rust_bridge::for_generated::anyhow::Error,
+    > {
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+
+        let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+        let action = deserializer.cursor.read_u8().unwrap();
+        let ans = match action {
+            0 => std::result::Result::Ok(<crate::models::DeriveSeedsOutput>::sse_decode(
+                &mut deserializer,
+            )),
+            1 => std::result::Result::Err(
+                <flutter_rust_bridge::for_generated::anyhow::Error>::sse_decode(&mut deserializer),
+            ),
+            _ => unreachable!(),
+        };
+        deserializer.end();
+        ans
+    }
+
+    move |arg0: crate::models::DeriveSeedsRequest| {
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
+            arg0,
+        ))
+    }
+}
+fn decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    Vec<Vec<u8>>,
+) -> flutter_rust_bridge::DartFnFuture<
+    std::result::Result<
+        crate::models::PasskeyCredential,
+        flutter_rust_bridge::for_generated::anyhow::Error,
+    >,
+> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: Vec<Vec<u8>>,
+    ) -> std::result::Result<
+        crate::models::PasskeyCredential,
+        flutter_rust_bridge::for_generated::anyhow::Error,
+    > {
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+
+        let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+        let action = deserializer.cursor.read_u8().unwrap();
+        let ans = match action {
+            0 => std::result::Result::Ok(<crate::models::PasskeyCredential>::sse_decode(
+                &mut deserializer,
+            )),
+            1 => std::result::Result::Err(
+                <flutter_rust_bridge::for_generated::anyhow::Error>::sse_decode(&mut deserializer),
+            ),
+            _ => unreachable!(),
+        };
+        deserializer.end();
+        ans
+    }
+
+    move |arg0: Vec<Vec<u8>>| {
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
+            arg0,
+        ))
     }
 }
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
@@ -5241,7 +5557,10 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SdkBuilder>
@@ -5283,11 +5602,21 @@ impl SseDecode for BreezSdk {
     }
 }
 
-impl SseDecode for Passkey {
+impl SseDecode for PasskeyClient {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
+impl SseDecode for PasskeyLabels {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -5361,7 +5690,19 @@ impl SseDecode
     }
 }
 
-impl SseDecode for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>> {
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -5547,6 +5888,55 @@ impl SseDecode for crate::models::AssetFilter {
                 return crate::models::AssetFilter::Token {
                     token_identifier: var_tokenIdentifier,
                 };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::AuthorizeTransferRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_transfereePubkey = <String>::sse_decode(deserializer);
+        return crate::models::AuthorizeTransferRequest {
+            transferee_pubkey: var_transfereePubkey,
+        };
+    }
+}
+
+impl SseDecode for crate::events::AutoOptimizationEvent {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_totalRounds = <u32>::sse_decode(deserializer);
+                return crate::events::AutoOptimizationEvent::Started {
+                    total_rounds: var_totalRounds,
+                };
+            }
+            1 => {
+                let mut var_currentRound = <u32>::sse_decode(deserializer);
+                let mut var_totalRounds = <u32>::sse_decode(deserializer);
+                return crate::events::AutoOptimizationEvent::RoundCompleted {
+                    current_round: var_currentRound,
+                    total_rounds: var_totalRounds,
+                };
+            }
+            2 => {
+                return crate::events::AutoOptimizationEvent::Completed;
+            }
+            3 => {
+                return crate::events::AutoOptimizationEvent::Cancelled;
+            }
+            4 => {
+                let mut var_error = <String>::sse_decode(deserializer);
+                return crate::events::AutoOptimizationEvent::Failed { error: var_error };
+            }
+            5 => {
+                return crate::events::AutoOptimizationEvent::Skipped;
             }
             _ => {
                 unimplemented!("");
@@ -5908,6 +6298,19 @@ impl SseDecode for crate::models::ClaimHtlcPaymentResponse {
     }
 }
 
+impl SseDecode for crate::models::ClaimTransferRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_authorization =
+            <crate::models::TransferAuthorization>::sse_decode(deserializer);
+        let mut var_description = <Option<String>>::sse_decode(deserializer);
+        return crate::models::ClaimTransferRequest {
+            authorization: var_authorization,
+            description: var_description,
+        };
+    }
+}
+
 impl SseDecode for crate::models::Config {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -5962,6 +6365,33 @@ impl SseDecode for crate::models::ConnectRequest {
             config: var_config,
             seed: var_seed,
             storage_dir: var_storageDir,
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConnectWithPasskeyRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_label = <Option<String>>::sse_decode(deserializer);
+        let mut var_allowCredentials = <Option<Vec<Vec<u8>>>>::sse_decode(deserializer);
+        let mut var_excludeCredentials = <Option<Vec<Vec<u8>>>>::sse_decode(deserializer);
+        return crate::models::ConnectWithPasskeyRequest {
+            label: var_label,
+            allow_credentials: var_allowCredentials,
+            exclude_credentials: var_excludeCredentials,
+        };
+    }
+}
+
+impl SseDecode for crate::models::ConnectWithPasskeyResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_wallet = <crate::models::Wallet>::sse_decode(deserializer);
+        let mut var_credential =
+            <Option<crate::models::PasskeyCredential>>::sse_decode(deserializer);
+        return crate::models::ConnectWithPasskeyResponse {
+            wallet: var_wallet,
+            credential: var_credential,
         };
     }
 }
@@ -6250,6 +6680,33 @@ impl SseDecode for crate::models::DepositInfo {
     }
 }
 
+impl SseDecode for crate::models::DeriveSeedsOutput {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_seeds = <Vec<Vec<u8>>>::sse_decode(deserializer);
+        let mut var_credentialId = <Option<Vec<u8>>>::sse_decode(deserializer);
+        return crate::models::DeriveSeedsOutput {
+            seeds: var_seeds,
+            credential_id: var_credentialId,
+        };
+    }
+}
+
+impl SseDecode for crate::models::DeriveSeedsRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_salts = <Vec<String>>::sse_decode(deserializer);
+        let mut var_allowCredentials = <Vec<Vec<u8>>>::sse_decode(deserializer);
+        let mut var_preferImmediatelyAvailableCredentials =
+            <Option<bool>>::sse_decode(deserializer);
+        return crate::models::DeriveSeedsRequest {
+            salts: var_salts,
+            allow_credentials: var_allowCredentials,
+            prefer_immediately_available_credentials: var_preferImmediatelyAvailableCredentials,
+        };
+    }
+}
+
 impl SseDecode for crate::models::ExternalInputParser {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -6521,35 +6978,6 @@ impl SseDecode for isize {
     }
 }
 
-impl SseDecode for crate::models::KeySetConfig {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_keySetType = <crate::models::KeySetType>::sse_decode(deserializer);
-        let mut var_useAddressIndex = <bool>::sse_decode(deserializer);
-        let mut var_accountNumber = <Option<u32>>::sse_decode(deserializer);
-        return crate::models::KeySetConfig {
-            key_set_type: var_keySetType,
-            use_address_index: var_useAddressIndex,
-            account_number: var_accountNumber,
-        };
-    }
-}
-
-impl SseDecode for crate::models::KeySetType {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i32>::sse_decode(deserializer);
-        return match inner {
-            0 => crate::models::KeySetType::Default,
-            1 => crate::models::KeySetType::Taproot,
-            2 => crate::models::KeySetType::NativeSegwit,
-            3 => crate::models::KeySetType::WrappedSegwit,
-            4 => crate::models::KeySetType::Legacy,
-            _ => unreachable!("Invalid variant for KeySetType: {}", inner),
-        };
-    }
-}
-
 impl SseDecode for crate::models::LeafOptimizationConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -6741,6 +7169,18 @@ impl SseDecode for Vec<crate::models::InputType> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::models::InputType>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<Vec<u8>>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -7289,18 +7729,6 @@ impl SseDecode for crate::models::Network {
     }
 }
 
-impl SseDecode for crate::models::NostrRelayConfig {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_breezApiKey = <Option<String>>::sse_decode(deserializer);
-        let mut var_timeoutSecs = <Option<u32>>::sse_decode(deserializer);
-        return crate::models::NostrRelayConfig {
-            breez_api_key: var_breezApiKey,
-            timeout_secs: var_timeoutSecs,
-        };
-    }
-}
-
 impl SseDecode for crate::models::OnchainConfirmationSpeed {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -7553,11 +7981,35 @@ impl SseDecode for Option<crate::models::MaxFee> {
     }
 }
 
-impl SseDecode for Option<crate::models::NostrRelayConfig> {
+impl SseDecode for Option<crate::models::PasskeyConfig> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
-            return Some(<crate::models::NostrRelayConfig>::sse_decode(deserializer));
+            return Some(<crate::models::PasskeyConfig>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::PasskeyCredential> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::PasskeyCredential>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::PasskeyProviderOptions> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::PasskeyProviderOptions>::sse_decode(
+                deserializer,
+            ));
         } else {
             return None;
         }
@@ -7765,6 +8217,17 @@ impl SseDecode for Option<Vec<crate::models::ExternalInputParser>> {
     }
 }
 
+impl SseDecode for Option<Vec<Vec<u8>>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Vec<Vec<u8>>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<Vec<crate::models::PaymentDetailsFilter>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -7802,6 +8265,17 @@ impl SseDecode for Option<Vec<crate::models::PaymentType>> {
     }
 }
 
+impl SseDecode for Option<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Vec<u8>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<Vec<crate::models::SparkHtlcStatus>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -7815,37 +8289,31 @@ impl SseDecode for Option<Vec<crate::models::SparkHtlcStatus>> {
     }
 }
 
-impl SseDecode for crate::events::OptimizationEvent {
+impl SseDecode for crate::models::OptimizationMode {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::models::OptimizationMode::Full,
+            1 => crate::models::OptimizationMode::SingleRound,
+            _ => unreachable!("Invalid variant for OptimizationMode: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::models::OptimizationOutcome {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_totalRounds = <u32>::sse_decode(deserializer);
-                return crate::events::OptimizationEvent::Started {
-                    total_rounds: var_totalRounds,
+                let mut var_roundsExecuted = <u32>::sse_decode(deserializer);
+                return crate::models::OptimizationOutcome::Completed {
+                    rounds_executed: var_roundsExecuted,
                 };
             }
             1 => {
-                let mut var_currentRound = <u32>::sse_decode(deserializer);
-                let mut var_totalRounds = <u32>::sse_decode(deserializer);
-                return crate::events::OptimizationEvent::RoundCompleted {
-                    current_round: var_currentRound,
-                    total_rounds: var_totalRounds,
-                };
-            }
-            2 => {
-                return crate::events::OptimizationEvent::Completed;
-            }
-            3 => {
-                return crate::events::OptimizationEvent::Cancelled;
-            }
-            4 => {
-                let mut var_error = <String>::sse_decode(deserializer);
-                return crate::events::OptimizationEvent::Failed { error: var_error };
-            }
-            5 => {
-                return crate::events::OptimizationEvent::Skipped;
+                return crate::models::OptimizationOutcome::InProgress;
             }
             _ => {
                 unimplemented!("");
@@ -7854,16 +8322,79 @@ impl SseDecode for crate::events::OptimizationEvent {
     }
 }
 
-impl SseDecode for crate::models::OptimizationProgress {
+impl SseDecode for crate::models::OptimizeLeavesRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_isRunning = <bool>::sse_decode(deserializer);
-        let mut var_currentRound = <u32>::sse_decode(deserializer);
-        let mut var_totalRounds = <u32>::sse_decode(deserializer);
-        return crate::models::OptimizationProgress {
-            is_running: var_isRunning,
-            current_round: var_currentRound,
-            total_rounds: var_totalRounds,
+        let mut var_mode = <crate::models::OptimizationMode>::sse_decode(deserializer);
+        return crate::models::OptimizeLeavesRequest { mode: var_mode };
+    }
+}
+
+impl SseDecode for crate::models::OptimizeLeavesResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_outcome = <crate::models::OptimizationOutcome>::sse_decode(deserializer);
+        return crate::models::OptimizeLeavesResponse {
+            outcome: var_outcome,
+        };
+    }
+}
+
+impl SseDecode for crate::models::PasskeyAvailability {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return crate::models::PasskeyAvailability::Available;
+            }
+            1 => {
+                return crate::models::PasskeyAvailability::PrfUnsupported;
+            }
+            2 => {
+                let mut var_source = <String>::sse_decode(deserializer);
+                let mut var_reason = <String>::sse_decode(deserializer);
+                return crate::models::PasskeyAvailability::NotAssociated {
+                    source: var_source,
+                    reason: var_reason,
+                };
+            }
+            3 => {
+                let mut var_reason = <String>::sse_decode(deserializer);
+                return crate::models::PasskeyAvailability::Skipped { reason: var_reason };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::PasskeyConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_defaultLabel = <Option<String>>::sse_decode(deserializer);
+        let mut var_providerOptions =
+            <Option<crate::models::PasskeyProviderOptions>>::sse_decode(deserializer);
+        return crate::models::PasskeyConfig {
+            default_label: var_defaultLabel,
+            provider_options: var_providerOptions,
+        };
+    }
+}
+
+impl SseDecode for crate::models::PasskeyCredential {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_credentialId = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_userId = <Option<Vec<u8>>>::sse_decode(deserializer);
+        let mut var_aaguid = <Option<Vec<u8>>>::sse_decode(deserializer);
+        let mut var_backupEligible = <Option<bool>>::sse_decode(deserializer);
+        return crate::models::PasskeyCredential {
+            credential_id: var_credentialId,
+            user_id: var_userId,
+            aaguid: var_aaguid,
+            backup_eligible: var_backupEligible,
         };
     }
 }
@@ -7874,8 +8405,8 @@ impl SseDecode for crate::errors::PasskeyError {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 = <crate::errors::PasskeyPrfError>::sse_decode(deserializer);
-                return crate::errors::PasskeyError::PrfError(var_field0);
+                let mut var_field0 = <crate::errors::PrfProviderError>::sse_decode(deserializer);
+                return crate::errors::PasskeyError::Prf(var_field0);
             }
             1 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
@@ -7916,36 +8447,19 @@ impl SseDecode for crate::errors::PasskeyError {
     }
 }
 
-impl SseDecode for crate::errors::PasskeyPrfError {
+impl SseDecode for crate::models::PasskeyProviderOptions {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                return crate::errors::PasskeyPrfError::PrfNotSupported;
-            }
-            1 => {
-                return crate::errors::PasskeyPrfError::UserCancelled;
-            }
-            2 => {
-                return crate::errors::PasskeyPrfError::CredentialNotFound;
-            }
-            3 => {
-                let mut var_field0 = <String>::sse_decode(deserializer);
-                return crate::errors::PasskeyPrfError::AuthenticationFailed(var_field0);
-            }
-            4 => {
-                let mut var_field0 = <String>::sse_decode(deserializer);
-                return crate::errors::PasskeyPrfError::PrfEvaluationFailed(var_field0);
-            }
-            5 => {
-                let mut var_field0 = <String>::sse_decode(deserializer);
-                return crate::errors::PasskeyPrfError::Generic(var_field0);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
+        let mut var_rpId = <Option<String>>::sse_decode(deserializer);
+        let mut var_rpName = <Option<String>>::sse_decode(deserializer);
+        let mut var_userName = <Option<String>>::sse_decode(deserializer);
+        let mut var_userDisplayName = <Option<String>>::sse_decode(deserializer);
+        return crate::models::PasskeyProviderOptions {
+            rp_id: var_rpId,
+            rp_name: var_rpName,
+            user_name: var_userName,
+            user_display_name: var_userDisplayName,
+        };
     }
 }
 
@@ -8039,7 +8553,11 @@ impl SseDecode for crate::models::PaymentDetails {
             }
             4 => {
                 let mut var_txId = <String>::sse_decode(deserializer);
-                return crate::models::PaymentDetails::Deposit { tx_id: var_txId };
+                let mut var_vout = <u32>::sse_decode(deserializer);
+                return crate::models::PaymentDetails::Deposit {
+                    tx_id: var_txId,
+                    vout: var_vout,
+                };
             }
             _ => {
                 unimplemented!("");
@@ -8228,6 +8746,51 @@ impl SseDecode for crate::models::PrepareSendPaymentResponse {
     }
 }
 
+impl SseDecode for crate::errors::PrfProviderError {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return crate::errors::PrfProviderError::PrfNotSupported;
+            }
+            1 => {
+                return crate::errors::PrfProviderError::UserCancelled;
+            }
+            2 => {
+                return crate::errors::PrfProviderError::UserTimedOut;
+            }
+            3 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::CredentialNotFound(var_field0);
+            }
+            4 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::AuthenticationFailed(var_field0);
+            }
+            5 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::PrfEvaluationFailed(var_field0);
+            }
+            6 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::Configuration(var_field0);
+            }
+            7 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::CredentialAlreadyExists(var_field0);
+            }
+            8 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PrfProviderError::Generic(var_field0);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for crate::models::Rate {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -8376,6 +8939,31 @@ impl SseDecode for crate::models::RegisterLightningAddressRequest {
     }
 }
 
+impl SseDecode for crate::models::RegisterRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_label = <Option<String>>::sse_decode(deserializer);
+        let mut var_excludeCredentials = <Option<Vec<Vec<u8>>>>::sse_decode(deserializer);
+        return crate::models::RegisterRequest {
+            label: var_label,
+            exclude_credentials: var_excludeCredentials,
+        };
+    }
+}
+
+impl SseDecode for crate::models::RegisterResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_wallet = <crate::models::Wallet>::sse_decode(deserializer);
+        let mut var_credential =
+            <Option<crate::models::PasskeyCredential>>::sse_decode(deserializer);
+        return crate::models::RegisterResponse {
+            wallet: var_wallet,
+            credential: var_credential,
+        };
+    }
+}
+
 impl SseDecode for crate::models::RegisterWebhookRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -8477,6 +9065,12 @@ impl SseDecode for crate::errors::SdkError {
                 return crate::errors::SdkError::Signer(var_field0);
             }
             11 => {
+                return crate::errors::SdkError::OptimizationAlreadyRunning;
+            }
+            12 => {
+                return crate::errors::SdkError::OptimizationCancelled;
+            }
+            13 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::Generic(var_field0);
             }
@@ -8529,8 +9123,8 @@ impl SseDecode for crate::events::SdkEvent {
             }
             6 => {
                 let mut var_optimizationEvent =
-                    <crate::events::OptimizationEvent>::sse_decode(deserializer);
-                return crate::events::SdkEvent::Optimization {
+                    <crate::events::AutoOptimizationEvent>::sse_decode(deserializer);
+                return crate::events::SdkEvent::AutoOptimization {
                     optimization_event: var_optimizationEvent,
                 };
             }
@@ -8734,6 +9328,36 @@ impl SseDecode for crate::models::ServiceStatus {
             3 => crate::models::ServiceStatus::Unknown,
             4 => crate::models::ServiceStatus::Major,
             _ => unreachable!("Invalid variant for ServiceStatus: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::models::SignInRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_label = <Option<String>>::sse_decode(deserializer);
+        let mut var_allowCredentials = <Option<Vec<Vec<u8>>>>::sse_decode(deserializer);
+        let mut var_preferImmediatelyAvailableCredentials =
+            <Option<bool>>::sse_decode(deserializer);
+        return crate::models::SignInRequest {
+            label: var_label,
+            allow_credentials: var_allowCredentials,
+            prefer_immediately_available_credentials: var_preferImmediatelyAvailableCredentials,
+        };
+    }
+}
+
+impl SseDecode for crate::models::SignInResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_wallet = <crate::models::Wallet>::sse_decode(deserializer);
+        let mut var_labels = <Vec<String>>::sse_decode(deserializer);
+        let mut var_credential =
+            <Option<crate::models::PasskeyCredential>>::sse_decode(deserializer);
+        return crate::models::SignInResponse {
+            wallet: var_wallet,
+            labels: var_labels,
+            credential: var_credential,
         };
     }
 }
@@ -9121,6 +9745,20 @@ impl SseDecode for crate::models::TokenTransactionType {
     }
 }
 
+impl SseDecode for crate::models::TransferAuthorization {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_username = <String>::sse_decode(deserializer);
+        let mut var_pubkey = <String>::sse_decode(deserializer);
+        let mut var_signature = <String>::sse_decode(deserializer);
+        return crate::models::TransferAuthorization {
+            username: var_username,
+            pubkey: var_pubkey,
+            signature: var_signature,
+        };
+    }
+}
+
 impl SseDecode for u16 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -9311,13 +9949,13 @@ fn pde_ffi_dispatcher_primary_impl(
     match func_id {
         1 => wire__crate__sdk__BreezSdk_add_contact_impl(port, ptr, rust_vec_len, data_len),
         2 => wire__crate__sdk__BreezSdk_add_event_listener_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire__crate__sdk__BreezSdk_buy_bitcoin_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__sdk__BreezSdk_cancel_leaf_optimization_impl(
+        3 => wire__crate__sdk__BreezSdk_authorize_lightning_address_transfer_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
+        4 => wire__crate__sdk__BreezSdk_buy_bitcoin_impl(port, ptr, rust_vec_len, data_len),
         5 => wire__crate__sdk__BreezSdk_check_lightning_address_available_impl(
             port,
             ptr,
@@ -9327,21 +9965,27 @@ fn pde_ffi_dispatcher_primary_impl(
         6 => wire__crate__sdk__BreezSdk_check_message_impl(port, ptr, rust_vec_len, data_len),
         7 => wire__crate__sdk__BreezSdk_claim_deposit_impl(port, ptr, rust_vec_len, data_len),
         8 => wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(port, ptr, rust_vec_len, data_len),
-        9 => wire__crate__sdk__BreezSdk_delete_contact_impl(port, ptr, rust_vec_len, data_len),
-        10 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
+        9 => wire__crate__sdk__BreezSdk_claim_lightning_address_transfer_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        11 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
-        12 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
+        10 => wire__crate__sdk__BreezSdk_delete_contact_impl(port, ptr, rust_vec_len, data_len),
+        11 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        13 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
+        12 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
+        13 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        14 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
         15 => {
             wire__crate__sdk__BreezSdk_get_lightning_address_impl(port, ptr, rust_vec_len, data_len)
         }
@@ -9366,100 +10010,107 @@ fn pde_ffi_dispatcher_primary_impl(
         26 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
         27 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
         28 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        30 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        31 => {
+        29 => wire__crate__sdk__BreezSdk_optimize_leaves_impl(port, ptr, rust_vec_len, data_len),
+        30 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        31 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        32 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        32 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        33 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        35 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
+        33 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        34 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
+        35 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        36 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        36 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        37 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        37 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
-        38 => {
+        38 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
+        39 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        39 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        40 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        41 => wire__crate__sdk__BreezSdk_start_leaf_optimization_impl(
-            port,
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
+        40 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        41 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
         42 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
         43 => wire__crate__sdk__BreezSdk_unregister_webhook_impl(port, ptr, rust_vec_len, data_len),
         44 => wire__crate__sdk__BreezSdk_update_contact_impl(port, ptr, rust_vec_len, data_len),
         45 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        46 => wire__crate__passkey__Passkey_get_wallet_impl(port, ptr, rust_vec_len, data_len),
-        47 => wire__crate__passkey__Passkey_is_available_impl(port, ptr, rust_vec_len, data_len),
-        48 => wire__crate__passkey__Passkey_list_labels_impl(port, ptr, rust_vec_len, data_len),
-        50 => wire__crate__passkey__Passkey_store_label_impl(port, ptr, rust_vec_len, data_len),
-        51 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        58 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+        46 => wire__crate__passkey__PasskeyClient_check_availability_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        59 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+        47 => wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        60 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+        50 => wire__crate__passkey__PasskeyClient_register_impl(port, ptr, rust_vec_len, data_len),
+        51 => wire__crate__passkey__PasskeyClient_sign_in_impl(port, ptr, rust_vec_len, data_len),
+        52 => wire__crate__passkey__PasskeyLabels_list_impl(port, ptr, rust_vec_len, data_len),
+        53 => wire__crate__passkey__PasskeyLabels_store_impl(port, ptr, rust_vec_len, data_len),
+        54 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        61 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        61 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+        62 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        62 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+        63 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        63 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+        64 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        64 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+        65 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        65 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
-        68 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
-        70 => wire__crate__chain_service__new_rest_chain_service_impl(
+        66 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        71 => {
+        67 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        68 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        71 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
+        73 => wire__crate__chain_service__new_rest_chain_service_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        74 => {
             wire__crate__sdk_context__new_shared_sdk_context_impl(port, ptr, rust_vec_len, data_len)
         }
         _ => unreachable!(),
@@ -9474,38 +10125,38 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        14 => wire__crate__sdk__BreezSdk_get_leaf_optimization_progress_impl(
-            ptr,
-            rust_vec_len,
-            data_len,
-        ),
         17 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
-        49 => wire__crate__passkey__Passkey_new_impl(ptr, rust_vec_len, data_len),
-        52 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        53 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
+        48 => wire__crate__passkey__PasskeyClient_labels_impl(ptr, rust_vec_len, data_len),
+        49 => wire__crate__passkey__PasskeyClient_new_impl(ptr, rust_vec_len, data_len),
+        55 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        56 => wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        54 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        57 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        55 => wire__crate__sdk_builder__SdkBuilder_with_key_set_impl(ptr, rust_vec_len, data_len),
-        56 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        58 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        57 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
+        59 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        66 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        67 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
-        69 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        60 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        69 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        70 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
+        72 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -9548,16 +10199,31 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<BreezSdk>> for BreezSdk {
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<Passkey> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<PasskeyClient> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<Passkey> {}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<PasskeyClient> {}
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<Passkey>> for Passkey {
-    fn into_into_dart(self) -> FrbWrapper<Passkey> {
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<PasskeyClient>> for PasskeyClient {
+    fn into_into_dart(self) -> FrbWrapper<PasskeyClient> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<PasskeyLabels> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<PasskeyLabels> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<PasskeyLabels>> for PasskeyLabels {
+    fn into_into_dart(self) -> FrbWrapper<PasskeyLabels> {
         self.into()
     }
 }
@@ -9774,6 +10440,62 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::AssetFilter>>
     for crate::models::AssetFilter
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::AssetFilter> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::AuthorizeTransferRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.transferee_pubkey.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::AuthorizeTransferRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::AuthorizeTransferRequest>>
+    for crate::models::AuthorizeTransferRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::AuthorizeTransferRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::AutoOptimizationEvent> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::events::AutoOptimizationEvent::Started { total_rounds } => {
+                [0.into_dart(), total_rounds.into_into_dart().into_dart()].into_dart()
+            }
+            crate::events::AutoOptimizationEvent::RoundCompleted {
+                current_round,
+                total_rounds,
+            } => [
+                1.into_dart(),
+                current_round.into_into_dart().into_dart(),
+                total_rounds.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::events::AutoOptimizationEvent::Completed => [2.into_dart()].into_dart(),
+            crate::events::AutoOptimizationEvent::Cancelled => [3.into_dart()].into_dart(),
+            crate::events::AutoOptimizationEvent::Failed { error } => {
+                [4.into_dart(), error.into_into_dart().into_dart()].into_dart()
+            }
+            crate::events::AutoOptimizationEvent::Skipped => [5.into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::events::AutoOptimizationEvent>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::events::AutoOptimizationEvent>>
+    for crate::events::AutoOptimizationEvent
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::events::AutoOptimizationEvent> {
         self.into()
     }
 }
@@ -10313,6 +11035,27 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ClaimHtlcPaymen
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ClaimTransferRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.authorization.into_into_dart().into_dart(),
+            self.0.description.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ClaimTransferRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ClaimTransferRequest>>
+    for crate::models::ClaimTransferRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ClaimTransferRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -10378,6 +11121,49 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConnectRequest>
     for crate::models::ConnectRequest
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::ConnectRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConnectWithPasskeyRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.label.into_into_dart().into_dart(),
+            self.0.allow_credentials.into_into_dart().into_dart(),
+            self.0.exclude_credentials.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConnectWithPasskeyRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConnectWithPasskeyRequest>>
+    for crate::models::ConnectWithPasskeyRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConnectWithPasskeyRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConnectWithPasskeyResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.wallet.into_into_dart().into_dart(),
+            self.0.credential.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ConnectWithPasskeyResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ConnectWithPasskeyResponse>>
+    for crate::models::ConnectWithPasskeyResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ConnectWithPasskeyResponse> {
         self.into()
     }
 }
@@ -10745,6 +11531,52 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::DepositInfo>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::DeriveSeedsOutput> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.seeds.into_into_dart().into_dart(),
+            self.0.credential_id.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::DeriveSeedsOutput>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::DeriveSeedsOutput>>
+    for crate::models::DeriveSeedsOutput
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::DeriveSeedsOutput> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::DeriveSeedsRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.salts.into_into_dart().into_dart(),
+            self.0.allow_credentials.into_into_dart().into_dart(),
+            self.0
+                .prefer_immediately_available_credentials
+                .into_into_dart()
+                .into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::DeriveSeedsRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::DeriveSeedsRequest>>
+    for crate::models::DeriveSeedsRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::DeriveSeedsRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ExternalInputParser> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -11080,52 +11912,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::InputType>>
     for crate::models::InputType
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::InputType> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::KeySetConfig> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.0.key_set_type.into_into_dart().into_dart(),
-            self.0.use_address_index.into_into_dart().into_dart(),
-            self.0.account_number.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::KeySetConfig>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::KeySetConfig>>
-    for crate::models::KeySetConfig
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::KeySetConfig> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::KeySetType> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self.0 {
-            crate::models::KeySetType::Default => 0.into_dart(),
-            crate::models::KeySetType::Taproot => 1.into_dart(),
-            crate::models::KeySetType::NativeSegwit => 2.into_dart(),
-            crate::models::KeySetType::WrappedSegwit => 3.into_dart(),
-            crate::models::KeySetType::Legacy => 4.into_dart(),
-            _ => unreachable!(),
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::KeySetType>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::KeySetType>>
-    for crate::models::KeySetType
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::KeySetType> {
         self.into()
     }
 }
@@ -11770,27 +12556,6 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::Network>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::NostrRelayConfig> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [
-            self.0.breez_api_key.into_into_dart().into_dart(),
-            self.0.timeout_secs.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::NostrRelayConfig>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::NostrRelayConfig>>
-    for crate::models::NostrRelayConfig
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::NostrRelayConfig> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OnchainConfirmationSpeed> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
@@ -11813,27 +12578,34 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OnchainConfirma
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::OptimizationEvent> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizationMode> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
-            crate::events::OptimizationEvent::Started { total_rounds } => {
-                [0.into_dart(), total_rounds.into_into_dart().into_dart()].into_dart()
+            crate::models::OptimizationMode::Full => 0.into_dart(),
+            crate::models::OptimizationMode::SingleRound => 1.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::OptimizationMode>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationMode>>
+    for crate::models::OptimizationMode
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizationMode> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizationOutcome> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::OptimizationOutcome::Completed { rounds_executed } => {
+                [0.into_dart(), rounds_executed.into_into_dart().into_dart()].into_dart()
             }
-            crate::events::OptimizationEvent::RoundCompleted {
-                current_round,
-                total_rounds,
-            } => [
-                1.into_dart(),
-                current_round.into_into_dart().into_dart(),
-                total_rounds.into_into_dart().into_dart(),
-            ]
-            .into_dart(),
-            crate::events::OptimizationEvent::Completed => [2.into_dart()].into_dart(),
-            crate::events::OptimizationEvent::Cancelled => [3.into_dart()].into_dart(),
-            crate::events::OptimizationEvent::Failed { error } => {
-                [4.into_dart(), error.into_into_dart().into_dart()].into_dart()
-            }
-            crate::events::OptimizationEvent::Skipped => [5.into_dart()].into_dart(),
+            crate::models::OptimizationOutcome::InProgress => [1.into_dart()].into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -11841,35 +12613,123 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::OptimizationEve
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::events::OptimizationEvent>
+    for FrbWrapper<crate::models::OptimizationOutcome>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::events::OptimizationEvent>>
-    for crate::events::OptimizationEvent
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationOutcome>>
+    for crate::models::OptimizationOutcome
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::events::OptimizationEvent> {
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizationOutcome> {
         self.into()
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizationProgress> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizeLeavesRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.mode.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::OptimizeLeavesRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizeLeavesRequest>>
+    for crate::models::OptimizeLeavesRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizeLeavesRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OptimizeLeavesResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.outcome.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::OptimizeLeavesResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizeLeavesResponse>>
+    for crate::models::OptimizeLeavesResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizeLeavesResponse> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PasskeyAvailability> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::PasskeyAvailability::Available => [0.into_dart()].into_dart(),
+            crate::models::PasskeyAvailability::PrfUnsupported => [1.into_dart()].into_dart(),
+            crate::models::PasskeyAvailability::NotAssociated { source, reason } => [
+                2.into_dart(),
+                source.into_into_dart().into_dart(),
+                reason.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::models::PasskeyAvailability::Skipped { reason } => {
+                [3.into_dart(), reason.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::PasskeyAvailability>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PasskeyAvailability>>
+    for crate::models::PasskeyAvailability
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PasskeyAvailability> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PasskeyConfig> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
-            self.0.is_running.into_into_dart().into_dart(),
-            self.0.current_round.into_into_dart().into_dart(),
-            self.0.total_rounds.into_into_dart().into_dart(),
+            self.0.default_label.into_into_dart().into_dart(),
+            self.0.provider_options.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::OptimizationProgress>
+    for FrbWrapper<crate::models::PasskeyConfig>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationProgress>>
-    for crate::models::OptimizationProgress
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PasskeyConfig>>
+    for crate::models::PasskeyConfig
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::models::OptimizationProgress> {
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PasskeyConfig> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PasskeyCredential> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.credential_id.into_into_dart().into_dart(),
+            self.0.user_id.into_into_dart().into_dart(),
+            self.0.aaguid.into_into_dart().into_dart(),
+            self.0.backup_eligible.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::PasskeyCredential>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PasskeyCredential>>
+    for crate::models::PasskeyCredential
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PasskeyCredential> {
         self.into()
     }
 }
@@ -11877,7 +12737,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::OptimizationPro
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::PasskeyError> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
-            crate::errors::PasskeyError::PrfError(field0) => {
+            crate::errors::PasskeyError::Prf(field0) => {
                 [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::errors::PasskeyError::RelayConnectionFailed(field0) => {
@@ -11922,35 +12782,25 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::errors::PasskeyError>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::PasskeyPrfError> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PasskeyProviderOptions> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self.0 {
-            crate::errors::PasskeyPrfError::PrfNotSupported => [0.into_dart()].into_dart(),
-            crate::errors::PasskeyPrfError::UserCancelled => [1.into_dart()].into_dart(),
-            crate::errors::PasskeyPrfError::CredentialNotFound => [2.into_dart()].into_dart(),
-            crate::errors::PasskeyPrfError::AuthenticationFailed(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::errors::PasskeyPrfError::PrfEvaluationFailed(field0) => {
-                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::errors::PasskeyPrfError::Generic(field0) => {
-                [5.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
+        [
+            self.0.rp_id.into_into_dart().into_dart(),
+            self.0.rp_name.into_into_dart().into_dart(),
+            self.0.user_name.into_into_dart().into_dart(),
+            self.0.user_display_name.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::errors::PasskeyPrfError>
+    for FrbWrapper<crate::models::PasskeyProviderOptions>
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::errors::PasskeyPrfError>>
-    for crate::errors::PasskeyPrfError
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PasskeyProviderOptions>>
+    for crate::models::PasskeyProviderOptions
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::errors::PasskeyPrfError> {
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PasskeyProviderOptions> {
         self.into()
     }
 }
@@ -12034,9 +12884,12 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PaymentDetails>
             crate::models::PaymentDetails::Withdraw { tx_id } => {
                 [3.into_dart(), tx_id.into_into_dart().into_dart()].into_dart()
             }
-            crate::models::PaymentDetails::Deposit { tx_id } => {
-                [4.into_dart(), tx_id.into_into_dart().into_dart()].into_dart()
-            }
+            crate::models::PaymentDetails::Deposit { tx_id, vout } => [
+                4.into_dart(),
+                tx_id.into_into_dart().into_dart(),
+                vout.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -12292,6 +13145,48 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PrepareSendPaym
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::PrfProviderError> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::errors::PrfProviderError::PrfNotSupported => [0.into_dart()].into_dart(),
+            crate::errors::PrfProviderError::UserCancelled => [1.into_dart()].into_dart(),
+            crate::errors::PrfProviderError::UserTimedOut => [2.into_dart()].into_dart(),
+            crate::errors::PrfProviderError::CredentialNotFound(field0) => {
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PrfProviderError::AuthenticationFailed(field0) => {
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PrfProviderError::PrfEvaluationFailed(field0) => {
+                [5.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PrfProviderError::Configuration(field0) => {
+                [6.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PrfProviderError::CredentialAlreadyExists(field0) => {
+                [7.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PrfProviderError::Generic(field0) => {
+                [8.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::errors::PrfProviderError>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::errors::PrfProviderError>>
+    for crate::errors::PrfProviderError
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::errors::PrfProviderError> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Rate> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -12491,6 +13386,48 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RegisterLightni
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::RegisterRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.label.into_into_dart().into_dart(),
+            self.0.exclude_credentials.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::RegisterRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RegisterRequest>>
+    for crate::models::RegisterRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::RegisterRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::RegisterResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.wallet.into_into_dart().into_dart(),
+            self.0.credential.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::RegisterResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RegisterResponse>>
+    for crate::models::RegisterResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::RegisterResponse> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::RegisterWebhookRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -12530,25 +13467,25 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RegisterWebhook
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SdkContextConfig> {
+impl flutter_rust_bridge::IntoDart for crate::models::SdkContextConfig {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
-            self.0.network.into_into_dart().into_dart(),
-            self.0.api_key.into_into_dart().into_dart(),
-            self.0.connections_per_operator.into_into_dart().into_dart(),
+            self.network.into_into_dart().into_dart(),
+            self.api_key.into_into_dart().into_dart(),
+            self.connections_per_operator.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::SdkContextConfig>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SdkContextConfig>>
     for crate::models::SdkContextConfig
 {
-    fn into_into_dart(self) -> FrbWrapper<crate::models::SdkContextConfig> {
-        self.into()
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::models::SdkContextConfig>
+    for crate::models::SdkContextConfig
+{
+    fn into_into_dart(self) -> crate::models::SdkContextConfig {
+        self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -12601,8 +13538,10 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::SdkError> {
             crate::errors::SdkError::Signer(field0) => {
                 [10.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            crate::errors::SdkError::OptimizationAlreadyRunning => [11.into_dart()].into_dart(),
+            crate::errors::SdkError::OptimizationCancelled => [12.into_dart()].into_dart(),
             crate::errors::SdkError::Generic(field0) => {
-                [11.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [13.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -12643,7 +13582,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::SdkEvent> {
             crate::events::SdkEvent::PaymentFailed { payment } => {
                 [5.into_dart(), payment.into_into_dart().into_dart()].into_dart()
             }
-            crate::events::SdkEvent::Optimization { optimization_event } => [
+            crate::events::SdkEvent::AutoOptimization { optimization_event } => [
                 6.into_dart(),
                 optimization_event.into_into_dart().into_dart(),
             ]
@@ -12907,6 +13846,53 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ServiceStatus>>
     for crate::models::ServiceStatus
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::ServiceStatus> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SignInRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.label.into_into_dart().into_dart(),
+            self.0.allow_credentials.into_into_dart().into_dart(),
+            self.0
+                .prefer_immediately_available_credentials
+                .into_into_dart()
+                .into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::SignInRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SignInRequest>>
+    for crate::models::SignInRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::SignInRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SignInResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.wallet.into_into_dart().into_dart(),
+            self.0.labels.into_into_dart().into_dart(),
+            self.0.credential.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::SignInResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SignInResponse>>
+    for crate::models::SignInResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::SignInResponse> {
         self.into()
     }
 }
@@ -13486,6 +14472,28 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TokenTransactio
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::TransferAuthorization> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.username.into_into_dart().into_dart(),
+            self.0.pubkey.into_into_dart().into_dart(),
+            self.0.signature.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::TransferAuthorization>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::TransferAuthorization>>
+    for crate::models::TransferAuthorization
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::TransferAuthorization> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::UnfreezeIssuerTokenRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.address.into_into_dart().into_dart()].into_dart()
@@ -13738,10 +14746,17 @@ impl SseEncode for BreezSdk {
     }
 }
 
-impl SseEncode for Passkey {
+impl SseEncode for PasskeyClient {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+    }
+}
+
+impl SseEncode for PasskeyLabels {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
     }
 }
 
@@ -13807,7 +14822,20 @@ impl SseEncode
     }
 }
 
-impl SseEncode for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>> {
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
@@ -13974,6 +15002,49 @@ impl SseEncode for crate::models::AssetFilter {
             crate::models::AssetFilter::Token { token_identifier } => {
                 <i32>::sse_encode(1, serializer);
                 <Option<String>>::sse_encode(token_identifier, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::AuthorizeTransferRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.transferee_pubkey, serializer);
+    }
+}
+
+impl SseEncode for crate::events::AutoOptimizationEvent {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::events::AutoOptimizationEvent::Started { total_rounds } => {
+                <i32>::sse_encode(0, serializer);
+                <u32>::sse_encode(total_rounds, serializer);
+            }
+            crate::events::AutoOptimizationEvent::RoundCompleted {
+                current_round,
+                total_rounds,
+            } => {
+                <i32>::sse_encode(1, serializer);
+                <u32>::sse_encode(current_round, serializer);
+                <u32>::sse_encode(total_rounds, serializer);
+            }
+            crate::events::AutoOptimizationEvent::Completed => {
+                <i32>::sse_encode(2, serializer);
+            }
+            crate::events::AutoOptimizationEvent::Cancelled => {
+                <i32>::sse_encode(3, serializer);
+            }
+            crate::events::AutoOptimizationEvent::Failed { error } => {
+                <i32>::sse_encode(4, serializer);
+                <String>::sse_encode(error, serializer);
+            }
+            crate::events::AutoOptimizationEvent::Skipped => {
+                <i32>::sse_encode(5, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -14240,6 +15311,14 @@ impl SseEncode for crate::models::ClaimHtlcPaymentResponse {
     }
 }
 
+impl SseEncode for crate::models::ClaimTransferRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::TransferAuthorization>::sse_encode(self.authorization, serializer);
+        <Option<String>>::sse_encode(self.description, serializer);
+    }
+}
+
 impl SseEncode for crate::models::Config {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -14280,6 +15359,23 @@ impl SseEncode for crate::models::ConnectRequest {
         <crate::models::Config>::sse_encode(self.config, serializer);
         <crate::models::Seed>::sse_encode(self.seed, serializer);
         <String>::sse_encode(self.storage_dir, serializer);
+    }
+}
+
+impl SseEncode for crate::models::ConnectWithPasskeyRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<String>>::sse_encode(self.label, serializer);
+        <Option<Vec<Vec<u8>>>>::sse_encode(self.allow_credentials, serializer);
+        <Option<Vec<Vec<u8>>>>::sse_encode(self.exclude_credentials, serializer);
+    }
+}
+
+impl SseEncode for crate::models::ConnectWithPasskeyResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::Wallet>::sse_encode(self.wallet, serializer);
+        <Option<crate::models::PasskeyCredential>>::sse_encode(self.credential, serializer);
     }
 }
 
@@ -14492,6 +15588,23 @@ impl SseEncode for crate::models::DepositInfo {
         <Option<String>>::sse_encode(self.refund_tx, serializer);
         <Option<String>>::sse_encode(self.refund_tx_id, serializer);
         <Option<crate::errors::DepositClaimError>>::sse_encode(self.claim_error, serializer);
+    }
+}
+
+impl SseEncode for crate::models::DeriveSeedsOutput {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<Vec<u8>>>::sse_encode(self.seeds, serializer);
+        <Option<Vec<u8>>>::sse_encode(self.credential_id, serializer);
+    }
+}
+
+impl SseEncode for crate::models::DeriveSeedsRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<String>>::sse_encode(self.salts, serializer);
+        <Vec<Vec<u8>>>::sse_encode(self.allow_credentials, serializer);
+        <Option<bool>>::sse_encode(self.prefer_immediately_available_credentials, serializer);
     }
 }
 
@@ -14716,34 +15829,6 @@ impl SseEncode for isize {
     }
 }
 
-impl SseEncode for crate::models::KeySetConfig {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::models::KeySetType>::sse_encode(self.key_set_type, serializer);
-        <bool>::sse_encode(self.use_address_index, serializer);
-        <Option<u32>>::sse_encode(self.account_number, serializer);
-    }
-}
-
-impl SseEncode for crate::models::KeySetType {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(
-            match self {
-                crate::models::KeySetType::Default => 0,
-                crate::models::KeySetType::Taproot => 1,
-                crate::models::KeySetType::NativeSegwit => 2,
-                crate::models::KeySetType::WrappedSegwit => 3,
-                crate::models::KeySetType::Legacy => 4,
-                _ => {
-                    unimplemented!("");
-                }
-            },
-            serializer,
-        );
-    }
-}
-
 impl SseEncode for crate::models::LeafOptimizationConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -14888,6 +15973,16 @@ impl SseEncode for Vec<crate::models::InputType> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <crate::models::InputType>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <Vec<u8>>::sse_encode(item, serializer);
         }
     }
 }
@@ -15296,14 +16391,6 @@ impl SseEncode for crate::models::Network {
     }
 }
 
-impl SseEncode for crate::models::NostrRelayConfig {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Option<String>>::sse_encode(self.breez_api_key, serializer);
-        <Option<u32>>::sse_encode(self.timeout_secs, serializer);
-    }
-}
-
 impl SseEncode for crate::models::OnchainConfirmationSpeed {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -15531,12 +16618,32 @@ impl SseEncode for Option<crate::models::MaxFee> {
     }
 }
 
-impl SseEncode for Option<crate::models::NostrRelayConfig> {
+impl SseEncode for Option<crate::models::PasskeyConfig> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
-            <crate::models::NostrRelayConfig>::sse_encode(value, serializer);
+            <crate::models::PasskeyConfig>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::PasskeyCredential> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::PasskeyCredential>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::PasskeyProviderOptions> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::PasskeyProviderOptions>::sse_encode(value, serializer);
         }
     }
 }
@@ -15711,6 +16818,16 @@ impl SseEncode for Option<Vec<crate::models::ExternalInputParser>> {
     }
 }
 
+impl SseEncode for Option<Vec<Vec<u8>>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Vec<Vec<u8>>>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<Vec<crate::models::PaymentDetailsFilter>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -15741,6 +16858,16 @@ impl SseEncode for Option<Vec<crate::models::PaymentType>> {
     }
 }
 
+impl SseEncode for Option<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Vec<u8>>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<Vec<crate::models::SparkHtlcStatus>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -15751,34 +16878,32 @@ impl SseEncode for Option<Vec<crate::models::SparkHtlcStatus>> {
     }
 }
 
-impl SseEncode for crate::events::OptimizationEvent {
+impl SseEncode for crate::models::OptimizationMode {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::models::OptimizationMode::Full => 0,
+                crate::models::OptimizationMode::SingleRound => 1,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for crate::models::OptimizationOutcome {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {
-            crate::events::OptimizationEvent::Started { total_rounds } => {
+            crate::models::OptimizationOutcome::Completed { rounds_executed } => {
                 <i32>::sse_encode(0, serializer);
-                <u32>::sse_encode(total_rounds, serializer);
+                <u32>::sse_encode(rounds_executed, serializer);
             }
-            crate::events::OptimizationEvent::RoundCompleted {
-                current_round,
-                total_rounds,
-            } => {
+            crate::models::OptimizationOutcome::InProgress => {
                 <i32>::sse_encode(1, serializer);
-                <u32>::sse_encode(current_round, serializer);
-                <u32>::sse_encode(total_rounds, serializer);
-            }
-            crate::events::OptimizationEvent::Completed => {
-                <i32>::sse_encode(2, serializer);
-            }
-            crate::events::OptimizationEvent::Cancelled => {
-                <i32>::sse_encode(3, serializer);
-            }
-            crate::events::OptimizationEvent::Failed { error } => {
-                <i32>::sse_encode(4, serializer);
-                <String>::sse_encode(error, serializer);
-            }
-            crate::events::OptimizationEvent::Skipped => {
-                <i32>::sse_encode(5, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -15787,12 +16912,64 @@ impl SseEncode for crate::events::OptimizationEvent {
     }
 }
 
-impl SseEncode for crate::models::OptimizationProgress {
+impl SseEncode for crate::models::OptimizeLeavesRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <bool>::sse_encode(self.is_running, serializer);
-        <u32>::sse_encode(self.current_round, serializer);
-        <u32>::sse_encode(self.total_rounds, serializer);
+        <crate::models::OptimizationMode>::sse_encode(self.mode, serializer);
+    }
+}
+
+impl SseEncode for crate::models::OptimizeLeavesResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::OptimizationOutcome>::sse_encode(self.outcome, serializer);
+    }
+}
+
+impl SseEncode for crate::models::PasskeyAvailability {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::PasskeyAvailability::Available => {
+                <i32>::sse_encode(0, serializer);
+            }
+            crate::models::PasskeyAvailability::PrfUnsupported => {
+                <i32>::sse_encode(1, serializer);
+            }
+            crate::models::PasskeyAvailability::NotAssociated { source, reason } => {
+                <i32>::sse_encode(2, serializer);
+                <String>::sse_encode(source, serializer);
+                <String>::sse_encode(reason, serializer);
+            }
+            crate::models::PasskeyAvailability::Skipped { reason } => {
+                <i32>::sse_encode(3, serializer);
+                <String>::sse_encode(reason, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::PasskeyConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<String>>::sse_encode(self.default_label, serializer);
+        <Option<crate::models::PasskeyProviderOptions>>::sse_encode(
+            self.provider_options,
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for crate::models::PasskeyCredential {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.credential_id, serializer);
+        <Option<Vec<u8>>>::sse_encode(self.user_id, serializer);
+        <Option<Vec<u8>>>::sse_encode(self.aaguid, serializer);
+        <Option<bool>>::sse_encode(self.backup_eligible, serializer);
     }
 }
 
@@ -15800,9 +16977,9 @@ impl SseEncode for crate::errors::PasskeyError {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {
-            crate::errors::PasskeyError::PrfError(field0) => {
+            crate::errors::PasskeyError::Prf(field0) => {
                 <i32>::sse_encode(0, serializer);
-                <crate::errors::PasskeyPrfError>::sse_encode(field0, serializer);
+                <crate::errors::PrfProviderError>::sse_encode(field0, serializer);
             }
             crate::errors::PasskeyError::RelayConnectionFailed(field0) => {
                 <i32>::sse_encode(1, serializer);
@@ -15843,35 +17020,13 @@ impl SseEncode for crate::errors::PasskeyError {
     }
 }
 
-impl SseEncode for crate::errors::PasskeyPrfError {
+impl SseEncode for crate::models::PasskeyProviderOptions {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::errors::PasskeyPrfError::PrfNotSupported => {
-                <i32>::sse_encode(0, serializer);
-            }
-            crate::errors::PasskeyPrfError::UserCancelled => {
-                <i32>::sse_encode(1, serializer);
-            }
-            crate::errors::PasskeyPrfError::CredentialNotFound => {
-                <i32>::sse_encode(2, serializer);
-            }
-            crate::errors::PasskeyPrfError::AuthenticationFailed(field0) => {
-                <i32>::sse_encode(3, serializer);
-                <String>::sse_encode(field0, serializer);
-            }
-            crate::errors::PasskeyPrfError::PrfEvaluationFailed(field0) => {
-                <i32>::sse_encode(4, serializer);
-                <String>::sse_encode(field0, serializer);
-            }
-            crate::errors::PasskeyPrfError::Generic(field0) => {
-                <i32>::sse_encode(5, serializer);
-                <String>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
+        <Option<String>>::sse_encode(self.rp_id, serializer);
+        <Option<String>>::sse_encode(self.rp_name, serializer);
+        <Option<String>>::sse_encode(self.user_name, serializer);
+        <Option<String>>::sse_encode(self.user_display_name, serializer);
     }
 }
 
@@ -15952,9 +17107,10 @@ impl SseEncode for crate::models::PaymentDetails {
                 <i32>::sse_encode(3, serializer);
                 <String>::sse_encode(tx_id, serializer);
             }
-            crate::models::PaymentDetails::Deposit { tx_id } => {
+            crate::models::PaymentDetails::Deposit { tx_id, vout } => {
                 <i32>::sse_encode(4, serializer);
                 <String>::sse_encode(tx_id, serializer);
+                <u32>::sse_encode(vout, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -16112,6 +17268,50 @@ impl SseEncode for crate::models::PrepareSendPaymentResponse {
     }
 }
 
+impl SseEncode for crate::errors::PrfProviderError {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::errors::PrfProviderError::PrfNotSupported => {
+                <i32>::sse_encode(0, serializer);
+            }
+            crate::errors::PrfProviderError::UserCancelled => {
+                <i32>::sse_encode(1, serializer);
+            }
+            crate::errors::PrfProviderError::UserTimedOut => {
+                <i32>::sse_encode(2, serializer);
+            }
+            crate::errors::PrfProviderError::CredentialNotFound(field0) => {
+                <i32>::sse_encode(3, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PrfProviderError::AuthenticationFailed(field0) => {
+                <i32>::sse_encode(4, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PrfProviderError::PrfEvaluationFailed(field0) => {
+                <i32>::sse_encode(5, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PrfProviderError::Configuration(field0) => {
+                <i32>::sse_encode(6, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PrfProviderError::CredentialAlreadyExists(field0) => {
+                <i32>::sse_encode(7, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PrfProviderError::Generic(field0) => {
+                <i32>::sse_encode(8, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for crate::models::Rate {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -16224,6 +17424,22 @@ impl SseEncode for crate::models::RegisterLightningAddressRequest {
     }
 }
 
+impl SseEncode for crate::models::RegisterRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<String>>::sse_encode(self.label, serializer);
+        <Option<Vec<Vec<u8>>>>::sse_encode(self.exclude_credentials, serializer);
+    }
+}
+
+impl SseEncode for crate::models::RegisterResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::Wallet>::sse_encode(self.wallet, serializer);
+        <Option<crate::models::PasskeyCredential>>::sse_encode(self.credential, serializer);
+    }
+}
+
 impl SseEncode for crate::models::RegisterWebhookRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -16307,8 +17523,14 @@ impl SseEncode for crate::errors::SdkError {
                 <i32>::sse_encode(10, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            crate::errors::SdkError::Generic(field0) => {
+            crate::errors::SdkError::OptimizationAlreadyRunning => {
                 <i32>::sse_encode(11, serializer);
+            }
+            crate::errors::SdkError::OptimizationCancelled => {
+                <i32>::sse_encode(12, serializer);
+            }
+            crate::errors::SdkError::Generic(field0) => {
+                <i32>::sse_encode(13, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             _ => {
@@ -16345,9 +17567,9 @@ impl SseEncode for crate::events::SdkEvent {
                 <i32>::sse_encode(5, serializer);
                 <crate::models::Payment>::sse_encode(payment, serializer);
             }
-            crate::events::SdkEvent::Optimization { optimization_event } => {
+            crate::events::SdkEvent::AutoOptimization { optimization_event } => {
                 <i32>::sse_encode(6, serializer);
-                <crate::events::OptimizationEvent>::sse_encode(optimization_event, serializer);
+                <crate::events::AutoOptimizationEvent>::sse_encode(optimization_event, serializer);
             }
             crate::events::SdkEvent::LightningAddressChanged { lightning_address } => {
                 <i32>::sse_encode(7, serializer);
@@ -16517,6 +17739,24 @@ impl SseEncode for crate::models::ServiceStatus {
             },
             serializer,
         );
+    }
+}
+
+impl SseEncode for crate::models::SignInRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<String>>::sse_encode(self.label, serializer);
+        <Option<Vec<Vec<u8>>>>::sse_encode(self.allow_credentials, serializer);
+        <Option<bool>>::sse_encode(self.prefer_immediately_available_credentials, serializer);
+    }
+}
+
+impl SseEncode for crate::models::SignInResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::Wallet>::sse_encode(self.wallet, serializer);
+        <Vec<String>>::sse_encode(self.labels, serializer);
+        <Option<crate::models::PasskeyCredential>>::sse_encode(self.credential, serializer);
     }
 }
 
@@ -16800,6 +18040,15 @@ impl SseEncode for crate::models::TokenTransactionType {
     }
 }
 
+impl SseEncode for crate::models::TransferAuthorization {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.username, serializer);
+        <String>::sse_encode(self.pubkey, serializer);
+        <String>::sse_encode(self.signature, serializer);
+    }
+}
+
 impl SseEncode for u16 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -16999,17 +18248,31 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClient(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>>::increment_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>::increment_strong_count(ptr as _);
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskey(
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClient(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>>::decrement_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>::decrement_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyLabels(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>::increment_strong_count(ptr as _);
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyLabels(
+        ptr: *const std::ffi::c_void,
+    ) {
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>::decrement_strong_count(ptr as _);
     }
 
     #[unsafe(no_mangle)]

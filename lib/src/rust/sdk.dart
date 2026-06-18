@@ -31,9 +31,11 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Stream<SdkEvent> addEventListener();
 
-  Future<BuyBitcoinResponse> buyBitcoin({required BuyBitcoinRequest request});
+  Future<TransferAuthorization> authorizeLightningAddressTransfer({
+    required AuthorizeTransferRequest request,
+  });
 
-  Future<void> cancelLeafOptimization();
+  Future<BuyBitcoinResponse> buyBitcoin({required BuyBitcoinRequest request});
 
   Future<bool> checkLightningAddressAvailable({required CheckLightningAddressRequest request});
 
@@ -42,6 +44,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<ClaimDepositResponse> claimDeposit({required ClaimDepositRequest request});
 
   Future<ClaimHtlcPaymentResponse> claimHtlcPayment({required ClaimHtlcPaymentRequest request});
+
+  Future<LightningAddressInfo> claimLightningAddressTransfer({required ClaimTransferRequest request});
 
   Future<void> deleteContact({required String id});
 
@@ -54,8 +58,6 @@ abstract class BreezSdk implements RustOpaqueInterface {
   });
 
   Future<GetInfoResponse> getInfo({required GetInfoRequest request});
-
-  OptimizationProgress getLeafOptimizationProgress();
 
   Future<LightningAddressInfo?> getLightningAddress();
 
@@ -87,6 +89,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<LnurlWithdrawResponse> lnurlWithdraw({required LnurlWithdrawRequest request});
 
+  Future<OptimizeLeavesResponse> optimizeLeaves({required OptimizeLeavesRequest request});
+
   Future<InputType> parse({required String input});
 
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
@@ -110,8 +114,6 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<SendPaymentResponse> sendPayment({required SendPaymentRequest request});
 
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
-
-  Future<void> startLeafOptimization();
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
 

@@ -1,6 +1,6 @@
 name: breez_sdk_spark_flutter
 description: Flutter bindings for the Breez Spark SDK
-version: 0.15.1
+version: 0.16.1-dev1
 homepage: https://breez.technology
 repository: https://github.com/breez/breez-sdk-spark-flutter
 publish_to: 'none'
@@ -33,7 +33,10 @@ flutter:
     platforms:
       android:
         ffiPlugin: true
+        package: technology.breez.spark
+        pluginClass: BreezSdkSparkPasskeyPlugin
       ios:
         ffiPlugin: true
+        pluginClass: BreezSdkSparkPasskeyPlugin
       macos:
         ffiPlugin: true

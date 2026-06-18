@@ -12,7 +12,7 @@ part of 'events.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$OptimizationEvent {
+mixin _$AutoOptimizationEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$OptimizationEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OptimizationEvent()';
+  return 'AutoOptimizationEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $OptimizationEventCopyWith<$Res>  {
-$OptimizationEventCopyWith(OptimizationEvent _, $Res Function(OptimizationEvent) __);
+class $AutoOptimizationEventCopyWith<$Res>  {
+$AutoOptimizationEventCopyWith(AutoOptimizationEvent _, $Res Function(AutoOptimizationEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [OptimizationEvent].
-extension OptimizationEventPatterns on OptimizationEvent {
+/// Adds pattern-matching-related methods to [AutoOptimizationEvent].
+extension AutoOptimizationEventPatterns on AutoOptimizationEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,15 +55,15 @@ extension OptimizationEventPatterns on OptimizationEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OptimizationEvent_Started value)?  started,TResult Function( OptimizationEvent_RoundCompleted value)?  roundCompleted,TResult Function( OptimizationEvent_Completed value)?  completed,TResult Function( OptimizationEvent_Cancelled value)?  cancelled,TResult Function( OptimizationEvent_Failed value)?  failed,TResult Function( OptimizationEvent_Skipped value)?  skipped,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AutoOptimizationEvent_Started value)?  started,TResult Function( AutoOptimizationEvent_RoundCompleted value)?  roundCompleted,TResult Function( AutoOptimizationEvent_Completed value)?  completed,TResult Function( AutoOptimizationEvent_Cancelled value)?  cancelled,TResult Function( AutoOptimizationEvent_Failed value)?  failed,TResult Function( AutoOptimizationEvent_Skipped value)?  skipped,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case OptimizationEvent_Started() when started != null:
-return started(_that);case OptimizationEvent_RoundCompleted() when roundCompleted != null:
-return roundCompleted(_that);case OptimizationEvent_Completed() when completed != null:
-return completed(_that);case OptimizationEvent_Cancelled() when cancelled != null:
-return cancelled(_that);case OptimizationEvent_Failed() when failed != null:
-return failed(_that);case OptimizationEvent_Skipped() when skipped != null:
+case AutoOptimizationEvent_Started() when started != null:
+return started(_that);case AutoOptimizationEvent_RoundCompleted() when roundCompleted != null:
+return roundCompleted(_that);case AutoOptimizationEvent_Completed() when completed != null:
+return completed(_that);case AutoOptimizationEvent_Cancelled() when cancelled != null:
+return cancelled(_that);case AutoOptimizationEvent_Failed() when failed != null:
+return failed(_that);case AutoOptimizationEvent_Skipped() when skipped != null:
 return skipped(_that);case _:
   return orElse();
 
@@ -82,15 +82,15 @@ return skipped(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OptimizationEvent_Started value)  started,required TResult Function( OptimizationEvent_RoundCompleted value)  roundCompleted,required TResult Function( OptimizationEvent_Completed value)  completed,required TResult Function( OptimizationEvent_Cancelled value)  cancelled,required TResult Function( OptimizationEvent_Failed value)  failed,required TResult Function( OptimizationEvent_Skipped value)  skipped,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AutoOptimizationEvent_Started value)  started,required TResult Function( AutoOptimizationEvent_RoundCompleted value)  roundCompleted,required TResult Function( AutoOptimizationEvent_Completed value)  completed,required TResult Function( AutoOptimizationEvent_Cancelled value)  cancelled,required TResult Function( AutoOptimizationEvent_Failed value)  failed,required TResult Function( AutoOptimizationEvent_Skipped value)  skipped,}){
 final _that = this;
 switch (_that) {
-case OptimizationEvent_Started():
-return started(_that);case OptimizationEvent_RoundCompleted():
-return roundCompleted(_that);case OptimizationEvent_Completed():
-return completed(_that);case OptimizationEvent_Cancelled():
-return cancelled(_that);case OptimizationEvent_Failed():
-return failed(_that);case OptimizationEvent_Skipped():
+case AutoOptimizationEvent_Started():
+return started(_that);case AutoOptimizationEvent_RoundCompleted():
+return roundCompleted(_that);case AutoOptimizationEvent_Completed():
+return completed(_that);case AutoOptimizationEvent_Cancelled():
+return cancelled(_that);case AutoOptimizationEvent_Failed():
+return failed(_that);case AutoOptimizationEvent_Skipped():
 return skipped(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -105,15 +105,15 @@ return skipped(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OptimizationEvent_Started value)?  started,TResult? Function( OptimizationEvent_RoundCompleted value)?  roundCompleted,TResult? Function( OptimizationEvent_Completed value)?  completed,TResult? Function( OptimizationEvent_Cancelled value)?  cancelled,TResult? Function( OptimizationEvent_Failed value)?  failed,TResult? Function( OptimizationEvent_Skipped value)?  skipped,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AutoOptimizationEvent_Started value)?  started,TResult? Function( AutoOptimizationEvent_RoundCompleted value)?  roundCompleted,TResult? Function( AutoOptimizationEvent_Completed value)?  completed,TResult? Function( AutoOptimizationEvent_Cancelled value)?  cancelled,TResult? Function( AutoOptimizationEvent_Failed value)?  failed,TResult? Function( AutoOptimizationEvent_Skipped value)?  skipped,}){
 final _that = this;
 switch (_that) {
-case OptimizationEvent_Started() when started != null:
-return started(_that);case OptimizationEvent_RoundCompleted() when roundCompleted != null:
-return roundCompleted(_that);case OptimizationEvent_Completed() when completed != null:
-return completed(_that);case OptimizationEvent_Cancelled() when cancelled != null:
-return cancelled(_that);case OptimizationEvent_Failed() when failed != null:
-return failed(_that);case OptimizationEvent_Skipped() when skipped != null:
+case AutoOptimizationEvent_Started() when started != null:
+return started(_that);case AutoOptimizationEvent_RoundCompleted() when roundCompleted != null:
+return roundCompleted(_that);case AutoOptimizationEvent_Completed() when completed != null:
+return completed(_that);case AutoOptimizationEvent_Cancelled() when cancelled != null:
+return cancelled(_that);case AutoOptimizationEvent_Failed() when failed != null:
+return failed(_that);case AutoOptimizationEvent_Skipped() when skipped != null:
 return skipped(_that);case _:
   return null;
 
@@ -133,12 +133,12 @@ return skipped(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int totalRounds)?  started,TResult Function( int currentRound,  int totalRounds)?  roundCompleted,TResult Function()?  completed,TResult Function()?  cancelled,TResult Function( String error)?  failed,TResult Function()?  skipped,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case OptimizationEvent_Started() when started != null:
-return started(_that.totalRounds);case OptimizationEvent_RoundCompleted() when roundCompleted != null:
-return roundCompleted(_that.currentRound,_that.totalRounds);case OptimizationEvent_Completed() when completed != null:
-return completed();case OptimizationEvent_Cancelled() when cancelled != null:
-return cancelled();case OptimizationEvent_Failed() when failed != null:
-return failed(_that.error);case OptimizationEvent_Skipped() when skipped != null:
+case AutoOptimizationEvent_Started() when started != null:
+return started(_that.totalRounds);case AutoOptimizationEvent_RoundCompleted() when roundCompleted != null:
+return roundCompleted(_that.currentRound,_that.totalRounds);case AutoOptimizationEvent_Completed() when completed != null:
+return completed();case AutoOptimizationEvent_Cancelled() when cancelled != null:
+return cancelled();case AutoOptimizationEvent_Failed() when failed != null:
+return failed(_that.error);case AutoOptimizationEvent_Skipped() when skipped != null:
 return skipped();case _:
   return orElse();
 
@@ -159,12 +159,12 @@ return skipped();case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int totalRounds)  started,required TResult Function( int currentRound,  int totalRounds)  roundCompleted,required TResult Function()  completed,required TResult Function()  cancelled,required TResult Function( String error)  failed,required TResult Function()  skipped,}) {final _that = this;
 switch (_that) {
-case OptimizationEvent_Started():
-return started(_that.totalRounds);case OptimizationEvent_RoundCompleted():
-return roundCompleted(_that.currentRound,_that.totalRounds);case OptimizationEvent_Completed():
-return completed();case OptimizationEvent_Cancelled():
-return cancelled();case OptimizationEvent_Failed():
-return failed(_that.error);case OptimizationEvent_Skipped():
+case AutoOptimizationEvent_Started():
+return started(_that.totalRounds);case AutoOptimizationEvent_RoundCompleted():
+return roundCompleted(_that.currentRound,_that.totalRounds);case AutoOptimizationEvent_Completed():
+return completed();case AutoOptimizationEvent_Cancelled():
+return cancelled();case AutoOptimizationEvent_Failed():
+return failed(_that.error);case AutoOptimizationEvent_Skipped():
 return skipped();}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -181,12 +181,12 @@ return skipped();}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int totalRounds)?  started,TResult? Function( int currentRound,  int totalRounds)?  roundCompleted,TResult? Function()?  completed,TResult? Function()?  cancelled,TResult? Function( String error)?  failed,TResult? Function()?  skipped,}) {final _that = this;
 switch (_that) {
-case OptimizationEvent_Started() when started != null:
-return started(_that.totalRounds);case OptimizationEvent_RoundCompleted() when roundCompleted != null:
-return roundCompleted(_that.currentRound,_that.totalRounds);case OptimizationEvent_Completed() when completed != null:
-return completed();case OptimizationEvent_Cancelled() when cancelled != null:
-return cancelled();case OptimizationEvent_Failed() when failed != null:
-return failed(_that.error);case OptimizationEvent_Skipped() when skipped != null:
+case AutoOptimizationEvent_Started() when started != null:
+return started(_that.totalRounds);case AutoOptimizationEvent_RoundCompleted() when roundCompleted != null:
+return roundCompleted(_that.currentRound,_that.totalRounds);case AutoOptimizationEvent_Completed() when completed != null:
+return completed();case AutoOptimizationEvent_Cancelled() when cancelled != null:
+return cancelled();case AutoOptimizationEvent_Failed() when failed != null:
+return failed(_that.error);case AutoOptimizationEvent_Skipped() when skipped != null:
 return skipped();case _:
   return null;
 
@@ -198,23 +198,23 @@ return skipped();case _:
 /// @nodoc
 
 
-class OptimizationEvent_Started extends OptimizationEvent {
-  const OptimizationEvent_Started({required this.totalRounds}): super._();
+class AutoOptimizationEvent_Started extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_Started({required this.totalRounds}): super._();
   
 
  final  int totalRounds;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$OptimizationEvent_StartedCopyWith<OptimizationEvent_Started> get copyWith => _$OptimizationEvent_StartedCopyWithImpl<OptimizationEvent_Started>(this, _$identity);
+$AutoOptimizationEvent_StartedCopyWith<AutoOptimizationEvent_Started> get copyWith => _$AutoOptimizationEvent_StartedCopyWithImpl<AutoOptimizationEvent_Started>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_Started&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_Started&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds));
 }
 
 
@@ -223,15 +223,15 @@ int get hashCode => Object.hash(runtimeType,totalRounds);
 
 @override
 String toString() {
-  return 'OptimizationEvent.started(totalRounds: $totalRounds)';
+  return 'AutoOptimizationEvent.started(totalRounds: $totalRounds)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $OptimizationEvent_StartedCopyWith<$Res> implements $OptimizationEventCopyWith<$Res> {
-  factory $OptimizationEvent_StartedCopyWith(OptimizationEvent_Started value, $Res Function(OptimizationEvent_Started) _then) = _$OptimizationEvent_StartedCopyWithImpl;
+abstract mixin class $AutoOptimizationEvent_StartedCopyWith<$Res> implements $AutoOptimizationEventCopyWith<$Res> {
+  factory $AutoOptimizationEvent_StartedCopyWith(AutoOptimizationEvent_Started value, $Res Function(AutoOptimizationEvent_Started) _then) = _$AutoOptimizationEvent_StartedCopyWithImpl;
 @useResult
 $Res call({
  int totalRounds
@@ -242,17 +242,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$OptimizationEvent_StartedCopyWithImpl<$Res>
-    implements $OptimizationEvent_StartedCopyWith<$Res> {
-  _$OptimizationEvent_StartedCopyWithImpl(this._self, this._then);
+class _$AutoOptimizationEvent_StartedCopyWithImpl<$Res>
+    implements $AutoOptimizationEvent_StartedCopyWith<$Res> {
+  _$AutoOptimizationEvent_StartedCopyWithImpl(this._self, this._then);
 
-  final OptimizationEvent_Started _self;
-  final $Res Function(OptimizationEvent_Started) _then;
+  final AutoOptimizationEvent_Started _self;
+  final $Res Function(AutoOptimizationEvent_Started) _then;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? totalRounds = null,}) {
-  return _then(OptimizationEvent_Started(
+  return _then(AutoOptimizationEvent_Started(
 totalRounds: null == totalRounds ? _self.totalRounds : totalRounds // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -264,24 +264,24 @@ as int,
 /// @nodoc
 
 
-class OptimizationEvent_RoundCompleted extends OptimizationEvent {
-  const OptimizationEvent_RoundCompleted({required this.currentRound, required this.totalRounds}): super._();
+class AutoOptimizationEvent_RoundCompleted extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_RoundCompleted({required this.currentRound, required this.totalRounds}): super._();
   
 
  final  int currentRound;
  final  int totalRounds;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$OptimizationEvent_RoundCompletedCopyWith<OptimizationEvent_RoundCompleted> get copyWith => _$OptimizationEvent_RoundCompletedCopyWithImpl<OptimizationEvent_RoundCompleted>(this, _$identity);
+$AutoOptimizationEvent_RoundCompletedCopyWith<AutoOptimizationEvent_RoundCompleted> get copyWith => _$AutoOptimizationEvent_RoundCompletedCopyWithImpl<AutoOptimizationEvent_RoundCompleted>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_RoundCompleted&&(identical(other.currentRound, currentRound) || other.currentRound == currentRound)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_RoundCompleted&&(identical(other.currentRound, currentRound) || other.currentRound == currentRound)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds));
 }
 
 
@@ -290,15 +290,15 @@ int get hashCode => Object.hash(runtimeType,currentRound,totalRounds);
 
 @override
 String toString() {
-  return 'OptimizationEvent.roundCompleted(currentRound: $currentRound, totalRounds: $totalRounds)';
+  return 'AutoOptimizationEvent.roundCompleted(currentRound: $currentRound, totalRounds: $totalRounds)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $OptimizationEvent_RoundCompletedCopyWith<$Res> implements $OptimizationEventCopyWith<$Res> {
-  factory $OptimizationEvent_RoundCompletedCopyWith(OptimizationEvent_RoundCompleted value, $Res Function(OptimizationEvent_RoundCompleted) _then) = _$OptimizationEvent_RoundCompletedCopyWithImpl;
+abstract mixin class $AutoOptimizationEvent_RoundCompletedCopyWith<$Res> implements $AutoOptimizationEventCopyWith<$Res> {
+  factory $AutoOptimizationEvent_RoundCompletedCopyWith(AutoOptimizationEvent_RoundCompleted value, $Res Function(AutoOptimizationEvent_RoundCompleted) _then) = _$AutoOptimizationEvent_RoundCompletedCopyWithImpl;
 @useResult
 $Res call({
  int currentRound, int totalRounds
@@ -309,17 +309,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$OptimizationEvent_RoundCompletedCopyWithImpl<$Res>
-    implements $OptimizationEvent_RoundCompletedCopyWith<$Res> {
-  _$OptimizationEvent_RoundCompletedCopyWithImpl(this._self, this._then);
+class _$AutoOptimizationEvent_RoundCompletedCopyWithImpl<$Res>
+    implements $AutoOptimizationEvent_RoundCompletedCopyWith<$Res> {
+  _$AutoOptimizationEvent_RoundCompletedCopyWithImpl(this._self, this._then);
 
-  final OptimizationEvent_RoundCompleted _self;
-  final $Res Function(OptimizationEvent_RoundCompleted) _then;
+  final AutoOptimizationEvent_RoundCompleted _self;
+  final $Res Function(AutoOptimizationEvent_RoundCompleted) _then;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? currentRound = null,Object? totalRounds = null,}) {
-  return _then(OptimizationEvent_RoundCompleted(
+  return _then(AutoOptimizationEvent_RoundCompleted(
 currentRound: null == currentRound ? _self.currentRound : currentRound // ignore: cast_nullable_to_non_nullable
 as int,totalRounds: null == totalRounds ? _self.totalRounds : totalRounds // ignore: cast_nullable_to_non_nullable
 as int,
@@ -332,8 +332,8 @@ as int,
 /// @nodoc
 
 
-class OptimizationEvent_Completed extends OptimizationEvent {
-  const OptimizationEvent_Completed(): super._();
+class AutoOptimizationEvent_Completed extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_Completed(): super._();
   
 
 
@@ -343,7 +343,7 @@ class OptimizationEvent_Completed extends OptimizationEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_Completed);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_Completed);
 }
 
 
@@ -352,7 +352,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OptimizationEvent.completed()';
+  return 'AutoOptimizationEvent.completed()';
 }
 
 
@@ -364,8 +364,8 @@ String toString() {
 /// @nodoc
 
 
-class OptimizationEvent_Cancelled extends OptimizationEvent {
-  const OptimizationEvent_Cancelled(): super._();
+class AutoOptimizationEvent_Cancelled extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_Cancelled(): super._();
   
 
 
@@ -375,7 +375,7 @@ class OptimizationEvent_Cancelled extends OptimizationEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_Cancelled);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_Cancelled);
 }
 
 
@@ -384,7 +384,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OptimizationEvent.cancelled()';
+  return 'AutoOptimizationEvent.cancelled()';
 }
 
 
@@ -396,23 +396,23 @@ String toString() {
 /// @nodoc
 
 
-class OptimizationEvent_Failed extends OptimizationEvent {
-  const OptimizationEvent_Failed({required this.error}): super._();
+class AutoOptimizationEvent_Failed extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_Failed({required this.error}): super._();
   
 
  final  String error;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$OptimizationEvent_FailedCopyWith<OptimizationEvent_Failed> get copyWith => _$OptimizationEvent_FailedCopyWithImpl<OptimizationEvent_Failed>(this, _$identity);
+$AutoOptimizationEvent_FailedCopyWith<AutoOptimizationEvent_Failed> get copyWith => _$AutoOptimizationEvent_FailedCopyWithImpl<AutoOptimizationEvent_Failed>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_Failed&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_Failed&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -421,15 +421,15 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'OptimizationEvent.failed(error: $error)';
+  return 'AutoOptimizationEvent.failed(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $OptimizationEvent_FailedCopyWith<$Res> implements $OptimizationEventCopyWith<$Res> {
-  factory $OptimizationEvent_FailedCopyWith(OptimizationEvent_Failed value, $Res Function(OptimizationEvent_Failed) _then) = _$OptimizationEvent_FailedCopyWithImpl;
+abstract mixin class $AutoOptimizationEvent_FailedCopyWith<$Res> implements $AutoOptimizationEventCopyWith<$Res> {
+  factory $AutoOptimizationEvent_FailedCopyWith(AutoOptimizationEvent_Failed value, $Res Function(AutoOptimizationEvent_Failed) _then) = _$AutoOptimizationEvent_FailedCopyWithImpl;
 @useResult
 $Res call({
  String error
@@ -440,17 +440,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$OptimizationEvent_FailedCopyWithImpl<$Res>
-    implements $OptimizationEvent_FailedCopyWith<$Res> {
-  _$OptimizationEvent_FailedCopyWithImpl(this._self, this._then);
+class _$AutoOptimizationEvent_FailedCopyWithImpl<$Res>
+    implements $AutoOptimizationEvent_FailedCopyWith<$Res> {
+  _$AutoOptimizationEvent_FailedCopyWithImpl(this._self, this._then);
 
-  final OptimizationEvent_Failed _self;
-  final $Res Function(OptimizationEvent_Failed) _then;
+  final AutoOptimizationEvent_Failed _self;
+  final $Res Function(AutoOptimizationEvent_Failed) _then;
 
-/// Create a copy of OptimizationEvent
+/// Create a copy of AutoOptimizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(OptimizationEvent_Failed(
+  return _then(AutoOptimizationEvent_Failed(
 error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -462,8 +462,8 @@ as String,
 /// @nodoc
 
 
-class OptimizationEvent_Skipped extends OptimizationEvent {
-  const OptimizationEvent_Skipped(): super._();
+class AutoOptimizationEvent_Skipped extends AutoOptimizationEvent {
+  const AutoOptimizationEvent_Skipped(): super._();
   
 
 
@@ -473,7 +473,7 @@ class OptimizationEvent_Skipped extends OptimizationEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationEvent_Skipped);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AutoOptimizationEvent_Skipped);
 }
 
 
@@ -482,7 +482,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OptimizationEvent.skipped()';
+  return 'AutoOptimizationEvent.skipped()';
 }
 
 
@@ -535,7 +535,7 @@ extension SdkEventPatterns on SdkEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_Optimization value)?  optimization,TResult Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult Function( SdkEvent_NewDeposits value)?  newDeposits,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult Function( SdkEvent_NewDeposits value)?  newDeposits,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -544,8 +544,8 @@ return unclaimedDeposits(_that);case SdkEvent_ClaimedDeposits() when claimedDepo
 return claimedDeposits(_that);case SdkEvent_PaymentSucceeded() when paymentSucceeded != null:
 return paymentSucceeded(_that);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that);case SdkEvent_PaymentFailed() when paymentFailed != null:
-return paymentFailed(_that);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return paymentFailed(_that);case SdkEvent_AutoOptimization() when autoOptimization != null:
+return autoOptimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that);case _:
   return orElse();
@@ -565,7 +565,7 @@ return newDeposits(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_Optimization value)  optimization,required TResult Function( SdkEvent_LightningAddressChanged value)  lightningAddressChanged,required TResult Function( SdkEvent_NewDeposits value)  newDeposits,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_AutoOptimization value)  autoOptimization,required TResult Function( SdkEvent_LightningAddressChanged value)  lightningAddressChanged,required TResult Function( SdkEvent_NewDeposits value)  newDeposits,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
@@ -574,8 +574,8 @@ return unclaimedDeposits(_that);case SdkEvent_ClaimedDeposits():
 return claimedDeposits(_that);case SdkEvent_PaymentSucceeded():
 return paymentSucceeded(_that);case SdkEvent_PaymentPending():
 return paymentPending(_that);case SdkEvent_PaymentFailed():
-return paymentFailed(_that);case SdkEvent_Optimization():
-return optimization(_that);case SdkEvent_LightningAddressChanged():
+return paymentFailed(_that);case SdkEvent_AutoOptimization():
+return autoOptimization(_that);case SdkEvent_LightningAddressChanged():
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits():
 return newDeposits(_that);}
 }
@@ -591,7 +591,7 @@ return newDeposits(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_Optimization value)?  optimization,TResult? Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult? Function( SdkEvent_NewDeposits value)?  newDeposits,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult? Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult? Function( SdkEvent_NewDeposits value)?  newDeposits,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -600,8 +600,8 @@ return unclaimedDeposits(_that);case SdkEvent_ClaimedDeposits() when claimedDepo
 return claimedDeposits(_that);case SdkEvent_PaymentSucceeded() when paymentSucceeded != null:
 return paymentSucceeded(_that);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that);case SdkEvent_PaymentFailed() when paymentFailed != null:
-return paymentFailed(_that);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return paymentFailed(_that);case SdkEvent_AutoOptimization() when autoOptimization != null:
+return autoOptimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that);case _:
   return null;
@@ -620,7 +620,7 @@ return newDeposits(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( OptimizationEvent optimizationEvent)?  optimization,TResult Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult Function( List<DepositInfo> newDeposits)?  newDeposits,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult Function( List<DepositInfo> newDeposits)?  newDeposits,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -628,8 +628,8 @@ return unclaimedDeposits(_that.unclaimedDeposits);case SdkEvent_ClaimedDeposits(
 return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded() when paymentSucceeded != null:
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed() when paymentFailed != null:
-return paymentFailed(_that.payment);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return paymentFailed(_that.payment);case SdkEvent_AutoOptimization() when autoOptimization != null:
+return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that.newDeposits);case _:
   return orElse();
@@ -649,7 +649,7 @@ return newDeposits(_that.newDeposits);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( OptimizationEvent optimizationEvent)  optimization,required TResult Function( LightningAddressInfo? lightningAddress)  lightningAddressChanged,required TResult Function( List<DepositInfo> newDeposits)  newDeposits,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( AutoOptimizationEvent optimizationEvent)  autoOptimization,required TResult Function( LightningAddressInfo? lightningAddress)  lightningAddressChanged,required TResult Function( List<DepositInfo> newDeposits)  newDeposits,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
 return synced();case SdkEvent_UnclaimedDeposits():
@@ -657,8 +657,8 @@ return unclaimedDeposits(_that.unclaimedDeposits);case SdkEvent_ClaimedDeposits(
 return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded():
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending():
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed():
-return paymentFailed(_that.payment);case SdkEvent_Optimization():
-return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged():
+return paymentFailed(_that.payment);case SdkEvent_AutoOptimization():
+return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged():
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits():
 return newDeposits(_that.newDeposits);}
 }
@@ -674,7 +674,7 @@ return newDeposits(_that.newDeposits);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( OptimizationEvent optimizationEvent)?  optimization,TResult? Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult? Function( List<DepositInfo> newDeposits)?  newDeposits,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult? Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult? Function( List<DepositInfo> newDeposits)?  newDeposits,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -682,8 +682,8 @@ return unclaimedDeposits(_that.unclaimedDeposits);case SdkEvent_ClaimedDeposits(
 return claimedDeposits(_that.claimedDeposits);case SdkEvent_PaymentSucceeded() when paymentSucceeded != null:
 return paymentSucceeded(_that.payment);case SdkEvent_PaymentPending() when paymentPending != null:
 return paymentPending(_that.payment);case SdkEvent_PaymentFailed() when paymentFailed != null:
-return paymentFailed(_that.payment);case SdkEvent_Optimization() when optimization != null:
-return optimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
+return paymentFailed(_that.payment);case SdkEvent_AutoOptimization() when autoOptimization != null:
+return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that.newDeposits);case _:
   return null;
@@ -1070,23 +1070,23 @@ as Payment,
 /// @nodoc
 
 
-class SdkEvent_Optimization extends SdkEvent {
-  const SdkEvent_Optimization({required this.optimizationEvent}): super._();
+class SdkEvent_AutoOptimization extends SdkEvent {
+  const SdkEvent_AutoOptimization({required this.optimizationEvent}): super._();
   
 
- final  OptimizationEvent optimizationEvent;
+ final  AutoOptimizationEvent optimizationEvent;
 
 /// Create a copy of SdkEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SdkEvent_OptimizationCopyWith<SdkEvent_Optimization> get copyWith => _$SdkEvent_OptimizationCopyWithImpl<SdkEvent_Optimization>(this, _$identity);
+$SdkEvent_AutoOptimizationCopyWith<SdkEvent_AutoOptimization> get copyWith => _$SdkEvent_AutoOptimizationCopyWithImpl<SdkEvent_AutoOptimization>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkEvent_Optimization&&(identical(other.optimizationEvent, optimizationEvent) || other.optimizationEvent == optimizationEvent));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkEvent_AutoOptimization&&(identical(other.optimizationEvent, optimizationEvent) || other.optimizationEvent == optimizationEvent));
 }
 
 
@@ -1095,38 +1095,38 @@ int get hashCode => Object.hash(runtimeType,optimizationEvent);
 
 @override
 String toString() {
-  return 'SdkEvent.optimization(optimizationEvent: $optimizationEvent)';
+  return 'SdkEvent.autoOptimization(optimizationEvent: $optimizationEvent)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SdkEvent_OptimizationCopyWith<$Res> implements $SdkEventCopyWith<$Res> {
-  factory $SdkEvent_OptimizationCopyWith(SdkEvent_Optimization value, $Res Function(SdkEvent_Optimization) _then) = _$SdkEvent_OptimizationCopyWithImpl;
+abstract mixin class $SdkEvent_AutoOptimizationCopyWith<$Res> implements $SdkEventCopyWith<$Res> {
+  factory $SdkEvent_AutoOptimizationCopyWith(SdkEvent_AutoOptimization value, $Res Function(SdkEvent_AutoOptimization) _then) = _$SdkEvent_AutoOptimizationCopyWithImpl;
 @useResult
 $Res call({
- OptimizationEvent optimizationEvent
+ AutoOptimizationEvent optimizationEvent
 });
 
 
-$OptimizationEventCopyWith<$Res> get optimizationEvent;
+$AutoOptimizationEventCopyWith<$Res> get optimizationEvent;
 
 }
 /// @nodoc
-class _$SdkEvent_OptimizationCopyWithImpl<$Res>
-    implements $SdkEvent_OptimizationCopyWith<$Res> {
-  _$SdkEvent_OptimizationCopyWithImpl(this._self, this._then);
+class _$SdkEvent_AutoOptimizationCopyWithImpl<$Res>
+    implements $SdkEvent_AutoOptimizationCopyWith<$Res> {
+  _$SdkEvent_AutoOptimizationCopyWithImpl(this._self, this._then);
 
-  final SdkEvent_Optimization _self;
-  final $Res Function(SdkEvent_Optimization) _then;
+  final SdkEvent_AutoOptimization _self;
+  final $Res Function(SdkEvent_AutoOptimization) _then;
 
 /// Create a copy of SdkEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? optimizationEvent = null,}) {
-  return _then(SdkEvent_Optimization(
+  return _then(SdkEvent_AutoOptimization(
 optimizationEvent: null == optimizationEvent ? _self.optimizationEvent : optimizationEvent // ignore: cast_nullable_to_non_nullable
-as OptimizationEvent,
+as AutoOptimizationEvent,
   ));
 }
 
@@ -1134,9 +1134,9 @@ as OptimizationEvent,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$OptimizationEventCopyWith<$Res> get optimizationEvent {
+$AutoOptimizationEventCopyWith<$Res> get optimizationEvent {
   
-  return $OptimizationEventCopyWith<$Res>(_self.optimizationEvent, (value) {
+  return $AutoOptimizationEventCopyWith<$Res>(_self.optimizationEvent, (value) {
     return _then(_self.copyWith(optimizationEvent: value));
   });
 }

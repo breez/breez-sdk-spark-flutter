@@ -18,14 +18,14 @@ abstract class SdkBuilder implements RustOpaqueInterface {
   factory SdkBuilder({required Config config, required Seed seed}) =>
       BreezSdkSparkLib.instance.api.crateSdkBuilderSdkBuilderNew(config: config, seed: seed);
 
+  SdkBuilder withAccountNumber({required int accountNumber});
+
   /// Sets a Rust-built chain service. Pass a handle from
   /// [`new_rest_chain_service`](crate::chain_service::new_rest_chain_service)
   /// to multiple `SdkBuilder`s to share one HTTP client across SDK instances.
   SdkBuilder withChainService({required BitcoinChainServiceHandle handle});
 
   SdkBuilder withDefaultStorage({required String storageDir});
-
-  SdkBuilder withKeySet({required KeySetConfig config});
 
   SdkBuilder withRestChainService({
     required String url,

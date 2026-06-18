@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                = "breez_sdk_spark_flutter"
-  spec.version             = '0.15.1'
+  spec.version             = '0.16.1-dev1'
   spec.license             = { :file => '../LICENSE' }
   spec.summary             = "Swift bindings to the Breez Spark SDK"
   spec.homepage            = "https://breez.technology"
@@ -17,6 +17,7 @@ Pod::Spec.new do |spec|
   # `../src/*` so that the C sources can be shared among all target platforms.
   spec.source              = { :path => '.' }
   spec.source_files        = 'Classes/**/*'
+  spec.public_header_files = 'Classes/**/*.h'
   spec.dependency 'Flutter'
 
   spec.platform            = :ios, '13.0'

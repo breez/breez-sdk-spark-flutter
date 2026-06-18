@@ -441,11 +441,11 @@ extension PasskeyErrorPatterns on PasskeyError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_PrfError value)?  prfError,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_Prf value)?  prf,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case PasskeyError_PrfError() when prfError != null:
-return prfError(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+case PasskeyError_Prf() when prf != null:
+return prf(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
 return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
 return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
 return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
@@ -471,11 +471,11 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_PrfError value)  prfError,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_Prf value)  prf,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
-case PasskeyError_PrfError():
-return prfError(_that);case PasskeyError_RelayConnectionFailed():
+case PasskeyError_Prf():
+return prf(_that);case PasskeyError_RelayConnectionFailed():
 return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed():
 return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed():
 return nostrReadFailed(_that);case PasskeyError_KeyDerivationError():
@@ -497,11 +497,11 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_PrfError value)?  prfError,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_Prf value)?  prf,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
-case PasskeyError_PrfError() when prfError != null:
-return prfError(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+case PasskeyError_Prf() when prf != null:
+return prf(_that);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
 return relayConnectionFailed(_that);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
 return nostrWriteFailed(_that);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
 return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
@@ -526,10 +526,10 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PasskeyPrfError field0)?  prfError,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PrfProviderError field0)?  prf,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case PasskeyError_PrfError() when prfError != null:
-return prfError(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+case PasskeyError_Prf() when prf != null:
+return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
 return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
 return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
 return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
@@ -555,10 +555,10 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PasskeyPrfError field0)  prfError,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PrfProviderError field0)  prf,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
-case PasskeyError_PrfError():
-return prfError(_that.field0);case PasskeyError_RelayConnectionFailed():
+case PasskeyError_Prf():
+return prf(_that.field0);case PasskeyError_RelayConnectionFailed():
 return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed():
 return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed():
 return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError():
@@ -580,10 +580,10 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PasskeyPrfError field0)?  prfError,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PrfProviderError field0)?  prf,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
-case PasskeyError_PrfError() when prfError != null:
-return prfError(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
+case PasskeyError_Prf() when prf != null:
+return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
 return relayConnectionFailed(_that.field0);case PasskeyError_NostrWriteFailed() when nostrWriteFailed != null:
 return nostrWriteFailed(_that.field0);case PasskeyError_NostrReadFailed() when nostrReadFailed != null:
 return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when keyDerivationError != null:
@@ -602,23 +602,23 @@ return generic(_that.field0);case _:
 /// @nodoc
 
 
-class PasskeyError_PrfError extends PasskeyError {
-  const PasskeyError_PrfError(this.field0): super._();
+class PasskeyError_Prf extends PasskeyError {
+  const PasskeyError_Prf(this.field0): super._();
   
 
-@override final  PasskeyPrfError field0;
+@override final  PrfProviderError field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PasskeyError_PrfErrorCopyWith<PasskeyError_PrfError> get copyWith => _$PasskeyError_PrfErrorCopyWithImpl<PasskeyError_PrfError>(this, _$identity);
+$PasskeyError_PrfCopyWith<PasskeyError_Prf> get copyWith => _$PasskeyError_PrfCopyWithImpl<PasskeyError_Prf>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_PrfError&&(identical(other.field0, field0) || other.field0 == field0));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_Prf&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
@@ -627,38 +627,38 @@ int get hashCode => Object.hash(runtimeType,field0);
 
 @override
 String toString() {
-  return 'PasskeyError.prfError(field0: $field0)';
+  return 'PasskeyError.prf(field0: $field0)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PasskeyError_PrfErrorCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
-  factory $PasskeyError_PrfErrorCopyWith(PasskeyError_PrfError value, $Res Function(PasskeyError_PrfError) _then) = _$PasskeyError_PrfErrorCopyWithImpl;
+abstract mixin class $PasskeyError_PrfCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_PrfCopyWith(PasskeyError_Prf value, $Res Function(PasskeyError_Prf) _then) = _$PasskeyError_PrfCopyWithImpl;
 @useResult
 $Res call({
- PasskeyPrfError field0
+ PrfProviderError field0
 });
 
 
-$PasskeyPrfErrorCopyWith<$Res> get field0;
+$PrfProviderErrorCopyWith<$Res> get field0;
 
 }
 /// @nodoc
-class _$PasskeyError_PrfErrorCopyWithImpl<$Res>
-    implements $PasskeyError_PrfErrorCopyWith<$Res> {
-  _$PasskeyError_PrfErrorCopyWithImpl(this._self, this._then);
+class _$PasskeyError_PrfCopyWithImpl<$Res>
+    implements $PasskeyError_PrfCopyWith<$Res> {
+  _$PasskeyError_PrfCopyWithImpl(this._self, this._then);
 
-  final PasskeyError_PrfError _self;
-  final $Res Function(PasskeyError_PrfError) _then;
+  final PasskeyError_Prf _self;
+  final $Res Function(PasskeyError_Prf) _then;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
-  return _then(PasskeyError_PrfError(
+  return _then(PasskeyError_Prf(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
-as PasskeyPrfError,
+as PrfProviderError,
   ));
 }
 
@@ -666,9 +666,9 @@ as PasskeyPrfError,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PasskeyPrfErrorCopyWith<$Res> get field0 {
+$PrfProviderErrorCopyWith<$Res> get field0 {
   
-  return $PasskeyPrfErrorCopyWith<$Res>(_self.field0, (value) {
+  return $PrfProviderErrorCopyWith<$Res>(_self.field0, (value) {
     return _then(_self.copyWith(field0: value));
   });
 }
@@ -1203,7 +1203,7 @@ as String,
 }
 
 /// @nodoc
-mixin _$PasskeyPrfError {
+mixin _$PrfProviderError {
 
 
 
@@ -1211,7 +1211,7 @@ mixin _$PasskeyPrfError {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError);
 }
 
 
@@ -1220,20 +1220,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PasskeyPrfError()';
+  return 'PrfProviderError()';
 }
 
 
 }
 
 /// @nodoc
-class $PasskeyPrfErrorCopyWith<$Res>  {
-$PasskeyPrfErrorCopyWith(PasskeyPrfError _, $Res Function(PasskeyPrfError) __);
+class $PrfProviderErrorCopyWith<$Res>  {
+$PrfProviderErrorCopyWith(PrfProviderError _, $Res Function(PrfProviderError) __);
 }
 
 
-/// Adds pattern-matching-related methods to [PasskeyPrfError].
-extension PasskeyPrfErrorPatterns on PasskeyPrfError {
+/// Adds pattern-matching-related methods to [PrfProviderError].
+extension PrfProviderErrorPatterns on PrfProviderError {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1246,15 +1246,18 @@ extension PasskeyPrfErrorPatterns on PasskeyPrfError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyPrfError_PrfNotSupported value)?  prfNotSupported,TResult Function( PasskeyPrfError_UserCancelled value)?  userCancelled,TResult Function( PasskeyPrfError_CredentialNotFound value)?  credentialNotFound,TResult Function( PasskeyPrfError_AuthenticationFailed value)?  authenticationFailed,TResult Function( PasskeyPrfError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult Function( PasskeyPrfError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PrfProviderError_PrfNotSupported value)?  prfNotSupported,TResult Function( PrfProviderError_UserCancelled value)?  userCancelled,TResult Function( PrfProviderError_UserTimedOut value)?  userTimedOut,TResult Function( PrfProviderError_CredentialNotFound value)?  credentialNotFound,TResult Function( PrfProviderError_AuthenticationFailed value)?  authenticationFailed,TResult Function( PrfProviderError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult Function( PrfProviderError_Configuration value)?  configuration,TResult Function( PrfProviderError_CredentialAlreadyExists value)?  credentialAlreadyExists,TResult Function( PrfProviderError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
-return prfNotSupported(_that);case PasskeyPrfError_UserCancelled() when userCancelled != null:
-return userCancelled(_that);case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
-return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
-return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
-return prfEvaluationFailed(_that);case PasskeyPrfError_Generic() when generic != null:
+case PrfProviderError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported(_that);case PrfProviderError_UserCancelled() when userCancelled != null:
+return userCancelled(_that);case PrfProviderError_UserTimedOut() when userTimedOut != null:
+return userTimedOut(_that);case PrfProviderError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that);case PrfProviderError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that);case PrfProviderError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that);case PrfProviderError_Configuration() when configuration != null:
+return configuration(_that);case PrfProviderError_CredentialAlreadyExists() when credentialAlreadyExists != null:
+return credentialAlreadyExists(_that);case PrfProviderError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -1273,15 +1276,18 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyPrfError_PrfNotSupported value)  prfNotSupported,required TResult Function( PasskeyPrfError_UserCancelled value)  userCancelled,required TResult Function( PasskeyPrfError_CredentialNotFound value)  credentialNotFound,required TResult Function( PasskeyPrfError_AuthenticationFailed value)  authenticationFailed,required TResult Function( PasskeyPrfError_PrfEvaluationFailed value)  prfEvaluationFailed,required TResult Function( PasskeyPrfError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PrfProviderError_PrfNotSupported value)  prfNotSupported,required TResult Function( PrfProviderError_UserCancelled value)  userCancelled,required TResult Function( PrfProviderError_UserTimedOut value)  userTimedOut,required TResult Function( PrfProviderError_CredentialNotFound value)  credentialNotFound,required TResult Function( PrfProviderError_AuthenticationFailed value)  authenticationFailed,required TResult Function( PrfProviderError_PrfEvaluationFailed value)  prfEvaluationFailed,required TResult Function( PrfProviderError_Configuration value)  configuration,required TResult Function( PrfProviderError_CredentialAlreadyExists value)  credentialAlreadyExists,required TResult Function( PrfProviderError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported():
-return prfNotSupported(_that);case PasskeyPrfError_UserCancelled():
-return userCancelled(_that);case PasskeyPrfError_CredentialNotFound():
-return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed():
-return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed():
-return prfEvaluationFailed(_that);case PasskeyPrfError_Generic():
+case PrfProviderError_PrfNotSupported():
+return prfNotSupported(_that);case PrfProviderError_UserCancelled():
+return userCancelled(_that);case PrfProviderError_UserTimedOut():
+return userTimedOut(_that);case PrfProviderError_CredentialNotFound():
+return credentialNotFound(_that);case PrfProviderError_AuthenticationFailed():
+return authenticationFailed(_that);case PrfProviderError_PrfEvaluationFailed():
+return prfEvaluationFailed(_that);case PrfProviderError_Configuration():
+return configuration(_that);case PrfProviderError_CredentialAlreadyExists():
+return credentialAlreadyExists(_that);case PrfProviderError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1296,15 +1302,18 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyPrfError_PrfNotSupported value)?  prfNotSupported,TResult? Function( PasskeyPrfError_UserCancelled value)?  userCancelled,TResult? Function( PasskeyPrfError_CredentialNotFound value)?  credentialNotFound,TResult? Function( PasskeyPrfError_AuthenticationFailed value)?  authenticationFailed,TResult? Function( PasskeyPrfError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult? Function( PasskeyPrfError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PrfProviderError_PrfNotSupported value)?  prfNotSupported,TResult? Function( PrfProviderError_UserCancelled value)?  userCancelled,TResult? Function( PrfProviderError_UserTimedOut value)?  userTimedOut,TResult? Function( PrfProviderError_CredentialNotFound value)?  credentialNotFound,TResult? Function( PrfProviderError_AuthenticationFailed value)?  authenticationFailed,TResult? Function( PrfProviderError_PrfEvaluationFailed value)?  prfEvaluationFailed,TResult? Function( PrfProviderError_Configuration value)?  configuration,TResult? Function( PrfProviderError_CredentialAlreadyExists value)?  credentialAlreadyExists,TResult? Function( PrfProviderError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
-return prfNotSupported(_that);case PasskeyPrfError_UserCancelled() when userCancelled != null:
-return userCancelled(_that);case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
-return credentialNotFound(_that);case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
-return authenticationFailed(_that);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
-return prfEvaluationFailed(_that);case PasskeyPrfError_Generic() when generic != null:
+case PrfProviderError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported(_that);case PrfProviderError_UserCancelled() when userCancelled != null:
+return userCancelled(_that);case PrfProviderError_UserTimedOut() when userTimedOut != null:
+return userTimedOut(_that);case PrfProviderError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that);case PrfProviderError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that);case PrfProviderError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that);case PrfProviderError_Configuration() when configuration != null:
+return configuration(_that);case PrfProviderError_CredentialAlreadyExists() when credentialAlreadyExists != null:
+return credentialAlreadyExists(_that);case PrfProviderError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -1322,14 +1331,17 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  prfNotSupported,TResult Function()?  userCancelled,TResult Function()?  credentialNotFound,TResult Function( String field0)?  authenticationFailed,TResult Function( String field0)?  prfEvaluationFailed,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  prfNotSupported,TResult Function()?  userCancelled,TResult Function()?  userTimedOut,TResult Function( String field0)?  credentialNotFound,TResult Function( String field0)?  authenticationFailed,TResult Function( String field0)?  prfEvaluationFailed,TResult Function( String field0)?  configuration,TResult Function( String field0)?  credentialAlreadyExists,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
-return prfNotSupported();case PasskeyPrfError_UserCancelled() when userCancelled != null:
-return userCancelled();case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
-return credentialNotFound();case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
-return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
-return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic() when generic != null:
+case PrfProviderError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported();case PrfProviderError_UserCancelled() when userCancelled != null:
+return userCancelled();case PrfProviderError_UserTimedOut() when userTimedOut != null:
+return userTimedOut();case PrfProviderError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that.field0);case PrfProviderError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that.field0);case PrfProviderError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that.field0);case PrfProviderError_Configuration() when configuration != null:
+return configuration(_that.field0);case PrfProviderError_CredentialAlreadyExists() when credentialAlreadyExists != null:
+return credentialAlreadyExists(_that.field0);case PrfProviderError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return orElse();
 
@@ -1348,14 +1360,17 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  prfNotSupported,required TResult Function()  userCancelled,required TResult Function()  credentialNotFound,required TResult Function( String field0)  authenticationFailed,required TResult Function( String field0)  prfEvaluationFailed,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  prfNotSupported,required TResult Function()  userCancelled,required TResult Function()  userTimedOut,required TResult Function( String field0)  credentialNotFound,required TResult Function( String field0)  authenticationFailed,required TResult Function( String field0)  prfEvaluationFailed,required TResult Function( String field0)  configuration,required TResult Function( String field0)  credentialAlreadyExists,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported():
-return prfNotSupported();case PasskeyPrfError_UserCancelled():
-return userCancelled();case PasskeyPrfError_CredentialNotFound():
-return credentialNotFound();case PasskeyPrfError_AuthenticationFailed():
-return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed():
-return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic():
+case PrfProviderError_PrfNotSupported():
+return prfNotSupported();case PrfProviderError_UserCancelled():
+return userCancelled();case PrfProviderError_UserTimedOut():
+return userTimedOut();case PrfProviderError_CredentialNotFound():
+return credentialNotFound(_that.field0);case PrfProviderError_AuthenticationFailed():
+return authenticationFailed(_that.field0);case PrfProviderError_PrfEvaluationFailed():
+return prfEvaluationFailed(_that.field0);case PrfProviderError_Configuration():
+return configuration(_that.field0);case PrfProviderError_CredentialAlreadyExists():
+return credentialAlreadyExists(_that.field0);case PrfProviderError_Generic():
 return generic(_that.field0);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1370,14 +1385,17 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  prfNotSupported,TResult? Function()?  userCancelled,TResult? Function()?  credentialNotFound,TResult? Function( String field0)?  authenticationFailed,TResult? Function( String field0)?  prfEvaluationFailed,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  prfNotSupported,TResult? Function()?  userCancelled,TResult? Function()?  userTimedOut,TResult? Function( String field0)?  credentialNotFound,TResult? Function( String field0)?  authenticationFailed,TResult? Function( String field0)?  prfEvaluationFailed,TResult? Function( String field0)?  configuration,TResult? Function( String field0)?  credentialAlreadyExists,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
-case PasskeyPrfError_PrfNotSupported() when prfNotSupported != null:
-return prfNotSupported();case PasskeyPrfError_UserCancelled() when userCancelled != null:
-return userCancelled();case PasskeyPrfError_CredentialNotFound() when credentialNotFound != null:
-return credentialNotFound();case PasskeyPrfError_AuthenticationFailed() when authenticationFailed != null:
-return authenticationFailed(_that.field0);case PasskeyPrfError_PrfEvaluationFailed() when prfEvaluationFailed != null:
-return prfEvaluationFailed(_that.field0);case PasskeyPrfError_Generic() when generic != null:
+case PrfProviderError_PrfNotSupported() when prfNotSupported != null:
+return prfNotSupported();case PrfProviderError_UserCancelled() when userCancelled != null:
+return userCancelled();case PrfProviderError_UserTimedOut() when userTimedOut != null:
+return userTimedOut();case PrfProviderError_CredentialNotFound() when credentialNotFound != null:
+return credentialNotFound(_that.field0);case PrfProviderError_AuthenticationFailed() when authenticationFailed != null:
+return authenticationFailed(_that.field0);case PrfProviderError_PrfEvaluationFailed() when prfEvaluationFailed != null:
+return prfEvaluationFailed(_that.field0);case PrfProviderError_Configuration() when configuration != null:
+return configuration(_that.field0);case PrfProviderError_CredentialAlreadyExists() when credentialAlreadyExists != null:
+return credentialAlreadyExists(_that.field0);case PrfProviderError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return null;
 
@@ -1389,8 +1407,8 @@ return generic(_that.field0);case _:
 /// @nodoc
 
 
-class PasskeyPrfError_PrfNotSupported extends PasskeyPrfError {
-  const PasskeyPrfError_PrfNotSupported(): super._();
+class PrfProviderError_PrfNotSupported extends PrfProviderError {
+  const PrfProviderError_PrfNotSupported(): super._();
   
 
 
@@ -1400,7 +1418,7 @@ class PasskeyPrfError_PrfNotSupported extends PasskeyPrfError {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_PrfNotSupported);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_PrfNotSupported);
 }
 
 
@@ -1409,7 +1427,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PasskeyPrfError.prfNotSupported()';
+  return 'PrfProviderError.prfNotSupported()';
 }
 
 
@@ -1421,8 +1439,8 @@ String toString() {
 /// @nodoc
 
 
-class PasskeyPrfError_UserCancelled extends PasskeyPrfError {
-  const PasskeyPrfError_UserCancelled(): super._();
+class PrfProviderError_UserCancelled extends PrfProviderError {
+  const PrfProviderError_UserCancelled(): super._();
   
 
 
@@ -1432,7 +1450,7 @@ class PasskeyPrfError_UserCancelled extends PasskeyPrfError {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_UserCancelled);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_UserCancelled);
 }
 
 
@@ -1441,7 +1459,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PasskeyPrfError.userCancelled()';
+  return 'PrfProviderError.userCancelled()';
 }
 
 
@@ -1453,8 +1471,8 @@ String toString() {
 /// @nodoc
 
 
-class PasskeyPrfError_CredentialNotFound extends PasskeyPrfError {
-  const PasskeyPrfError_CredentialNotFound(): super._();
+class PrfProviderError_UserTimedOut extends PrfProviderError {
+  const PrfProviderError_UserTimedOut(): super._();
   
 
 
@@ -1464,7 +1482,7 @@ class PasskeyPrfError_CredentialNotFound extends PasskeyPrfError {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_CredentialNotFound);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_UserTimedOut);
 }
 
 
@@ -1473,7 +1491,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PasskeyPrfError.credentialNotFound()';
+  return 'PrfProviderError.userTimedOut()';
 }
 
 
@@ -1485,23 +1503,23 @@ String toString() {
 /// @nodoc
 
 
-class PasskeyPrfError_AuthenticationFailed extends PasskeyPrfError {
-  const PasskeyPrfError_AuthenticationFailed(this.field0): super._();
+class PrfProviderError_CredentialNotFound extends PrfProviderError {
+  const PrfProviderError_CredentialNotFound(this.field0): super._();
   
 
  final  String field0;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PasskeyPrfError_AuthenticationFailedCopyWith<PasskeyPrfError_AuthenticationFailed> get copyWith => _$PasskeyPrfError_AuthenticationFailedCopyWithImpl<PasskeyPrfError_AuthenticationFailed>(this, _$identity);
+$PrfProviderError_CredentialNotFoundCopyWith<PrfProviderError_CredentialNotFound> get copyWith => _$PrfProviderError_CredentialNotFoundCopyWithImpl<PrfProviderError_CredentialNotFound>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_AuthenticationFailed&&(identical(other.field0, field0) || other.field0 == field0));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_CredentialNotFound&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
@@ -1510,15 +1528,15 @@ int get hashCode => Object.hash(runtimeType,field0);
 
 @override
 String toString() {
-  return 'PasskeyPrfError.authenticationFailed(field0: $field0)';
+  return 'PrfProviderError.credentialNotFound(field0: $field0)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PasskeyPrfError_AuthenticationFailedCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
-  factory $PasskeyPrfError_AuthenticationFailedCopyWith(PasskeyPrfError_AuthenticationFailed value, $Res Function(PasskeyPrfError_AuthenticationFailed) _then) = _$PasskeyPrfError_AuthenticationFailedCopyWithImpl;
+abstract mixin class $PrfProviderError_CredentialNotFoundCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_CredentialNotFoundCopyWith(PrfProviderError_CredentialNotFound value, $Res Function(PrfProviderError_CredentialNotFound) _then) = _$PrfProviderError_CredentialNotFoundCopyWithImpl;
 @useResult
 $Res call({
  String field0
@@ -1529,17 +1547,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$PasskeyPrfError_AuthenticationFailedCopyWithImpl<$Res>
-    implements $PasskeyPrfError_AuthenticationFailedCopyWith<$Res> {
-  _$PasskeyPrfError_AuthenticationFailedCopyWithImpl(this._self, this._then);
+class _$PrfProviderError_CredentialNotFoundCopyWithImpl<$Res>
+    implements $PrfProviderError_CredentialNotFoundCopyWith<$Res> {
+  _$PrfProviderError_CredentialNotFoundCopyWithImpl(this._self, this._then);
 
-  final PasskeyPrfError_AuthenticationFailed _self;
-  final $Res Function(PasskeyPrfError_AuthenticationFailed) _then;
+  final PrfProviderError_CredentialNotFound _self;
+  final $Res Function(PrfProviderError_CredentialNotFound) _then;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
-  return _then(PasskeyPrfError_AuthenticationFailed(
+  return _then(PrfProviderError_CredentialNotFound(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1551,23 +1569,23 @@ as String,
 /// @nodoc
 
 
-class PasskeyPrfError_PrfEvaluationFailed extends PasskeyPrfError {
-  const PasskeyPrfError_PrfEvaluationFailed(this.field0): super._();
+class PrfProviderError_AuthenticationFailed extends PrfProviderError {
+  const PrfProviderError_AuthenticationFailed(this.field0): super._();
   
 
  final  String field0;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PasskeyPrfError_PrfEvaluationFailedCopyWith<PasskeyPrfError_PrfEvaluationFailed> get copyWith => _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl<PasskeyPrfError_PrfEvaluationFailed>(this, _$identity);
+$PrfProviderError_AuthenticationFailedCopyWith<PrfProviderError_AuthenticationFailed> get copyWith => _$PrfProviderError_AuthenticationFailedCopyWithImpl<PrfProviderError_AuthenticationFailed>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_PrfEvaluationFailed&&(identical(other.field0, field0) || other.field0 == field0));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_AuthenticationFailed&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
@@ -1576,15 +1594,15 @@ int get hashCode => Object.hash(runtimeType,field0);
 
 @override
 String toString() {
-  return 'PasskeyPrfError.prfEvaluationFailed(field0: $field0)';
+  return 'PrfProviderError.authenticationFailed(field0: $field0)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PasskeyPrfError_PrfEvaluationFailedCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
-  factory $PasskeyPrfError_PrfEvaluationFailedCopyWith(PasskeyPrfError_PrfEvaluationFailed value, $Res Function(PasskeyPrfError_PrfEvaluationFailed) _then) = _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl;
+abstract mixin class $PrfProviderError_AuthenticationFailedCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_AuthenticationFailedCopyWith(PrfProviderError_AuthenticationFailed value, $Res Function(PrfProviderError_AuthenticationFailed) _then) = _$PrfProviderError_AuthenticationFailedCopyWithImpl;
 @useResult
 $Res call({
  String field0
@@ -1595,17 +1613,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl<$Res>
-    implements $PasskeyPrfError_PrfEvaluationFailedCopyWith<$Res> {
-  _$PasskeyPrfError_PrfEvaluationFailedCopyWithImpl(this._self, this._then);
+class _$PrfProviderError_AuthenticationFailedCopyWithImpl<$Res>
+    implements $PrfProviderError_AuthenticationFailedCopyWith<$Res> {
+  _$PrfProviderError_AuthenticationFailedCopyWithImpl(this._self, this._then);
 
-  final PasskeyPrfError_PrfEvaluationFailed _self;
-  final $Res Function(PasskeyPrfError_PrfEvaluationFailed) _then;
+  final PrfProviderError_AuthenticationFailed _self;
+  final $Res Function(PrfProviderError_AuthenticationFailed) _then;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
-  return _then(PasskeyPrfError_PrfEvaluationFailed(
+  return _then(PrfProviderError_AuthenticationFailed(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1617,23 +1635,23 @@ as String,
 /// @nodoc
 
 
-class PasskeyPrfError_Generic extends PasskeyPrfError {
-  const PasskeyPrfError_Generic(this.field0): super._();
+class PrfProviderError_PrfEvaluationFailed extends PrfProviderError {
+  const PrfProviderError_PrfEvaluationFailed(this.field0): super._();
   
 
  final  String field0;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PasskeyPrfError_GenericCopyWith<PasskeyPrfError_Generic> get copyWith => _$PasskeyPrfError_GenericCopyWithImpl<PasskeyPrfError_Generic>(this, _$identity);
+$PrfProviderError_PrfEvaluationFailedCopyWith<PrfProviderError_PrfEvaluationFailed> get copyWith => _$PrfProviderError_PrfEvaluationFailedCopyWithImpl<PrfProviderError_PrfEvaluationFailed>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyPrfError_Generic&&(identical(other.field0, field0) || other.field0 == field0));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_PrfEvaluationFailed&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
@@ -1642,15 +1660,15 @@ int get hashCode => Object.hash(runtimeType,field0);
 
 @override
 String toString() {
-  return 'PasskeyPrfError.generic(field0: $field0)';
+  return 'PrfProviderError.prfEvaluationFailed(field0: $field0)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PasskeyPrfError_GenericCopyWith<$Res> implements $PasskeyPrfErrorCopyWith<$Res> {
-  factory $PasskeyPrfError_GenericCopyWith(PasskeyPrfError_Generic value, $Res Function(PasskeyPrfError_Generic) _then) = _$PasskeyPrfError_GenericCopyWithImpl;
+abstract mixin class $PrfProviderError_PrfEvaluationFailedCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_PrfEvaluationFailedCopyWith(PrfProviderError_PrfEvaluationFailed value, $Res Function(PrfProviderError_PrfEvaluationFailed) _then) = _$PrfProviderError_PrfEvaluationFailedCopyWithImpl;
 @useResult
 $Res call({
  String field0
@@ -1661,17 +1679,215 @@ $Res call({
 
 }
 /// @nodoc
-class _$PasskeyPrfError_GenericCopyWithImpl<$Res>
-    implements $PasskeyPrfError_GenericCopyWith<$Res> {
-  _$PasskeyPrfError_GenericCopyWithImpl(this._self, this._then);
+class _$PrfProviderError_PrfEvaluationFailedCopyWithImpl<$Res>
+    implements $PrfProviderError_PrfEvaluationFailedCopyWith<$Res> {
+  _$PrfProviderError_PrfEvaluationFailedCopyWithImpl(this._self, this._then);
 
-  final PasskeyPrfError_Generic _self;
-  final $Res Function(PasskeyPrfError_Generic) _then;
+  final PrfProviderError_PrfEvaluationFailed _self;
+  final $Res Function(PrfProviderError_PrfEvaluationFailed) _then;
 
-/// Create a copy of PasskeyPrfError
+/// Create a copy of PrfProviderError
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
-  return _then(PasskeyPrfError_Generic(
+  return _then(PrfProviderError_PrfEvaluationFailed(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PrfProviderError_Configuration extends PrfProviderError {
+  const PrfProviderError_Configuration(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PrfProviderError_ConfigurationCopyWith<PrfProviderError_Configuration> get copyWith => _$PrfProviderError_ConfigurationCopyWithImpl<PrfProviderError_Configuration>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_Configuration&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PrfProviderError.configuration(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PrfProviderError_ConfigurationCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_ConfigurationCopyWith(PrfProviderError_Configuration value, $Res Function(PrfProviderError_Configuration) _then) = _$PrfProviderError_ConfigurationCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PrfProviderError_ConfigurationCopyWithImpl<$Res>
+    implements $PrfProviderError_ConfigurationCopyWith<$Res> {
+  _$PrfProviderError_ConfigurationCopyWithImpl(this._self, this._then);
+
+  final PrfProviderError_Configuration _self;
+  final $Res Function(PrfProviderError_Configuration) _then;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PrfProviderError_Configuration(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PrfProviderError_CredentialAlreadyExists extends PrfProviderError {
+  const PrfProviderError_CredentialAlreadyExists(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PrfProviderError_CredentialAlreadyExistsCopyWith<PrfProviderError_CredentialAlreadyExists> get copyWith => _$PrfProviderError_CredentialAlreadyExistsCopyWithImpl<PrfProviderError_CredentialAlreadyExists>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_CredentialAlreadyExists&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PrfProviderError.credentialAlreadyExists(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PrfProviderError_CredentialAlreadyExistsCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_CredentialAlreadyExistsCopyWith(PrfProviderError_CredentialAlreadyExists value, $Res Function(PrfProviderError_CredentialAlreadyExists) _then) = _$PrfProviderError_CredentialAlreadyExistsCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PrfProviderError_CredentialAlreadyExistsCopyWithImpl<$Res>
+    implements $PrfProviderError_CredentialAlreadyExistsCopyWith<$Res> {
+  _$PrfProviderError_CredentialAlreadyExistsCopyWithImpl(this._self, this._then);
+
+  final PrfProviderError_CredentialAlreadyExists _self;
+  final $Res Function(PrfProviderError_CredentialAlreadyExists) _then;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PrfProviderError_CredentialAlreadyExists(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PrfProviderError_Generic extends PrfProviderError {
+  const PrfProviderError_Generic(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PrfProviderError_GenericCopyWith<PrfProviderError_Generic> get copyWith => _$PrfProviderError_GenericCopyWithImpl<PrfProviderError_Generic>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PrfProviderError_Generic&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PrfProviderError.generic(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PrfProviderError_GenericCopyWith<$Res> implements $PrfProviderErrorCopyWith<$Res> {
+  factory $PrfProviderError_GenericCopyWith(PrfProviderError_Generic value, $Res Function(PrfProviderError_Generic) _then) = _$PrfProviderError_GenericCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PrfProviderError_GenericCopyWithImpl<$Res>
+    implements $PrfProviderError_GenericCopyWith<$Res> {
+  _$PrfProviderError_GenericCopyWithImpl(this._self, this._then);
+
+  final PrfProviderError_Generic _self;
+  final $Res Function(PrfProviderError_Generic) _then;
+
+/// Create a copy of PrfProviderError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PrfProviderError_Generic(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1724,7 +1940,7 @@ extension SdkErrorPatterns on SdkError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -1738,7 +1954,9 @@ return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when 
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
 return missingUtxo(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
-return signer(_that);case SdkError_Generic() when generic != null:
+return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
+return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
+return optimizationCancelled(_that);case SdkError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -1757,7 +1975,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError():
@@ -1771,7 +1989,9 @@ return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded():
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo():
 return missingUtxo(_that);case SdkError_LnurlError():
 return lnurlError(_that);case SdkError_Signer():
-return signer(_that);case SdkError_Generic():
+return signer(_that);case SdkError_OptimizationAlreadyRunning():
+return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled():
+return optimizationCancelled(_that);case SdkError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1786,7 +2006,7 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -1800,7 +2020,9 @@ return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when 
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
 return missingUtxo(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
-return signer(_that);case SdkError_Generic() when generic != null:
+return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
+return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
+return optimizationCancelled(_that);case SdkError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -1818,7 +2040,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function()?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function()?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
@@ -1831,7 +2053,9 @@ return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded(
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
 return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
-return signer(_that.field0);case SdkError_Generic() when generic != null:
+return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
+return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
+return optimizationCancelled();case SdkError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return orElse();
 
@@ -1850,7 +2074,7 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function()  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function()  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that.field0);case SdkError_InsufficientFunds():
@@ -1863,7 +2087,9 @@ return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded(
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo():
 return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError():
 return lnurlError(_that.field0);case SdkError_Signer():
-return signer(_that.field0);case SdkError_Generic():
+return signer(_that.field0);case SdkError_OptimizationAlreadyRunning():
+return optimizationAlreadyRunning();case SdkError_OptimizationCancelled():
+return optimizationCancelled();case SdkError_Generic():
 return generic(_that.field0);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1878,7 +2104,7 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function()?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function()?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
@@ -1891,7 +2117,9 @@ return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded(
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
 return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
-return signer(_that.field0);case SdkError_Generic() when generic != null:
+return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
+return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
+return optimizationCancelled();case SdkError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return null;
 
@@ -2613,6 +2841,70 @@ as String,
 
 
 }
+
+/// @nodoc
+
+
+class SdkError_OptimizationAlreadyRunning extends SdkError {
+  const SdkError_OptimizationAlreadyRunning(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_OptimizationAlreadyRunning);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SdkError.optimizationAlreadyRunning()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SdkError_OptimizationCancelled extends SdkError {
+  const SdkError_OptimizationCancelled(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_OptimizationCancelled);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SdkError.optimizationCancelled()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 

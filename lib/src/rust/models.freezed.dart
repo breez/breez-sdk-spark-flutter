@@ -3774,6 +3774,634 @@ as BigInt,
 }
 
 /// @nodoc
+mixin _$OptimizationOutcome {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationOutcome);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OptimizationOutcome()';
+}
+
+
+}
+
+/// @nodoc
+class $OptimizationOutcomeCopyWith<$Res>  {
+$OptimizationOutcomeCopyWith(OptimizationOutcome _, $Res Function(OptimizationOutcome) __);
+}
+
+
+/// Adds pattern-matching-related methods to [OptimizationOutcome].
+extension OptimizationOutcomePatterns on OptimizationOutcome {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( OptimizationOutcome_Completed value)?  completed,TResult Function( OptimizationOutcome_InProgress value)?  inProgress,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed() when completed != null:
+return completed(_that);case OptimizationOutcome_InProgress() when inProgress != null:
+return inProgress(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( OptimizationOutcome_Completed value)  completed,required TResult Function( OptimizationOutcome_InProgress value)  inProgress,}){
+final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed():
+return completed(_that);case OptimizationOutcome_InProgress():
+return inProgress(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( OptimizationOutcome_Completed value)?  completed,TResult? Function( OptimizationOutcome_InProgress value)?  inProgress,}){
+final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed() when completed != null:
+return completed(_that);case OptimizationOutcome_InProgress() when inProgress != null:
+return inProgress(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int roundsExecuted)?  completed,TResult Function()?  inProgress,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed() when completed != null:
+return completed(_that.roundsExecuted);case OptimizationOutcome_InProgress() when inProgress != null:
+return inProgress();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int roundsExecuted)  completed,required TResult Function()  inProgress,}) {final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed():
+return completed(_that.roundsExecuted);case OptimizationOutcome_InProgress():
+return inProgress();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int roundsExecuted)?  completed,TResult? Function()?  inProgress,}) {final _that = this;
+switch (_that) {
+case OptimizationOutcome_Completed() when completed != null:
+return completed(_that.roundsExecuted);case OptimizationOutcome_InProgress() when inProgress != null:
+return inProgress();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class OptimizationOutcome_Completed extends OptimizationOutcome {
+  const OptimizationOutcome_Completed({required this.roundsExecuted}): super._();
+  
+
+ final  int roundsExecuted;
+
+/// Create a copy of OptimizationOutcome
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OptimizationOutcome_CompletedCopyWith<OptimizationOutcome_Completed> get copyWith => _$OptimizationOutcome_CompletedCopyWithImpl<OptimizationOutcome_Completed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationOutcome_Completed&&(identical(other.roundsExecuted, roundsExecuted) || other.roundsExecuted == roundsExecuted));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,roundsExecuted);
+
+@override
+String toString() {
+  return 'OptimizationOutcome.completed(roundsExecuted: $roundsExecuted)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $OptimizationOutcome_CompletedCopyWith<$Res> implements $OptimizationOutcomeCopyWith<$Res> {
+  factory $OptimizationOutcome_CompletedCopyWith(OptimizationOutcome_Completed value, $Res Function(OptimizationOutcome_Completed) _then) = _$OptimizationOutcome_CompletedCopyWithImpl;
+@useResult
+$Res call({
+ int roundsExecuted
+});
+
+
+
+
+}
+/// @nodoc
+class _$OptimizationOutcome_CompletedCopyWithImpl<$Res>
+    implements $OptimizationOutcome_CompletedCopyWith<$Res> {
+  _$OptimizationOutcome_CompletedCopyWithImpl(this._self, this._then);
+
+  final OptimizationOutcome_Completed _self;
+  final $Res Function(OptimizationOutcome_Completed) _then;
+
+/// Create a copy of OptimizationOutcome
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? roundsExecuted = null,}) {
+  return _then(OptimizationOutcome_Completed(
+roundsExecuted: null == roundsExecuted ? _self.roundsExecuted : roundsExecuted // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class OptimizationOutcome_InProgress extends OptimizationOutcome {
+  const OptimizationOutcome_InProgress(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OptimizationOutcome_InProgress);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'OptimizationOutcome.inProgress()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$PasskeyAvailability {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyAvailability);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyAvailability()';
+}
+
+
+}
+
+/// @nodoc
+class $PasskeyAvailabilityCopyWith<$Res>  {
+$PasskeyAvailabilityCopyWith(PasskeyAvailability _, $Res Function(PasskeyAvailability) __);
+}
+
+
+/// Adds pattern-matching-related methods to [PasskeyAvailability].
+extension PasskeyAvailabilityPatterns on PasskeyAvailability {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyAvailability_Available value)?  available,TResult Function( PasskeyAvailability_PrfUnsupported value)?  prfUnsupported,TResult Function( PasskeyAvailability_NotAssociated value)?  notAssociated,TResult Function( PasskeyAvailability_Skipped value)?  skipped,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available() when available != null:
+return available(_that);case PasskeyAvailability_PrfUnsupported() when prfUnsupported != null:
+return prfUnsupported(_that);case PasskeyAvailability_NotAssociated() when notAssociated != null:
+return notAssociated(_that);case PasskeyAvailability_Skipped() when skipped != null:
+return skipped(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyAvailability_Available value)  available,required TResult Function( PasskeyAvailability_PrfUnsupported value)  prfUnsupported,required TResult Function( PasskeyAvailability_NotAssociated value)  notAssociated,required TResult Function( PasskeyAvailability_Skipped value)  skipped,}){
+final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available():
+return available(_that);case PasskeyAvailability_PrfUnsupported():
+return prfUnsupported(_that);case PasskeyAvailability_NotAssociated():
+return notAssociated(_that);case PasskeyAvailability_Skipped():
+return skipped(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyAvailability_Available value)?  available,TResult? Function( PasskeyAvailability_PrfUnsupported value)?  prfUnsupported,TResult? Function( PasskeyAvailability_NotAssociated value)?  notAssociated,TResult? Function( PasskeyAvailability_Skipped value)?  skipped,}){
+final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available() when available != null:
+return available(_that);case PasskeyAvailability_PrfUnsupported() when prfUnsupported != null:
+return prfUnsupported(_that);case PasskeyAvailability_NotAssociated() when notAssociated != null:
+return notAssociated(_that);case PasskeyAvailability_Skipped() when skipped != null:
+return skipped(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  available,TResult Function()?  prfUnsupported,TResult Function( String source,  String reason)?  notAssociated,TResult Function( String reason)?  skipped,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available() when available != null:
+return available();case PasskeyAvailability_PrfUnsupported() when prfUnsupported != null:
+return prfUnsupported();case PasskeyAvailability_NotAssociated() when notAssociated != null:
+return notAssociated(_that.source,_that.reason);case PasskeyAvailability_Skipped() when skipped != null:
+return skipped(_that.reason);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  available,required TResult Function()  prfUnsupported,required TResult Function( String source,  String reason)  notAssociated,required TResult Function( String reason)  skipped,}) {final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available():
+return available();case PasskeyAvailability_PrfUnsupported():
+return prfUnsupported();case PasskeyAvailability_NotAssociated():
+return notAssociated(_that.source,_that.reason);case PasskeyAvailability_Skipped():
+return skipped(_that.reason);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  available,TResult? Function()?  prfUnsupported,TResult? Function( String source,  String reason)?  notAssociated,TResult? Function( String reason)?  skipped,}) {final _that = this;
+switch (_that) {
+case PasskeyAvailability_Available() when available != null:
+return available();case PasskeyAvailability_PrfUnsupported() when prfUnsupported != null:
+return prfUnsupported();case PasskeyAvailability_NotAssociated() when notAssociated != null:
+return notAssociated(_that.source,_that.reason);case PasskeyAvailability_Skipped() when skipped != null:
+return skipped(_that.reason);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class PasskeyAvailability_Available extends PasskeyAvailability {
+  const PasskeyAvailability_Available(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyAvailability_Available);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyAvailability.available()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PasskeyAvailability_PrfUnsupported extends PasskeyAvailability {
+  const PasskeyAvailability_PrfUnsupported(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyAvailability_PrfUnsupported);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PasskeyAvailability.prfUnsupported()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PasskeyAvailability_NotAssociated extends PasskeyAvailability {
+  const PasskeyAvailability_NotAssociated({required this.source, required this.reason}): super._();
+  
+
+ final  String source;
+ final  String reason;
+
+/// Create a copy of PasskeyAvailability
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyAvailability_NotAssociatedCopyWith<PasskeyAvailability_NotAssociated> get copyWith => _$PasskeyAvailability_NotAssociatedCopyWithImpl<PasskeyAvailability_NotAssociated>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyAvailability_NotAssociated&&(identical(other.source, source) || other.source == source)&&(identical(other.reason, reason) || other.reason == reason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,source,reason);
+
+@override
+String toString() {
+  return 'PasskeyAvailability.notAssociated(source: $source, reason: $reason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyAvailability_NotAssociatedCopyWith<$Res> implements $PasskeyAvailabilityCopyWith<$Res> {
+  factory $PasskeyAvailability_NotAssociatedCopyWith(PasskeyAvailability_NotAssociated value, $Res Function(PasskeyAvailability_NotAssociated) _then) = _$PasskeyAvailability_NotAssociatedCopyWithImpl;
+@useResult
+$Res call({
+ String source, String reason
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyAvailability_NotAssociatedCopyWithImpl<$Res>
+    implements $PasskeyAvailability_NotAssociatedCopyWith<$Res> {
+  _$PasskeyAvailability_NotAssociatedCopyWithImpl(this._self, this._then);
+
+  final PasskeyAvailability_NotAssociated _self;
+  final $Res Function(PasskeyAvailability_NotAssociated) _then;
+
+/// Create a copy of PasskeyAvailability
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? source = null,Object? reason = null,}) {
+  return _then(PasskeyAvailability_NotAssociated(
+source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as String,reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class PasskeyAvailability_Skipped extends PasskeyAvailability {
+  const PasskeyAvailability_Skipped({required this.reason}): super._();
+  
+
+ final  String reason;
+
+/// Create a copy of PasskeyAvailability
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyAvailability_SkippedCopyWith<PasskeyAvailability_Skipped> get copyWith => _$PasskeyAvailability_SkippedCopyWithImpl<PasskeyAvailability_Skipped>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyAvailability_Skipped&&(identical(other.reason, reason) || other.reason == reason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason);
+
+@override
+String toString() {
+  return 'PasskeyAvailability.skipped(reason: $reason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyAvailability_SkippedCopyWith<$Res> implements $PasskeyAvailabilityCopyWith<$Res> {
+  factory $PasskeyAvailability_SkippedCopyWith(PasskeyAvailability_Skipped value, $Res Function(PasskeyAvailability_Skipped) _then) = _$PasskeyAvailability_SkippedCopyWithImpl;
+@useResult
+$Res call({
+ String reason
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyAvailability_SkippedCopyWithImpl<$Res>
+    implements $PasskeyAvailability_SkippedCopyWith<$Res> {
+  _$PasskeyAvailability_SkippedCopyWithImpl(this._self, this._then);
+
+  final PasskeyAvailability_Skipped _self;
+  final $Res Function(PasskeyAvailability_Skipped) _then;
+
+/// Create a copy of PasskeyAvailability
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,}) {
+  return _then(PasskeyAvailability_Skipped(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$PaymentDetails {
 
 
@@ -3890,14 +4518,14 @@ return deposit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId)?  deposit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult Function( String txId)?  withdraw,TResult Function( String txId,  int vout)?  deposit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
-return deposit(_that.txId);case _:
+return deposit(_that.txId,_that.vout);case _:
   return orElse();
 
 }
@@ -3915,14 +4543,14 @@ return deposit(_that.txId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId)  deposit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)  lightning,required TResult Function( String txId)  withdraw,required TResult Function( String txId,  int vout)  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark():
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token():
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning():
 return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw():
 return withdraw(_that.txId);case PaymentDetails_Deposit():
-return deposit(_that.txId);}
+return deposit(_that.txId,_that.vout);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -3936,14 +4564,14 @@ return deposit(_that.txId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId)?  deposit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata)?  lightning,TResult? Function( String txId)?  withdraw,TResult? Function( String txId,  int vout)?  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
 return token(_that.metadata,_that.txHash,_that.txType,_that.invoiceDetails,_that.conversionInfo);case PaymentDetails_Lightning() when lightning != null:
 return lightning(_that.description,_that.invoice,_that.destinationPubkey,_that.htlcDetails,_that.lnurlPayInfo,_that.lnurlWithdrawInfo,_that.lnurlReceiveMetadata);case PaymentDetails_Withdraw() when withdraw != null:
 return withdraw(_that.txId);case PaymentDetails_Deposit() when deposit != null:
-return deposit(_that.txId);case _:
+return deposit(_that.txId,_that.vout);case _:
   return null;
 
 }
@@ -4243,10 +4871,11 @@ as String,
 
 
 class PaymentDetails_Deposit extends PaymentDetails {
-  const PaymentDetails_Deposit({required this.txId}): super._();
+  const PaymentDetails_Deposit({required this.txId, required this.vout}): super._();
   
 
  final  String txId;
+ final  int vout;
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
@@ -4258,16 +4887,16 @@ $PaymentDetails_DepositCopyWith<PaymentDetails_Deposit> get copyWith => _$Paymen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Deposit&&(identical(other.txId, txId) || other.txId == txId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentDetails_Deposit&&(identical(other.txId, txId) || other.txId == txId)&&(identical(other.vout, vout) || other.vout == vout));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,txId);
+int get hashCode => Object.hash(runtimeType,txId,vout);
 
 @override
 String toString() {
-  return 'PaymentDetails.deposit(txId: $txId)';
+  return 'PaymentDetails.deposit(txId: $txId, vout: $vout)';
 }
 
 
@@ -4278,7 +4907,7 @@ abstract mixin class $PaymentDetails_DepositCopyWith<$Res> implements $PaymentDe
   factory $PaymentDetails_DepositCopyWith(PaymentDetails_Deposit value, $Res Function(PaymentDetails_Deposit) _then) = _$PaymentDetails_DepositCopyWithImpl;
 @useResult
 $Res call({
- String txId
+ String txId, int vout
 });
 
 
@@ -4295,10 +4924,11 @@ class _$PaymentDetails_DepositCopyWithImpl<$Res>
 
 /// Create a copy of PaymentDetails
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? txId = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? txId = null,Object? vout = null,}) {
   return _then(PaymentDetails_Deposit(
 txId: null == txId ? _self.txId : txId // ignore: cast_nullable_to_non_nullable
-as String,
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

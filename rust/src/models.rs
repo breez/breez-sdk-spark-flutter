@@ -121,13 +121,6 @@ pub struct _ConnectRequest {
     pub storage_dir: String,
 }
 
-#[frb(mirror(KeySetConfig))]
-pub struct _KeySetConfig {
-    pub key_set_type: KeySetType,
-    pub use_address_index: bool,
-    pub account_number: Option<u32>,
-}
-
 #[frb(mirror(CheckMessageRequest))]
 pub struct _CheckMessageRequest {
     pub message: String,
@@ -586,8 +579,14 @@ pub enum _Network {
     Regtest,
 }
 
-#[frb(mirror(SdkContextConfig))]
-pub struct _SdkContextConfig {
+/// Flutter-side counterpart of
+/// [`breez_sdk_spark::SdkContextConfig`](breez_sdk_spark::SdkContextConfig).
+///
+/// Not a mirror: the upstream type carries an `Arc<dyn StorageBackend>` that
+/// the Flutter bridge doesn't bridge today. Storage is configured per-SDK via
+/// [`SdkBuilder::with_default_storage`](crate::sdk_builder::SdkBuilder::with_default_storage)
+/// instead.
+pub struct SdkContextConfig {
     pub network: Network,
     pub api_key: Option<String>,
     pub connections_per_operator: Option<u32>,
@@ -657,6 +656,7 @@ pub enum _PaymentDetails {
     },
     Deposit {
         tx_id: String,
+        vout: u32,
     },
 }
 
@@ -923,6 +923,24 @@ pub struct _RegisterLightningAddressRequest {
     pub description: Option<String>,
 }
 
+#[frb(mirror(TransferAuthorization))]
+pub struct _TransferAuthorization {
+    pub username: String,
+    pub pubkey: String,
+    pub signature: String,
+}
+
+#[frb(mirror(AuthorizeTransferRequest))]
+pub struct _AuthorizeTransferRequest {
+    pub transferee_pubkey: String,
+}
+
+#[frb(mirror(ClaimTransferRequest))]
+pub struct _ClaimTransferRequest {
+    pub authorization: TransferAuthorization,
+    pub description: Option<String>,
+}
+
 #[frb(mirror(LnurlInfo))]
 pub struct _LnurlInfo {
     pub url: String,
@@ -935,15 +953,6 @@ pub struct _LightningAddressInfo {
     pub lightning_address: String,
     pub lnurl: LnurlInfo,
     pub username: String,
-}
-
-#[frb(mirror(KeySetType))]
-pub enum _KeySetType {
-    Default,
-    Taproot,
-    NativeSegwit,
-    WrappedSegwit,
-    Legacy,
 }
 
 #[frb(mirror(ListFiatCurrenciesResponse))]
@@ -1136,11 +1145,26 @@ pub struct _ClaimHtlcPaymentResponse {
     pub payment: Payment,
 }
 
-#[frb(mirror(OptimizationProgress))]
-pub struct _OptimizationProgress {
-    pub is_running: bool,
-    pub current_round: u32,
-    pub total_rounds: u32,
+#[frb(mirror(OptimizationMode))]
+pub enum _OptimizationMode {
+    Full,
+    SingleRound,
+}
+
+#[frb(mirror(OptimizeLeavesRequest))]
+pub struct _OptimizeLeavesRequest {
+    pub mode: OptimizationMode,
+}
+
+#[frb(mirror(OptimizationOutcome))]
+pub enum _OptimizationOutcome {
+    Completed { rounds_executed: u32 },
+    InProgress,
+}
+
+#[frb(mirror(OptimizeLeavesResponse))]
+pub struct _OptimizeLeavesResponse {
+    pub outcome: OptimizationOutcome,
 }
 
 #[frb(mirror(ConversionEstimate))]
@@ -1295,14 +1319,90 @@ pub struct _UnregisterWebhookRequest {
     pub webhook_id: String,
 }
 
-#[frb(mirror(NostrRelayConfig))]
-pub struct _NostrRelayConfig {
-    pub breez_api_key: Option<String>,
-    pub timeout_secs: Option<u32>,
+#[frb(mirror(PasskeyProviderOptions))]
+pub struct _PasskeyProviderOptions {
+    pub rp_id: Option<String>,
+    pub rp_name: Option<String>,
+    pub user_name: Option<String>,
+    pub user_display_name: Option<String>,
+}
+
+#[frb(mirror(PasskeyConfig))]
+pub struct _PasskeyConfig {
+    pub default_label: Option<String>,
+    pub provider_options: Option<PasskeyProviderOptions>,
+}
+
+#[frb(mirror(PasskeyAvailability))]
+pub enum _PasskeyAvailability {
+    Available,
+    PrfUnsupported,
+    NotAssociated { source: String, reason: String },
+    Skipped { reason: String },
 }
 
 #[frb(mirror(Wallet))]
 pub struct _Wallet {
     pub seed: Seed,
     pub label: String,
+}
+
+#[frb(mirror(PasskeyCredential))]
+pub struct _PasskeyCredential {
+    pub credential_id: Vec<u8>,
+    pub user_id: Option<Vec<u8>>,
+    pub aaguid: Option<Vec<u8>>,
+    pub backup_eligible: Option<bool>,
+}
+
+#[frb(mirror(RegisterRequest))]
+pub struct _RegisterRequest {
+    pub label: Option<String>,
+    pub exclude_credentials: Option<Vec<Vec<u8>>>,
+}
+
+#[frb(mirror(RegisterResponse))]
+pub struct _RegisterResponse {
+    pub wallet: Wallet,
+    pub credential: Option<PasskeyCredential>,
+}
+
+#[frb(mirror(SignInRequest))]
+pub struct _SignInRequest {
+    pub label: Option<String>,
+    pub allow_credentials: Option<Vec<Vec<u8>>>,
+    pub prefer_immediately_available_credentials: Option<bool>,
+}
+
+#[frb(mirror(DeriveSeedsRequest))]
+pub struct _DeriveSeedsRequest {
+    pub salts: Vec<String>,
+    pub allow_credentials: Vec<Vec<u8>>,
+    pub prefer_immediately_available_credentials: Option<bool>,
+}
+
+#[frb(mirror(DeriveSeedsOutput))]
+pub struct _DeriveSeedsOutput {
+    pub seeds: Vec<Vec<u8>>,
+    pub credential_id: Option<Vec<u8>>,
+}
+
+#[frb(mirror(SignInResponse))]
+pub struct _SignInResponse {
+    pub wallet: Wallet,
+    pub labels: Vec<String>,
+    pub credential: Option<PasskeyCredential>,
+}
+
+#[frb(mirror(ConnectWithPasskeyRequest))]
+pub struct _ConnectWithPasskeyRequest {
+    pub label: Option<String>,
+    pub allow_credentials: Option<Vec<Vec<u8>>>,
+    pub exclude_credentials: Option<Vec<Vec<u8>>>,
+}
+
+#[frb(mirror(ConnectWithPasskeyResponse))]
+pub struct _ConnectWithPasskeyResponse {
+    pub wallet: Wallet,
+    pub credential: Option<PasskeyCredential>,
 }

@@ -178,6 +178,22 @@ impl BreezSdk {
         self.inner.register_lightning_address(request).await
     }
 
+    pub async fn authorize_lightning_address_transfer(
+        &self,
+        request: AuthorizeTransferRequest,
+    ) -> Result<TransferAuthorization, SdkError> {
+        self.inner
+            .authorize_lightning_address_transfer(request)
+            .await
+    }
+
+    pub async fn claim_lightning_address_transfer(
+        &self,
+        request: ClaimTransferRequest,
+    ) -> Result<LightningAddressInfo, SdkError> {
+        self.inner.claim_lightning_address_transfer(request).await
+    }
+
     pub async fn delete_lightning_address(&self) -> Result<(), SdkError> {
         self.inner.delete_lightning_address().await
     }
@@ -234,19 +250,13 @@ impl BreezSdk {
         }
     }
 
-    pub async fn start_leaf_optimization(&self) {
-        self.inner.start_leaf_optimization().await;
+    pub async fn optimize_leaves(
+        &self,
+        request: OptimizeLeavesRequest,
+    ) -> Result<OptimizeLeavesResponse, SdkError> {
+        self.inner.optimize_leaves(request).await
     }
 
-    pub async fn cancel_leaf_optimization(&self) -> Result<(), SdkError> {
-        self.inner.cancel_leaf_optimization().await
-    }
-
-    #[frb(sync)]
-    pub fn get_leaf_optimization_progress(&self) -> OptimizationProgress {
-        self.inner.get_leaf_optimization_progress().into()
-    }
-    
     pub async fn fetch_conversion_limits(
         &self,
         request: FetchConversionLimitsRequest,
@@ -287,10 +297,7 @@ impl BreezSdk {
         self.inner.add_contact(request).await
     }
 
-    pub async fn update_contact(
-        &self,
-        request: UpdateContactRequest,
-    ) -> Result<Contact, SdkError> {
+    pub async fn update_contact(&self, request: UpdateContactRequest) -> Result<Contact, SdkError> {
         self.inner.update_contact(request).await
     }
 

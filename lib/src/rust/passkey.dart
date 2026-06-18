@@ -8,48 +8,54 @@ import 'frb_generated.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `panic_message`
+// These functions are ignored because they are not marked as `pub`: `dart_error_to_prf`, `panic_message`
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `CallbackPrfProvider`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `derive_prf_seed`, `is_prf_available`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `create_passkey`, `derive_seeds`, `is_supported`
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Passkey>>
-abstract class Passkey implements RustOpaqueInterface {
-  /// Derive a wallet for a given label.
-  ///
-  /// Uses the passkey PRF to derive a wallet from the label.
-  /// This works for both creating a new wallet and restoring an existing one.
-  ///
-  /// # Arguments
-  /// * `label` - Optional label string (defaults to "Default")
-  Future<Wallet> getWallet({String? label});
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyClient>>
+abstract class PasskeyClient implements RustOpaqueInterface {
+  /// One-shot capability + configuration probe.
+  Future<PasskeyAvailability> checkAvailability();
 
-  /// Check if passkey PRF is available on this device.
-  Future<bool> isAvailable();
+  /// Single-CTA onboarding: silent sign-in, fall through to register
+  /// on `CredentialNotFound`. Mobile-only (iOS 18+ / Android 9+);
+  /// see the core SDK docs for the cross-browser limitation.
+  Future<ConnectWithPasskeyResponse> connectWithPasskey({required ConnectWithPasskeyRequest request});
 
-  /// List all labels published to Nostr for this passkey's identity.
-  ///
-  /// Requires 1 PRF call (for Nostr identity derivation).
-  Future<List<String>> listLabels();
+  /// Label sub-object: list / publish labels for this passkey's identity.
+  PasskeyLabels labels();
 
-  /// Create a new Passkey instance using Dart callbacks.
-  ///
-  /// # Arguments
-  /// * `derive_prf_seed` - Dart callback to derive a 32-byte seed from passkey PRF with a salt
-  /// * `is_prf_available` - Dart callback to check if PRF-capable passkey is available
-  /// * `relay_config` - Optional configuration for Nostr relay connections (uses default if None)
-  factory Passkey({
-    required FutureOr<Uint8List> Function(String) derivePrfSeed,
-    required FutureOr<bool> Function() isPrfAvailable,
-    NostrRelayConfig? relayConfig,
-  }) => BreezSdkSparkLib.instance.api.cratePasskeyPasskeyNew(
-    derivePrfSeed: derivePrfSeed,
-    isPrfAvailable: isPrfAvailable,
-    relayConfig: relayConfig,
+  /// Construct using Dart callbacks for the underlying `PrfProvider`.
+  /// Hosts that don't drive registration can have `create_passkey`
+  /// throw `PrfProviderError.PrfNotSupported` on the Dart side.
+  factory PasskeyClient({
+    required FutureOr<DeriveSeedsOutput> Function(DeriveSeedsRequest) deriveSeeds,
+    required FutureOr<bool> Function() isSupported,
+    required FutureOr<PasskeyCredential> Function(List<Uint8List>) createPasskey,
+    String? breezApiKey,
+    PasskeyConfig? config,
+  }) => BreezSdkSparkLib.instance.api.cratePasskeyPasskeyClientNew(
+    deriveSeeds: deriveSeeds,
+    isSupported: isSupported,
+    createPasskey: createPasskey,
+    breezApiKey: breezApiKey,
+    config: config,
   );
 
-  /// Publish a label to Nostr relays for this passkey's identity.
-  ///
-  /// Idempotent: if the label already exists, it is not published again.
-  /// Requires 1 PRF call.
-  Future<void> storeLabel({required String label});
+  /// First-time setup: drives the Dart-side `create_passkey` callback
+  /// then derives the wallet seed.
+  Future<RegisterResponse> register({required RegisterRequest request});
+
+  /// Returning-user sign-in. Fast path with `label` set; cold-restore
+  /// with discovery when `label` is `None`.
+  Future<SignInResponse> signIn({required SignInRequest request});
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PasskeyLabels>>
+abstract class PasskeyLabels implements RustOpaqueInterface {
+  /// List labels published for this passkey's identity.
+  Future<List<String>> list();
+
+  /// Idempotently publish `label`.
+  Future<void> store({required String label});
 }

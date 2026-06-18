@@ -14,16 +14,16 @@ part 'events.freezed.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `on_event`
 
 @freezed
-sealed class OptimizationEvent with _$OptimizationEvent {
-  const OptimizationEvent._();
+sealed class AutoOptimizationEvent with _$AutoOptimizationEvent {
+  const AutoOptimizationEvent._();
 
-  const factory OptimizationEvent.started({required int totalRounds}) = OptimizationEvent_Started;
-  const factory OptimizationEvent.roundCompleted({required int currentRound, required int totalRounds}) =
-      OptimizationEvent_RoundCompleted;
-  const factory OptimizationEvent.completed() = OptimizationEvent_Completed;
-  const factory OptimizationEvent.cancelled() = OptimizationEvent_Cancelled;
-  const factory OptimizationEvent.failed({required String error}) = OptimizationEvent_Failed;
-  const factory OptimizationEvent.skipped() = OptimizationEvent_Skipped;
+  const factory AutoOptimizationEvent.started({required int totalRounds}) = AutoOptimizationEvent_Started;
+  const factory AutoOptimizationEvent.roundCompleted({required int currentRound, required int totalRounds}) =
+      AutoOptimizationEvent_RoundCompleted;
+  const factory AutoOptimizationEvent.completed() = AutoOptimizationEvent_Completed;
+  const factory AutoOptimizationEvent.cancelled() = AutoOptimizationEvent_Cancelled;
+  const factory AutoOptimizationEvent.failed({required String error}) = AutoOptimizationEvent_Failed;
+  const factory AutoOptimizationEvent.skipped() = AutoOptimizationEvent_Skipped;
 }
 
 @freezed
@@ -38,7 +38,8 @@ sealed class SdkEvent with _$SdkEvent {
   const factory SdkEvent.paymentSucceeded({required Payment payment}) = SdkEvent_PaymentSucceeded;
   const factory SdkEvent.paymentPending({required Payment payment}) = SdkEvent_PaymentPending;
   const factory SdkEvent.paymentFailed({required Payment payment}) = SdkEvent_PaymentFailed;
-  const factory SdkEvent.optimization({required OptimizationEvent optimizationEvent}) = SdkEvent_Optimization;
+  const factory SdkEvent.autoOptimization({required AutoOptimizationEvent optimizationEvent}) =
+      SdkEvent_AutoOptimization;
   const factory SdkEvent.lightningAddressChanged({LightningAddressInfo? lightningAddress}) =
       SdkEvent_LightningAddressChanged;
   const factory SdkEvent.newDeposits({required List<DepositInfo> newDeposits}) = SdkEvent_NewDeposits;
