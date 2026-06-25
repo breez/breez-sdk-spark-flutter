@@ -352,13 +352,25 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionPurpose dco_decode_box_autoadd_conversion_purpose(dynamic raw);
 
   @protected
-  ConversionStep dco_decode_box_autoadd_conversion_step(dynamic raw);
-
-  @protected
   CreateIssuerTokenRequest dco_decode_box_autoadd_create_issuer_token_request(dynamic raw);
 
   @protected
   Credentials dco_decode_box_autoadd_credentials(dynamic raw);
+
+  @protected
+  CrossChainAddressDetails dco_decode_box_autoadd_cross_chain_address_details(dynamic raw);
+
+  @protected
+  CrossChainConfig dco_decode_box_autoadd_cross_chain_config(dynamic raw);
+
+  @protected
+  CrossChainProviderContext dco_decode_box_autoadd_cross_chain_provider_context(dynamic raw);
+
+  @protected
+  CrossChainRouteFilter dco_decode_box_autoadd_cross_chain_route_filter(dynamic raw);
+
+  @protected
+  CrossChainRoutePair dco_decode_box_autoadd_cross_chain_route_pair(dynamic raw);
 
   @protected
   DepositClaimError dco_decode_box_autoadd_deposit_claim_error(dynamic raw);
@@ -616,6 +628,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Contact dco_decode_contact(dynamic raw);
 
   @protected
+  Conversion dco_decode_conversion(dynamic raw);
+
+  @protected
+  ConversionAsset dco_decode_conversion_asset(dynamic raw);
+
+  @protected
+  ConversionChain dco_decode_conversion_chain(dynamic raw);
+
+  @protected
   ConversionDetails dco_decode_conversion_details(dynamic raw);
 
   @protected
@@ -628,13 +649,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionOptions dco_decode_conversion_options(dynamic raw);
 
   @protected
+  ConversionProvider dco_decode_conversion_provider(dynamic raw);
+
+  @protected
   ConversionPurpose dco_decode_conversion_purpose(dynamic raw);
 
   @protected
-  ConversionStatus dco_decode_conversion_status(dynamic raw);
+  ConversionSide dco_decode_conversion_side(dynamic raw);
 
   @protected
-  ConversionStep dco_decode_conversion_step(dynamic raw);
+  ConversionStatus dco_decode_conversion_status(dynamic raw);
 
   @protected
   ConversionType dco_decode_conversion_type(dynamic raw);
@@ -644,6 +668,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Credentials dco_decode_credentials(dynamic raw);
+
+  @protected
+  CrossChainAddressDetails dco_decode_cross_chain_address_details(dynamic raw);
+
+  @protected
+  CrossChainAddressFamily dco_decode_cross_chain_address_family(dynamic raw);
+
+  @protected
+  CrossChainConfig dco_decode_cross_chain_config(dynamic raw);
+
+  @protected
+  CrossChainFeeMode dco_decode_cross_chain_fee_mode(dynamic raw);
+
+  @protected
+  CrossChainProvider dco_decode_cross_chain_provider(dynamic raw);
+
+  @protected
+  CrossChainProviderContext dco_decode_cross_chain_provider_context(dynamic raw);
+
+  @protected
+  CrossChainRouteFilter dco_decode_cross_chain_route_filter(dynamic raw);
+
+  @protected
+  CrossChainRoutePair dco_decode_cross_chain_route_pair(dynamic raw);
 
   @protected
   CurrencyInfo dco_decode_currency_info(dynamic raw);
@@ -745,6 +793,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ListContactsRequest dco_decode_list_contacts_request(dynamic raw);
 
   @protected
+  List<Conversion> dco_decode_list_conversion(dynamic raw);
+
+  @protected
+  List<CrossChainRoutePair> dco_decode_list_cross_chain_route_pair(dynamic raw);
+
+  @protected
   List<DepositInfo> dco_decode_list_deposit_info(dynamic raw);
 
   @protected
@@ -797,6 +851,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<(String, TokenBalance)> dco_decode_list_record_string_token_balance(dynamic raw);
+
+  @protected
+  List<SourceAsset> dco_decode_list_source_asset(dynamic raw);
 
   @protected
   List<SparkHtlcStatus> dco_decode_list_spark_htlc_status(dynamic raw);
@@ -919,10 +976,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionPurpose? dco_decode_opt_box_autoadd_conversion_purpose(dynamic raw);
 
   @protected
-  ConversionStep? dco_decode_opt_box_autoadd_conversion_step(dynamic raw);
+  Credentials? dco_decode_opt_box_autoadd_credentials(dynamic raw);
 
   @protected
-  Credentials? dco_decode_opt_box_autoadd_credentials(dynamic raw);
+  CrossChainConfig? dco_decode_opt_box_autoadd_cross_chain_config(dynamic raw);
 
   @protected
   DepositClaimError? dco_decode_opt_box_autoadd_deposit_claim_error(dynamic raw);
@@ -994,9 +1051,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw);
 
   @protected
-  TokenMetadata? dco_decode_opt_box_autoadd_token_metadata(dynamic raw);
-
-  @protected
   TokenTransactionType? dco_decode_opt_box_autoadd_token_transaction_type(dynamic raw);
 
   @protected
@@ -1064,6 +1118,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PaymentMethod dco_decode_payment_method(dynamic raw);
+
+  @protected
+  PaymentRequest dco_decode_payment_request(dynamic raw);
 
   @protected
   PaymentRequestSource dco_decode_payment_request_source(dynamic raw);
@@ -1175,6 +1232,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SilentPaymentAddressDetails dco_decode_silent_payment_address_details(dynamic raw);
+
+  @protected
+  SourceAsset dco_decode_source_asset(dynamic raw);
 
   @protected
   SparkAddressDetails dco_decode_spark_address_details(dynamic raw);
@@ -1600,13 +1660,25 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionPurpose sse_decode_box_autoadd_conversion_purpose(SseDeserializer deserializer);
 
   @protected
-  ConversionStep sse_decode_box_autoadd_conversion_step(SseDeserializer deserializer);
-
-  @protected
   CreateIssuerTokenRequest sse_decode_box_autoadd_create_issuer_token_request(SseDeserializer deserializer);
 
   @protected
   Credentials sse_decode_box_autoadd_credentials(SseDeserializer deserializer);
+
+  @protected
+  CrossChainAddressDetails sse_decode_box_autoadd_cross_chain_address_details(SseDeserializer deserializer);
+
+  @protected
+  CrossChainConfig sse_decode_box_autoadd_cross_chain_config(SseDeserializer deserializer);
+
+  @protected
+  CrossChainProviderContext sse_decode_box_autoadd_cross_chain_provider_context(SseDeserializer deserializer);
+
+  @protected
+  CrossChainRouteFilter sse_decode_box_autoadd_cross_chain_route_filter(SseDeserializer deserializer);
+
+  @protected
+  CrossChainRoutePair sse_decode_box_autoadd_cross_chain_route_pair(SseDeserializer deserializer);
 
   @protected
   DepositClaimError sse_decode_box_autoadd_deposit_claim_error(SseDeserializer deserializer);
@@ -1878,6 +1950,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Contact sse_decode_contact(SseDeserializer deserializer);
 
   @protected
+  Conversion sse_decode_conversion(SseDeserializer deserializer);
+
+  @protected
+  ConversionAsset sse_decode_conversion_asset(SseDeserializer deserializer);
+
+  @protected
+  ConversionChain sse_decode_conversion_chain(SseDeserializer deserializer);
+
+  @protected
   ConversionDetails sse_decode_conversion_details(SseDeserializer deserializer);
 
   @protected
@@ -1890,13 +1971,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionOptions sse_decode_conversion_options(SseDeserializer deserializer);
 
   @protected
+  ConversionProvider sse_decode_conversion_provider(SseDeserializer deserializer);
+
+  @protected
   ConversionPurpose sse_decode_conversion_purpose(SseDeserializer deserializer);
 
   @protected
-  ConversionStatus sse_decode_conversion_status(SseDeserializer deserializer);
+  ConversionSide sse_decode_conversion_side(SseDeserializer deserializer);
 
   @protected
-  ConversionStep sse_decode_conversion_step(SseDeserializer deserializer);
+  ConversionStatus sse_decode_conversion_status(SseDeserializer deserializer);
 
   @protected
   ConversionType sse_decode_conversion_type(SseDeserializer deserializer);
@@ -1906,6 +1990,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Credentials sse_decode_credentials(SseDeserializer deserializer);
+
+  @protected
+  CrossChainAddressDetails sse_decode_cross_chain_address_details(SseDeserializer deserializer);
+
+  @protected
+  CrossChainAddressFamily sse_decode_cross_chain_address_family(SseDeserializer deserializer);
+
+  @protected
+  CrossChainConfig sse_decode_cross_chain_config(SseDeserializer deserializer);
+
+  @protected
+  CrossChainFeeMode sse_decode_cross_chain_fee_mode(SseDeserializer deserializer);
+
+  @protected
+  CrossChainProvider sse_decode_cross_chain_provider(SseDeserializer deserializer);
+
+  @protected
+  CrossChainProviderContext sse_decode_cross_chain_provider_context(SseDeserializer deserializer);
+
+  @protected
+  CrossChainRouteFilter sse_decode_cross_chain_route_filter(SseDeserializer deserializer);
+
+  @protected
+  CrossChainRoutePair sse_decode_cross_chain_route_pair(SseDeserializer deserializer);
 
   @protected
   CurrencyInfo sse_decode_currency_info(SseDeserializer deserializer);
@@ -2007,6 +2115,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ListContactsRequest sse_decode_list_contacts_request(SseDeserializer deserializer);
 
   @protected
+  List<Conversion> sse_decode_list_conversion(SseDeserializer deserializer);
+
+  @protected
+  List<CrossChainRoutePair> sse_decode_list_cross_chain_route_pair(SseDeserializer deserializer);
+
+  @protected
   List<DepositInfo> sse_decode_list_deposit_info(SseDeserializer deserializer);
 
   @protected
@@ -2059,6 +2173,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<(String, TokenBalance)> sse_decode_list_record_string_token_balance(SseDeserializer deserializer);
+
+  @protected
+  List<SourceAsset> sse_decode_list_source_asset(SseDeserializer deserializer);
 
   @protected
   List<SparkHtlcStatus> sse_decode_list_spark_htlc_status(SseDeserializer deserializer);
@@ -2181,10 +2298,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   ConversionPurpose? sse_decode_opt_box_autoadd_conversion_purpose(SseDeserializer deserializer);
 
   @protected
-  ConversionStep? sse_decode_opt_box_autoadd_conversion_step(SseDeserializer deserializer);
+  Credentials? sse_decode_opt_box_autoadd_credentials(SseDeserializer deserializer);
 
   @protected
-  Credentials? sse_decode_opt_box_autoadd_credentials(SseDeserializer deserializer);
+  CrossChainConfig? sse_decode_opt_box_autoadd_cross_chain_config(SseDeserializer deserializer);
 
   @protected
   DepositClaimError? sse_decode_opt_box_autoadd_deposit_claim_error(SseDeserializer deserializer);
@@ -2260,9 +2377,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Symbol? sse_decode_opt_box_autoadd_symbol(SseDeserializer deserializer);
 
   @protected
-  TokenMetadata? sse_decode_opt_box_autoadd_token_metadata(SseDeserializer deserializer);
-
-  @protected
   TokenTransactionType? sse_decode_opt_box_autoadd_token_transaction_type(SseDeserializer deserializer);
 
   @protected
@@ -2330,6 +2444,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PaymentMethod sse_decode_payment_method(SseDeserializer deserializer);
+
+  @protected
+  PaymentRequest sse_decode_payment_request(SseDeserializer deserializer);
 
   @protected
   PaymentRequestSource sse_decode_payment_request_source(SseDeserializer deserializer);
@@ -2441,6 +2558,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SilentPaymentAddressDetails sse_decode_silent_payment_address_details(SseDeserializer deserializer);
+
+  @protected
+  SourceAsset sse_decode_source_asset(SseDeserializer deserializer);
 
   @protected
   SparkAddressDetails sse_decode_spark_address_details(SseDeserializer deserializer);
@@ -2919,9 +3039,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_conversion_purpose(ConversionPurpose self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_conversion_step(ConversionStep self, SseSerializer serializer);
-
-  @protected
   void sse_encode_box_autoadd_create_issuer_token_request(
     CreateIssuerTokenRequest self,
     SseSerializer serializer,
@@ -2929,6 +3046,27 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_credentials(Credentials self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_cross_chain_address_details(
+    CrossChainAddressDetails self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_cross_chain_config(CrossChainConfig self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_cross_chain_provider_context(
+    CrossChainProviderContext self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_cross_chain_route_filter(CrossChainRouteFilter self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_cross_chain_route_pair(CrossChainRoutePair self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_deposit_claim_error(DepositClaimError self, SseSerializer serializer);
@@ -3246,6 +3384,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_contact(Contact self, SseSerializer serializer);
 
   @protected
+  void sse_encode_conversion(Conversion self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_asset(ConversionAsset self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_conversion_chain(ConversionChain self, SseSerializer serializer);
+
+  @protected
   void sse_encode_conversion_details(ConversionDetails self, SseSerializer serializer);
 
   @protected
@@ -3258,13 +3405,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_conversion_options(ConversionOptions self, SseSerializer serializer);
 
   @protected
+  void sse_encode_conversion_provider(ConversionProvider self, SseSerializer serializer);
+
+  @protected
   void sse_encode_conversion_purpose(ConversionPurpose self, SseSerializer serializer);
 
   @protected
-  void sse_encode_conversion_status(ConversionStatus self, SseSerializer serializer);
+  void sse_encode_conversion_side(ConversionSide self, SseSerializer serializer);
 
   @protected
-  void sse_encode_conversion_step(ConversionStep self, SseSerializer serializer);
+  void sse_encode_conversion_status(ConversionStatus self, SseSerializer serializer);
 
   @protected
   void sse_encode_conversion_type(ConversionType self, SseSerializer serializer);
@@ -3274,6 +3424,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_credentials(Credentials self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_address_details(CrossChainAddressDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_address_family(CrossChainAddressFamily self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_config(CrossChainConfig self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_fee_mode(CrossChainFeeMode self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_provider(CrossChainProvider self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_provider_context(CrossChainProviderContext self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_route_filter(CrossChainRouteFilter self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_cross_chain_route_pair(CrossChainRoutePair self, SseSerializer serializer);
 
   @protected
   void sse_encode_currency_info(CurrencyInfo self, SseSerializer serializer);
@@ -3384,6 +3558,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_list_contacts_request(ListContactsRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_conversion(List<Conversion> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_cross_chain_route_pair(List<CrossChainRoutePair> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_deposit_info(List<DepositInfo> self, SseSerializer serializer);
 
   @protected
@@ -3439,6 +3619,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     List<(String, TokenBalance)> self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_list_source_asset(List<SourceAsset> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_spark_htlc_status(List<SparkHtlcStatus> self, SseSerializer serializer);
@@ -3570,10 +3753,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_conversion_purpose(ConversionPurpose? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_conversion_step(ConversionStep? self, SseSerializer serializer);
+  void sse_encode_opt_box_autoadd_credentials(Credentials? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_credentials(Credentials? self, SseSerializer serializer);
+  void sse_encode_opt_box_autoadd_cross_chain_config(CrossChainConfig? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_deposit_claim_error(DepositClaimError? self, SseSerializer serializer);
@@ -3663,9 +3846,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_symbol(Symbol? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_token_metadata(TokenMetadata? self, SseSerializer serializer);
-
-  @protected
   void sse_encode_opt_box_autoadd_token_transaction_type(
     TokenTransactionType? self,
     SseSerializer serializer,
@@ -3736,6 +3916,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_payment_method(PaymentMethod self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_payment_request(PaymentRequest self, SseSerializer serializer);
 
   @protected
   void sse_encode_payment_request_source(PaymentRequestSource self, SseSerializer serializer);
@@ -3850,6 +4033,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_silent_payment_address_details(SilentPaymentAddressDetails self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_source_asset(SourceAsset self, SseSerializer serializer);
 
   @protected
   void sse_encode_spark_address_details(SparkAddressDetails self, SseSerializer serializer);

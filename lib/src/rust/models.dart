@@ -646,6 +646,7 @@ class Config {
   final int maxConcurrentClaims;
   final SparkConfig? sparkConfig;
   final bool backgroundTasksEnabled;
+  final CrossChainConfig? crossChainConfig;
 
   const Config({
     this.apiKey,
@@ -664,6 +665,7 @@ class Config {
     required this.maxConcurrentClaims,
     this.sparkConfig,
     required this.backgroundTasksEnabled,
+    this.crossChainConfig,
   });
 
   @override
@@ -683,7 +685,8 @@ class Config {
       stableBalanceConfig.hashCode ^
       maxConcurrentClaims.hashCode ^
       sparkConfig.hashCode ^
-      backgroundTasksEnabled.hashCode;
+      backgroundTasksEnabled.hashCode ^
+      crossChainConfig.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -705,7 +708,8 @@ class Config {
           stableBalanceConfig == other.stableBalanceConfig &&
           maxConcurrentClaims == other.maxConcurrentClaims &&
           sparkConfig == other.sparkConfig &&
-          backgroundTasksEnabled == other.backgroundTasksEnabled;
+          backgroundTasksEnabled == other.backgroundTasksEnabled &&
+          crossChainConfig == other.crossChainConfig;
 }
 
 class ConnectRequest {
@@ -797,15 +801,74 @@ class Contact {
           updatedAt == other.updatedAt;
 }
 
-class ConversionDetails {
+class Conversion {
+  final ConversionProvider provider;
   final ConversionStatus status;
-  final ConversionStep? from;
-  final ConversionStep? to;
+  final ConversionSide from;
+  final ConversionSide to;
+  final AmountAdjustmentReason? amountAdjustment;
 
-  const ConversionDetails({required this.status, this.from, this.to});
+  const Conversion({
+    required this.provider,
+    required this.status,
+    required this.from,
+    required this.to,
+    this.amountAdjustment,
+  });
 
   @override
-  int get hashCode => status.hashCode ^ from.hashCode ^ to.hashCode;
+  int get hashCode =>
+      provider.hashCode ^ status.hashCode ^ from.hashCode ^ to.hashCode ^ amountAdjustment.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Conversion &&
+          runtimeType == other.runtimeType &&
+          provider == other.provider &&
+          status == other.status &&
+          from == other.from &&
+          to == other.to &&
+          amountAdjustment == other.amountAdjustment;
+}
+
+class ConversionAsset {
+  final String ticker;
+  final String? identifier;
+  final int decimals;
+
+  const ConversionAsset({required this.ticker, this.identifier, required this.decimals});
+
+  @override
+  int get hashCode => ticker.hashCode ^ identifier.hashCode ^ decimals.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConversionAsset &&
+          runtimeType == other.runtimeType &&
+          ticker == other.ticker &&
+          identifier == other.identifier &&
+          decimals == other.decimals;
+}
+
+@freezed
+sealed class ConversionChain with _$ConversionChain {
+  const ConversionChain._();
+
+  const factory ConversionChain.spark() = ConversionChain_Spark;
+  const factory ConversionChain.lightning() = ConversionChain_Lightning;
+  const factory ConversionChain.external_({required String name, String? chainId}) = ConversionChain_External;
+}
+
+class ConversionDetails {
+  final ConversionStatus status;
+  final List<Conversion> conversions;
+
+  const ConversionDetails({required this.status, required this.conversions});
+
+  @override
+  int get hashCode => status.hashCode ^ conversions.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -813,8 +876,7 @@ class ConversionDetails {
       other is ConversionDetails &&
           runtimeType == other.runtimeType &&
           status == other.status &&
-          from == other.from &&
-          to == other.to;
+          conversions == other.conversions;
 }
 
 class ConversionEstimate {
@@ -848,43 +910,57 @@ class ConversionEstimate {
           amountAdjustment == other.amountAdjustment;
 }
 
-class ConversionInfo {
-  final String poolId;
-  final String conversionId;
-  final ConversionStatus status;
-  final BigInt? fee;
-  final ConversionPurpose? purpose;
-  final AmountAdjustmentReason? amountAdjustment;
+@freezed
+sealed class ConversionInfo with _$ConversionInfo {
+  const ConversionInfo._();
 
-  const ConversionInfo({
-    required this.poolId,
-    required this.conversionId,
-    required this.status,
-    this.fee,
-    this.purpose,
-    this.amountAdjustment,
-  });
-
-  @override
-  int get hashCode =>
-      poolId.hashCode ^
-      conversionId.hashCode ^
-      status.hashCode ^
-      fee.hashCode ^
-      purpose.hashCode ^
-      amountAdjustment.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConversionInfo &&
-          runtimeType == other.runtimeType &&
-          poolId == other.poolId &&
-          conversionId == other.conversionId &&
-          status == other.status &&
-          fee == other.fee &&
-          purpose == other.purpose &&
-          amountAdjustment == other.amountAdjustment;
+  const factory ConversionInfo.amm({
+    required String poolId,
+    required String conversionId,
+    required ConversionStatus status,
+    BigInt? fee,
+    ConversionPurpose? purpose,
+    AmountAdjustmentReason? amountAdjustment,
+  }) = ConversionInfo_Amm;
+  const factory ConversionInfo.boltz({
+    required String chain,
+    String? chainId,
+    required String asset,
+    String? assetContract,
+    required String recipientAddress,
+    BigInt? assetAmountIn,
+    required BigInt estimatedOut,
+    BigInt? deliveredAmount,
+    required ConversionStatus status,
+    BigInt? feeAmount,
+    BigInt? serviceFeeAmount,
+    String? serviceFeeAsset,
+    required int assetDecimals,
+    required String swapId,
+    required String invoice,
+    required BigInt invoiceAmountSats,
+    String? bridgeRef,
+    required int maxSlippageBps,
+    required bool quoteDegraded,
+  }) = ConversionInfo_Boltz;
+  const factory ConversionInfo.orchestra({
+    required String chain,
+    String? chainId,
+    required String asset,
+    String? assetContract,
+    required String recipientAddress,
+    BigInt? assetAmountIn,
+    required BigInt estimatedOut,
+    BigInt? deliveredAmount,
+    required ConversionStatus status,
+    BigInt? feeAmount,
+    BigInt? serviceFeeAmount,
+    String? serviceFeeAsset,
+    required int assetDecimals,
+    required String orderId,
+    required String quoteId,
+    String? readToken,
+  }) = ConversionInfo_Orchestra;
 }
 
 class ConversionOptions {
@@ -907,6 +983,8 @@ class ConversionOptions {
           completionTimeoutSecs == other.completionTimeoutSecs;
 }
 
+enum ConversionProvider { amm, orchestra, boltz }
+
 @freezed
 sealed class ConversionPurpose with _$ConversionPurpose {
   const ConversionPurpose._();
@@ -917,46 +995,29 @@ sealed class ConversionPurpose with _$ConversionPurpose {
   const factory ConversionPurpose.autoConversion() = ConversionPurpose_AutoConversion;
 }
 
-enum ConversionStatus { pending, completed, failed, refundNeeded, refunded }
-
-class ConversionStep {
-  final String paymentId;
+class ConversionSide {
+  final ConversionChain chain;
+  final ConversionAsset asset;
   final BigInt amount;
   final BigInt fee;
-  final PaymentMethod method;
-  final TokenMetadata? tokenMetadata;
-  final AmountAdjustmentReason? amountAdjustment;
 
-  const ConversionStep({
-    required this.paymentId,
-    required this.amount,
-    required this.fee,
-    required this.method,
-    this.tokenMetadata,
-    this.amountAdjustment,
-  });
+  const ConversionSide({required this.chain, required this.asset, required this.amount, required this.fee});
 
   @override
-  int get hashCode =>
-      paymentId.hashCode ^
-      amount.hashCode ^
-      fee.hashCode ^
-      method.hashCode ^
-      tokenMetadata.hashCode ^
-      amountAdjustment.hashCode;
+  int get hashCode => chain.hashCode ^ asset.hashCode ^ amount.hashCode ^ fee.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConversionStep &&
+      other is ConversionSide &&
           runtimeType == other.runtimeType &&
-          paymentId == other.paymentId &&
+          chain == other.chain &&
+          asset == other.asset &&
           amount == other.amount &&
-          fee == other.fee &&
-          method == other.method &&
-          tokenMetadata == other.tokenMetadata &&
-          amountAdjustment == other.amountAdjustment;
+          fee == other.fee;
 }
+
+enum ConversionStatus { pending, completed, failed, refundNeeded, refunded }
 
 @freezed
 sealed class ConversionType with _$ConversionType {
@@ -1013,6 +1074,138 @@ class Credentials {
           runtimeType == other.runtimeType &&
           username == other.username &&
           password == other.password;
+}
+
+class CrossChainAddressDetails {
+  final String address;
+  final CrossChainAddressFamily addressFamily;
+  final String? contractAddress;
+  final BigInt? chainId;
+  final BigInt? amount;
+
+  const CrossChainAddressDetails({
+    required this.address,
+    required this.addressFamily,
+    this.contractAddress,
+    this.chainId,
+    this.amount,
+  });
+
+  @override
+  int get hashCode =>
+      address.hashCode ^
+      addressFamily.hashCode ^
+      contractAddress.hashCode ^
+      chainId.hashCode ^
+      amount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CrossChainAddressDetails &&
+          runtimeType == other.runtimeType &&
+          address == other.address &&
+          addressFamily == other.addressFamily &&
+          contractAddress == other.contractAddress &&
+          chainId == other.chainId &&
+          amount == other.amount;
+}
+
+enum CrossChainAddressFamily { evm, solana, tron }
+
+class CrossChainConfig {
+  final int? defaultSlippageBps;
+  final int? defaultTargetOverpayBps;
+
+  const CrossChainConfig({this.defaultSlippageBps, this.defaultTargetOverpayBps});
+
+  @override
+  int get hashCode => defaultSlippageBps.hashCode ^ defaultTargetOverpayBps.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CrossChainConfig &&
+          runtimeType == other.runtimeType &&
+          defaultSlippageBps == other.defaultSlippageBps &&
+          defaultTargetOverpayBps == other.defaultTargetOverpayBps;
+}
+
+enum CrossChainFeeMode { feesExcluded, feesIncluded }
+
+enum CrossChainProvider { orchestra, boltz }
+
+@freezed
+sealed class CrossChainProviderContext with _$CrossChainProviderContext {
+  const CrossChainProviderContext._();
+
+  const factory CrossChainProviderContext.orchestra({
+    required String quoteId,
+    required String depositAddress,
+    required BigInt depositAmount,
+  }) = CrossChainProviderContext_Orchestra;
+  const factory CrossChainProviderContext.boltz({
+    required String swapId,
+    required String invoice,
+    required BigInt invoiceAmountSats,
+    required int maxSlippageBps,
+  }) = CrossChainProviderContext_Boltz;
+}
+
+@freezed
+sealed class CrossChainRouteFilter with _$CrossChainRouteFilter {
+  const CrossChainRouteFilter._();
+
+  const factory CrossChainRouteFilter.send({required CrossChainAddressDetails addressDetails}) =
+      CrossChainRouteFilter_Send;
+  const factory CrossChainRouteFilter.receive({String? contractAddress}) = CrossChainRouteFilter_Receive;
+}
+
+class CrossChainRoutePair {
+  final CrossChainProvider provider;
+  final String chain;
+  final String? chainId;
+  final String asset;
+  final String? contractAddress;
+  final int decimals;
+  final bool exactOutEligible;
+  final List<SourceAsset> supportedSources;
+
+  const CrossChainRoutePair({
+    required this.provider,
+    required this.chain,
+    this.chainId,
+    required this.asset,
+    this.contractAddress,
+    required this.decimals,
+    required this.exactOutEligible,
+    required this.supportedSources,
+  });
+
+  @override
+  int get hashCode =>
+      provider.hashCode ^
+      chain.hashCode ^
+      chainId.hashCode ^
+      asset.hashCode ^
+      contractAddress.hashCode ^
+      decimals.hashCode ^
+      exactOutEligible.hashCode ^
+      supportedSources.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CrossChainRoutePair &&
+          runtimeType == other.runtimeType &&
+          provider == other.provider &&
+          chain == other.chain &&
+          chainId == other.chainId &&
+          asset == other.asset &&
+          contractAddress == other.contractAddress &&
+          decimals == other.decimals &&
+          exactOutEligible == other.exactOutEligible &&
+          supportedSources == other.supportedSources;
 }
 
 class CurrencyInfo {
@@ -1381,6 +1574,7 @@ sealed class InputType with _$InputType {
   const factory InputType.lnurlWithdraw(LnurlWithdrawRequestDetails field0) = InputType_LnurlWithdraw;
   const factory InputType.sparkAddress(SparkAddressDetails field0) = InputType_SparkAddress;
   const factory InputType.sparkInvoice(SparkInvoiceDetails field0) = InputType_SparkInvoice;
+  const factory InputType.crossChainAddress(CrossChainAddressDetails field0) = InputType_CrossChainAddress;
 }
 
 class LeafOptimizationConfig {
@@ -2152,6 +2346,7 @@ sealed class PaymentDetails with _$PaymentDetails {
     LnurlPayInfo? lnurlPayInfo,
     LnurlWithdrawInfo? lnurlWithdrawInfo,
     LnurlReceiveMetadata? lnurlReceiveMetadata,
+    ConversionInfo? conversionInfo,
   }) = PaymentDetails_Lightning;
   const factory PaymentDetails.withdraw({required String txId}) = PaymentDetails_Withdraw;
   const factory PaymentDetails.deposit({required String txId, required int vout}) = PaymentDetails_Deposit;
@@ -2175,6 +2370,19 @@ sealed class PaymentDetailsFilter with _$PaymentDetailsFilter {
 }
 
 enum PaymentMethod { lightning, spark, token, deposit, withdraw, unknown }
+
+@freezed
+sealed class PaymentRequest with _$PaymentRequest {
+  const PaymentRequest._();
+
+  const factory PaymentRequest.input({required String input}) = PaymentRequest_Input;
+  const factory PaymentRequest.crossChain({
+    required String address,
+    required CrossChainRoutePair route,
+    int? maxSlippageBps,
+    int? targetOverpayBps,
+  }) = PaymentRequest_CrossChain;
+}
 
 class PaymentRequestSource {
   final String? bip21Uri;
@@ -2289,7 +2497,7 @@ class PrepareLnurlPayResponse {
 }
 
 class PrepareSendPaymentRequest {
-  final String paymentRequest;
+  final PaymentRequest paymentRequest;
   final BigInt? amount;
   final String? tokenIdentifier;
   final ConversionOptions? conversionOptions;
@@ -2703,6 +2911,20 @@ sealed class SendPaymentMethod with _$SendPaymentMethod {
     required BigInt fee,
     String? tokenIdentifier,
   }) = SendPaymentMethod_SparkInvoice;
+  const factory SendPaymentMethod.crossChainAddress({
+    required CrossChainRoutePair route,
+    required String recipientAddress,
+    required BigInt amountIn,
+    required BigInt assetAmountIn,
+    required BigInt estimatedOut,
+    required BigInt feeAmount,
+    required BigInt serviceFeeAmount,
+    String? serviceFeeAsset,
+    required BigInt sourceTransferFeeSats,
+    required CrossChainFeeMode feeMode,
+    required String expiresAt,
+    required CrossChainProviderContext providerContext,
+  }) = SendPaymentMethod_CrossChainAddress;
 }
 
 @freezed
@@ -2848,6 +3070,14 @@ class SilentPaymentAddressDetails {
           address == other.address &&
           network == other.network &&
           source == other.source;
+}
+
+@freezed
+sealed class SourceAsset with _$SourceAsset {
+  const SourceAsset._();
+
+  const factory SourceAsset.bitcoin() = SourceAsset_Bitcoin;
+  const factory SourceAsset.token({required String tokenIdentifier}) = SourceAsset_Token;
 }
 
 class SparkAddressDetails {
@@ -3033,16 +3263,19 @@ class SparkSigningOperator {
   final String identifier;
   final String address;
   final String identityPublicKey;
+  final String? caCertPem;
 
   const SparkSigningOperator({
     required this.id,
     required this.identifier,
     required this.address,
     required this.identityPublicKey,
+    this.caCertPem,
   });
 
   @override
-  int get hashCode => id.hashCode ^ identifier.hashCode ^ address.hashCode ^ identityPublicKey.hashCode;
+  int get hashCode =>
+      id.hashCode ^ identifier.hashCode ^ address.hashCode ^ identityPublicKey.hashCode ^ caCertPem.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -3052,7 +3285,8 @@ class SparkSigningOperator {
           id == other.id &&
           identifier == other.identifier &&
           address == other.address &&
-          identityPublicKey == other.identityPublicKey;
+          identityPublicKey == other.identityPublicKey &&
+          caCertPem == other.caCertPem;
 }
 
 class SparkSspConfig {

@@ -57,6 +57,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required FetchConversionLimitsRequest request,
   });
 
+  Future<List<CrossChainRoutePair>> getCrossChainRoutes({required CrossChainRouteFilter filter});
+
   Future<GetInfoResponse> getInfo({required GetInfoRequest request});
 
   Future<LightningAddressInfo?> getLightningAddress();
