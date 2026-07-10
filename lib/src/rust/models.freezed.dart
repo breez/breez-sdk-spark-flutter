@@ -856,6 +856,300 @@ as String?,
 }
 
 /// @nodoc
+mixin _$BuildTransferPackageOptions {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BuildTransferPackageOptions);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BuildTransferPackageOptions()';
+}
+
+
+}
+
+/// @nodoc
+class $BuildTransferPackageOptionsCopyWith<$Res>  {
+$BuildTransferPackageOptionsCopyWith(BuildTransferPackageOptions _, $Res Function(BuildTransferPackageOptions) __);
+}
+
+
+/// Adds pattern-matching-related methods to [BuildTransferPackageOptions].
+extension BuildTransferPackageOptionsPatterns on BuildTransferPackageOptions {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( BuildTransferPackageOptions_BitcoinAddress value)?  bitcoinAddress,TResult Function( BuildTransferPackageOptions_Bolt11Invoice value)?  bolt11Invoice,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that);case BuildTransferPackageOptions_Bolt11Invoice() when bolt11Invoice != null:
+return bolt11Invoice(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( BuildTransferPackageOptions_BitcoinAddress value)  bitcoinAddress,required TResult Function( BuildTransferPackageOptions_Bolt11Invoice value)  bolt11Invoice,}){
+final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress():
+return bitcoinAddress(_that);case BuildTransferPackageOptions_Bolt11Invoice():
+return bolt11Invoice(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( BuildTransferPackageOptions_BitcoinAddress value)?  bitcoinAddress,TResult? Function( BuildTransferPackageOptions_Bolt11Invoice value)?  bolt11Invoice,}){
+final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that);case BuildTransferPackageOptions_Bolt11Invoice() when bolt11Invoice != null:
+return bolt11Invoice(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( OnchainConfirmationSpeed confirmationSpeed)?  bitcoinAddress,TResult Function( bool preferSpark,  int? completionTimeoutSecs)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that.confirmationSpeed);case BuildTransferPackageOptions_Bolt11Invoice() when bolt11Invoice != null:
+return bolt11Invoice(_that.preferSpark,_that.completionTimeoutSecs);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( OnchainConfirmationSpeed confirmationSpeed)  bitcoinAddress,required TResult Function( bool preferSpark,  int? completionTimeoutSecs)  bolt11Invoice,}) {final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress():
+return bitcoinAddress(_that.confirmationSpeed);case BuildTransferPackageOptions_Bolt11Invoice():
+return bolt11Invoice(_that.preferSpark,_that.completionTimeoutSecs);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( OnchainConfirmationSpeed confirmationSpeed)?  bitcoinAddress,TResult? Function( bool preferSpark,  int? completionTimeoutSecs)?  bolt11Invoice,}) {final _that = this;
+switch (_that) {
+case BuildTransferPackageOptions_BitcoinAddress() when bitcoinAddress != null:
+return bitcoinAddress(_that.confirmationSpeed);case BuildTransferPackageOptions_Bolt11Invoice() when bolt11Invoice != null:
+return bolt11Invoice(_that.preferSpark,_that.completionTimeoutSecs);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class BuildTransferPackageOptions_BitcoinAddress extends BuildTransferPackageOptions {
+  const BuildTransferPackageOptions_BitcoinAddress({required this.confirmationSpeed}): super._();
+  
+
+ final  OnchainConfirmationSpeed confirmationSpeed;
+
+/// Create a copy of BuildTransferPackageOptions
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BuildTransferPackageOptions_BitcoinAddressCopyWith<BuildTransferPackageOptions_BitcoinAddress> get copyWith => _$BuildTransferPackageOptions_BitcoinAddressCopyWithImpl<BuildTransferPackageOptions_BitcoinAddress>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BuildTransferPackageOptions_BitcoinAddress&&(identical(other.confirmationSpeed, confirmationSpeed) || other.confirmationSpeed == confirmationSpeed));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,confirmationSpeed);
+
+@override
+String toString() {
+  return 'BuildTransferPackageOptions.bitcoinAddress(confirmationSpeed: $confirmationSpeed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $BuildTransferPackageOptions_BitcoinAddressCopyWith<$Res> implements $BuildTransferPackageOptionsCopyWith<$Res> {
+  factory $BuildTransferPackageOptions_BitcoinAddressCopyWith(BuildTransferPackageOptions_BitcoinAddress value, $Res Function(BuildTransferPackageOptions_BitcoinAddress) _then) = _$BuildTransferPackageOptions_BitcoinAddressCopyWithImpl;
+@useResult
+$Res call({
+ OnchainConfirmationSpeed confirmationSpeed
+});
+
+
+
+
+}
+/// @nodoc
+class _$BuildTransferPackageOptions_BitcoinAddressCopyWithImpl<$Res>
+    implements $BuildTransferPackageOptions_BitcoinAddressCopyWith<$Res> {
+  _$BuildTransferPackageOptions_BitcoinAddressCopyWithImpl(this._self, this._then);
+
+  final BuildTransferPackageOptions_BitcoinAddress _self;
+  final $Res Function(BuildTransferPackageOptions_BitcoinAddress) _then;
+
+/// Create a copy of BuildTransferPackageOptions
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? confirmationSpeed = null,}) {
+  return _then(BuildTransferPackageOptions_BitcoinAddress(
+confirmationSpeed: null == confirmationSpeed ? _self.confirmationSpeed : confirmationSpeed // ignore: cast_nullable_to_non_nullable
+as OnchainConfirmationSpeed,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class BuildTransferPackageOptions_Bolt11Invoice extends BuildTransferPackageOptions {
+  const BuildTransferPackageOptions_Bolt11Invoice({required this.preferSpark, this.completionTimeoutSecs}): super._();
+  
+
+ final  bool preferSpark;
+ final  int? completionTimeoutSecs;
+
+/// Create a copy of BuildTransferPackageOptions
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BuildTransferPackageOptions_Bolt11InvoiceCopyWith<BuildTransferPackageOptions_Bolt11Invoice> get copyWith => _$BuildTransferPackageOptions_Bolt11InvoiceCopyWithImpl<BuildTransferPackageOptions_Bolt11Invoice>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BuildTransferPackageOptions_Bolt11Invoice&&(identical(other.preferSpark, preferSpark) || other.preferSpark == preferSpark)&&(identical(other.completionTimeoutSecs, completionTimeoutSecs) || other.completionTimeoutSecs == completionTimeoutSecs));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,preferSpark,completionTimeoutSecs);
+
+@override
+String toString() {
+  return 'BuildTransferPackageOptions.bolt11Invoice(preferSpark: $preferSpark, completionTimeoutSecs: $completionTimeoutSecs)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $BuildTransferPackageOptions_Bolt11InvoiceCopyWith<$Res> implements $BuildTransferPackageOptionsCopyWith<$Res> {
+  factory $BuildTransferPackageOptions_Bolt11InvoiceCopyWith(BuildTransferPackageOptions_Bolt11Invoice value, $Res Function(BuildTransferPackageOptions_Bolt11Invoice) _then) = _$BuildTransferPackageOptions_Bolt11InvoiceCopyWithImpl;
+@useResult
+$Res call({
+ bool preferSpark, int? completionTimeoutSecs
+});
+
+
+
+
+}
+/// @nodoc
+class _$BuildTransferPackageOptions_Bolt11InvoiceCopyWithImpl<$Res>
+    implements $BuildTransferPackageOptions_Bolt11InvoiceCopyWith<$Res> {
+  _$BuildTransferPackageOptions_Bolt11InvoiceCopyWithImpl(this._self, this._then);
+
+  final BuildTransferPackageOptions_Bolt11Invoice _self;
+  final $Res Function(BuildTransferPackageOptions_Bolt11Invoice) _then;
+
+/// Create a copy of BuildTransferPackageOptions
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? preferSpark = null,Object? completionTimeoutSecs = freezed,}) {
+  return _then(BuildTransferPackageOptions_Bolt11Invoice(
+preferSpark: null == preferSpark ? _self.preferSpark : preferSpark // ignore: cast_nullable_to_non_nullable
+as bool,completionTimeoutSecs: freezed == completionTimeoutSecs ? _self.completionTimeoutSecs : completionTimeoutSecs // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$BuyBitcoinRequest {
 
 
@@ -7105,6 +7399,522 @@ as int?,
 }
 
 /// @nodoc
+mixin _$PublishSignedLnurlPayResponse {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedLnurlPayResponse);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PublishSignedLnurlPayResponse()';
+}
+
+
+}
+
+/// @nodoc
+class $PublishSignedLnurlPayResponseCopyWith<$Res>  {
+$PublishSignedLnurlPayResponseCopyWith(PublishSignedLnurlPayResponse _, $Res Function(PublishSignedLnurlPayResponse) __);
+}
+
+
+/// Adds pattern-matching-related methods to [PublishSignedLnurlPayResponse].
+extension PublishSignedLnurlPayResponsePatterns on PublishSignedLnurlPayResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PublishSignedLnurlPayResponse_SwapCompleted value)?  swapCompleted,TResult Function( PublishSignedLnurlPayResponse_PaymentSent value)?  paymentSent,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted(_that);case PublishSignedLnurlPayResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PublishSignedLnurlPayResponse_SwapCompleted value)  swapCompleted,required TResult Function( PublishSignedLnurlPayResponse_PaymentSent value)  paymentSent,}){
+final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted():
+return swapCompleted(_that);case PublishSignedLnurlPayResponse_PaymentSent():
+return paymentSent(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PublishSignedLnurlPayResponse_SwapCompleted value)?  swapCompleted,TResult? Function( PublishSignedLnurlPayResponse_PaymentSent value)?  paymentSent,}){
+final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted(_that);case PublishSignedLnurlPayResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  swapCompleted,TResult Function( LnurlPayResponse response)?  paymentSent,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted();case PublishSignedLnurlPayResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that.response);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  swapCompleted,required TResult Function( LnurlPayResponse response)  paymentSent,}) {final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted():
+return swapCompleted();case PublishSignedLnurlPayResponse_PaymentSent():
+return paymentSent(_that.response);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  swapCompleted,TResult? Function( LnurlPayResponse response)?  paymentSent,}) {final _that = this;
+switch (_that) {
+case PublishSignedLnurlPayResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted();case PublishSignedLnurlPayResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that.response);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class PublishSignedLnurlPayResponse_SwapCompleted extends PublishSignedLnurlPayResponse {
+  const PublishSignedLnurlPayResponse_SwapCompleted(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedLnurlPayResponse_SwapCompleted);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PublishSignedLnurlPayResponse.swapCompleted()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PublishSignedLnurlPayResponse_PaymentSent extends PublishSignedLnurlPayResponse {
+  const PublishSignedLnurlPayResponse_PaymentSent({required this.response}): super._();
+  
+
+ final  LnurlPayResponse response;
+
+/// Create a copy of PublishSignedLnurlPayResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PublishSignedLnurlPayResponse_PaymentSentCopyWith<PublishSignedLnurlPayResponse_PaymentSent> get copyWith => _$PublishSignedLnurlPayResponse_PaymentSentCopyWithImpl<PublishSignedLnurlPayResponse_PaymentSent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedLnurlPayResponse_PaymentSent&&(identical(other.response, response) || other.response == response));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,response);
+
+@override
+String toString() {
+  return 'PublishSignedLnurlPayResponse.paymentSent(response: $response)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PublishSignedLnurlPayResponse_PaymentSentCopyWith<$Res> implements $PublishSignedLnurlPayResponseCopyWith<$Res> {
+  factory $PublishSignedLnurlPayResponse_PaymentSentCopyWith(PublishSignedLnurlPayResponse_PaymentSent value, $Res Function(PublishSignedLnurlPayResponse_PaymentSent) _then) = _$PublishSignedLnurlPayResponse_PaymentSentCopyWithImpl;
+@useResult
+$Res call({
+ LnurlPayResponse response
+});
+
+
+
+
+}
+/// @nodoc
+class _$PublishSignedLnurlPayResponse_PaymentSentCopyWithImpl<$Res>
+    implements $PublishSignedLnurlPayResponse_PaymentSentCopyWith<$Res> {
+  _$PublishSignedLnurlPayResponse_PaymentSentCopyWithImpl(this._self, this._then);
+
+  final PublishSignedLnurlPayResponse_PaymentSent _self;
+  final $Res Function(PublishSignedLnurlPayResponse_PaymentSent) _then;
+
+/// Create a copy of PublishSignedLnurlPayResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? response = null,}) {
+  return _then(PublishSignedLnurlPayResponse_PaymentSent(
+response: null == response ? _self.response : response // ignore: cast_nullable_to_non_nullable
+as LnurlPayResponse,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$PublishSignedTransferPackageResponse {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedTransferPackageResponse);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PublishSignedTransferPackageResponse()';
+}
+
+
+}
+
+/// @nodoc
+class $PublishSignedTransferPackageResponseCopyWith<$Res>  {
+$PublishSignedTransferPackageResponseCopyWith(PublishSignedTransferPackageResponse _, $Res Function(PublishSignedTransferPackageResponse) __);
+}
+
+
+/// Adds pattern-matching-related methods to [PublishSignedTransferPackageResponse].
+extension PublishSignedTransferPackageResponsePatterns on PublishSignedTransferPackageResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PublishSignedTransferPackageResponse_SwapCompleted value)?  swapCompleted,TResult Function( PublishSignedTransferPackageResponse_PaymentSent value)?  paymentSent,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted(_that);case PublishSignedTransferPackageResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PublishSignedTransferPackageResponse_SwapCompleted value)  swapCompleted,required TResult Function( PublishSignedTransferPackageResponse_PaymentSent value)  paymentSent,}){
+final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted():
+return swapCompleted(_that);case PublishSignedTransferPackageResponse_PaymentSent():
+return paymentSent(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PublishSignedTransferPackageResponse_SwapCompleted value)?  swapCompleted,TResult? Function( PublishSignedTransferPackageResponse_PaymentSent value)?  paymentSent,}){
+final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted(_that);case PublishSignedTransferPackageResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  swapCompleted,TResult Function( Payment payment)?  paymentSent,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted();case PublishSignedTransferPackageResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that.payment);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  swapCompleted,required TResult Function( Payment payment)  paymentSent,}) {final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted():
+return swapCompleted();case PublishSignedTransferPackageResponse_PaymentSent():
+return paymentSent(_that.payment);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  swapCompleted,TResult? Function( Payment payment)?  paymentSent,}) {final _that = this;
+switch (_that) {
+case PublishSignedTransferPackageResponse_SwapCompleted() when swapCompleted != null:
+return swapCompleted();case PublishSignedTransferPackageResponse_PaymentSent() when paymentSent != null:
+return paymentSent(_that.payment);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class PublishSignedTransferPackageResponse_SwapCompleted extends PublishSignedTransferPackageResponse {
+  const PublishSignedTransferPackageResponse_SwapCompleted(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedTransferPackageResponse_SwapCompleted);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PublishSignedTransferPackageResponse.swapCompleted()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class PublishSignedTransferPackageResponse_PaymentSent extends PublishSignedTransferPackageResponse {
+  const PublishSignedTransferPackageResponse_PaymentSent({required this.payment}): super._();
+  
+
+ final  Payment payment;
+
+/// Create a copy of PublishSignedTransferPackageResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PublishSignedTransferPackageResponse_PaymentSentCopyWith<PublishSignedTransferPackageResponse_PaymentSent> get copyWith => _$PublishSignedTransferPackageResponse_PaymentSentCopyWithImpl<PublishSignedTransferPackageResponse_PaymentSent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublishSignedTransferPackageResponse_PaymentSent&&(identical(other.payment, payment) || other.payment == payment));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,payment);
+
+@override
+String toString() {
+  return 'PublishSignedTransferPackageResponse.paymentSent(payment: $payment)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PublishSignedTransferPackageResponse_PaymentSentCopyWith<$Res> implements $PublishSignedTransferPackageResponseCopyWith<$Res> {
+  factory $PublishSignedTransferPackageResponse_PaymentSentCopyWith(PublishSignedTransferPackageResponse_PaymentSent value, $Res Function(PublishSignedTransferPackageResponse_PaymentSent) _then) = _$PublishSignedTransferPackageResponse_PaymentSentCopyWithImpl;
+@useResult
+$Res call({
+ Payment payment
+});
+
+
+
+
+}
+/// @nodoc
+class _$PublishSignedTransferPackageResponse_PaymentSentCopyWithImpl<$Res>
+    implements $PublishSignedTransferPackageResponse_PaymentSentCopyWith<$Res> {
+  _$PublishSignedTransferPackageResponse_PaymentSentCopyWithImpl(this._self, this._then);
+
+  final PublishSignedTransferPackageResponse_PaymentSent _self;
+  final $Res Function(PublishSignedTransferPackageResponse_PaymentSent) _then;
+
+/// Create a copy of PublishSignedTransferPackageResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? payment = null,}) {
+  return _then(PublishSignedTransferPackageResponse_PaymentSent(
+payment: null == payment ? _self.payment : payment // ignore: cast_nullable_to_non_nullable
+as Payment,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$ReceivePaymentMethod {
 
 
@@ -9980,6 +10790,1069 @@ class _$SuccessActionProcessed_UrlCopyWithImpl<$Res>
   return _then(SuccessActionProcessed_Url(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as UrlSuccessActionData,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$TransferSignature {
+
+ Object get signed;
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferSignature&&const DeepCollectionEquality().equals(other.signed, signed));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(signed));
+
+@override
+String toString() {
+  return 'TransferSignature(signed: $signed)';
+}
+
+
+}
+
+/// @nodoc
+class $TransferSignatureCopyWith<$Res>  {
+$TransferSignatureCopyWith(TransferSignature _, $Res Function(TransferSignature) __);
+}
+
+
+/// Adds pattern-matching-related methods to [TransferSignature].
+extension TransferSignaturePatterns on TransferSignature {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TransferSignature_Transfer value)?  transfer,TResult Function( TransferSignature_Token value)?  token,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case TransferSignature_Transfer() when transfer != null:
+return transfer(_that);case TransferSignature_Token() when token != null:
+return token(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TransferSignature_Transfer value)  transfer,required TResult Function( TransferSignature_Token value)  token,}){
+final _that = this;
+switch (_that) {
+case TransferSignature_Transfer():
+return transfer(_that);case TransferSignature_Token():
+return token(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TransferSignature_Transfer value)?  transfer,TResult? Function( TransferSignature_Token value)?  token,}){
+final _that = this;
+switch (_that) {
+case TransferSignature_Transfer() when transfer != null:
+return transfer(_that);case TransferSignature_Token() when token != null:
+return token(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( ExternalPreparedTransfer signed)?  transfer,TResult Function( ExternalPreparedTokenTransaction signed)?  token,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case TransferSignature_Transfer() when transfer != null:
+return transfer(_that.signed);case TransferSignature_Token() when token != null:
+return token(_that.signed);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( ExternalPreparedTransfer signed)  transfer,required TResult Function( ExternalPreparedTokenTransaction signed)  token,}) {final _that = this;
+switch (_that) {
+case TransferSignature_Transfer():
+return transfer(_that.signed);case TransferSignature_Token():
+return token(_that.signed);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( ExternalPreparedTransfer signed)?  transfer,TResult? Function( ExternalPreparedTokenTransaction signed)?  token,}) {final _that = this;
+switch (_that) {
+case TransferSignature_Transfer() when transfer != null:
+return transfer(_that.signed);case TransferSignature_Token() when token != null:
+return token(_that.signed);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class TransferSignature_Transfer extends TransferSignature {
+  const TransferSignature_Transfer({required this.signed}): super._();
+  
+
+@override final  ExternalPreparedTransfer signed;
+
+/// Create a copy of TransferSignature
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferSignature_TransferCopyWith<TransferSignature_Transfer> get copyWith => _$TransferSignature_TransferCopyWithImpl<TransferSignature_Transfer>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferSignature_Transfer&&(identical(other.signed, signed) || other.signed == signed));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,signed);
+
+@override
+String toString() {
+  return 'TransferSignature.transfer(signed: $signed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransferSignature_TransferCopyWith<$Res> implements $TransferSignatureCopyWith<$Res> {
+  factory $TransferSignature_TransferCopyWith(TransferSignature_Transfer value, $Res Function(TransferSignature_Transfer) _then) = _$TransferSignature_TransferCopyWithImpl;
+@useResult
+$Res call({
+ ExternalPreparedTransfer signed
+});
+
+
+
+
+}
+/// @nodoc
+class _$TransferSignature_TransferCopyWithImpl<$Res>
+    implements $TransferSignature_TransferCopyWith<$Res> {
+  _$TransferSignature_TransferCopyWithImpl(this._self, this._then);
+
+  final TransferSignature_Transfer _self;
+  final $Res Function(TransferSignature_Transfer) _then;
+
+/// Create a copy of TransferSignature
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? signed = null,}) {
+  return _then(TransferSignature_Transfer(
+signed: null == signed ? _self.signed : signed // ignore: cast_nullable_to_non_nullable
+as ExternalPreparedTransfer,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class TransferSignature_Token extends TransferSignature {
+  const TransferSignature_Token({required this.signed}): super._();
+  
+
+@override final  ExternalPreparedTokenTransaction signed;
+
+/// Create a copy of TransferSignature
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferSignature_TokenCopyWith<TransferSignature_Token> get copyWith => _$TransferSignature_TokenCopyWithImpl<TransferSignature_Token>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferSignature_Token&&(identical(other.signed, signed) || other.signed == signed));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,signed);
+
+@override
+String toString() {
+  return 'TransferSignature.token(signed: $signed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransferSignature_TokenCopyWith<$Res> implements $TransferSignatureCopyWith<$Res> {
+  factory $TransferSignature_TokenCopyWith(TransferSignature_Token value, $Res Function(TransferSignature_Token) _then) = _$TransferSignature_TokenCopyWithImpl;
+@useResult
+$Res call({
+ ExternalPreparedTokenTransaction signed
+});
+
+
+
+
+}
+/// @nodoc
+class _$TransferSignature_TokenCopyWithImpl<$Res>
+    implements $TransferSignature_TokenCopyWith<$Res> {
+  _$TransferSignature_TokenCopyWithImpl(this._self, this._then);
+
+  final TransferSignature_Token _self;
+  final $Res Function(TransferSignature_Token) _then;
+
+/// Create a copy of TransferSignature
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? signed = null,}) {
+  return _then(TransferSignature_Token(
+signed: null == signed ? _self.signed : signed // ignore: cast_nullable_to_non_nullable
+as ExternalPreparedTokenTransaction,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$TransferTarget {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferTarget);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'TransferTarget()';
+}
+
+
+}
+
+/// @nodoc
+class $TransferTargetCopyWith<$Res>  {
+$TransferTargetCopyWith(TransferTarget _, $Res Function(TransferTarget) __);
+}
+
+
+/// Adds pattern-matching-related methods to [TransferTarget].
+extension TransferTargetPatterns on TransferTarget {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TransferTarget_Spark value)?  spark,TResult Function( TransferTarget_Lightning value)?  lightning,TResult Function( TransferTarget_CoopExit value)?  coopExit,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case TransferTarget_Spark() when spark != null:
+return spark(_that);case TransferTarget_Lightning() when lightning != null:
+return lightning(_that);case TransferTarget_CoopExit() when coopExit != null:
+return coopExit(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TransferTarget_Spark value)  spark,required TResult Function( TransferTarget_Lightning value)  lightning,required TResult Function( TransferTarget_CoopExit value)  coopExit,}){
+final _that = this;
+switch (_that) {
+case TransferTarget_Spark():
+return spark(_that);case TransferTarget_Lightning():
+return lightning(_that);case TransferTarget_CoopExit():
+return coopExit(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TransferTarget_Spark value)?  spark,TResult? Function( TransferTarget_Lightning value)?  lightning,TResult? Function( TransferTarget_CoopExit value)?  coopExit,}){
+final _that = this;
+switch (_that) {
+case TransferTarget_Spark() when spark != null:
+return spark(_that);case TransferTarget_Lightning() when lightning != null:
+return lightning(_that);case TransferTarget_CoopExit() when coopExit != null:
+return coopExit(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String address,  String? sparkInvoice)?  spark,TResult Function( String bolt11,  LnurlPayContext? lnurlPay,  FeePolicy feePolicy,  int? completionTimeoutSecs)?  lightning,TResult Function( String address,  SendOnchainFeeQuote feeQuote,  OnchainConfirmationSpeed confirmationSpeed)?  coopExit,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case TransferTarget_Spark() when spark != null:
+return spark(_that.address,_that.sparkInvoice);case TransferTarget_Lightning() when lightning != null:
+return lightning(_that.bolt11,_that.lnurlPay,_that.feePolicy,_that.completionTimeoutSecs);case TransferTarget_CoopExit() when coopExit != null:
+return coopExit(_that.address,_that.feeQuote,_that.confirmationSpeed);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String address,  String? sparkInvoice)  spark,required TResult Function( String bolt11,  LnurlPayContext? lnurlPay,  FeePolicy feePolicy,  int? completionTimeoutSecs)  lightning,required TResult Function( String address,  SendOnchainFeeQuote feeQuote,  OnchainConfirmationSpeed confirmationSpeed)  coopExit,}) {final _that = this;
+switch (_that) {
+case TransferTarget_Spark():
+return spark(_that.address,_that.sparkInvoice);case TransferTarget_Lightning():
+return lightning(_that.bolt11,_that.lnurlPay,_that.feePolicy,_that.completionTimeoutSecs);case TransferTarget_CoopExit():
+return coopExit(_that.address,_that.feeQuote,_that.confirmationSpeed);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String address,  String? sparkInvoice)?  spark,TResult? Function( String bolt11,  LnurlPayContext? lnurlPay,  FeePolicy feePolicy,  int? completionTimeoutSecs)?  lightning,TResult? Function( String address,  SendOnchainFeeQuote feeQuote,  OnchainConfirmationSpeed confirmationSpeed)?  coopExit,}) {final _that = this;
+switch (_that) {
+case TransferTarget_Spark() when spark != null:
+return spark(_that.address,_that.sparkInvoice);case TransferTarget_Lightning() when lightning != null:
+return lightning(_that.bolt11,_that.lnurlPay,_that.feePolicy,_that.completionTimeoutSecs);case TransferTarget_CoopExit() when coopExit != null:
+return coopExit(_that.address,_that.feeQuote,_that.confirmationSpeed);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class TransferTarget_Spark extends TransferTarget {
+  const TransferTarget_Spark({required this.address, this.sparkInvoice}): super._();
+  
+
+ final  String address;
+ final  String? sparkInvoice;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferTarget_SparkCopyWith<TransferTarget_Spark> get copyWith => _$TransferTarget_SparkCopyWithImpl<TransferTarget_Spark>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferTarget_Spark&&(identical(other.address, address) || other.address == address)&&(identical(other.sparkInvoice, sparkInvoice) || other.sparkInvoice == sparkInvoice));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,address,sparkInvoice);
+
+@override
+String toString() {
+  return 'TransferTarget.spark(address: $address, sparkInvoice: $sparkInvoice)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransferTarget_SparkCopyWith<$Res> implements $TransferTargetCopyWith<$Res> {
+  factory $TransferTarget_SparkCopyWith(TransferTarget_Spark value, $Res Function(TransferTarget_Spark) _then) = _$TransferTarget_SparkCopyWithImpl;
+@useResult
+$Res call({
+ String address, String? sparkInvoice
+});
+
+
+
+
+}
+/// @nodoc
+class _$TransferTarget_SparkCopyWithImpl<$Res>
+    implements $TransferTarget_SparkCopyWith<$Res> {
+  _$TransferTarget_SparkCopyWithImpl(this._self, this._then);
+
+  final TransferTarget_Spark _self;
+  final $Res Function(TransferTarget_Spark) _then;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? address = null,Object? sparkInvoice = freezed,}) {
+  return _then(TransferTarget_Spark(
+address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String,sparkInvoice: freezed == sparkInvoice ? _self.sparkInvoice : sparkInvoice // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class TransferTarget_Lightning extends TransferTarget {
+  const TransferTarget_Lightning({required this.bolt11, this.lnurlPay, required this.feePolicy, this.completionTimeoutSecs}): super._();
+  
+
+ final  String bolt11;
+ final  LnurlPayContext? lnurlPay;
+ final  FeePolicy feePolicy;
+ final  int? completionTimeoutSecs;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferTarget_LightningCopyWith<TransferTarget_Lightning> get copyWith => _$TransferTarget_LightningCopyWithImpl<TransferTarget_Lightning>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferTarget_Lightning&&(identical(other.bolt11, bolt11) || other.bolt11 == bolt11)&&(identical(other.lnurlPay, lnurlPay) || other.lnurlPay == lnurlPay)&&(identical(other.feePolicy, feePolicy) || other.feePolicy == feePolicy)&&(identical(other.completionTimeoutSecs, completionTimeoutSecs) || other.completionTimeoutSecs == completionTimeoutSecs));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,bolt11,lnurlPay,feePolicy,completionTimeoutSecs);
+
+@override
+String toString() {
+  return 'TransferTarget.lightning(bolt11: $bolt11, lnurlPay: $lnurlPay, feePolicy: $feePolicy, completionTimeoutSecs: $completionTimeoutSecs)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransferTarget_LightningCopyWith<$Res> implements $TransferTargetCopyWith<$Res> {
+  factory $TransferTarget_LightningCopyWith(TransferTarget_Lightning value, $Res Function(TransferTarget_Lightning) _then) = _$TransferTarget_LightningCopyWithImpl;
+@useResult
+$Res call({
+ String bolt11, LnurlPayContext? lnurlPay, FeePolicy feePolicy, int? completionTimeoutSecs
+});
+
+
+
+
+}
+/// @nodoc
+class _$TransferTarget_LightningCopyWithImpl<$Res>
+    implements $TransferTarget_LightningCopyWith<$Res> {
+  _$TransferTarget_LightningCopyWithImpl(this._self, this._then);
+
+  final TransferTarget_Lightning _self;
+  final $Res Function(TransferTarget_Lightning) _then;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? bolt11 = null,Object? lnurlPay = freezed,Object? feePolicy = null,Object? completionTimeoutSecs = freezed,}) {
+  return _then(TransferTarget_Lightning(
+bolt11: null == bolt11 ? _self.bolt11 : bolt11 // ignore: cast_nullable_to_non_nullable
+as String,lnurlPay: freezed == lnurlPay ? _self.lnurlPay : lnurlPay // ignore: cast_nullable_to_non_nullable
+as LnurlPayContext?,feePolicy: null == feePolicy ? _self.feePolicy : feePolicy // ignore: cast_nullable_to_non_nullable
+as FeePolicy,completionTimeoutSecs: freezed == completionTimeoutSecs ? _self.completionTimeoutSecs : completionTimeoutSecs // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class TransferTarget_CoopExit extends TransferTarget {
+  const TransferTarget_CoopExit({required this.address, required this.feeQuote, required this.confirmationSpeed}): super._();
+  
+
+ final  String address;
+ final  SendOnchainFeeQuote feeQuote;
+ final  OnchainConfirmationSpeed confirmationSpeed;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TransferTarget_CoopExitCopyWith<TransferTarget_CoopExit> get copyWith => _$TransferTarget_CoopExitCopyWithImpl<TransferTarget_CoopExit>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransferTarget_CoopExit&&(identical(other.address, address) || other.address == address)&&(identical(other.feeQuote, feeQuote) || other.feeQuote == feeQuote)&&(identical(other.confirmationSpeed, confirmationSpeed) || other.confirmationSpeed == confirmationSpeed));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,address,feeQuote,confirmationSpeed);
+
+@override
+String toString() {
+  return 'TransferTarget.coopExit(address: $address, feeQuote: $feeQuote, confirmationSpeed: $confirmationSpeed)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $TransferTarget_CoopExitCopyWith<$Res> implements $TransferTargetCopyWith<$Res> {
+  factory $TransferTarget_CoopExitCopyWith(TransferTarget_CoopExit value, $Res Function(TransferTarget_CoopExit) _then) = _$TransferTarget_CoopExitCopyWithImpl;
+@useResult
+$Res call({
+ String address, SendOnchainFeeQuote feeQuote, OnchainConfirmationSpeed confirmationSpeed
+});
+
+
+
+
+}
+/// @nodoc
+class _$TransferTarget_CoopExitCopyWithImpl<$Res>
+    implements $TransferTarget_CoopExitCopyWith<$Res> {
+  _$TransferTarget_CoopExitCopyWithImpl(this._self, this._then);
+
+  final TransferTarget_CoopExit _self;
+  final $Res Function(TransferTarget_CoopExit) _then;
+
+/// Create a copy of TransferTarget
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? address = null,Object? feeQuote = null,Object? confirmationSpeed = null,}) {
+  return _then(TransferTarget_CoopExit(
+address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String,feeQuote: null == feeQuote ? _self.feeQuote : feeQuote // ignore: cast_nullable_to_non_nullable
+as SendOnchainFeeQuote,confirmationSpeed: null == confirmationSpeed ? _self.confirmationSpeed : confirmationSpeed // ignore: cast_nullable_to_non_nullable
+as OnchainConfirmationSpeed,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$UnsignedTransferPackage {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnsignedTransferPackage);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UnsignedTransferPackage()';
+}
+
+
+}
+
+/// @nodoc
+class $UnsignedTransferPackageCopyWith<$Res>  {
+$UnsignedTransferPackageCopyWith(UnsignedTransferPackage _, $Res Function(UnsignedTransferPackage) __);
+}
+
+
+/// Adds pattern-matching-related methods to [UnsignedTransferPackage].
+extension UnsignedTransferPackagePatterns on UnsignedTransferPackage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UnsignedTransferPackage_Swap value)?  swap,TResult Function( UnsignedTransferPackage_Transfer value)?  transfer,TResult Function( UnsignedTransferPackage_Token value)?  token,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap() when swap != null:
+return swap(_that);case UnsignedTransferPackage_Transfer() when transfer != null:
+return transfer(_that);case UnsignedTransferPackage_Token() when token != null:
+return token(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UnsignedTransferPackage_Swap value)  swap,required TResult Function( UnsignedTransferPackage_Transfer value)  transfer,required TResult Function( UnsignedTransferPackage_Token value)  token,}){
+final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap():
+return swap(_that);case UnsignedTransferPackage_Transfer():
+return transfer(_that);case UnsignedTransferPackage_Token():
+return token(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UnsignedTransferPackage_Swap value)?  swap,TResult? Function( UnsignedTransferPackage_Transfer value)?  transfer,TResult? Function( UnsignedTransferPackage_Token value)?  token,}){
+final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap() when swap != null:
+return swap(_that);case UnsignedTransferPackage_Transfer() when transfer != null:
+return transfer(_that);case UnsignedTransferPackage_Token() when token != null:
+return token(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( ExternalPrepareTransferRequest prepareTransfer,  Uint64List targetAmounts,  BigInt amountSat,  BigInt feeSat)?  swap,TResult Function( ExternalPrepareTransferRequest prepareTransfer,  BigInt amountSat,  BigInt feeSat,  TransferTarget target)?  transfer,TResult Function( ExternalPrepareTokenTransactionRequest prepareTokenTransaction,  Uint8List tokenContext,  String tokenIdentifier,  BigInt amount,  BigInt fee,  bool isSwap)?  token,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap() when swap != null:
+return swap(_that.prepareTransfer,_that.targetAmounts,_that.amountSat,_that.feeSat);case UnsignedTransferPackage_Transfer() when transfer != null:
+return transfer(_that.prepareTransfer,_that.amountSat,_that.feeSat,_that.target);case UnsignedTransferPackage_Token() when token != null:
+return token(_that.prepareTokenTransaction,_that.tokenContext,_that.tokenIdentifier,_that.amount,_that.fee,_that.isSwap);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( ExternalPrepareTransferRequest prepareTransfer,  Uint64List targetAmounts,  BigInt amountSat,  BigInt feeSat)  swap,required TResult Function( ExternalPrepareTransferRequest prepareTransfer,  BigInt amountSat,  BigInt feeSat,  TransferTarget target)  transfer,required TResult Function( ExternalPrepareTokenTransactionRequest prepareTokenTransaction,  Uint8List tokenContext,  String tokenIdentifier,  BigInt amount,  BigInt fee,  bool isSwap)  token,}) {final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap():
+return swap(_that.prepareTransfer,_that.targetAmounts,_that.amountSat,_that.feeSat);case UnsignedTransferPackage_Transfer():
+return transfer(_that.prepareTransfer,_that.amountSat,_that.feeSat,_that.target);case UnsignedTransferPackage_Token():
+return token(_that.prepareTokenTransaction,_that.tokenContext,_that.tokenIdentifier,_that.amount,_that.fee,_that.isSwap);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( ExternalPrepareTransferRequest prepareTransfer,  Uint64List targetAmounts,  BigInt amountSat,  BigInt feeSat)?  swap,TResult? Function( ExternalPrepareTransferRequest prepareTransfer,  BigInt amountSat,  BigInt feeSat,  TransferTarget target)?  transfer,TResult? Function( ExternalPrepareTokenTransactionRequest prepareTokenTransaction,  Uint8List tokenContext,  String tokenIdentifier,  BigInt amount,  BigInt fee,  bool isSwap)?  token,}) {final _that = this;
+switch (_that) {
+case UnsignedTransferPackage_Swap() when swap != null:
+return swap(_that.prepareTransfer,_that.targetAmounts,_that.amountSat,_that.feeSat);case UnsignedTransferPackage_Transfer() when transfer != null:
+return transfer(_that.prepareTransfer,_that.amountSat,_that.feeSat,_that.target);case UnsignedTransferPackage_Token() when token != null:
+return token(_that.prepareTokenTransaction,_that.tokenContext,_that.tokenIdentifier,_that.amount,_that.fee,_that.isSwap);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class UnsignedTransferPackage_Swap extends UnsignedTransferPackage {
+  const UnsignedTransferPackage_Swap({required this.prepareTransfer, required this.targetAmounts, required this.amountSat, required this.feeSat}): super._();
+  
+
+ final  ExternalPrepareTransferRequest prepareTransfer;
+ final  Uint64List targetAmounts;
+ final  BigInt amountSat;
+ final  BigInt feeSat;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UnsignedTransferPackage_SwapCopyWith<UnsignedTransferPackage_Swap> get copyWith => _$UnsignedTransferPackage_SwapCopyWithImpl<UnsignedTransferPackage_Swap>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnsignedTransferPackage_Swap&&(identical(other.prepareTransfer, prepareTransfer) || other.prepareTransfer == prepareTransfer)&&const DeepCollectionEquality().equals(other.targetAmounts, targetAmounts)&&(identical(other.amountSat, amountSat) || other.amountSat == amountSat)&&(identical(other.feeSat, feeSat) || other.feeSat == feeSat));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,prepareTransfer,const DeepCollectionEquality().hash(targetAmounts),amountSat,feeSat);
+
+@override
+String toString() {
+  return 'UnsignedTransferPackage.swap(prepareTransfer: $prepareTransfer, targetAmounts: $targetAmounts, amountSat: $amountSat, feeSat: $feeSat)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UnsignedTransferPackage_SwapCopyWith<$Res> implements $UnsignedTransferPackageCopyWith<$Res> {
+  factory $UnsignedTransferPackage_SwapCopyWith(UnsignedTransferPackage_Swap value, $Res Function(UnsignedTransferPackage_Swap) _then) = _$UnsignedTransferPackage_SwapCopyWithImpl;
+@useResult
+$Res call({
+ ExternalPrepareTransferRequest prepareTransfer, Uint64List targetAmounts, BigInt amountSat, BigInt feeSat
+});
+
+
+
+
+}
+/// @nodoc
+class _$UnsignedTransferPackage_SwapCopyWithImpl<$Res>
+    implements $UnsignedTransferPackage_SwapCopyWith<$Res> {
+  _$UnsignedTransferPackage_SwapCopyWithImpl(this._self, this._then);
+
+  final UnsignedTransferPackage_Swap _self;
+  final $Res Function(UnsignedTransferPackage_Swap) _then;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? prepareTransfer = null,Object? targetAmounts = null,Object? amountSat = null,Object? feeSat = null,}) {
+  return _then(UnsignedTransferPackage_Swap(
+prepareTransfer: null == prepareTransfer ? _self.prepareTransfer : prepareTransfer // ignore: cast_nullable_to_non_nullable
+as ExternalPrepareTransferRequest,targetAmounts: null == targetAmounts ? _self.targetAmounts : targetAmounts // ignore: cast_nullable_to_non_nullable
+as Uint64List,amountSat: null == amountSat ? _self.amountSat : amountSat // ignore: cast_nullable_to_non_nullable
+as BigInt,feeSat: null == feeSat ? _self.feeSat : feeSat // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class UnsignedTransferPackage_Transfer extends UnsignedTransferPackage {
+  const UnsignedTransferPackage_Transfer({required this.prepareTransfer, required this.amountSat, required this.feeSat, required this.target}): super._();
+  
+
+ final  ExternalPrepareTransferRequest prepareTransfer;
+ final  BigInt amountSat;
+ final  BigInt feeSat;
+ final  TransferTarget target;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UnsignedTransferPackage_TransferCopyWith<UnsignedTransferPackage_Transfer> get copyWith => _$UnsignedTransferPackage_TransferCopyWithImpl<UnsignedTransferPackage_Transfer>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnsignedTransferPackage_Transfer&&(identical(other.prepareTransfer, prepareTransfer) || other.prepareTransfer == prepareTransfer)&&(identical(other.amountSat, amountSat) || other.amountSat == amountSat)&&(identical(other.feeSat, feeSat) || other.feeSat == feeSat)&&(identical(other.target, target) || other.target == target));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,prepareTransfer,amountSat,feeSat,target);
+
+@override
+String toString() {
+  return 'UnsignedTransferPackage.transfer(prepareTransfer: $prepareTransfer, amountSat: $amountSat, feeSat: $feeSat, target: $target)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UnsignedTransferPackage_TransferCopyWith<$Res> implements $UnsignedTransferPackageCopyWith<$Res> {
+  factory $UnsignedTransferPackage_TransferCopyWith(UnsignedTransferPackage_Transfer value, $Res Function(UnsignedTransferPackage_Transfer) _then) = _$UnsignedTransferPackage_TransferCopyWithImpl;
+@useResult
+$Res call({
+ ExternalPrepareTransferRequest prepareTransfer, BigInt amountSat, BigInt feeSat, TransferTarget target
+});
+
+
+$TransferTargetCopyWith<$Res> get target;
+
+}
+/// @nodoc
+class _$UnsignedTransferPackage_TransferCopyWithImpl<$Res>
+    implements $UnsignedTransferPackage_TransferCopyWith<$Res> {
+  _$UnsignedTransferPackage_TransferCopyWithImpl(this._self, this._then);
+
+  final UnsignedTransferPackage_Transfer _self;
+  final $Res Function(UnsignedTransferPackage_Transfer) _then;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? prepareTransfer = null,Object? amountSat = null,Object? feeSat = null,Object? target = null,}) {
+  return _then(UnsignedTransferPackage_Transfer(
+prepareTransfer: null == prepareTransfer ? _self.prepareTransfer : prepareTransfer // ignore: cast_nullable_to_non_nullable
+as ExternalPrepareTransferRequest,amountSat: null == amountSat ? _self.amountSat : amountSat // ignore: cast_nullable_to_non_nullable
+as BigInt,feeSat: null == feeSat ? _self.feeSat : feeSat // ignore: cast_nullable_to_non_nullable
+as BigInt,target: null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
+as TransferTarget,
+  ));
+}
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TransferTargetCopyWith<$Res> get target {
+  
+  return $TransferTargetCopyWith<$Res>(_self.target, (value) {
+    return _then(_self.copyWith(target: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class UnsignedTransferPackage_Token extends UnsignedTransferPackage {
+  const UnsignedTransferPackage_Token({required this.prepareTokenTransaction, required this.tokenContext, required this.tokenIdentifier, required this.amount, required this.fee, required this.isSwap}): super._();
+  
+
+ final  ExternalPrepareTokenTransactionRequest prepareTokenTransaction;
+ final  Uint8List tokenContext;
+ final  String tokenIdentifier;
+ final  BigInt amount;
+ final  BigInt fee;
+ final  bool isSwap;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UnsignedTransferPackage_TokenCopyWith<UnsignedTransferPackage_Token> get copyWith => _$UnsignedTransferPackage_TokenCopyWithImpl<UnsignedTransferPackage_Token>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnsignedTransferPackage_Token&&(identical(other.prepareTokenTransaction, prepareTokenTransaction) || other.prepareTokenTransaction == prepareTokenTransaction)&&const DeepCollectionEquality().equals(other.tokenContext, tokenContext)&&(identical(other.tokenIdentifier, tokenIdentifier) || other.tokenIdentifier == tokenIdentifier)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.fee, fee) || other.fee == fee)&&(identical(other.isSwap, isSwap) || other.isSwap == isSwap));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,prepareTokenTransaction,const DeepCollectionEquality().hash(tokenContext),tokenIdentifier,amount,fee,isSwap);
+
+@override
+String toString() {
+  return 'UnsignedTransferPackage.token(prepareTokenTransaction: $prepareTokenTransaction, tokenContext: $tokenContext, tokenIdentifier: $tokenIdentifier, amount: $amount, fee: $fee, isSwap: $isSwap)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UnsignedTransferPackage_TokenCopyWith<$Res> implements $UnsignedTransferPackageCopyWith<$Res> {
+  factory $UnsignedTransferPackage_TokenCopyWith(UnsignedTransferPackage_Token value, $Res Function(UnsignedTransferPackage_Token) _then) = _$UnsignedTransferPackage_TokenCopyWithImpl;
+@useResult
+$Res call({
+ ExternalPrepareTokenTransactionRequest prepareTokenTransaction, Uint8List tokenContext, String tokenIdentifier, BigInt amount, BigInt fee, bool isSwap
+});
+
+
+
+
+}
+/// @nodoc
+class _$UnsignedTransferPackage_TokenCopyWithImpl<$Res>
+    implements $UnsignedTransferPackage_TokenCopyWith<$Res> {
+  _$UnsignedTransferPackage_TokenCopyWithImpl(this._self, this._then);
+
+  final UnsignedTransferPackage_Token _self;
+  final $Res Function(UnsignedTransferPackage_Token) _then;
+
+/// Create a copy of UnsignedTransferPackage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? prepareTokenTransaction = null,Object? tokenContext = null,Object? tokenIdentifier = null,Object? amount = null,Object? fee = null,Object? isSwap = null,}) {
+  return _then(UnsignedTransferPackage_Token(
+prepareTokenTransaction: null == prepareTokenTransaction ? _self.prepareTokenTransaction : prepareTokenTransaction // ignore: cast_nullable_to_non_nullable
+as ExternalPrepareTokenTransactionRequest,tokenContext: null == tokenContext ? _self.tokenContext : tokenContext // ignore: cast_nullable_to_non_nullable
+as Uint8List,tokenIdentifier: null == tokenIdentifier ? _self.tokenIdentifier : tokenIdentifier // ignore: cast_nullable_to_non_nullable
+as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as BigInt,fee: null == fee ? _self.fee : fee // ignore: cast_nullable_to_non_nullable
+as BigInt,isSwap: null == isSwap ? _self.isSwap : isSwap // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

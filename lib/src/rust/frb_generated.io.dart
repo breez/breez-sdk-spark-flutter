@@ -307,6 +307,19 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool dco_decode_box_autoadd_bool(dynamic raw);
 
   @protected
+  BuildTransferPackageOptions dco_decode_box_autoadd_build_transfer_package_options(dynamic raw);
+
+  @protected
+  BuildUnsignedLnurlPayPackageRequest dco_decode_box_autoadd_build_unsigned_lnurl_pay_package_request(
+    dynamic raw,
+  );
+
+  @protected
+  BuildUnsignedTransferPackageRequest dco_decode_box_autoadd_build_unsigned_transfer_package_request(
+    dynamic raw,
+  );
+
+  @protected
   BurnIssuerTokenRequest dco_decode_box_autoadd_burn_issuer_token_request(dynamic raw);
 
   @protected
@@ -376,6 +389,20 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   DepositClaimError dco_decode_box_autoadd_deposit_claim_error(dynamic raw);
 
   @protected
+  ExternalPrepareTokenTransactionRequest dco_decode_box_autoadd_external_prepare_token_transaction_request(
+    dynamic raw,
+  );
+
+  @protected
+  ExternalPrepareTransferRequest dco_decode_box_autoadd_external_prepare_transfer_request(dynamic raw);
+
+  @protected
+  ExternalPreparedTokenTransaction dco_decode_box_autoadd_external_prepared_token_transaction(dynamic raw);
+
+  @protected
+  ExternalPreparedTransfer dco_decode_box_autoadd_external_prepared_transfer(dynamic raw);
+
+  @protected
   Fee dco_decode_box_autoadd_fee(dynamic raw);
 
   @protected
@@ -418,6 +445,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   LnurlErrorDetails dco_decode_box_autoadd_lnurl_error_details(dynamic raw);
 
   @protected
+  LnurlPayContext dco_decode_box_autoadd_lnurl_pay_context(dynamic raw);
+
+  @protected
   LnurlPayInfo dco_decode_box_autoadd_lnurl_pay_info(dynamic raw);
 
   @protected
@@ -425,6 +455,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlPayRequestDetails dco_decode_box_autoadd_lnurl_pay_request_details(dynamic raw);
+
+  @protected
+  LnurlPayResponse dco_decode_box_autoadd_lnurl_pay_response(dynamic raw);
 
   @protected
   LnurlReceiveMetadata dco_decode_box_autoadd_lnurl_receive_metadata(dynamic raw);
@@ -473,6 +506,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PrfProviderError dco_decode_box_autoadd_prf_provider_error(dynamic raw);
+
+  @protected
+  PublishSignedLnurlPayPackageRequest dco_decode_box_autoadd_publish_signed_lnurl_pay_package_request(
+    dynamic raw,
+  );
+
+  @protected
+  PublishSignedTransferPackageRequest dco_decode_box_autoadd_publish_signed_transfer_package_request(
+    dynamic raw,
+  );
 
   @protected
   ReceivePaymentRequest dco_decode_box_autoadd_receive_payment_request(dynamic raw);
@@ -556,6 +599,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TokenTransactionType dco_decode_box_autoadd_token_transaction_type(dynamic raw);
 
   @protected
+  TransferTarget dco_decode_box_autoadd_transfer_target(dynamic raw);
+
+  @protected
   int dco_decode_box_autoadd_u_32(dynamic raw);
 
   @protected
@@ -575,6 +621,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UrlSuccessActionData dco_decode_box_autoadd_url_success_action_data(dynamic raw);
+
+  @protected
+  BuildTransferPackageOptions dco_decode_build_transfer_package_options(dynamic raw);
+
+  @protected
+  BuildUnsignedLnurlPayPackageRequest dco_decode_build_unsigned_lnurl_pay_package_request(dynamic raw);
+
+  @protected
+  BuildUnsignedTransferPackageRequest dco_decode_build_unsigned_transfer_package_request(dynamic raw);
 
   @protected
   BurnIssuerTokenRequest dco_decode_burn_issuer_token_request(dynamic raw);
@@ -709,7 +764,43 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   DeriveSeedsRequest dco_decode_derive_seeds_request(dynamic raw);
 
   @protected
+  EcdsaSignatureBytes dco_decode_ecdsa_signature_bytes(dynamic raw);
+
+  @protected
+  ExternalIdentifier dco_decode_external_identifier(dynamic raw);
+
+  @protected
   ExternalInputParser dco_decode_external_input_parser(dynamic raw);
+
+  @protected
+  ExternalNewLeafKey dco_decode_external_new_leaf_key(dynamic raw);
+
+  @protected
+  ExternalOperatorPackage dco_decode_external_operator_package(dynamic raw);
+
+  @protected
+  ExternalOperatorRecipient dco_decode_external_operator_recipient(dynamic raw);
+
+  @protected
+  ExternalPrepareTokenTransactionRequest dco_decode_external_prepare_token_transaction_request(dynamic raw);
+
+  @protected
+  ExternalPrepareTransferRequest dco_decode_external_prepare_transfer_request(dynamic raw);
+
+  @protected
+  ExternalPreparedTokenTransaction dco_decode_external_prepared_token_transaction(dynamic raw);
+
+  @protected
+  ExternalPreparedTransfer dco_decode_external_prepared_transfer(dynamic raw);
+
+  @protected
+  ExternalTokenTransactionKind dco_decode_external_token_transaction_kind(dynamic raw);
+
+  @protected
+  ExternalTransferLeafInput dco_decode_external_transfer_leaf_input(dynamic raw);
+
+  @protected
+  ExternalTreeNodeId dco_decode_external_tree_node_id(dynamic raw);
 
   @protected
   double dco_decode_f_64(dynamic raw);
@@ -805,6 +896,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<ExternalInputParser> dco_decode_list_external_input_parser(dynamic raw);
 
   @protected
+  List<ExternalNewLeafKey> dco_decode_list_external_new_leaf_key(dynamic raw);
+
+  @protected
+  List<ExternalOperatorPackage> dco_decode_list_external_operator_package(dynamic raw);
+
+  @protected
+  List<ExternalOperatorRecipient> dco_decode_list_external_operator_recipient(dynamic raw);
+
+  @protected
+  List<ExternalTransferLeafInput> dco_decode_list_external_transfer_leaf_input(dynamic raw);
+
+  @protected
   ListFiatCurrenciesResponse dco_decode_list_fiat_currencies_response(dynamic raw);
 
   @protected
@@ -842,6 +945,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListPaymentsResponse dco_decode_list_payments_response(dynamic raw);
+
+  @protected
+  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
@@ -890,6 +996,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlInfo dco_decode_lnurl_info(dynamic raw);
+
+  @protected
+  LnurlPayContext dco_decode_lnurl_pay_context(dynamic raw);
 
   @protected
   LnurlPayInfo dco_decode_lnurl_pay_info(dynamic raw);
@@ -961,6 +1070,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool? dco_decode_opt_box_autoadd_bool(dynamic raw);
 
   @protected
+  BuildTransferPackageOptions? dco_decode_opt_box_autoadd_build_transfer_package_options(dynamic raw);
+
+  @protected
   ConversionDetails? dco_decode_opt_box_autoadd_conversion_details(dynamic raw);
 
   @protected
@@ -992,6 +1104,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LightningAddressInfo? dco_decode_opt_box_autoadd_lightning_address_info(dynamic raw);
+
+  @protected
+  LnurlPayContext? dco_decode_opt_box_autoadd_lnurl_pay_context(dynamic raw);
 
   @protected
   LnurlPayInfo? dco_decode_opt_box_autoadd_lnurl_pay_info(dynamic raw);
@@ -1147,6 +1262,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError dco_decode_prf_provider_error(dynamic raw);
 
   @protected
+  PublishSignedLnurlPayPackageRequest dco_decode_publish_signed_lnurl_pay_package_request(dynamic raw);
+
+  @protected
+  PublishSignedLnurlPayResponse dco_decode_publish_signed_lnurl_pay_response(dynamic raw);
+
+  @protected
+  PublishSignedTransferPackageRequest dco_decode_publish_signed_transfer_package_request(dynamic raw);
+
+  @protected
+  PublishSignedTransferPackageResponse dco_decode_publish_signed_transfer_package_response(dynamic raw);
+
+  @protected
   Rate dco_decode_rate(dynamic raw);
 
   @protected
@@ -1184,6 +1311,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   RegisterWebhookResponse dco_decode_register_webhook_response(dynamic raw);
+
+  @protected
+  SchnorrSignatureBytes dco_decode_schnorr_signature_bytes(dynamic raw);
 
   @protected
   SdkContextConfig dco_decode_sdk_context_config(dynamic raw);
@@ -1229,6 +1359,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SignMessageResponse dco_decode_sign_message_response(dynamic raw);
+
+  @protected
+  SignedTransferPackage dco_decode_signed_transfer_package(dynamic raw);
 
   @protected
   SilentPaymentAddressDetails dco_decode_silent_payment_address_details(dynamic raw);
@@ -1306,6 +1439,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TransferAuthorization dco_decode_transfer_authorization(dynamic raw);
 
   @protected
+  TransferSignature dco_decode_transfer_signature(dynamic raw);
+
+  @protected
+  TransferTarget dco_decode_transfer_target(dynamic raw);
+
+  @protected
   int dco_decode_u_16(dynamic raw);
 
   @protected
@@ -1328,6 +1467,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UnregisterWebhookRequest dco_decode_unregister_webhook_request(dynamic raw);
+
+  @protected
+  UnsignedTransferPackage dco_decode_unsigned_transfer_package(dynamic raw);
 
   @protected
   UpdateContactRequest dco_decode_update_contact_request(dynamic raw);
@@ -1613,6 +1755,21 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool sse_decode_box_autoadd_bool(SseDeserializer deserializer);
 
   @protected
+  BuildTransferPackageOptions sse_decode_box_autoadd_build_transfer_package_options(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BuildUnsignedLnurlPayPackageRequest sse_decode_box_autoadd_build_unsigned_lnurl_pay_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BuildUnsignedTransferPackageRequest sse_decode_box_autoadd_build_unsigned_transfer_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   BurnIssuerTokenRequest sse_decode_box_autoadd_burn_issuer_token_request(SseDeserializer deserializer);
 
   @protected
@@ -1684,6 +1841,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   DepositClaimError sse_decode_box_autoadd_deposit_claim_error(SseDeserializer deserializer);
 
   @protected
+  ExternalPrepareTokenTransactionRequest sse_decode_box_autoadd_external_prepare_token_transaction_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ExternalPrepareTransferRequest sse_decode_box_autoadd_external_prepare_transfer_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ExternalPreparedTokenTransaction sse_decode_box_autoadd_external_prepared_token_transaction(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ExternalPreparedTransfer sse_decode_box_autoadd_external_prepared_transfer(SseDeserializer deserializer);
+
+  @protected
   Fee sse_decode_box_autoadd_fee(SseDeserializer deserializer);
 
   @protected
@@ -1730,6 +1905,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   LnurlErrorDetails sse_decode_box_autoadd_lnurl_error_details(SseDeserializer deserializer);
 
   @protected
+  LnurlPayContext sse_decode_box_autoadd_lnurl_pay_context(SseDeserializer deserializer);
+
+  @protected
   LnurlPayInfo sse_decode_box_autoadd_lnurl_pay_info(SseDeserializer deserializer);
 
   @protected
@@ -1737,6 +1915,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlPayRequestDetails sse_decode_box_autoadd_lnurl_pay_request_details(SseDeserializer deserializer);
+
+  @protected
+  LnurlPayResponse sse_decode_box_autoadd_lnurl_pay_response(SseDeserializer deserializer);
 
   @protected
   LnurlReceiveMetadata sse_decode_box_autoadd_lnurl_receive_metadata(SseDeserializer deserializer);
@@ -1787,6 +1968,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PrfProviderError sse_decode_box_autoadd_prf_provider_error(SseDeserializer deserializer);
+
+  @protected
+  PublishSignedLnurlPayPackageRequest sse_decode_box_autoadd_publish_signed_lnurl_pay_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  PublishSignedTransferPackageRequest sse_decode_box_autoadd_publish_signed_transfer_package_request(
+    SseDeserializer deserializer,
+  );
 
   @protected
   ReceivePaymentRequest sse_decode_box_autoadd_receive_payment_request(SseDeserializer deserializer);
@@ -1876,6 +2067,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TokenTransactionType sse_decode_box_autoadd_token_transaction_type(SseDeserializer deserializer);
 
   @protected
+  TransferTarget sse_decode_box_autoadd_transfer_target(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_box_autoadd_u_32(SseDeserializer deserializer);
 
   @protected
@@ -1897,6 +2091,19 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UrlSuccessActionData sse_decode_box_autoadd_url_success_action_data(SseDeserializer deserializer);
+
+  @protected
+  BuildTransferPackageOptions sse_decode_build_transfer_package_options(SseDeserializer deserializer);
+
+  @protected
+  BuildUnsignedLnurlPayPackageRequest sse_decode_build_unsigned_lnurl_pay_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BuildUnsignedTransferPackageRequest sse_decode_build_unsigned_transfer_package_request(
+    SseDeserializer deserializer,
+  );
 
   @protected
   BurnIssuerTokenRequest sse_decode_burn_issuer_token_request(SseDeserializer deserializer);
@@ -2031,7 +2238,47 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   DeriveSeedsRequest sse_decode_derive_seeds_request(SseDeserializer deserializer);
 
   @protected
+  EcdsaSignatureBytes sse_decode_ecdsa_signature_bytes(SseDeserializer deserializer);
+
+  @protected
+  ExternalIdentifier sse_decode_external_identifier(SseDeserializer deserializer);
+
+  @protected
   ExternalInputParser sse_decode_external_input_parser(SseDeserializer deserializer);
+
+  @protected
+  ExternalNewLeafKey sse_decode_external_new_leaf_key(SseDeserializer deserializer);
+
+  @protected
+  ExternalOperatorPackage sse_decode_external_operator_package(SseDeserializer deserializer);
+
+  @protected
+  ExternalOperatorRecipient sse_decode_external_operator_recipient(SseDeserializer deserializer);
+
+  @protected
+  ExternalPrepareTokenTransactionRequest sse_decode_external_prepare_token_transaction_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ExternalPrepareTransferRequest sse_decode_external_prepare_transfer_request(SseDeserializer deserializer);
+
+  @protected
+  ExternalPreparedTokenTransaction sse_decode_external_prepared_token_transaction(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  ExternalPreparedTransfer sse_decode_external_prepared_transfer(SseDeserializer deserializer);
+
+  @protected
+  ExternalTokenTransactionKind sse_decode_external_token_transaction_kind(SseDeserializer deserializer);
+
+  @protected
+  ExternalTransferLeafInput sse_decode_external_transfer_leaf_input(SseDeserializer deserializer);
+
+  @protected
+  ExternalTreeNodeId sse_decode_external_tree_node_id(SseDeserializer deserializer);
 
   @protected
   double sse_decode_f_64(SseDeserializer deserializer);
@@ -2127,6 +2374,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<ExternalInputParser> sse_decode_list_external_input_parser(SseDeserializer deserializer);
 
   @protected
+  List<ExternalNewLeafKey> sse_decode_list_external_new_leaf_key(SseDeserializer deserializer);
+
+  @protected
+  List<ExternalOperatorPackage> sse_decode_list_external_operator_package(SseDeserializer deserializer);
+
+  @protected
+  List<ExternalOperatorRecipient> sse_decode_list_external_operator_recipient(SseDeserializer deserializer);
+
+  @protected
+  List<ExternalTransferLeafInput> sse_decode_list_external_transfer_leaf_input(SseDeserializer deserializer);
+
+  @protected
   ListFiatCurrenciesResponse sse_decode_list_fiat_currencies_response(SseDeserializer deserializer);
 
   @protected
@@ -2164,6 +2423,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListPaymentsResponse sse_decode_list_payments_response(SseDeserializer deserializer);
+
+  @protected
+  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
@@ -2212,6 +2474,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LnurlInfo sse_decode_lnurl_info(SseDeserializer deserializer);
+
+  @protected
+  LnurlPayContext sse_decode_lnurl_pay_context(SseDeserializer deserializer);
 
   @protected
   LnurlPayInfo sse_decode_lnurl_pay_info(SseDeserializer deserializer);
@@ -2283,6 +2548,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer);
 
   @protected
+  BuildTransferPackageOptions? sse_decode_opt_box_autoadd_build_transfer_package_options(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   ConversionDetails? sse_decode_opt_box_autoadd_conversion_details(SseDeserializer deserializer);
 
   @protected
@@ -2314,6 +2584,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   LightningAddressInfo? sse_decode_opt_box_autoadd_lightning_address_info(SseDeserializer deserializer);
+
+  @protected
+  LnurlPayContext? sse_decode_opt_box_autoadd_lnurl_pay_context(SseDeserializer deserializer);
 
   @protected
   LnurlPayInfo? sse_decode_opt_box_autoadd_lnurl_pay_info(SseDeserializer deserializer);
@@ -2473,6 +2746,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError sse_decode_prf_provider_error(SseDeserializer deserializer);
 
   @protected
+  PublishSignedLnurlPayPackageRequest sse_decode_publish_signed_lnurl_pay_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  PublishSignedLnurlPayResponse sse_decode_publish_signed_lnurl_pay_response(SseDeserializer deserializer);
+
+  @protected
+  PublishSignedTransferPackageRequest sse_decode_publish_signed_transfer_package_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  PublishSignedTransferPackageResponse sse_decode_publish_signed_transfer_package_response(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   Rate sse_decode_rate(SseDeserializer deserializer);
 
   @protected
@@ -2510,6 +2801,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   RegisterWebhookResponse sse_decode_register_webhook_response(SseDeserializer deserializer);
+
+  @protected
+  SchnorrSignatureBytes sse_decode_schnorr_signature_bytes(SseDeserializer deserializer);
 
   @protected
   SdkContextConfig sse_decode_sdk_context_config(SseDeserializer deserializer);
@@ -2555,6 +2849,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SignMessageResponse sse_decode_sign_message_response(SseDeserializer deserializer);
+
+  @protected
+  SignedTransferPackage sse_decode_signed_transfer_package(SseDeserializer deserializer);
 
   @protected
   SilentPaymentAddressDetails sse_decode_silent_payment_address_details(SseDeserializer deserializer);
@@ -2632,6 +2929,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   TransferAuthorization sse_decode_transfer_authorization(SseDeserializer deserializer);
 
   @protected
+  TransferSignature sse_decode_transfer_signature(SseDeserializer deserializer);
+
+  @protected
+  TransferTarget sse_decode_transfer_target(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_u_16(SseDeserializer deserializer);
 
   @protected
@@ -2654,6 +2957,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UnregisterWebhookRequest sse_decode_unregister_webhook_request(SseDeserializer deserializer);
+
+  @protected
+  UnsignedTransferPackage sse_decode_unsigned_transfer_package(SseDeserializer deserializer);
 
   @protected
   UpdateContactRequest sse_decode_update_contact_request(SseDeserializer deserializer);
@@ -2982,6 +3288,24 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_build_transfer_package_options(
+    BuildTransferPackageOptions self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_build_unsigned_lnurl_pay_package_request(
+    BuildUnsignedLnurlPayPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_build_unsigned_transfer_package_request(
+    BuildUnsignedTransferPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_burn_issuer_token_request(
     BurnIssuerTokenRequest self,
     SseSerializer serializer,
@@ -3072,6 +3396,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_deposit_claim_error(DepositClaimError self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_external_prepare_token_transaction_request(
+    ExternalPrepareTokenTransactionRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_external_prepare_transfer_request(
+    ExternalPrepareTransferRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_external_prepared_token_transaction(
+    ExternalPreparedTokenTransaction self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_external_prepared_transfer(
+    ExternalPreparedTransfer self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_fee(Fee self, SseSerializer serializer);
 
   @protected
@@ -3132,6 +3480,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_lnurl_error_details(LnurlErrorDetails self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_lnurl_pay_context(LnurlPayContext self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_lnurl_pay_info(LnurlPayInfo self, SseSerializer serializer);
 
   @protected
@@ -3142,6 +3493,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     LnurlPayRequestDetails self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_box_autoadd_lnurl_pay_response(LnurlPayResponse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_lnurl_receive_metadata(LnurlReceiveMetadata self, SseSerializer serializer);
@@ -3205,6 +3559,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_prf_provider_error(PrfProviderError self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_publish_signed_lnurl_pay_package_request(
+    PublishSignedLnurlPayPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_publish_signed_transfer_package_request(
+    PublishSignedTransferPackageRequest self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_receive_payment_request(ReceivePaymentRequest self, SseSerializer serializer);
@@ -3300,6 +3666,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_token_transaction_type(TokenTransactionType self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_transfer_target(TransferTarget self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer);
 
   @protected
@@ -3328,6 +3697,21 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_url_success_action_data(UrlSuccessActionData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_build_transfer_package_options(BuildTransferPackageOptions self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_build_unsigned_lnurl_pay_package_request(
+    BuildUnsignedLnurlPayPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_build_unsigned_transfer_package_request(
+    BuildUnsignedTransferPackageRequest self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_burn_issuer_token_request(BurnIssuerTokenRequest self, SseSerializer serializer);
@@ -3465,7 +3849,55 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_derive_seeds_request(DeriveSeedsRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_ecdsa_signature_bytes(EcdsaSignatureBytes self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_identifier(ExternalIdentifier self, SseSerializer serializer);
+
+  @protected
   void sse_encode_external_input_parser(ExternalInputParser self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_new_leaf_key(ExternalNewLeafKey self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_operator_package(ExternalOperatorPackage self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_operator_recipient(ExternalOperatorRecipient self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_prepare_token_transaction_request(
+    ExternalPrepareTokenTransactionRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_external_prepare_transfer_request(
+    ExternalPrepareTransferRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_external_prepared_token_transaction(
+    ExternalPreparedTokenTransaction self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_external_prepared_transfer(ExternalPreparedTransfer self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_token_transaction_kind(
+    ExternalTokenTransactionKind self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_external_transfer_leaf_input(ExternalTransferLeafInput self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_external_tree_node_id(ExternalTreeNodeId self, SseSerializer serializer);
 
   @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
@@ -3570,6 +4002,27 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_list_external_input_parser(List<ExternalInputParser> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_external_new_leaf_key(List<ExternalNewLeafKey> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_external_operator_package(
+    List<ExternalOperatorPackage> self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_list_external_operator_recipient(
+    List<ExternalOperatorRecipient> self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_list_external_transfer_leaf_input(
+    List<ExternalTransferLeafInput> self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_list_fiat_currencies_response(ListFiatCurrenciesResponse self, SseSerializer serializer);
 
   @protected
@@ -3607,6 +4060,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_list_payments_response(ListPaymentsResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_64_strict(Uint64List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(Uint8List self, SseSerializer serializer);
@@ -3664,6 +4120,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_lnurl_info(LnurlInfo self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_lnurl_pay_context(LnurlPayContext self, SseSerializer serializer);
 
   @protected
   void sse_encode_lnurl_pay_info(LnurlPayInfo self, SseSerializer serializer);
@@ -3738,6 +4197,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_build_transfer_package_options(
+    BuildTransferPackageOptions? self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_opt_box_autoadd_conversion_details(ConversionDetails? self, SseSerializer serializer);
 
   @protected
@@ -3772,6 +4237,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     LightningAddressInfo? self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_opt_box_autoadd_lnurl_pay_context(LnurlPayContext? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_lnurl_pay_info(LnurlPayInfo? self, SseSerializer serializer);
@@ -3945,6 +4413,30 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_prf_provider_error(PrfProviderError self, SseSerializer serializer);
 
   @protected
+  void sse_encode_publish_signed_lnurl_pay_package_request(
+    PublishSignedLnurlPayPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_publish_signed_lnurl_pay_response(
+    PublishSignedLnurlPayResponse self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_publish_signed_transfer_package_request(
+    PublishSignedTransferPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_publish_signed_transfer_package_response(
+    PublishSignedTransferPackageResponse self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_rate(Rate self, SseSerializer serializer);
 
   @protected
@@ -3985,6 +4477,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_register_webhook_response(RegisterWebhookResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_schnorr_signature_bytes(SchnorrSignatureBytes self, SseSerializer serializer);
 
   @protected
   void sse_encode_sdk_context_config(SdkContextConfig self, SseSerializer serializer);
@@ -4030,6 +4525,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_sign_message_response(SignMessageResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_signed_transfer_package(SignedTransferPackage self, SseSerializer serializer);
 
   @protected
   void sse_encode_silent_payment_address_details(SilentPaymentAddressDetails self, SseSerializer serializer);
@@ -4107,6 +4605,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_transfer_authorization(TransferAuthorization self, SseSerializer serializer);
 
   @protected
+  void sse_encode_transfer_signature(TransferSignature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_transfer_target(TransferTarget self, SseSerializer serializer);
+
+  @protected
   void sse_encode_u_16(int self, SseSerializer serializer);
 
   @protected
@@ -4129,6 +4633,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_unregister_webhook_request(UnregisterWebhookRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unsigned_transfer_package(UnsignedTransferPackage self, SseSerializer serializer);
 
   @protected
   void sse_encode_update_contact_request(UpdateContactRequest self, SseSerializer serializer);

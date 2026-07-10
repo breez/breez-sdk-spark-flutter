@@ -35,6 +35,14 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required AuthorizeTransferRequest request,
   });
 
+  Future<UnsignedTransferPackage> buildUnsignedLnurlPayPackage({
+    required BuildUnsignedLnurlPayPackageRequest request,
+  });
+
+  Future<UnsignedTransferPackage> buildUnsignedTransferPackage({
+    required BuildUnsignedTransferPackageRequest request,
+  });
+
   Future<BuyBitcoinResponse> buyBitcoin({required BuyBitcoinRequest request});
 
   Future<bool> checkLightningAddressAvailable({required CheckLightningAddressRequest request});
@@ -98,6 +106,14 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
 
   Future<PrepareSendPaymentResponse> prepareSendPayment({required PrepareSendPaymentRequest request});
+
+  Future<PublishSignedLnurlPayResponse> publishSignedLnurlPayPackage({
+    required PublishSignedLnurlPayPackageRequest request,
+  });
+
+  Future<PublishSignedTransferPackageResponse> publishSignedTransferPackage({
+    required PublishSignedTransferPackageRequest request,
+  });
 
   Future<ReceivePaymentResponse> receivePayment({required ReceivePaymentRequest request});
 

@@ -456,6 +456,53 @@ class Bolt12OfferDetails {
           signingPubkey == other.signingPubkey;
 }
 
+@freezed
+sealed class BuildTransferPackageOptions with _$BuildTransferPackageOptions {
+  const BuildTransferPackageOptions._();
+
+  const factory BuildTransferPackageOptions.bitcoinAddress({
+    required OnchainConfirmationSpeed confirmationSpeed,
+  }) = BuildTransferPackageOptions_BitcoinAddress;
+  const factory BuildTransferPackageOptions.bolt11Invoice({
+    required bool preferSpark,
+    int? completionTimeoutSecs,
+  }) = BuildTransferPackageOptions_Bolt11Invoice;
+}
+
+class BuildUnsignedLnurlPayPackageRequest {
+  final PrepareLnurlPayResponse prepareResponse;
+
+  const BuildUnsignedLnurlPayPackageRequest({required this.prepareResponse});
+
+  @override
+  int get hashCode => prepareResponse.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuildUnsignedLnurlPayPackageRequest &&
+          runtimeType == other.runtimeType &&
+          prepareResponse == other.prepareResponse;
+}
+
+class BuildUnsignedTransferPackageRequest {
+  final PrepareSendPaymentResponse prepareResponse;
+  final BuildTransferPackageOptions? options;
+
+  const BuildUnsignedTransferPackageRequest({required this.prepareResponse, this.options});
+
+  @override
+  int get hashCode => prepareResponse.hashCode ^ options.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuildUnsignedTransferPackageRequest &&
+          runtimeType == other.runtimeType &&
+          prepareResponse == other.prepareResponse &&
+          options == other.options;
+}
+
 class BurnIssuerTokenRequest {
   final BigInt amount;
 
@@ -1337,6 +1384,34 @@ class DeriveSeedsRequest {
           preferImmediatelyAvailableCredentials == other.preferImmediatelyAvailableCredentials;
 }
 
+class EcdsaSignatureBytes {
+  final Uint8List bytes;
+
+  const EcdsaSignatureBytes({required this.bytes});
+
+  @override
+  int get hashCode => bytes.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EcdsaSignatureBytes && runtimeType == other.runtimeType && bytes == other.bytes;
+}
+
+class ExternalIdentifier {
+  final Uint8List bytes;
+
+  const ExternalIdentifier({required this.bytes});
+
+  @override
+  int get hashCode => bytes.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalIdentifier && runtimeType == other.runtimeType && bytes == other.bytes;
+}
+
 class ExternalInputParser {
   final String providerId;
   final String inputRegex;
@@ -1355,6 +1430,189 @@ class ExternalInputParser {
           providerId == other.providerId &&
           inputRegex == other.inputRegex &&
           parserUrl == other.parserUrl;
+}
+
+class ExternalNewLeafKey {
+  final ExternalTreeNodeId nodeId;
+  final Uint8List newSigningPublicKey;
+
+  const ExternalNewLeafKey({required this.nodeId, required this.newSigningPublicKey});
+
+  @override
+  int get hashCode => nodeId.hashCode ^ newSigningPublicKey.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalNewLeafKey &&
+          runtimeType == other.runtimeType &&
+          nodeId == other.nodeId &&
+          newSigningPublicKey == other.newSigningPublicKey;
+}
+
+class ExternalOperatorPackage {
+  final ExternalIdentifier operatorIdentifier;
+  final Uint8List encryptedPackage;
+
+  const ExternalOperatorPackage({required this.operatorIdentifier, required this.encryptedPackage});
+
+  @override
+  int get hashCode => operatorIdentifier.hashCode ^ encryptedPackage.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalOperatorPackage &&
+          runtimeType == other.runtimeType &&
+          operatorIdentifier == other.operatorIdentifier &&
+          encryptedPackage == other.encryptedPackage;
+}
+
+class ExternalOperatorRecipient {
+  final BigInt id;
+  final ExternalIdentifier identifier;
+  final Uint8List publicKey;
+
+  const ExternalOperatorRecipient({required this.id, required this.identifier, required this.publicKey});
+
+  @override
+  int get hashCode => id.hashCode ^ identifier.hashCode ^ publicKey.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalOperatorRecipient &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          identifier == other.identifier &&
+          publicKey == other.publicKey;
+}
+
+class ExternalPrepareTokenTransactionRequest {
+  final ExternalTokenTransactionKind kind;
+  final Uint8List digest;
+
+  const ExternalPrepareTokenTransactionRequest({required this.kind, required this.digest});
+
+  @override
+  int get hashCode => kind.hashCode ^ digest.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalPrepareTokenTransactionRequest &&
+          runtimeType == other.runtimeType &&
+          kind == other.kind &&
+          digest == other.digest;
+}
+
+class ExternalPrepareTransferRequest {
+  final String transferId;
+  final Uint8List receiverPublicKey;
+  final List<ExternalTransferLeafInput> leaves;
+  final List<ExternalOperatorRecipient> operatorRecipients;
+  final int threshold;
+
+  const ExternalPrepareTransferRequest({
+    required this.transferId,
+    required this.receiverPublicKey,
+    required this.leaves,
+    required this.operatorRecipients,
+    required this.threshold,
+  });
+
+  @override
+  int get hashCode =>
+      transferId.hashCode ^
+      receiverPublicKey.hashCode ^
+      leaves.hashCode ^
+      operatorRecipients.hashCode ^
+      threshold.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalPrepareTransferRequest &&
+          runtimeType == other.runtimeType &&
+          transferId == other.transferId &&
+          receiverPublicKey == other.receiverPublicKey &&
+          leaves == other.leaves &&
+          operatorRecipients == other.operatorRecipients &&
+          threshold == other.threshold;
+}
+
+class ExternalPreparedTokenTransaction {
+  final SchnorrSignatureBytes signature;
+
+  const ExternalPreparedTokenTransaction({required this.signature});
+
+  @override
+  int get hashCode => signature.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalPreparedTokenTransaction &&
+          runtimeType == other.runtimeType &&
+          signature == other.signature;
+}
+
+class ExternalPreparedTransfer {
+  final List<ExternalOperatorPackage> operatorPackages;
+  final List<ExternalNewLeafKey> newLeafKeys;
+  final EcdsaSignatureBytes transferUserSignature;
+
+  const ExternalPreparedTransfer({
+    required this.operatorPackages,
+    required this.newLeafKeys,
+    required this.transferUserSignature,
+  });
+
+  @override
+  int get hashCode => operatorPackages.hashCode ^ newLeafKeys.hashCode ^ transferUserSignature.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalPreparedTransfer &&
+          runtimeType == other.runtimeType &&
+          operatorPackages == other.operatorPackages &&
+          newLeafKeys == other.newLeafKeys &&
+          transferUserSignature == other.transferUserSignature;
+}
+
+enum ExternalTokenTransactionKind { freeze, partial, final_ }
+
+class ExternalTransferLeafInput {
+  final ExternalTreeNodeId nodeId;
+  final ExternalTreeNodeId newLeafId;
+
+  const ExternalTransferLeafInput({required this.nodeId, required this.newLeafId});
+
+  @override
+  int get hashCode => nodeId.hashCode ^ newLeafId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalTransferLeafInput &&
+          runtimeType == other.runtimeType &&
+          nodeId == other.nodeId &&
+          newLeafId == other.newLeafId;
+}
+
+class ExternalTreeNodeId {
+  final String id;
+
+  const ExternalTreeNodeId({required this.id});
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExternalTreeNodeId && runtimeType == other.runtimeType && id == other.id;
 }
 
 @freezed
@@ -1838,6 +2096,26 @@ class LnurlInfo {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LnurlInfo && runtimeType == other.runtimeType && url == other.url && bech32 == other.bech32;
+}
+
+class LnurlPayContext {
+  final LnurlPayRequestDetails payRequest;
+  final String? comment;
+  final SuccessAction? successAction;
+
+  const LnurlPayContext({required this.payRequest, this.comment, this.successAction});
+
+  @override
+  int get hashCode => payRequest.hashCode ^ comment.hashCode ^ successAction.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LnurlPayContext &&
+          runtimeType == other.runtimeType &&
+          payRequest == other.payRequest &&
+          comment == other.comment &&
+          successAction == other.successAction;
 }
 
 class LnurlPayInfo {
@@ -2566,6 +2844,57 @@ class PrepareSendPaymentResponse {
           feePolicy == other.feePolicy;
 }
 
+class PublishSignedLnurlPayPackageRequest {
+  final SignedTransferPackage signedPackage;
+
+  const PublishSignedLnurlPayPackageRequest({required this.signedPackage});
+
+  @override
+  int get hashCode => signedPackage.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PublishSignedLnurlPayPackageRequest &&
+          runtimeType == other.runtimeType &&
+          signedPackage == other.signedPackage;
+}
+
+@freezed
+sealed class PublishSignedLnurlPayResponse with _$PublishSignedLnurlPayResponse {
+  const PublishSignedLnurlPayResponse._();
+
+  const factory PublishSignedLnurlPayResponse.swapCompleted() = PublishSignedLnurlPayResponse_SwapCompleted;
+  const factory PublishSignedLnurlPayResponse.paymentSent({required LnurlPayResponse response}) =
+      PublishSignedLnurlPayResponse_PaymentSent;
+}
+
+class PublishSignedTransferPackageRequest {
+  final SignedTransferPackage signedPackage;
+
+  const PublishSignedTransferPackageRequest({required this.signedPackage});
+
+  @override
+  int get hashCode => signedPackage.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PublishSignedTransferPackageRequest &&
+          runtimeType == other.runtimeType &&
+          signedPackage == other.signedPackage;
+}
+
+@freezed
+sealed class PublishSignedTransferPackageResponse with _$PublishSignedTransferPackageResponse {
+  const PublishSignedTransferPackageResponse._();
+
+  const factory PublishSignedTransferPackageResponse.swapCompleted() =
+      PublishSignedTransferPackageResponse_SwapCompleted;
+  const factory PublishSignedTransferPackageResponse.paymentSent({required Payment payment}) =
+      PublishSignedTransferPackageResponse_PaymentSent;
+}
+
 class Rate {
   final String coin;
   final double value;
@@ -2802,6 +3131,20 @@ class RegisterWebhookResponse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is RegisterWebhookResponse && runtimeType == other.runtimeType && webhookId == other.webhookId;
+}
+
+class SchnorrSignatureBytes {
+  final Uint8List bytes;
+
+  const SchnorrSignatureBytes({required this.bytes});
+
+  @override
+  int get hashCode => bytes.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SchnorrSignatureBytes && runtimeType == other.runtimeType && bytes == other.bytes;
 }
 
 /// Flutter-side counterpart of
@@ -3052,6 +3395,24 @@ class SignMessageResponse {
           signature == other.signature;
 }
 
+class SignedTransferPackage {
+  final UnsignedTransferPackage unsigned;
+  final TransferSignature signature;
+
+  const SignedTransferPackage({required this.unsigned, required this.signature});
+
+  @override
+  int get hashCode => unsigned.hashCode ^ signature.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SignedTransferPackage &&
+          runtimeType == other.runtimeType &&
+          unsigned == other.unsigned &&
+          signature == other.signature;
+}
+
 class SilentPaymentAddressDetails {
   final String address;
   final BitcoinNetwork network;
@@ -3114,6 +3475,7 @@ class SparkConfig {
   final SparkSspConfig sspConfig;
   final BigInt expectedWithdrawBondSats;
   final BigInt expectedWithdrawRelativeBlockLocktime;
+  final int? maxTokenTransactionInputs;
 
   const SparkConfig({
     required this.coordinatorIdentifier,
@@ -3122,6 +3484,7 @@ class SparkConfig {
     required this.sspConfig,
     required this.expectedWithdrawBondSats,
     required this.expectedWithdrawRelativeBlockLocktime,
+    this.maxTokenTransactionInputs,
   });
 
   @override
@@ -3131,7 +3494,8 @@ class SparkConfig {
       signingOperators.hashCode ^
       sspConfig.hashCode ^
       expectedWithdrawBondSats.hashCode ^
-      expectedWithdrawRelativeBlockLocktime.hashCode;
+      expectedWithdrawRelativeBlockLocktime.hashCode ^
+      maxTokenTransactionInputs.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -3143,7 +3507,8 @@ class SparkConfig {
           signingOperators == other.signingOperators &&
           sspConfig == other.sspConfig &&
           expectedWithdrawBondSats == other.expectedWithdrawBondSats &&
-          expectedWithdrawRelativeBlockLocktime == other.expectedWithdrawRelativeBlockLocktime;
+          expectedWithdrawRelativeBlockLocktime == other.expectedWithdrawRelativeBlockLocktime &&
+          maxTokenTransactionInputs == other.maxTokenTransactionInputs;
 }
 
 class SparkHtlcDetails {
@@ -3552,6 +3917,34 @@ class TransferAuthorization {
           signature == other.signature;
 }
 
+@freezed
+sealed class TransferSignature with _$TransferSignature {
+  const TransferSignature._();
+
+  const factory TransferSignature.transfer({required ExternalPreparedTransfer signed}) =
+      TransferSignature_Transfer;
+  const factory TransferSignature.token({required ExternalPreparedTokenTransaction signed}) =
+      TransferSignature_Token;
+}
+
+@freezed
+sealed class TransferTarget with _$TransferTarget {
+  const TransferTarget._();
+
+  const factory TransferTarget.spark({required String address, String? sparkInvoice}) = TransferTarget_Spark;
+  const factory TransferTarget.lightning({
+    required String bolt11,
+    LnurlPayContext? lnurlPay,
+    required FeePolicy feePolicy,
+    int? completionTimeoutSecs,
+  }) = TransferTarget_Lightning;
+  const factory TransferTarget.coopExit({
+    required String address,
+    required SendOnchainFeeQuote feeQuote,
+    required OnchainConfirmationSpeed confirmationSpeed,
+  }) = TransferTarget_CoopExit;
+}
+
 class UnfreezeIssuerTokenRequest {
   final String address;
 
@@ -3596,6 +3989,32 @@ class UnregisterWebhookRequest {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UnregisterWebhookRequest && runtimeType == other.runtimeType && webhookId == other.webhookId;
+}
+
+@freezed
+sealed class UnsignedTransferPackage with _$UnsignedTransferPackage {
+  const UnsignedTransferPackage._();
+
+  const factory UnsignedTransferPackage.swap({
+    required ExternalPrepareTransferRequest prepareTransfer,
+    required Uint64List targetAmounts,
+    required BigInt amountSat,
+    required BigInt feeSat,
+  }) = UnsignedTransferPackage_Swap;
+  const factory UnsignedTransferPackage.transfer({
+    required ExternalPrepareTransferRequest prepareTransfer,
+    required BigInt amountSat,
+    required BigInt feeSat,
+    required TransferTarget target,
+  }) = UnsignedTransferPackage_Transfer;
+  const factory UnsignedTransferPackage.token({
+    required ExternalPrepareTokenTransactionRequest prepareTokenTransaction,
+    required Uint8List tokenContext,
+    required String tokenIdentifier,
+    required BigInt amount,
+    required BigInt fee,
+    required bool isSwap,
+  }) = UnsignedTransferPackage_Token;
 }
 
 class UpdateContactRequest {
