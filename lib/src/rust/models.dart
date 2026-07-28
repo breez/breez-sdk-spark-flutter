@@ -802,11 +802,12 @@ class ConnectWithPasskeyRequest {
 class ConnectWithPasskeyResponse {
   final Wallet wallet;
   final PasskeyCredential? credential;
+  final List<String> labels;
 
-  const ConnectWithPasskeyResponse({required this.wallet, this.credential});
+  const ConnectWithPasskeyResponse({required this.wallet, this.credential, required this.labels});
 
   @override
-  int get hashCode => wallet.hashCode ^ credential.hashCode;
+  int get hashCode => wallet.hashCode ^ credential.hashCode ^ labels.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -814,7 +815,8 @@ class ConnectWithPasskeyResponse {
       other is ConnectWithPasskeyResponse &&
           runtimeType == other.runtimeType &&
           wallet == other.wallet &&
-          credential == other.credential;
+          credential == other.credential &&
+          labels == other.labels;
 }
 
 class Contact {

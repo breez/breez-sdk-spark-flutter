@@ -4246,10 +4246,11 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   ConnectWithPasskeyResponse dco_decode_connect_with_passkey_response(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return ConnectWithPasskeyResponse(
       wallet: dco_decode_wallet(arr[0]),
       credential: dco_decode_opt_box_autoadd_passkey_credential(arr[1]),
+      labels: dco_decode_list_String(arr[2]),
     );
   }
 
@@ -8640,7 +8641,8 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_wallet = sse_decode_wallet(deserializer);
     var var_credential = sse_decode_opt_box_autoadd_passkey_credential(deserializer);
-    return ConnectWithPasskeyResponse(wallet: var_wallet, credential: var_credential);
+    var var_labels = sse_decode_list_String(deserializer);
+    return ConnectWithPasskeyResponse(wallet: var_wallet, credential: var_credential, labels: var_labels);
   }
 
   @protected
@@ -13767,6 +13769,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_wallet(self.wallet, serializer);
     sse_encode_opt_box_autoadd_passkey_credential(self.credential, serializer);
+    sse_encode_list_String(self.labels, serializer);
   }
 
   @protected

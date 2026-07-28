@@ -4637,6 +4637,7 @@ const _: fn() = || {
         let ConnectWithPasskeyResponse = None::<crate::models::ConnectWithPasskeyResponse>.unwrap();
         let _: crate::models::Wallet = ConnectWithPasskeyResponse.wallet;
         let _: Option<crate::models::PasskeyCredential> = ConnectWithPasskeyResponse.credential;
+        let _: Vec<String> = ConnectWithPasskeyResponse.labels;
     }
     {
         let Contact = None::<crate::models::Contact>.unwrap();
@@ -7168,9 +7169,11 @@ impl SseDecode for crate::models::ConnectWithPasskeyResponse {
         let mut var_wallet = <crate::models::Wallet>::sse_decode(deserializer);
         let mut var_credential =
             <Option<crate::models::PasskeyCredential>>::sse_decode(deserializer);
+        let mut var_labels = <Vec<String>>::sse_decode(deserializer);
         return crate::models::ConnectWithPasskeyResponse {
             wallet: var_wallet,
             credential: var_credential,
+            labels: var_labels,
         };
     }
 }
@@ -12927,6 +12930,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConnectWithPass
         [
             self.0.wallet.into_into_dart().into_dart(),
             self.0.credential.into_into_dart().into_dart(),
+            self.0.labels.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -18243,6 +18247,7 @@ impl SseEncode for crate::models::ConnectWithPasskeyResponse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <crate::models::Wallet>::sse_encode(self.wallet, serializer);
         <Option<crate::models::PasskeyCredential>>::sse_encode(self.credential, serializer);
+        <Vec<String>>::sse_encode(self.labels, serializer);
     }
 }
 
