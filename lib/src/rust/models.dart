@@ -759,6 +759,8 @@ class Config {
           crossChainConfig == other.crossChainConfig;
 }
 
+enum ConfirmationStatus { confirmed, unconfirmed, unverified }
+
 class ConnectRequest {
   final Config config;
   final Seed seed;
@@ -1074,6 +1076,41 @@ sealed class ConversionType with _$ConversionType {
 
   const factory ConversionType.fromBitcoin() = ConversionType_FromBitcoin;
   const factory ConversionType.toBitcoin({required String fromTokenIdentifier}) = ConversionType_ToBitcoin;
+}
+
+@freezed
+sealed class CpfpFundingKind with _$CpfpFundingKind {
+  const CpfpFundingKind._();
+
+  const factory CpfpFundingKind.p2Wpkh() = CpfpFundingKind_P2wpkh;
+  const factory CpfpFundingKind.p2Tr() = CpfpFundingKind_P2tr;
+  const factory CpfpFundingKind.custom({required String scriptPubkeyHex, required BigInt signedInputWeight}) =
+      CpfpFundingKind_Custom;
+}
+
+@freezed
+sealed class CpfpInput with _$CpfpInput {
+  const CpfpInput._();
+
+  const factory CpfpInput.p2Wpkh({
+    required String txid,
+    required int vout,
+    required BigInt value,
+    required String pubkey,
+  }) = CpfpInput_P2wpkh;
+  const factory CpfpInput.p2Tr({
+    required String txid,
+    required int vout,
+    required BigInt value,
+    required String pubkey,
+  }) = CpfpInput_P2tr;
+  const factory CpfpInput.custom({
+    required String txid,
+    required int vout,
+    required BigInt value,
+    required String scriptPubkeyHex,
+    required BigInt signedInputWeight,
+  }) = CpfpInput_Custom;
 }
 
 class CreateIssuerTokenRequest {
@@ -1398,6 +1435,14 @@ class EcdsaSignatureBytes {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is EcdsaSignatureBytes && runtimeType == other.runtimeType && bytes == other.bytes;
+}
+
+@freezed
+sealed class ExitLeafSelection with _$ExitLeafSelection {
+  const ExitLeafSelection._();
+
+  const factory ExitLeafSelection.auto() = ExitLeafSelection_Auto;
+  const factory ExitLeafSelection.specific({required List<String> leafIds}) = ExitLeafSelection_Specific;
 }
 
 class ExternalIdentifier {
@@ -2686,6 +2731,24 @@ enum PaymentStatus { completed, pending, failed }
 
 enum PaymentType { send, receive }
 
+class PerBranchFunding {
+  final String leafId;
+  final BigInt fundingSat;
+
+  const PerBranchFunding({required this.leafId, required this.fundingSat});
+
+  @override
+  int get hashCode => leafId.hashCode ^ fundingSat.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PerBranchFunding &&
+          runtimeType == other.runtimeType &&
+          leafId == other.leafId &&
+          fundingSat == other.fundingSat;
+}
+
 class PrepareLnurlPayRequest {
   final BigInt amount;
   final LnurlPayRequestDetails payRequest;
@@ -2844,6 +2907,81 @@ class PrepareSendPaymentResponse {
           tokenIdentifier == other.tokenIdentifier &&
           conversionEstimate == other.conversionEstimate &&
           feePolicy == other.feePolicy;
+}
+
+class PrepareUnilateralExitRequest {
+  final BigInt feeRateSatPerVbyte;
+  final CpfpFundingKind fundingKind;
+  final String destination;
+  final ExitLeafSelection selection;
+
+  const PrepareUnilateralExitRequest({
+    required this.feeRateSatPerVbyte,
+    required this.fundingKind,
+    required this.destination,
+    required this.selection,
+  });
+
+  @override
+  int get hashCode =>
+      feeRateSatPerVbyte.hashCode ^ fundingKind.hashCode ^ destination.hashCode ^ selection.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PrepareUnilateralExitRequest &&
+          runtimeType == other.runtimeType &&
+          feeRateSatPerVbyte == other.feeRateSatPerVbyte &&
+          fundingKind == other.fundingKind &&
+          destination == other.destination &&
+          selection == other.selection;
+}
+
+class PrepareUnilateralExitResponse {
+  final List<UnilateralExitLeaf> leaves;
+  final BigInt recoverableValueSat;
+  final BigInt totalFeeSat;
+  final BigInt fanoutFeeSat;
+  final BigInt singleUtxoFundingSat;
+  final List<PerBranchFunding> perBranchFunding;
+  final BigInt feeRateSatPerVbyte;
+  final String destination;
+
+  const PrepareUnilateralExitResponse({
+    required this.leaves,
+    required this.recoverableValueSat,
+    required this.totalFeeSat,
+    required this.fanoutFeeSat,
+    required this.singleUtxoFundingSat,
+    required this.perBranchFunding,
+    required this.feeRateSatPerVbyte,
+    required this.destination,
+  });
+
+  @override
+  int get hashCode =>
+      leaves.hashCode ^
+      recoverableValueSat.hashCode ^
+      totalFeeSat.hashCode ^
+      fanoutFeeSat.hashCode ^
+      singleUtxoFundingSat.hashCode ^
+      perBranchFunding.hashCode ^
+      feeRateSatPerVbyte.hashCode ^
+      destination.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PrepareUnilateralExitResponse &&
+          runtimeType == other.runtimeType &&
+          leaves == other.leaves &&
+          recoverableValueSat == other.recoverableValueSat &&
+          totalFeeSat == other.totalFeeSat &&
+          fanoutFeeSat == other.fanoutFeeSat &&
+          singleUtxoFundingSat == other.singleUtxoFundingSat &&
+          perBranchFunding == other.perBranchFunding &&
+          feeRateSatPerVbyte == other.feeRateSatPerVbyte &&
+          destination == other.destination;
 }
 
 class PublishSignedLnurlPayPackageRequest {
@@ -3045,6 +3183,30 @@ class RefundDepositResponse {
           runtimeType == other.runtimeType &&
           txId == other.txId &&
           txHex == other.txHex;
+}
+
+class RefundPendingConversionsResponse {
+  final int refunded;
+  final int skipped;
+  final int failed;
+
+  const RefundPendingConversionsResponse({
+    required this.refunded,
+    required this.skipped,
+    required this.failed,
+  });
+
+  @override
+  int get hashCode => refunded.hashCode ^ skipped.hashCode ^ failed.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RefundPendingConversionsResponse &&
+          runtimeType == other.runtimeType &&
+          refunded == other.refunded &&
+          skipped == other.skipped &&
+          failed == other.failed;
 }
 
 class RegisterLightningAddressRequest {
@@ -3625,6 +3787,15 @@ class SparkInvoicePaymentDetails {
           invoice == other.invoice;
 }
 
+@freezed
+sealed class SparkMasterIdentityPublicKey with _$SparkMasterIdentityPublicKey {
+  const SparkMasterIdentityPublicKey._();
+
+  const factory SparkMasterIdentityPublicKey.set_({required String publicKey}) =
+      SparkMasterIdentityPublicKey_Set;
+  const factory SparkMasterIdentityPublicKey.unset() = SparkMasterIdentityPublicKey_Unset;
+}
+
 class SparkSigningOperator {
   final int id;
   final String identifier;
@@ -3979,6 +4150,119 @@ class UnfreezeIssuerTokenResponse {
           impactedTokenAmount == other.impactedTokenAmount;
 }
 
+class UnilateralExitLeaf {
+  final String leafId;
+  final BigInt value;
+
+  const UnilateralExitLeaf({required this.leafId, required this.value});
+
+  @override
+  int get hashCode => leafId.hashCode ^ value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnilateralExitLeaf &&
+          runtimeType == other.runtimeType &&
+          leafId == other.leafId &&
+          value == other.value;
+}
+
+class UnilateralExitRequest {
+  final PrepareUnilateralExitResponse prepared;
+  final List<CpfpInput> fundingInputs;
+
+  const UnilateralExitRequest({required this.prepared, required this.fundingInputs});
+
+  @override
+  int get hashCode => prepared.hashCode ^ fundingInputs.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnilateralExitRequest &&
+          runtimeType == other.runtimeType &&
+          prepared == other.prepared &&
+          fundingInputs == other.fundingInputs;
+}
+
+class UnilateralExitResponse {
+  final BigInt recoverableValueSat;
+  final BigInt totalFeeSat;
+  final List<UnilateralExitLeaf> leaves;
+  final List<UnilateralExitTransaction> transactions;
+
+  const UnilateralExitResponse({
+    required this.recoverableValueSat,
+    required this.totalFeeSat,
+    required this.leaves,
+    required this.transactions,
+  });
+
+  @override
+  int get hashCode =>
+      recoverableValueSat.hashCode ^ totalFeeSat.hashCode ^ leaves.hashCode ^ transactions.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnilateralExitResponse &&
+          runtimeType == other.runtimeType &&
+          recoverableValueSat == other.recoverableValueSat &&
+          totalFeeSat == other.totalFeeSat &&
+          leaves == other.leaves &&
+          transactions == other.transactions;
+}
+
+class UnilateralExitTransaction {
+  final UnilateralExitTxKind kind;
+  final String? nodeId;
+  final String txid;
+  final String txHex;
+  final String? cpfpTxHex;
+  final int? csvTimelockBlocks;
+  final List<String> dependsOn;
+  final ConfirmationStatus status;
+
+  const UnilateralExitTransaction({
+    required this.kind,
+    this.nodeId,
+    required this.txid,
+    required this.txHex,
+    this.cpfpTxHex,
+    this.csvTimelockBlocks,
+    required this.dependsOn,
+    required this.status,
+  });
+
+  @override
+  int get hashCode =>
+      kind.hashCode ^
+      nodeId.hashCode ^
+      txid.hashCode ^
+      txHex.hashCode ^
+      cpfpTxHex.hashCode ^
+      csvTimelockBlocks.hashCode ^
+      dependsOn.hashCode ^
+      status.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UnilateralExitTransaction &&
+          runtimeType == other.runtimeType &&
+          kind == other.kind &&
+          nodeId == other.nodeId &&
+          txid == other.txid &&
+          txHex == other.txHex &&
+          cpfpTxHex == other.cpfpTxHex &&
+          csvTimelockBlocks == other.csvTimelockBlocks &&
+          dependsOn == other.dependsOn &&
+          status == other.status;
+}
+
+enum UnilateralExitTxKind { fanOut, node, refund, sweep }
+
 class UnregisterWebhookRequest {
   final String webhookId;
 
@@ -4042,11 +4326,19 @@ class UpdateContactRequest {
 class UpdateUserSettingsRequest {
   final bool? sparkPrivateModeEnabled;
   final StableBalanceActiveLabel? stableBalanceActiveLabel;
+  final SparkMasterIdentityPublicKey? sparkMasterIdentityPublicKey;
 
-  const UpdateUserSettingsRequest({this.sparkPrivateModeEnabled, this.stableBalanceActiveLabel});
+  const UpdateUserSettingsRequest({
+    this.sparkPrivateModeEnabled,
+    this.stableBalanceActiveLabel,
+    this.sparkMasterIdentityPublicKey,
+  });
 
   @override
-  int get hashCode => sparkPrivateModeEnabled.hashCode ^ stableBalanceActiveLabel.hashCode;
+  int get hashCode =>
+      sparkPrivateModeEnabled.hashCode ^
+      stableBalanceActiveLabel.hashCode ^
+      sparkMasterIdentityPublicKey.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -4054,7 +4346,8 @@ class UpdateUserSettingsRequest {
       other is UpdateUserSettingsRequest &&
           runtimeType == other.runtimeType &&
           sparkPrivateModeEnabled == other.sparkPrivateModeEnabled &&
-          stableBalanceActiveLabel == other.stableBalanceActiveLabel;
+          stableBalanceActiveLabel == other.stableBalanceActiveLabel &&
+          sparkMasterIdentityPublicKey == other.sparkMasterIdentityPublicKey;
 }
 
 class UrlSuccessActionData {
@@ -4084,11 +4377,19 @@ class UrlSuccessActionData {
 class UserSettings {
   final bool sparkPrivateModeEnabled;
   final String? stableBalanceActiveLabel;
+  final String? sparkMasterIdentityPublicKey;
 
-  const UserSettings({required this.sparkPrivateModeEnabled, this.stableBalanceActiveLabel});
+  const UserSettings({
+    required this.sparkPrivateModeEnabled,
+    this.stableBalanceActiveLabel,
+    this.sparkMasterIdentityPublicKey,
+  });
 
   @override
-  int get hashCode => sparkPrivateModeEnabled.hashCode ^ stableBalanceActiveLabel.hashCode;
+  int get hashCode =>
+      sparkPrivateModeEnabled.hashCode ^
+      stableBalanceActiveLabel.hashCode ^
+      sparkMasterIdentityPublicKey.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -4096,7 +4397,8 @@ class UserSettings {
       other is UserSettings &&
           runtimeType == other.runtimeType &&
           sparkPrivateModeEnabled == other.sparkPrivateModeEnabled &&
-          stableBalanceActiveLabel == other.stableBalanceActiveLabel;
+          stableBalanceActiveLabel == other.stableBalanceActiveLabel &&
+          sparkMasterIdentityPublicKey == other.sparkMasterIdentityPublicKey;
 }
 
 class Wallet {

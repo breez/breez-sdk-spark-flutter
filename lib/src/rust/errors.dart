@@ -81,5 +81,9 @@ sealed class SdkError with _$SdkError implements FrbException {
   const factory SdkError.signer(String field0) = SdkError_Signer;
   const factory SdkError.optimizationAlreadyRunning() = SdkError_OptimizationAlreadyRunning;
   const factory SdkError.optimizationCancelled() = SdkError_OptimizationCancelled;
+  const factory SdkError.insufficientCpfpFunds({required BigInt requiredSat}) =
+      SdkError_InsufficientCpfpFunds;
+  const factory SdkError.fundingUtxoConflict({required String txid, required int vout}) =
+      SdkError_FundingUtxoConflict;
   const factory SdkError.generic(String field0) = SdkError_Generic;
 }

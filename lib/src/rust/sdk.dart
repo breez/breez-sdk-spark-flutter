@@ -107,6 +107,12 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<PrepareSendPaymentResponse> prepareSendPayment({required PrepareSendPaymentRequest request});
 
+  /// Quotes a unilateral exit: which leaves would exit, the exact fee, and how
+  /// much to fund.
+  Future<PrepareUnilateralExitResponse> prepareUnilateralExit({
+    required PrepareUnilateralExitRequest request,
+  });
+
   Future<PublishSignedLnurlPayResponse> publishSignedLnurlPayPackage({
     required PublishSignedLnurlPayPackageRequest request,
   });
@@ -121,7 +127,7 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<RefundDepositResponse> refundDeposit({required RefundDepositRequest request});
 
-  Future<void> refundPendingConversions();
+  Future<RefundPendingConversionsResponse> refundPendingConversions();
 
   Future<LightningAddressInfo> registerLightningAddress({required RegisterLightningAddressRequest request});
 
@@ -134,6 +140,27 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
+
+  /// Builds and signs the unilateral exit from a quote and the actual funding
+  /// UTXOs, signing the CPFP inputs with the built-in single-key signer: pass
+  /// the funding inputs' secret key bytes as `signer_secret_key`. To sign with
+  /// a custom scheme (custom scripts, multisig, a hardware wallet, or keeping
+  /// key material out of the SDK), use [`Self::unilateral_exit_with_signer`].
+  Future<UnilateralExitResponse> unilateralExit({
+    required UnilateralExitRequest request,
+    required List<int> signerSecretKey,
+  });
+
+  /// Builds and signs the unilateral exit with a caller-provided signer. The
+  /// `sign_psbt` callback receives the serialized CPFP PSBT, signs the inputs
+  /// that are not already finalized with any scheme (custom scripts, multisig,
+  /// a hardware wallet), and returns the serialized signed PSBT; a throw
+  /// surfaces as an error. For a single funding key, prefer
+  /// [`Self::unilateral_exit`].
+  Future<UnilateralExitResponse> unilateralExitWithSigner({
+    required UnilateralExitRequest request,
+    required FutureOr<Uint8List> Function(Uint8List) signPsbt,
+  });
 
   Future<void> unregisterWebhook({required UnregisterWebhookRequest request});
 

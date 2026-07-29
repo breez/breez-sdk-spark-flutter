@@ -2779,6 +2779,721 @@ as String,
 }
 
 /// @nodoc
+mixin _$CpfpFundingKind {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpFundingKind);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CpfpFundingKind()';
+}
+
+
+}
+
+/// @nodoc
+class $CpfpFundingKindCopyWith<$Res>  {
+$CpfpFundingKindCopyWith(CpfpFundingKind _, $Res Function(CpfpFundingKind) __);
+}
+
+
+/// Adds pattern-matching-related methods to [CpfpFundingKind].
+extension CpfpFundingKindPatterns on CpfpFundingKind {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CpfpFundingKind_P2wpkh value)?  p2Wpkh,TResult Function( CpfpFundingKind_P2tr value)?  p2Tr,TResult Function( CpfpFundingKind_Custom value)?  custom,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that);case CpfpFundingKind_P2tr() when p2Tr != null:
+return p2Tr(_that);case CpfpFundingKind_Custom() when custom != null:
+return custom(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CpfpFundingKind_P2wpkh value)  p2Wpkh,required TResult Function( CpfpFundingKind_P2tr value)  p2Tr,required TResult Function( CpfpFundingKind_Custom value)  custom,}){
+final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh():
+return p2Wpkh(_that);case CpfpFundingKind_P2tr():
+return p2Tr(_that);case CpfpFundingKind_Custom():
+return custom(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CpfpFundingKind_P2wpkh value)?  p2Wpkh,TResult? Function( CpfpFundingKind_P2tr value)?  p2Tr,TResult? Function( CpfpFundingKind_Custom value)?  custom,}){
+final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that);case CpfpFundingKind_P2tr() when p2Tr != null:
+return p2Tr(_that);case CpfpFundingKind_Custom() when custom != null:
+return custom(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  p2Wpkh,TResult Function()?  p2Tr,TResult Function( String scriptPubkeyHex,  BigInt signedInputWeight)?  custom,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh() when p2Wpkh != null:
+return p2Wpkh();case CpfpFundingKind_P2tr() when p2Tr != null:
+return p2Tr();case CpfpFundingKind_Custom() when custom != null:
+return custom(_that.scriptPubkeyHex,_that.signedInputWeight);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  p2Wpkh,required TResult Function()  p2Tr,required TResult Function( String scriptPubkeyHex,  BigInt signedInputWeight)  custom,}) {final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh():
+return p2Wpkh();case CpfpFundingKind_P2tr():
+return p2Tr();case CpfpFundingKind_Custom():
+return custom(_that.scriptPubkeyHex,_that.signedInputWeight);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  p2Wpkh,TResult? Function()?  p2Tr,TResult? Function( String scriptPubkeyHex,  BigInt signedInputWeight)?  custom,}) {final _that = this;
+switch (_that) {
+case CpfpFundingKind_P2wpkh() when p2Wpkh != null:
+return p2Wpkh();case CpfpFundingKind_P2tr() when p2Tr != null:
+return p2Tr();case CpfpFundingKind_Custom() when custom != null:
+return custom(_that.scriptPubkeyHex,_that.signedInputWeight);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class CpfpFundingKind_P2wpkh extends CpfpFundingKind {
+  const CpfpFundingKind_P2wpkh(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpFundingKind_P2wpkh);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CpfpFundingKind.p2Wpkh()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CpfpFundingKind_P2tr extends CpfpFundingKind {
+  const CpfpFundingKind_P2tr(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpFundingKind_P2tr);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CpfpFundingKind.p2Tr()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CpfpFundingKind_Custom extends CpfpFundingKind {
+  const CpfpFundingKind_Custom({required this.scriptPubkeyHex, required this.signedInputWeight}): super._();
+  
+
+ final  String scriptPubkeyHex;
+ final  BigInt signedInputWeight;
+
+/// Create a copy of CpfpFundingKind
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CpfpFundingKind_CustomCopyWith<CpfpFundingKind_Custom> get copyWith => _$CpfpFundingKind_CustomCopyWithImpl<CpfpFundingKind_Custom>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpFundingKind_Custom&&(identical(other.scriptPubkeyHex, scriptPubkeyHex) || other.scriptPubkeyHex == scriptPubkeyHex)&&(identical(other.signedInputWeight, signedInputWeight) || other.signedInputWeight == signedInputWeight));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,scriptPubkeyHex,signedInputWeight);
+
+@override
+String toString() {
+  return 'CpfpFundingKind.custom(scriptPubkeyHex: $scriptPubkeyHex, signedInputWeight: $signedInputWeight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CpfpFundingKind_CustomCopyWith<$Res> implements $CpfpFundingKindCopyWith<$Res> {
+  factory $CpfpFundingKind_CustomCopyWith(CpfpFundingKind_Custom value, $Res Function(CpfpFundingKind_Custom) _then) = _$CpfpFundingKind_CustomCopyWithImpl;
+@useResult
+$Res call({
+ String scriptPubkeyHex, BigInt signedInputWeight
+});
+
+
+
+
+}
+/// @nodoc
+class _$CpfpFundingKind_CustomCopyWithImpl<$Res>
+    implements $CpfpFundingKind_CustomCopyWith<$Res> {
+  _$CpfpFundingKind_CustomCopyWithImpl(this._self, this._then);
+
+  final CpfpFundingKind_Custom _self;
+  final $Res Function(CpfpFundingKind_Custom) _then;
+
+/// Create a copy of CpfpFundingKind
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? scriptPubkeyHex = null,Object? signedInputWeight = null,}) {
+  return _then(CpfpFundingKind_Custom(
+scriptPubkeyHex: null == scriptPubkeyHex ? _self.scriptPubkeyHex : scriptPubkeyHex // ignore: cast_nullable_to_non_nullable
+as String,signedInputWeight: null == signedInputWeight ? _self.signedInputWeight : signedInputWeight // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$CpfpInput {
+
+ String get txid; int get vout; BigInt get value;
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CpfpInputCopyWith<CpfpInput> get copyWith => _$CpfpInputCopyWithImpl<CpfpInput>(this as CpfpInput, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpInput&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.value, value) || other.value == value));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,txid,vout,value);
+
+@override
+String toString() {
+  return 'CpfpInput(txid: $txid, vout: $vout, value: $value)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CpfpInputCopyWith<$Res>  {
+  factory $CpfpInputCopyWith(CpfpInput value, $Res Function(CpfpInput) _then) = _$CpfpInputCopyWithImpl;
+@useResult
+$Res call({
+ String txid, int vout, BigInt value
+});
+
+
+
+
+}
+/// @nodoc
+class _$CpfpInputCopyWithImpl<$Res>
+    implements $CpfpInputCopyWith<$Res> {
+  _$CpfpInputCopyWithImpl(this._self, this._then);
+
+  final CpfpInput _self;
+  final $Res Function(CpfpInput) _then;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? txid = null,Object? vout = null,Object? value = null,}) {
+  return _then(_self.copyWith(
+txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [CpfpInput].
+extension CpfpInputPatterns on CpfpInput {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CpfpInput_P2wpkh value)?  p2Wpkh,TResult Function( CpfpInput_P2tr value)?  p2Tr,TResult Function( CpfpInput_Custom value)?  custom,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that);case CpfpInput_P2tr() when p2Tr != null:
+return p2Tr(_that);case CpfpInput_Custom() when custom != null:
+return custom(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CpfpInput_P2wpkh value)  p2Wpkh,required TResult Function( CpfpInput_P2tr value)  p2Tr,required TResult Function( CpfpInput_Custom value)  custom,}){
+final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh():
+return p2Wpkh(_that);case CpfpInput_P2tr():
+return p2Tr(_that);case CpfpInput_Custom():
+return custom(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CpfpInput_P2wpkh value)?  p2Wpkh,TResult? Function( CpfpInput_P2tr value)?  p2Tr,TResult? Function( CpfpInput_Custom value)?  custom,}){
+final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that);case CpfpInput_P2tr() when p2Tr != null:
+return p2Tr(_that);case CpfpInput_Custom() when custom != null:
+return custom(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String txid,  int vout,  BigInt value,  String pubkey)?  p2Wpkh,TResult Function( String txid,  int vout,  BigInt value,  String pubkey)?  p2Tr,TResult Function( String txid,  int vout,  BigInt value,  String scriptPubkeyHex,  BigInt signedInputWeight)?  custom,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_P2tr() when p2Tr != null:
+return p2Tr(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_Custom() when custom != null:
+return custom(_that.txid,_that.vout,_that.value,_that.scriptPubkeyHex,_that.signedInputWeight);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String txid,  int vout,  BigInt value,  String pubkey)  p2Wpkh,required TResult Function( String txid,  int vout,  BigInt value,  String pubkey)  p2Tr,required TResult Function( String txid,  int vout,  BigInt value,  String scriptPubkeyHex,  BigInt signedInputWeight)  custom,}) {final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh():
+return p2Wpkh(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_P2tr():
+return p2Tr(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_Custom():
+return custom(_that.txid,_that.vout,_that.value,_that.scriptPubkeyHex,_that.signedInputWeight);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String txid,  int vout,  BigInt value,  String pubkey)?  p2Wpkh,TResult? Function( String txid,  int vout,  BigInt value,  String pubkey)?  p2Tr,TResult? Function( String txid,  int vout,  BigInt value,  String scriptPubkeyHex,  BigInt signedInputWeight)?  custom,}) {final _that = this;
+switch (_that) {
+case CpfpInput_P2wpkh() when p2Wpkh != null:
+return p2Wpkh(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_P2tr() when p2Tr != null:
+return p2Tr(_that.txid,_that.vout,_that.value,_that.pubkey);case CpfpInput_Custom() when custom != null:
+return custom(_that.txid,_that.vout,_that.value,_that.scriptPubkeyHex,_that.signedInputWeight);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class CpfpInput_P2wpkh extends CpfpInput {
+  const CpfpInput_P2wpkh({required this.txid, required this.vout, required this.value, required this.pubkey}): super._();
+  
+
+@override final  String txid;
+@override final  int vout;
+@override final  BigInt value;
+ final  String pubkey;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CpfpInput_P2wpkhCopyWith<CpfpInput_P2wpkh> get copyWith => _$CpfpInput_P2wpkhCopyWithImpl<CpfpInput_P2wpkh>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpInput_P2wpkh&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.value, value) || other.value == value)&&(identical(other.pubkey, pubkey) || other.pubkey == pubkey));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,txid,vout,value,pubkey);
+
+@override
+String toString() {
+  return 'CpfpInput.p2Wpkh(txid: $txid, vout: $vout, value: $value, pubkey: $pubkey)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CpfpInput_P2wpkhCopyWith<$Res> implements $CpfpInputCopyWith<$Res> {
+  factory $CpfpInput_P2wpkhCopyWith(CpfpInput_P2wpkh value, $Res Function(CpfpInput_P2wpkh) _then) = _$CpfpInput_P2wpkhCopyWithImpl;
+@override @useResult
+$Res call({
+ String txid, int vout, BigInt value, String pubkey
+});
+
+
+
+
+}
+/// @nodoc
+class _$CpfpInput_P2wpkhCopyWithImpl<$Res>
+    implements $CpfpInput_P2wpkhCopyWith<$Res> {
+  _$CpfpInput_P2wpkhCopyWithImpl(this._self, this._then);
+
+  final CpfpInput_P2wpkh _self;
+  final $Res Function(CpfpInput_P2wpkh) _then;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? vout = null,Object? value = null,Object? pubkey = null,}) {
+  return _then(CpfpInput_P2wpkh(
+txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as BigInt,pubkey: null == pubkey ? _self.pubkey : pubkey // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CpfpInput_P2tr extends CpfpInput {
+  const CpfpInput_P2tr({required this.txid, required this.vout, required this.value, required this.pubkey}): super._();
+  
+
+@override final  String txid;
+@override final  int vout;
+@override final  BigInt value;
+ final  String pubkey;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CpfpInput_P2trCopyWith<CpfpInput_P2tr> get copyWith => _$CpfpInput_P2trCopyWithImpl<CpfpInput_P2tr>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpInput_P2tr&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.value, value) || other.value == value)&&(identical(other.pubkey, pubkey) || other.pubkey == pubkey));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,txid,vout,value,pubkey);
+
+@override
+String toString() {
+  return 'CpfpInput.p2Tr(txid: $txid, vout: $vout, value: $value, pubkey: $pubkey)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CpfpInput_P2trCopyWith<$Res> implements $CpfpInputCopyWith<$Res> {
+  factory $CpfpInput_P2trCopyWith(CpfpInput_P2tr value, $Res Function(CpfpInput_P2tr) _then) = _$CpfpInput_P2trCopyWithImpl;
+@override @useResult
+$Res call({
+ String txid, int vout, BigInt value, String pubkey
+});
+
+
+
+
+}
+/// @nodoc
+class _$CpfpInput_P2trCopyWithImpl<$Res>
+    implements $CpfpInput_P2trCopyWith<$Res> {
+  _$CpfpInput_P2trCopyWithImpl(this._self, this._then);
+
+  final CpfpInput_P2tr _self;
+  final $Res Function(CpfpInput_P2tr) _then;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? vout = null,Object? value = null,Object? pubkey = null,}) {
+  return _then(CpfpInput_P2tr(
+txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as BigInt,pubkey: null == pubkey ? _self.pubkey : pubkey // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CpfpInput_Custom extends CpfpInput {
+  const CpfpInput_Custom({required this.txid, required this.vout, required this.value, required this.scriptPubkeyHex, required this.signedInputWeight}): super._();
+  
+
+@override final  String txid;
+@override final  int vout;
+@override final  BigInt value;
+ final  String scriptPubkeyHex;
+ final  BigInt signedInputWeight;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CpfpInput_CustomCopyWith<CpfpInput_Custom> get copyWith => _$CpfpInput_CustomCopyWithImpl<CpfpInput_Custom>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CpfpInput_Custom&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.value, value) || other.value == value)&&(identical(other.scriptPubkeyHex, scriptPubkeyHex) || other.scriptPubkeyHex == scriptPubkeyHex)&&(identical(other.signedInputWeight, signedInputWeight) || other.signedInputWeight == signedInputWeight));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,txid,vout,value,scriptPubkeyHex,signedInputWeight);
+
+@override
+String toString() {
+  return 'CpfpInput.custom(txid: $txid, vout: $vout, value: $value, scriptPubkeyHex: $scriptPubkeyHex, signedInputWeight: $signedInputWeight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CpfpInput_CustomCopyWith<$Res> implements $CpfpInputCopyWith<$Res> {
+  factory $CpfpInput_CustomCopyWith(CpfpInput_Custom value, $Res Function(CpfpInput_Custom) _then) = _$CpfpInput_CustomCopyWithImpl;
+@override @useResult
+$Res call({
+ String txid, int vout, BigInt value, String scriptPubkeyHex, BigInt signedInputWeight
+});
+
+
+
+
+}
+/// @nodoc
+class _$CpfpInput_CustomCopyWithImpl<$Res>
+    implements $CpfpInput_CustomCopyWith<$Res> {
+  _$CpfpInput_CustomCopyWithImpl(this._self, this._then);
+
+  final CpfpInput_Custom _self;
+  final $Res Function(CpfpInput_Custom) _then;
+
+/// Create a copy of CpfpInput
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? vout = null,Object? value = null,Object? scriptPubkeyHex = null,Object? signedInputWeight = null,}) {
+  return _then(CpfpInput_Custom(
+txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as BigInt,scriptPubkeyHex: null == scriptPubkeyHex ? _self.scriptPubkeyHex : scriptPubkeyHex // ignore: cast_nullable_to_non_nullable
+as String,signedInputWeight: null == signedInputWeight ? _self.signedInputWeight : signedInputWeight // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$CrossChainProviderContext {
 
 
@@ -3366,6 +4081,270 @@ class _$CrossChainRouteFilter_ReceiveCopyWithImpl<$Res>
   return _then(CrossChainRouteFilter_Receive(
 contractAddress: freezed == contractAddress ? _self.contractAddress : contractAddress // ignore: cast_nullable_to_non_nullable
 as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$ExitLeafSelection {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitLeafSelection);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitLeafSelection()';
+}
+
+
+}
+
+/// @nodoc
+class $ExitLeafSelectionCopyWith<$Res>  {
+$ExitLeafSelectionCopyWith(ExitLeafSelection _, $Res Function(ExitLeafSelection) __);
+}
+
+
+/// Adds pattern-matching-related methods to [ExitLeafSelection].
+extension ExitLeafSelectionPatterns on ExitLeafSelection {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ExitLeafSelection_Auto value)?  auto,TResult Function( ExitLeafSelection_Specific value)?  specific,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto() when auto != null:
+return auto(_that);case ExitLeafSelection_Specific() when specific != null:
+return specific(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ExitLeafSelection_Auto value)  auto,required TResult Function( ExitLeafSelection_Specific value)  specific,}){
+final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto():
+return auto(_that);case ExitLeafSelection_Specific():
+return specific(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ExitLeafSelection_Auto value)?  auto,TResult? Function( ExitLeafSelection_Specific value)?  specific,}){
+final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto() when auto != null:
+return auto(_that);case ExitLeafSelection_Specific() when specific != null:
+return specific(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  auto,TResult Function( List<String> leafIds)?  specific,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto() when auto != null:
+return auto();case ExitLeafSelection_Specific() when specific != null:
+return specific(_that.leafIds);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  auto,required TResult Function( List<String> leafIds)  specific,}) {final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto():
+return auto();case ExitLeafSelection_Specific():
+return specific(_that.leafIds);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  auto,TResult? Function( List<String> leafIds)?  specific,}) {final _that = this;
+switch (_that) {
+case ExitLeafSelection_Auto() when auto != null:
+return auto();case ExitLeafSelection_Specific() when specific != null:
+return specific(_that.leafIds);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ExitLeafSelection_Auto extends ExitLeafSelection {
+  const ExitLeafSelection_Auto(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitLeafSelection_Auto);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitLeafSelection.auto()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ExitLeafSelection_Specific extends ExitLeafSelection {
+  const ExitLeafSelection_Specific({required final  List<String> leafIds}): _leafIds = leafIds,super._();
+  
+
+ final  List<String> _leafIds;
+ List<String> get leafIds {
+  if (_leafIds is EqualUnmodifiableListView) return _leafIds;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_leafIds);
+}
+
+
+/// Create a copy of ExitLeafSelection
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExitLeafSelection_SpecificCopyWith<ExitLeafSelection_Specific> get copyWith => _$ExitLeafSelection_SpecificCopyWithImpl<ExitLeafSelection_Specific>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitLeafSelection_Specific&&const DeepCollectionEquality().equals(other._leafIds, _leafIds));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_leafIds));
+
+@override
+String toString() {
+  return 'ExitLeafSelection.specific(leafIds: $leafIds)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ExitLeafSelection_SpecificCopyWith<$Res> implements $ExitLeafSelectionCopyWith<$Res> {
+  factory $ExitLeafSelection_SpecificCopyWith(ExitLeafSelection_Specific value, $Res Function(ExitLeafSelection_Specific) _then) = _$ExitLeafSelection_SpecificCopyWithImpl;
+@useResult
+$Res call({
+ List<String> leafIds
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExitLeafSelection_SpecificCopyWithImpl<$Res>
+    implements $ExitLeafSelection_SpecificCopyWith<$Res> {
+  _$ExitLeafSelection_SpecificCopyWithImpl(this._self, this._then);
+
+  final ExitLeafSelection_Specific _self;
+  final $Res Function(ExitLeafSelection_Specific) _then;
+
+/// Create a copy of ExitLeafSelection
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? leafIds = null,}) {
+  return _then(ExitLeafSelection_Specific(
+leafIds: null == leafIds ? _self._leafIds : leafIds // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 
@@ -9800,6 +10779,264 @@ as String,
 
 
 }
+
+/// @nodoc
+mixin _$SparkMasterIdentityPublicKey {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkMasterIdentityPublicKey);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SparkMasterIdentityPublicKey()';
+}
+
+
+}
+
+/// @nodoc
+class $SparkMasterIdentityPublicKeyCopyWith<$Res>  {
+$SparkMasterIdentityPublicKeyCopyWith(SparkMasterIdentityPublicKey _, $Res Function(SparkMasterIdentityPublicKey) __);
+}
+
+
+/// Adds pattern-matching-related methods to [SparkMasterIdentityPublicKey].
+extension SparkMasterIdentityPublicKeyPatterns on SparkMasterIdentityPublicKey {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SparkMasterIdentityPublicKey_Set value)?  set_,TResult Function( SparkMasterIdentityPublicKey_Unset value)?  unset,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set() when set_ != null:
+return set_(_that);case SparkMasterIdentityPublicKey_Unset() when unset != null:
+return unset(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SparkMasterIdentityPublicKey_Set value)  set_,required TResult Function( SparkMasterIdentityPublicKey_Unset value)  unset,}){
+final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set():
+return set_(_that);case SparkMasterIdentityPublicKey_Unset():
+return unset(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SparkMasterIdentityPublicKey_Set value)?  set_,TResult? Function( SparkMasterIdentityPublicKey_Unset value)?  unset,}){
+final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set() when set_ != null:
+return set_(_that);case SparkMasterIdentityPublicKey_Unset() when unset != null:
+return unset(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String publicKey)?  set_,TResult Function()?  unset,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set() when set_ != null:
+return set_(_that.publicKey);case SparkMasterIdentityPublicKey_Unset() when unset != null:
+return unset();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String publicKey)  set_,required TResult Function()  unset,}) {final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set():
+return set_(_that.publicKey);case SparkMasterIdentityPublicKey_Unset():
+return unset();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String publicKey)?  set_,TResult? Function()?  unset,}) {final _that = this;
+switch (_that) {
+case SparkMasterIdentityPublicKey_Set() when set_ != null:
+return set_(_that.publicKey);case SparkMasterIdentityPublicKey_Unset() when unset != null:
+return unset();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class SparkMasterIdentityPublicKey_Set extends SparkMasterIdentityPublicKey {
+  const SparkMasterIdentityPublicKey_Set({required this.publicKey}): super._();
+  
+
+ final  String publicKey;
+
+/// Create a copy of SparkMasterIdentityPublicKey
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SparkMasterIdentityPublicKey_SetCopyWith<SparkMasterIdentityPublicKey_Set> get copyWith => _$SparkMasterIdentityPublicKey_SetCopyWithImpl<SparkMasterIdentityPublicKey_Set>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkMasterIdentityPublicKey_Set&&(identical(other.publicKey, publicKey) || other.publicKey == publicKey));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,publicKey);
+
+@override
+String toString() {
+  return 'SparkMasterIdentityPublicKey.set_(publicKey: $publicKey)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SparkMasterIdentityPublicKey_SetCopyWith<$Res> implements $SparkMasterIdentityPublicKeyCopyWith<$Res> {
+  factory $SparkMasterIdentityPublicKey_SetCopyWith(SparkMasterIdentityPublicKey_Set value, $Res Function(SparkMasterIdentityPublicKey_Set) _then) = _$SparkMasterIdentityPublicKey_SetCopyWithImpl;
+@useResult
+$Res call({
+ String publicKey
+});
+
+
+
+
+}
+/// @nodoc
+class _$SparkMasterIdentityPublicKey_SetCopyWithImpl<$Res>
+    implements $SparkMasterIdentityPublicKey_SetCopyWith<$Res> {
+  _$SparkMasterIdentityPublicKey_SetCopyWithImpl(this._self, this._then);
+
+  final SparkMasterIdentityPublicKey_Set _self;
+  final $Res Function(SparkMasterIdentityPublicKey_Set) _then;
+
+/// Create a copy of SparkMasterIdentityPublicKey
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? publicKey = null,}) {
+  return _then(SparkMasterIdentityPublicKey_Set(
+publicKey: null == publicKey ? _self.publicKey : publicKey // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SparkMasterIdentityPublicKey_Unset extends SparkMasterIdentityPublicKey {
+  const SparkMasterIdentityPublicKey_Unset(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkMasterIdentityPublicKey_Unset);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SparkMasterIdentityPublicKey.unset()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$StableBalanceActiveLabel {
