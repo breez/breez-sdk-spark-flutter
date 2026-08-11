@@ -31,7 +31,7 @@ abstract class PasskeyClient implements RustOpaqueInterface {
   factory PasskeyClient({
     required FutureOr<DeriveSeedsOutput> Function(DeriveSeedsRequest) deriveSeeds,
     required FutureOr<bool> Function() isSupported,
-    required FutureOr<PasskeyCredential> Function(List<Uint8List>) createPasskey,
+    required FutureOr<CreatePasskeyOutput> Function(List<Uint8List>, List<String>) createPasskey,
     String? breezApiKey,
     PasskeyConfig? config,
   }) => BreezSdkSparkLib.instance.api.cratePasskeyPasskeyClientNew(

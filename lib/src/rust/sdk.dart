@@ -35,6 +35,10 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required AuthorizeTransferRequest request,
   });
 
+  Future<UnsignedTransferPackage> buildUnsignedBatchPackage({
+    required BuildUnsignedBatchPackageRequest request,
+  });
+
   Future<UnsignedTransferPackage> buildUnsignedLnurlPayPackage({
     required BuildUnsignedLnurlPayPackageRequest request,
   });
@@ -105,6 +109,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
 
+  Future<PrepareSendBatchResponse> prepareSendBatch({required PrepareSendBatchRequest request});
+
   Future<PrepareSendPaymentResponse> prepareSendPayment({required PrepareSendPaymentRequest request});
 
   /// Quotes a unilateral exit: which leaves would exit, the exact fee, and how
@@ -134,6 +140,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<RegisterWebhookResponse> registerWebhook({required RegisterWebhookRequest request});
 
   Future<bool> removeEventListener({required String id});
+
+  Future<SendBatchResponse> sendBatch({required SendBatchRequest request});
 
   Future<SendPaymentResponse> sendPayment({required SendPaymentRequest request});
 

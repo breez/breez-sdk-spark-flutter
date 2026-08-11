@@ -400,22 +400,22 @@ as String,
 /// @nodoc
 mixin _$PasskeyError {
 
- Object get field0;
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError&&const DeepCollectionEquality().equals(other.field0, field0));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(field0));
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'PasskeyError(field0: $field0)';
+  return 'PasskeyError()';
 }
 
 
@@ -441,7 +441,7 @@ extension PasskeyErrorPatterns on PasskeyError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_Prf value)?  prf,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_Prf value)?  prf,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
@@ -452,7 +452,8 @@ return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDer
 return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
-return invalidSalt(_that);case PasskeyError_Generic() when generic != null:
+return invalidSalt(_that);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
+return createdButNotDerived(_that);case PasskeyError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -471,7 +472,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_Prf value)  prf,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_Prf value)  prf,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_CreatedButNotDerived value)  createdButNotDerived,required TResult Function( PasskeyError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf():
@@ -482,7 +483,8 @@ return nostrReadFailed(_that);case PasskeyError_KeyDerivationError():
 return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput():
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError():
 return mnemonicError(_that);case PasskeyError_InvalidSalt():
-return invalidSalt(_that);case PasskeyError_Generic():
+return invalidSalt(_that);case PasskeyError_CreatedButNotDerived():
+return createdButNotDerived(_that);case PasskeyError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -497,7 +499,7 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_Prf value)?  prf,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_Prf value)?  prf,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult? Function( PasskeyError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
@@ -508,7 +510,8 @@ return nostrReadFailed(_that);case PasskeyError_KeyDerivationError() when keyDer
 return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
-return invalidSalt(_that);case PasskeyError_Generic() when generic != null:
+return invalidSalt(_that);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
+return createdButNotDerived(_that);case PasskeyError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -526,7 +529,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PrfProviderError field0)?  prf,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PrfProviderError field0)?  prf,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
@@ -536,7 +539,8 @@ return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when
 return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
-return invalidSalt(_that.field0);case PasskeyError_Generic() when generic != null:
+return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return orElse();
 
@@ -555,7 +559,7 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PrfProviderError field0)  prf,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PrfProviderError field0)  prf,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( Uint8List credentialId,  PrfProviderError source)  createdButNotDerived,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf():
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed():
@@ -565,7 +569,8 @@ return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError():
 return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput():
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError():
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt():
-return invalidSalt(_that.field0);case PasskeyError_Generic():
+return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived():
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic():
 return generic(_that.field0);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -580,7 +585,7 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PrfProviderError field0)?  prf,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PrfProviderError field0)?  prf,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
@@ -590,7 +595,8 @@ return nostrReadFailed(_that.field0);case PasskeyError_KeyDerivationError() when
 return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() when invalidPrfOutput != null:
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
-return invalidSalt(_that.field0);case PasskeyError_Generic() when generic != null:
+return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return null;
 
@@ -606,7 +612,7 @@ class PasskeyError_Prf extends PasskeyError {
   const PasskeyError_Prf(this.field0): super._();
   
 
-@override final  PrfProviderError field0;
+ final  PrfProviderError field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -681,7 +687,7 @@ class PasskeyError_RelayConnectionFailed extends PasskeyError {
   const PasskeyError_RelayConnectionFailed(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -747,7 +753,7 @@ class PasskeyError_NostrWriteFailed extends PasskeyError {
   const PasskeyError_NostrWriteFailed(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -813,7 +819,7 @@ class PasskeyError_NostrReadFailed extends PasskeyError {
   const PasskeyError_NostrReadFailed(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -879,7 +885,7 @@ class PasskeyError_KeyDerivationError extends PasskeyError {
   const PasskeyError_KeyDerivationError(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -945,7 +951,7 @@ class PasskeyError_InvalidPrfOutput extends PasskeyError {
   const PasskeyError_InvalidPrfOutput(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -1011,7 +1017,7 @@ class PasskeyError_MnemonicError extends PasskeyError {
   const PasskeyError_MnemonicError(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -1077,7 +1083,7 @@ class PasskeyError_InvalidSalt extends PasskeyError {
   const PasskeyError_InvalidSalt(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -1139,11 +1145,88 @@ as String,
 /// @nodoc
 
 
+class PasskeyError_CreatedButNotDerived extends PasskeyError {
+  const PasskeyError_CreatedButNotDerived({required this.credentialId, required this.source}): super._();
+  
+
+ final  Uint8List credentialId;
+ final  PrfProviderError source;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_CreatedButNotDerivedCopyWith<PasskeyError_CreatedButNotDerived> get copyWith => _$PasskeyError_CreatedButNotDerivedCopyWithImpl<PasskeyError_CreatedButNotDerived>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_CreatedButNotDerived&&const DeepCollectionEquality().equals(other.credentialId, credentialId)&&(identical(other.source, source) || other.source == source));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(credentialId),source);
+
+@override
+String toString() {
+  return 'PasskeyError.createdButNotDerived(credentialId: $credentialId, source: $source)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_CreatedButNotDerivedCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_CreatedButNotDerivedCopyWith(PasskeyError_CreatedButNotDerived value, $Res Function(PasskeyError_CreatedButNotDerived) _then) = _$PasskeyError_CreatedButNotDerivedCopyWithImpl;
+@useResult
+$Res call({
+ Uint8List credentialId, PrfProviderError source
+});
+
+
+$PrfProviderErrorCopyWith<$Res> get source;
+
+}
+/// @nodoc
+class _$PasskeyError_CreatedButNotDerivedCopyWithImpl<$Res>
+    implements $PasskeyError_CreatedButNotDerivedCopyWith<$Res> {
+  _$PasskeyError_CreatedButNotDerivedCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_CreatedButNotDerived _self;
+  final $Res Function(PasskeyError_CreatedButNotDerived) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? credentialId = null,Object? source = null,}) {
+  return _then(PasskeyError_CreatedButNotDerived(
+credentialId: null == credentialId ? _self.credentialId : credentialId // ignore: cast_nullable_to_non_nullable
+as Uint8List,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as PrfProviderError,
+  ));
+}
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PrfProviderErrorCopyWith<$Res> get source {
+  
+  return $PrfProviderErrorCopyWith<$Res>(_self.source, (value) {
+    return _then(_self.copyWith(source: value));
+  });
+}
+}
+
+/// @nodoc
+
+
 class PasskeyError_Generic extends PasskeyError {
   const PasskeyError_Generic(this.field0): super._();
   
 
-@override final  String field0;
+ final  String field0;
 
 /// Create a copy of PasskeyError
 /// with the given fields replaced by the non-null parameter values.
@@ -2046,11 +2129,11 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function()?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String txid,  int vout)?  fundingUtxoConflict,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String txid,  int vout)?  fundingUtxoConflict,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
-return insufficientFunds();case SdkError_InvalidUuid() when invalidUuid != null:
+return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that.field0);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
@@ -2082,11 +2165,11 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function()  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String txid,  int vout)  fundingUtxoConflict,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String txid,  int vout)  fundingUtxoConflict,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that.field0);case SdkError_InsufficientFunds():
-return insufficientFunds();case SdkError_InvalidUuid():
+return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid():
 return invalidUuid(_that.field0);case SdkError_InvalidInput():
 return invalidInput(_that.field0);case SdkError_NetworkError():
 return networkError(_that.field0);case SdkError_StorageError():
@@ -2114,11 +2197,11 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function()?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String txid,  int vout)?  fundingUtxoConflict,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String txid,  int vout)?  fundingUtxoConflict,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
-return insufficientFunds();case SdkError_InvalidUuid() when invalidUuid != null:
+return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that.field0);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
@@ -2210,33 +2293,67 @@ as String,
 
 
 class SdkError_InsufficientFunds extends SdkError {
-  const SdkError_InsufficientFunds(): super._();
+  const SdkError_InsufficientFunds({this.tokenIdentifier}): super._();
   
 
+ final  String? tokenIdentifier;
 
-
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_InsufficientFundsCopyWith<SdkError_InsufficientFunds> get copyWith => _$SdkError_InsufficientFundsCopyWithImpl<SdkError_InsufficientFunds>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_InsufficientFunds);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_InsufficientFunds&&(identical(other.tokenIdentifier, tokenIdentifier) || other.tokenIdentifier == tokenIdentifier));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,tokenIdentifier);
 
 @override
 String toString() {
-  return 'SdkError.insufficientFunds()';
+  return 'SdkError.insufficientFunds(tokenIdentifier: $tokenIdentifier)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $SdkError_InsufficientFundsCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_InsufficientFundsCopyWith(SdkError_InsufficientFunds value, $Res Function(SdkError_InsufficientFunds) _then) = _$SdkError_InsufficientFundsCopyWithImpl;
+@useResult
+$Res call({
+ String? tokenIdentifier
+});
 
 
+
+
+}
+/// @nodoc
+class _$SdkError_InsufficientFundsCopyWithImpl<$Res>
+    implements $SdkError_InsufficientFundsCopyWith<$Res> {
+  _$SdkError_InsufficientFundsCopyWithImpl(this._self, this._then);
+
+  final SdkError_InsufficientFunds _self;
+  final $Res Function(SdkError_InsufficientFunds) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tokenIdentifier = freezed,}) {
+  return _then(SdkError_InsufficientFunds(
+tokenIdentifier: freezed == tokenIdentifier ? _self.tokenIdentifier : tokenIdentifier // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
 
 /// @nodoc
 

@@ -112,6 +112,53 @@ class AuthorizeTransferRequest {
           transfereePubkey == other.transfereePubkey;
 }
 
+@freezed
+sealed class BatchDestination with _$BatchDestination {
+  const BatchDestination._();
+
+  const factory BatchDestination.sparkAddress({required String address}) = BatchDestination_SparkAddress;
+  const factory BatchDestination.sparkInvoice({required SparkInvoiceDetails invoiceDetails}) =
+      BatchDestination_SparkInvoice;
+}
+
+class BatchRecipient {
+  final String paymentRequest;
+  final BigInt? amount;
+  final String? tokenIdentifier;
+
+  const BatchRecipient({required this.paymentRequest, this.amount, this.tokenIdentifier});
+
+  @override
+  int get hashCode => paymentRequest.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BatchRecipient &&
+          runtimeType == other.runtimeType &&
+          paymentRequest == other.paymentRequest &&
+          amount == other.amount &&
+          tokenIdentifier == other.tokenIdentifier;
+}
+
+class BatchTotal {
+  final String? tokenIdentifier;
+  final BigInt amount;
+
+  const BatchTotal({this.tokenIdentifier, required this.amount});
+
+  @override
+  int get hashCode => tokenIdentifier.hashCode ^ amount.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BatchTotal &&
+          runtimeType == other.runtimeType &&
+          tokenIdentifier == other.tokenIdentifier &&
+          amount == other.amount;
+}
+
 class Bip21Details {
   final BigInt? amountSat;
   final String? assetId;
@@ -467,6 +514,22 @@ sealed class BuildTransferPackageOptions with _$BuildTransferPackageOptions {
     required bool preferSpark,
     int? completionTimeoutSecs,
   }) = BuildTransferPackageOptions_Bolt11Invoice;
+}
+
+class BuildUnsignedBatchPackageRequest {
+  final PrepareSendBatchResponse prepareResponse;
+
+  const BuildUnsignedBatchPackageRequest({required this.prepareResponse});
+
+  @override
+  int get hashCode => prepareResponse.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuildUnsignedBatchPackageRequest &&
+          runtimeType == other.runtimeType &&
+          prepareResponse == other.prepareResponse;
 }
 
 class BuildUnsignedLnurlPayPackageRequest {
@@ -1142,6 +1205,24 @@ class CreateIssuerTokenRequest {
           decimals == other.decimals &&
           isFreezable == other.isFreezable &&
           maxSupply == other.maxSupply;
+}
+
+class CreatePasskeyOutput {
+  final PasskeyCredential credential;
+  final List<Uint8List>? seeds;
+
+  const CreatePasskeyOutput({required this.credential, this.seeds});
+
+  @override
+  int get hashCode => credential.hashCode ^ seeds.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreatePasskeyOutput &&
+          runtimeType == other.runtimeType &&
+          credential == other.credential &&
+          seeds == other.seeds;
 }
 
 class Credentials {
@@ -2839,6 +2920,38 @@ class PrepareLnurlPayResponse {
           feePolicy == other.feePolicy;
 }
 
+class PrepareSendBatchRequest {
+  final List<BatchRecipient> recipients;
+
+  const PrepareSendBatchRequest({required this.recipients});
+
+  @override
+  int get hashCode => recipients.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PrepareSendBatchRequest && runtimeType == other.runtimeType && recipients == other.recipients;
+}
+
+class PrepareSendBatchResponse {
+  final List<ResolvedBatchRecipient> recipients;
+  final List<BatchTotal> totals;
+
+  const PrepareSendBatchResponse({required this.recipients, required this.totals});
+
+  @override
+  int get hashCode => recipients.hashCode ^ totals.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PrepareSendBatchResponse &&
+          runtimeType == other.runtimeType &&
+          recipients == other.recipients &&
+          totals == other.totals;
+}
+
 class PrepareSendPaymentRequest {
   final PaymentRequest paymentRequest;
   final BigInt? amount;
@@ -3033,6 +3146,8 @@ sealed class PublishSignedTransferPackageResponse with _$PublishSignedTransferPa
       PublishSignedTransferPackageResponse_SwapCompleted;
   const factory PublishSignedTransferPackageResponse.paymentSent({required Payment payment}) =
       PublishSignedTransferPackageResponse_PaymentSent;
+  const factory PublishSignedTransferPackageResponse.paymentsSent({required List<Payment> payments}) =
+      PublishSignedTransferPackageResponse_PaymentsSent;
 }
 
 class Rate {
@@ -3297,6 +3412,26 @@ class RegisterWebhookResponse {
       other is RegisterWebhookResponse && runtimeType == other.runtimeType && webhookId == other.webhookId;
 }
 
+class ResolvedBatchRecipient {
+  final BatchDestination destination;
+  final BigInt amount;
+  final String? tokenIdentifier;
+
+  const ResolvedBatchRecipient({required this.destination, required this.amount, this.tokenIdentifier});
+
+  @override
+  int get hashCode => destination.hashCode ^ amount.hashCode ^ tokenIdentifier.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ResolvedBatchRecipient &&
+          runtimeType == other.runtimeType &&
+          destination == other.destination &&
+          amount == other.amount &&
+          tokenIdentifier == other.tokenIdentifier;
+}
+
 class SchnorrSignatureBytes {
   final Uint8List bytes;
 
@@ -3344,6 +3479,36 @@ sealed class Seed with _$Seed {
 
   const factory Seed.mnemonic({required String mnemonic, String? passphrase}) = Seed_Mnemonic;
   const factory Seed.entropy(Uint8List field0) = Seed_Entropy;
+}
+
+class SendBatchRequest {
+  final PrepareSendBatchResponse prepareResponse;
+
+  const SendBatchRequest({required this.prepareResponse});
+
+  @override
+  int get hashCode => prepareResponse.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SendBatchRequest &&
+          runtimeType == other.runtimeType &&
+          prepareResponse == other.prepareResponse;
+}
+
+class SendBatchResponse {
+  final List<Payment> payments;
+
+  const SendBatchResponse({required this.payments});
+
+  @override
+  int get hashCode => payments.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SendBatchResponse && runtimeType == other.runtimeType && payments == other.payments;
 }
 
 class SendOnchainFeeQuote {
@@ -4301,6 +4466,12 @@ sealed class UnsignedTransferPackage with _$UnsignedTransferPackage {
     required BigInt fee,
     required bool isSwap,
   }) = UnsignedTransferPackage_Token;
+  const factory UnsignedTransferPackage.tokenBatch({
+    required ExternalPrepareTokenTransactionRequest prepareTokenTransaction,
+    required Uint8List tokenContext,
+    required List<BatchTotal> totals,
+    required bool isSwap,
+  }) = UnsignedTransferPackage_TokenBatch;
 }
 
 class UpdateContactRequest {

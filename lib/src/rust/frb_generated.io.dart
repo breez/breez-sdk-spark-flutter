@@ -135,8 +135,10 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   dco_decode_DartFn_Inputs_derive_seeds_request_Output_derive_seeds_output_AnyhowException(dynamic raw);
 
   @protected
-  FutureOr<PasskeyCredential> Function(List<Uint8List>)
-  dco_decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(dynamic raw);
+  FutureOr<CreatePasskeyOutput> Function(List<Uint8List>, List<String>)
+  dco_decode_DartFn_Inputs_list_list_prim_u_8_strict_list_String_Output_create_passkey_output_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<Uint8List> Function(Uint8List)
@@ -216,6 +218,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   AutoOptimizationEvent dco_decode_auto_optimization_event(dynamic raw);
+
+  @protected
+  BatchDestination dco_decode_batch_destination(dynamic raw);
+
+  @protected
+  BatchRecipient dco_decode_batch_recipient(dynamic raw);
+
+  @protected
+  BatchTotal dco_decode_batch_total(dynamic raw);
 
   @protected
   Bip21Details dco_decode_bip_21_details(dynamic raw);
@@ -312,6 +323,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BuildTransferPackageOptions dco_decode_box_autoadd_build_transfer_package_options(dynamic raw);
+
+  @protected
+  BuildUnsignedBatchPackageRequest dco_decode_box_autoadd_build_unsigned_batch_package_request(dynamic raw);
 
   @protected
   BuildUnsignedLnurlPayPackageRequest dco_decode_box_autoadd_build_unsigned_lnurl_pay_package_request(
@@ -506,6 +520,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrepareLnurlPayRequest dco_decode_box_autoadd_prepare_lnurl_pay_request(dynamic raw);
 
   @protected
+  PrepareSendBatchRequest dco_decode_box_autoadd_prepare_send_batch_request(dynamic raw);
+
+  @protected
   PrepareSendPaymentRequest dco_decode_box_autoadd_prepare_send_payment_request(dynamic raw);
 
   @protected
@@ -544,6 +561,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Seed dco_decode_box_autoadd_seed(dynamic raw);
+
+  @protected
+  SendBatchRequest dco_decode_box_autoadd_send_batch_request(dynamic raw);
 
   @protected
   SendOnchainFeeQuote dco_decode_box_autoadd_send_onchain_fee_quote(dynamic raw);
@@ -637,6 +657,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BuildTransferPackageOptions dco_decode_build_transfer_package_options(dynamic raw);
+
+  @protected
+  BuildUnsignedBatchPackageRequest dco_decode_build_unsigned_batch_package_request(dynamic raw);
 
   @protected
   BuildUnsignedLnurlPayPackageRequest dco_decode_build_unsigned_lnurl_pay_package_request(dynamic raw);
@@ -742,6 +765,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   CreateIssuerTokenRequest dco_decode_create_issuer_token_request(dynamic raw);
+
+  @protected
+  CreatePasskeyOutput dco_decode_create_passkey_output(dynamic raw);
 
   @protected
   Credentials dco_decode_credentials(dynamic raw);
@@ -891,6 +917,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
+  List<BatchRecipient> dco_decode_list_batch_recipient(dynamic raw);
+
+  @protected
+  List<BatchTotal> dco_decode_list_batch_total(dynamic raw);
+
+  @protected
   List<Bip21Extra> dco_decode_list_bip_21_extra(dynamic raw);
 
   @protected
@@ -991,6 +1023,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<(String, TokenBalance)> dco_decode_list_record_string_token_balance(dynamic raw);
+
+  @protected
+  List<ResolvedBatchRecipient> dco_decode_list_resolved_batch_recipient(dynamic raw);
 
   @protected
   List<SourceAsset> dco_decode_list_source_asset(dynamic raw);
@@ -1299,6 +1334,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrepareLnurlPayResponse dco_decode_prepare_lnurl_pay_response(dynamic raw);
 
   @protected
+  PrepareSendBatchRequest dco_decode_prepare_send_batch_request(dynamic raw);
+
+  @protected
+  PrepareSendBatchResponse dco_decode_prepare_send_batch_response(dynamic raw);
+
+  @protected
   PrepareSendPaymentRequest dco_decode_prepare_send_payment_request(dynamic raw);
 
   @protected
@@ -1368,6 +1409,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookResponse dco_decode_register_webhook_response(dynamic raw);
 
   @protected
+  ResolvedBatchRecipient dco_decode_resolved_batch_recipient(dynamic raw);
+
+  @protected
   SchnorrSignatureBytes dco_decode_schnorr_signature_bytes(dynamic raw);
 
   @protected
@@ -1381,6 +1425,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Seed dco_decode_seed(dynamic raw);
+
+  @protected
+  SendBatchRequest dco_decode_send_batch_request(dynamic raw);
+
+  @protected
+  SendBatchResponse dco_decode_send_batch_response(dynamic raw);
 
   @protected
   SendOnchainFeeQuote dco_decode_send_onchain_fee_quote(dynamic raw);
@@ -1729,6 +1779,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   AutoOptimizationEvent sse_decode_auto_optimization_event(SseDeserializer deserializer);
 
   @protected
+  BatchDestination sse_decode_batch_destination(SseDeserializer deserializer);
+
+  @protected
+  BatchRecipient sse_decode_batch_recipient(SseDeserializer deserializer);
+
+  @protected
+  BatchTotal sse_decode_batch_total(SseDeserializer deserializer);
+
+  @protected
   Bip21Details sse_decode_bip_21_details(SseDeserializer deserializer);
 
   @protected
@@ -1829,6 +1888,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BuildTransferPackageOptions sse_decode_box_autoadd_build_transfer_package_options(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BuildUnsignedBatchPackageRequest sse_decode_box_autoadd_build_unsigned_batch_package_request(
     SseDeserializer deserializer,
   );
 
@@ -2037,6 +2101,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrepareLnurlPayRequest sse_decode_box_autoadd_prepare_lnurl_pay_request(SseDeserializer deserializer);
 
   @protected
+  PrepareSendBatchRequest sse_decode_box_autoadd_prepare_send_batch_request(SseDeserializer deserializer);
+
+  @protected
   PrepareSendPaymentRequest sse_decode_box_autoadd_prepare_send_payment_request(SseDeserializer deserializer);
 
   @protected
@@ -2079,6 +2146,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Seed sse_decode_box_autoadd_seed(SseDeserializer deserializer);
+
+  @protected
+  SendBatchRequest sse_decode_box_autoadd_send_batch_request(SseDeserializer deserializer);
 
   @protected
   SendOnchainFeeQuote sse_decode_box_autoadd_send_onchain_fee_quote(SseDeserializer deserializer);
@@ -2180,6 +2250,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BuildTransferPackageOptions sse_decode_build_transfer_package_options(SseDeserializer deserializer);
+
+  @protected
+  BuildUnsignedBatchPackageRequest sse_decode_build_unsigned_batch_package_request(
+    SseDeserializer deserializer,
+  );
 
   @protected
   BuildUnsignedLnurlPayPackageRequest sse_decode_build_unsigned_lnurl_pay_package_request(
@@ -2289,6 +2364,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   CreateIssuerTokenRequest sse_decode_create_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
+  CreatePasskeyOutput sse_decode_create_passkey_output(SseDeserializer deserializer);
 
   @protected
   Credentials sse_decode_credentials(SseDeserializer deserializer);
@@ -2442,6 +2520,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
+  List<BatchRecipient> sse_decode_list_batch_recipient(SseDeserializer deserializer);
+
+  @protected
+  List<BatchTotal> sse_decode_list_batch_total(SseDeserializer deserializer);
+
+  @protected
   List<Bip21Extra> sse_decode_list_bip_21_extra(SseDeserializer deserializer);
 
   @protected
@@ -2542,6 +2626,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<(String, TokenBalance)> sse_decode_list_record_string_token_balance(SseDeserializer deserializer);
+
+  @protected
+  List<ResolvedBatchRecipient> sse_decode_list_resolved_batch_recipient(SseDeserializer deserializer);
 
   @protected
   List<SourceAsset> sse_decode_list_source_asset(SseDeserializer deserializer);
@@ -2858,6 +2945,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrepareLnurlPayResponse sse_decode_prepare_lnurl_pay_response(SseDeserializer deserializer);
 
   @protected
+  PrepareSendBatchRequest sse_decode_prepare_send_batch_request(SseDeserializer deserializer);
+
+  @protected
+  PrepareSendBatchResponse sse_decode_prepare_send_batch_response(SseDeserializer deserializer);
+
+  @protected
   PrepareSendPaymentRequest sse_decode_prepare_send_payment_request(SseDeserializer deserializer);
 
   @protected
@@ -2935,6 +3028,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RegisterWebhookResponse sse_decode_register_webhook_response(SseDeserializer deserializer);
 
   @protected
+  ResolvedBatchRecipient sse_decode_resolved_batch_recipient(SseDeserializer deserializer);
+
+  @protected
   SchnorrSignatureBytes sse_decode_schnorr_signature_bytes(SseDeserializer deserializer);
 
   @protected
@@ -2948,6 +3044,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Seed sse_decode_seed(SseDeserializer deserializer);
+
+  @protected
+  SendBatchRequest sse_decode_send_batch_request(SseDeserializer deserializer);
+
+  @protected
+  SendBatchResponse sse_decode_send_batch_response(SseDeserializer deserializer);
 
   @protected
   SendOnchainFeeQuote sse_decode_send_onchain_fee_quote(SseDeserializer deserializer);
@@ -3237,8 +3339,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
-  void sse_encode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(
-    FutureOr<PasskeyCredential> Function(List<Uint8List>) self,
+  void
+  sse_encode_DartFn_Inputs_list_list_prim_u_8_strict_list_String_Output_create_passkey_output_AnyhowException(
+    FutureOr<CreatePasskeyOutput> Function(List<Uint8List>, List<String>) self,
     SseSerializer serializer,
   );
 
@@ -3337,6 +3440,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_auto_optimization_event(AutoOptimizationEvent self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_batch_destination(BatchDestination self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_batch_recipient(BatchRecipient self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_batch_total(BatchTotal self, SseSerializer serializer);
 
   @protected
   void sse_encode_bip_21_details(Bip21Details self, SseSerializer serializer);
@@ -3446,6 +3558,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_build_transfer_package_options(
     BuildTransferPackageOptions self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_build_unsigned_batch_package_request(
+    BuildUnsignedBatchPackageRequest self,
     SseSerializer serializer,
   );
 
@@ -3708,6 +3826,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_prepare_send_batch_request(
+    PrepareSendBatchRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_prepare_send_payment_request(
     PrepareSendPaymentRequest self,
     SseSerializer serializer,
@@ -3757,6 +3881,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_seed(Seed self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_send_batch_request(SendBatchRequest self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_send_onchain_fee_quote(SendOnchainFeeQuote self, SseSerializer serializer);
@@ -3873,6 +4000,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_build_transfer_package_options(BuildTransferPackageOptions self, SseSerializer serializer);
 
   @protected
+  void sse_encode_build_unsigned_batch_package_request(
+    BuildUnsignedBatchPackageRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_build_unsigned_lnurl_pay_package_request(
     BuildUnsignedLnurlPayPackageRequest self,
     SseSerializer serializer,
@@ -3985,6 +4118,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_create_issuer_token_request(CreateIssuerTokenRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_create_passkey_output(CreatePasskeyOutput self, SseSerializer serializer);
 
   @protected
   void sse_encode_credentials(Credentials self, SseSerializer serializer);
@@ -4152,6 +4288,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_batch_recipient(List<BatchRecipient> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_batch_total(List<BatchTotal> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_bip_21_extra(List<Bip21Extra> self, SseSerializer serializer);
 
   @protected
@@ -4267,6 +4409,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     List<(String, TokenBalance)> self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_list_resolved_batch_recipient(List<ResolvedBatchRecipient> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_source_asset(List<SourceAsset> self, SseSerializer serializer);
@@ -4614,6 +4759,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_prepare_lnurl_pay_response(PrepareLnurlPayResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_prepare_send_batch_request(PrepareSendBatchRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_prepare_send_batch_response(PrepareSendBatchResponse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_prepare_send_payment_request(PrepareSendPaymentRequest self, SseSerializer serializer);
 
   @protected
@@ -4707,6 +4858,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_register_webhook_response(RegisterWebhookResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_resolved_batch_recipient(ResolvedBatchRecipient self, SseSerializer serializer);
+
+  @protected
   void sse_encode_schnorr_signature_bytes(SchnorrSignatureBytes self, SseSerializer serializer);
 
   @protected
@@ -4720,6 +4874,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_seed(Seed self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_send_batch_request(SendBatchRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_send_batch_response(SendBatchResponse self, SseSerializer serializer);
 
   @protected
   void sse_encode_send_onchain_fee_quote(SendOnchainFeeQuote self, SseSerializer serializer);

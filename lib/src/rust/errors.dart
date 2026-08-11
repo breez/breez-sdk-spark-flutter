@@ -39,6 +39,10 @@ sealed class PasskeyError with _$PasskeyError implements FrbException {
   const factory PasskeyError.invalidPrfOutput(String field0) = PasskeyError_InvalidPrfOutput;
   const factory PasskeyError.mnemonicError(String field0) = PasskeyError_MnemonicError;
   const factory PasskeyError.invalidSalt(String field0) = PasskeyError_InvalidSalt;
+  const factory PasskeyError.createdButNotDerived({
+    required Uint8List credentialId,
+    required PrfProviderError source,
+  }) = PasskeyError_CreatedButNotDerived;
   const factory PasskeyError.generic(String field0) = PasskeyError_Generic;
 }
 
@@ -63,7 +67,7 @@ sealed class SdkError with _$SdkError implements FrbException {
   const SdkError._();
 
   const factory SdkError.sparkError(String field0) = SdkError_SparkError;
-  const factory SdkError.insufficientFunds() = SdkError_InsufficientFunds;
+  const factory SdkError.insufficientFunds({String? tokenIdentifier}) = SdkError_InsufficientFunds;
   const factory SdkError.invalidUuid(String field0) = SdkError_InvalidUuid;
   const factory SdkError.invalidInput(String field0) = SdkError_InvalidInput;
   const factory SdkError.networkError(String field0) = SdkError_NetworkError;

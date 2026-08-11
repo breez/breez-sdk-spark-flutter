@@ -43,7 +43,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1788965016;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -560562844;
 
 // Section: executor
 
@@ -223,6 +223,67 @@ fn wire__crate__sdk__BreezSdk_authorize_lightning_address_transfer_impl(
                         }
                         let api_that_guard = api_that_guard.unwrap();
                         let output_ok = crate::sdk::BreezSdk::authorize_lightning_address_transfer(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_build_unsigned_batch_package_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_build_unsigned_batch_package",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::BuildUnsignedBatchPackageRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::sdk::BreezSdk::build_unsigned_batch_package(
                             &*api_that_guard,
                             api_request,
                         )
@@ -2029,6 +2090,65 @@ fn wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(
         },
     )
 }
+fn wire__crate__sdk__BreezSdk_prepare_send_batch_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_prepare_send_batch",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::PrepareSendBatchRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::sdk::BreezSdk::prepare_send_batch(&*api_that_guard, api_request)
+                                .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire__crate__sdk__BreezSdk_prepare_send_payment_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -2681,6 +2801,63 @@ fn wire__crate__sdk__BreezSdk_remove_event_listener_impl(
         },
     )
 }
+fn wire__crate__sdk__BreezSdk_send_batch_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_send_batch",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request = <crate::models::SendBatchRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok =
+                            crate::sdk::BreezSdk::send_batch(&*api_that_guard, api_request).await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire__crate__sdk__BreezSdk_send_payment_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -3296,7 +3473,7 @@ fn wire__crate__passkey__PasskeyClient_new_impl(
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_derive_seeds = decode_DartFn_Inputs_derive_seeds_request_Output_derive_seeds_output_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_is_supported = decode_DartFn_Inputs__Output_bool_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
-let api_create_passkey = decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_create_passkey = decode_DartFn_Inputs_list_list_prim_u_8_strict_list_String_Output_create_passkey_output_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_breez_api_key = <Option<String>>::sse_decode(&mut deserializer);
 let api_config = <Option<crate::models::PasskeyConfig>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse::<_, ()>((move || {
@@ -4577,6 +4754,25 @@ const _: fn() = || {
         }
         crate::events::AutoOptimizationEvent::Skipped => {}
     }
+    match None::<crate::models::BatchDestination>.unwrap() {
+        crate::models::BatchDestination::SparkAddress { address } => {
+            let _: String = address;
+        }
+        crate::models::BatchDestination::SparkInvoice { invoice_details } => {
+            let _: crate::models::SparkInvoiceDetails = invoice_details;
+        }
+    }
+    {
+        let BatchRecipient = None::<crate::models::BatchRecipient>.unwrap();
+        let _: String = BatchRecipient.payment_request;
+        let _: Option<u128> = BatchRecipient.amount;
+        let _: Option<String> = BatchRecipient.token_identifier;
+    }
+    {
+        let BatchTotal = None::<crate::models::BatchTotal>.unwrap();
+        let _: Option<String> = BatchTotal.token_identifier;
+        let _: u128 = BatchTotal.amount;
+    }
     {
         let Bip21Details = None::<crate::models::Bip21Details>.unwrap();
         let _: Option<u64> = Bip21Details.amount_sat;
@@ -4677,6 +4873,12 @@ const _: fn() = || {
             let _: bool = prefer_spark;
             let _: Option<u32> = completion_timeout_secs;
         }
+    }
+    {
+        let BuildUnsignedBatchPackageRequest =
+            None::<crate::models::BuildUnsignedBatchPackageRequest>.unwrap();
+        let _: crate::models::PrepareSendBatchResponse =
+            BuildUnsignedBatchPackageRequest.prepare_response;
     }
     {
         let BuildUnsignedLnurlPayPackageRequest =
@@ -5007,6 +5209,11 @@ const _: fn() = || {
         let _: u32 = CreateIssuerTokenRequest.decimals;
         let _: bool = CreateIssuerTokenRequest.is_freezable;
         let _: u128 = CreateIssuerTokenRequest.max_supply;
+    }
+    {
+        let CreatePasskeyOutput = None::<crate::models::CreatePasskeyOutput>.unwrap();
+        let _: crate::models::PasskeyCredential = CreatePasskeyOutput.credential;
+        let _: Option<Vec<Vec<u8>>> = CreatePasskeyOutput.seeds;
     }
     {
         let Credentials = None::<crate::models::Credentials>.unwrap();
@@ -5550,6 +5757,13 @@ const _: fn() = || {
         crate::errors::PasskeyError::InvalidSalt(field0) => {
             let _: String = field0;
         }
+        crate::errors::PasskeyError::CreatedButNotDerived {
+            credential_id,
+            source,
+        } => {
+            let _: Vec<u8> = credential_id;
+            let _: crate::errors::PrfProviderError = source;
+        }
         crate::errors::PasskeyError::Generic(field0) => {
             let _: String = field0;
         }
@@ -5693,6 +5907,15 @@ const _: fn() = || {
         let _: crate::models::FeePolicy = PrepareLnurlPayResponse.fee_policy;
     }
     {
+        let PrepareSendBatchRequest = None::<crate::models::PrepareSendBatchRequest>.unwrap();
+        let _: Vec<crate::models::BatchRecipient> = PrepareSendBatchRequest.recipients;
+    }
+    {
+        let PrepareSendBatchResponse = None::<crate::models::PrepareSendBatchResponse>.unwrap();
+        let _: Vec<crate::models::ResolvedBatchRecipient> = PrepareSendBatchResponse.recipients;
+        let _: Vec<crate::models::BatchTotal> = PrepareSendBatchResponse.totals;
+    }
+    {
         let PrepareSendPaymentRequest = None::<crate::models::PrepareSendPaymentRequest>.unwrap();
         let _: crate::models::PaymentRequest = PrepareSendPaymentRequest.payment_request;
         let _: Option<u128> = PrepareSendPaymentRequest.amount;
@@ -5776,6 +5999,9 @@ const _: fn() = || {
         crate::models::PublishSignedTransferPackageResponse::SwapCompleted => {}
         crate::models::PublishSignedTransferPackageResponse::PaymentSent { payment } => {
             let _: crate::models::Payment = payment;
+        }
+        crate::models::PublishSignedTransferPackageResponse::PaymentsSent { payments } => {
+            let _: Vec<crate::models::Payment> = payments;
         }
     }
     {
@@ -5876,6 +6102,12 @@ const _: fn() = || {
         let _: String = RegisterWebhookResponse.webhook_id;
     }
     {
+        let ResolvedBatchRecipient = None::<crate::models::ResolvedBatchRecipient>.unwrap();
+        let _: crate::models::BatchDestination = ResolvedBatchRecipient.destination;
+        let _: u128 = ResolvedBatchRecipient.amount;
+        let _: Option<String> = ResolvedBatchRecipient.token_identifier;
+    }
+    {
         let SchnorrSignatureBytes = None::<crate::models::SchnorrSignatureBytes>.unwrap();
         let _: Vec<u8> = SchnorrSignatureBytes.bytes;
     }
@@ -5883,7 +6115,9 @@ const _: fn() = || {
         crate::errors::SdkError::SparkError(field0) => {
             let _: String = field0;
         }
-        crate::errors::SdkError::InsufficientFunds => {}
+        crate::errors::SdkError::InsufficientFunds { token_identifier } => {
+            let _: Option<String> = token_identifier;
+        }
         crate::errors::SdkError::InvalidUuid(field0) => {
             let _: String = field0;
         }
@@ -5973,6 +6207,14 @@ const _: fn() = || {
         crate::models::Seed::Entropy(field0) => {
             let _: Vec<u8> = field0;
         }
+    }
+    {
+        let SendBatchRequest = None::<crate::models::SendBatchRequest>.unwrap();
+        let _: crate::models::PrepareSendBatchResponse = SendBatchRequest.prepare_response;
+    }
+    {
+        let SendBatchResponse = None::<crate::models::SendBatchResponse>.unwrap();
+        let _: Vec<crate::models::Payment> = SendBatchResponse.payments;
     }
     {
         let SendOnchainFeeQuote = None::<crate::models::SendOnchainFeeQuote>.unwrap();
@@ -6380,6 +6622,18 @@ const _: fn() = || {
             let _: u128 = fee;
             let _: bool = is_swap;
         }
+        crate::models::UnsignedTransferPackage::TokenBatch {
+            prepare_token_transaction,
+            token_context,
+            totals,
+            is_swap,
+        } => {
+            let _: crate::models::ExternalPrepareTokenTransactionRequest =
+                prepare_token_transaction;
+            let _: Vec<u8> = token_context;
+            let _: Vec<crate::models::BatchTotal> = totals;
+            let _: bool = is_swap;
+        }
     }
     {
         let UpdateContactRequest = None::<crate::models::UpdateContactRequest>.unwrap();
@@ -6509,13 +6763,14 @@ fn decode_DartFn_Inputs_derive_seeds_request_Output_derive_seeds_output_AnyhowEx
         ))
     }
 }
-fn decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_AnyhowException(
+fn decode_DartFn_Inputs_list_list_prim_u_8_strict_list_String_Output_create_passkey_output_AnyhowException(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn(
     Vec<Vec<u8>>,
+    Vec<String>,
 ) -> flutter_rust_bridge::DartFnFuture<
     std::result::Result<
-        crate::models::PasskeyCredential,
+        crate::models::CreatePasskeyOutput,
         flutter_rust_bridge::for_generated::anyhow::Error,
     >,
 > {
@@ -6524,11 +6779,15 @@ fn decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_Anyh
     async fn body(
         dart_opaque: flutter_rust_bridge::DartOpaque,
         arg0: Vec<Vec<u8>>,
+        arg1: Vec<String>,
     ) -> std::result::Result<
-        crate::models::PasskeyCredential,
+        crate::models::CreatePasskeyOutput,
         flutter_rust_bridge::for_generated::anyhow::Error,
     > {
-        let args = vec![arg0.into_into_dart().into_dart()];
+        let args = vec![
+            arg0.into_into_dart().into_dart(),
+            arg1.into_into_dart().into_dart(),
+        ];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -6536,7 +6795,7 @@ fn decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_Anyh
         let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
         let action = deserializer.cursor.read_u8().unwrap();
         let ans = match action {
-            0 => std::result::Result::Ok(<crate::models::PasskeyCredential>::sse_decode(
+            0 => std::result::Result::Ok(<crate::models::CreatePasskeyOutput>::sse_decode(
                 &mut deserializer,
             )),
             1 => std::result::Result::Err(
@@ -6548,10 +6807,11 @@ fn decode_DartFn_Inputs_list_list_prim_u_8_strict_Output_passkey_credential_Anyh
         ans
     }
 
-    move |arg0: Vec<Vec<u8>>| {
+    move |arg0: Vec<Vec<u8>>, arg1: Vec<String>| {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
             dart_opaque.clone(),
             arg0,
+            arg1,
         ))
     }
 }
@@ -6988,6 +7248,57 @@ impl SseDecode for crate::events::AutoOptimizationEvent {
     }
 }
 
+impl SseDecode for crate::models::BatchDestination {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_address = <String>::sse_decode(deserializer);
+                return crate::models::BatchDestination::SparkAddress {
+                    address: var_address,
+                };
+            }
+            1 => {
+                let mut var_invoiceDetails =
+                    <crate::models::SparkInvoiceDetails>::sse_decode(deserializer);
+                return crate::models::BatchDestination::SparkInvoice {
+                    invoice_details: var_invoiceDetails,
+                };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::models::BatchRecipient {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_paymentRequest = <String>::sse_decode(deserializer);
+        let mut var_amount = <Option<u128>>::sse_decode(deserializer);
+        let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
+        return crate::models::BatchRecipient {
+            payment_request: var_paymentRequest,
+            amount: var_amount,
+            token_identifier: var_tokenIdentifier,
+        };
+    }
+}
+
+impl SseDecode for crate::models::BatchTotal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
+        let mut var_amount = <u128>::sse_decode(deserializer);
+        return crate::models::BatchTotal {
+            token_identifier: var_tokenIdentifier,
+            amount: var_amount,
+        };
+    }
+}
+
 impl SseDecode for crate::models::Bip21Details {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -7233,6 +7544,17 @@ impl SseDecode for crate::models::BuildTransferPackageOptions {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseDecode for crate::models::BuildUnsignedBatchPackageRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_prepareResponse =
+            <crate::models::PrepareSendBatchResponse>::sse_decode(deserializer);
+        return crate::models::BuildUnsignedBatchPackageRequest {
+            prepare_response: var_prepareResponse,
+        };
     }
 }
 
@@ -7918,6 +8240,18 @@ impl SseDecode for crate::models::CreateIssuerTokenRequest {
             decimals: var_decimals,
             is_freezable: var_isFreezable,
             max_supply: var_maxSupply,
+        };
+    }
+}
+
+impl SseDecode for crate::models::CreatePasskeyOutput {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_credential = <crate::models::PasskeyCredential>::sse_decode(deserializer);
+        let mut var_seeds = <Option<Vec<Vec<u8>>>>::sse_decode(deserializer);
+        return crate::models::CreatePasskeyOutput {
+            credential: var_credential,
+            seeds: var_seeds,
         };
     }
 }
@@ -8697,6 +9031,30 @@ impl SseDecode for Vec<String> {
     }
 }
 
+impl SseDecode for Vec<crate::models::BatchRecipient> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<crate::models::BatchRecipient>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<crate::models::BatchTotal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<crate::models::BatchTotal>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for Vec<crate::models::Bip21Extra> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -9115,6 +9473,20 @@ impl SseDecode for Vec<(String, crate::models::TokenBalance)> {
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String, crate::models::TokenBalance)>::sse_decode(
+                deserializer,
+            ));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<crate::models::ResolvedBatchRecipient> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<crate::models::ResolvedBatchRecipient>::sse_decode(
                 deserializer,
             ));
         }
@@ -10303,6 +10675,14 @@ impl SseDecode for crate::errors::PasskeyError {
                 return crate::errors::PasskeyError::InvalidSalt(var_field0);
             }
             8 => {
+                let mut var_credentialId = <Vec<u8>>::sse_decode(deserializer);
+                let mut var_source = <crate::errors::PrfProviderError>::sse_decode(deserializer);
+                return crate::errors::PasskeyError::CreatedButNotDerived {
+                    credential_id: var_credentialId,
+                    source: var_source,
+                };
+            }
+            9 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::PasskeyError::Generic(var_field0);
             }
@@ -10617,6 +10997,29 @@ impl SseDecode for crate::models::PrepareLnurlPayResponse {
     }
 }
 
+impl SseDecode for crate::models::PrepareSendBatchRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_recipients = <Vec<crate::models::BatchRecipient>>::sse_decode(deserializer);
+        return crate::models::PrepareSendBatchRequest {
+            recipients: var_recipients,
+        };
+    }
+}
+
+impl SseDecode for crate::models::PrepareSendBatchResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_recipients =
+            <Vec<crate::models::ResolvedBatchRecipient>>::sse_decode(deserializer);
+        let mut var_totals = <Vec<crate::models::BatchTotal>>::sse_decode(deserializer);
+        return crate::models::PrepareSendBatchResponse {
+            recipients: var_recipients,
+            totals: var_totals,
+        };
+    }
+}
+
 impl SseDecode for crate::models::PrepareSendPaymentRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -10796,6 +11199,12 @@ impl SseDecode for crate::models::PublishSignedTransferPackageResponse {
                 let mut var_payment = <crate::models::Payment>::sse_decode(deserializer);
                 return crate::models::PublishSignedTransferPackageResponse::PaymentSent {
                     payment: var_payment,
+                };
+            }
+            2 => {
+                let mut var_payments = <Vec<crate::models::Payment>>::sse_decode(deserializer);
+                return crate::models::PublishSignedTransferPackageResponse::PaymentsSent {
+                    payments: var_payments,
                 };
             }
             _ => {
@@ -11016,6 +11425,20 @@ impl SseDecode for crate::models::RegisterWebhookResponse {
     }
 }
 
+impl SseDecode for crate::models::ResolvedBatchRecipient {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_destination = <crate::models::BatchDestination>::sse_decode(deserializer);
+        let mut var_amount = <u128>::sse_decode(deserializer);
+        let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
+        return crate::models::ResolvedBatchRecipient {
+            destination: var_destination,
+            amount: var_amount,
+            token_identifier: var_tokenIdentifier,
+        };
+    }
+}
+
 impl SseDecode for crate::models::SchnorrSignatureBytes {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -11048,7 +11471,10 @@ impl SseDecode for crate::errors::SdkError {
                 return crate::errors::SdkError::SparkError(var_field0);
             }
             1 => {
-                return crate::errors::SdkError::InsufficientFunds;
+                let mut var_tokenIdentifier = <Option<String>>::sse_decode(deserializer);
+                return crate::errors::SdkError::InsufficientFunds {
+                    token_identifier: var_tokenIdentifier,
+                };
             }
             2 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
@@ -11220,6 +11646,27 @@ impl SseDecode for crate::models::Seed {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseDecode for crate::models::SendBatchRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_prepareResponse =
+            <crate::models::PrepareSendBatchResponse>::sse_decode(deserializer);
+        return crate::models::SendBatchRequest {
+            prepare_response: var_prepareResponse,
+        };
+    }
+}
+
+impl SseDecode for crate::models::SendBatchResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_payments = <Vec<crate::models::Payment>>::sse_decode(deserializer);
+        return crate::models::SendBatchResponse {
+            payments: var_payments,
+        };
     }
 }
 
@@ -12158,6 +12605,21 @@ impl SseDecode for crate::models::UnsignedTransferPackage {
                     is_swap: var_isSwap,
                 };
             }
+            3 => {
+                let mut var_prepareTokenTransaction =
+                    <crate::models::ExternalPrepareTokenTransactionRequest>::sse_decode(
+                        deserializer,
+                    );
+                let mut var_tokenContext = <Vec<u8>>::sse_decode(deserializer);
+                let mut var_totals = <Vec<crate::models::BatchTotal>>::sse_decode(deserializer);
+                let mut var_isSwap = <bool>::sse_decode(deserializer);
+                return crate::models::UnsignedTransferPackage::TokenBatch {
+                    prepare_token_transaction: var_prepareTokenTransaction,
+                    token_context: var_tokenContext,
+                    totals: var_totals,
+                    is_swap: var_isSwap,
+                };
+            }
             _ => {
                 unimplemented!("");
             }
@@ -12301,205 +12763,213 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__sdk__BreezSdk_build_unsigned_lnurl_pay_package_impl(
+        4 => wire__crate__sdk__BreezSdk_build_unsigned_batch_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        5 => wire__crate__sdk__BreezSdk_build_unsigned_transfer_package_impl(
+        5 => wire__crate__sdk__BreezSdk_build_unsigned_lnurl_pay_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__sdk__BreezSdk_buy_bitcoin_impl(port, ptr, rust_vec_len, data_len),
-        7 => wire__crate__sdk__BreezSdk_check_lightning_address_available_impl(
+        6 => wire__crate__sdk__BreezSdk_build_unsigned_transfer_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        8 => wire__crate__sdk__BreezSdk_check_message_impl(port, ptr, rust_vec_len, data_len),
-        9 => wire__crate__sdk__BreezSdk_claim_deposit_impl(port, ptr, rust_vec_len, data_len),
-        10 => wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(port, ptr, rust_vec_len, data_len),
-        11 => wire__crate__sdk__BreezSdk_claim_lightning_address_transfer_impl(
+        7 => wire__crate__sdk__BreezSdk_buy_bitcoin_impl(port, ptr, rust_vec_len, data_len),
+        8 => wire__crate__sdk__BreezSdk_check_lightning_address_available_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        12 => wire__crate__sdk__BreezSdk_delete_contact_impl(port, ptr, rust_vec_len, data_len),
-        13 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
+        9 => wire__crate__sdk__BreezSdk_check_message_impl(port, ptr, rust_vec_len, data_len),
+        10 => wire__crate__sdk__BreezSdk_claim_deposit_impl(port, ptr, rust_vec_len, data_len),
+        11 => wire__crate__sdk__BreezSdk_claim_htlc_payment_impl(port, ptr, rust_vec_len, data_len),
+        12 => wire__crate__sdk__BreezSdk_claim_lightning_address_transfer_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        14 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
-        15 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
+        13 => wire__crate__sdk__BreezSdk_delete_contact_impl(port, ptr, rust_vec_len, data_len),
+        14 => wire__crate__sdk__BreezSdk_delete_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        16 => wire__crate__sdk__BreezSdk_get_cross_chain_routes_impl(
+        15 => wire__crate__sdk__BreezSdk_disconnect_impl(port, ptr, rust_vec_len, data_len),
+        16 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        17 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
-        18 => {
+        17 => wire__crate__sdk__BreezSdk_get_cross_chain_routes_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        18 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
+        19 => {
             wire__crate__sdk__BreezSdk_get_lightning_address_impl(port, ptr, rust_vec_len, data_len)
         }
-        19 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
-        21 => {
+        20 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
+        22 => {
             wire__crate__sdk__BreezSdk_get_tokens_metadata_impl(port, ptr, rust_vec_len, data_len)
         }
-        22 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
-        23 => wire__crate__sdk__BreezSdk_list_contacts_impl(port, ptr, rust_vec_len, data_len),
-        24 => {
+        23 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
+        24 => wire__crate__sdk__BreezSdk_list_contacts_impl(port, ptr, rust_vec_len, data_len),
+        25 => {
             wire__crate__sdk__BreezSdk_list_fiat_currencies_impl(port, ptr, rust_vec_len, data_len)
         }
-        25 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
-        26 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
-        27 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
+        26 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
+        27 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
+        28 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        28 => wire__crate__sdk__BreezSdk_list_webhooks_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
-        30 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        31 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        32 => wire__crate__sdk__BreezSdk_optimize_leaves_impl(port, ptr, rust_vec_len, data_len),
-        33 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        35 => {
+        29 => wire__crate__sdk__BreezSdk_list_webhooks_impl(port, ptr, rust_vec_len, data_len),
+        30 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
+        31 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        32 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
+        33 => wire__crate__sdk__BreezSdk_optimize_leaves_impl(port, ptr, rust_vec_len, data_len),
+        34 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        35 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        36 => wire__crate__sdk__BreezSdk_prepare_send_batch_impl(port, ptr, rust_vec_len, data_len),
+        37 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        36 => wire__crate__sdk__BreezSdk_prepare_unilateral_exit_impl(
+        38 => wire__crate__sdk__BreezSdk_prepare_unilateral_exit_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        37 => wire__crate__sdk__BreezSdk_publish_signed_lnurl_pay_package_impl(
+        39 => wire__crate__sdk__BreezSdk_publish_signed_lnurl_pay_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        38 => wire__crate__sdk__BreezSdk_publish_signed_transfer_package_impl(
+        40 => wire__crate__sdk__BreezSdk_publish_signed_transfer_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        39 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        40 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
-        41 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        42 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
+        41 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        42 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
+        43 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        44 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        43 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        45 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        44 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
-        45 => {
+        46 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
+        47 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        46 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        47 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        48 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
-        49 => wire__crate__sdk__BreezSdk_unilateral_exit_impl(port, ptr, rust_vec_len, data_len),
-        50 => wire__crate__sdk__BreezSdk_unilateral_exit_with_signer_impl(
+        48 => wire__crate__sdk__BreezSdk_send_batch_impl(port, ptr, rust_vec_len, data_len),
+        49 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        50 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
+        51 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
+        52 => wire__crate__sdk__BreezSdk_unilateral_exit_impl(port, ptr, rust_vec_len, data_len),
+        53 => wire__crate__sdk__BreezSdk_unilateral_exit_with_signer_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        51 => wire__crate__sdk__BreezSdk_unregister_webhook_impl(port, ptr, rust_vec_len, data_len),
-        52 => wire__crate__sdk__BreezSdk_update_contact_impl(port, ptr, rust_vec_len, data_len),
-        53 => {
+        54 => wire__crate__sdk__BreezSdk_unregister_webhook_impl(port, ptr, rust_vec_len, data_len),
+        55 => wire__crate__sdk__BreezSdk_update_contact_impl(port, ptr, rust_vec_len, data_len),
+        56 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        54 => wire__crate__passkey__PasskeyClient_check_availability_impl(
+        57 => wire__crate__passkey__PasskeyClient_check_availability_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        55 => wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
+        58 => wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        58 => wire__crate__passkey__PasskeyClient_register_impl(port, ptr, rust_vec_len, data_len),
-        59 => wire__crate__passkey__PasskeyClient_sign_in_impl(port, ptr, rust_vec_len, data_len),
-        60 => wire__crate__passkey__PasskeyLabels_list_impl(port, ptr, rust_vec_len, data_len),
-        61 => wire__crate__passkey__PasskeyLabels_store_impl(port, ptr, rust_vec_len, data_len),
-        62 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        69 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+        61 => wire__crate__passkey__PasskeyClient_register_impl(port, ptr, rust_vec_len, data_len),
+        62 => wire__crate__passkey__PasskeyClient_sign_in_impl(port, ptr, rust_vec_len, data_len),
+        63 => wire__crate__passkey__PasskeyLabels_list_impl(port, ptr, rust_vec_len, data_len),
+        64 => wire__crate__passkey__PasskeyLabels_store_impl(port, ptr, rust_vec_len, data_len),
+        65 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        72 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        70 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+        73 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        71 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+        74 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        72 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+        75 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        73 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+        76 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        74 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+        77 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        75 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+        78 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        76 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
-        79 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
-        81 => wire__crate__chain_service__new_rest_chain_service_impl(
+        79 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        82 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
+        84 => wire__crate__chain_service__new_rest_chain_service_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        82 => {
+        85 => {
             wire__crate__sdk_context__new_shared_sdk_context_impl(port, ptr, rust_vec_len, data_len)
         }
         _ => unreachable!(),
@@ -12514,38 +12984,38 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        20 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
-        56 => wire__crate__passkey__PasskeyClient_labels_impl(ptr, rust_vec_len, data_len),
-        57 => wire__crate__passkey__PasskeyClient_new_impl(ptr, rust_vec_len, data_len),
-        63 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        64 => wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
+        21 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
+        59 => wire__crate__passkey__PasskeyClient_labels_impl(ptr, rust_vec_len, data_len),
+        60 => wire__crate__passkey__PasskeyClient_new_impl(ptr, rust_vec_len, data_len),
+        66 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        67 => wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        65 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
+        68 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        66 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        69 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        67 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        70 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        68 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
+        71 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        77 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        78 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
-        80 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        80 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        81 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
+        83 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -12885,6 +13355,76 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::events::AutoOptimizatio
     for crate::events::AutoOptimizationEvent
 {
     fn into_into_dart(self) -> FrbWrapper<crate::events::AutoOptimizationEvent> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::BatchDestination> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::BatchDestination::SparkAddress { address } => {
+                [0.into_dart(), address.into_into_dart().into_dart()].into_dart()
+            }
+            crate::models::BatchDestination::SparkInvoice { invoice_details } => {
+                [1.into_dart(), invoice_details.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::BatchDestination>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BatchDestination>>
+    for crate::models::BatchDestination
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::BatchDestination> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::BatchRecipient> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.payment_request.into_into_dart().into_dart(),
+            self.0.amount.into_into_dart().into_dart(),
+            self.0.token_identifier.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::BatchRecipient>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BatchRecipient>>
+    for crate::models::BatchRecipient
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::BatchRecipient> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::BatchTotal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.token_identifier.into_into_dart().into_dart(),
+            self.0.amount.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::BatchTotal>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BatchTotal>>
+    for crate::models::BatchTotal
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::BatchTotal> {
         self.into()
     }
 }
@@ -13238,6 +13778,23 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BuildTransferPa
     for crate::models::BuildTransferPackageOptions
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::BuildTransferPackageOptions> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::BuildUnsignedBatchPackageRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.prepare_response.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::BuildUnsignedBatchPackageRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::BuildUnsignedBatchPackageRequest>>
+    for crate::models::BuildUnsignedBatchPackageRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::BuildUnsignedBatchPackageRequest> {
         self.into()
     }
 }
@@ -14184,6 +14741,27 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::CreateIssuerTok
     for crate::models::CreateIssuerTokenRequest
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::CreateIssuerTokenRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::CreatePasskeyOutput> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.credential.into_into_dart().into_dart(),
+            self.0.seeds.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::CreatePasskeyOutput>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::CreatePasskeyOutput>>
+    for crate::models::CreatePasskeyOutput
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::CreatePasskeyOutput> {
         self.into()
     }
 }
@@ -16043,8 +16621,17 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::PasskeyError> {
             crate::errors::PasskeyError::InvalidSalt(field0) => {
                 [7.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            crate::errors::PasskeyError::CreatedButNotDerived {
+                credential_id,
+                source,
+            } => [
+                8.into_dart(),
+                credential_id.into_into_dart().into_dart(),
+                source.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             crate::errors::PasskeyError::Generic(field0) => {
-                [8.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [9.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -16439,6 +17026,44 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PrepareLnurlPay
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PrepareSendBatchRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.recipients.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::PrepareSendBatchRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PrepareSendBatchRequest>>
+    for crate::models::PrepareSendBatchRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PrepareSendBatchRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PrepareSendBatchResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.recipients.into_into_dart().into_dart(),
+            self.0.totals.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::PrepareSendBatchResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::PrepareSendBatchResponse>>
+    for crate::models::PrepareSendBatchResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::PrepareSendBatchResponse> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PrepareSendPaymentRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -16658,6 +17283,9 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::models::PublishSignedTransferPackageResponse::PaymentSent { payment } => {
                 [1.into_dart(), payment.into_into_dart().into_dart()].into_dart()
+            }
+            crate::models::PublishSignedTransferPackageResponse::PaymentsSent { payments } => {
+                [2.into_dart(), payments.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -16981,6 +17609,28 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RegisterWebhook
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ResolvedBatchRecipient> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.destination.into_into_dart().into_dart(),
+            self.0.amount.into_into_dart().into_dart(),
+            self.0.token_identifier.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ResolvedBatchRecipient>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ResolvedBatchRecipient>>
+    for crate::models::ResolvedBatchRecipient
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ResolvedBatchRecipient> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SchnorrSignatureBytes> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.bytes.into_into_dart().into_dart()].into_dart()
@@ -17026,7 +17676,9 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::SdkError> {
             crate::errors::SdkError::SparkError(field0) => {
                 [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            crate::errors::SdkError::InsufficientFunds => [1.into_dart()].into_dart(),
+            crate::errors::SdkError::InsufficientFunds { token_identifier } => {
+                [1.into_dart(), token_identifier.into_into_dart().into_dart()].into_dart()
+            }
             crate::errors::SdkError::InvalidUuid(field0) => {
                 [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
@@ -17180,6 +17832,40 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 }
 impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::Seed>> for crate::models::Seed {
     fn into_into_dart(self) -> FrbWrapper<crate::models::Seed> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SendBatchRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.prepare_response.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::SendBatchRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SendBatchRequest>>
+    for crate::models::SendBatchRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::SendBatchRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SendBatchResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.payments.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::SendBatchResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SendBatchResponse>>
+    for crate::models::SendBatchResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::SendBatchResponse> {
         self.into()
     }
 }
@@ -18436,6 +19122,19 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::UnsignedTransfe
                 is_swap.into_into_dart().into_dart(),
             ]
             .into_dart(),
+            crate::models::UnsignedTransferPackage::TokenBatch {
+                prepare_token_transaction,
+                token_context,
+                totals,
+                is_swap,
+            } => [
+                3.into_dart(),
+                prepare_token_transaction.into_into_dart().into_dart(),
+                token_context.into_into_dart().into_dart(),
+                totals.into_into_dart().into_dart(),
+                is_swap.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -18966,6 +19665,42 @@ impl SseEncode for crate::events::AutoOptimizationEvent {
     }
 }
 
+impl SseEncode for crate::models::BatchDestination {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::BatchDestination::SparkAddress { address } => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(address, serializer);
+            }
+            crate::models::BatchDestination::SparkInvoice { invoice_details } => {
+                <i32>::sse_encode(1, serializer);
+                <crate::models::SparkInvoiceDetails>::sse_encode(invoice_details, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::models::BatchRecipient {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.payment_request, serializer);
+        <Option<u128>>::sse_encode(self.amount, serializer);
+        <Option<String>>::sse_encode(self.token_identifier, serializer);
+    }
+}
+
+impl SseEncode for crate::models::BatchTotal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<String>>::sse_encode(self.token_identifier, serializer);
+        <u128>::sse_encode(self.amount, serializer);
+    }
+}
+
 impl SseEncode for crate::models::Bip21Details {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -19141,6 +19876,13 @@ impl SseEncode for crate::models::BuildTransferPackageOptions {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseEncode for crate::models::BuildUnsignedBatchPackageRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::PrepareSendBatchResponse>::sse_encode(self.prepare_response, serializer);
     }
 }
 
@@ -19716,6 +20458,14 @@ impl SseEncode for crate::models::CreateIssuerTokenRequest {
         <u32>::sse_encode(self.decimals, serializer);
         <bool>::sse_encode(self.is_freezable, serializer);
         <u128>::sse_encode(self.max_supply, serializer);
+    }
+}
+
+impl SseEncode for crate::models::CreatePasskeyOutput {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::PasskeyCredential>::sse_encode(self.credential, serializer);
+        <Option<Vec<Vec<u8>>>>::sse_encode(self.seeds, serializer);
     }
 }
 
@@ -20329,6 +21079,26 @@ impl SseEncode for Vec<String> {
     }
 }
 
+impl SseEncode for Vec<crate::models::BatchRecipient> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::models::BatchRecipient>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<crate::models::BatchTotal> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::models::BatchTotal>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<crate::models::Bip21Extra> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -20652,6 +21422,16 @@ impl SseEncode for Vec<(String, crate::models::TokenBalance)> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <(String, crate::models::TokenBalance)>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<crate::models::ResolvedBatchRecipient> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::models::ResolvedBatchRecipient>::sse_encode(item, serializer);
         }
     }
 }
@@ -21622,8 +22402,16 @@ impl SseEncode for crate::errors::PasskeyError {
                 <i32>::sse_encode(7, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            crate::errors::PasskeyError::Generic(field0) => {
+            crate::errors::PasskeyError::CreatedButNotDerived {
+                credential_id,
+                source,
+            } => {
                 <i32>::sse_encode(8, serializer);
+                <Vec<u8>>::sse_encode(credential_id, serializer);
+                <crate::errors::PrfProviderError>::sse_encode(source, serializer);
+            }
+            crate::errors::PasskeyError::Generic(field0) => {
+                <i32>::sse_encode(9, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             _ => {
@@ -21893,6 +22681,21 @@ impl SseEncode for crate::models::PrepareLnurlPayResponse {
     }
 }
 
+impl SseEncode for crate::models::PrepareSendBatchRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<crate::models::BatchRecipient>>::sse_encode(self.recipients, serializer);
+    }
+}
+
+impl SseEncode for crate::models::PrepareSendBatchResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<crate::models::ResolvedBatchRecipient>>::sse_encode(self.recipients, serializer);
+        <Vec<crate::models::BatchTotal>>::sse_encode(self.totals, serializer);
+    }
+}
+
 impl SseEncode for crate::models::PrepareSendPaymentRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -22028,6 +22831,10 @@ impl SseEncode for crate::models::PublishSignedTransferPackageResponse {
             crate::models::PublishSignedTransferPackageResponse::PaymentSent { payment } => {
                 <i32>::sse_encode(1, serializer);
                 <crate::models::Payment>::sse_encode(payment, serializer);
+            }
+            crate::models::PublishSignedTransferPackageResponse::PaymentsSent { payments } => {
+                <i32>::sse_encode(2, serializer);
+                <Vec<crate::models::Payment>>::sse_encode(payments, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -22189,6 +22996,15 @@ impl SseEncode for crate::models::RegisterWebhookResponse {
     }
 }
 
+impl SseEncode for crate::models::ResolvedBatchRecipient {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::BatchDestination>::sse_encode(self.destination, serializer);
+        <u128>::sse_encode(self.amount, serializer);
+        <Option<String>>::sse_encode(self.token_identifier, serializer);
+    }
+}
+
 impl SseEncode for crate::models::SchnorrSignatureBytes {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -22213,8 +23029,9 @@ impl SseEncode for crate::errors::SdkError {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            crate::errors::SdkError::InsufficientFunds => {
+            crate::errors::SdkError::InsufficientFunds { token_identifier } => {
                 <i32>::sse_encode(1, serializer);
+                <Option<String>>::sse_encode(token_identifier, serializer);
             }
             crate::errors::SdkError::InvalidUuid(field0) => {
                 <i32>::sse_encode(2, serializer);
@@ -22358,6 +23175,20 @@ impl SseEncode for crate::models::Seed {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseEncode for crate::models::SendBatchRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::models::PrepareSendBatchResponse>::sse_encode(self.prepare_response, serializer);
+    }
+}
+
+impl SseEncode for crate::models::SendBatchResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<crate::models::Payment>>::sse_encode(self.payments, serializer);
     }
 }
 
@@ -23102,6 +23933,21 @@ impl SseEncode for crate::models::UnsignedTransferPackage {
                 <String>::sse_encode(token_identifier, serializer);
                 <u128>::sse_encode(amount, serializer);
                 <u128>::sse_encode(fee, serializer);
+                <bool>::sse_encode(is_swap, serializer);
+            }
+            crate::models::UnsignedTransferPackage::TokenBatch {
+                prepare_token_transaction,
+                token_context,
+                totals,
+                is_swap,
+            } => {
+                <i32>::sse_encode(3, serializer);
+                <crate::models::ExternalPrepareTokenTransactionRequest>::sse_encode(
+                    prepare_token_transaction,
+                    serializer,
+                );
+                <Vec<u8>>::sse_encode(token_context, serializer);
+                <Vec<crate::models::BatchTotal>>::sse_encode(totals, serializer);
                 <bool>::sse_encode(is_swap, serializer);
             }
             _ => {
