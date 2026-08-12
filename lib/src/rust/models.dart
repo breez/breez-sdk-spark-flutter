@@ -1035,6 +1035,7 @@ sealed class ConversionInfo with _$ConversionInfo {
     BigInt? fee,
     ConversionPurpose? purpose,
     AmountAdjustmentReason? amountAdjustment,
+    SwapDegradation? degradation,
   }) = ConversionInfo_Amm;
   const factory ConversionInfo.boltz({
     required String chain,
@@ -4103,6 +4104,8 @@ sealed class SuccessActionProcessed with _$SuccessActionProcessed {
       SuccessActionProcessed_Message;
   const factory SuccessActionProcessed.url({required UrlSuccessActionData data}) = SuccessActionProcessed_Url;
 }
+
+enum SwapDegradation { belowMinimum, unexpectedAsset, missingInfo }
 
 class Symbol {
   final String? grapheme;

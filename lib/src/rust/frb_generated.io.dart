@@ -617,6 +617,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SuccessActionProcessed dco_decode_box_autoadd_success_action_processed(dynamic raw);
 
   @protected
+  SwapDegradation dco_decode_box_autoadd_swap_degradation(dynamic raw);
+
+  @protected
   Symbol dco_decode_box_autoadd_symbol(dynamic raw);
 
   @protected
@@ -1241,6 +1244,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SuccessActionProcessed? dco_decode_opt_box_autoadd_success_action_processed(dynamic raw);
 
   @protected
+  SwapDegradation? dco_decode_opt_box_autoadd_swap_degradation(dynamic raw);
+
+  @protected
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw);
 
   @protected
@@ -1521,6 +1527,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SuccessActionProcessed dco_decode_success_action_processed(dynamic raw);
+
+  @protected
+  SwapDegradation dco_decode_swap_degradation(dynamic raw);
 
   @protected
   Symbol dco_decode_symbol(dynamic raw);
@@ -2208,6 +2217,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SuccessActionProcessed sse_decode_box_autoadd_success_action_processed(SseDeserializer deserializer);
 
   @protected
+  SwapDegradation sse_decode_box_autoadd_swap_degradation(SseDeserializer deserializer);
+
+  @protected
   Symbol sse_decode_box_autoadd_symbol(SseDeserializer deserializer);
 
   @protected
@@ -2852,6 +2864,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SuccessActionProcessed? sse_decode_opt_box_autoadd_success_action_processed(SseDeserializer deserializer);
 
   @protected
+  SwapDegradation? sse_decode_opt_box_autoadd_swap_degradation(SseDeserializer deserializer);
+
+  @protected
   Symbol? sse_decode_opt_box_autoadd_symbol(SseDeserializer deserializer);
 
   @protected
@@ -3140,6 +3155,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   SuccessActionProcessed sse_decode_success_action_processed(SseDeserializer deserializer);
+
+  @protected
+  SwapDegradation sse_decode_swap_degradation(SseDeserializer deserializer);
 
   @protected
   Symbol sse_decode_symbol(SseDeserializer deserializer);
@@ -3949,6 +3967,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_success_action_processed(SuccessActionProcessed self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_swap_degradation(SwapDegradation self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_symbol(Symbol self, SseSerializer serializer);
 
   @protected
@@ -4663,6 +4684,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_opt_box_autoadd_swap_degradation(SwapDegradation? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_symbol(Symbol? self, SseSerializer serializer);
 
   @protected
@@ -4973,6 +4997,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_success_action_processed(SuccessActionProcessed self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_swap_degradation(SwapDegradation self, SseSerializer serializer);
 
   @protected
   void sse_encode_symbol(Symbol self, SseSerializer serializer);

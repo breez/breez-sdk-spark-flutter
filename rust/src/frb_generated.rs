@@ -5041,6 +5041,7 @@ const _: fn() = || {
             fee,
             purpose,
             amount_adjustment,
+            degradation,
         } => {
             let _: String = pool_id;
             let _: String = conversion_id;
@@ -5048,6 +5049,7 @@ const _: fn() = || {
             let _: Option<u128> = fee;
             let _: Option<crate::models::ConversionPurpose> = purpose;
             let _: Option<crate::models::AmountAdjustmentReason> = amount_adjustment;
+            let _: Option<crate::models::SwapDegradation> = degradation;
         }
         crate::models::ConversionInfo::Boltz {
             chain,
@@ -7953,6 +7955,8 @@ impl SseDecode for crate::models::ConversionInfo {
                     <Option<crate::models::ConversionPurpose>>::sse_decode(deserializer);
                 let mut var_amountAdjustment =
                     <Option<crate::models::AmountAdjustmentReason>>::sse_decode(deserializer);
+                let mut var_degradation =
+                    <Option<crate::models::SwapDegradation>>::sse_decode(deserializer);
                 return crate::models::ConversionInfo::Amm {
                     pool_id: var_poolId,
                     conversion_id: var_conversionId,
@@ -7960,6 +7964,7 @@ impl SseDecode for crate::models::ConversionInfo {
                     fee: var_fee,
                     purpose: var_purpose,
                     amount_adjustment: var_amountAdjustment,
+                    degradation: var_degradation,
                 };
             }
             1 => {
@@ -10396,6 +10401,17 @@ impl SseDecode for Option<crate::models::SuccessActionProcessed> {
     }
 }
 
+impl SseDecode for Option<crate::models::SwapDegradation> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::SwapDegradation>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<crate::models::Symbol> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -12235,6 +12251,19 @@ impl SseDecode for crate::models::SuccessActionProcessed {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseDecode for crate::models::SwapDegradation {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::models::SwapDegradation::BelowMinimum,
+            1 => crate::models::SwapDegradation::UnexpectedAsset,
+            2 => crate::models::SwapDegradation::MissingInfo,
+            _ => unreachable!("Invalid variant for SwapDegradation: {}", inner),
+        };
     }
 }
 
@@ -14373,6 +14402,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionInfo>
                 fee,
                 purpose,
                 amount_adjustment,
+                degradation,
             } => [
                 0.into_dart(),
                 pool_id.into_into_dart().into_dart(),
@@ -14381,6 +14411,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionInfo>
                 fee.into_into_dart().into_dart(),
                 purpose.into_into_dart().into_dart(),
                 amount_adjustment.into_into_dart().into_dart(),
+                degradation.into_into_dart().into_dart(),
             ]
             .into_dart(),
             crate::models::ConversionInfo::Boltz {
@@ -18655,6 +18686,28 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SuccessActionPr
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::SwapDegradation> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::SwapDegradation::BelowMinimum => 0.into_dart(),
+            crate::models::SwapDegradation::UnexpectedAsset => 1.into_dart(),
+            crate::models::SwapDegradation::MissingInfo => 2.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::SwapDegradation>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::SwapDegradation>>
+    for crate::models::SwapDegradation
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::SwapDegradation> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Symbol> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -20183,6 +20236,7 @@ impl SseEncode for crate::models::ConversionInfo {
                 fee,
                 purpose,
                 amount_adjustment,
+                degradation,
             } => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(pool_id, serializer);
@@ -20194,6 +20248,7 @@ impl SseEncode for crate::models::ConversionInfo {
                     amount_adjustment,
                     serializer,
                 );
+                <Option<crate::models::SwapDegradation>>::sse_encode(degradation, serializer);
             }
             crate::models::ConversionInfo::Boltz {
                 chain,
@@ -22161,6 +22216,16 @@ impl SseEncode for Option<crate::models::SuccessActionProcessed> {
     }
 }
 
+impl SseEncode for Option<crate::models::SwapDegradation> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::SwapDegradation>::sse_encode(value, serializer);
+        }
+    }
+}
+
 impl SseEncode for Option<crate::models::Symbol> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -23627,6 +23692,23 @@ impl SseEncode for crate::models::SuccessActionProcessed {
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseEncode for crate::models::SwapDegradation {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::models::SwapDegradation::BelowMinimum => 0,
+                crate::models::SwapDegradation::UnexpectedAsset => 1,
+                crate::models::SwapDegradation::MissingInfo => 2,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
     }
 }
 

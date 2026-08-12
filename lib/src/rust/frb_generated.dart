@@ -4307,6 +4307,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SwapDegradation dco_decode_box_autoadd_swap_degradation(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_swap_degradation(raw);
+  }
+
+  @protected
   Symbol dco_decode_box_autoadd_symbol(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_symbol(raw);
@@ -4707,6 +4713,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           fee: dco_decode_opt_U128(raw[4]),
           purpose: dco_decode_opt_box_autoadd_conversion_purpose(raw[5]),
           amountAdjustment: dco_decode_opt_box_autoadd_amount_adjustment_reason(raw[6]),
+          degradation: dco_decode_opt_box_autoadd_swap_degradation(raw[7]),
         );
       case 1:
         return ConversionInfo_Boltz(
@@ -6218,6 +6225,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SwapDegradation? dco_decode_opt_box_autoadd_swap_degradation(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_autoadd_swap_degradation(raw);
+  }
+
+  @protected
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_symbol(raw);
@@ -7422,6 +7435,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       default:
         throw Exception("unreachable");
     }
+  }
+
+  @protected
+  SwapDegradation dco_decode_swap_degradation(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return SwapDegradation.values[raw as int];
   }
 
   @protected
@@ -9102,6 +9121,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SwapDegradation sse_decode_box_autoadd_swap_degradation(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_swap_degradation(deserializer));
+  }
+
+  @protected
   Symbol sse_decode_box_autoadd_symbol(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_symbol(deserializer));
@@ -9511,6 +9536,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_fee = sse_decode_opt_U128(deserializer);
         var var_purpose = sse_decode_opt_box_autoadd_conversion_purpose(deserializer);
         var var_amountAdjustment = sse_decode_opt_box_autoadd_amount_adjustment_reason(deserializer);
+        var var_degradation = sse_decode_opt_box_autoadd_swap_degradation(deserializer);
         return ConversionInfo_Amm(
           poolId: var_poolId,
           conversionId: var_conversionId,
@@ -9518,6 +9544,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           fee: var_fee,
           purpose: var_purpose,
           amountAdjustment: var_amountAdjustment,
+          degradation: var_degradation,
         );
       case 1:
         var var_chain = sse_decode_String(deserializer);
@@ -11570,6 +11597,17 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  SwapDegradation? sse_decode_opt_box_autoadd_swap_degradation(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_swap_degradation(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   Symbol? sse_decode_opt_box_autoadd_symbol(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -13005,6 +13043,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       default:
         throw UnimplementedError('');
     }
+  }
+
+  @protected
+  SwapDegradation sse_decode_swap_degradation(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return SwapDegradation.values[inner];
   }
 
   @protected
@@ -14769,6 +14814,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_box_autoadd_swap_degradation(SwapDegradation self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_swap_degradation(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_symbol(Symbol self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_symbol(self, serializer);
@@ -15111,6 +15162,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         fee: final fee,
         purpose: final purpose,
         amountAdjustment: final amountAdjustment,
+        degradation: final degradation,
       ):
         sse_encode_i_32(0, serializer);
         sse_encode_String(poolId, serializer);
@@ -15119,6 +15171,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_opt_U128(fee, serializer);
         sse_encode_opt_box_autoadd_conversion_purpose(purpose, serializer);
         sse_encode_opt_box_autoadd_amount_adjustment_reason(amountAdjustment, serializer);
+        sse_encode_opt_box_autoadd_swap_degradation(degradation, serializer);
       case ConversionInfo_Boltz(
         chain: final chain,
         chainId: final chainId,
@@ -16824,6 +16877,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_swap_degradation(SwapDegradation? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_swap_degradation(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_symbol(Symbol? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
@@ -17990,6 +18053,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_i_32(2, serializer);
         sse_encode_box_autoadd_url_success_action_data(data, serializer);
     }
+  }
+
+  @protected
+  void sse_encode_swap_degradation(SwapDegradation self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
   }
 
   @protected
