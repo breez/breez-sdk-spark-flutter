@@ -657,11 +657,12 @@ class ClaimDepositRequest {
   final String txid;
   final int vout;
   final MaxFee? maxFee;
+  final int? maxInstantFeeBps;
 
-  const ClaimDepositRequest({required this.txid, required this.vout, this.maxFee});
+  const ClaimDepositRequest({required this.txid, required this.vout, this.maxFee, this.maxInstantFeeBps});
 
   @override
-  int get hashCode => txid.hashCode ^ vout.hashCode ^ maxFee.hashCode;
+  int get hashCode => txid.hashCode ^ vout.hashCode ^ maxFee.hashCode ^ maxInstantFeeBps.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -670,13 +671,14 @@ class ClaimDepositRequest {
           runtimeType == other.runtimeType &&
           txid == other.txid &&
           vout == other.vout &&
-          maxFee == other.maxFee;
+          maxFee == other.maxFee &&
+          maxInstantFeeBps == other.maxInstantFeeBps;
 }
 
 class ClaimDepositResponse {
-  final Payment payment;
+  final Payment? payment;
 
-  const ClaimDepositResponse({required this.payment});
+  const ClaimDepositResponse({this.payment});
 
   @override
   int get hashCode => payment.hashCode;
@@ -738,8 +740,10 @@ class Config {
   final Network network;
   final int syncIntervalSecs;
   final MaxFee? maxDepositClaimFee;
+  final int? maxInstantDepositClaimFeeBps;
   final String? lnurlDomain;
   final bool preferSparkOverLightning;
+  final bool exitChainAutoFetchEnabled;
   final List<ExternalInputParser>? externalInputParsers;
   final bool useDefaultExternalInputParsers;
   final String? realTimeSyncServerUrl;
@@ -763,8 +767,10 @@ class Config {
     required this.network,
     required this.syncIntervalSecs,
     this.maxDepositClaimFee,
+    this.maxInstantDepositClaimFeeBps,
     this.lnurlDomain,
     required this.preferSparkOverLightning,
+    required this.exitChainAutoFetchEnabled,
     this.externalInputParsers,
     required this.useDefaultExternalInputParsers,
     this.realTimeSyncServerUrl,
@@ -784,8 +790,10 @@ class Config {
       network.hashCode ^
       syncIntervalSecs.hashCode ^
       maxDepositClaimFee.hashCode ^
+      maxInstantDepositClaimFeeBps.hashCode ^
       lnurlDomain.hashCode ^
       preferSparkOverLightning.hashCode ^
+      exitChainAutoFetchEnabled.hashCode ^
       externalInputParsers.hashCode ^
       useDefaultExternalInputParsers.hashCode ^
       realTimeSyncServerUrl.hashCode ^
@@ -807,8 +815,10 @@ class Config {
           network == other.network &&
           syncIntervalSecs == other.syncIntervalSecs &&
           maxDepositClaimFee == other.maxDepositClaimFee &&
+          maxInstantDepositClaimFeeBps == other.maxInstantDepositClaimFeeBps &&
           lnurlDomain == other.lnurlDomain &&
           preferSparkOverLightning == other.preferSparkOverLightning &&
+          exitChainAutoFetchEnabled == other.exitChainAutoFetchEnabled &&
           externalInputParsers == other.externalInputParsers &&
           useDefaultExternalInputParsers == other.useDefaultExternalInputParsers &&
           realTimeSyncServerUrl == other.realTimeSyncServerUrl &&
@@ -1327,6 +1337,8 @@ sealed class CrossChainRouteFilter with _$CrossChainRouteFilter {
   const factory CrossChainRouteFilter.send({required CrossChainAddressDetails addressDetails}) =
       CrossChainRouteFilter_Send;
   const factory CrossChainRouteFilter.receive({String? contractAddress}) = CrossChainRouteFilter_Receive;
+  const factory CrossChainRouteFilter.paymentLink({required CrossChainAddressDetails addressDetails}) =
+      CrossChainRouteFilter_PaymentLink;
 }
 
 class CrossChainRoutePair {
@@ -1338,6 +1350,7 @@ class CrossChainRoutePair {
   final int decimals;
   final bool exactOutEligible;
   final List<SourceAsset> supportedSources;
+  final List<SourceChain> supportedSourceChains;
 
   const CrossChainRoutePair({
     required this.provider,
@@ -1348,6 +1361,7 @@ class CrossChainRoutePair {
     required this.decimals,
     required this.exactOutEligible,
     required this.supportedSources,
+    required this.supportedSourceChains,
   });
 
   @override
@@ -1359,7 +1373,8 @@ class CrossChainRoutePair {
       contractAddress.hashCode ^
       decimals.hashCode ^
       exactOutEligible.hashCode ^
-      supportedSources.hashCode;
+      supportedSources.hashCode ^
+      supportedSourceChains.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1373,7 +1388,8 @@ class CrossChainRoutePair {
           contractAddress == other.contractAddress &&
           decimals == other.decimals &&
           exactOutEligible == other.exactOutEligible &&
-          supportedSources == other.supportedSources;
+          supportedSources == other.supportedSources &&
+          supportedSourceChains == other.supportedSourceChains;
 }
 
 class CurrencyInfo {
@@ -1427,6 +1443,7 @@ class DepositInfo {
   final String? refundTx;
   final String? refundTxId;
   final DepositClaimError? claimError;
+  final InstantClaimStatus? instantClaimStatus;
 
   const DepositInfo({
     required this.txid,
@@ -1436,6 +1453,7 @@ class DepositInfo {
     this.refundTx,
     this.refundTxId,
     this.claimError,
+    this.instantClaimStatus,
   });
 
   @override
@@ -1446,7 +1464,8 @@ class DepositInfo {
       isMature.hashCode ^
       refundTx.hashCode ^
       refundTxId.hashCode ^
-      claimError.hashCode;
+      claimError.hashCode ^
+      instantClaimStatus.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1459,7 +1478,8 @@ class DepositInfo {
           isMature == other.isMature &&
           refundTx == other.refundTx &&
           refundTxId == other.refundTxId &&
-          claimError == other.claimError;
+          claimError == other.claimError &&
+          instantClaimStatus == other.instantClaimStatus;
 }
 
 class DeriveSeedsOutput {
@@ -1525,6 +1545,22 @@ sealed class ExitLeafSelection with _$ExitLeafSelection {
 
   const factory ExitLeafSelection.auto() = ExitLeafSelection_Auto;
   const factory ExitLeafSelection.specific({required List<String> leafIds}) = ExitLeafSelection_Specific;
+}
+
+class ExportUnilateralExitStateResponse {
+  final String exitState;
+
+  const ExportUnilateralExitStateResponse({required this.exitState});
+
+  @override
+  int get hashCode => exitState.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ExportUnilateralExitStateResponse &&
+          runtimeType == other.runtimeType &&
+          exitState == other.exitState;
 }
 
 class ExternalIdentifier {
@@ -1941,6 +1977,53 @@ class GetTokensMetadataResponse {
           tokensMetadata == other.tokensMetadata;
 }
 
+class ImportUnilateralExitStateRequest {
+  final String exitState;
+
+  const ImportUnilateralExitStateRequest({required this.exitState});
+
+  @override
+  int get hashCode => exitState.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImportUnilateralExitStateRequest &&
+          runtimeType == other.runtimeType &&
+          exitState == other.exitState;
+}
+
+class ImportUnilateralExitStateResponse {
+  final int importedLeaves;
+  final int skippedForeignLeaves;
+  final int skippedConflictingLeaves;
+  final int skippedChains;
+
+  const ImportUnilateralExitStateResponse({
+    required this.importedLeaves,
+    required this.skippedForeignLeaves,
+    required this.skippedConflictingLeaves,
+    required this.skippedChains,
+  });
+
+  @override
+  int get hashCode =>
+      importedLeaves.hashCode ^
+      skippedForeignLeaves.hashCode ^
+      skippedConflictingLeaves.hashCode ^
+      skippedChains.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImportUnilateralExitStateResponse &&
+          runtimeType == other.runtimeType &&
+          importedLeaves == other.importedLeaves &&
+          skippedForeignLeaves == other.skippedForeignLeaves &&
+          skippedConflictingLeaves == other.skippedConflictingLeaves &&
+          skippedChains == other.skippedChains;
+}
+
 @freezed
 sealed class InputType with _$InputType {
   const InputType._();
@@ -1962,6 +2045,28 @@ sealed class InputType with _$InputType {
   const factory InputType.sparkAddress(SparkAddressDetails field0) = InputType_SparkAddress;
   const factory InputType.sparkInvoice(SparkInvoiceDetails field0) = InputType_SparkInvoice;
   const factory InputType.crossChainAddress(CrossChainAddressDetails field0) = InputType_CrossChainAddress;
+}
+
+@freezed
+sealed class InstantClaimDeclineReason with _$InstantClaimDeclineReason {
+  const InstantClaimDeclineReason._();
+
+  const factory InstantClaimDeclineReason.noPlan() = InstantClaimDeclineReason_NoPlan;
+  const factory InstantClaimDeclineReason.feeExceeded({
+    required int maxBps,
+    required int quotedBps,
+    required BigInt quotedSats,
+  }) = InstantClaimDeclineReason_FeeExceeded;
+  const factory InstantClaimDeclineReason.submissionFailed() = InstantClaimDeclineReason_SubmissionFailed;
+}
+
+@freezed
+sealed class InstantClaimStatus with _$InstantClaimStatus {
+  const InstantClaimStatus._();
+
+  const factory InstantClaimStatus.declined({required InstantClaimDeclineReason reason}) =
+      InstantClaimStatus_Declined;
+  const factory InstantClaimStatus.submitted({required String claimId}) = InstantClaimStatus_Submitted;
 }
 
 class LeafOptimizationConfig {
@@ -2921,6 +3026,80 @@ class PrepareLnurlPayResponse {
           feePolicy == other.feePolicy;
 }
 
+class PreparePaymentLinkRequest {
+  final String address;
+  final CrossChainRoutePair route;
+  final BigInt amount;
+  final FeePolicy? feePolicy;
+  final int? maxSlippageBps;
+
+  const PreparePaymentLinkRequest({
+    required this.address,
+    required this.route,
+    required this.amount,
+    this.feePolicy,
+    this.maxSlippageBps,
+  });
+
+  @override
+  int get hashCode =>
+      address.hashCode ^ route.hashCode ^ amount.hashCode ^ feePolicy.hashCode ^ maxSlippageBps.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PreparePaymentLinkRequest &&
+          runtimeType == other.runtimeType &&
+          address == other.address &&
+          route == other.route &&
+          amount == other.amount &&
+          feePolicy == other.feePolicy &&
+          maxSlippageBps == other.maxSlippageBps;
+}
+
+class PreparePaymentLinkResponse {
+  final String url;
+  final BigInt amountSats;
+  final BigInt estimatedOut;
+  final String asset;
+  final BigInt serviceFeeAmount;
+  final String? serviceFeeAsset;
+  final String expiresAt;
+
+  const PreparePaymentLinkResponse({
+    required this.url,
+    required this.amountSats,
+    required this.estimatedOut,
+    required this.asset,
+    required this.serviceFeeAmount,
+    this.serviceFeeAsset,
+    required this.expiresAt,
+  });
+
+  @override
+  int get hashCode =>
+      url.hashCode ^
+      amountSats.hashCode ^
+      estimatedOut.hashCode ^
+      asset.hashCode ^
+      serviceFeeAmount.hashCode ^
+      serviceFeeAsset.hashCode ^
+      expiresAt.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PreparePaymentLinkResponse &&
+          runtimeType == other.runtimeType &&
+          url == other.url &&
+          amountSats == other.amountSats &&
+          estimatedOut == other.estimatedOut &&
+          asset == other.asset &&
+          serviceFeeAmount == other.serviceFeeAmount &&
+          serviceFeeAsset == other.serviceFeeAsset &&
+          expiresAt == other.expiresAt;
+}
+
 class PrepareSendBatchRequest {
   final List<BatchRecipient> recipients;
 
@@ -3184,6 +3363,7 @@ sealed class ReceivePaymentMethod with _$ReceivePaymentMethod {
     BigInt? amountSats,
     int? expirySecs,
     String? paymentHash,
+    String? receiverIdentityPublicKey,
   }) = ReceivePaymentMethod_Bolt11Invoice;
 }
 
@@ -3771,6 +3951,8 @@ sealed class SourceAsset with _$SourceAsset {
   const factory SourceAsset.token({required String tokenIdentifier}) = SourceAsset_Token;
 }
 
+enum SourceChain { spark, lightning, bitcoin }
+
 class SparkAddressDetails {
   final String address;
   final String identityPublicKey;
@@ -4242,11 +4424,20 @@ class TransferAuthorization {
   final String username;
   final String pubkey;
   final String signature;
+  final String domain;
+  final BigInt timestamp;
 
-  const TransferAuthorization({required this.username, required this.pubkey, required this.signature});
+  const TransferAuthorization({
+    required this.username,
+    required this.pubkey,
+    required this.signature,
+    required this.domain,
+    required this.timestamp,
+  });
 
   @override
-  int get hashCode => username.hashCode ^ pubkey.hashCode ^ signature.hashCode;
+  int get hashCode =>
+      username.hashCode ^ pubkey.hashCode ^ signature.hashCode ^ domain.hashCode ^ timestamp.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -4255,7 +4446,9 @@ class TransferAuthorization {
           runtimeType == other.runtimeType &&
           username == other.username &&
           pubkey == other.pubkey &&
-          signature == other.signature;
+          signature == other.signature &&
+          domain == other.domain &&
+          timestamp == other.timestamp;
 }
 
 @freezed

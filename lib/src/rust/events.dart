@@ -43,4 +43,5 @@ sealed class SdkEvent with _$SdkEvent {
   const factory SdkEvent.lightningAddressChanged({LightningAddressInfo? lightningAddress}) =
       SdkEvent_LightningAddressChanged;
   const factory SdkEvent.newDeposits({required List<DepositInfo> newDeposits}) = SdkEvent_NewDeposits;
+  const factory SdkEvent.unilateralExitStateChanged() = SdkEvent_UnilateralExitStateChanged;
 }

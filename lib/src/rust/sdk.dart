@@ -65,6 +65,11 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<void> disconnect();
 
+  /// Serializes everything needed to unilaterally exit this wallet's funds
+  /// while the Spark operators are unreachable, so it can be kept somewhere
+  /// the wallet's own storage cannot take with it.
+  Future<ExportUnilateralExitStateResponse> exportUnilateralExitState();
+
   Future<FetchConversionLimitsResponse> fetchConversionLimits({
     required FetchConversionLimitsRequest request,
   });
@@ -82,6 +87,12 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<GetTokensMetadataResponse> getTokensMetadata({required GetTokensMetadataRequest request});
 
   Future<UserSettings> getUserSettings();
+
+  /// Merges a previously exported exit state back into the wallet, without
+  /// contacting the Spark operators.
+  Future<ImportUnilateralExitStateResponse> importUnilateralExitState({
+    required ImportUnilateralExitStateRequest request,
+  });
 
   Future<List<Contact>> listContacts({required ListContactsRequest request});
 
@@ -108,6 +119,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<InputType> parse({required String input});
 
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
+
+  Future<PreparePaymentLinkResponse> preparePaymentLink({required PreparePaymentLinkRequest request});
 
   Future<PrepareSendBatchResponse> prepareSendBatch({required PrepareSendBatchRequest request});
 

@@ -4133,12 +4133,13 @@ extension CrossChainRouteFilterPatterns on CrossChainRouteFilter {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CrossChainRouteFilter_Send value)?  send,TResult Function( CrossChainRouteFilter_Receive value)?  receive,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CrossChainRouteFilter_Send value)?  send,TResult Function( CrossChainRouteFilter_Receive value)?  receive,TResult Function( CrossChainRouteFilter_PaymentLink value)?  paymentLink,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send() when send != null:
 return send(_that);case CrossChainRouteFilter_Receive() when receive != null:
-return receive(_that);case _:
+return receive(_that);case CrossChainRouteFilter_PaymentLink() when paymentLink != null:
+return paymentLink(_that);case _:
   return orElse();
 
 }
@@ -4156,12 +4157,13 @@ return receive(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CrossChainRouteFilter_Send value)  send,required TResult Function( CrossChainRouteFilter_Receive value)  receive,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CrossChainRouteFilter_Send value)  send,required TResult Function( CrossChainRouteFilter_Receive value)  receive,required TResult Function( CrossChainRouteFilter_PaymentLink value)  paymentLink,}){
 final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send():
 return send(_that);case CrossChainRouteFilter_Receive():
-return receive(_that);}
+return receive(_that);case CrossChainRouteFilter_PaymentLink():
+return paymentLink(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -4175,12 +4177,13 @@ return receive(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CrossChainRouteFilter_Send value)?  send,TResult? Function( CrossChainRouteFilter_Receive value)?  receive,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CrossChainRouteFilter_Send value)?  send,TResult? Function( CrossChainRouteFilter_Receive value)?  receive,TResult? Function( CrossChainRouteFilter_PaymentLink value)?  paymentLink,}){
 final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send() when send != null:
 return send(_that);case CrossChainRouteFilter_Receive() when receive != null:
-return receive(_that);case _:
+return receive(_that);case CrossChainRouteFilter_PaymentLink() when paymentLink != null:
+return paymentLink(_that);case _:
   return null;
 
 }
@@ -4197,11 +4200,12 @@ return receive(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( CrossChainAddressDetails addressDetails)?  send,TResult Function( String? contractAddress)?  receive,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( CrossChainAddressDetails addressDetails)?  send,TResult Function( String? contractAddress)?  receive,TResult Function( CrossChainAddressDetails addressDetails)?  paymentLink,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send() when send != null:
 return send(_that.addressDetails);case CrossChainRouteFilter_Receive() when receive != null:
-return receive(_that.contractAddress);case _:
+return receive(_that.contractAddress);case CrossChainRouteFilter_PaymentLink() when paymentLink != null:
+return paymentLink(_that.addressDetails);case _:
   return orElse();
 
 }
@@ -4219,11 +4223,12 @@ return receive(_that.contractAddress);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( CrossChainAddressDetails addressDetails)  send,required TResult Function( String? contractAddress)  receive,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( CrossChainAddressDetails addressDetails)  send,required TResult Function( String? contractAddress)  receive,required TResult Function( CrossChainAddressDetails addressDetails)  paymentLink,}) {final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send():
 return send(_that.addressDetails);case CrossChainRouteFilter_Receive():
-return receive(_that.contractAddress);}
+return receive(_that.contractAddress);case CrossChainRouteFilter_PaymentLink():
+return paymentLink(_that.addressDetails);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -4237,11 +4242,12 @@ return receive(_that.contractAddress);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( CrossChainAddressDetails addressDetails)?  send,TResult? Function( String? contractAddress)?  receive,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( CrossChainAddressDetails addressDetails)?  send,TResult? Function( String? contractAddress)?  receive,TResult? Function( CrossChainAddressDetails addressDetails)?  paymentLink,}) {final _that = this;
 switch (_that) {
 case CrossChainRouteFilter_Send() when send != null:
 return send(_that.addressDetails);case CrossChainRouteFilter_Receive() when receive != null:
-return receive(_that.contractAddress);case _:
+return receive(_that.contractAddress);case CrossChainRouteFilter_PaymentLink() when paymentLink != null:
+return paymentLink(_that.addressDetails);case _:
   return null;
 
 }
@@ -4375,6 +4381,72 @@ class _$CrossChainRouteFilter_ReceiveCopyWithImpl<$Res>
   return _then(CrossChainRouteFilter_Receive(
 contractAddress: freezed == contractAddress ? _self.contractAddress : contractAddress // ignore: cast_nullable_to_non_nullable
 as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CrossChainRouteFilter_PaymentLink extends CrossChainRouteFilter {
+  const CrossChainRouteFilter_PaymentLink({required this.addressDetails}): super._();
+  
+
+ final  CrossChainAddressDetails addressDetails;
+
+/// Create a copy of CrossChainRouteFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CrossChainRouteFilter_PaymentLinkCopyWith<CrossChainRouteFilter_PaymentLink> get copyWith => _$CrossChainRouteFilter_PaymentLinkCopyWithImpl<CrossChainRouteFilter_PaymentLink>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CrossChainRouteFilter_PaymentLink&&(identical(other.addressDetails, addressDetails) || other.addressDetails == addressDetails));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,addressDetails);
+
+@override
+String toString() {
+  return 'CrossChainRouteFilter.paymentLink(addressDetails: $addressDetails)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CrossChainRouteFilter_PaymentLinkCopyWith<$Res> implements $CrossChainRouteFilterCopyWith<$Res> {
+  factory $CrossChainRouteFilter_PaymentLinkCopyWith(CrossChainRouteFilter_PaymentLink value, $Res Function(CrossChainRouteFilter_PaymentLink) _then) = _$CrossChainRouteFilter_PaymentLinkCopyWithImpl;
+@useResult
+$Res call({
+ CrossChainAddressDetails addressDetails
+});
+
+
+
+
+}
+/// @nodoc
+class _$CrossChainRouteFilter_PaymentLinkCopyWithImpl<$Res>
+    implements $CrossChainRouteFilter_PaymentLinkCopyWith<$Res> {
+  _$CrossChainRouteFilter_PaymentLinkCopyWithImpl(this._self, this._then);
+
+  final CrossChainRouteFilter_PaymentLink _self;
+  final $Res Function(CrossChainRouteFilter_PaymentLink) _then;
+
+/// Create a copy of CrossChainRouteFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? addressDetails = null,}) {
+  return _then(CrossChainRouteFilter_PaymentLink(
+addressDetails: null == addressDetails ? _self.addressDetails : addressDetails // ignore: cast_nullable_to_non_nullable
+as CrossChainAddressDetails,
   ));
 }
 
@@ -6159,6 +6231,607 @@ class _$InputType_CrossChainAddressCopyWithImpl<$Res>
   return _then(InputType_CrossChainAddress(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
 as CrossChainAddressDetails,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$InstantClaimDeclineReason {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'InstantClaimDeclineReason()';
+}
+
+
+}
+
+/// @nodoc
+class $InstantClaimDeclineReasonCopyWith<$Res>  {
+$InstantClaimDeclineReasonCopyWith(InstantClaimDeclineReason _, $Res Function(InstantClaimDeclineReason) __);
+}
+
+
+/// Adds pattern-matching-related methods to [InstantClaimDeclineReason].
+extension InstantClaimDeclineReasonPatterns on InstantClaimDeclineReason {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InstantClaimDeclineReason_NoPlan value)?  noPlan,TResult Function( InstantClaimDeclineReason_FeeExceeded value)?  feeExceeded,TResult Function( InstantClaimDeclineReason_SubmissionFailed value)?  submissionFailed,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan() when noPlan != null:
+return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
+return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
+return submissionFailed(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InstantClaimDeclineReason_NoPlan value)  noPlan,required TResult Function( InstantClaimDeclineReason_FeeExceeded value)  feeExceeded,required TResult Function( InstantClaimDeclineReason_SubmissionFailed value)  submissionFailed,}){
+final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan():
+return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded():
+return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed():
+return submissionFailed(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InstantClaimDeclineReason_NoPlan value)?  noPlan,TResult? Function( InstantClaimDeclineReason_FeeExceeded value)?  feeExceeded,TResult? Function( InstantClaimDeclineReason_SubmissionFailed value)?  submissionFailed,}){
+final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan() when noPlan != null:
+return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
+return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
+return submissionFailed(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  noPlan,TResult Function( int maxBps,  int quotedBps,  BigInt quotedSats)?  feeExceeded,TResult Function()?  submissionFailed,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan() when noPlan != null:
+return noPlan();case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
+return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
+return submissionFailed();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  noPlan,required TResult Function( int maxBps,  int quotedBps,  BigInt quotedSats)  feeExceeded,required TResult Function()  submissionFailed,}) {final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan():
+return noPlan();case InstantClaimDeclineReason_FeeExceeded():
+return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed():
+return submissionFailed();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  noPlan,TResult? Function( int maxBps,  int quotedBps,  BigInt quotedSats)?  feeExceeded,TResult? Function()?  submissionFailed,}) {final _that = this;
+switch (_that) {
+case InstantClaimDeclineReason_NoPlan() when noPlan != null:
+return noPlan();case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
+return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
+return submissionFailed();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class InstantClaimDeclineReason_NoPlan extends InstantClaimDeclineReason {
+  const InstantClaimDeclineReason_NoPlan(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_NoPlan);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'InstantClaimDeclineReason.noPlan()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class InstantClaimDeclineReason_FeeExceeded extends InstantClaimDeclineReason {
+  const InstantClaimDeclineReason_FeeExceeded({required this.maxBps, required this.quotedBps, required this.quotedSats}): super._();
+  
+
+ final  int maxBps;
+ final  int quotedBps;
+ final  BigInt quotedSats;
+
+/// Create a copy of InstantClaimDeclineReason
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$InstantClaimDeclineReason_FeeExceededCopyWith<InstantClaimDeclineReason_FeeExceeded> get copyWith => _$InstantClaimDeclineReason_FeeExceededCopyWithImpl<InstantClaimDeclineReason_FeeExceeded>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_FeeExceeded&&(identical(other.maxBps, maxBps) || other.maxBps == maxBps)&&(identical(other.quotedBps, quotedBps) || other.quotedBps == quotedBps)&&(identical(other.quotedSats, quotedSats) || other.quotedSats == quotedSats));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,maxBps,quotedBps,quotedSats);
+
+@override
+String toString() {
+  return 'InstantClaimDeclineReason.feeExceeded(maxBps: $maxBps, quotedBps: $quotedBps, quotedSats: $quotedSats)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $InstantClaimDeclineReason_FeeExceededCopyWith<$Res> implements $InstantClaimDeclineReasonCopyWith<$Res> {
+  factory $InstantClaimDeclineReason_FeeExceededCopyWith(InstantClaimDeclineReason_FeeExceeded value, $Res Function(InstantClaimDeclineReason_FeeExceeded) _then) = _$InstantClaimDeclineReason_FeeExceededCopyWithImpl;
+@useResult
+$Res call({
+ int maxBps, int quotedBps, BigInt quotedSats
+});
+
+
+
+
+}
+/// @nodoc
+class _$InstantClaimDeclineReason_FeeExceededCopyWithImpl<$Res>
+    implements $InstantClaimDeclineReason_FeeExceededCopyWith<$Res> {
+  _$InstantClaimDeclineReason_FeeExceededCopyWithImpl(this._self, this._then);
+
+  final InstantClaimDeclineReason_FeeExceeded _self;
+  final $Res Function(InstantClaimDeclineReason_FeeExceeded) _then;
+
+/// Create a copy of InstantClaimDeclineReason
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? maxBps = null,Object? quotedBps = null,Object? quotedSats = null,}) {
+  return _then(InstantClaimDeclineReason_FeeExceeded(
+maxBps: null == maxBps ? _self.maxBps : maxBps // ignore: cast_nullable_to_non_nullable
+as int,quotedBps: null == quotedBps ? _self.quotedBps : quotedBps // ignore: cast_nullable_to_non_nullable
+as int,quotedSats: null == quotedSats ? _self.quotedSats : quotedSats // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class InstantClaimDeclineReason_SubmissionFailed extends InstantClaimDeclineReason {
+  const InstantClaimDeclineReason_SubmissionFailed(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_SubmissionFailed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'InstantClaimDeclineReason.submissionFailed()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$InstantClaimStatus {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimStatus);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'InstantClaimStatus()';
+}
+
+
+}
+
+/// @nodoc
+class $InstantClaimStatusCopyWith<$Res>  {
+$InstantClaimStatusCopyWith(InstantClaimStatus _, $Res Function(InstantClaimStatus) __);
+}
+
+
+/// Adds pattern-matching-related methods to [InstantClaimStatus].
+extension InstantClaimStatusPatterns on InstantClaimStatus {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InstantClaimStatus_Declined value)?  declined,TResult Function( InstantClaimStatus_Submitted value)?  submitted,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined() when declined != null:
+return declined(_that);case InstantClaimStatus_Submitted() when submitted != null:
+return submitted(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InstantClaimStatus_Declined value)  declined,required TResult Function( InstantClaimStatus_Submitted value)  submitted,}){
+final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined():
+return declined(_that);case InstantClaimStatus_Submitted():
+return submitted(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InstantClaimStatus_Declined value)?  declined,TResult? Function( InstantClaimStatus_Submitted value)?  submitted,}){
+final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined() when declined != null:
+return declined(_that);case InstantClaimStatus_Submitted() when submitted != null:
+return submitted(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( InstantClaimDeclineReason reason)?  declined,TResult Function( String claimId)?  submitted,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined() when declined != null:
+return declined(_that.reason);case InstantClaimStatus_Submitted() when submitted != null:
+return submitted(_that.claimId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( InstantClaimDeclineReason reason)  declined,required TResult Function( String claimId)  submitted,}) {final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined():
+return declined(_that.reason);case InstantClaimStatus_Submitted():
+return submitted(_that.claimId);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( InstantClaimDeclineReason reason)?  declined,TResult? Function( String claimId)?  submitted,}) {final _that = this;
+switch (_that) {
+case InstantClaimStatus_Declined() when declined != null:
+return declined(_that.reason);case InstantClaimStatus_Submitted() when submitted != null:
+return submitted(_that.claimId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class InstantClaimStatus_Declined extends InstantClaimStatus {
+  const InstantClaimStatus_Declined({required this.reason}): super._();
+  
+
+ final  InstantClaimDeclineReason reason;
+
+/// Create a copy of InstantClaimStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$InstantClaimStatus_DeclinedCopyWith<InstantClaimStatus_Declined> get copyWith => _$InstantClaimStatus_DeclinedCopyWithImpl<InstantClaimStatus_Declined>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimStatus_Declined&&(identical(other.reason, reason) || other.reason == reason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason);
+
+@override
+String toString() {
+  return 'InstantClaimStatus.declined(reason: $reason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $InstantClaimStatus_DeclinedCopyWith<$Res> implements $InstantClaimStatusCopyWith<$Res> {
+  factory $InstantClaimStatus_DeclinedCopyWith(InstantClaimStatus_Declined value, $Res Function(InstantClaimStatus_Declined) _then) = _$InstantClaimStatus_DeclinedCopyWithImpl;
+@useResult
+$Res call({
+ InstantClaimDeclineReason reason
+});
+
+
+$InstantClaimDeclineReasonCopyWith<$Res> get reason;
+
+}
+/// @nodoc
+class _$InstantClaimStatus_DeclinedCopyWithImpl<$Res>
+    implements $InstantClaimStatus_DeclinedCopyWith<$Res> {
+  _$InstantClaimStatus_DeclinedCopyWithImpl(this._self, this._then);
+
+  final InstantClaimStatus_Declined _self;
+  final $Res Function(InstantClaimStatus_Declined) _then;
+
+/// Create a copy of InstantClaimStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,}) {
+  return _then(InstantClaimStatus_Declined(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as InstantClaimDeclineReason,
+  ));
+}
+
+/// Create a copy of InstantClaimStatus
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$InstantClaimDeclineReasonCopyWith<$Res> get reason {
+  
+  return $InstantClaimDeclineReasonCopyWith<$Res>(_self.reason, (value) {
+    return _then(_self.copyWith(reason: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class InstantClaimStatus_Submitted extends InstantClaimStatus {
+  const InstantClaimStatus_Submitted({required this.claimId}): super._();
+  
+
+ final  String claimId;
+
+/// Create a copy of InstantClaimStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$InstantClaimStatus_SubmittedCopyWith<InstantClaimStatus_Submitted> get copyWith => _$InstantClaimStatus_SubmittedCopyWithImpl<InstantClaimStatus_Submitted>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimStatus_Submitted&&(identical(other.claimId, claimId) || other.claimId == claimId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,claimId);
+
+@override
+String toString() {
+  return 'InstantClaimStatus.submitted(claimId: $claimId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $InstantClaimStatus_SubmittedCopyWith<$Res> implements $InstantClaimStatusCopyWith<$Res> {
+  factory $InstantClaimStatus_SubmittedCopyWith(InstantClaimStatus_Submitted value, $Res Function(InstantClaimStatus_Submitted) _then) = _$InstantClaimStatus_SubmittedCopyWithImpl;
+@useResult
+$Res call({
+ String claimId
+});
+
+
+
+
+}
+/// @nodoc
+class _$InstantClaimStatus_SubmittedCopyWithImpl<$Res>
+    implements $InstantClaimStatus_SubmittedCopyWith<$Res> {
+  _$InstantClaimStatus_SubmittedCopyWithImpl(this._self, this._then);
+
+  final InstantClaimStatus_Submitted _self;
+  final $Res Function(InstantClaimStatus_Submitted) _then;
+
+/// Create a copy of InstantClaimStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? claimId = null,}) {
+  return _then(InstantClaimStatus_Submitted(
+claimId: null == claimId ? _self.claimId : claimId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -9379,13 +10052,13 @@ return bolt11Invoice(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function( bool? newAddress)?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function( bool? newAddress)?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case _:
   return orElse();
 
 }
@@ -9403,13 +10076,13 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function( bool? newAddress)  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function( bool? newAddress)  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress():
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice():
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress():
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice():
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);}
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -9423,13 +10096,13 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function( bool? newAddress)?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash)?  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function( bool? newAddress)?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case _:
   return null;
 
 }
@@ -9613,13 +10286,14 @@ as bool?,
 
 
 class ReceivePaymentMethod_Bolt11Invoice extends ReceivePaymentMethod {
-  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats, this.expirySecs, this.paymentHash}): super._();
+  const ReceivePaymentMethod_Bolt11Invoice({required this.description, this.amountSats, this.expirySecs, this.paymentHash, this.receiverIdentityPublicKey}): super._();
   
 
  final  String description;
  final  BigInt? amountSats;
  final  int? expirySecs;
  final  String? paymentHash;
+ final  String? receiverIdentityPublicKey;
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
@@ -9631,16 +10305,16 @@ $ReceivePaymentMethod_Bolt11InvoiceCopyWith<ReceivePaymentMethod_Bolt11Invoice> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats)&&(identical(other.expirySecs, expirySecs) || other.expirySecs == expirySecs)&&(identical(other.paymentHash, paymentHash) || other.paymentHash == paymentHash));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_Bolt11Invoice&&(identical(other.description, description) || other.description == description)&&(identical(other.amountSats, amountSats) || other.amountSats == amountSats)&&(identical(other.expirySecs, expirySecs) || other.expirySecs == expirySecs)&&(identical(other.paymentHash, paymentHash) || other.paymentHash == paymentHash)&&(identical(other.receiverIdentityPublicKey, receiverIdentityPublicKey) || other.receiverIdentityPublicKey == receiverIdentityPublicKey));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description,amountSats,expirySecs,paymentHash);
+int get hashCode => Object.hash(runtimeType,description,amountSats,expirySecs,paymentHash,receiverIdentityPublicKey);
 
 @override
 String toString() {
-  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats, expirySecs: $expirySecs, paymentHash: $paymentHash)';
+  return 'ReceivePaymentMethod.bolt11Invoice(description: $description, amountSats: $amountSats, expirySecs: $expirySecs, paymentHash: $paymentHash, receiverIdentityPublicKey: $receiverIdentityPublicKey)';
 }
 
 
@@ -9651,7 +10325,7 @@ abstract mixin class $ReceivePaymentMethod_Bolt11InvoiceCopyWith<$Res> implement
   factory $ReceivePaymentMethod_Bolt11InvoiceCopyWith(ReceivePaymentMethod_Bolt11Invoice value, $Res Function(ReceivePaymentMethod_Bolt11Invoice) _then) = _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl;
 @useResult
 $Res call({
- String description, BigInt? amountSats, int? expirySecs, String? paymentHash
+ String description, BigInt? amountSats, int? expirySecs, String? paymentHash, String? receiverIdentityPublicKey
 });
 
 
@@ -9668,12 +10342,13 @@ class _$ReceivePaymentMethod_Bolt11InvoiceCopyWithImpl<$Res>
 
 /// Create a copy of ReceivePaymentMethod
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,Object? expirySecs = freezed,Object? paymentHash = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? amountSats = freezed,Object? expirySecs = freezed,Object? paymentHash = freezed,Object? receiverIdentityPublicKey = freezed,}) {
   return _then(ReceivePaymentMethod_Bolt11Invoice(
 description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,amountSats: freezed == amountSats ? _self.amountSats : amountSats // ignore: cast_nullable_to_non_nullable
 as BigInt?,expirySecs: freezed == expirySecs ? _self.expirySecs : expirySecs // ignore: cast_nullable_to_non_nullable
 as int?,paymentHash: freezed == paymentHash ? _self.paymentHash : paymentHash // ignore: cast_nullable_to_non_nullable
+as String?,receiverIdentityPublicKey: freezed == receiverIdentityPublicKey ? _self.receiverIdentityPublicKey : receiverIdentityPublicKey // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

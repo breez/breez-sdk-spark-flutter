@@ -117,6 +117,24 @@ impl BreezSdk {
         self.inner.unilateral_exit(request, signer).await
     }
 
+    /// Serializes everything needed to unilaterally exit this wallet's funds
+    /// while the Spark operators are unreachable, so it can be kept somewhere
+    /// the wallet's own storage cannot take with it.
+    pub async fn export_unilateral_exit_state(
+        &self,
+    ) -> Result<ExportUnilateralExitStateResponse, SdkError> {
+        self.inner.export_unilateral_exit_state().await
+    }
+
+    /// Merges a previously exported exit state back into the wallet, without
+    /// contacting the Spark operators.
+    pub async fn import_unilateral_exit_state(
+        &self,
+        request: ImportUnilateralExitStateRequest,
+    ) -> Result<ImportUnilateralExitStateResponse, SdkError> {
+        self.inner.import_unilateral_exit_state(request).await
+    }
+
     pub async fn receive_payment(
         &self,
         request: ReceivePaymentRequest,
@@ -370,6 +388,13 @@ impl BreezSdk {
         request: BuyBitcoinRequest,
     ) -> Result<BuyBitcoinResponse, SdkError> {
         self.inner.buy_bitcoin(request).await
+    }
+
+    pub async fn prepare_payment_link(
+        &self,
+        request: PreparePaymentLinkRequest,
+    ) -> Result<PreparePaymentLinkResponse, SdkError> {
+        self.inner.prepare_payment_link(request).await
     }
 
     pub async fn register_webhook(

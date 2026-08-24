@@ -28,8 +28,10 @@ pub struct _Config {
     pub network: Network,
     pub sync_interval_secs: u32,
     pub max_deposit_claim_fee: Option<MaxFee>,
+    pub max_instant_deposit_claim_fee_bps: Option<u32>,
     pub lnurl_domain: Option<String>,
     pub prefer_spark_over_lightning: bool,
+    pub exit_chain_auto_fetch_enabled: bool,
     pub external_input_parsers: Option<Vec<ExternalInputParser>>,
     pub use_default_external_input_parsers: bool,
     pub real_time_sync_server_url: Option<String>,
@@ -148,17 +150,35 @@ pub struct _ClaimDepositRequest {
     pub txid: String,
     pub vout: u32,
     pub max_fee: Option<MaxFee>,
+    pub max_instant_fee_bps: Option<u32>,
 }
 
 #[frb(mirror(ClaimDepositResponse))]
 pub struct _ClaimDepositResponse {
-    pub payment: Payment,
+    pub payment: Option<Payment>,
 }
 
 #[frb(mirror(Credentials))]
 pub struct _Credentials {
     pub username: String,
     pub password: String,
+}
+
+#[frb(mirror(InstantClaimDeclineReason))]
+pub enum _InstantClaimDeclineReason {
+    NoPlan,
+    FeeExceeded {
+        max_bps: u32,
+        quoted_bps: u32,
+        quoted_sats: u64,
+    },
+    SubmissionFailed,
+}
+
+#[frb(mirror(InstantClaimStatus))]
+pub enum _InstantClaimStatus {
+    Declined { reason: InstantClaimDeclineReason },
+    Submitted { claim_id: String },
 }
 
 #[frb(mirror(DepositInfo))]
@@ -170,6 +190,7 @@ pub struct _DepositInfo {
     pub refund_tx: Option<String>,
     pub refund_tx_id: Option<String>,
     pub claim_error: Option<DepositClaimError>,
+    pub instant_claim_status: Option<InstantClaimStatus>,
 }
 
 #[frb(mirror(MaxFee))]
@@ -297,6 +318,24 @@ pub struct _UnilateralExitResponse {
     pub transactions: Vec<UnilateralExitTransaction>,
 }
 
+#[frb(mirror(ExportUnilateralExitStateResponse))]
+pub struct _ExportUnilateralExitStateResponse {
+    pub exit_state: String,
+}
+
+#[frb(mirror(ImportUnilateralExitStateRequest))]
+pub struct _ImportUnilateralExitStateRequest {
+    pub exit_state: String,
+}
+
+#[frb(mirror(ImportUnilateralExitStateResponse))]
+pub struct _ImportUnilateralExitStateResponse {
+    pub imported_leaves: u32,
+    pub skipped_foreign_leaves: u32,
+    pub skipped_conflicting_leaves: u32,
+    pub skipped_chains: u32,
+}
+
 #[frb(mirror(GetInfoRequest))]
 pub struct _GetInfoRequest {
     pub ensure_synced: Option<bool>,
@@ -377,6 +416,13 @@ pub enum _SourceAsset {
     Token { token_identifier: String },
 }
 
+#[frb(mirror(SourceChain))]
+pub enum _SourceChain {
+    Spark,
+    Lightning,
+    Bitcoin,
+}
+
 #[frb(mirror(CrossChainFeeMode))]
 pub enum _CrossChainFeeMode {
     FeesExcluded,
@@ -393,6 +439,7 @@ pub struct _CrossChainRoutePair {
     pub decimals: u8,
     pub exact_out_eligible: bool,
     pub supported_sources: Vec<SourceAsset>,
+    pub supported_source_chains: Vec<SourceChain>,
 }
 
 #[frb(mirror(CrossChainProviderContext))]
@@ -417,6 +464,9 @@ pub enum _CrossChainRouteFilter {
     },
     Receive {
         contract_address: Option<String>,
+    },
+    PaymentLink {
+        address_details: CrossChainAddressDetails,
     },
 }
 
@@ -787,6 +837,7 @@ pub enum _ReceivePaymentMethod {
         amount_sats: Option<u64>,
         expiry_secs: Option<u32>,
         payment_hash: Option<String>,
+        receiver_identity_public_key: Option<String>,
     },
 }
 
@@ -1245,6 +1296,9 @@ pub enum _UpdateDepositPayload {
         refund_txid: String,
         refund_tx: String,
     },
+    InstantClaim {
+        status: InstantClaimStatus,
+    },
 }
 
 #[frb(mirror(Amount))]
@@ -1439,6 +1493,8 @@ pub struct _TransferAuthorization {
     pub username: String,
     pub pubkey: String,
     pub signature: String,
+    pub domain: String,
+    pub timestamp: u64,
 }
 
 #[frb(mirror(AuthorizeTransferRequest))]
@@ -1809,6 +1865,26 @@ pub struct _RefundPendingConversionsResponse {
     pub refunded: u32,
     pub skipped: u32,
     pub failed: u32,
+}
+
+#[frb(mirror(PreparePaymentLinkRequest))]
+pub struct _PreparePaymentLinkRequest {
+    pub address: String,
+    pub route: CrossChainRoutePair,
+    pub amount: u128,
+    pub fee_policy: Option<FeePolicy>,
+    pub max_slippage_bps: Option<u32>,
+}
+
+#[frb(mirror(PreparePaymentLinkResponse))]
+pub struct _PreparePaymentLinkResponse {
+    pub url: String,
+    pub amount_sats: u64,
+    pub estimated_out: u128,
+    pub asset: String,
+    pub service_fee_amount: u128,
+    pub service_fee_asset: Option<String>,
+    pub expires_at: String,
 }
 
 #[frb(mirror(ServiceStatus))]
