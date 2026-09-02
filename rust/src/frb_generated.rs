@@ -43,7 +43,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1302526251;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 2063861132;
 
 // Section: executor
 
@@ -990,6 +990,67 @@ fn wire__crate__sdk__BreezSdk_export_unilateral_exit_state_impl(
                         let output_ok =
                             crate::sdk::BreezSdk::export_unilateral_exit_state(&*api_that_guard)
                                 .await?;
+                        Ok(output_ok)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire__crate__sdk__BreezSdk_fetch_claim_deposit_quote_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BreezSdk_fetch_claim_deposit_quote",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BreezSdk>,
+            >>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::FetchClaimDepositQuoteRequest>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| async move {
+                transform_result_sse::<_, crate::errors::SdkError>(
+                    (move || async move {
+                        let mut api_that_guard = None;
+                        let decode_indices_ =
+                            flutter_rust_bridge::for_generated::lockable_compute_decode_order(
+                                vec![flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                                    &api_that, 0, false,
+                                )],
+                            );
+                        for i in decode_indices_ {
+                            match i {
+                                0 => {
+                                    api_that_guard =
+                                        Some(api_that.lockable_decode_async_ref().await)
+                                }
+                                _ => unreachable!(),
+                            }
+                        }
+                        let api_that_guard = api_that_guard.unwrap();
+                        let output_ok = crate::sdk::BreezSdk::fetch_claim_deposit_quote(
+                            &*api_that_guard,
+                            api_request,
+                        )
+                        .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -3655,8 +3716,8 @@ let api_is_supported = decode_DartFn_Inputs__Output_bool_AnyhowException(<flutte
 let api_create_passkey = decode_DartFn_Inputs_list_list_prim_u_8_strict_list_String_Output_create_passkey_output_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_breez_api_key = <Option<String>>::sse_decode(&mut deserializer);
 let api_config = <Option<crate::models::PasskeyConfig>>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::passkey::PasskeyClient::new(api_derive_seeds, api_is_supported, api_create_passkey, api_breez_api_key, api_config))?;   Ok(output_ok)
+                transform_result_sse::<_, crate::errors::PasskeyError>((move || {
+                     let output_ok = crate::passkey::PasskeyClient::new(api_derive_seeds, api_is_supported, api_create_passkey, api_breez_api_key, api_config)?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__passkey__PasskeyClient_register_impl(
@@ -4729,11 +4790,12 @@ fn wire__crate__sdk__get_spark_status_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_request = <crate::models::GetSparkStatusRequest>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, crate::errors::SdkError>(
                     (move || async move {
-                        let output_ok = crate::sdk::get_spark_status().await?;
+                        let output_ok = crate::sdk::get_spark_status(api_request).await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -4805,19 +4867,20 @@ fn wire__crate__chain_service__new_rest_chain_service_impl(
             let api_api_type = <crate::models::ChainApiType>::sse_decode(&mut deserializer);
             let api_credentials =
                 <Option<crate::models::Credentials>>::sse_decode(&mut deserializer);
+            let api_request =
+                <crate::models::NewRestChainServiceRequest>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
-                transform_result_sse::<_, ()>(
+                transform_result_sse::<_, crate::errors::SdkError>(
                     (move || async move {
-                        let output_ok = Result::<_, ()>::Ok(
-                            crate::chain_service::new_rest_chain_service(
-                                api_url,
-                                api_network,
-                                api_api_type,
-                                api_credentials,
-                            )
-                            .await,
-                        )?;
+                        let output_ok = crate::chain_service::new_rest_chain_service(
+                            api_url,
+                            api_network,
+                            api_api_type,
+                            api_credentials,
+                            api_request,
+                        )
+                        .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -5109,11 +5172,18 @@ const _: fn() = || {
         let _: bool = CheckMessageResponse.is_valid;
     }
     {
+        let ClaimDepositQuote = None::<crate::models::ClaimDepositQuote>.unwrap();
+        let _: u32 = ClaimDepositQuote.confirmations_required;
+        let _: u64 = ClaimDepositQuote.credit_amount_sats;
+        let _: u64 = ClaimDepositQuote.fee_sats;
+        let _: u64 = ClaimDepositQuote.fee_rate_sat_per_vbyte;
+        let _: bool = ClaimDepositQuote.is_estimate;
+    }
+    {
         let ClaimDepositRequest = None::<crate::models::ClaimDepositRequest>.unwrap();
         let _: String = ClaimDepositRequest.txid;
         let _: u32 = ClaimDepositRequest.vout;
         let _: Option<crate::models::MaxFee> = ClaimDepositRequest.max_fee;
-        let _: Option<u32> = ClaimDepositRequest.max_instant_fee_bps;
     }
     {
         let ClaimDepositResponse = None::<crate::models::ClaimDepositResponse>.unwrap();
@@ -5138,7 +5208,6 @@ const _: fn() = || {
         let _: crate::models::Network = Config.network;
         let _: u32 = Config.sync_interval_secs;
         let _: Option<crate::models::MaxFee> = Config.max_deposit_claim_fee;
-        let _: Option<u32> = Config.max_instant_deposit_claim_fee_bps;
         let _: Option<String> = Config.lnurl_domain;
         let _: bool = Config.prefer_spark_over_lightning;
         let _: bool = Config.exit_chain_auto_fetch_enabled;
@@ -5152,6 +5221,7 @@ const _: fn() = || {
         let _: u32 = Config.max_concurrent_claims;
         let _: Option<crate::models::SparkConfig> = Config.spark_config;
         let _: bool = Config.background_tasks_enabled;
+        let _: Option<crate::models::ProxyConfig> = Config.proxy;
         let _: Option<crate::models::CrossChainConfig> = Config.cross_chain_config;
     }
     {
@@ -5504,6 +5574,7 @@ const _: fn() = || {
         let _: Option<String> = DepositInfo.refund_tx_id;
         let _: Option<crate::errors::DepositClaimError> = DepositInfo.claim_error;
         let _: Option<crate::models::InstantClaimStatus> = DepositInfo.instant_claim_status;
+        let _: Option<crate::models::RefundState> = DepositInfo.refund_state;
     }
     {
         let DeriveSeedsOutput = None::<crate::models::DeriveSeedsOutput>.unwrap();
@@ -5606,6 +5677,20 @@ const _: fn() = || {
         }
     }
     {
+        let FetchClaimDepositQuoteRequest =
+            None::<crate::models::FetchClaimDepositQuoteRequest>.unwrap();
+        let _: String = FetchClaimDepositQuoteRequest.txid;
+        let _: u32 = FetchClaimDepositQuoteRequest.vout;
+    }
+    {
+        let FetchClaimDepositQuoteResponse =
+            None::<crate::models::FetchClaimDepositQuoteResponse>.unwrap();
+        let _: u64 = FetchClaimDepositQuoteResponse.amount_sats;
+        let _: u32 = FetchClaimDepositQuoteResponse.confirmations;
+        let _: Option<crate::models::ClaimDepositQuote> = FetchClaimDepositQuoteResponse.instant;
+        let _: crate::models::ClaimDepositQuote = FetchClaimDepositQuoteResponse.mature;
+    }
+    {
         let FetchConversionLimitsRequest =
             None::<crate::models::FetchConversionLimitsRequest>.unwrap();
         let _: crate::models::ConversionType = FetchConversionLimitsRequest.conversion_type;
@@ -5649,6 +5734,10 @@ const _: fn() = || {
     {
         let GetPaymentResponse = None::<crate::models::GetPaymentResponse>.unwrap();
         let _: crate::models::Payment = GetPaymentResponse.payment;
+    }
+    {
+        let GetSparkStatusRequest = None::<crate::models::GetSparkStatusRequest>.unwrap();
+        let _: Option<crate::models::ProxyConfig> = GetSparkStatusRequest.proxy;
     }
     {
         let GetTokensMetadataRequest = None::<crate::models::GetTokensMetadataRequest>.unwrap();
@@ -5718,22 +5807,13 @@ const _: fn() = || {
             let _: crate::models::CrossChainAddressDetails = field0;
         }
     }
-    match None::<crate::models::InstantClaimDeclineReason>.unwrap() {
-        crate::models::InstantClaimDeclineReason::NoPlan => {}
-        crate::models::InstantClaimDeclineReason::FeeExceeded {
-            max_bps,
-            quoted_bps,
-            quoted_sats,
-        } => {
-            let _: u32 = max_bps;
-            let _: u32 = quoted_bps;
-            let _: u64 = quoted_sats;
-        }
-        crate::models::InstantClaimDeclineReason::SubmissionFailed => {}
-    }
     match None::<crate::models::InstantClaimStatus>.unwrap() {
-        crate::models::InstantClaimStatus::Declined { reason } => {
-            let _: crate::models::InstantClaimDeclineReason = reason;
+        crate::models::InstantClaimStatus::Declined {
+            max_fee_sats,
+            confirmations,
+        } => {
+            let _: Option<u64> = max_fee_sats;
+            let _: u32 = confirmations;
         }
         crate::models::InstantClaimStatus::Submitted { claim_id } => {
             let _: String = claim_id;
@@ -5880,6 +5960,7 @@ const _: fn() = || {
         let _: String = LnurlWithdrawRequestDetails.default_description;
         let _: u64 = LnurlWithdrawRequestDetails.min_withdrawable;
         let _: u64 = LnurlWithdrawRequestDetails.max_withdrawable;
+        let _: String = LnurlWithdrawRequestDetails.url;
     }
     {
         let LnurlWithdrawResponse = None::<crate::models::LnurlWithdrawResponse>.unwrap();
@@ -5923,6 +6004,10 @@ const _: fn() = || {
         let MintIssuerTokenRequest = None::<crate::models::MintIssuerTokenRequest>.unwrap();
         let _: u128 = MintIssuerTokenRequest.amount;
     }
+    {
+        let NewRestChainServiceRequest = None::<crate::models::NewRestChainServiceRequest>.unwrap();
+        let _: Option<crate::models::ProxyConfig> = NewRestChainServiceRequest.proxy;
+    }
     match None::<crate::models::OptimizationOutcome>.unwrap() {
         crate::models::OptimizationOutcome::Completed { rounds_executed } => {
             let _: u32 = rounds_executed;
@@ -5952,6 +6037,7 @@ const _: fn() = || {
         let PasskeyConfig = None::<crate::models::PasskeyConfig>.unwrap();
         let _: Option<String> = PasskeyConfig.default_label;
         let _: Option<crate::models::PasskeyProviderOptions> = PasskeyConfig.provider_options;
+        let _: Option<crate::models::ProxyConfig> = PasskeyConfig.proxy;
     }
     {
         let PasskeyCredential = None::<crate::models::PasskeyCredential>.unwrap();
@@ -5991,6 +6077,9 @@ const _: fn() = || {
         } => {
             let _: Vec<u8> = credential_id;
             let _: crate::errors::PrfProviderError = source;
+        }
+        crate::errors::PasskeyError::InvalidConfig(field0) => {
+            let _: String = field0;
         }
         crate::errors::PasskeyError::Generic(field0) => {
             let _: String = field0;
@@ -6224,6 +6313,13 @@ const _: fn() = || {
         }
     }
     {
+        let ProxyConfig = None::<crate::models::ProxyConfig>.unwrap();
+        let _: String = ProxyConfig.host;
+        let _: u16 = ProxyConfig.port;
+        let _: Option<String> = ProxyConfig.username;
+        let _: Option<String> = ProxyConfig.password;
+    }
+    {
         let PublishSignedLnurlPayPackageRequest =
             None::<crate::models::PublishSignedLnurlPayPackageRequest>.unwrap();
         let _: crate::models::SignedTransferPackage =
@@ -6323,6 +6419,12 @@ const _: fn() = || {
         let _: u32 = RefundPendingConversionsResponse.skipped;
         let _: u32 = RefundPendingConversionsResponse.failed;
     }
+    match None::<crate::models::RefundState>.unwrap() {
+        crate::models::RefundState::BroadcastPending { last_error } => {
+            let _: Option<String> = last_error;
+        }
+        crate::models::RefundState::Broadcast => {}
+    }
     {
         let RegisterLightningAddressRequest =
             None::<crate::models::RegisterLightningAddressRequest>.unwrap();
@@ -6397,6 +6499,17 @@ const _: fn() = || {
         crate::errors::SdkError::MissingUtxo { tx, vout } => {
             let _: String = tx;
             let _: u32 = vout;
+        }
+        crate::errors::SdkError::DepositClaimInProgress { tx, vout } => {
+            let _: String = tx;
+            let _: u32 = vout;
+        }
+        crate::errors::SdkError::RefundReplacementFeeTooLow {
+            pending_fee_sats,
+            required_fee_sats,
+        } => {
+            let _: u64 = pending_fee_sats;
+            let _: u64 = required_fee_sats;
         }
         crate::errors::SdkError::LnurlError(field0) => {
             let _: String = field0;
@@ -7922,18 +8035,34 @@ impl SseDecode for crate::models::CheckMessageResponse {
     }
 }
 
+impl SseDecode for crate::models::ClaimDepositQuote {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_confirmationsRequired = <u32>::sse_decode(deserializer);
+        let mut var_creditAmountSats = <u64>::sse_decode(deserializer);
+        let mut var_feeSats = <u64>::sse_decode(deserializer);
+        let mut var_feeRateSatPerVbyte = <u64>::sse_decode(deserializer);
+        let mut var_isEstimate = <bool>::sse_decode(deserializer);
+        return crate::models::ClaimDepositQuote {
+            confirmations_required: var_confirmationsRequired,
+            credit_amount_sats: var_creditAmountSats,
+            fee_sats: var_feeSats,
+            fee_rate_sat_per_vbyte: var_feeRateSatPerVbyte,
+            is_estimate: var_isEstimate,
+        };
+    }
+}
+
 impl SseDecode for crate::models::ClaimDepositRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_txid = <String>::sse_decode(deserializer);
         let mut var_vout = <u32>::sse_decode(deserializer);
         let mut var_maxFee = <Option<crate::models::MaxFee>>::sse_decode(deserializer);
-        let mut var_maxInstantFeeBps = <Option<u32>>::sse_decode(deserializer);
         return crate::models::ClaimDepositRequest {
             txid: var_txid,
             vout: var_vout,
             max_fee: var_maxFee,
-            max_instant_fee_bps: var_maxInstantFeeBps,
         };
     }
 }
@@ -7988,7 +8117,6 @@ impl SseDecode for crate::models::Config {
         let mut var_network = <crate::models::Network>::sse_decode(deserializer);
         let mut var_syncIntervalSecs = <u32>::sse_decode(deserializer);
         let mut var_maxDepositClaimFee = <Option<crate::models::MaxFee>>::sse_decode(deserializer);
-        let mut var_maxInstantDepositClaimFeeBps = <Option<u32>>::sse_decode(deserializer);
         let mut var_lnurlDomain = <Option<String>>::sse_decode(deserializer);
         let mut var_preferSparkOverLightning = <bool>::sse_decode(deserializer);
         let mut var_exitChainAutoFetchEnabled = <bool>::sse_decode(deserializer);
@@ -8006,6 +8134,7 @@ impl SseDecode for crate::models::Config {
         let mut var_maxConcurrentClaims = <u32>::sse_decode(deserializer);
         let mut var_sparkConfig = <Option<crate::models::SparkConfig>>::sse_decode(deserializer);
         let mut var_backgroundTasksEnabled = <bool>::sse_decode(deserializer);
+        let mut var_proxy = <Option<crate::models::ProxyConfig>>::sse_decode(deserializer);
         let mut var_crossChainConfig =
             <Option<crate::models::CrossChainConfig>>::sse_decode(deserializer);
         return crate::models::Config {
@@ -8013,7 +8142,6 @@ impl SseDecode for crate::models::Config {
             network: var_network,
             sync_interval_secs: var_syncIntervalSecs,
             max_deposit_claim_fee: var_maxDepositClaimFee,
-            max_instant_deposit_claim_fee_bps: var_maxInstantDepositClaimFeeBps,
             lnurl_domain: var_lnurlDomain,
             prefer_spark_over_lightning: var_preferSparkOverLightning,
             exit_chain_auto_fetch_enabled: var_exitChainAutoFetchEnabled,
@@ -8027,6 +8155,7 @@ impl SseDecode for crate::models::Config {
             max_concurrent_claims: var_maxConcurrentClaims,
             spark_config: var_sparkConfig,
             background_tasks_enabled: var_backgroundTasksEnabled,
+            proxy: var_proxy,
             cross_chain_config: var_crossChainConfig,
         };
     }
@@ -8765,6 +8894,7 @@ impl SseDecode for crate::models::DepositInfo {
             <Option<crate::errors::DepositClaimError>>::sse_decode(deserializer);
         let mut var_instantClaimStatus =
             <Option<crate::models::InstantClaimStatus>>::sse_decode(deserializer);
+        let mut var_refundState = <Option<crate::models::RefundState>>::sse_decode(deserializer);
         return crate::models::DepositInfo {
             txid: var_txid,
             vout: var_vout,
@@ -8774,6 +8904,7 @@ impl SseDecode for crate::models::DepositInfo {
             refund_tx_id: var_refundTxId,
             claim_error: var_claimError,
             instant_claim_status: var_instantClaimStatus,
+            refund_state: var_refundState,
         };
     }
 }
@@ -9041,6 +9172,34 @@ impl SseDecode for crate::models::FeePolicy {
     }
 }
 
+impl SseDecode for crate::models::FetchClaimDepositQuoteRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_txid = <String>::sse_decode(deserializer);
+        let mut var_vout = <u32>::sse_decode(deserializer);
+        return crate::models::FetchClaimDepositQuoteRequest {
+            txid: var_txid,
+            vout: var_vout,
+        };
+    }
+}
+
+impl SseDecode for crate::models::FetchClaimDepositQuoteResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_amountSats = <u64>::sse_decode(deserializer);
+        let mut var_confirmations = <u32>::sse_decode(deserializer);
+        let mut var_instant = <Option<crate::models::ClaimDepositQuote>>::sse_decode(deserializer);
+        let mut var_mature = <crate::models::ClaimDepositQuote>::sse_decode(deserializer);
+        return crate::models::FetchClaimDepositQuoteResponse {
+            amount_sats: var_amountSats,
+            confirmations: var_confirmations,
+            instant: var_instant,
+            mature: var_mature,
+        };
+    }
+}
+
 impl SseDecode for crate::models::FetchConversionLimitsRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -9143,6 +9302,14 @@ impl SseDecode for crate::models::GetPaymentResponse {
         return crate::models::GetPaymentResponse {
             payment: var_payment,
         };
+    }
+}
+
+impl SseDecode for crate::models::GetSparkStatusRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_proxy = <Option<crate::models::ProxyConfig>>::sse_decode(deserializer);
+        return crate::models::GetSparkStatusRequest { proxy: var_proxy };
     }
 }
 
@@ -9281,43 +9448,18 @@ impl SseDecode for crate::models::InputType {
     }
 }
 
-impl SseDecode for crate::models::InstantClaimDeclineReason {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                return crate::models::InstantClaimDeclineReason::NoPlan;
-            }
-            1 => {
-                let mut var_maxBps = <u32>::sse_decode(deserializer);
-                let mut var_quotedBps = <u32>::sse_decode(deserializer);
-                let mut var_quotedSats = <u64>::sse_decode(deserializer);
-                return crate::models::InstantClaimDeclineReason::FeeExceeded {
-                    max_bps: var_maxBps,
-                    quoted_bps: var_quotedBps,
-                    quoted_sats: var_quotedSats,
-                };
-            }
-            2 => {
-                return crate::models::InstantClaimDeclineReason::SubmissionFailed;
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
 impl SseDecode for crate::models::InstantClaimStatus {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_reason =
-                    <crate::models::InstantClaimDeclineReason>::sse_decode(deserializer);
-                return crate::models::InstantClaimStatus::Declined { reason: var_reason };
+                let mut var_maxFeeSats = <Option<u64>>::sse_decode(deserializer);
+                let mut var_confirmations = <u32>::sse_decode(deserializer);
+                return crate::models::InstantClaimStatus::Declined {
+                    max_fee_sats: var_maxFeeSats,
+                    confirmations: var_confirmations,
+                };
             }
             1 => {
                 let mut var_claimId = <String>::sse_decode(deserializer);
@@ -10195,12 +10337,14 @@ impl SseDecode for crate::models::LnurlWithdrawRequestDetails {
         let mut var_defaultDescription = <String>::sse_decode(deserializer);
         let mut var_minWithdrawable = <u64>::sse_decode(deserializer);
         let mut var_maxWithdrawable = <u64>::sse_decode(deserializer);
+        let mut var_url = <String>::sse_decode(deserializer);
         return crate::models::LnurlWithdrawRequestDetails {
             callback: var_callback,
             k1: var_k1,
             default_description: var_defaultDescription,
             min_withdrawable: var_minWithdrawable,
             max_withdrawable: var_maxWithdrawable,
+            url: var_url,
         };
     }
 }
@@ -10313,6 +10457,14 @@ impl SseDecode for crate::models::Network {
     }
 }
 
+impl SseDecode for crate::models::NewRestChainServiceRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_proxy = <Option<crate::models::ProxyConfig>>::sse_decode(deserializer);
+        return crate::models::NewRestChainServiceRequest { proxy: var_proxy };
+    }
+}
+
 impl SseDecode for crate::models::OnchainConfirmationSpeed {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -10401,6 +10553,17 @@ impl SseDecode for Option<crate::models::BuildTransferPackageOptions> {
             return Some(<crate::models::BuildTransferPackageOptions>::sse_decode(
                 deserializer,
             ));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::ClaimDepositQuote> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ClaimDepositQuote>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -10653,6 +10816,28 @@ impl SseDecode for Option<crate::models::PaymentDetails> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<crate::models::PaymentDetails>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::ProxyConfig> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::ProxyConfig>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<crate::models::RefundState> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<crate::models::RefundState>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -11010,9 +11195,11 @@ impl SseDecode for crate::models::PasskeyConfig {
         let mut var_defaultLabel = <Option<String>>::sse_decode(deserializer);
         let mut var_providerOptions =
             <Option<crate::models::PasskeyProviderOptions>>::sse_decode(deserializer);
+        let mut var_proxy = <Option<crate::models::ProxyConfig>>::sse_decode(deserializer);
         return crate::models::PasskeyConfig {
             default_label: var_defaultLabel,
             provider_options: var_providerOptions,
+            proxy: var_proxy,
         };
     }
 }
@@ -11079,6 +11266,10 @@ impl SseDecode for crate::errors::PasskeyError {
                 };
             }
             9 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::errors::PasskeyError::InvalidConfig(var_field0);
+            }
+            10 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::PasskeyError::Generic(var_field0);
             }
@@ -11580,6 +11771,22 @@ impl SseDecode for crate::errors::PrfProviderError {
     }
 }
 
+impl SseDecode for crate::models::ProxyConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_host = <String>::sse_decode(deserializer);
+        let mut var_port = <u16>::sse_decode(deserializer);
+        let mut var_username = <Option<String>>::sse_decode(deserializer);
+        let mut var_password = <Option<String>>::sse_decode(deserializer);
+        return crate::models::ProxyConfig {
+            host: var_host,
+            port: var_port,
+            username: var_username,
+            password: var_password,
+        };
+    }
+}
+
 impl SseDecode for crate::models::PublishSignedLnurlPayPackageRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -11802,6 +12009,27 @@ impl SseDecode for crate::models::RefundPendingConversionsResponse {
     }
 }
 
+impl SseDecode for crate::models::RefundState {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_lastError = <Option<String>>::sse_decode(deserializer);
+                return crate::models::RefundState::BroadcastPending {
+                    last_error: var_lastError,
+                };
+            }
+            1 => {
+                return crate::models::RefundState::Broadcast;
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for crate::models::RegisterLightningAddressRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -11891,10 +12119,12 @@ impl SseDecode for crate::models::SdkContextConfig {
         let mut var_network = <crate::models::Network>::sse_decode(deserializer);
         let mut var_apiKey = <Option<String>>::sse_decode(deserializer);
         let mut var_connectionsPerOperator = <Option<u32>>::sse_decode(deserializer);
+        let mut var_proxy = <Option<crate::models::ProxyConfig>>::sse_decode(deserializer);
         return crate::models::SdkContextConfig {
             network: var_network,
             api_key: var_apiKey,
             connections_per_operator: var_connectionsPerOperator,
+            proxy: var_proxy,
         };
     }
 }
@@ -11957,26 +12187,42 @@ impl SseDecode for crate::errors::SdkError {
                 };
             }
             9 => {
+                let mut var_tx = <String>::sse_decode(deserializer);
+                let mut var_vout = <u32>::sse_decode(deserializer);
+                return crate::errors::SdkError::DepositClaimInProgress {
+                    tx: var_tx,
+                    vout: var_vout,
+                };
+            }
+            10 => {
+                let mut var_pendingFeeSats = <u64>::sse_decode(deserializer);
+                let mut var_requiredFeeSats = <u64>::sse_decode(deserializer);
+                return crate::errors::SdkError::RefundReplacementFeeTooLow {
+                    pending_fee_sats: var_pendingFeeSats,
+                    required_fee_sats: var_requiredFeeSats,
+                };
+            }
+            11 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::LnurlError(var_field0);
             }
-            10 => {
+            12 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::Signer(var_field0);
             }
-            11 => {
+            13 => {
                 return crate::errors::SdkError::OptimizationAlreadyRunning;
             }
-            12 => {
+            14 => {
                 return crate::errors::SdkError::OptimizationCancelled;
             }
-            13 => {
+            15 => {
                 let mut var_requiredSat = <u64>::sse_decode(deserializer);
                 return crate::errors::SdkError::InsufficientCpfpFunds {
                     required_sat: var_requiredSat,
                 };
             }
-            14 => {
+            16 => {
                 let mut var_txid = <String>::sse_decode(deserializer);
                 let mut var_vout = <u32>::sse_decode(deserializer);
                 return crate::errors::SdkError::FundingUtxoConflict {
@@ -11984,7 +12230,7 @@ impl SseDecode for crate::errors::SdkError {
                     vout: var_vout,
                 };
             }
-            15 => {
+            17 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::Generic(var_field0);
             }
@@ -13282,180 +13528,186 @@ fn pde_ffi_dispatcher_primary_impl(
             rust_vec_len,
             data_len,
         ),
-        17 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
+        17 => wire__crate__sdk__BreezSdk_fetch_claim_deposit_quote_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        18 => wire__crate__sdk__BreezSdk_get_cross_chain_routes_impl(
+        18 => wire__crate__sdk__BreezSdk_fetch_conversion_limits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        19 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
-        20 => {
+        19 => wire__crate__sdk__BreezSdk_get_cross_chain_routes_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        20 => wire__crate__sdk__BreezSdk_get_info_impl(port, ptr, rust_vec_len, data_len),
+        21 => {
             wire__crate__sdk__BreezSdk_get_lightning_address_impl(port, ptr, rust_vec_len, data_len)
         }
-        21 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
-        23 => {
+        22 => wire__crate__sdk__BreezSdk_get_payment_impl(port, ptr, rust_vec_len, data_len),
+        24 => {
             wire__crate__sdk__BreezSdk_get_tokens_metadata_impl(port, ptr, rust_vec_len, data_len)
         }
-        24 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
-        25 => wire__crate__sdk__BreezSdk_import_unilateral_exit_state_impl(
+        25 => wire__crate__sdk__BreezSdk_get_user_settings_impl(port, ptr, rust_vec_len, data_len),
+        26 => wire__crate__sdk__BreezSdk_import_unilateral_exit_state_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        26 => wire__crate__sdk__BreezSdk_list_contacts_impl(port, ptr, rust_vec_len, data_len),
-        27 => {
+        27 => wire__crate__sdk__BreezSdk_list_contacts_impl(port, ptr, rust_vec_len, data_len),
+        28 => {
             wire__crate__sdk__BreezSdk_list_fiat_currencies_impl(port, ptr, rust_vec_len, data_len)
         }
-        28 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
-        29 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
-        30 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
+        29 => wire__crate__sdk__BreezSdk_list_fiat_rates_impl(port, ptr, rust_vec_len, data_len),
+        30 => wire__crate__sdk__BreezSdk_list_payments_impl(port, ptr, rust_vec_len, data_len),
+        31 => wire__crate__sdk__BreezSdk_list_unclaimed_deposits_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        31 => wire__crate__sdk__BreezSdk_list_webhooks_impl(port, ptr, rust_vec_len, data_len),
-        32 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
-        33 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        34 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
-        35 => wire__crate__sdk__BreezSdk_optimize_leaves_impl(port, ptr, rust_vec_len, data_len),
-        36 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
-        37 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
-        38 => {
+        32 => wire__crate__sdk__BreezSdk_list_webhooks_impl(port, ptr, rust_vec_len, data_len),
+        33 => wire__crate__sdk__BreezSdk_lnurl_auth_impl(port, ptr, rust_vec_len, data_len),
+        34 => wire__crate__sdk__BreezSdk_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        35 => wire__crate__sdk__BreezSdk_lnurl_withdraw_impl(port, ptr, rust_vec_len, data_len),
+        36 => wire__crate__sdk__BreezSdk_optimize_leaves_impl(port, ptr, rust_vec_len, data_len),
+        37 => wire__crate__sdk__BreezSdk_parse_impl(port, ptr, rust_vec_len, data_len),
+        38 => wire__crate__sdk__BreezSdk_prepare_lnurl_pay_impl(port, ptr, rust_vec_len, data_len),
+        39 => {
             wire__crate__sdk__BreezSdk_prepare_payment_link_impl(port, ptr, rust_vec_len, data_len)
         }
-        39 => wire__crate__sdk__BreezSdk_prepare_send_batch_impl(port, ptr, rust_vec_len, data_len),
-        40 => {
+        40 => wire__crate__sdk__BreezSdk_prepare_send_batch_impl(port, ptr, rust_vec_len, data_len),
+        41 => {
             wire__crate__sdk__BreezSdk_prepare_send_payment_impl(port, ptr, rust_vec_len, data_len)
         }
-        41 => wire__crate__sdk__BreezSdk_prepare_unilateral_exit_impl(
+        42 => wire__crate__sdk__BreezSdk_prepare_unilateral_exit_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        42 => wire__crate__sdk__BreezSdk_publish_signed_lnurl_pay_package_impl(
+        43 => wire__crate__sdk__BreezSdk_publish_signed_lnurl_pay_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        43 => wire__crate__sdk__BreezSdk_publish_signed_transfer_package_impl(
+        44 => wire__crate__sdk__BreezSdk_publish_signed_transfer_package_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        44 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
-        45 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
-        46 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
-        47 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
+        45 => wire__crate__sdk__BreezSdk_receive_payment_impl(port, ptr, rust_vec_len, data_len),
+        46 => wire__crate__sdk__BreezSdk_recommended_fees_impl(port, ptr, rust_vec_len, data_len),
+        47 => wire__crate__sdk__BreezSdk_refund_deposit_impl(port, ptr, rust_vec_len, data_len),
+        48 => wire__crate__sdk__BreezSdk_refund_pending_conversions_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        48 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
+        49 => wire__crate__sdk__BreezSdk_register_lightning_address_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        49 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
-        50 => {
+        50 => wire__crate__sdk__BreezSdk_register_webhook_impl(port, ptr, rust_vec_len, data_len),
+        51 => {
             wire__crate__sdk__BreezSdk_remove_event_listener_impl(port, ptr, rust_vec_len, data_len)
         }
-        51 => wire__crate__sdk__BreezSdk_send_batch_impl(port, ptr, rust_vec_len, data_len),
-        52 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
-        53 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
-        54 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
-        55 => wire__crate__sdk__BreezSdk_unilateral_exit_impl(port, ptr, rust_vec_len, data_len),
-        56 => wire__crate__sdk__BreezSdk_unilateral_exit_with_signer_impl(
+        52 => wire__crate__sdk__BreezSdk_send_batch_impl(port, ptr, rust_vec_len, data_len),
+        53 => wire__crate__sdk__BreezSdk_send_payment_impl(port, ptr, rust_vec_len, data_len),
+        54 => wire__crate__sdk__BreezSdk_sign_message_impl(port, ptr, rust_vec_len, data_len),
+        55 => wire__crate__sdk__BreezSdk_sync_wallet_impl(port, ptr, rust_vec_len, data_len),
+        56 => wire__crate__sdk__BreezSdk_unilateral_exit_impl(port, ptr, rust_vec_len, data_len),
+        57 => wire__crate__sdk__BreezSdk_unilateral_exit_with_signer_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        57 => wire__crate__sdk__BreezSdk_unregister_webhook_impl(port, ptr, rust_vec_len, data_len),
-        58 => wire__crate__sdk__BreezSdk_update_contact_impl(port, ptr, rust_vec_len, data_len),
-        59 => {
+        58 => wire__crate__sdk__BreezSdk_unregister_webhook_impl(port, ptr, rust_vec_len, data_len),
+        59 => wire__crate__sdk__BreezSdk_update_contact_impl(port, ptr, rust_vec_len, data_len),
+        60 => {
             wire__crate__sdk__BreezSdk_update_user_settings_impl(port, ptr, rust_vec_len, data_len)
         }
-        60 => wire__crate__passkey__PasskeyClient_check_availability_impl(
+        61 => wire__crate__passkey__PasskeyClient_check_availability_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        61 => wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
+        62 => wire__crate__passkey__PasskeyClient_connect_with_passkey_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        64 => wire__crate__passkey__PasskeyClient_register_impl(port, ptr, rust_vec_len, data_len),
-        65 => wire__crate__passkey__PasskeyClient_sign_in_impl(port, ptr, rust_vec_len, data_len),
-        66 => wire__crate__passkey__PasskeyLabels_list_impl(port, ptr, rust_vec_len, data_len),
-        67 => wire__crate__passkey__PasskeyLabels_store_impl(port, ptr, rust_vec_len, data_len),
-        68 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
-        75 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
+        65 => wire__crate__passkey__PasskeyClient_register_impl(port, ptr, rust_vec_len, data_len),
+        66 => wire__crate__passkey__PasskeyClient_sign_in_impl(port, ptr, rust_vec_len, data_len),
+        67 => wire__crate__passkey__PasskeyLabels_list_impl(port, ptr, rust_vec_len, data_len),
+        68 => wire__crate__passkey__PasskeyLabels_store_impl(port, ptr, rust_vec_len, data_len),
+        69 => wire__crate__sdk_builder__SdkBuilder_build_impl(port, ptr, rust_vec_len, data_len),
+        76 => wire__crate__issuer__TokenIssuer_burn_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        76 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
+        77 => wire__crate__issuer__TokenIssuer_create_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        77 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
+        78 => wire__crate__issuer__TokenIssuer_freeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        78 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
+        79 => wire__crate__issuer__TokenIssuer_get_issuer_token_balance_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        79 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
+        80 => wire__crate__issuer__TokenIssuer_get_issuer_token_metadata_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        80 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
+        81 => wire__crate__issuer__TokenIssuer_mint_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        81 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
+        82 => wire__crate__issuer__TokenIssuer_unfreeze_issuer_token_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        82 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
-        85 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
-        87 => wire__crate__chain_service__new_rest_chain_service_impl(
+        83 => wire__crate__sdk__connect_impl(port, ptr, rust_vec_len, data_len),
+        86 => wire__crate__sdk__get_spark_status_impl(port, ptr, rust_vec_len, data_len),
+        88 => wire__crate__chain_service__new_rest_chain_service_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        88 => {
+        89 => {
             wire__crate__sdk_context__new_shared_sdk_context_impl(port, ptr, rust_vec_len, data_len)
         }
         _ => unreachable!(),
@@ -13470,38 +13722,38 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        22 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
-        62 => wire__crate__passkey__PasskeyClient_labels_impl(ptr, rust_vec_len, data_len),
-        63 => wire__crate__passkey__PasskeyClient_new_impl(ptr, rust_vec_len, data_len),
-        69 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
-        70 => wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
+        23 => wire__crate__sdk__BreezSdk_get_token_issuer_impl(ptr, rust_vec_len, data_len),
+        63 => wire__crate__passkey__PasskeyClient_labels_impl(ptr, rust_vec_len, data_len),
+        64 => wire__crate__passkey__PasskeyClient_new_impl(ptr, rust_vec_len, data_len),
+        70 => wire__crate__sdk_builder__SdkBuilder_new_impl(ptr, rust_vec_len, data_len),
+        71 => wire__crate__sdk_builder__SdkBuilder_with_account_number_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        71 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
+        72 => wire__crate__sdk_builder__SdkBuilder_with_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        72 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
+        73 => wire__crate__sdk_builder__SdkBuilder_with_default_storage_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        73 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
+        74 => wire__crate__sdk_builder__SdkBuilder_with_rest_chain_service_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        74 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
+        75 => wire__crate__sdk_builder__SdkBuilder_with_shared_context_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        83 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
-        84 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
-        86 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        84 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
+        85 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
+        87 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -14475,13 +14727,36 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::CheckMessageRes
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ClaimDepositQuote> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.confirmations_required.into_into_dart().into_dart(),
+            self.0.credit_amount_sats.into_into_dart().into_dart(),
+            self.0.fee_sats.into_into_dart().into_dart(),
+            self.0.fee_rate_sat_per_vbyte.into_into_dart().into_dart(),
+            self.0.is_estimate.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ClaimDepositQuote>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ClaimDepositQuote>>
+    for crate::models::ClaimDepositQuote
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ClaimDepositQuote> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ClaimDepositRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.txid.into_into_dart().into_dart(),
             self.0.vout.into_into_dart().into_dart(),
             self.0.max_fee.into_into_dart().into_dart(),
-            self.0.max_instant_fee_bps.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -14577,10 +14852,6 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
             self.0.network.into_into_dart().into_dart(),
             self.0.sync_interval_secs.into_into_dart().into_dart(),
             self.0.max_deposit_claim_fee.into_into_dart().into_dart(),
-            self.0
-                .max_instant_deposit_claim_fee_bps
-                .into_into_dart()
-                .into_dart(),
             self.0.lnurl_domain.into_into_dart().into_dart(),
             self.0
                 .prefer_spark_over_lightning
@@ -14609,6 +14880,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::Config> {
             self.0.max_concurrent_claims.into_into_dart().into_dart(),
             self.0.spark_config.into_into_dart().into_dart(),
             self.0.background_tasks_enabled.into_into_dart().into_dart(),
+            self.0.proxy.into_into_dart().into_dart(),
             self.0.cross_chain_config.into_into_dart().into_dart(),
         ]
         .into_dart()
@@ -15581,6 +15853,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::DepositInfo> {
             self.0.refund_tx_id.into_into_dart().into_dart(),
             self.0.claim_error.into_into_dart().into_dart(),
             self.0.instant_claim_status.into_into_dart().into_dart(),
+            self.0.refund_state.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -16001,6 +16274,50 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FeePolicy>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FetchClaimDepositQuoteRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.txid.into_into_dart().into_dart(),
+            self.0.vout.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::FetchClaimDepositQuoteRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchClaimDepositQuoteRequest>>
+    for crate::models::FetchClaimDepositQuoteRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchClaimDepositQuoteRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FetchClaimDepositQuoteResponse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.amount_sats.into_into_dart().into_dart(),
+            self.0.confirmations.into_into_dart().into_dart(),
+            self.0.instant.into_into_dart().into_dart(),
+            self.0.mature.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::FetchClaimDepositQuoteResponse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::FetchClaimDepositQuoteResponse>>
+    for crate::models::FetchClaimDepositQuoteResponse
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::FetchClaimDepositQuoteResponse> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::FetchConversionLimitsRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -16175,6 +16492,23 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::GetPaymentRespo
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::GetSparkStatusRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.proxy.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::GetSparkStatusRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::GetSparkStatusRequest>>
+    for crate::models::GetSparkStatusRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::GetSparkStatusRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::GetTokensMetadataRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.0.token_identifiers.into_into_dart().into_dart()].into_dart()
@@ -16320,48 +16654,18 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::InputType>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::InstantClaimDeclineReason> {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self.0 {
-            crate::models::InstantClaimDeclineReason::NoPlan => [0.into_dart()].into_dart(),
-            crate::models::InstantClaimDeclineReason::FeeExceeded {
-                max_bps,
-                quoted_bps,
-                quoted_sats,
-            } => [
-                1.into_dart(),
-                max_bps.into_into_dart().into_dart(),
-                quoted_bps.into_into_dart().into_dart(),
-                quoted_sats.into_into_dart().into_dart(),
-            ]
-            .into_dart(),
-            crate::models::InstantClaimDeclineReason::SubmissionFailed => {
-                [2.into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for FrbWrapper<crate::models::InstantClaimDeclineReason>
-{
-}
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::InstantClaimDeclineReason>>
-    for crate::models::InstantClaimDeclineReason
-{
-    fn into_into_dart(self) -> FrbWrapper<crate::models::InstantClaimDeclineReason> {
-        self.into()
-    }
-}
-// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::InstantClaimStatus> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
-            crate::models::InstantClaimStatus::Declined { reason } => {
-                [0.into_dart(), reason.into_into_dart().into_dart()].into_dart()
-            }
+            crate::models::InstantClaimStatus::Declined {
+                max_fee_sats,
+                confirmations,
+            } => [
+                0.into_dart(),
+                max_fee_sats.into_into_dart().into_dart(),
+                confirmations.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             crate::models::InstantClaimStatus::Submitted { claim_id } => {
                 [1.into_dart(), claim_id.into_into_dart().into_dart()].into_dart()
             }
@@ -16855,6 +17159,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::LnurlWithdrawRe
             self.0.default_description.into_into_dart().into_dart(),
             self.0.min_withdrawable.into_into_dart().into_dart(),
             self.0.max_withdrawable.into_into_dart().into_dart(),
+            self.0.url.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -17045,6 +17350,23 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::Network>>
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::NewRestChainServiceRequest> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.0.proxy.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::NewRestChainServiceRequest>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::NewRestChainServiceRequest>>
+    for crate::models::NewRestChainServiceRequest
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::NewRestChainServiceRequest> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::OnchainConfirmationSpeed> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
@@ -17184,6 +17506,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::PasskeyConfig> 
         [
             self.0.default_label.into_into_dart().into_dart(),
             self.0.provider_options.into_into_dart().into_dart(),
+            self.0.proxy.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -17259,8 +17582,11 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::PasskeyError> {
                 source.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            crate::errors::PasskeyError::Generic(field0) => {
+            crate::errors::PasskeyError::InvalidConfig(field0) => {
                 [9.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::PasskeyError::Generic(field0) => {
+                [10.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -17883,6 +18209,29 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::errors::PrfProviderErro
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ProxyConfig> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.0.host.into_into_dart().into_dart(),
+            self.0.port.into_into_dart().into_dart(),
+            self.0.username.into_into_dart().into_dart(),
+            self.0.password.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::ProxyConfig>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::ProxyConfig>>
+    for crate::models::ProxyConfig
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::ProxyConfig> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart
     for FrbWrapper<crate::models::PublishSignedLnurlPayPackageRequest>
 {
@@ -18188,6 +18537,31 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RefundPendingCo
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::RefundState> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::models::RefundState::BroadcastPending { last_error } => {
+                [0.into_dart(), last_error.into_into_dart().into_dart()].into_dart()
+            }
+            crate::models::RefundState::Broadcast => [1.into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::models::RefundState>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::RefundState>>
+    for crate::models::RefundState
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::models::RefundState> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::RegisterLightningAddressRequest> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -18335,6 +18709,7 @@ impl flutter_rust_bridge::IntoDart for crate::models::SdkContextConfig {
             self.network.into_into_dart().into_dart(),
             self.api_key.into_into_dart().into_dart(),
             self.connections_per_operator.into_into_dart().into_dart(),
+            self.proxy.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -18396,25 +18771,40 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::SdkError> {
                 vout.into_into_dart().into_dart(),
             ]
             .into_dart(),
+            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => [
+                9.into_dart(),
+                tx.into_into_dart().into_dart(),
+                vout.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::errors::SdkError::RefundReplacementFeeTooLow {
+                pending_fee_sats,
+                required_fee_sats,
+            } => [
+                10.into_dart(),
+                pending_fee_sats.into_into_dart().into_dart(),
+                required_fee_sats.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             crate::errors::SdkError::LnurlError(field0) => {
-                [9.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [11.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::errors::SdkError::Signer(field0) => {
-                [10.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [12.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            crate::errors::SdkError::OptimizationAlreadyRunning => [11.into_dart()].into_dart(),
-            crate::errors::SdkError::OptimizationCancelled => [12.into_dart()].into_dart(),
+            crate::errors::SdkError::OptimizationAlreadyRunning => [13.into_dart()].into_dart(),
+            crate::errors::SdkError::OptimizationCancelled => [14.into_dart()].into_dart(),
             crate::errors::SdkError::InsufficientCpfpFunds { required_sat } => {
-                [13.into_dart(), required_sat.into_into_dart().into_dart()].into_dart()
+                [15.into_dart(), required_sat.into_into_dart().into_dart()].into_dart()
             }
             crate::errors::SdkError::FundingUtxoConflict { txid, vout } => [
-                14.into_dart(),
+                16.into_dart(),
                 txid.into_into_dart().into_dart(),
                 vout.into_into_dart().into_dart(),
             ]
             .into_dart(),
             crate::errors::SdkError::Generic(field0) => {
-                [15.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [17.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -20705,13 +21095,23 @@ impl SseEncode for crate::models::CheckMessageResponse {
     }
 }
 
+impl SseEncode for crate::models::ClaimDepositQuote {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.confirmations_required, serializer);
+        <u64>::sse_encode(self.credit_amount_sats, serializer);
+        <u64>::sse_encode(self.fee_sats, serializer);
+        <u64>::sse_encode(self.fee_rate_sat_per_vbyte, serializer);
+        <bool>::sse_encode(self.is_estimate, serializer);
+    }
+}
+
 impl SseEncode for crate::models::ClaimDepositRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.txid, serializer);
         <u32>::sse_encode(self.vout, serializer);
         <Option<crate::models::MaxFee>>::sse_encode(self.max_fee, serializer);
-        <Option<u32>>::sse_encode(self.max_instant_fee_bps, serializer);
     }
 }
 
@@ -20751,7 +21151,6 @@ impl SseEncode for crate::models::Config {
         <crate::models::Network>::sse_encode(self.network, serializer);
         <u32>::sse_encode(self.sync_interval_secs, serializer);
         <Option<crate::models::MaxFee>>::sse_encode(self.max_deposit_claim_fee, serializer);
-        <Option<u32>>::sse_encode(self.max_instant_deposit_claim_fee_bps, serializer);
         <Option<String>>::sse_encode(self.lnurl_domain, serializer);
         <bool>::sse_encode(self.prefer_spark_over_lightning, serializer);
         <bool>::sse_encode(self.exit_chain_auto_fetch_enabled, serializer);
@@ -20777,6 +21176,7 @@ impl SseEncode for crate::models::Config {
         <u32>::sse_encode(self.max_concurrent_claims, serializer);
         <Option<crate::models::SparkConfig>>::sse_encode(self.spark_config, serializer);
         <bool>::sse_encode(self.background_tasks_enabled, serializer);
+        <Option<crate::models::ProxyConfig>>::sse_encode(self.proxy, serializer);
         <Option<crate::models::CrossChainConfig>>::sse_encode(self.cross_chain_config, serializer);
     }
 }
@@ -21410,6 +21810,7 @@ impl SseEncode for crate::models::DepositInfo {
             self.instant_claim_status,
             serializer,
         );
+        <Option<crate::models::RefundState>>::sse_encode(self.refund_state, serializer);
     }
 }
 
@@ -21618,6 +22019,24 @@ impl SseEncode for crate::models::FeePolicy {
     }
 }
 
+impl SseEncode for crate::models::FetchClaimDepositQuoteRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.txid, serializer);
+        <u32>::sse_encode(self.vout, serializer);
+    }
+}
+
+impl SseEncode for crate::models::FetchClaimDepositQuoteResponse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u64>::sse_encode(self.amount_sats, serializer);
+        <u32>::sse_encode(self.confirmations, serializer);
+        <Option<crate::models::ClaimDepositQuote>>::sse_encode(self.instant, serializer);
+        <crate::models::ClaimDepositQuote>::sse_encode(self.mature, serializer);
+    }
+}
+
 impl SseEncode for crate::models::FetchConversionLimitsRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -21687,6 +22106,13 @@ impl SseEncode for crate::models::GetPaymentResponse {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <crate::models::Payment>::sse_encode(self.payment, serializer);
+    }
+}
+
+impl SseEncode for crate::models::GetSparkStatusRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<crate::models::ProxyConfig>>::sse_encode(self.proxy, serializer);
     }
 }
 
@@ -21799,40 +22225,17 @@ impl SseEncode for crate::models::InputType {
     }
 }
 
-impl SseEncode for crate::models::InstantClaimDeclineReason {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::models::InstantClaimDeclineReason::NoPlan => {
-                <i32>::sse_encode(0, serializer);
-            }
-            crate::models::InstantClaimDeclineReason::FeeExceeded {
-                max_bps,
-                quoted_bps,
-                quoted_sats,
-            } => {
-                <i32>::sse_encode(1, serializer);
-                <u32>::sse_encode(max_bps, serializer);
-                <u32>::sse_encode(quoted_bps, serializer);
-                <u64>::sse_encode(quoted_sats, serializer);
-            }
-            crate::models::InstantClaimDeclineReason::SubmissionFailed => {
-                <i32>::sse_encode(2, serializer);
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
 impl SseEncode for crate::models::InstantClaimStatus {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {
-            crate::models::InstantClaimStatus::Declined { reason } => {
+            crate::models::InstantClaimStatus::Declined {
+                max_fee_sats,
+                confirmations,
+            } => {
                 <i32>::sse_encode(0, serializer);
-                <crate::models::InstantClaimDeclineReason>::sse_encode(reason, serializer);
+                <Option<u64>>::sse_encode(max_fee_sats, serializer);
+                <u32>::sse_encode(confirmations, serializer);
             }
             crate::models::InstantClaimStatus::Submitted { claim_id } => {
                 <i32>::sse_encode(1, serializer);
@@ -22495,6 +22898,7 @@ impl SseEncode for crate::models::LnurlWithdrawRequestDetails {
         <String>::sse_encode(self.default_description, serializer);
         <u64>::sse_encode(self.min_withdrawable, serializer);
         <u64>::sse_encode(self.max_withdrawable, serializer);
+        <String>::sse_encode(self.url, serializer);
     }
 }
 
@@ -22586,6 +22990,13 @@ impl SseEncode for crate::models::Network {
     }
 }
 
+impl SseEncode for crate::models::NewRestChainServiceRequest {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<crate::models::ProxyConfig>>::sse_encode(self.proxy, serializer);
+    }
+}
+
 impl SseEncode for crate::models::OnchainConfirmationSpeed {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -22669,6 +23080,16 @@ impl SseEncode for Option<crate::models::BuildTransferPackageOptions> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <crate::models::BuildTransferPackageOptions>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::ClaimDepositQuote> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ClaimDepositQuote>::sse_encode(value, serializer);
         }
     }
 }
@@ -22889,6 +23310,26 @@ impl SseEncode for Option<crate::models::PaymentDetails> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <crate::models::PaymentDetails>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::ProxyConfig> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::ProxyConfig>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<crate::models::RefundState> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <crate::models::RefundState>::sse_encode(value, serializer);
         }
     }
 }
@@ -23195,6 +23636,7 @@ impl SseEncode for crate::models::PasskeyConfig {
             self.provider_options,
             serializer,
         );
+        <Option<crate::models::ProxyConfig>>::sse_encode(self.proxy, serializer);
     }
 }
 
@@ -23252,8 +23694,12 @@ impl SseEncode for crate::errors::PasskeyError {
                 <Vec<u8>>::sse_encode(credential_id, serializer);
                 <crate::errors::PrfProviderError>::sse_encode(source, serializer);
             }
-            crate::errors::PasskeyError::Generic(field0) => {
+            crate::errors::PasskeyError::InvalidConfig(field0) => {
                 <i32>::sse_encode(9, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::errors::PasskeyError::Generic(field0) => {
+                <i32>::sse_encode(10, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             _ => {
@@ -23655,6 +24101,16 @@ impl SseEncode for crate::errors::PrfProviderError {
     }
 }
 
+impl SseEncode for crate::models::ProxyConfig {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.host, serializer);
+        <u16>::sse_encode(self.port, serializer);
+        <Option<String>>::sse_encode(self.username, serializer);
+        <Option<String>>::sse_encode(self.password, serializer);
+    }
+}
+
 impl SseEncode for crate::models::PublishSignedLnurlPayPackageRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -23824,6 +24280,24 @@ impl SseEncode for crate::models::RefundPendingConversionsResponse {
     }
 }
 
+impl SseEncode for crate::models::RefundState {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::models::RefundState::BroadcastPending { last_error } => {
+                <i32>::sse_encode(0, serializer);
+                <Option<String>>::sse_encode(last_error, serializer);
+            }
+            crate::models::RefundState::Broadcast => {
+                <i32>::sse_encode(1, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for crate::models::RegisterLightningAddressRequest {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -23886,6 +24360,7 @@ impl SseEncode for crate::models::SdkContextConfig {
         <crate::models::Network>::sse_encode(self.network, serializer);
         <Option<String>>::sse_encode(self.api_key, serializer);
         <Option<u32>>::sse_encode(self.connections_per_operator, serializer);
+        <Option<crate::models::ProxyConfig>>::sse_encode(self.proxy, serializer);
     }
 }
 
@@ -23940,31 +24415,44 @@ impl SseEncode for crate::errors::SdkError {
                 <String>::sse_encode(tx, serializer);
                 <u32>::sse_encode(vout, serializer);
             }
-            crate::errors::SdkError::LnurlError(field0) => {
+            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => {
                 <i32>::sse_encode(9, serializer);
+                <String>::sse_encode(tx, serializer);
+                <u32>::sse_encode(vout, serializer);
+            }
+            crate::errors::SdkError::RefundReplacementFeeTooLow {
+                pending_fee_sats,
+                required_fee_sats,
+            } => {
+                <i32>::sse_encode(10, serializer);
+                <u64>::sse_encode(pending_fee_sats, serializer);
+                <u64>::sse_encode(required_fee_sats, serializer);
+            }
+            crate::errors::SdkError::LnurlError(field0) => {
+                <i32>::sse_encode(11, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             crate::errors::SdkError::Signer(field0) => {
-                <i32>::sse_encode(10, serializer);
+                <i32>::sse_encode(12, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             crate::errors::SdkError::OptimizationAlreadyRunning => {
-                <i32>::sse_encode(11, serializer);
+                <i32>::sse_encode(13, serializer);
             }
             crate::errors::SdkError::OptimizationCancelled => {
-                <i32>::sse_encode(12, serializer);
+                <i32>::sse_encode(14, serializer);
             }
             crate::errors::SdkError::InsufficientCpfpFunds { required_sat } => {
-                <i32>::sse_encode(13, serializer);
+                <i32>::sse_encode(15, serializer);
                 <u64>::sse_encode(required_sat, serializer);
             }
             crate::errors::SdkError::FundingUtxoConflict { txid, vout } => {
-                <i32>::sse_encode(14, serializer);
+                <i32>::sse_encode(16, serializer);
                 <String>::sse_encode(txid, serializer);
                 <u32>::sse_encode(vout, serializer);
             }
             crate::errors::SdkError::Generic(field0) => {
-                <i32>::sse_encode(15, serializer);
+                <i32>::sse_encode(17, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             _ => {

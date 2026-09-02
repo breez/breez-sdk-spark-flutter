@@ -6238,306 +6238,6 @@ as CrossChainAddressDetails,
 }
 
 /// @nodoc
-mixin _$InstantClaimDeclineReason {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'InstantClaimDeclineReason()';
-}
-
-
-}
-
-/// @nodoc
-class $InstantClaimDeclineReasonCopyWith<$Res>  {
-$InstantClaimDeclineReasonCopyWith(InstantClaimDeclineReason _, $Res Function(InstantClaimDeclineReason) __);
-}
-
-
-/// Adds pattern-matching-related methods to [InstantClaimDeclineReason].
-extension InstantClaimDeclineReasonPatterns on InstantClaimDeclineReason {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InstantClaimDeclineReason_NoPlan value)?  noPlan,TResult Function( InstantClaimDeclineReason_FeeExceeded value)?  feeExceeded,TResult Function( InstantClaimDeclineReason_SubmissionFailed value)?  submissionFailed,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan() when noPlan != null:
-return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
-return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
-return submissionFailed(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InstantClaimDeclineReason_NoPlan value)  noPlan,required TResult Function( InstantClaimDeclineReason_FeeExceeded value)  feeExceeded,required TResult Function( InstantClaimDeclineReason_SubmissionFailed value)  submissionFailed,}){
-final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan():
-return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded():
-return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed():
-return submissionFailed(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InstantClaimDeclineReason_NoPlan value)?  noPlan,TResult? Function( InstantClaimDeclineReason_FeeExceeded value)?  feeExceeded,TResult? Function( InstantClaimDeclineReason_SubmissionFailed value)?  submissionFailed,}){
-final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan() when noPlan != null:
-return noPlan(_that);case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
-return feeExceeded(_that);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
-return submissionFailed(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  noPlan,TResult Function( int maxBps,  int quotedBps,  BigInt quotedSats)?  feeExceeded,TResult Function()?  submissionFailed,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan() when noPlan != null:
-return noPlan();case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
-return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
-return submissionFailed();case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  noPlan,required TResult Function( int maxBps,  int quotedBps,  BigInt quotedSats)  feeExceeded,required TResult Function()  submissionFailed,}) {final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan():
-return noPlan();case InstantClaimDeclineReason_FeeExceeded():
-return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed():
-return submissionFailed();}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  noPlan,TResult? Function( int maxBps,  int quotedBps,  BigInt quotedSats)?  feeExceeded,TResult? Function()?  submissionFailed,}) {final _that = this;
-switch (_that) {
-case InstantClaimDeclineReason_NoPlan() when noPlan != null:
-return noPlan();case InstantClaimDeclineReason_FeeExceeded() when feeExceeded != null:
-return feeExceeded(_that.maxBps,_that.quotedBps,_that.quotedSats);case InstantClaimDeclineReason_SubmissionFailed() when submissionFailed != null:
-return submissionFailed();case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-
-
-class InstantClaimDeclineReason_NoPlan extends InstantClaimDeclineReason {
-  const InstantClaimDeclineReason_NoPlan(): super._();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_NoPlan);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'InstantClaimDeclineReason.noPlan()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class InstantClaimDeclineReason_FeeExceeded extends InstantClaimDeclineReason {
-  const InstantClaimDeclineReason_FeeExceeded({required this.maxBps, required this.quotedBps, required this.quotedSats}): super._();
-  
-
- final  int maxBps;
- final  int quotedBps;
- final  BigInt quotedSats;
-
-/// Create a copy of InstantClaimDeclineReason
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$InstantClaimDeclineReason_FeeExceededCopyWith<InstantClaimDeclineReason_FeeExceeded> get copyWith => _$InstantClaimDeclineReason_FeeExceededCopyWithImpl<InstantClaimDeclineReason_FeeExceeded>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_FeeExceeded&&(identical(other.maxBps, maxBps) || other.maxBps == maxBps)&&(identical(other.quotedBps, quotedBps) || other.quotedBps == quotedBps)&&(identical(other.quotedSats, quotedSats) || other.quotedSats == quotedSats));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,maxBps,quotedBps,quotedSats);
-
-@override
-String toString() {
-  return 'InstantClaimDeclineReason.feeExceeded(maxBps: $maxBps, quotedBps: $quotedBps, quotedSats: $quotedSats)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $InstantClaimDeclineReason_FeeExceededCopyWith<$Res> implements $InstantClaimDeclineReasonCopyWith<$Res> {
-  factory $InstantClaimDeclineReason_FeeExceededCopyWith(InstantClaimDeclineReason_FeeExceeded value, $Res Function(InstantClaimDeclineReason_FeeExceeded) _then) = _$InstantClaimDeclineReason_FeeExceededCopyWithImpl;
-@useResult
-$Res call({
- int maxBps, int quotedBps, BigInt quotedSats
-});
-
-
-
-
-}
-/// @nodoc
-class _$InstantClaimDeclineReason_FeeExceededCopyWithImpl<$Res>
-    implements $InstantClaimDeclineReason_FeeExceededCopyWith<$Res> {
-  _$InstantClaimDeclineReason_FeeExceededCopyWithImpl(this._self, this._then);
-
-  final InstantClaimDeclineReason_FeeExceeded _self;
-  final $Res Function(InstantClaimDeclineReason_FeeExceeded) _then;
-
-/// Create a copy of InstantClaimDeclineReason
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? maxBps = null,Object? quotedBps = null,Object? quotedSats = null,}) {
-  return _then(InstantClaimDeclineReason_FeeExceeded(
-maxBps: null == maxBps ? _self.maxBps : maxBps // ignore: cast_nullable_to_non_nullable
-as int,quotedBps: null == quotedBps ? _self.quotedBps : quotedBps // ignore: cast_nullable_to_non_nullable
-as int,quotedSats: null == quotedSats ? _self.quotedSats : quotedSats // ignore: cast_nullable_to_non_nullable
-as BigInt,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class InstantClaimDeclineReason_SubmissionFailed extends InstantClaimDeclineReason {
-  const InstantClaimDeclineReason_SubmissionFailed(): super._();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimDeclineReason_SubmissionFailed);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'InstantClaimDeclineReason.submissionFailed()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
 mixin _$InstantClaimStatus {
 
 
@@ -6645,10 +6345,10 @@ return submitted(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( InstantClaimDeclineReason reason)?  declined,TResult Function( String claimId)?  submitted,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( BigInt? maxFeeSats,  int confirmations)?  declined,TResult Function( String claimId)?  submitted,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case InstantClaimStatus_Declined() when declined != null:
-return declined(_that.reason);case InstantClaimStatus_Submitted() when submitted != null:
+return declined(_that.maxFeeSats,_that.confirmations);case InstantClaimStatus_Submitted() when submitted != null:
 return submitted(_that.claimId);case _:
   return orElse();
 
@@ -6667,10 +6367,10 @@ return submitted(_that.claimId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( InstantClaimDeclineReason reason)  declined,required TResult Function( String claimId)  submitted,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( BigInt? maxFeeSats,  int confirmations)  declined,required TResult Function( String claimId)  submitted,}) {final _that = this;
 switch (_that) {
 case InstantClaimStatus_Declined():
-return declined(_that.reason);case InstantClaimStatus_Submitted():
+return declined(_that.maxFeeSats,_that.confirmations);case InstantClaimStatus_Submitted():
 return submitted(_that.claimId);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -6685,10 +6385,10 @@ return submitted(_that.claimId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( InstantClaimDeclineReason reason)?  declined,TResult? Function( String claimId)?  submitted,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( BigInt? maxFeeSats,  int confirmations)?  declined,TResult? Function( String claimId)?  submitted,}) {final _that = this;
 switch (_that) {
 case InstantClaimStatus_Declined() when declined != null:
-return declined(_that.reason);case InstantClaimStatus_Submitted() when submitted != null:
+return declined(_that.maxFeeSats,_that.confirmations);case InstantClaimStatus_Submitted() when submitted != null:
 return submitted(_that.claimId);case _:
   return null;
 
@@ -6701,10 +6401,11 @@ return submitted(_that.claimId);case _:
 
 
 class InstantClaimStatus_Declined extends InstantClaimStatus {
-  const InstantClaimStatus_Declined({required this.reason}): super._();
+  const InstantClaimStatus_Declined({this.maxFeeSats, required this.confirmations}): super._();
   
 
- final  InstantClaimDeclineReason reason;
+ final  BigInt? maxFeeSats;
+ final  int confirmations;
 
 /// Create a copy of InstantClaimStatus
 /// with the given fields replaced by the non-null parameter values.
@@ -6716,16 +6417,16 @@ $InstantClaimStatus_DeclinedCopyWith<InstantClaimStatus_Declined> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimStatus_Declined&&(identical(other.reason, reason) || other.reason == reason));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InstantClaimStatus_Declined&&(identical(other.maxFeeSats, maxFeeSats) || other.maxFeeSats == maxFeeSats)&&(identical(other.confirmations, confirmations) || other.confirmations == confirmations));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,reason);
+int get hashCode => Object.hash(runtimeType,maxFeeSats,confirmations);
 
 @override
 String toString() {
-  return 'InstantClaimStatus.declined(reason: $reason)';
+  return 'InstantClaimStatus.declined(maxFeeSats: $maxFeeSats, confirmations: $confirmations)';
 }
 
 
@@ -6736,11 +6437,11 @@ abstract mixin class $InstantClaimStatus_DeclinedCopyWith<$Res> implements $Inst
   factory $InstantClaimStatus_DeclinedCopyWith(InstantClaimStatus_Declined value, $Res Function(InstantClaimStatus_Declined) _then) = _$InstantClaimStatus_DeclinedCopyWithImpl;
 @useResult
 $Res call({
- InstantClaimDeclineReason reason
+ BigInt? maxFeeSats, int confirmations
 });
 
 
-$InstantClaimDeclineReasonCopyWith<$Res> get reason;
+
 
 }
 /// @nodoc
@@ -6753,23 +6454,15 @@ class _$InstantClaimStatus_DeclinedCopyWithImpl<$Res>
 
 /// Create a copy of InstantClaimStatus
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? reason = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? maxFeeSats = freezed,Object? confirmations = null,}) {
   return _then(InstantClaimStatus_Declined(
-reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
-as InstantClaimDeclineReason,
+maxFeeSats: freezed == maxFeeSats ? _self.maxFeeSats : maxFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt?,confirmations: null == confirmations ? _self.confirmations : confirmations // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
-/// Create a copy of InstantClaimStatus
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$InstantClaimDeclineReasonCopyWith<$Res> get reason {
-  
-  return $InstantClaimDeclineReasonCopyWith<$Res>(_self.reason, (value) {
-    return _then(_self.copyWith(reason: value));
-  });
-}
+
 }
 
 /// @nodoc
@@ -10355,6 +10048,264 @@ as String?,
 
 
 }
+
+/// @nodoc
+mixin _$RefundState {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RefundState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RefundState()';
+}
+
+
+}
+
+/// @nodoc
+class $RefundStateCopyWith<$Res>  {
+$RefundStateCopyWith(RefundState _, $Res Function(RefundState) __);
+}
+
+
+/// Adds pattern-matching-related methods to [RefundState].
+extension RefundStatePatterns on RefundState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( RefundState_BroadcastPending value)?  broadcastPending,TResult Function( RefundState_Broadcast value)?  broadcast,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending() when broadcastPending != null:
+return broadcastPending(_that);case RefundState_Broadcast() when broadcast != null:
+return broadcast(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( RefundState_BroadcastPending value)  broadcastPending,required TResult Function( RefundState_Broadcast value)  broadcast,}){
+final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending():
+return broadcastPending(_that);case RefundState_Broadcast():
+return broadcast(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( RefundState_BroadcastPending value)?  broadcastPending,TResult? Function( RefundState_Broadcast value)?  broadcast,}){
+final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending() when broadcastPending != null:
+return broadcastPending(_that);case RefundState_Broadcast() when broadcast != null:
+return broadcast(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String? lastError)?  broadcastPending,TResult Function()?  broadcast,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending() when broadcastPending != null:
+return broadcastPending(_that.lastError);case RefundState_Broadcast() when broadcast != null:
+return broadcast();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String? lastError)  broadcastPending,required TResult Function()  broadcast,}) {final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending():
+return broadcastPending(_that.lastError);case RefundState_Broadcast():
+return broadcast();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String? lastError)?  broadcastPending,TResult? Function()?  broadcast,}) {final _that = this;
+switch (_that) {
+case RefundState_BroadcastPending() when broadcastPending != null:
+return broadcastPending(_that.lastError);case RefundState_Broadcast() when broadcast != null:
+return broadcast();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class RefundState_BroadcastPending extends RefundState {
+  const RefundState_BroadcastPending({this.lastError}): super._();
+  
+
+ final  String? lastError;
+
+/// Create a copy of RefundState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RefundState_BroadcastPendingCopyWith<RefundState_BroadcastPending> get copyWith => _$RefundState_BroadcastPendingCopyWithImpl<RefundState_BroadcastPending>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RefundState_BroadcastPending&&(identical(other.lastError, lastError) || other.lastError == lastError));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,lastError);
+
+@override
+String toString() {
+  return 'RefundState.broadcastPending(lastError: $lastError)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RefundState_BroadcastPendingCopyWith<$Res> implements $RefundStateCopyWith<$Res> {
+  factory $RefundState_BroadcastPendingCopyWith(RefundState_BroadcastPending value, $Res Function(RefundState_BroadcastPending) _then) = _$RefundState_BroadcastPendingCopyWithImpl;
+@useResult
+$Res call({
+ String? lastError
+});
+
+
+
+
+}
+/// @nodoc
+class _$RefundState_BroadcastPendingCopyWithImpl<$Res>
+    implements $RefundState_BroadcastPendingCopyWith<$Res> {
+  _$RefundState_BroadcastPendingCopyWithImpl(this._self, this._then);
+
+  final RefundState_BroadcastPending _self;
+  final $Res Function(RefundState_BroadcastPending) _then;
+
+/// Create a copy of RefundState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? lastError = freezed,}) {
+  return _then(RefundState_BroadcastPending(
+lastError: freezed == lastError ? _self.lastError : lastError // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class RefundState_Broadcast extends RefundState {
+  const RefundState_Broadcast(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RefundState_Broadcast);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RefundState.broadcast()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$Seed {

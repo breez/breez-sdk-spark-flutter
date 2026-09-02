@@ -11,7 +11,6 @@ extension ConfigCopyWith on Config {
     Network? network,
     int? syncIntervalSecs,
     MaxFee? maxDepositClaimFee,
-    int? maxInstantDepositClaimFeeBps,
     String? lnurlDomain,
     bool? preferSparkOverLightning,
     bool? exitChainAutoFetchEnabled,
@@ -25,6 +24,7 @@ extension ConfigCopyWith on Config {
     int? maxConcurrentClaims,
     SparkConfig? sparkConfig,
     bool? backgroundTasksEnabled,
+    ProxyConfig? proxy,
     CrossChainConfig? crossChainConfig,
   }) {
     return Config(
@@ -32,7 +32,6 @@ extension ConfigCopyWith on Config {
       network: network ?? this.network,
       syncIntervalSecs: syncIntervalSecs ?? this.syncIntervalSecs,
       maxDepositClaimFee: maxDepositClaimFee ?? this.maxDepositClaimFee,
-      maxInstantDepositClaimFeeBps: maxInstantDepositClaimFeeBps ?? this.maxInstantDepositClaimFeeBps,
       lnurlDomain: lnurlDomain ?? this.lnurlDomain,
       preferSparkOverLightning: preferSparkOverLightning ?? this.preferSparkOverLightning,
       exitChainAutoFetchEnabled: exitChainAutoFetchEnabled ?? this.exitChainAutoFetchEnabled,
@@ -46,6 +45,7 @@ extension ConfigCopyWith on Config {
       maxConcurrentClaims: maxConcurrentClaims ?? this.maxConcurrentClaims,
       sparkConfig: sparkConfig ?? this.sparkConfig,
       backgroundTasksEnabled: backgroundTasksEnabled ?? this.backgroundTasksEnabled,
+      proxy: proxy ?? this.proxy,
       crossChainConfig: crossChainConfig ?? this.crossChainConfig,
     );
   }

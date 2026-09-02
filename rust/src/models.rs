@@ -28,7 +28,6 @@ pub struct _Config {
     pub network: Network,
     pub sync_interval_secs: u32,
     pub max_deposit_claim_fee: Option<MaxFee>,
-    pub max_instant_deposit_claim_fee_bps: Option<u32>,
     pub lnurl_domain: Option<String>,
     pub prefer_spark_over_lightning: bool,
     pub exit_chain_auto_fetch_enabled: bool,
@@ -47,7 +46,35 @@ pub struct _Config {
     pub max_concurrent_claims: u32,
     pub spark_config: Option<SparkConfig>,
     pub background_tasks_enabled: bool,
+    /// Routes the connections the SDK opens through a SOCKS5 proxy. Unset connects directly.
+    pub proxy: Option<ProxyConfig>,
     pub cross_chain_config: Option<CrossChainConfig>,
+}
+
+/// A SOCKS5 proxy carrying the connections the SDK opens. Not supported on web.
+#[frb(mirror(ProxyConfig))]
+pub struct _ProxyConfig {
+    pub host: String,
+    pub port: u16,
+    /// Set together with `password` for SOCKS5 authentication. Omit both for none.
+    pub username: Option<String>,
+    pub password: Option<String>,
+}
+
+/// Options for `get_spark_status`.
+#[frb(mirror(GetSparkStatusRequest))]
+pub struct _GetSparkStatusRequest {
+    /// Pass the same proxy as `Config.proxy`: this call runs without an SDK
+    /// instance, so it cannot pick the setting up on its own.
+    pub proxy: Option<ProxyConfig>,
+}
+
+/// Options for `new_rest_chain_service`.
+#[frb(mirror(NewRestChainServiceRequest))]
+pub struct _NewRestChainServiceRequest {
+    /// Pass the same proxy as `Config.proxy`: this service is built outside the
+    /// SDK, so it cannot pick the setting up on its own.
+    pub proxy: Option<ProxyConfig>,
 }
 
 #[frb(mirror(CrossChainConfig))]
@@ -150,12 +177,34 @@ pub struct _ClaimDepositRequest {
     pub txid: String,
     pub vout: u32,
     pub max_fee: Option<MaxFee>,
-    pub max_instant_fee_bps: Option<u32>,
 }
 
 #[frb(mirror(ClaimDepositResponse))]
 pub struct _ClaimDepositResponse {
     pub payment: Option<Payment>,
+}
+
+#[frb(mirror(FetchClaimDepositQuoteRequest))]
+pub struct _FetchClaimDepositQuoteRequest {
+    pub txid: String,
+    pub vout: u32,
+}
+
+#[frb(mirror(ClaimDepositQuote))]
+pub struct _ClaimDepositQuote {
+    pub confirmations_required: u32,
+    pub credit_amount_sats: u64,
+    pub fee_sats: u64,
+    pub fee_rate_sat_per_vbyte: u64,
+    pub is_estimate: bool,
+}
+
+#[frb(mirror(FetchClaimDepositQuoteResponse))]
+pub struct _FetchClaimDepositQuoteResponse {
+    pub amount_sats: u64,
+    pub confirmations: u32,
+    pub instant: Option<ClaimDepositQuote>,
+    pub mature: ClaimDepositQuote,
 }
 
 #[frb(mirror(Credentials))]
@@ -164,21 +213,19 @@ pub struct _Credentials {
     pub password: String,
 }
 
-#[frb(mirror(InstantClaimDeclineReason))]
-pub enum _InstantClaimDeclineReason {
-    NoPlan,
-    FeeExceeded {
-        max_bps: u32,
-        quoted_bps: u32,
-        quoted_sats: u64,
-    },
-    SubmissionFailed,
-}
-
 #[frb(mirror(InstantClaimStatus))]
 pub enum _InstantClaimStatus {
-    Declined { reason: InstantClaimDeclineReason },
+    Declined {
+        max_fee_sats: Option<u64>,
+        confirmations: u32,
+    },
     Submitted { claim_id: String },
+}
+
+#[frb(mirror(RefundState))]
+pub enum _RefundState {
+    BroadcastPending { last_error: Option<String> },
+    Broadcast,
 }
 
 #[frb(mirror(DepositInfo))]
@@ -191,6 +238,7 @@ pub struct _DepositInfo {
     pub refund_tx_id: Option<String>,
     pub claim_error: Option<DepositClaimError>,
     pub instant_claim_status: Option<InstantClaimStatus>,
+    pub refund_state: Option<RefundState>,
 }
 
 #[frb(mirror(MaxFee))]
@@ -1114,6 +1162,8 @@ pub struct SdkContextConfig {
     pub network: Network,
     pub api_key: Option<String>,
     pub connections_per_operator: Option<u32>,
+    /// Routes the connections opened by this context's shared clients through a SOCKS5 proxy.
+    pub proxy: Option<ProxyConfig>,
 }
 
 #[frb(mirror(Payment))]
@@ -1295,9 +1345,14 @@ pub enum _UpdateDepositPayload {
     Refund {
         refund_txid: String,
         refund_tx: String,
+        state: RefundState,
     },
     InstantClaim {
         status: InstantClaimStatus,
+    },
+    RefundBroadcastState {
+        refund_txid: String,
+        state: RefundState,
     },
 }
 
@@ -1468,6 +1523,7 @@ pub struct _LnurlWithdrawRequestDetails {
     pub default_description: String,
     pub min_withdrawable: u64,
     pub max_withdrawable: u64,
+    pub url: String,
 }
 
 #[frb(mirror(SilentPaymentAddressDetails))]
@@ -1975,6 +2031,10 @@ pub struct _PasskeyProviderOptions {
 pub struct _PasskeyConfig {
     pub default_label: Option<String>,
     pub provider_options: Option<PasskeyProviderOptions>,
+    /// Routes the Nostr relay connections that store wallet labels through a
+    /// SOCKS5 proxy. Relay connections cannot authenticate to a proxy, so one
+    /// carrying credentials is rejected when the client is built.
+    pub proxy: Option<ProxyConfig>,
 }
 
 #[frb(mirror(PasskeyAvailability))]

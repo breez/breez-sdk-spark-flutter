@@ -350,6 +350,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CheckMessageRequest dco_decode_box_autoadd_check_message_request(dynamic raw);
 
   @protected
+  ClaimDepositQuote dco_decode_box_autoadd_claim_deposit_quote(dynamic raw);
+
+  @protected
   ClaimDepositRequest dco_decode_box_autoadd_claim_deposit_request(dynamic raw);
 
   @protected
@@ -427,6 +430,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FeePolicy dco_decode_box_autoadd_fee_policy(dynamic raw);
 
   @protected
+  FetchClaimDepositQuoteRequest dco_decode_box_autoadd_fetch_claim_deposit_quote_request(dynamic raw);
+
+  @protected
   FetchConversionLimitsRequest dco_decode_box_autoadd_fetch_conversion_limits_request(dynamic raw);
 
   @protected
@@ -439,13 +445,13 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   GetPaymentRequest dco_decode_box_autoadd_get_payment_request(dynamic raw);
 
   @protected
+  GetSparkStatusRequest dco_decode_box_autoadd_get_spark_status_request(dynamic raw);
+
+  @protected
   GetTokensMetadataRequest dco_decode_box_autoadd_get_tokens_metadata_request(dynamic raw);
 
   @protected
   ImportUnilateralExitStateRequest dco_decode_box_autoadd_import_unilateral_exit_state_request(dynamic raw);
-
-  @protected
-  InstantClaimDeclineReason dco_decode_box_autoadd_instant_claim_decline_reason(dynamic raw);
 
   @protected
   InstantClaimStatus dco_decode_box_autoadd_instant_claim_status(dynamic raw);
@@ -508,6 +514,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   MintIssuerTokenRequest dco_decode_box_autoadd_mint_issuer_token_request(dynamic raw);
 
   @protected
+  NewRestChainServiceRequest dco_decode_box_autoadd_new_rest_chain_service_request(dynamic raw);
+
+  @protected
   OptimizeLeavesRequest dco_decode_box_autoadd_optimize_leaves_request(dynamic raw);
 
   @protected
@@ -544,6 +553,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError dco_decode_box_autoadd_prf_provider_error(dynamic raw);
 
   @protected
+  ProxyConfig dco_decode_box_autoadd_proxy_config(dynamic raw);
+
+  @protected
   PublishSignedLnurlPayPackageRequest dco_decode_box_autoadd_publish_signed_lnurl_pay_package_request(
     dynamic raw,
   );
@@ -558,6 +570,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   RefundDepositRequest dco_decode_box_autoadd_refund_deposit_request(dynamic raw);
+
+  @protected
+  RefundState dco_decode_box_autoadd_refund_state(dynamic raw);
 
   @protected
   RegisterLightningAddressRequest dco_decode_box_autoadd_register_lightning_address_request(dynamic raw);
@@ -702,6 +717,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   CheckMessageResponse dco_decode_check_message_response(dynamic raw);
+
+  @protected
+  ClaimDepositQuote dco_decode_claim_deposit_quote(dynamic raw);
 
   @protected
   ClaimDepositRequest dco_decode_claim_deposit_request(dynamic raw);
@@ -881,6 +899,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FeePolicy dco_decode_fee_policy(dynamic raw);
 
   @protected
+  FetchClaimDepositQuoteRequest dco_decode_fetch_claim_deposit_quote_request(dynamic raw);
+
+  @protected
+  FetchClaimDepositQuoteResponse dco_decode_fetch_claim_deposit_quote_response(dynamic raw);
+
+  @protected
   FetchConversionLimitsRequest dco_decode_fetch_conversion_limits_request(dynamic raw);
 
   @protected
@@ -908,6 +932,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   GetPaymentResponse dco_decode_get_payment_response(dynamic raw);
 
   @protected
+  GetSparkStatusRequest dco_decode_get_spark_status_request(dynamic raw);
+
+  @protected
   GetTokensMetadataRequest dco_decode_get_tokens_metadata_request(dynamic raw);
 
   @protected
@@ -924,9 +951,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   InputType dco_decode_input_type(dynamic raw);
-
-  @protected
-  InstantClaimDeclineReason dco_decode_instant_claim_decline_reason(dynamic raw);
 
   @protected
   InstantClaimStatus dco_decode_instant_claim_status(dynamic raw);
@@ -1157,6 +1181,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Network dco_decode_network(dynamic raw);
 
   @protected
+  NewRestChainServiceRequest dco_decode_new_rest_chain_service_request(dynamic raw);
+
+  @protected
   OnchainConfirmationSpeed dco_decode_onchain_confirmation_speed(dynamic raw);
 
   @protected
@@ -1179,6 +1206,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BuildTransferPackageOptions? dco_decode_opt_box_autoadd_build_transfer_package_options(dynamic raw);
+
+  @protected
+  ClaimDepositQuote? dco_decode_opt_box_autoadd_claim_deposit_quote(dynamic raw);
 
   @protected
   ConversionDetails? dco_decode_opt_box_autoadd_conversion_details(dynamic raw);
@@ -1245,6 +1275,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PaymentDetails? dco_decode_opt_box_autoadd_payment_details(dynamic raw);
+
+  @protected
+  ProxyConfig? dco_decode_opt_box_autoadd_proxy_config(dynamic raw);
+
+  @protected
+  RefundState? dco_decode_opt_box_autoadd_refund_state(dynamic raw);
 
   @protected
   SendPaymentOptions? dco_decode_opt_box_autoadd_send_payment_options(dynamic raw);
@@ -1400,6 +1436,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError dco_decode_prf_provider_error(dynamic raw);
 
   @protected
+  ProxyConfig dco_decode_proxy_config(dynamic raw);
+
+  @protected
   PublishSignedLnurlPayPackageRequest dco_decode_publish_signed_lnurl_pay_package_request(dynamic raw);
 
   @protected
@@ -1437,6 +1476,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   RefundPendingConversionsResponse dco_decode_refund_pending_conversions_response(dynamic raw);
+
+  @protected
+  RefundState dco_decode_refund_state(dynamic raw);
 
   @protected
   RegisterLightningAddressRequest dco_decode_register_lightning_address_request(dynamic raw);
@@ -1972,6 +2014,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CheckMessageRequest sse_decode_box_autoadd_check_message_request(SseDeserializer deserializer);
 
   @protected
+  ClaimDepositQuote sse_decode_box_autoadd_claim_deposit_quote(SseDeserializer deserializer);
+
+  @protected
   ClaimDepositRequest sse_decode_box_autoadd_claim_deposit_request(SseDeserializer deserializer);
 
   @protected
@@ -2053,6 +2098,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FeePolicy sse_decode_box_autoadd_fee_policy(SseDeserializer deserializer);
 
   @protected
+  FetchClaimDepositQuoteRequest sse_decode_box_autoadd_fetch_claim_deposit_quote_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   FetchConversionLimitsRequest sse_decode_box_autoadd_fetch_conversion_limits_request(
     SseDeserializer deserializer,
   );
@@ -2067,15 +2117,15 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   GetPaymentRequest sse_decode_box_autoadd_get_payment_request(SseDeserializer deserializer);
 
   @protected
+  GetSparkStatusRequest sse_decode_box_autoadd_get_spark_status_request(SseDeserializer deserializer);
+
+  @protected
   GetTokensMetadataRequest sse_decode_box_autoadd_get_tokens_metadata_request(SseDeserializer deserializer);
 
   @protected
   ImportUnilateralExitStateRequest sse_decode_box_autoadd_import_unilateral_exit_state_request(
     SseDeserializer deserializer,
   );
-
-  @protected
-  InstantClaimDeclineReason sse_decode_box_autoadd_instant_claim_decline_reason(SseDeserializer deserializer);
 
   @protected
   InstantClaimStatus sse_decode_box_autoadd_instant_claim_status(SseDeserializer deserializer);
@@ -2142,6 +2192,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   MintIssuerTokenRequest sse_decode_box_autoadd_mint_issuer_token_request(SseDeserializer deserializer);
 
   @protected
+  NewRestChainServiceRequest sse_decode_box_autoadd_new_rest_chain_service_request(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   OptimizeLeavesRequest sse_decode_box_autoadd_optimize_leaves_request(SseDeserializer deserializer);
 
   @protected
@@ -2180,6 +2235,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError sse_decode_box_autoadd_prf_provider_error(SseDeserializer deserializer);
 
   @protected
+  ProxyConfig sse_decode_box_autoadd_proxy_config(SseDeserializer deserializer);
+
+  @protected
   PublishSignedLnurlPayPackageRequest sse_decode_box_autoadd_publish_signed_lnurl_pay_package_request(
     SseDeserializer deserializer,
   );
@@ -2194,6 +2252,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   RefundDepositRequest sse_decode_box_autoadd_refund_deposit_request(SseDeserializer deserializer);
+
+  @protected
+  RefundState sse_decode_box_autoadd_refund_state(SseDeserializer deserializer);
 
   @protected
   RegisterLightningAddressRequest sse_decode_box_autoadd_register_lightning_address_request(
@@ -2354,6 +2415,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   CheckMessageResponse sse_decode_check_message_response(SseDeserializer deserializer);
+
+  @protected
+  ClaimDepositQuote sse_decode_claim_deposit_quote(SseDeserializer deserializer);
 
   @protected
   ClaimDepositRequest sse_decode_claim_deposit_request(SseDeserializer deserializer);
@@ -2539,6 +2603,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FeePolicy sse_decode_fee_policy(SseDeserializer deserializer);
 
   @protected
+  FetchClaimDepositQuoteRequest sse_decode_fetch_claim_deposit_quote_request(SseDeserializer deserializer);
+
+  @protected
+  FetchClaimDepositQuoteResponse sse_decode_fetch_claim_deposit_quote_response(SseDeserializer deserializer);
+
+  @protected
   FetchConversionLimitsRequest sse_decode_fetch_conversion_limits_request(SseDeserializer deserializer);
 
   @protected
@@ -2566,6 +2636,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   GetPaymentResponse sse_decode_get_payment_response(SseDeserializer deserializer);
 
   @protected
+  GetSparkStatusRequest sse_decode_get_spark_status_request(SseDeserializer deserializer);
+
+  @protected
   GetTokensMetadataRequest sse_decode_get_tokens_metadata_request(SseDeserializer deserializer);
 
   @protected
@@ -2586,9 +2659,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   InputType sse_decode_input_type(SseDeserializer deserializer);
-
-  @protected
-  InstantClaimDeclineReason sse_decode_instant_claim_decline_reason(SseDeserializer deserializer);
 
   @protected
   InstantClaimStatus sse_decode_instant_claim_status(SseDeserializer deserializer);
@@ -2819,6 +2889,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Network sse_decode_network(SseDeserializer deserializer);
 
   @protected
+  NewRestChainServiceRequest sse_decode_new_rest_chain_service_request(SseDeserializer deserializer);
+
+  @protected
   OnchainConfirmationSpeed sse_decode_onchain_confirmation_speed(SseDeserializer deserializer);
 
   @protected
@@ -2843,6 +2916,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BuildTransferPackageOptions? sse_decode_opt_box_autoadd_build_transfer_package_options(
     SseDeserializer deserializer,
   );
+
+  @protected
+  ClaimDepositQuote? sse_decode_opt_box_autoadd_claim_deposit_quote(SseDeserializer deserializer);
 
   @protected
   ConversionDetails? sse_decode_opt_box_autoadd_conversion_details(SseDeserializer deserializer);
@@ -2909,6 +2985,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   PaymentDetails? sse_decode_opt_box_autoadd_payment_details(SseDeserializer deserializer);
+
+  @protected
+  ProxyConfig? sse_decode_opt_box_autoadd_proxy_config(SseDeserializer deserializer);
+
+  @protected
+  RefundState? sse_decode_opt_box_autoadd_refund_state(SseDeserializer deserializer);
 
   @protected
   SendPaymentOptions? sse_decode_opt_box_autoadd_send_payment_options(SseDeserializer deserializer);
@@ -3070,6 +3152,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   PrfProviderError sse_decode_prf_provider_error(SseDeserializer deserializer);
 
   @protected
+  ProxyConfig sse_decode_proxy_config(SseDeserializer deserializer);
+
+  @protected
   PublishSignedLnurlPayPackageRequest sse_decode_publish_signed_lnurl_pay_package_request(
     SseDeserializer deserializer,
   );
@@ -3115,6 +3200,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   RefundPendingConversionsResponse sse_decode_refund_pending_conversions_response(
     SseDeserializer deserializer,
   );
+
+  @protected
+  RefundState sse_decode_refund_state(SseDeserializer deserializer);
 
   @protected
   RegisterLightningAddressRequest sse_decode_register_lightning_address_request(SseDeserializer deserializer);
@@ -3708,6 +3796,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_check_message_request(CheckMessageRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_claim_deposit_quote(ClaimDepositQuote self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_claim_deposit_request(ClaimDepositRequest self, SseSerializer serializer);
 
   @protected
@@ -3810,6 +3901,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_fee_policy(FeePolicy self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_fetch_claim_deposit_quote_request(
+    FetchClaimDepositQuoteRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_fetch_conversion_limits_request(
     FetchConversionLimitsRequest self,
     SseSerializer serializer,
@@ -3828,6 +3925,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_get_payment_request(GetPaymentRequest self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_get_spark_status_request(GetSparkStatusRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_get_tokens_metadata_request(
     GetTokensMetadataRequest self,
     SseSerializer serializer,
@@ -3836,12 +3936,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_import_unilateral_exit_state_request(
     ImportUnilateralExitStateRequest self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_box_autoadd_instant_claim_decline_reason(
-    InstantClaimDeclineReason self,
     SseSerializer serializer,
   );
 
@@ -3927,6 +4021,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_new_rest_chain_service_request(
+    NewRestChainServiceRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_optimize_leaves_request(OptimizeLeavesRequest self, SseSerializer serializer);
 
   @protected
@@ -3978,6 +4078,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_prf_provider_error(PrfProviderError self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_proxy_config(ProxyConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_publish_signed_lnurl_pay_package_request(
     PublishSignedLnurlPayPackageRequest self,
     SseSerializer serializer,
@@ -3994,6 +4097,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_box_autoadd_refund_deposit_request(RefundDepositRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_refund_state(RefundState self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_register_lightning_address_request(
@@ -4174,6 +4280,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_check_message_response(CheckMessageResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_claim_deposit_quote(ClaimDepositQuote self, SseSerializer serializer);
 
   @protected
   void sse_encode_claim_deposit_request(ClaimDepositRequest self, SseSerializer serializer);
@@ -4368,6 +4477,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_fee_policy(FeePolicy self, SseSerializer serializer);
 
   @protected
+  void sse_encode_fetch_claim_deposit_quote_request(
+    FetchClaimDepositQuoteRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_fetch_claim_deposit_quote_response(
+    FetchClaimDepositQuoteResponse self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_fetch_conversion_limits_request(
     FetchConversionLimitsRequest self,
     SseSerializer serializer,
@@ -4401,6 +4522,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_get_payment_response(GetPaymentResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_get_spark_status_request(GetSparkStatusRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_get_tokens_metadata_request(GetTokensMetadataRequest self, SseSerializer serializer);
 
   @protected
@@ -4423,9 +4547,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_input_type(InputType self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_instant_claim_decline_reason(InstantClaimDeclineReason self, SseSerializer serializer);
 
   @protected
   void sse_encode_instant_claim_status(InstantClaimStatus self, SseSerializer serializer);
@@ -4680,6 +4801,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_network(Network self, SseSerializer serializer);
 
   @protected
+  void sse_encode_new_rest_chain_service_request(NewRestChainServiceRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_onchain_confirmation_speed(OnchainConfirmationSpeed self, SseSerializer serializer);
 
   @protected
@@ -4708,6 +4832,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     BuildTransferPackageOptions? self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_opt_box_autoadd_claim_deposit_quote(ClaimDepositQuote? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_conversion_details(ConversionDetails? self, SseSerializer serializer);
@@ -4783,6 +4910,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_box_autoadd_payment_details(PaymentDetails? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_proxy_config(ProxyConfig? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_refund_state(RefundState? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_send_payment_options(SendPaymentOptions? self, SseSerializer serializer);
@@ -4959,6 +5092,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_prf_provider_error(PrfProviderError self, SseSerializer serializer);
 
   @protected
+  void sse_encode_proxy_config(ProxyConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_publish_signed_lnurl_pay_package_request(
     PublishSignedLnurlPayPackageRequest self,
     SseSerializer serializer,
@@ -5011,6 +5147,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     RefundPendingConversionsResponse self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_refund_state(RefundState self, SseSerializer serializer);
 
   @protected
   void sse_encode_register_lightning_address_request(

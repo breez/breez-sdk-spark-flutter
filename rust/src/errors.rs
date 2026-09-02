@@ -42,6 +42,14 @@ pub enum _SdkError {
         tx: String,
         vout: u32,
     },
+    DepositClaimInProgress {
+        tx: String,
+        vout: u32,
+    },
+    RefundReplacementFeeTooLow {
+        pending_fee_sats: u64,
+        required_fee_sats: u64,
+    },
     LnurlError(String),
     Signer(String),
     OptimizationAlreadyRunning,
@@ -86,5 +94,6 @@ pub enum _PasskeyError {
         credential_id: Vec<u8>,
         source: PrfProviderError,
     },
+    InvalidConfig(String),
     Generic(String),
 }

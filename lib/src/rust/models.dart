@@ -653,16 +653,50 @@ class CheckMessageResponse {
       other is CheckMessageResponse && runtimeType == other.runtimeType && isValid == other.isValid;
 }
 
+class ClaimDepositQuote {
+  final int confirmationsRequired;
+  final BigInt creditAmountSats;
+  final BigInt feeSats;
+  final BigInt feeRateSatPerVbyte;
+  final bool isEstimate;
+
+  const ClaimDepositQuote({
+    required this.confirmationsRequired,
+    required this.creditAmountSats,
+    required this.feeSats,
+    required this.feeRateSatPerVbyte,
+    required this.isEstimate,
+  });
+
+  @override
+  int get hashCode =>
+      confirmationsRequired.hashCode ^
+      creditAmountSats.hashCode ^
+      feeSats.hashCode ^
+      feeRateSatPerVbyte.hashCode ^
+      isEstimate.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ClaimDepositQuote &&
+          runtimeType == other.runtimeType &&
+          confirmationsRequired == other.confirmationsRequired &&
+          creditAmountSats == other.creditAmountSats &&
+          feeSats == other.feeSats &&
+          feeRateSatPerVbyte == other.feeRateSatPerVbyte &&
+          isEstimate == other.isEstimate;
+}
+
 class ClaimDepositRequest {
   final String txid;
   final int vout;
   final MaxFee? maxFee;
-  final int? maxInstantFeeBps;
 
-  const ClaimDepositRequest({required this.txid, required this.vout, this.maxFee, this.maxInstantFeeBps});
+  const ClaimDepositRequest({required this.txid, required this.vout, this.maxFee});
 
   @override
-  int get hashCode => txid.hashCode ^ vout.hashCode ^ maxFee.hashCode ^ maxInstantFeeBps.hashCode;
+  int get hashCode => txid.hashCode ^ vout.hashCode ^ maxFee.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -671,8 +705,7 @@ class ClaimDepositRequest {
           runtimeType == other.runtimeType &&
           txid == other.txid &&
           vout == other.vout &&
-          maxFee == other.maxFee &&
-          maxInstantFeeBps == other.maxInstantFeeBps;
+          maxFee == other.maxFee;
 }
 
 class ClaimDepositResponse {
@@ -740,7 +773,6 @@ class Config {
   final Network network;
   final int syncIntervalSecs;
   final MaxFee? maxDepositClaimFee;
-  final int? maxInstantDepositClaimFeeBps;
   final String? lnurlDomain;
   final bool preferSparkOverLightning;
   final bool exitChainAutoFetchEnabled;
@@ -760,6 +792,9 @@ class Config {
   final int maxConcurrentClaims;
   final SparkConfig? sparkConfig;
   final bool backgroundTasksEnabled;
+
+  /// Routes the connections the SDK opens through a SOCKS5 proxy. Unset connects directly.
+  final ProxyConfig? proxy;
   final CrossChainConfig? crossChainConfig;
 
   const Config({
@@ -767,7 +802,6 @@ class Config {
     required this.network,
     required this.syncIntervalSecs,
     this.maxDepositClaimFee,
-    this.maxInstantDepositClaimFeeBps,
     this.lnurlDomain,
     required this.preferSparkOverLightning,
     required this.exitChainAutoFetchEnabled,
@@ -781,6 +815,7 @@ class Config {
     required this.maxConcurrentClaims,
     this.sparkConfig,
     required this.backgroundTasksEnabled,
+    this.proxy,
     this.crossChainConfig,
   });
 
@@ -790,7 +825,6 @@ class Config {
       network.hashCode ^
       syncIntervalSecs.hashCode ^
       maxDepositClaimFee.hashCode ^
-      maxInstantDepositClaimFeeBps.hashCode ^
       lnurlDomain.hashCode ^
       preferSparkOverLightning.hashCode ^
       exitChainAutoFetchEnabled.hashCode ^
@@ -804,6 +838,7 @@ class Config {
       maxConcurrentClaims.hashCode ^
       sparkConfig.hashCode ^
       backgroundTasksEnabled.hashCode ^
+      proxy.hashCode ^
       crossChainConfig.hashCode;
 
   @override
@@ -815,7 +850,6 @@ class Config {
           network == other.network &&
           syncIntervalSecs == other.syncIntervalSecs &&
           maxDepositClaimFee == other.maxDepositClaimFee &&
-          maxInstantDepositClaimFeeBps == other.maxInstantDepositClaimFeeBps &&
           lnurlDomain == other.lnurlDomain &&
           preferSparkOverLightning == other.preferSparkOverLightning &&
           exitChainAutoFetchEnabled == other.exitChainAutoFetchEnabled &&
@@ -829,6 +863,7 @@ class Config {
           maxConcurrentClaims == other.maxConcurrentClaims &&
           sparkConfig == other.sparkConfig &&
           backgroundTasksEnabled == other.backgroundTasksEnabled &&
+          proxy == other.proxy &&
           crossChainConfig == other.crossChainConfig;
 }
 
@@ -1444,6 +1479,7 @@ class DepositInfo {
   final String? refundTxId;
   final DepositClaimError? claimError;
   final InstantClaimStatus? instantClaimStatus;
+  final RefundState? refundState;
 
   const DepositInfo({
     required this.txid,
@@ -1454,6 +1490,7 @@ class DepositInfo {
     this.refundTxId,
     this.claimError,
     this.instantClaimStatus,
+    this.refundState,
   });
 
   @override
@@ -1465,7 +1502,8 @@ class DepositInfo {
       refundTx.hashCode ^
       refundTxId.hashCode ^
       claimError.hashCode ^
-      instantClaimStatus.hashCode;
+      instantClaimStatus.hashCode ^
+      refundState.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1479,7 +1517,8 @@ class DepositInfo {
           refundTx == other.refundTx &&
           refundTxId == other.refundTxId &&
           claimError == other.claimError &&
-          instantClaimStatus == other.instantClaimStatus;
+          instantClaimStatus == other.instantClaimStatus &&
+          refundState == other.refundState;
 }
 
 class DeriveSeedsOutput {
@@ -1796,6 +1835,51 @@ enum FeePolicy {
   feesIncluded,
 }
 
+class FetchClaimDepositQuoteRequest {
+  final String txid;
+  final int vout;
+
+  const FetchClaimDepositQuoteRequest({required this.txid, required this.vout});
+
+  @override
+  int get hashCode => txid.hashCode ^ vout.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchClaimDepositQuoteRequest &&
+          runtimeType == other.runtimeType &&
+          txid == other.txid &&
+          vout == other.vout;
+}
+
+class FetchClaimDepositQuoteResponse {
+  final BigInt amountSats;
+  final int confirmations;
+  final ClaimDepositQuote? instant;
+  final ClaimDepositQuote mature;
+
+  const FetchClaimDepositQuoteResponse({
+    required this.amountSats,
+    required this.confirmations,
+    this.instant,
+    required this.mature,
+  });
+
+  @override
+  int get hashCode => amountSats.hashCode ^ confirmations.hashCode ^ instant.hashCode ^ mature.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchClaimDepositQuoteResponse &&
+          runtimeType == other.runtimeType &&
+          amountSats == other.amountSats &&
+          confirmations == other.confirmations &&
+          instant == other.instant &&
+          mature == other.mature;
+}
+
 class FetchConversionLimitsRequest {
   final ConversionType conversionType;
   final String? tokenIdentifier;
@@ -1945,6 +2029,23 @@ class GetPaymentResponse {
       other is GetPaymentResponse && runtimeType == other.runtimeType && payment == other.payment;
 }
 
+/// Options for `get_spark_status`.
+class GetSparkStatusRequest {
+  /// Pass the same proxy as `Config.proxy`: this call runs without an SDK
+  /// instance, so it cannot pick the setting up on its own.
+  final ProxyConfig? proxy;
+
+  const GetSparkStatusRequest({this.proxy});
+
+  @override
+  int get hashCode => proxy.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GetSparkStatusRequest && runtimeType == other.runtimeType && proxy == other.proxy;
+}
+
 class GetTokensMetadataRequest {
   final List<String> tokenIdentifiers;
 
@@ -2048,23 +2149,10 @@ sealed class InputType with _$InputType {
 }
 
 @freezed
-sealed class InstantClaimDeclineReason with _$InstantClaimDeclineReason {
-  const InstantClaimDeclineReason._();
-
-  const factory InstantClaimDeclineReason.noPlan() = InstantClaimDeclineReason_NoPlan;
-  const factory InstantClaimDeclineReason.feeExceeded({
-    required int maxBps,
-    required int quotedBps,
-    required BigInt quotedSats,
-  }) = InstantClaimDeclineReason_FeeExceeded;
-  const factory InstantClaimDeclineReason.submissionFailed() = InstantClaimDeclineReason_SubmissionFailed;
-}
-
-@freezed
 sealed class InstantClaimStatus with _$InstantClaimStatus {
   const InstantClaimStatus._();
 
-  const factory InstantClaimStatus.declined({required InstantClaimDeclineReason reason}) =
+  const factory InstantClaimStatus.declined({BigInt? maxFeeSats, required int confirmations}) =
       InstantClaimStatus_Declined;
   const factory InstantClaimStatus.submitted({required String claimId}) = InstantClaimStatus_Submitted;
 }
@@ -2546,6 +2634,7 @@ class LnurlWithdrawRequestDetails {
   final String defaultDescription;
   final BigInt minWithdrawable;
   final BigInt maxWithdrawable;
+  final String url;
 
   const LnurlWithdrawRequestDetails({
     required this.callback,
@@ -2553,6 +2642,7 @@ class LnurlWithdrawRequestDetails {
     required this.defaultDescription,
     required this.minWithdrawable,
     required this.maxWithdrawable,
+    required this.url,
   });
 
   @override
@@ -2561,7 +2651,8 @@ class LnurlWithdrawRequestDetails {
       k1.hashCode ^
       defaultDescription.hashCode ^
       minWithdrawable.hashCode ^
-      maxWithdrawable.hashCode;
+      maxWithdrawable.hashCode ^
+      url.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -2572,7 +2663,8 @@ class LnurlWithdrawRequestDetails {
           k1 == other.k1 &&
           defaultDescription == other.defaultDescription &&
           minWithdrawable == other.minWithdrawable &&
-          maxWithdrawable == other.maxWithdrawable;
+          maxWithdrawable == other.maxWithdrawable &&
+          url == other.url;
 }
 
 class LnurlWithdrawResponse {
@@ -2670,6 +2762,23 @@ class MintIssuerTokenRequest {
 
 enum Network { mainnet, regtest }
 
+/// Options for `new_rest_chain_service`.
+class NewRestChainServiceRequest {
+  /// Pass the same proxy as `Config.proxy`: this service is built outside the
+  /// SDK, so it cannot pick the setting up on its own.
+  final ProxyConfig? proxy;
+
+  const NewRestChainServiceRequest({this.proxy});
+
+  @override
+  int get hashCode => proxy.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NewRestChainServiceRequest && runtimeType == other.runtimeType && proxy == other.proxy;
+}
+
 enum OnchainConfirmationSpeed { fast, medium, slow }
 
 enum OptimizationMode { full, singleRound }
@@ -2725,10 +2834,15 @@ class PasskeyConfig {
   final String? defaultLabel;
   final PasskeyProviderOptions? providerOptions;
 
-  const PasskeyConfig({this.defaultLabel, this.providerOptions});
+  /// Routes the Nostr relay connections that store wallet labels through a
+  /// SOCKS5 proxy. Relay connections cannot authenticate to a proxy, so one
+  /// carrying credentials is rejected when the client is built.
+  final ProxyConfig? proxy;
+
+  const PasskeyConfig({this.defaultLabel, this.providerOptions, this.proxy});
 
   @override
-  int get hashCode => defaultLabel.hashCode ^ providerOptions.hashCode;
+  int get hashCode => defaultLabel.hashCode ^ providerOptions.hashCode ^ proxy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -2736,7 +2850,8 @@ class PasskeyConfig {
       other is PasskeyConfig &&
           runtimeType == other.runtimeType &&
           defaultLabel == other.defaultLabel &&
-          providerOptions == other.providerOptions;
+          providerOptions == other.providerOptions &&
+          proxy == other.proxy;
 }
 
 class PasskeyCredential {
@@ -3277,6 +3392,31 @@ class PrepareUnilateralExitResponse {
           destination == other.destination;
 }
 
+/// A SOCKS5 proxy carrying the connections the SDK opens. Not supported on web.
+class ProxyConfig {
+  final String host;
+  final int port;
+
+  /// Set together with `password` for SOCKS5 authentication. Omit both for none.
+  final String? username;
+  final String? password;
+
+  const ProxyConfig({required this.host, required this.port, this.username, this.password});
+
+  @override
+  int get hashCode => host.hashCode ^ port.hashCode ^ username.hashCode ^ password.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProxyConfig &&
+          runtimeType == other.runtimeType &&
+          host == other.host &&
+          port == other.port &&
+          username == other.username &&
+          password == other.password;
+}
+
 class PublishSignedLnurlPayPackageRequest {
   final SignedTransferPackage signedPackage;
 
@@ -3505,6 +3645,14 @@ class RefundPendingConversionsResponse {
           failed == other.failed;
 }
 
+@freezed
+sealed class RefundState with _$RefundState {
+  const RefundState._();
+
+  const factory RefundState.broadcastPending({String? lastError}) = RefundState_BroadcastPending;
+  const factory RefundState.broadcast() = RefundState_Broadcast;
+}
+
 class RegisterLightningAddressRequest {
   final String username;
   final String? description;
@@ -3639,10 +3787,13 @@ class SdkContextConfig {
   final String? apiKey;
   final int? connectionsPerOperator;
 
-  const SdkContextConfig({required this.network, this.apiKey, this.connectionsPerOperator});
+  /// Routes the connections opened by this context's shared clients through a SOCKS5 proxy.
+  final ProxyConfig? proxy;
+
+  const SdkContextConfig({required this.network, this.apiKey, this.connectionsPerOperator, this.proxy});
 
   @override
-  int get hashCode => network.hashCode ^ apiKey.hashCode ^ connectionsPerOperator.hashCode;
+  int get hashCode => network.hashCode ^ apiKey.hashCode ^ connectionsPerOperator.hashCode ^ proxy.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -3651,7 +3802,8 @@ class SdkContextConfig {
           runtimeType == other.runtimeType &&
           network == other.network &&
           apiKey == other.apiKey &&
-          connectionsPerOperator == other.connectionsPerOperator;
+          connectionsPerOperator == other.connectionsPerOperator &&
+          proxy == other.proxy;
 }
 
 @freezed

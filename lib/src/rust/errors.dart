@@ -43,6 +43,7 @@ sealed class PasskeyError with _$PasskeyError implements FrbException {
     required Uint8List credentialId,
     required PrfProviderError source,
   }) = PasskeyError_CreatedButNotDerived;
+  const factory PasskeyError.invalidConfig(String field0) = PasskeyError_InvalidConfig;
   const factory PasskeyError.generic(String field0) = PasskeyError_Generic;
 }
 
@@ -81,6 +82,12 @@ sealed class SdkError with _$SdkError implements FrbException {
     required BigInt requiredFeeRateSatPerVbyte,
   }) = SdkError_MaxDepositClaimFeeExceeded;
   const factory SdkError.missingUtxo({required String tx, required int vout}) = SdkError_MissingUtxo;
+  const factory SdkError.depositClaimInProgress({required String tx, required int vout}) =
+      SdkError_DepositClaimInProgress;
+  const factory SdkError.refundReplacementFeeTooLow({
+    required BigInt pendingFeeSats,
+    required BigInt requiredFeeSats,
+  }) = SdkError_RefundReplacementFeeTooLow;
   const factory SdkError.lnurlError(String field0) = SdkError_LnurlError;
   const factory SdkError.signer(String field0) = SdkError_Signer;
   const factory SdkError.optimizationAlreadyRunning() = SdkError_OptimizationAlreadyRunning;

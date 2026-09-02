@@ -11,7 +11,8 @@ import 'logger.dart';
 import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<SparkStatus> getSparkStatus() => BreezSdkSparkLib.instance.api.crateSdkGetSparkStatus();
+Future<SparkStatus> getSparkStatus({required GetSparkStatusRequest request}) =>
+    BreezSdkSparkLib.instance.api.crateSdkGetSparkStatus(request: request);
 
 Future<BreezSdk> connect({required ConnectRequest request}) =>
     BreezSdkSparkLib.instance.api.crateSdkConnect(request: request);
@@ -69,6 +70,10 @@ abstract class BreezSdk implements RustOpaqueInterface {
   /// while the Spark operators are unreachable, so it can be kept somewhere
   /// the wallet's own storage cannot take with it.
   Future<ExportUnilateralExitStateResponse> exportUnilateralExitState();
+
+  Future<FetchClaimDepositQuoteResponse> fetchClaimDepositQuote({
+    required FetchClaimDepositQuoteRequest request,
+  });
 
   Future<FetchConversionLimitsResponse> fetchConversionLimits({
     required FetchConversionLimitsRequest request,

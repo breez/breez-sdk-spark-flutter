@@ -441,7 +441,7 @@ extension PasskeyErrorPatterns on PasskeyError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_Prf value)?  prf,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PasskeyError_Prf value)?  prf,TResult Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult Function( PasskeyError_InvalidConfig value)?  invalidConfig,TResult Function( PasskeyError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
@@ -453,7 +453,8 @@ return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when inval
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
 return invalidSalt(_that);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
-return createdButNotDerived(_that);case PasskeyError_Generic() when generic != null:
+return createdButNotDerived(_that);case PasskeyError_InvalidConfig() when invalidConfig != null:
+return invalidConfig(_that);case PasskeyError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -472,7 +473,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_Prf value)  prf,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_CreatedButNotDerived value)  createdButNotDerived,required TResult Function( PasskeyError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PasskeyError_Prf value)  prf,required TResult Function( PasskeyError_RelayConnectionFailed value)  relayConnectionFailed,required TResult Function( PasskeyError_NostrWriteFailed value)  nostrWriteFailed,required TResult Function( PasskeyError_NostrReadFailed value)  nostrReadFailed,required TResult Function( PasskeyError_KeyDerivationError value)  keyDerivationError,required TResult Function( PasskeyError_InvalidPrfOutput value)  invalidPrfOutput,required TResult Function( PasskeyError_MnemonicError value)  mnemonicError,required TResult Function( PasskeyError_InvalidSalt value)  invalidSalt,required TResult Function( PasskeyError_CreatedButNotDerived value)  createdButNotDerived,required TResult Function( PasskeyError_InvalidConfig value)  invalidConfig,required TResult Function( PasskeyError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf():
@@ -484,7 +485,8 @@ return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput():
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError():
 return mnemonicError(_that);case PasskeyError_InvalidSalt():
 return invalidSalt(_that);case PasskeyError_CreatedButNotDerived():
-return createdButNotDerived(_that);case PasskeyError_Generic():
+return createdButNotDerived(_that);case PasskeyError_InvalidConfig():
+return invalidConfig(_that);case PasskeyError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -499,7 +501,7 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_Prf value)?  prf,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult? Function( PasskeyError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PasskeyError_Prf value)?  prf,TResult? Function( PasskeyError_RelayConnectionFailed value)?  relayConnectionFailed,TResult? Function( PasskeyError_NostrWriteFailed value)?  nostrWriteFailed,TResult? Function( PasskeyError_NostrReadFailed value)?  nostrReadFailed,TResult? Function( PasskeyError_KeyDerivationError value)?  keyDerivationError,TResult? Function( PasskeyError_InvalidPrfOutput value)?  invalidPrfOutput,TResult? Function( PasskeyError_MnemonicError value)?  mnemonicError,TResult? Function( PasskeyError_InvalidSalt value)?  invalidSalt,TResult? Function( PasskeyError_CreatedButNotDerived value)?  createdButNotDerived,TResult? Function( PasskeyError_InvalidConfig value)?  invalidConfig,TResult? Function( PasskeyError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
@@ -511,7 +513,8 @@ return keyDerivationError(_that);case PasskeyError_InvalidPrfOutput() when inval
 return invalidPrfOutput(_that);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that);case PasskeyError_InvalidSalt() when invalidSalt != null:
 return invalidSalt(_that);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
-return createdButNotDerived(_that);case PasskeyError_Generic() when generic != null:
+return createdButNotDerived(_that);case PasskeyError_InvalidConfig() when invalidConfig != null:
+return invalidConfig(_that);case PasskeyError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -529,7 +532,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PrfProviderError field0)?  prf,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( PrfProviderError field0)?  prf,TResult Function( String field0)?  relayConnectionFailed,TResult Function( String field0)?  nostrWriteFailed,TResult Function( String field0)?  nostrReadFailed,TResult Function( String field0)?  keyDerivationError,TResult Function( String field0)?  invalidPrfOutput,TResult Function( String field0)?  mnemonicError,TResult Function( String field0)?  invalidSalt,TResult Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult Function( String field0)?  invalidConfig,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
@@ -540,7 +543,8 @@ return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() whe
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
 return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
-return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic() when generic != null:
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_InvalidConfig() when invalidConfig != null:
+return invalidConfig(_that.field0);case PasskeyError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return orElse();
 
@@ -559,7 +563,7 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PrfProviderError field0)  prf,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( Uint8List credentialId,  PrfProviderError source)  createdButNotDerived,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( PrfProviderError field0)  prf,required TResult Function( String field0)  relayConnectionFailed,required TResult Function( String field0)  nostrWriteFailed,required TResult Function( String field0)  nostrReadFailed,required TResult Function( String field0)  keyDerivationError,required TResult Function( String field0)  invalidPrfOutput,required TResult Function( String field0)  mnemonicError,required TResult Function( String field0)  invalidSalt,required TResult Function( Uint8List credentialId,  PrfProviderError source)  createdButNotDerived,required TResult Function( String field0)  invalidConfig,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf():
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed():
@@ -570,7 +574,8 @@ return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput():
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError():
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt():
 return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived():
-return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic():
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_InvalidConfig():
+return invalidConfig(_that.field0);case PasskeyError_Generic():
 return generic(_that.field0);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -585,7 +590,7 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PrfProviderError field0)?  prf,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( PrfProviderError field0)?  prf,TResult? Function( String field0)?  relayConnectionFailed,TResult? Function( String field0)?  nostrWriteFailed,TResult? Function( String field0)?  nostrReadFailed,TResult? Function( String field0)?  keyDerivationError,TResult? Function( String field0)?  invalidPrfOutput,TResult? Function( String field0)?  mnemonicError,TResult? Function( String field0)?  invalidSalt,TResult? Function( Uint8List credentialId,  PrfProviderError source)?  createdButNotDerived,TResult? Function( String field0)?  invalidConfig,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case PasskeyError_Prf() when prf != null:
 return prf(_that.field0);case PasskeyError_RelayConnectionFailed() when relayConnectionFailed != null:
@@ -596,7 +601,8 @@ return keyDerivationError(_that.field0);case PasskeyError_InvalidPrfOutput() whe
 return invalidPrfOutput(_that.field0);case PasskeyError_MnemonicError() when mnemonicError != null:
 return mnemonicError(_that.field0);case PasskeyError_InvalidSalt() when invalidSalt != null:
 return invalidSalt(_that.field0);case PasskeyError_CreatedButNotDerived() when createdButNotDerived != null:
-return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_Generic() when generic != null:
+return createdButNotDerived(_that.credentialId,_that.source);case PasskeyError_InvalidConfig() when invalidConfig != null:
+return invalidConfig(_that.field0);case PasskeyError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return null;
 
@@ -1217,6 +1223,72 @@ $PrfProviderErrorCopyWith<$Res> get source {
     return _then(_self.copyWith(source: value));
   });
 }
+}
+
+/// @nodoc
+
+
+class PasskeyError_InvalidConfig extends PasskeyError {
+  const PasskeyError_InvalidConfig(this.field0): super._();
+  
+
+ final  String field0;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PasskeyError_InvalidConfigCopyWith<PasskeyError_InvalidConfig> get copyWith => _$PasskeyError_InvalidConfigCopyWithImpl<PasskeyError_InvalidConfig>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PasskeyError_InvalidConfig&&(identical(other.field0, field0) || other.field0 == field0));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field0);
+
+@override
+String toString() {
+  return 'PasskeyError.invalidConfig(field0: $field0)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PasskeyError_InvalidConfigCopyWith<$Res> implements $PasskeyErrorCopyWith<$Res> {
+  factory $PasskeyError_InvalidConfigCopyWith(PasskeyError_InvalidConfig value, $Res Function(PasskeyError_InvalidConfig) _then) = _$PasskeyError_InvalidConfigCopyWithImpl;
+@useResult
+$Res call({
+ String field0
+});
+
+
+
+
+}
+/// @nodoc
+class _$PasskeyError_InvalidConfigCopyWithImpl<$Res>
+    implements $PasskeyError_InvalidConfigCopyWith<$Res> {
+  _$PasskeyError_InvalidConfigCopyWithImpl(this._self, this._then);
+
+  final PasskeyError_InvalidConfig _self;
+  final $Res Function(PasskeyError_InvalidConfig) _then;
+
+/// Create a copy of PasskeyError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field0 = null,}) {
+  return _then(PasskeyError_InvalidConfig(
+null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc
@@ -2023,7 +2095,7 @@ extension SdkErrorPatterns on SdkError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_FundingUtxoConflict value)?  fundingUtxoConflict,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_FundingUtxoConflict value)?  fundingUtxoConflict,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -2035,7 +2107,9 @@ return networkError(_that);case SdkError_StorageError() when storageError != nul
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case SdkError_LnurlError() when lnurlError != null:
+return missingUtxo(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
 return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
@@ -2060,7 +2134,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_FundingUtxoConflict value)  fundingUtxoConflict,required TResult Function( SdkError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_DepositClaimInProgress value)  depositClaimInProgress,required TResult Function( SdkError_RefundReplacementFeeTooLow value)  refundReplacementFeeTooLow,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_FundingUtxoConflict value)  fundingUtxoConflict,required TResult Function( SdkError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError():
@@ -2072,7 +2146,9 @@ return networkError(_that);case SdkError_StorageError():
 return storageError(_that);case SdkError_ChainServiceError():
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded():
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo():
-return missingUtxo(_that);case SdkError_LnurlError():
+return missingUtxo(_that);case SdkError_DepositClaimInProgress():
+return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow():
+return refundReplacementFeeTooLow(_that);case SdkError_LnurlError():
 return lnurlError(_that);case SdkError_Signer():
 return signer(_that);case SdkError_OptimizationAlreadyRunning():
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled():
@@ -2093,7 +2169,7 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_FundingUtxoConflict value)?  fundingUtxoConflict,TResult? Function( SdkError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult? Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_FundingUtxoConflict value)?  fundingUtxoConflict,TResult? Function( SdkError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -2105,7 +2181,9 @@ return networkError(_that);case SdkError_StorageError() when storageError != nul
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case SdkError_LnurlError() when lnurlError != null:
+return missingUtxo(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
 return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
@@ -2129,7 +2207,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String txid,  int vout)?  fundingUtxoConflict,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout)?  depositClaimInProgress,TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String txid,  int vout)?  fundingUtxoConflict,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
@@ -2140,7 +2218,9 @@ return networkError(_that.field0);case SdkError_StorageError() when storageError
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError() when lnurlError != null:
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
@@ -2165,7 +2245,7 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String txid,  int vout)  fundingUtxoConflict,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout)  depositClaimInProgress,required TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)  refundReplacementFeeTooLow,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String txid,  int vout)  fundingUtxoConflict,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that.field0);case SdkError_InsufficientFunds():
@@ -2176,7 +2256,9 @@ return networkError(_that.field0);case SdkError_StorageError():
 return storageError(_that.field0);case SdkError_ChainServiceError():
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded():
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo():
-return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError():
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress():
+return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow():
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError():
 return lnurlError(_that.field0);case SdkError_Signer():
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning():
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled():
@@ -2197,7 +2279,7 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String txid,  int vout)?  fundingUtxoConflict,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout)?  depositClaimInProgress,TResult? Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String txid,  int vout)?  fundingUtxoConflict,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
@@ -2208,7 +2290,9 @@ return networkError(_that.field0);case SdkError_StorageError() when storageError
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case SdkError_LnurlError() when lnurlError != null:
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
@@ -2833,6 +2917,142 @@ class _$SdkError_MissingUtxoCopyWithImpl<$Res>
 tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
 as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
 as int,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_DepositClaimInProgress extends SdkError {
+  const SdkError_DepositClaimInProgress({required this.tx, required this.vout}): super._();
+  
+
+ final  String tx;
+ final  int vout;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_DepositClaimInProgressCopyWith<SdkError_DepositClaimInProgress> get copyWith => _$SdkError_DepositClaimInProgressCopyWithImpl<SdkError_DepositClaimInProgress>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_DepositClaimInProgress&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,tx,vout);
+
+@override
+String toString() {
+  return 'SdkError.depositClaimInProgress(tx: $tx, vout: $vout)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_DepositClaimInProgressCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_DepositClaimInProgressCopyWith(SdkError_DepositClaimInProgress value, $Res Function(SdkError_DepositClaimInProgress) _then) = _$SdkError_DepositClaimInProgressCopyWithImpl;
+@useResult
+$Res call({
+ String tx, int vout
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_DepositClaimInProgressCopyWithImpl<$Res>
+    implements $SdkError_DepositClaimInProgressCopyWith<$Res> {
+  _$SdkError_DepositClaimInProgressCopyWithImpl(this._self, this._then);
+
+  final SdkError_DepositClaimInProgress _self;
+  final $Res Function(SdkError_DepositClaimInProgress) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,}) {
+  return _then(SdkError_DepositClaimInProgress(
+tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_RefundReplacementFeeTooLow extends SdkError {
+  const SdkError_RefundReplacementFeeTooLow({required this.pendingFeeSats, required this.requiredFeeSats}): super._();
+  
+
+ final  BigInt pendingFeeSats;
+ final  BigInt requiredFeeSats;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_RefundReplacementFeeTooLowCopyWith<SdkError_RefundReplacementFeeTooLow> get copyWith => _$SdkError_RefundReplacementFeeTooLowCopyWithImpl<SdkError_RefundReplacementFeeTooLow>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_RefundReplacementFeeTooLow&&(identical(other.pendingFeeSats, pendingFeeSats) || other.pendingFeeSats == pendingFeeSats)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,pendingFeeSats,requiredFeeSats);
+
+@override
+String toString() {
+  return 'SdkError.refundReplacementFeeTooLow(pendingFeeSats: $pendingFeeSats, requiredFeeSats: $requiredFeeSats)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_RefundReplacementFeeTooLowCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_RefundReplacementFeeTooLowCopyWith(SdkError_RefundReplacementFeeTooLow value, $Res Function(SdkError_RefundReplacementFeeTooLow) _then) = _$SdkError_RefundReplacementFeeTooLowCopyWithImpl;
+@useResult
+$Res call({
+ BigInt pendingFeeSats, BigInt requiredFeeSats
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_RefundReplacementFeeTooLowCopyWithImpl<$Res>
+    implements $SdkError_RefundReplacementFeeTooLowCopyWith<$Res> {
+  _$SdkError_RefundReplacementFeeTooLowCopyWithImpl(this._self, this._then);
+
+  final SdkError_RefundReplacementFeeTooLow _self;
+  final $Res Function(SdkError_RefundReplacementFeeTooLow) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? pendingFeeSats = null,Object? requiredFeeSats = null,}) {
+  return _then(SdkError_RefundReplacementFeeTooLow(
+pendingFeeSats: null == pendingFeeSats ? _self.pendingFeeSats : pendingFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt,
   ));
 }
 

@@ -8,8 +8,10 @@ use crate::exit_signer::CallbackCpfpSigner;
 use crate::frb_generated::StreamSink;
 use crate::logger::BindingLogger;
 
-pub async fn get_spark_status() -> Result<SparkStatus, SdkError> {
-    breez_sdk_spark::get_spark_status().await
+pub async fn get_spark_status(
+    request: GetSparkStatusRequest,
+) -> Result<SparkStatus, SdkError> {
+    breez_sdk_spark::get_spark_status(request).await
 }
 
 pub async fn connect(request: ConnectRequest) -> Result<BreezSdk, SdkError> {
@@ -263,6 +265,13 @@ impl BreezSdk {
         request: ClaimDepositRequest,
     ) -> Result<ClaimDepositResponse, SdkError> {
         self.inner.claim_deposit(request).await
+    }
+
+    pub async fn fetch_claim_deposit_quote(
+        &self,
+        request: FetchClaimDepositQuoteRequest,
+    ) -> Result<FetchClaimDepositQuoteResponse, SdkError> {
+        self.inner.fetch_claim_deposit_quote(request).await
     }
 
     pub async fn refund_deposit(
