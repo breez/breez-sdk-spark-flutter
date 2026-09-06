@@ -32,5 +32,3 @@ migrate_working_dir/
 .flutter-plugins
 .flutter-plugins-dependencies
 build/
-
-.planning/debug/
