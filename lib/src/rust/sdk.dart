@@ -54,6 +54,10 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<CheckMessageResponse> checkMessage({required CheckMessageRequest request});
 
+  /// Reads an exit you kept back against the chain: which of its transactions
+  /// are now in a block, and whether it can still be finished as it stands.
+  Future<CheckUnilateralExitResponse> checkUnilateralExit({required CheckUnilateralExitRequest request});
+
   Future<ClaimDepositResponse> claimDeposit({required ClaimDepositRequest request});
 
   Future<ClaimHtlcPaymentResponse> claimHtlcPayment({required ClaimHtlcPaymentRequest request});

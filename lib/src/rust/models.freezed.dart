@@ -2175,12 +2175,12 @@ return orchestra(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)?  amm,TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)?  boltz,TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)?  orchestra,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)?  amm,TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)?  boltz,TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  String? externalTxHash,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)?  orchestra,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ConversionInfo_Amm() when amm != null:
 return amm(_that.poolId,_that.conversionId,_that.status,_that.fee,_that.purpose,_that.amountAdjustment,_that.degradation);case ConversionInfo_Boltz() when boltz != null:
 return boltz(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.swapId,_that.invoice,_that.invoiceAmountSats,_that.bridgeRef,_that.maxSlippageBps,_that.quoteDegraded);case ConversionInfo_Orchestra() when orchestra != null:
-return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);case _:
+return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.externalTxHash,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);case _:
   return orElse();
 
 }
@@ -2198,12 +2198,12 @@ return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)  amm,required TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)  boltz,required TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)  orchestra,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)  amm,required TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)  boltz,required TResult Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  String? externalTxHash,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)  orchestra,}) {final _that = this;
 switch (_that) {
 case ConversionInfo_Amm():
 return amm(_that.poolId,_that.conversionId,_that.status,_that.fee,_that.purpose,_that.amountAdjustment,_that.degradation);case ConversionInfo_Boltz():
 return boltz(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.swapId,_that.invoice,_that.invoiceAmountSats,_that.bridgeRef,_that.maxSlippageBps,_that.quoteDegraded);case ConversionInfo_Orchestra():
-return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);}
+return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.externalTxHash,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -2217,12 +2217,12 @@ return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)?  amm,TResult? Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)?  boltz,TResult? Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)?  orchestra,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String poolId,  String conversionId,  ConversionStatus status,  BigInt? fee,  ConversionPurpose? purpose,  AmountAdjustmentReason? amountAdjustment,  SwapDegradation? degradation)?  amm,TResult? Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String swapId,  String invoice,  BigInt invoiceAmountSats,  String? bridgeRef,  int maxSlippageBps,  bool quoteDegraded)?  boltz,TResult? Function( String chain,  String? chainId,  String asset,  String? assetContract,  String recipientAddress,  BigInt? assetAmountIn,  BigInt estimatedOut,  BigInt? deliveredAmount,  String? externalTxHash,  ConversionStatus status,  BigInt? feeAmount,  BigInt? serviceFeeAmount,  String? serviceFeeAsset,  int assetDecimals,  String orderId,  String quoteId,  String? readToken)?  orchestra,}) {final _that = this;
 switch (_that) {
 case ConversionInfo_Amm() when amm != null:
 return amm(_that.poolId,_that.conversionId,_that.status,_that.fee,_that.purpose,_that.amountAdjustment,_that.degradation);case ConversionInfo_Boltz() when boltz != null:
 return boltz(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.swapId,_that.invoice,_that.invoiceAmountSats,_that.bridgeRef,_that.maxSlippageBps,_that.quoteDegraded);case ConversionInfo_Orchestra() when orchestra != null:
-return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);case _:
+return orchestra(_that.chain,_that.chainId,_that.asset,_that.assetContract,_that.recipientAddress,_that.assetAmountIn,_that.estimatedOut,_that.deliveredAmount,_that.externalTxHash,_that.status,_that.feeAmount,_that.serviceFeeAmount,_that.serviceFeeAsset,_that.assetDecimals,_that.orderId,_that.quoteId,_that.readToken);case _:
   return null;
 
 }
@@ -2426,7 +2426,7 @@ as bool,
 
 
 class ConversionInfo_Orchestra extends ConversionInfo {
-  const ConversionInfo_Orchestra({required this.chain, this.chainId, required this.asset, this.assetContract, required this.recipientAddress, this.assetAmountIn, required this.estimatedOut, this.deliveredAmount, required this.status, this.feeAmount, this.serviceFeeAmount, this.serviceFeeAsset, required this.assetDecimals, required this.orderId, required this.quoteId, this.readToken}): super._();
+  const ConversionInfo_Orchestra({required this.chain, this.chainId, required this.asset, this.assetContract, required this.recipientAddress, this.assetAmountIn, required this.estimatedOut, this.deliveredAmount, this.externalTxHash, required this.status, this.feeAmount, this.serviceFeeAmount, this.serviceFeeAsset, required this.assetDecimals, required this.orderId, required this.quoteId, this.readToken}): super._();
   
 
  final  String chain;
@@ -2437,6 +2437,7 @@ class ConversionInfo_Orchestra extends ConversionInfo {
  final  BigInt? assetAmountIn;
  final  BigInt estimatedOut;
  final  BigInt? deliveredAmount;
+ final  String? externalTxHash;
 @override final  ConversionStatus status;
  final  BigInt? feeAmount;
  final  BigInt? serviceFeeAmount;
@@ -2456,16 +2457,16 @@ $ConversionInfo_OrchestraCopyWith<ConversionInfo_Orchestra> get copyWith => _$Co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionInfo_Orchestra&&(identical(other.chain, chain) || other.chain == chain)&&(identical(other.chainId, chainId) || other.chainId == chainId)&&(identical(other.asset, asset) || other.asset == asset)&&(identical(other.assetContract, assetContract) || other.assetContract == assetContract)&&(identical(other.recipientAddress, recipientAddress) || other.recipientAddress == recipientAddress)&&(identical(other.assetAmountIn, assetAmountIn) || other.assetAmountIn == assetAmountIn)&&(identical(other.estimatedOut, estimatedOut) || other.estimatedOut == estimatedOut)&&(identical(other.deliveredAmount, deliveredAmount) || other.deliveredAmount == deliveredAmount)&&(identical(other.status, status) || other.status == status)&&(identical(other.feeAmount, feeAmount) || other.feeAmount == feeAmount)&&(identical(other.serviceFeeAmount, serviceFeeAmount) || other.serviceFeeAmount == serviceFeeAmount)&&(identical(other.serviceFeeAsset, serviceFeeAsset) || other.serviceFeeAsset == serviceFeeAsset)&&(identical(other.assetDecimals, assetDecimals) || other.assetDecimals == assetDecimals)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.quoteId, quoteId) || other.quoteId == quoteId)&&(identical(other.readToken, readToken) || other.readToken == readToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConversionInfo_Orchestra&&(identical(other.chain, chain) || other.chain == chain)&&(identical(other.chainId, chainId) || other.chainId == chainId)&&(identical(other.asset, asset) || other.asset == asset)&&(identical(other.assetContract, assetContract) || other.assetContract == assetContract)&&(identical(other.recipientAddress, recipientAddress) || other.recipientAddress == recipientAddress)&&(identical(other.assetAmountIn, assetAmountIn) || other.assetAmountIn == assetAmountIn)&&(identical(other.estimatedOut, estimatedOut) || other.estimatedOut == estimatedOut)&&(identical(other.deliveredAmount, deliveredAmount) || other.deliveredAmount == deliveredAmount)&&(identical(other.externalTxHash, externalTxHash) || other.externalTxHash == externalTxHash)&&(identical(other.status, status) || other.status == status)&&(identical(other.feeAmount, feeAmount) || other.feeAmount == feeAmount)&&(identical(other.serviceFeeAmount, serviceFeeAmount) || other.serviceFeeAmount == serviceFeeAmount)&&(identical(other.serviceFeeAsset, serviceFeeAsset) || other.serviceFeeAsset == serviceFeeAsset)&&(identical(other.assetDecimals, assetDecimals) || other.assetDecimals == assetDecimals)&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.quoteId, quoteId) || other.quoteId == quoteId)&&(identical(other.readToken, readToken) || other.readToken == readToken));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,chain,chainId,asset,assetContract,recipientAddress,assetAmountIn,estimatedOut,deliveredAmount,status,feeAmount,serviceFeeAmount,serviceFeeAsset,assetDecimals,orderId,quoteId,readToken);
+int get hashCode => Object.hash(runtimeType,chain,chainId,asset,assetContract,recipientAddress,assetAmountIn,estimatedOut,deliveredAmount,externalTxHash,status,feeAmount,serviceFeeAmount,serviceFeeAsset,assetDecimals,orderId,quoteId,readToken);
 
 @override
 String toString() {
-  return 'ConversionInfo.orchestra(chain: $chain, chainId: $chainId, asset: $asset, assetContract: $assetContract, recipientAddress: $recipientAddress, assetAmountIn: $assetAmountIn, estimatedOut: $estimatedOut, deliveredAmount: $deliveredAmount, status: $status, feeAmount: $feeAmount, serviceFeeAmount: $serviceFeeAmount, serviceFeeAsset: $serviceFeeAsset, assetDecimals: $assetDecimals, orderId: $orderId, quoteId: $quoteId, readToken: $readToken)';
+  return 'ConversionInfo.orchestra(chain: $chain, chainId: $chainId, asset: $asset, assetContract: $assetContract, recipientAddress: $recipientAddress, assetAmountIn: $assetAmountIn, estimatedOut: $estimatedOut, deliveredAmount: $deliveredAmount, externalTxHash: $externalTxHash, status: $status, feeAmount: $feeAmount, serviceFeeAmount: $serviceFeeAmount, serviceFeeAsset: $serviceFeeAsset, assetDecimals: $assetDecimals, orderId: $orderId, quoteId: $quoteId, readToken: $readToken)';
 }
 
 
@@ -2476,7 +2477,7 @@ abstract mixin class $ConversionInfo_OrchestraCopyWith<$Res> implements $Convers
   factory $ConversionInfo_OrchestraCopyWith(ConversionInfo_Orchestra value, $Res Function(ConversionInfo_Orchestra) _then) = _$ConversionInfo_OrchestraCopyWithImpl;
 @override @useResult
 $Res call({
- String chain, String? chainId, String asset, String? assetContract, String recipientAddress, BigInt? assetAmountIn, BigInt estimatedOut, BigInt? deliveredAmount, ConversionStatus status, BigInt? feeAmount, BigInt? serviceFeeAmount, String? serviceFeeAsset, int assetDecimals, String orderId, String quoteId, String? readToken
+ String chain, String? chainId, String asset, String? assetContract, String recipientAddress, BigInt? assetAmountIn, BigInt estimatedOut, BigInt? deliveredAmount, String? externalTxHash, ConversionStatus status, BigInt? feeAmount, BigInt? serviceFeeAmount, String? serviceFeeAsset, int assetDecimals, String orderId, String quoteId, String? readToken
 });
 
 
@@ -2493,7 +2494,7 @@ class _$ConversionInfo_OrchestraCopyWithImpl<$Res>
 
 /// Create a copy of ConversionInfo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? chain = null,Object? chainId = freezed,Object? asset = null,Object? assetContract = freezed,Object? recipientAddress = null,Object? assetAmountIn = freezed,Object? estimatedOut = null,Object? deliveredAmount = freezed,Object? status = null,Object? feeAmount = freezed,Object? serviceFeeAmount = freezed,Object? serviceFeeAsset = freezed,Object? assetDecimals = null,Object? orderId = null,Object? quoteId = null,Object? readToken = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? chain = null,Object? chainId = freezed,Object? asset = null,Object? assetContract = freezed,Object? recipientAddress = null,Object? assetAmountIn = freezed,Object? estimatedOut = null,Object? deliveredAmount = freezed,Object? externalTxHash = freezed,Object? status = null,Object? feeAmount = freezed,Object? serviceFeeAmount = freezed,Object? serviceFeeAsset = freezed,Object? assetDecimals = null,Object? orderId = null,Object? quoteId = null,Object? readToken = freezed,}) {
   return _then(ConversionInfo_Orchestra(
 chain: null == chain ? _self.chain : chain // ignore: cast_nullable_to_non_nullable
 as String,chainId: freezed == chainId ? _self.chainId : chainId // ignore: cast_nullable_to_non_nullable
@@ -2503,7 +2504,8 @@ as String?,recipientAddress: null == recipientAddress ? _self.recipientAddress :
 as String,assetAmountIn: freezed == assetAmountIn ? _self.assetAmountIn : assetAmountIn // ignore: cast_nullable_to_non_nullable
 as BigInt?,estimatedOut: null == estimatedOut ? _self.estimatedOut : estimatedOut // ignore: cast_nullable_to_non_nullable
 as BigInt,deliveredAmount: freezed == deliveredAmount ? _self.deliveredAmount : deliveredAmount // ignore: cast_nullable_to_non_nullable
-as BigInt?,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as BigInt?,externalTxHash: freezed == externalTxHash ? _self.externalTxHash : externalTxHash // ignore: cast_nullable_to_non_nullable
+as String?,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ConversionStatus,feeAmount: freezed == feeAmount ? _self.feeAmount : feeAmount // ignore: cast_nullable_to_non_nullable
 as BigInt?,serviceFeeAmount: freezed == serviceFeeAmount ? _self.serviceFeeAmount : serviceFeeAmount // ignore: cast_nullable_to_non_nullable
 as BigInt?,serviceFeeAsset: freezed == serviceFeeAsset ? _self.serviceFeeAsset : serviceFeeAsset // ignore: cast_nullable_to_non_nullable
@@ -4716,6 +4718,676 @@ as List<String>,
 
 
 }
+
+/// @nodoc
+mixin _$ExitRefundState {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitRefundState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitRefundState()';
+}
+
+
+}
+
+/// @nodoc
+class $ExitRefundStateCopyWith<$Res>  {
+$ExitRefundStateCopyWith(ExitRefundState _, $Res Function(ExitRefundState) __);
+}
+
+
+/// Adds pattern-matching-related methods to [ExitRefundState].
+extension ExitRefundStatePatterns on ExitRefundState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ExitRefundState_OnChain value)?  onChain,TResult Function( ExitRefundState_Swept value)?  swept,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain() when onChain != null:
+return onChain(_that);case ExitRefundState_Swept() when swept != null:
+return swept(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ExitRefundState_OnChain value)  onChain,required TResult Function( ExitRefundState_Swept value)  swept,}){
+final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain():
+return onChain(_that);case ExitRefundState_Swept():
+return swept(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ExitRefundState_OnChain value)?  onChain,TResult? Function( ExitRefundState_Swept value)?  swept,}){
+final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain() when onChain != null:
+return onChain(_that);case ExitRefundState_Swept() when swept != null:
+return swept(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String txHex,  int vout,  BigInt valueSat,  int? blockHeight)?  onChain,TResult Function()?  swept,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain() when onChain != null:
+return onChain(_that.txHex,_that.vout,_that.valueSat,_that.blockHeight);case ExitRefundState_Swept() when swept != null:
+return swept();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String txHex,  int vout,  BigInt valueSat,  int? blockHeight)  onChain,required TResult Function()  swept,}) {final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain():
+return onChain(_that.txHex,_that.vout,_that.valueSat,_that.blockHeight);case ExitRefundState_Swept():
+return swept();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String txHex,  int vout,  BigInt valueSat,  int? blockHeight)?  onChain,TResult? Function()?  swept,}) {final _that = this;
+switch (_that) {
+case ExitRefundState_OnChain() when onChain != null:
+return onChain(_that.txHex,_that.vout,_that.valueSat,_that.blockHeight);case ExitRefundState_Swept() when swept != null:
+return swept();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ExitRefundState_OnChain extends ExitRefundState {
+  const ExitRefundState_OnChain({required this.txHex, required this.vout, required this.valueSat, this.blockHeight}): super._();
+  
+
+ final  String txHex;
+ final  int vout;
+ final  BigInt valueSat;
+ final  int? blockHeight;
+
+/// Create a copy of ExitRefundState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExitRefundState_OnChainCopyWith<ExitRefundState_OnChain> get copyWith => _$ExitRefundState_OnChainCopyWithImpl<ExitRefundState_OnChain>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitRefundState_OnChain&&(identical(other.txHex, txHex) || other.txHex == txHex)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.valueSat, valueSat) || other.valueSat == valueSat)&&(identical(other.blockHeight, blockHeight) || other.blockHeight == blockHeight));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,txHex,vout,valueSat,blockHeight);
+
+@override
+String toString() {
+  return 'ExitRefundState.onChain(txHex: $txHex, vout: $vout, valueSat: $valueSat, blockHeight: $blockHeight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ExitRefundState_OnChainCopyWith<$Res> implements $ExitRefundStateCopyWith<$Res> {
+  factory $ExitRefundState_OnChainCopyWith(ExitRefundState_OnChain value, $Res Function(ExitRefundState_OnChain) _then) = _$ExitRefundState_OnChainCopyWithImpl;
+@useResult
+$Res call({
+ String txHex, int vout, BigInt valueSat, int? blockHeight
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExitRefundState_OnChainCopyWithImpl<$Res>
+    implements $ExitRefundState_OnChainCopyWith<$Res> {
+  _$ExitRefundState_OnChainCopyWithImpl(this._self, this._then);
+
+  final ExitRefundState_OnChain _self;
+  final $Res Function(ExitRefundState_OnChain) _then;
+
+/// Create a copy of ExitRefundState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? txHex = null,Object? vout = null,Object? valueSat = null,Object? blockHeight = freezed,}) {
+  return _then(ExitRefundState_OnChain(
+txHex: null == txHex ? _self.txHex : txHex // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,valueSat: null == valueSat ? _self.valueSat : valueSat // ignore: cast_nullable_to_non_nullable
+as BigInt,blockHeight: freezed == blockHeight ? _self.blockHeight : blockHeight // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ExitRefundState_Swept extends ExitRefundState {
+  const ExitRefundState_Swept(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitRefundState_Swept);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitRefundState.swept()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$ExitTransactionStatus {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitTransactionStatus()';
+}
+
+
+}
+
+/// @nodoc
+class $ExitTransactionStatusCopyWith<$Res>  {
+$ExitTransactionStatusCopyWith(ExitTransactionStatus _, $Res Function(ExitTransactionStatus) __);
+}
+
+
+/// Adds pattern-matching-related methods to [ExitTransactionStatus].
+extension ExitTransactionStatusPatterns on ExitTransactionStatus {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ExitTransactionStatus_Confirmed value)?  confirmed,TResult Function( ExitTransactionStatus_Ready value)?  ready,TResult Function( ExitTransactionStatus_WaitingForDependencies value)?  waitingForDependencies,TResult Function( ExitTransactionStatus_WaitingForTimelock value)?  waitingForTimelock,TResult Function( ExitTransactionStatus_Unverified value)?  unverified,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed() when confirmed != null:
+return confirmed(_that);case ExitTransactionStatus_Ready() when ready != null:
+return ready(_that);case ExitTransactionStatus_WaitingForDependencies() when waitingForDependencies != null:
+return waitingForDependencies(_that);case ExitTransactionStatus_WaitingForTimelock() when waitingForTimelock != null:
+return waitingForTimelock(_that);case ExitTransactionStatus_Unverified() when unverified != null:
+return unverified(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ExitTransactionStatus_Confirmed value)  confirmed,required TResult Function( ExitTransactionStatus_Ready value)  ready,required TResult Function( ExitTransactionStatus_WaitingForDependencies value)  waitingForDependencies,required TResult Function( ExitTransactionStatus_WaitingForTimelock value)  waitingForTimelock,required TResult Function( ExitTransactionStatus_Unverified value)  unverified,}){
+final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed():
+return confirmed(_that);case ExitTransactionStatus_Ready():
+return ready(_that);case ExitTransactionStatus_WaitingForDependencies():
+return waitingForDependencies(_that);case ExitTransactionStatus_WaitingForTimelock():
+return waitingForTimelock(_that);case ExitTransactionStatus_Unverified():
+return unverified(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ExitTransactionStatus_Confirmed value)?  confirmed,TResult? Function( ExitTransactionStatus_Ready value)?  ready,TResult? Function( ExitTransactionStatus_WaitingForDependencies value)?  waitingForDependencies,TResult? Function( ExitTransactionStatus_WaitingForTimelock value)?  waitingForTimelock,TResult? Function( ExitTransactionStatus_Unverified value)?  unverified,}){
+final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed() when confirmed != null:
+return confirmed(_that);case ExitTransactionStatus_Ready() when ready != null:
+return ready(_that);case ExitTransactionStatus_WaitingForDependencies() when waitingForDependencies != null:
+return waitingForDependencies(_that);case ExitTransactionStatus_WaitingForTimelock() when waitingForTimelock != null:
+return waitingForTimelock(_that);case ExitTransactionStatus_Unverified() when unverified != null:
+return unverified(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int? blockHeight)?  confirmed,TResult Function()?  ready,TResult Function()?  waitingForDependencies,TResult Function( int? spendableAtHeight)?  waitingForTimelock,TResult Function()?  unverified,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed() when confirmed != null:
+return confirmed(_that.blockHeight);case ExitTransactionStatus_Ready() when ready != null:
+return ready();case ExitTransactionStatus_WaitingForDependencies() when waitingForDependencies != null:
+return waitingForDependencies();case ExitTransactionStatus_WaitingForTimelock() when waitingForTimelock != null:
+return waitingForTimelock(_that.spendableAtHeight);case ExitTransactionStatus_Unverified() when unverified != null:
+return unverified();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int? blockHeight)  confirmed,required TResult Function()  ready,required TResult Function()  waitingForDependencies,required TResult Function( int? spendableAtHeight)  waitingForTimelock,required TResult Function()  unverified,}) {final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed():
+return confirmed(_that.blockHeight);case ExitTransactionStatus_Ready():
+return ready();case ExitTransactionStatus_WaitingForDependencies():
+return waitingForDependencies();case ExitTransactionStatus_WaitingForTimelock():
+return waitingForTimelock(_that.spendableAtHeight);case ExitTransactionStatus_Unverified():
+return unverified();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int? blockHeight)?  confirmed,TResult? Function()?  ready,TResult? Function()?  waitingForDependencies,TResult? Function( int? spendableAtHeight)?  waitingForTimelock,TResult? Function()?  unverified,}) {final _that = this;
+switch (_that) {
+case ExitTransactionStatus_Confirmed() when confirmed != null:
+return confirmed(_that.blockHeight);case ExitTransactionStatus_Ready() when ready != null:
+return ready();case ExitTransactionStatus_WaitingForDependencies() when waitingForDependencies != null:
+return waitingForDependencies();case ExitTransactionStatus_WaitingForTimelock() when waitingForTimelock != null:
+return waitingForTimelock(_that.spendableAtHeight);case ExitTransactionStatus_Unverified() when unverified != null:
+return unverified();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ExitTransactionStatus_Confirmed extends ExitTransactionStatus {
+  const ExitTransactionStatus_Confirmed({this.blockHeight}): super._();
+  
+
+ final  int? blockHeight;
+
+/// Create a copy of ExitTransactionStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExitTransactionStatus_ConfirmedCopyWith<ExitTransactionStatus_Confirmed> get copyWith => _$ExitTransactionStatus_ConfirmedCopyWithImpl<ExitTransactionStatus_Confirmed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus_Confirmed&&(identical(other.blockHeight, blockHeight) || other.blockHeight == blockHeight));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,blockHeight);
+
+@override
+String toString() {
+  return 'ExitTransactionStatus.confirmed(blockHeight: $blockHeight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ExitTransactionStatus_ConfirmedCopyWith<$Res> implements $ExitTransactionStatusCopyWith<$Res> {
+  factory $ExitTransactionStatus_ConfirmedCopyWith(ExitTransactionStatus_Confirmed value, $Res Function(ExitTransactionStatus_Confirmed) _then) = _$ExitTransactionStatus_ConfirmedCopyWithImpl;
+@useResult
+$Res call({
+ int? blockHeight
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExitTransactionStatus_ConfirmedCopyWithImpl<$Res>
+    implements $ExitTransactionStatus_ConfirmedCopyWith<$Res> {
+  _$ExitTransactionStatus_ConfirmedCopyWithImpl(this._self, this._then);
+
+  final ExitTransactionStatus_Confirmed _self;
+  final $Res Function(ExitTransactionStatus_Confirmed) _then;
+
+/// Create a copy of ExitTransactionStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? blockHeight = freezed,}) {
+  return _then(ExitTransactionStatus_Confirmed(
+blockHeight: freezed == blockHeight ? _self.blockHeight : blockHeight // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ExitTransactionStatus_Ready extends ExitTransactionStatus {
+  const ExitTransactionStatus_Ready(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus_Ready);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitTransactionStatus.ready()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ExitTransactionStatus_WaitingForDependencies extends ExitTransactionStatus {
+  const ExitTransactionStatus_WaitingForDependencies(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus_WaitingForDependencies);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitTransactionStatus.waitingForDependencies()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ExitTransactionStatus_WaitingForTimelock extends ExitTransactionStatus {
+  const ExitTransactionStatus_WaitingForTimelock({this.spendableAtHeight}): super._();
+  
+
+ final  int? spendableAtHeight;
+
+/// Create a copy of ExitTransactionStatus
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExitTransactionStatus_WaitingForTimelockCopyWith<ExitTransactionStatus_WaitingForTimelock> get copyWith => _$ExitTransactionStatus_WaitingForTimelockCopyWithImpl<ExitTransactionStatus_WaitingForTimelock>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus_WaitingForTimelock&&(identical(other.spendableAtHeight, spendableAtHeight) || other.spendableAtHeight == spendableAtHeight));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,spendableAtHeight);
+
+@override
+String toString() {
+  return 'ExitTransactionStatus.waitingForTimelock(spendableAtHeight: $spendableAtHeight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ExitTransactionStatus_WaitingForTimelockCopyWith<$Res> implements $ExitTransactionStatusCopyWith<$Res> {
+  factory $ExitTransactionStatus_WaitingForTimelockCopyWith(ExitTransactionStatus_WaitingForTimelock value, $Res Function(ExitTransactionStatus_WaitingForTimelock) _then) = _$ExitTransactionStatus_WaitingForTimelockCopyWithImpl;
+@useResult
+$Res call({
+ int? spendableAtHeight
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExitTransactionStatus_WaitingForTimelockCopyWithImpl<$Res>
+    implements $ExitTransactionStatus_WaitingForTimelockCopyWith<$Res> {
+  _$ExitTransactionStatus_WaitingForTimelockCopyWithImpl(this._self, this._then);
+
+  final ExitTransactionStatus_WaitingForTimelock _self;
+  final $Res Function(ExitTransactionStatus_WaitingForTimelock) _then;
+
+/// Create a copy of ExitTransactionStatus
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? spendableAtHeight = freezed,}) {
+  return _then(ExitTransactionStatus_WaitingForTimelock(
+spendableAtHeight: freezed == spendableAtHeight ? _self.spendableAtHeight : spendableAtHeight // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ExitTransactionStatus_Unverified extends ExitTransactionStatus {
+  const ExitTransactionStatus_Unverified(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExitTransactionStatus_Unverified);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ExitTransactionStatus.unverified()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$Fee {
@@ -9675,14 +10347,15 @@ extension ReceivePaymentMethodPatterns on ReceivePaymentMethod {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ReceivePaymentMethod_SparkAddress value)?  sparkAddress,TResult Function( ReceivePaymentMethod_SparkInvoice value)?  sparkInvoice,TResult Function( ReceivePaymentMethod_BitcoinAddress value)?  bitcoinAddress,TResult Function( ReceivePaymentMethod_Bolt11Invoice value)?  bolt11Invoice,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ReceivePaymentMethod_SparkAddress value)?  sparkAddress,TResult Function( ReceivePaymentMethod_SparkInvoice value)?  sparkInvoice,TResult Function( ReceivePaymentMethod_BitcoinAddress value)?  bitcoinAddress,TResult Function( ReceivePaymentMethod_Bolt11Invoice value)?  bolt11Invoice,TResult Function( ReceivePaymentMethod_CrossChain value)?  crossChain,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress(_that);case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that);case _:
+return bolt11Invoice(_that);case ReceivePaymentMethod_CrossChain() when crossChain != null:
+return crossChain(_that);case _:
   return orElse();
 
 }
@@ -9700,14 +10373,15 @@ return bolt11Invoice(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ReceivePaymentMethod_SparkAddress value)  sparkAddress,required TResult Function( ReceivePaymentMethod_SparkInvoice value)  sparkInvoice,required TResult Function( ReceivePaymentMethod_BitcoinAddress value)  bitcoinAddress,required TResult Function( ReceivePaymentMethod_Bolt11Invoice value)  bolt11Invoice,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ReceivePaymentMethod_SparkAddress value)  sparkAddress,required TResult Function( ReceivePaymentMethod_SparkInvoice value)  sparkInvoice,required TResult Function( ReceivePaymentMethod_BitcoinAddress value)  bitcoinAddress,required TResult Function( ReceivePaymentMethod_Bolt11Invoice value)  bolt11Invoice,required TResult Function( ReceivePaymentMethod_CrossChain value)  crossChain,}){
 final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress():
 return sparkAddress(_that);case ReceivePaymentMethod_SparkInvoice():
 return sparkInvoice(_that);case ReceivePaymentMethod_BitcoinAddress():
 return bitcoinAddress(_that);case ReceivePaymentMethod_Bolt11Invoice():
-return bolt11Invoice(_that);}
+return bolt11Invoice(_that);case ReceivePaymentMethod_CrossChain():
+return crossChain(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -9721,14 +10395,15 @@ return bolt11Invoice(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ReceivePaymentMethod_SparkAddress value)?  sparkAddress,TResult? Function( ReceivePaymentMethod_SparkInvoice value)?  sparkInvoice,TResult? Function( ReceivePaymentMethod_BitcoinAddress value)?  bitcoinAddress,TResult? Function( ReceivePaymentMethod_Bolt11Invoice value)?  bolt11Invoice,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ReceivePaymentMethod_SparkAddress value)?  sparkAddress,TResult? Function( ReceivePaymentMethod_SparkInvoice value)?  sparkInvoice,TResult? Function( ReceivePaymentMethod_BitcoinAddress value)?  bitcoinAddress,TResult? Function( ReceivePaymentMethod_Bolt11Invoice value)?  bolt11Invoice,TResult? Function( ReceivePaymentMethod_CrossChain value)?  crossChain,}){
 final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress(_that);case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that);case _:
+return bolt11Invoice(_that);case ReceivePaymentMethod_CrossChain() when crossChain != null:
+return crossChain(_that);case _:
   return null;
 
 }
@@ -9745,13 +10420,14 @@ return bolt11Invoice(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function( bool? newAddress)?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  sparkAddress,TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult Function( bool? newAddress)?  bitcoinAddress,TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,TResult Function( CrossChainRoutePair route,  BigInt amount,  SparkAsset? destination,  CrossChainFeeMode? feeMode,  int? maxSlippageBps,  int? targetOverpayBps)?  crossChain,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case ReceivePaymentMethod_CrossChain() when crossChain != null:
+return crossChain(_that.route,_that.amount,_that.destination,_that.feeMode,_that.maxSlippageBps,_that.targetOverpayBps);case _:
   return orElse();
 
 }
@@ -9769,13 +10445,14 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function( bool? newAddress)  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  sparkAddress,required TResult Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)  sparkInvoice,required TResult Function( bool? newAddress)  bitcoinAddress,required TResult Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)  bolt11Invoice,required TResult Function( CrossChainRoutePair route,  BigInt amount,  SparkAsset? destination,  CrossChainFeeMode? feeMode,  int? maxSlippageBps,  int? targetOverpayBps)  crossChain,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress():
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice():
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress():
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice():
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);}
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case ReceivePaymentMethod_CrossChain():
+return crossChain(_that.route,_that.amount,_that.destination,_that.feeMode,_that.maxSlippageBps,_that.targetOverpayBps);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -9789,13 +10466,14 @@ return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function( bool? newAddress)?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  sparkAddress,TResult? Function( BigInt? amount,  String? tokenIdentifier,  BigInt? expiryTime,  String? description,  String? senderPublicKey)?  sparkInvoice,TResult? Function( bool? newAddress)?  bitcoinAddress,TResult? Function( String description,  BigInt? amountSats,  int? expirySecs,  String? paymentHash,  String? receiverIdentityPublicKey)?  bolt11Invoice,TResult? Function( CrossChainRoutePair route,  BigInt amount,  SparkAsset? destination,  CrossChainFeeMode? feeMode,  int? maxSlippageBps,  int? targetOverpayBps)?  crossChain,}) {final _that = this;
 switch (_that) {
 case ReceivePaymentMethod_SparkAddress() when sparkAddress != null:
 return sparkAddress();case ReceivePaymentMethod_SparkInvoice() when sparkInvoice != null:
 return sparkInvoice(_that.amount,_that.tokenIdentifier,_that.expiryTime,_that.description,_that.senderPublicKey);case ReceivePaymentMethod_BitcoinAddress() when bitcoinAddress != null:
 return bitcoinAddress(_that.newAddress);case ReceivePaymentMethod_Bolt11Invoice() when bolt11Invoice != null:
-return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case _:
+return bolt11Invoice(_that.description,_that.amountSats,_that.expirySecs,_that.paymentHash,_that.receiverIdentityPublicKey);case ReceivePaymentMethod_CrossChain() when crossChain != null:
+return crossChain(_that.route,_that.amount,_that.destination,_that.feeMode,_that.maxSlippageBps,_that.targetOverpayBps);case _:
   return null;
 
 }
@@ -10047,6 +10725,94 @@ as String?,
 }
 
 
+}
+
+/// @nodoc
+
+
+class ReceivePaymentMethod_CrossChain extends ReceivePaymentMethod {
+  const ReceivePaymentMethod_CrossChain({required this.route, required this.amount, this.destination, this.feeMode, this.maxSlippageBps, this.targetOverpayBps}): super._();
+  
+
+ final  CrossChainRoutePair route;
+ final  BigInt amount;
+ final  SparkAsset? destination;
+ final  CrossChainFeeMode? feeMode;
+ final  int? maxSlippageBps;
+ final  int? targetOverpayBps;
+
+/// Create a copy of ReceivePaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReceivePaymentMethod_CrossChainCopyWith<ReceivePaymentMethod_CrossChain> get copyWith => _$ReceivePaymentMethod_CrossChainCopyWithImpl<ReceivePaymentMethod_CrossChain>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceivePaymentMethod_CrossChain&&(identical(other.route, route) || other.route == route)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.destination, destination) || other.destination == destination)&&(identical(other.feeMode, feeMode) || other.feeMode == feeMode)&&(identical(other.maxSlippageBps, maxSlippageBps) || other.maxSlippageBps == maxSlippageBps)&&(identical(other.targetOverpayBps, targetOverpayBps) || other.targetOverpayBps == targetOverpayBps));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,route,amount,destination,feeMode,maxSlippageBps,targetOverpayBps);
+
+@override
+String toString() {
+  return 'ReceivePaymentMethod.crossChain(route: $route, amount: $amount, destination: $destination, feeMode: $feeMode, maxSlippageBps: $maxSlippageBps, targetOverpayBps: $targetOverpayBps)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ReceivePaymentMethod_CrossChainCopyWith<$Res> implements $ReceivePaymentMethodCopyWith<$Res> {
+  factory $ReceivePaymentMethod_CrossChainCopyWith(ReceivePaymentMethod_CrossChain value, $Res Function(ReceivePaymentMethod_CrossChain) _then) = _$ReceivePaymentMethod_CrossChainCopyWithImpl;
+@useResult
+$Res call({
+ CrossChainRoutePair route, BigInt amount, SparkAsset? destination, CrossChainFeeMode? feeMode, int? maxSlippageBps, int? targetOverpayBps
+});
+
+
+$SparkAssetCopyWith<$Res>? get destination;
+
+}
+/// @nodoc
+class _$ReceivePaymentMethod_CrossChainCopyWithImpl<$Res>
+    implements $ReceivePaymentMethod_CrossChainCopyWith<$Res> {
+  _$ReceivePaymentMethod_CrossChainCopyWithImpl(this._self, this._then);
+
+  final ReceivePaymentMethod_CrossChain _self;
+  final $Res Function(ReceivePaymentMethod_CrossChain) _then;
+
+/// Create a copy of ReceivePaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? route = null,Object? amount = null,Object? destination = freezed,Object? feeMode = freezed,Object? maxSlippageBps = freezed,Object? targetOverpayBps = freezed,}) {
+  return _then(ReceivePaymentMethod_CrossChain(
+route: null == route ? _self.route : route // ignore: cast_nullable_to_non_nullable
+as CrossChainRoutePair,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
+as BigInt,destination: freezed == destination ? _self.destination : destination // ignore: cast_nullable_to_non_nullable
+as SparkAsset?,feeMode: freezed == feeMode ? _self.feeMode : feeMode // ignore: cast_nullable_to_non_nullable
+as CrossChainFeeMode?,maxSlippageBps: freezed == maxSlippageBps ? _self.maxSlippageBps : maxSlippageBps // ignore: cast_nullable_to_non_nullable
+as int?,targetOverpayBps: freezed == targetOverpayBps ? _self.targetOverpayBps : targetOverpayBps // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+/// Create a copy of ReceivePaymentMethod
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SparkAssetCopyWith<$Res>? get destination {
+    if (_self.destination == null) {
+    return null;
+  }
+
+  return $SparkAssetCopyWith<$Res>(_self.destination!, (value) {
+    return _then(_self.copyWith(destination: value));
+  });
+}
 }
 
 /// @nodoc
@@ -11521,7 +12287,7 @@ as SparkHtlcOptions?,
 }
 
 /// @nodoc
-mixin _$SourceAsset {
+mixin _$SparkAsset {
 
 
 
@@ -11529,7 +12295,7 @@ mixin _$SourceAsset {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SourceAsset);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkAsset);
 }
 
 
@@ -11538,20 +12304,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SourceAsset()';
+  return 'SparkAsset()';
 }
 
 
 }
 
 /// @nodoc
-class $SourceAssetCopyWith<$Res>  {
-$SourceAssetCopyWith(SourceAsset _, $Res Function(SourceAsset) __);
+class $SparkAssetCopyWith<$Res>  {
+$SparkAssetCopyWith(SparkAsset _, $Res Function(SparkAsset) __);
 }
 
 
-/// Adds pattern-matching-related methods to [SourceAsset].
-extension SourceAssetPatterns on SourceAsset {
+/// Adds pattern-matching-related methods to [SparkAsset].
+extension SparkAssetPatterns on SparkAsset {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -11564,11 +12330,11 @@ extension SourceAssetPatterns on SourceAsset {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SourceAsset_Bitcoin value)?  bitcoin,TResult Function( SourceAsset_Token value)?  token,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SparkAsset_Bitcoin value)?  bitcoin,TResult Function( SparkAsset_Token value)?  token,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin() when bitcoin != null:
-return bitcoin(_that);case SourceAsset_Token() when token != null:
+case SparkAsset_Bitcoin() when bitcoin != null:
+return bitcoin(_that);case SparkAsset_Token() when token != null:
 return token(_that);case _:
   return orElse();
 
@@ -11587,11 +12353,11 @@ return token(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SourceAsset_Bitcoin value)  bitcoin,required TResult Function( SourceAsset_Token value)  token,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SparkAsset_Bitcoin value)  bitcoin,required TResult Function( SparkAsset_Token value)  token,}){
 final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin():
-return bitcoin(_that);case SourceAsset_Token():
+case SparkAsset_Bitcoin():
+return bitcoin(_that);case SparkAsset_Token():
 return token(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -11606,11 +12372,11 @@ return token(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SourceAsset_Bitcoin value)?  bitcoin,TResult? Function( SourceAsset_Token value)?  token,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SparkAsset_Bitcoin value)?  bitcoin,TResult? Function( SparkAsset_Token value)?  token,}){
 final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin() when bitcoin != null:
-return bitcoin(_that);case SourceAsset_Token() when token != null:
+case SparkAsset_Bitcoin() when bitcoin != null:
+return bitcoin(_that);case SparkAsset_Token() when token != null:
 return token(_that);case _:
   return null;
 
@@ -11630,8 +12396,8 @@ return token(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  bitcoin,TResult Function( String tokenIdentifier)?  token,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin() when bitcoin != null:
-return bitcoin();case SourceAsset_Token() when token != null:
+case SparkAsset_Bitcoin() when bitcoin != null:
+return bitcoin();case SparkAsset_Token() when token != null:
 return token(_that.tokenIdentifier);case _:
   return orElse();
 
@@ -11652,8 +12418,8 @@ return token(_that.tokenIdentifier);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  bitcoin,required TResult Function( String tokenIdentifier)  token,}) {final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin():
-return bitcoin();case SourceAsset_Token():
+case SparkAsset_Bitcoin():
+return bitcoin();case SparkAsset_Token():
 return token(_that.tokenIdentifier);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -11670,8 +12436,8 @@ return token(_that.tokenIdentifier);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  bitcoin,TResult? Function( String tokenIdentifier)?  token,}) {final _that = this;
 switch (_that) {
-case SourceAsset_Bitcoin() when bitcoin != null:
-return bitcoin();case SourceAsset_Token() when token != null:
+case SparkAsset_Bitcoin() when bitcoin != null:
+return bitcoin();case SparkAsset_Token() when token != null:
 return token(_that.tokenIdentifier);case _:
   return null;
 
@@ -11683,8 +12449,8 @@ return token(_that.tokenIdentifier);case _:
 /// @nodoc
 
 
-class SourceAsset_Bitcoin extends SourceAsset {
-  const SourceAsset_Bitcoin(): super._();
+class SparkAsset_Bitcoin extends SparkAsset {
+  const SparkAsset_Bitcoin(): super._();
   
 
 
@@ -11694,7 +12460,7 @@ class SourceAsset_Bitcoin extends SourceAsset {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SourceAsset_Bitcoin);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkAsset_Bitcoin);
 }
 
 
@@ -11703,7 +12469,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'SourceAsset.bitcoin()';
+  return 'SparkAsset.bitcoin()';
 }
 
 
@@ -11715,23 +12481,23 @@ String toString() {
 /// @nodoc
 
 
-class SourceAsset_Token extends SourceAsset {
-  const SourceAsset_Token({required this.tokenIdentifier}): super._();
+class SparkAsset_Token extends SparkAsset {
+  const SparkAsset_Token({required this.tokenIdentifier}): super._();
   
 
  final  String tokenIdentifier;
 
-/// Create a copy of SourceAsset
+/// Create a copy of SparkAsset
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SourceAsset_TokenCopyWith<SourceAsset_Token> get copyWith => _$SourceAsset_TokenCopyWithImpl<SourceAsset_Token>(this, _$identity);
+$SparkAsset_TokenCopyWith<SparkAsset_Token> get copyWith => _$SparkAsset_TokenCopyWithImpl<SparkAsset_Token>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SourceAsset_Token&&(identical(other.tokenIdentifier, tokenIdentifier) || other.tokenIdentifier == tokenIdentifier));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SparkAsset_Token&&(identical(other.tokenIdentifier, tokenIdentifier) || other.tokenIdentifier == tokenIdentifier));
 }
 
 
@@ -11740,15 +12506,15 @@ int get hashCode => Object.hash(runtimeType,tokenIdentifier);
 
 @override
 String toString() {
-  return 'SourceAsset.token(tokenIdentifier: $tokenIdentifier)';
+  return 'SparkAsset.token(tokenIdentifier: $tokenIdentifier)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SourceAsset_TokenCopyWith<$Res> implements $SourceAssetCopyWith<$Res> {
-  factory $SourceAsset_TokenCopyWith(SourceAsset_Token value, $Res Function(SourceAsset_Token) _then) = _$SourceAsset_TokenCopyWithImpl;
+abstract mixin class $SparkAsset_TokenCopyWith<$Res> implements $SparkAssetCopyWith<$Res> {
+  factory $SparkAsset_TokenCopyWith(SparkAsset_Token value, $Res Function(SparkAsset_Token) _then) = _$SparkAsset_TokenCopyWithImpl;
 @useResult
 $Res call({
  String tokenIdentifier
@@ -11759,17 +12525,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$SourceAsset_TokenCopyWithImpl<$Res>
-    implements $SourceAsset_TokenCopyWith<$Res> {
-  _$SourceAsset_TokenCopyWithImpl(this._self, this._then);
+class _$SparkAsset_TokenCopyWithImpl<$Res>
+    implements $SparkAsset_TokenCopyWith<$Res> {
+  _$SparkAsset_TokenCopyWithImpl(this._self, this._then);
 
-  final SourceAsset_Token _self;
-  final $Res Function(SourceAsset_Token) _then;
+  final SparkAsset_Token _self;
+  final $Res Function(SparkAsset_Token) _then;
 
-/// Create a copy of SourceAsset
+/// Create a copy of SparkAsset
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? tokenIdentifier = null,}) {
-  return _then(SourceAsset_Token(
+  return _then(SparkAsset_Token(
 tokenIdentifier: null == tokenIdentifier ? _self.tokenIdentifier : tokenIdentifier // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -13693,6 +14459,302 @@ address: null == address ? _self.address : address // ignore: cast_nullable_to_n
 as String,feeQuote: null == feeQuote ? _self.feeQuote : feeQuote // ignore: cast_nullable_to_non_nullable
 as SendOnchainFeeQuote,confirmationSpeed: null == confirmationSpeed ? _self.confirmationSpeed : confirmationSpeed // ignore: cast_nullable_to_non_nullable
 as OnchainConfirmationSpeed,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$UnilateralExitVerdict {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnilateralExitVerdict);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UnilateralExitVerdict()';
+}
+
+
+}
+
+/// @nodoc
+class $UnilateralExitVerdictCopyWith<$Res>  {
+$UnilateralExitVerdictCopyWith(UnilateralExitVerdict _, $Res Function(UnilateralExitVerdict) __);
+}
+
+
+/// Adds pattern-matching-related methods to [UnilateralExitVerdict].
+extension UnilateralExitVerdictPatterns on UnilateralExitVerdict {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UnilateralExitVerdict_Valid value)?  valid,TResult Function( UnilateralExitVerdict_Done value)?  done,TResult Function( UnilateralExitVerdict_Redo value)?  redo,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid() when valid != null:
+return valid(_that);case UnilateralExitVerdict_Done() when done != null:
+return done(_that);case UnilateralExitVerdict_Redo() when redo != null:
+return redo(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UnilateralExitVerdict_Valid value)  valid,required TResult Function( UnilateralExitVerdict_Done value)  done,required TResult Function( UnilateralExitVerdict_Redo value)  redo,}){
+final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid():
+return valid(_that);case UnilateralExitVerdict_Done():
+return done(_that);case UnilateralExitVerdict_Redo():
+return redo(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UnilateralExitVerdict_Valid value)?  valid,TResult? Function( UnilateralExitVerdict_Done value)?  done,TResult? Function( UnilateralExitVerdict_Redo value)?  redo,}){
+final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid() when valid != null:
+return valid(_that);case UnilateralExitVerdict_Done() when done != null:
+return done(_that);case UnilateralExitVerdict_Redo() when redo != null:
+return redo(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  valid,TResult Function()?  done,TResult Function( UnilateralExitRedoReason reason)?  redo,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid() when valid != null:
+return valid();case UnilateralExitVerdict_Done() when done != null:
+return done();case UnilateralExitVerdict_Redo() when redo != null:
+return redo(_that.reason);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  valid,required TResult Function()  done,required TResult Function( UnilateralExitRedoReason reason)  redo,}) {final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid():
+return valid();case UnilateralExitVerdict_Done():
+return done();case UnilateralExitVerdict_Redo():
+return redo(_that.reason);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  valid,TResult? Function()?  done,TResult? Function( UnilateralExitRedoReason reason)?  redo,}) {final _that = this;
+switch (_that) {
+case UnilateralExitVerdict_Valid() when valid != null:
+return valid();case UnilateralExitVerdict_Done() when done != null:
+return done();case UnilateralExitVerdict_Redo() when redo != null:
+return redo(_that.reason);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class UnilateralExitVerdict_Valid extends UnilateralExitVerdict {
+  const UnilateralExitVerdict_Valid(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnilateralExitVerdict_Valid);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UnilateralExitVerdict.valid()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class UnilateralExitVerdict_Done extends UnilateralExitVerdict {
+  const UnilateralExitVerdict_Done(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnilateralExitVerdict_Done);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UnilateralExitVerdict.done()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class UnilateralExitVerdict_Redo extends UnilateralExitVerdict {
+  const UnilateralExitVerdict_Redo({required this.reason}): super._();
+  
+
+ final  UnilateralExitRedoReason reason;
+
+/// Create a copy of UnilateralExitVerdict
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UnilateralExitVerdict_RedoCopyWith<UnilateralExitVerdict_Redo> get copyWith => _$UnilateralExitVerdict_RedoCopyWithImpl<UnilateralExitVerdict_Redo>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnilateralExitVerdict_Redo&&(identical(other.reason, reason) || other.reason == reason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason);
+
+@override
+String toString() {
+  return 'UnilateralExitVerdict.redo(reason: $reason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UnilateralExitVerdict_RedoCopyWith<$Res> implements $UnilateralExitVerdictCopyWith<$Res> {
+  factory $UnilateralExitVerdict_RedoCopyWith(UnilateralExitVerdict_Redo value, $Res Function(UnilateralExitVerdict_Redo) _then) = _$UnilateralExitVerdict_RedoCopyWithImpl;
+@useResult
+$Res call({
+ UnilateralExitRedoReason reason
+});
+
+
+
+
+}
+/// @nodoc
+class _$UnilateralExitVerdict_RedoCopyWithImpl<$Res>
+    implements $UnilateralExitVerdict_RedoCopyWith<$Res> {
+  _$UnilateralExitVerdict_RedoCopyWithImpl(this._self, this._then);
+
+  final UnilateralExitVerdict_Redo _self;
+  final $Res Function(UnilateralExitVerdict_Redo) _then;
+
+/// Create a copy of UnilateralExitVerdict
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,}) {
+  return _then(UnilateralExitVerdict_Redo(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as UnilateralExitRedoReason,
   ));
 }
 

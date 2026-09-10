@@ -301,10 +301,12 @@ pub enum _UnilateralExitTxKind {
     Sweep,
 }
 
-#[frb(mirror(ConfirmationStatus))]
-pub enum _ConfirmationStatus {
-    Confirmed,
-    Unconfirmed,
+#[frb(mirror(ExitTransactionStatus))]
+pub enum _ExitTransactionStatus {
+    Confirmed { block_height: Option<u32> },
+    Ready,
+    WaitingForDependencies,
+    WaitingForTimelock { spendable_at_height: Option<u32> },
     Unverified,
 }
 
@@ -317,7 +319,7 @@ pub struct _UnilateralExitTransaction {
     pub cpfp_tx_hex: Option<String>,
     pub csv_timelock_blocks: Option<u32>,
     pub depends_on: Vec<String>,
-    pub status: ConfirmationStatus,
+    pub status: ExitTransactionStatus,
 }
 
 #[frb(mirror(UnilateralExitLeaf))]
@@ -340,16 +342,58 @@ pub struct _PrepareUnilateralExitRequest {
     pub selection: ExitLeafSelection,
 }
 
+#[frb(mirror(ExitChainState))]
+pub struct _ExitChainState {
+    pub confirmed_nodes: Vec<ConfirmedExitNode>,
+    pub refunds: Vec<ExitRefund>,
+    pub stopped_leaf_ids: Vec<String>,
+    pub unverified_node_ids: Vec<String>,
+    pub unverifiable_confirmed_node_ids: Vec<String>,
+}
+
+#[frb(mirror(ConfirmedExitNode))]
+pub struct _ConfirmedExitNode {
+    pub node_id: String,
+    pub confirmed_by: ExitNodeConfirmation,
+    pub block_height: Option<u32>,
+}
+
+#[frb(mirror(ExitNodeConfirmation))]
+pub enum _ExitNodeConfirmation {
+    Cpfp,
+    Direct,
+}
+
+#[frb(mirror(ExitRefund))]
+pub struct _ExitRefund {
+    pub leaf_id: String,
+    pub state: ExitRefundState,
+}
+
+#[frb(mirror(ExitRefundState))]
+pub enum _ExitRefundState {
+    OnChain {
+        tx_hex: String,
+        vout: u32,
+        value_sat: u64,
+        block_height: Option<u32>,
+    },
+    Swept,
+}
+
 #[frb(mirror(PrepareUnilateralExitResponse))]
 pub struct _PrepareUnilateralExitResponse {
     pub leaves: Vec<UnilateralExitLeaf>,
     pub recoverable_value_sat: u64,
     pub total_fee_sat: u64,
+    pub cpfp_fee_sat: u64,
     pub fanout_fee_sat: u64,
+    pub sweep_fee_sat: u64,
     pub single_utxo_funding_sat: u64,
     pub per_branch_funding: Vec<PerBranchFunding>,
     pub fee_rate_sat_per_vbyte: u64,
     pub destination: String,
+    pub exit_chain_state: ExitChainState,
 }
 
 #[frb(mirror(UnilateralExitRequest))]
@@ -358,12 +402,39 @@ pub struct _UnilateralExitRequest {
     pub funding_inputs: Vec<CpfpInput>,
 }
 
+#[frb(mirror(CheckUnilateralExitRequest))]
+pub struct _CheckUnilateralExitRequest {
+    pub exit: UnilateralExitResponse,
+}
+
+#[frb(mirror(CheckUnilateralExitResponse))]
+pub struct _CheckUnilateralExitResponse {
+    pub exit: UnilateralExitResponse,
+    pub verdict: UnilateralExitVerdict,
+}
+
+#[frb(mirror(UnilateralExitVerdict))]
+pub enum _UnilateralExitVerdict {
+    Valid,
+    Done,
+    Redo { reason: UnilateralExitRedoReason },
+}
+
+#[frb(mirror(UnilateralExitRedoReason))]
+pub enum _UnilateralExitRedoReason {
+    OnChainStateDiverged,
+}
+
 #[frb(mirror(UnilateralExitResponse))]
 pub struct _UnilateralExitResponse {
     pub recoverable_value_sat: u64,
     pub total_fee_sat: u64,
+    pub cpfp_fee_sat: u64,
+    pub fanout_fee_sat: u64,
+    pub sweep_fee_sat: u64,
     pub leaves: Vec<UnilateralExitLeaf>,
     pub transactions: Vec<UnilateralExitTransaction>,
+    pub funding_inputs: Vec<CpfpInput>,
 }
 
 #[frb(mirror(ExportUnilateralExitStateResponse))]
@@ -458,14 +529,14 @@ pub struct _CrossChainAddressDetails {
     pub amount: Option<u128>,
 }
 
-#[frb(mirror(SourceAsset))]
-pub enum _SourceAsset {
+#[frb(mirror(SparkAsset))]
+pub enum _SparkAsset {
     Bitcoin,
     Token { token_identifier: String },
 }
 
-#[frb(mirror(SourceChain))]
-pub enum _SourceChain {
+#[frb(mirror(DeliveryMethod))]
+pub enum _DeliveryMethod {
     Spark,
     Lightning,
     Bitcoin,
@@ -486,8 +557,20 @@ pub struct _CrossChainRoutePair {
     pub contract_address: Option<String>,
     pub decimals: u8,
     pub exact_out_eligible: bool,
-    pub supported_sources: Vec<SourceAsset>,
-    pub supported_source_chains: Vec<SourceChain>,
+    pub accepted_assets: Vec<SparkAsset>,
+    pub delivery_methods: Vec<DeliveryMethod>,
+}
+
+#[frb(mirror(CrossChainReceiveInfo))]
+pub struct _CrossChainReceiveInfo {
+    pub deposit_address: String,
+    pub deposit_amount: u128,
+    pub expected_received_amount: u128,
+    pub destination_asset: String,
+    pub token_identifier: Option<String>,
+    pub service_fee_amount: u128,
+    pub service_fee_asset: Option<String>,
+    pub expires_at: u64,
 }
 
 #[frb(mirror(CrossChainProviderContext))]
@@ -887,6 +970,14 @@ pub enum _ReceivePaymentMethod {
         payment_hash: Option<String>,
         receiver_identity_public_key: Option<String>,
     },
+    CrossChain {
+        route: CrossChainRoutePair,
+        amount: u128,
+        destination: Option<SparkAsset>,
+        fee_mode: Option<CrossChainFeeMode>,
+        max_slippage_bps: Option<u32>,
+        target_overpay_bps: Option<u32>,
+    },
 }
 
 #[frb(mirror(ReceivePaymentRequest))]
@@ -898,6 +989,7 @@ pub struct _ReceivePaymentRequest {
 pub struct _ReceivePaymentResponse {
     pub payment_request: String,
     pub fee: u128,
+    pub cross_chain_info: Option<CrossChainReceiveInfo>,
 }
 
 #[frb(mirror(RefundDepositRequest))]
@@ -921,6 +1013,7 @@ pub struct _SendOnchainFeeQuote {
     pub speed_fast: SendOnchainSpeedFeeQuote,
     pub speed_medium: SendOnchainSpeedFeeQuote,
     pub speed_slow: SendOnchainSpeedFeeQuote,
+    pub is_estimate: bool,
 }
 
 #[frb(mirror(SendOnchainSpeedFeeQuote))]
@@ -1864,6 +1957,7 @@ pub enum _ConversionInfo {
         asset_amount_in: Option<u128>,
         estimated_out: u128,
         delivered_amount: Option<u128>,
+        external_tx_hash: Option<String>,
         status: ConversionStatus,
         fee_amount: Option<u128>,
         service_fee_amount: Option<u128>,
