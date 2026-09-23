@@ -2095,14 +2095,16 @@ extension SdkErrorPatterns on SdkError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that);case SdkError_InvalidInput() when invalidInput != null:
-return invalidInput(_that);case SdkError_NetworkError() when networkError != null:
+return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
+return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that);case SdkError_NetworkError() when networkError != null:
 return networkError(_that);case SdkError_StorageError() when storageError != null:
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
@@ -2133,14 +2135,16 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_DepositClaimInProgress value)  depositClaimInProgress,required TResult Function( SdkError_RefundReplacementFeeTooLow value)  refundReplacementFeeTooLow,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_CrossChainAmountOutOfRange value)  crossChainAmountOutOfRange,required TResult Function( SdkError_CrossChainRouteUnavailable value)  crossChainRouteUnavailable,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_DepositClaimInProgress value)  depositClaimInProgress,required TResult Function( SdkError_RefundReplacementFeeTooLow value)  refundReplacementFeeTooLow,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that);case SdkError_InsufficientFunds():
 return insufficientFunds(_that);case SdkError_InvalidUuid():
 return invalidUuid(_that);case SdkError_InvalidInput():
-return invalidInput(_that);case SdkError_NetworkError():
+return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange():
+return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable():
+return crossChainRouteUnavailable(_that);case SdkError_NetworkError():
 return networkError(_that);case SdkError_StorageError():
 return storageError(_that);case SdkError_ChainServiceError():
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded():
@@ -2167,14 +2171,16 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult? Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult? Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult? Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that);case SdkError_InvalidInput() when invalidInput != null:
-return invalidInput(_that);case SdkError_NetworkError() when networkError != null:
+return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
+return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that);case SdkError_NetworkError() when networkError != null:
 return networkError(_that);case SdkError_StorageError() when storageError != null:
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
@@ -2204,13 +2210,15 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout)?  depositClaimInProgress,TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)?  crossChainAmountOutOfRange,TResult Function( String reason,  bool temporary)?  crossChainRouteUnavailable,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout)?  depositClaimInProgress,TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
-return invalidInput(_that.field0);case SdkError_NetworkError() when networkError != null:
+return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
@@ -2241,13 +2249,15 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout)  depositClaimInProgress,required TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)  refundReplacementFeeTooLow,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)  crossChainAmountOutOfRange,required TResult Function( String reason,  bool temporary)  crossChainRouteUnavailable,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout)  depositClaimInProgress,required TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)  refundReplacementFeeTooLow,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that.field0);case SdkError_InsufficientFunds():
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid():
 return invalidUuid(_that.field0);case SdkError_InvalidInput():
-return invalidInput(_that.field0);case SdkError_NetworkError():
+return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange():
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable():
+return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError():
 return networkError(_that.field0);case SdkError_StorageError():
 return storageError(_that.field0);case SdkError_ChainServiceError():
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded():
@@ -2274,13 +2284,15 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout)?  depositClaimInProgress,TResult? Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)?  crossChainAmountOutOfRange,TResult? Function( String reason,  bool temporary)?  crossChainRouteUnavailable,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout)?  depositClaimInProgress,TResult? Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
-return invalidInput(_that.field0);case SdkError_NetworkError() when networkError != null:
+return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
@@ -2559,6 +2571,146 @@ class _$SdkError_InvalidInputCopyWithImpl<$Res>
   return _then(SdkError_InvalidInput(
 null == field0 ? _self.field0 : field0 // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_CrossChainAmountOutOfRange extends SdkError {
+  const SdkError_CrossChainAmountOutOfRange({required this.reason, required this.tooSmall, this.boundAmount, this.boundUsdCents}): super._();
+  
+
+ final  String reason;
+ final  bool tooSmall;
+ final  BigInt? boundAmount;
+ final  BigInt? boundUsdCents;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_CrossChainAmountOutOfRangeCopyWith<SdkError_CrossChainAmountOutOfRange> get copyWith => _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl<SdkError_CrossChainAmountOutOfRange>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainAmountOutOfRange&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.tooSmall, tooSmall) || other.tooSmall == tooSmall)&&(identical(other.boundAmount, boundAmount) || other.boundAmount == boundAmount)&&(identical(other.boundUsdCents, boundUsdCents) || other.boundUsdCents == boundUsdCents));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason,tooSmall,boundAmount,boundUsdCents);
+
+@override
+String toString() {
+  return 'SdkError.crossChainAmountOutOfRange(reason: $reason, tooSmall: $tooSmall, boundAmount: $boundAmount, boundUsdCents: $boundUsdCents)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_CrossChainAmountOutOfRangeCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_CrossChainAmountOutOfRangeCopyWith(SdkError_CrossChainAmountOutOfRange value, $Res Function(SdkError_CrossChainAmountOutOfRange) _then) = _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl;
+@useResult
+$Res call({
+ String reason, bool tooSmall, BigInt? boundAmount, BigInt? boundUsdCents
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl<$Res>
+    implements $SdkError_CrossChainAmountOutOfRangeCopyWith<$Res> {
+  _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl(this._self, this._then);
+
+  final SdkError_CrossChainAmountOutOfRange _self;
+  final $Res Function(SdkError_CrossChainAmountOutOfRange) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? tooSmall = null,Object? boundAmount = freezed,Object? boundUsdCents = freezed,}) {
+  return _then(SdkError_CrossChainAmountOutOfRange(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as String,tooSmall: null == tooSmall ? _self.tooSmall : tooSmall // ignore: cast_nullable_to_non_nullable
+as bool,boundAmount: freezed == boundAmount ? _self.boundAmount : boundAmount // ignore: cast_nullable_to_non_nullable
+as BigInt?,boundUsdCents: freezed == boundUsdCents ? _self.boundUsdCents : boundUsdCents // ignore: cast_nullable_to_non_nullable
+as BigInt?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_CrossChainRouteUnavailable extends SdkError {
+  const SdkError_CrossChainRouteUnavailable({required this.reason, required this.temporary}): super._();
+  
+
+ final  String reason;
+ final  bool temporary;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_CrossChainRouteUnavailableCopyWith<SdkError_CrossChainRouteUnavailable> get copyWith => _$SdkError_CrossChainRouteUnavailableCopyWithImpl<SdkError_CrossChainRouteUnavailable>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainRouteUnavailable&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.temporary, temporary) || other.temporary == temporary));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason,temporary);
+
+@override
+String toString() {
+  return 'SdkError.crossChainRouteUnavailable(reason: $reason, temporary: $temporary)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_CrossChainRouteUnavailableCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_CrossChainRouteUnavailableCopyWith(SdkError_CrossChainRouteUnavailable value, $Res Function(SdkError_CrossChainRouteUnavailable) _then) = _$SdkError_CrossChainRouteUnavailableCopyWithImpl;
+@useResult
+$Res call({
+ String reason, bool temporary
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_CrossChainRouteUnavailableCopyWithImpl<$Res>
+    implements $SdkError_CrossChainRouteUnavailableCopyWith<$Res> {
+  _$SdkError_CrossChainRouteUnavailableCopyWithImpl(this._self, this._then);
+
+  final SdkError_CrossChainRouteUnavailable _self;
+  final $Res Function(SdkError_CrossChainRouteUnavailable) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? temporary = null,}) {
+  return _then(SdkError_CrossChainRouteUnavailable(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as String,temporary: null == temporary ? _self.temporary : temporary // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

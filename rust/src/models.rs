@@ -179,9 +179,28 @@ pub struct _ClaimDepositRequest {
     pub max_fee: Option<MaxFee>,
 }
 
+#[frb(mirror(ClaimDeferredReason))]
+pub enum _ClaimDeferredReason {
+    MaxFeeExceeded {
+        required_fee_sats: u64,
+        max_fee_sats: u64,
+    },
+    NoEarlyClaimAvailable,
+    ProviderDeclined {
+        message: String,
+    },
+}
+
+#[frb(mirror(ClaimDepositOutcome))]
+pub enum _ClaimDepositOutcome {
+    Settled { payment: Payment },
+    Submitted,
+    Deferred { reason: ClaimDeferredReason },
+}
+
 #[frb(mirror(ClaimDepositResponse))]
 pub struct _ClaimDepositResponse {
-    pub payment: Option<Payment>,
+    pub outcome: ClaimDepositOutcome,
 }
 
 #[frb(mirror(FetchClaimDepositQuoteRequest))]
@@ -220,6 +239,7 @@ pub enum _InstantClaimStatus {
         confirmations: u32,
     },
     Submitted { claim_id: String },
+    Claimed,
 }
 
 #[frb(mirror(RefundState))]
@@ -239,6 +259,7 @@ pub struct _DepositInfo {
     pub claim_error: Option<DepositClaimError>,
     pub instant_claim_status: Option<InstantClaimStatus>,
     pub refund_state: Option<RefundState>,
+    pub max_claim_fee: Option<MaxFee>,
 }
 
 #[frb(mirror(MaxFee))]
@@ -548,6 +569,20 @@ pub enum _CrossChainFeeMode {
     FeesIncluded,
 }
 
+#[frb(mirror(CrossChainRouteLimits))]
+pub struct _CrossChainRouteLimits {
+    pub min_amount: Option<u128>,
+    pub max_amount: Option<u128>,
+    pub min_usd_cents: Option<u64>,
+    pub max_usd_cents: Option<u64>,
+}
+
+#[frb(mirror(CrossChainAcceptedAsset))]
+pub struct _CrossChainAcceptedAsset {
+    pub asset: SparkAsset,
+    pub limits: Option<CrossChainRouteLimits>,
+}
+
 #[frb(mirror(CrossChainRoutePair))]
 pub struct _CrossChainRoutePair {
     pub provider: CrossChainProvider,
@@ -557,7 +592,7 @@ pub struct _CrossChainRoutePair {
     pub contract_address: Option<String>,
     pub decimals: u8,
     pub exact_out_eligible: bool,
-    pub accepted_assets: Vec<SparkAsset>,
+    pub accepted_assets: Vec<CrossChainAcceptedAsset>,
     pub delivery_methods: Vec<DeliveryMethod>,
 }
 
@@ -570,6 +605,7 @@ pub struct _CrossChainReceiveInfo {
     pub token_identifier: Option<String>,
     pub service_fee_amount: u128,
     pub service_fee_asset: Option<String>,
+    pub service_fee_asset_decimals: Option<u32>,
     pub expires_at: u64,
 }
 
@@ -779,10 +815,16 @@ pub struct _EcdsaSignatureBytes {
     pub bytes: Vec<u8>,
 }
 
+#[frb(mirror(ExternalLeafSigningKey))]
+pub struct _ExternalLeafSigningKey {
+    pub derived_from: ExternalTreeNodeId,
+}
+
 #[frb(mirror(ExternalTransferLeafInput))]
 pub struct _ExternalTransferLeafInput {
     pub node_id: ExternalTreeNodeId,
     pub new_leaf_id: ExternalTreeNodeId,
+    pub signing_key: ExternalLeafSigningKey,
 }
 
 #[frb(mirror(ExternalOperatorRecipient))]
@@ -1052,6 +1094,7 @@ pub enum _SendPaymentMethod {
         fee_amount: u128,
         service_fee_amount: u128,
         service_fee_asset: Option<String>,
+        service_fee_asset_decimals: Option<u32>,
         source_transfer_fee_sats: u64,
         fee_mode: CrossChainFeeMode,
         expires_at: String,
@@ -1242,6 +1285,7 @@ pub struct _UrlSuccessActionData {
 pub enum _Network {
     Mainnet,
     Regtest,
+    Signet,
 }
 
 /// Flutter-side counterpart of
@@ -1446,6 +1490,9 @@ pub enum _UpdateDepositPayload {
     RefundBroadcastState {
         refund_txid: String,
         state: RefundState,
+    },
+    MaxClaimFee {
+        max_fee: Option<MaxFee>,
     },
 }
 
@@ -1962,6 +2009,7 @@ pub enum _ConversionInfo {
         fee_amount: Option<u128>,
         service_fee_amount: Option<u128>,
         service_fee_asset: Option<String>,
+        service_fee_asset_decimals: Option<u32>,
         asset_decimals: u32,
         order_id: String,
         quote_id: String,
@@ -2034,6 +2082,7 @@ pub struct _PreparePaymentLinkResponse {
     pub asset: String,
     pub service_fee_amount: u128,
     pub service_fee_asset: Option<String>,
+    pub service_fee_asset_decimals: Option<u32>,
     pub expires_at: String,
 }
 

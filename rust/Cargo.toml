@@ -1,6 +1,6 @@
 [package]
 name = "breez_sdk_spark_flutter"
-version = "0.25.0"
+version = "0.26.0"
 edition = "2024"
 
 [workspace]
@@ -12,12 +12,12 @@ crate-type = ["cdylib", "staticlib"]
 anyhow = "1.0.102"
 async-trait = "0.1.88"
 # Replaced with release commit during publishing
-breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "512453108958a7e31c870b30c8cc67d44fa3607b", features = [
+breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "2c140a5d721f04d21c5ac334fecc3efe7c069943", features = [
     "passkey",
     "sqlite",
 ] }
 extend = "1.2.0"
-flutter_rust_bridge = "=2.11.1"
+flutter_rust_bridge = "=2.13.0"
 futures = { version = "0.3", default-features = false, features = ["alloc"] }
 
 [dev-dependencies]
@@ -25,20 +25,3 @@ tokio = { version = "1", features = ["macros", "rt"] }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
-
-# Support for 16KB page sizes on Android 15+ 64-bit architectures
-[target.aarch64-linux-android]
-rustflags = [
-    "-C",
-    "link-arg=-Wl,--hash-style=both",
-    "-C",
-    "link-arg=-Wl,-z,max-page-size=16384",
-]
-
-[target.x86_64-linux-android]
-rustflags = [
-    "-C",
-    "link-arg=-Wl,--hash-style=both",
-    "-C",
-    "link-arg=-Wl,-z,max-page-size=16384",
-]
