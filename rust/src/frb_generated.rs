@@ -45,7 +45,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -888367027;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -477790796;
 
 // Section: executor
 
@@ -4986,6 +4986,36 @@ fn wire__crate__sdk_context__new_shared_sdk_context_impl(
         },
     )
 }
+fn wire__crate__sdk__parse_spark_config_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "parse_spark_config",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_json = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            transform_result_sse::<_, crate::errors::SdkError>((move || {
+                let output_ok = crate::sdk::parse_spark_config(api_json)?;
+                std::result::Result::Ok(output_ok)
+            })())
+        },
+    )
+}
 
 // Section: static_checks
 
@@ -5683,6 +5713,10 @@ const _: fn() = || {
             let _: u64 = required_fee_rate_sat_per_vbyte;
         }
         crate::errors::DepositClaimError::MissingUtxo { tx, vout } => {
+            let _: String = tx;
+            let _: u32 = vout;
+        }
+        crate::errors::DepositClaimError::DepositTooSmall { tx, vout } => {
             let _: String = tx;
             let _: u32 = vout;
         }
@@ -6709,6 +6743,10 @@ const _: fn() = || {
             let _: String = tx;
             let _: u32 = vout;
         }
+        crate::errors::SdkError::DepositTooSmall { tx, vout } => {
+            let _: String = tx;
+            let _: u32 = vout;
+        }
         crate::errors::SdkError::DepositClaimInProgress { tx, vout } => {
             let _: String = tx;
             let _: u32 = vout;
@@ -6765,6 +6803,15 @@ const _: fn() = || {
             let _: Vec<crate::models::DepositInfo> = new_deposits;
         }
         crate::events::SdkEvent::UnilateralExitStateChanged => {}
+        crate::events::SdkEvent::StableBalanceConversionFailed {
+            conversion,
+            error,
+            retry_in_secs,
+        } => {
+            let _: crate::events::StableBalanceConversionKind = conversion;
+            let _: String = error;
+            let _: Option<u64> = retry_in_secs;
+        }
     }
     match None::<crate::models::Seed>.unwrap() {
         crate::models::Seed::Mnemonic {
@@ -9239,6 +9286,14 @@ impl SseDecode for crate::errors::DepositClaimError {
                 };
             }
             2 => {
+                let mut var_tx = <String>::sse_decode(deserializer);
+                let mut var_vout = <u32>::sse_decode(deserializer);
+                return crate::errors::DepositClaimError::DepositTooSmall {
+                    tx: var_tx,
+                    vout: var_vout,
+                };
+            }
+            3 => {
                 let mut var_message = <String>::sse_decode(deserializer);
                 return crate::errors::DepositClaimError::Generic {
                     message: var_message,
@@ -12803,12 +12858,20 @@ impl SseDecode for crate::errors::SdkError {
             11 => {
                 let mut var_tx = <String>::sse_decode(deserializer);
                 let mut var_vout = <u32>::sse_decode(deserializer);
-                return crate::errors::SdkError::DepositClaimInProgress {
+                return crate::errors::SdkError::DepositTooSmall {
                     tx: var_tx,
                     vout: var_vout,
                 };
             }
             12 => {
+                let mut var_tx = <String>::sse_decode(deserializer);
+                let mut var_vout = <u32>::sse_decode(deserializer);
+                return crate::errors::SdkError::DepositClaimInProgress {
+                    tx: var_tx,
+                    vout: var_vout,
+                };
+            }
+            13 => {
                 let mut var_pendingFeeSats = <u64>::sse_decode(deserializer);
                 let mut var_requiredFeeSats = <u64>::sse_decode(deserializer);
                 return crate::errors::SdkError::RefundReplacementFeeTooLow {
@@ -12816,27 +12879,27 @@ impl SseDecode for crate::errors::SdkError {
                     required_fee_sats: var_requiredFeeSats,
                 };
             }
-            13 => {
+            14 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::LnurlError(var_field0);
             }
-            14 => {
+            15 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::Signer(var_field0);
             }
-            15 => {
+            16 => {
                 return crate::errors::SdkError::OptimizationAlreadyRunning;
             }
-            16 => {
+            17 => {
                 return crate::errors::SdkError::OptimizationCancelled;
             }
-            17 => {
+            18 => {
                 let mut var_requiredSat = <u64>::sse_decode(deserializer);
                 return crate::errors::SdkError::InsufficientCpfpFunds {
                     required_sat: var_requiredSat,
                 };
             }
-            18 => {
+            19 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
                 return crate::errors::SdkError::Generic(var_field0);
             }
@@ -12916,6 +12979,17 @@ impl SseDecode for crate::events::SdkEvent {
             }
             10 => {
                 return crate::events::SdkEvent::UnilateralExitStateChanged;
+            }
+            11 => {
+                let mut var_conversion =
+                    <crate::events::StableBalanceConversionKind>::sse_decode(deserializer);
+                let mut var_error = <String>::sse_decode(deserializer);
+                let mut var_retryInSecs = <Option<u64>>::sse_decode(deserializer);
+                return crate::events::SdkEvent::StableBalanceConversionFailed {
+                    conversion: var_conversion,
+                    error: var_error,
+                    retry_in_secs: var_retryInSecs,
+                };
             }
             _ => {
                 unimplemented!("");
@@ -13474,6 +13548,19 @@ impl SseDecode for crate::models::StableBalanceConfig {
             default_active_label: var_defaultActiveLabel,
             threshold_sats: var_thresholdSats,
             max_slippage_bps: var_maxSlippageBps,
+        };
+    }
+}
+
+impl SseDecode for crate::events::StableBalanceConversionKind {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::events::StableBalanceConversionKind::PerReceive,
+            1 => crate::events::StableBalanceConversionKind::AutoConvert,
+            2 => crate::events::StableBalanceConversionKind::Deactivation,
+            _ => unreachable!("Invalid variant for StableBalanceConversionKind: {}", inner),
         };
     }
 }
@@ -14402,6 +14489,7 @@ fn pde_ffi_dispatcher_sync_impl(
         85 => wire__crate__sdk__default_config_impl(ptr, rust_vec_len, data_len),
         86 => wire__crate__sdk__default_server_config_impl(ptr, rust_vec_len, data_len),
         88 => wire__crate__sdk__init_logging_impl(ptr, rust_vec_len, data_len),
+        91 => wire__crate__sdk__parse_spark_config_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -16672,8 +16760,14 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::DepositClaimErr
                 vout.into_into_dart().into_dart(),
             ]
             .into_dart(),
+            crate::errors::DepositClaimError::DepositTooSmall { tx, vout } => [
+                2.into_dart(),
+                tx.into_into_dart().into_dart(),
+                vout.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             crate::errors::DepositClaimError::Generic { message } => {
-                [2.into_dart(), message.into_into_dart().into_dart()].into_dart()
+                [3.into_dart(), message.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -19827,8 +19921,14 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::SdkError> {
                 vout.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => [
+            crate::errors::SdkError::DepositTooSmall { tx, vout } => [
                 11.into_dart(),
+                tx.into_into_dart().into_dart(),
+                vout.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
+            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => [
+                12.into_dart(),
                 tx.into_into_dart().into_dart(),
                 vout.into_into_dart().into_dart(),
             ]
@@ -19837,24 +19937,24 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::errors::SdkError> {
                 pending_fee_sats,
                 required_fee_sats,
             } => [
-                12.into_dart(),
+                13.into_dart(),
                 pending_fee_sats.into_into_dart().into_dart(),
                 required_fee_sats.into_into_dart().into_dart(),
             ]
             .into_dart(),
             crate::errors::SdkError::LnurlError(field0) => {
-                [13.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            crate::errors::SdkError::Signer(field0) => {
                 [14.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            crate::errors::SdkError::OptimizationAlreadyRunning => [15.into_dart()].into_dart(),
-            crate::errors::SdkError::OptimizationCancelled => [16.into_dart()].into_dart(),
+            crate::errors::SdkError::Signer(field0) => {
+                [15.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::errors::SdkError::OptimizationAlreadyRunning => [16.into_dart()].into_dart(),
+            crate::errors::SdkError::OptimizationCancelled => [17.into_dart()].into_dart(),
             crate::errors::SdkError::InsufficientCpfpFunds { required_sat } => {
-                [17.into_dart(), required_sat.into_into_dart().into_dart()].into_dart()
+                [18.into_dart(), required_sat.into_into_dart().into_dart()].into_dart()
             }
             crate::errors::SdkError::Generic(field0) => {
-                [18.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+                [19.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             _ => {
                 unimplemented!("");
@@ -19912,6 +20012,17 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::SdkEvent> {
                 [9.into_dart(), new_deposits.into_into_dart().into_dart()].into_dart()
             }
             crate::events::SdkEvent::UnilateralExitStateChanged => [10.into_dart()].into_dart(),
+            crate::events::SdkEvent::StableBalanceConversionFailed {
+                conversion,
+                error,
+                retry_in_secs,
+            } => [
+                11.into_dart(),
+                conversion.into_into_dart().into_dart(),
+                error.into_into_dart().into_dart(),
+                retry_in_secs.into_into_dart().into_dart(),
+            ]
+            .into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -20698,6 +20809,28 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::models::StableBalanceCo
     for crate::models::StableBalanceConfig
 {
     fn into_into_dart(self) -> FrbWrapper<crate::models::StableBalanceConfig> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::events::StableBalanceConversionKind> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::events::StableBalanceConversionKind::PerReceive => 0.into_dart(),
+            crate::events::StableBalanceConversionKind::AutoConvert => 1.into_dart(),
+            crate::events::StableBalanceConversionKind::Deactivation => 2.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::events::StableBalanceConversionKind>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::events::StableBalanceConversionKind>>
+    for crate::events::StableBalanceConversionKind
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::events::StableBalanceConversionKind> {
         self.into()
     }
 }
@@ -22978,8 +23111,13 @@ impl SseEncode for crate::errors::DepositClaimError {
                 <String>::sse_encode(tx, serializer);
                 <u32>::sse_encode(vout, serializer);
             }
-            crate::errors::DepositClaimError::Generic { message } => {
+            crate::errors::DepositClaimError::DepositTooSmall { tx, vout } => {
                 <i32>::sse_encode(2, serializer);
+                <String>::sse_encode(tx, serializer);
+                <u32>::sse_encode(vout, serializer);
+            }
+            crate::errors::DepositClaimError::Generic { message } => {
+                <i32>::sse_encode(3, serializer);
                 <String>::sse_encode(message, serializer);
             }
             _ => {
@@ -25813,8 +25951,13 @@ impl SseEncode for crate::errors::SdkError {
                 <String>::sse_encode(tx, serializer);
                 <u32>::sse_encode(vout, serializer);
             }
-            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => {
+            crate::errors::SdkError::DepositTooSmall { tx, vout } => {
                 <i32>::sse_encode(11, serializer);
+                <String>::sse_encode(tx, serializer);
+                <u32>::sse_encode(vout, serializer);
+            }
+            crate::errors::SdkError::DepositClaimInProgress { tx, vout } => {
+                <i32>::sse_encode(12, serializer);
                 <String>::sse_encode(tx, serializer);
                 <u32>::sse_encode(vout, serializer);
             }
@@ -25822,30 +25965,30 @@ impl SseEncode for crate::errors::SdkError {
                 pending_fee_sats,
                 required_fee_sats,
             } => {
-                <i32>::sse_encode(12, serializer);
+                <i32>::sse_encode(13, serializer);
                 <u64>::sse_encode(pending_fee_sats, serializer);
                 <u64>::sse_encode(required_fee_sats, serializer);
             }
             crate::errors::SdkError::LnurlError(field0) => {
-                <i32>::sse_encode(13, serializer);
-                <String>::sse_encode(field0, serializer);
-            }
-            crate::errors::SdkError::Signer(field0) => {
                 <i32>::sse_encode(14, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            crate::errors::SdkError::OptimizationAlreadyRunning => {
+            crate::errors::SdkError::Signer(field0) => {
                 <i32>::sse_encode(15, serializer);
+                <String>::sse_encode(field0, serializer);
             }
-            crate::errors::SdkError::OptimizationCancelled => {
+            crate::errors::SdkError::OptimizationAlreadyRunning => {
                 <i32>::sse_encode(16, serializer);
             }
-            crate::errors::SdkError::InsufficientCpfpFunds { required_sat } => {
+            crate::errors::SdkError::OptimizationCancelled => {
                 <i32>::sse_encode(17, serializer);
+            }
+            crate::errors::SdkError::InsufficientCpfpFunds { required_sat } => {
+                <i32>::sse_encode(18, serializer);
                 <u64>::sse_encode(required_sat, serializer);
             }
             crate::errors::SdkError::Generic(field0) => {
-                <i32>::sse_encode(18, serializer);
+                <i32>::sse_encode(19, serializer);
                 <String>::sse_encode(field0, serializer);
             }
             _ => {
@@ -25903,6 +26046,16 @@ impl SseEncode for crate::events::SdkEvent {
             }
             crate::events::SdkEvent::UnilateralExitStateChanged => {
                 <i32>::sse_encode(10, serializer);
+            }
+            crate::events::SdkEvent::StableBalanceConversionFailed {
+                conversion,
+                error,
+                retry_in_secs,
+            } => {
+                <i32>::sse_encode(11, serializer);
+                <crate::events::StableBalanceConversionKind>::sse_encode(conversion, serializer);
+                <String>::sse_encode(error, serializer);
+                <Option<u64>>::sse_encode(retry_in_secs, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -26332,6 +26485,23 @@ impl SseEncode for crate::models::StableBalanceConfig {
         <Option<String>>::sse_encode(self.default_active_label, serializer);
         <Option<u64>>::sse_encode(self.threshold_sats, serializer);
         <Option<u32>>::sse_encode(self.max_slippage_bps, serializer);
+    }
+}
+
+impl SseEncode for crate::events::StableBalanceConversionKind {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::events::StableBalanceConversionKind::PerReceive => 0,
+                crate::events::StableBalanceConversionKind::AutoConvert => 1,
+                crate::events::StableBalanceConversionKind::Deactivation => 2,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
     }
 }
 

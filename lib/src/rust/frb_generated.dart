@@ -71,7 +71,7 @@ class BreezSdkSparkLib
   String get codegenVersion => '2.13.0';
 
   @override
-  int get rustContentHash => -888367027;
+  int get rustContentHash => -477790796;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'breez_sdk_spark_flutter',
@@ -450,6 +450,8 @@ abstract class BreezSdkSparkLibApi extends BaseApi {
   });
 
   Future<SdkContext> crateSdkContextNewSharedSdkContext({required SdkContextConfig config});
+
+  SparkConfig crateSdkParseSparkConfig({required String json});
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_BitcoinChainServiceHandle;
 
@@ -3068,6 +3070,26 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
   TaskConstMeta get kCrateSdkContextNewSharedSdkContextConstMeta =>
       const TaskConstMeta(debugName: "new_shared_sdk_context", argNames: ["config"]);
 
+  @override
+  SparkConfig crateSdkParseSparkConfig({required String json}) {
+    return handler.executeSync(
+      SyncTask(
+        callFfi: () {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_String(json, serializer);
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 91)!;
+        },
+        codec: SseCodec(decodeSuccessData: sse_decode_spark_config, decodeErrorData: sse_decode_sdk_error),
+        constMeta: kCrateSdkParseSparkConfigConstMeta,
+        argValues: [json],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateSdkParseSparkConfigConstMeta =>
+      const TaskConstMeta(debugName: "parse_spark_config", argNames: ["json"]);
+
   Future<void> Function(int) encode_DartFn_Inputs__Output_bool_AnyhowException(
     FutureOr<bool> Function() raw,
   ) {
@@ -5432,6 +5454,11 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 1:
         return DepositClaimError_MissingUtxo(tx: dco_decode_String(raw[1]), vout: dco_decode_u_32(raw[2]));
       case 2:
+        return DepositClaimError_DepositTooSmall(
+          tx: dco_decode_String(raw[1]),
+          vout: dco_decode_u_32(raw[2]),
+        );
+      case 3:
         return DepositClaimError_Generic(message: dco_decode_String(raw[1]));
       default:
         throw Exception("unreachable");
@@ -7677,23 +7704,25 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 10:
         return SdkError_MissingUtxo(tx: dco_decode_String(raw[1]), vout: dco_decode_u_32(raw[2]));
       case 11:
-        return SdkError_DepositClaimInProgress(tx: dco_decode_String(raw[1]), vout: dco_decode_u_32(raw[2]));
+        return SdkError_DepositTooSmall(tx: dco_decode_String(raw[1]), vout: dco_decode_u_32(raw[2]));
       case 12:
+        return SdkError_DepositClaimInProgress(tx: dco_decode_String(raw[1]), vout: dco_decode_u_32(raw[2]));
+      case 13:
         return SdkError_RefundReplacementFeeTooLow(
           pendingFeeSats: dco_decode_u_64(raw[1]),
           requiredFeeSats: dco_decode_u_64(raw[2]),
         );
-      case 13:
-        return SdkError_LnurlError(dco_decode_String(raw[1]));
       case 14:
-        return SdkError_Signer(dco_decode_String(raw[1]));
+        return SdkError_LnurlError(dco_decode_String(raw[1]));
       case 15:
-        return SdkError_OptimizationAlreadyRunning();
+        return SdkError_Signer(dco_decode_String(raw[1]));
       case 16:
-        return SdkError_OptimizationCancelled();
+        return SdkError_OptimizationAlreadyRunning();
       case 17:
-        return SdkError_InsufficientCpfpFunds(requiredSat: dco_decode_u_64(raw[1]));
+        return SdkError_OptimizationCancelled();
       case 18:
+        return SdkError_InsufficientCpfpFunds(requiredSat: dco_decode_u_64(raw[1]));
+      case 19:
         return SdkError_Generic(dco_decode_String(raw[1]));
       default:
         throw Exception("unreachable");
@@ -7730,6 +7759,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return SdkEvent_NewDeposits(newDeposits: dco_decode_list_deposit_info(raw[1]));
       case 10:
         return SdkEvent_UnilateralExitStateChanged();
+      case 11:
+        return SdkEvent_StableBalanceConversionFailed(
+          conversion: dco_decode_stable_balance_conversion_kind(raw[1]),
+          error: dco_decode_String(raw[2]),
+          retryInSecs: dco_decode_opt_box_autoadd_u_64(raw[3]),
+        );
       default:
         throw Exception("unreachable");
     }
@@ -8120,6 +8155,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       thresholdSats: dco_decode_opt_box_autoadd_u_64(arr[2]),
       maxSlippageBps: dco_decode_opt_box_autoadd_u_32(arr[3]),
     );
+  }
+
+  @protected
+  StableBalanceConversionKind dco_decode_stable_balance_conversion_kind(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return StableBalanceConversionKind.values[raw as int];
   }
 
   @protected
@@ -10952,6 +10993,10 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_vout = sse_decode_u_32(deserializer);
         return DepositClaimError_MissingUtxo(tx: var_tx, vout: var_vout);
       case 2:
+        var var_tx = sse_decode_String(deserializer);
+        var var_vout = sse_decode_u_32(deserializer);
+        return DepositClaimError_DepositTooSmall(tx: var_tx, vout: var_vout);
+      case 3:
         var var_message = sse_decode_String(deserializer);
         return DepositClaimError_Generic(message: var_message);
       default:
@@ -13940,28 +13985,32 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       case 11:
         var var_tx = sse_decode_String(deserializer);
         var var_vout = sse_decode_u_32(deserializer);
-        return SdkError_DepositClaimInProgress(tx: var_tx, vout: var_vout);
+        return SdkError_DepositTooSmall(tx: var_tx, vout: var_vout);
       case 12:
+        var var_tx = sse_decode_String(deserializer);
+        var var_vout = sse_decode_u_32(deserializer);
+        return SdkError_DepositClaimInProgress(tx: var_tx, vout: var_vout);
+      case 13:
         var var_pendingFeeSats = sse_decode_u_64(deserializer);
         var var_requiredFeeSats = sse_decode_u_64(deserializer);
         return SdkError_RefundReplacementFeeTooLow(
           pendingFeeSats: var_pendingFeeSats,
           requiredFeeSats: var_requiredFeeSats,
         );
-      case 13:
-        var var_field0 = sse_decode_String(deserializer);
-        return SdkError_LnurlError(var_field0);
       case 14:
         var var_field0 = sse_decode_String(deserializer);
-        return SdkError_Signer(var_field0);
+        return SdkError_LnurlError(var_field0);
       case 15:
-        return SdkError_OptimizationAlreadyRunning();
+        var var_field0 = sse_decode_String(deserializer);
+        return SdkError_Signer(var_field0);
       case 16:
-        return SdkError_OptimizationCancelled();
+        return SdkError_OptimizationAlreadyRunning();
       case 17:
+        return SdkError_OptimizationCancelled();
+      case 18:
         var var_requiredSat = sse_decode_u_64(deserializer);
         return SdkError_InsufficientCpfpFunds(requiredSat: var_requiredSat);
-      case 18:
+      case 19:
         var var_field0 = sse_decode_String(deserializer);
         return SdkError_Generic(var_field0);
       default:
@@ -14006,6 +14055,15 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         return SdkEvent_NewDeposits(newDeposits: var_newDeposits);
       case 10:
         return SdkEvent_UnilateralExitStateChanged();
+      case 11:
+        var var_conversion = sse_decode_stable_balance_conversion_kind(deserializer);
+        var var_error = sse_decode_String(deserializer);
+        var var_retryInSecs = sse_decode_opt_box_autoadd_u_64(deserializer);
+        return SdkEvent_StableBalanceConversionFailed(
+          conversion: var_conversion,
+          error: var_error,
+          retryInSecs: var_retryInSecs,
+        );
       default:
         throw UnimplementedError('');
     }
@@ -14443,6 +14501,13 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
       thresholdSats: var_thresholdSats,
       maxSlippageBps: var_maxSlippageBps,
     );
+  }
+
+  @protected
+  StableBalanceConversionKind sse_decode_stable_balance_conversion_kind(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return StableBalanceConversionKind.values[inner];
   }
 
   @protected
@@ -17200,8 +17265,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_i_32(1, serializer);
         sse_encode_String(tx, serializer);
         sse_encode_u_32(vout, serializer);
-      case DepositClaimError_Generic(message: final message):
+      case DepositClaimError_DepositTooSmall(tx: final tx, vout: final vout):
         sse_encode_i_32(2, serializer);
+        sse_encode_String(tx, serializer);
+        sse_encode_u_32(vout, serializer);
+      case DepositClaimError_Generic(message: final message):
+        sse_encode_i_32(3, serializer);
         sse_encode_String(message, serializer);
     }
   }
@@ -19684,32 +19753,36 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_i_32(10, serializer);
         sse_encode_String(tx, serializer);
         sse_encode_u_32(vout, serializer);
-      case SdkError_DepositClaimInProgress(tx: final tx, vout: final vout):
+      case SdkError_DepositTooSmall(tx: final tx, vout: final vout):
         sse_encode_i_32(11, serializer);
+        sse_encode_String(tx, serializer);
+        sse_encode_u_32(vout, serializer);
+      case SdkError_DepositClaimInProgress(tx: final tx, vout: final vout):
+        sse_encode_i_32(12, serializer);
         sse_encode_String(tx, serializer);
         sse_encode_u_32(vout, serializer);
       case SdkError_RefundReplacementFeeTooLow(
         pendingFeeSats: final pendingFeeSats,
         requiredFeeSats: final requiredFeeSats,
       ):
-        sse_encode_i_32(12, serializer);
+        sse_encode_i_32(13, serializer);
         sse_encode_u_64(pendingFeeSats, serializer);
         sse_encode_u_64(requiredFeeSats, serializer);
       case SdkError_LnurlError(field0: final field0):
-        sse_encode_i_32(13, serializer);
-        sse_encode_String(field0, serializer);
-      case SdkError_Signer(field0: final field0):
         sse_encode_i_32(14, serializer);
         sse_encode_String(field0, serializer);
-      case SdkError_OptimizationAlreadyRunning():
+      case SdkError_Signer(field0: final field0):
         sse_encode_i_32(15, serializer);
-      case SdkError_OptimizationCancelled():
+        sse_encode_String(field0, serializer);
+      case SdkError_OptimizationAlreadyRunning():
         sse_encode_i_32(16, serializer);
-      case SdkError_InsufficientCpfpFunds(requiredSat: final requiredSat):
+      case SdkError_OptimizationCancelled():
         sse_encode_i_32(17, serializer);
+      case SdkError_InsufficientCpfpFunds(requiredSat: final requiredSat):
+        sse_encode_i_32(18, serializer);
         sse_encode_u_64(requiredSat, serializer);
       case SdkError_Generic(field0: final field0):
-        sse_encode_i_32(18, serializer);
+        sse_encode_i_32(19, serializer);
         sse_encode_String(field0, serializer);
     }
   }
@@ -19749,6 +19822,15 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_list_deposit_info(newDeposits, serializer);
       case SdkEvent_UnilateralExitStateChanged():
         sse_encode_i_32(10, serializer);
+      case SdkEvent_StableBalanceConversionFailed(
+        conversion: final conversion,
+        error: final error,
+        retryInSecs: final retryInSecs,
+      ):
+        sse_encode_i_32(11, serializer);
+        sse_encode_stable_balance_conversion_kind(conversion, serializer);
+        sse_encode_String(error, serializer);
+        sse_encode_opt_box_autoadd_u_64(retryInSecs, serializer);
     }
   }
 
@@ -20082,6 +20164,12 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
     sse_encode_opt_String(self.defaultActiveLabel, serializer);
     sse_encode_opt_box_autoadd_u_64(self.thresholdSats, serializer);
     sse_encode_opt_box_autoadd_u_32(self.maxSlippageBps, serializer);
+  }
+
+  @protected
+  void sse_encode_stable_balance_conversion_kind(StableBalanceConversionKind self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
   }
 
   @protected

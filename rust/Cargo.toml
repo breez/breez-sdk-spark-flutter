@@ -1,9 +1,17 @@
 [package]
 name = "breez_sdk_spark_flutter"
-version = "0.26.0"
+version = "0.27.0-dev1"
 edition = "2024"
 
 [workspace]
+
+# Own workspace, so the root release profile does not apply here. Mirrors its
+# size settings but keeps unwinding: flutter_rust_bridge turns a Rust panic into
+# a Dart exception, which `panic = "abort"` would replace with a crash.
+[profile.release]
+lto = true
+opt-level = "z"
+codegen-units = 1
 
 [lib]
 crate-type = ["cdylib", "staticlib"]
@@ -12,13 +20,19 @@ crate-type = ["cdylib", "staticlib"]
 anyhow = "1.0.102"
 async-trait = "0.1.88"
 # Replaced with release commit during publishing
-breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "2c140a5d721f04d21c5ac334fecc3efe7c069943", features = [
+breez-sdk-spark = { git = "https://github.com/breez/spark-sdk.git", rev = "1a8f9c3d83f0aabf98319f39120423d2ff0d142d", features = [
     "passkey",
     "sqlite",
 ] }
 extend = "1.2.0"
 flutter_rust_bridge = "=2.13.0"
 futures = { version = "0.3", default-features = false, features = ["alloc"] }
+
+[features]
+# See breez-sdk-spark's `secp-lowmemory` feature.
+secp-lowmemory = ["breez-sdk-spark/secp-lowmemory"]
+# See breez-sdk-spark's `release-max-level-debug` feature.
+release-max-level-debug = ["breez-sdk-spark/release-max-level-debug"]
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros", "rt"] }
