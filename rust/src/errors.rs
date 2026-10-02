@@ -15,10 +15,6 @@ pub enum _DepositClaimError {
         tx: String,
         vout: u32,
     },
-    DepositTooSmall {
-        tx: String,
-        vout: u32,
-    },
     Generic {
         message: String,
     },
@@ -53,10 +49,6 @@ pub enum _SdkError {
         required_fee_rate_sat_per_vbyte: u64,
     },
     MissingUtxo {
-        tx: String,
-        vout: u32,
-    },
-    DepositTooSmall {
         tx: String,
         vout: u32,
     },

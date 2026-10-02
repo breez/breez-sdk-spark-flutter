@@ -24,8 +24,6 @@ sealed class DepositClaimError with _$DepositClaimError {
   }) = DepositClaimError_MaxDepositClaimFeeExceeded;
   const factory DepositClaimError.missingUtxo({required String tx, required int vout}) =
       DepositClaimError_MissingUtxo;
-  const factory DepositClaimError.depositTooSmall({required String tx, required int vout}) =
-      DepositClaimError_DepositTooSmall;
   const factory DepositClaimError.generic({required String message}) = DepositClaimError_Generic;
 }
 
@@ -92,7 +90,6 @@ sealed class SdkError with _$SdkError implements FrbException {
     required BigInt requiredFeeRateSatPerVbyte,
   }) = SdkError_MaxDepositClaimFeeExceeded;
   const factory SdkError.missingUtxo({required String tx, required int vout}) = SdkError_MissingUtxo;
-  const factory SdkError.depositTooSmall({required String tx, required int vout}) = SdkError_DepositTooSmall;
   const factory SdkError.depositClaimInProgress({required String tx, required int vout}) =
       SdkError_DepositClaimInProgress;
   const factory SdkError.refundReplacementFeeTooLow({

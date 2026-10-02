@@ -17,12 +17,6 @@ Future<SparkStatus> getSparkStatus({required GetSparkStatusRequest request}) =>
 Future<BreezSdk> connect({required ConnectRequest request}) =>
     BreezSdkSparkLib.instance.api.crateSdkConnect(request: request);
 
-/// Reads a [`SparkConfig`] from JSON, for a deployment that publishes its
-/// operators, service provider and certificates as a file. Set it on
-/// [`Config::spark_config`] to connect a wallet to that deployment.
-SparkConfig parseSparkConfig({required String json}) =>
-    BreezSdkSparkLib.instance.api.crateSdkParseSparkConfig(json: json);
-
 Config defaultConfig({required Network network}) =>
     BreezSdkSparkLib.instance.api.crateSdkDefaultConfig(network: network);
 

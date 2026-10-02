@@ -1679,9 +1679,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   StableBalanceConfig dco_decode_stable_balance_config(dynamic raw);
 
   @protected
-  StableBalanceConversionKind dco_decode_stable_balance_conversion_kind(dynamic raw);
-
-  @protected
   StableBalanceToken dco_decode_stable_balance_token(dynamic raw);
 
   @protected
@@ -3487,9 +3484,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   StableBalanceConfig sse_decode_stable_balance_config(SseDeserializer deserializer);
-
-  @protected
-  StableBalanceConversionKind sse_decode_stable_balance_conversion_kind(SseDeserializer deserializer);
 
   @protected
   StableBalanceToken sse_decode_stable_balance_token(SseDeserializer deserializer);
@@ -5536,9 +5530,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_stable_balance_config(StableBalanceConfig self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_stable_balance_conversion_kind(StableBalanceConversionKind self, SseSerializer serializer);
 
   @protected
   void sse_encode_stable_balance_token(StableBalanceToken self, SseSerializer serializer);
