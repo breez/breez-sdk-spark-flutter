@@ -45,4 +45,12 @@ sealed class SdkEvent with _$SdkEvent {
       SdkEvent_LightningAddressChanged;
   const factory SdkEvent.newDeposits({required List<DepositInfo> newDeposits}) = SdkEvent_NewDeposits;
   const factory SdkEvent.unilateralExitStateChanged() = SdkEvent_UnilateralExitStateChanged;
+  const factory SdkEvent.stableBalanceConversionFailed({
+    required StableBalanceConversionKind conversion,
+    required String error,
+    BigInt? retryInSecs,
+  }) = SdkEvent_StableBalanceConversionFailed;
+  const factory SdkEvent.recoverableFunds({required BigInt recoverableFundsSats}) = SdkEvent_RecoverableFunds;
 }
+
+enum StableBalanceConversionKind { perReceive, autoConvert, deactivation }

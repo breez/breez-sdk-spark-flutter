@@ -12,14 +12,19 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 class LogEntry {
   final String line;
   final String level;
+  final String? instanceId;
 
-  const LogEntry({required this.line, required this.level});
+  const LogEntry({required this.line, required this.level, this.instanceId});
 
   @override
-  int get hashCode => line.hashCode ^ level.hashCode;
+  int get hashCode => line.hashCode ^ level.hashCode ^ instanceId.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LogEntry && runtimeType == other.runtimeType && line == other.line && level == other.level;
+      other is LogEntry &&
+          runtimeType == other.runtimeType &&
+          line == other.line &&
+          level == other.level &&
+          instanceId == other.instanceId;
 }

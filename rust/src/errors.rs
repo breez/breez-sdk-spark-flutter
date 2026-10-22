@@ -1,17 +1,37 @@
 pub use breez_sdk_spark::passkey::{PasskeyError, PrfProviderError};
-pub use breez_sdk_spark::{DepositClaimError, Fee, SdkError, StorageError};
+pub use breez_sdk_spark::{
+    CooperativeRecoveryError, DepositClaimError, Fee, SdkError, StorageError,
+    TokenAllowanceErrorReason,
+};
 use flutter_rust_bridge::frb;
+
+#[frb(mirror(CooperativeRecoveryError))]
+pub enum _CooperativeRecoveryError {
+    ReplacementFeeTooLow {
+        required_fee_sats: u64,
+        required_fee_rate_sat_per_vbyte: u64,
+    },
+    OperatorsUnavailable {
+        message: String,
+    },
+    Generic {
+        message: String,
+    },
+}
 
 #[frb(mirror(DepositClaimError))]
 pub enum _DepositClaimError {
     MaxDepositClaimFeeExceeded {
         tx: String,
         vout: u32,
-        max_fee: Option<Fee>,
+        max_fee_sats: Option<u64>,
         required_fee_sats: u64,
-        required_fee_rate_sat_per_vbyte: u64,
     },
     MissingUtxo {
+        tx: String,
+        vout: u32,
+    },
+    DepositTooSmall {
         tx: String,
         vout: u32,
     },
@@ -33,10 +53,15 @@ pub enum _SdkError {
         too_small: bool,
         bound_amount: Option<u128>,
         bound_usd_cents: Option<u64>,
+        docs_url: String,
     },
     CrossChainRouteUnavailable {
         reason: String,
         temporary: bool,
+        docs_url: String,
+    },
+    CrossChainDisabled {
+        docs_url: String,
     },
     NetworkError(String),
     StorageError(String),
@@ -44,28 +69,59 @@ pub enum _SdkError {
     MaxDepositClaimFeeExceeded {
         tx: String,
         vout: u32,
-        max_fee: Option<Fee>,
+        max_fee_sats: Option<u64>,
         required_fee_sats: u64,
-        required_fee_rate_sat_per_vbyte: u64,
+        docs_url: String,
     },
     MissingUtxo {
         tx: String,
         vout: u32,
     },
+    DepositTooSmall {
+        tx: String,
+        vout: u32,
+        docs_url: String,
+    },
     DepositClaimInProgress {
         tx: String,
         vout: u32,
+        docs_url: String,
     },
     RefundReplacementFeeTooLow {
         pending_fee_sats: u64,
         required_fee_sats: u64,
+        docs_url: String,
     },
     LnurlError(String),
     Signer(String),
     OptimizationAlreadyRunning,
     OptimizationCancelled,
-    InsufficientCpfpFunds { required_sat: u64 },
+    InsufficientCpfpFunds {
+        required_sats: u64,
+        docs_url: String,
+    },
+    TokenAllowance {
+        reason: TokenAllowanceErrorReason,
+        details: String,
+        docs_url: String,
+    },
     Generic(String),
+}
+
+#[frb(mirror(TokenAllowanceErrorReason))]
+pub enum _TokenAllowanceErrorReason {
+    NotEnabled,
+    NotFound,
+    Revoked,
+    Expired,
+    NotSpendable,
+    OverPerPaymentLimit,
+    OverTotalLimit,
+    RecipientNotAllowed,
+    PayerInsufficientFunds,
+    AlreadyActive,
+    QuotaExceeded,
+    PreparedPullStale,
 }
 
 #[frb(mirror(StorageError))]

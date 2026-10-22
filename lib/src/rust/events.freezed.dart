@@ -535,7 +535,7 @@ extension SdkEventPatterns on SdkEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_PaymentMetadataUpdated value)?  paymentMetadataUpdated,TResult Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult Function( SdkEvent_NewDeposits value)?  newDeposits,TResult Function( SdkEvent_UnilateralExitStateChanged value)?  unilateralExitStateChanged,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkEvent_Synced value)?  synced,TResult Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult Function( SdkEvent_PaymentPending value)?  paymentPending,TResult Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult Function( SdkEvent_PaymentMetadataUpdated value)?  paymentMetadataUpdated,TResult Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult Function( SdkEvent_NewDeposits value)?  newDeposits,TResult Function( SdkEvent_UnilateralExitStateChanged value)?  unilateralExitStateChanged,TResult Function( SdkEvent_StableBalanceConversionFailed value)?  stableBalanceConversionFailed,TResult Function( SdkEvent_RecoverableFunds value)?  recoverableFunds,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -549,7 +549,9 @@ return paymentMetadataUpdated(_that);case SdkEvent_AutoOptimization() when autoO
 return autoOptimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that);case SdkEvent_UnilateralExitStateChanged() when unilateralExitStateChanged != null:
-return unilateralExitStateChanged(_that);case _:
+return unilateralExitStateChanged(_that);case SdkEvent_StableBalanceConversionFailed() when stableBalanceConversionFailed != null:
+return stableBalanceConversionFailed(_that);case SdkEvent_RecoverableFunds() when recoverableFunds != null:
+return recoverableFunds(_that);case _:
   return orElse();
 
 }
@@ -567,7 +569,7 @@ return unilateralExitStateChanged(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_PaymentMetadataUpdated value)  paymentMetadataUpdated,required TResult Function( SdkEvent_AutoOptimization value)  autoOptimization,required TResult Function( SdkEvent_LightningAddressChanged value)  lightningAddressChanged,required TResult Function( SdkEvent_NewDeposits value)  newDeposits,required TResult Function( SdkEvent_UnilateralExitStateChanged value)  unilateralExitStateChanged,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkEvent_Synced value)  synced,required TResult Function( SdkEvent_UnclaimedDeposits value)  unclaimedDeposits,required TResult Function( SdkEvent_ClaimedDeposits value)  claimedDeposits,required TResult Function( SdkEvent_PaymentSucceeded value)  paymentSucceeded,required TResult Function( SdkEvent_PaymentPending value)  paymentPending,required TResult Function( SdkEvent_PaymentFailed value)  paymentFailed,required TResult Function( SdkEvent_PaymentMetadataUpdated value)  paymentMetadataUpdated,required TResult Function( SdkEvent_AutoOptimization value)  autoOptimization,required TResult Function( SdkEvent_LightningAddressChanged value)  lightningAddressChanged,required TResult Function( SdkEvent_NewDeposits value)  newDeposits,required TResult Function( SdkEvent_UnilateralExitStateChanged value)  unilateralExitStateChanged,required TResult Function( SdkEvent_StableBalanceConversionFailed value)  stableBalanceConversionFailed,required TResult Function( SdkEvent_RecoverableFunds value)  recoverableFunds,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
@@ -581,7 +583,9 @@ return paymentMetadataUpdated(_that);case SdkEvent_AutoOptimization():
 return autoOptimization(_that);case SdkEvent_LightningAddressChanged():
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits():
 return newDeposits(_that);case SdkEvent_UnilateralExitStateChanged():
-return unilateralExitStateChanged(_that);}
+return unilateralExitStateChanged(_that);case SdkEvent_StableBalanceConversionFailed():
+return stableBalanceConversionFailed(_that);case SdkEvent_RecoverableFunds():
+return recoverableFunds(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -595,7 +599,7 @@ return unilateralExitStateChanged(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_PaymentMetadataUpdated value)?  paymentMetadataUpdated,TResult? Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult? Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult? Function( SdkEvent_NewDeposits value)?  newDeposits,TResult? Function( SdkEvent_UnilateralExitStateChanged value)?  unilateralExitStateChanged,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkEvent_Synced value)?  synced,TResult? Function( SdkEvent_UnclaimedDeposits value)?  unclaimedDeposits,TResult? Function( SdkEvent_ClaimedDeposits value)?  claimedDeposits,TResult? Function( SdkEvent_PaymentSucceeded value)?  paymentSucceeded,TResult? Function( SdkEvent_PaymentPending value)?  paymentPending,TResult? Function( SdkEvent_PaymentFailed value)?  paymentFailed,TResult? Function( SdkEvent_PaymentMetadataUpdated value)?  paymentMetadataUpdated,TResult? Function( SdkEvent_AutoOptimization value)?  autoOptimization,TResult? Function( SdkEvent_LightningAddressChanged value)?  lightningAddressChanged,TResult? Function( SdkEvent_NewDeposits value)?  newDeposits,TResult? Function( SdkEvent_UnilateralExitStateChanged value)?  unilateralExitStateChanged,TResult? Function( SdkEvent_StableBalanceConversionFailed value)?  stableBalanceConversionFailed,TResult? Function( SdkEvent_RecoverableFunds value)?  recoverableFunds,}){
 final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
@@ -609,7 +613,9 @@ return paymentMetadataUpdated(_that);case SdkEvent_AutoOptimization() when autoO
 return autoOptimization(_that);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that);case SdkEvent_UnilateralExitStateChanged() when unilateralExitStateChanged != null:
-return unilateralExitStateChanged(_that);case _:
+return unilateralExitStateChanged(_that);case SdkEvent_StableBalanceConversionFailed() when stableBalanceConversionFailed != null:
+return stableBalanceConversionFailed(_that);case SdkEvent_RecoverableFunds() when recoverableFunds != null:
+return recoverableFunds(_that);case _:
   return null;
 
 }
@@ -626,7 +632,7 @@ return unilateralExitStateChanged(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( Payment payment)?  paymentMetadataUpdated,TResult Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult Function( List<DepositInfo> newDeposits)?  newDeposits,TResult Function()?  unilateralExitStateChanged,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  synced,TResult Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult Function( Payment payment)?  paymentSucceeded,TResult Function( Payment payment)?  paymentPending,TResult Function( Payment payment)?  paymentFailed,TResult Function( Payment payment)?  paymentMetadataUpdated,TResult Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult Function( List<DepositInfo> newDeposits)?  newDeposits,TResult Function()?  unilateralExitStateChanged,TResult Function( StableBalanceConversionKind conversion,  String error,  BigInt? retryInSecs)?  stableBalanceConversionFailed,TResult Function( BigInt recoverableFundsSats)?  recoverableFunds,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -639,7 +645,9 @@ return paymentMetadataUpdated(_that.payment);case SdkEvent_AutoOptimization() wh
 return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that.newDeposits);case SdkEvent_UnilateralExitStateChanged() when unilateralExitStateChanged != null:
-return unilateralExitStateChanged();case _:
+return unilateralExitStateChanged();case SdkEvent_StableBalanceConversionFailed() when stableBalanceConversionFailed != null:
+return stableBalanceConversionFailed(_that.conversion,_that.error,_that.retryInSecs);case SdkEvent_RecoverableFunds() when recoverableFunds != null:
+return recoverableFunds(_that.recoverableFundsSats);case _:
   return orElse();
 
 }
@@ -657,7 +665,7 @@ return unilateralExitStateChanged();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( Payment payment)  paymentMetadataUpdated,required TResult Function( AutoOptimizationEvent optimizationEvent)  autoOptimization,required TResult Function( LightningAddressInfo? lightningAddress)  lightningAddressChanged,required TResult Function( List<DepositInfo> newDeposits)  newDeposits,required TResult Function()  unilateralExitStateChanged,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  synced,required TResult Function( List<DepositInfo> unclaimedDeposits)  unclaimedDeposits,required TResult Function( List<DepositInfo> claimedDeposits)  claimedDeposits,required TResult Function( Payment payment)  paymentSucceeded,required TResult Function( Payment payment)  paymentPending,required TResult Function( Payment payment)  paymentFailed,required TResult Function( Payment payment)  paymentMetadataUpdated,required TResult Function( AutoOptimizationEvent optimizationEvent)  autoOptimization,required TResult Function( LightningAddressInfo? lightningAddress)  lightningAddressChanged,required TResult Function( List<DepositInfo> newDeposits)  newDeposits,required TResult Function()  unilateralExitStateChanged,required TResult Function( StableBalanceConversionKind conversion,  String error,  BigInt? retryInSecs)  stableBalanceConversionFailed,required TResult Function( BigInt recoverableFundsSats)  recoverableFunds,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced():
 return synced();case SdkEvent_UnclaimedDeposits():
@@ -670,7 +678,9 @@ return paymentMetadataUpdated(_that.payment);case SdkEvent_AutoOptimization():
 return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged():
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits():
 return newDeposits(_that.newDeposits);case SdkEvent_UnilateralExitStateChanged():
-return unilateralExitStateChanged();}
+return unilateralExitStateChanged();case SdkEvent_StableBalanceConversionFailed():
+return stableBalanceConversionFailed(_that.conversion,_that.error,_that.retryInSecs);case SdkEvent_RecoverableFunds():
+return recoverableFunds(_that.recoverableFundsSats);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -684,7 +694,7 @@ return unilateralExitStateChanged();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( Payment payment)?  paymentMetadataUpdated,TResult? Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult? Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult? Function( List<DepositInfo> newDeposits)?  newDeposits,TResult? Function()?  unilateralExitStateChanged,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  synced,TResult? Function( List<DepositInfo> unclaimedDeposits)?  unclaimedDeposits,TResult? Function( List<DepositInfo> claimedDeposits)?  claimedDeposits,TResult? Function( Payment payment)?  paymentSucceeded,TResult? Function( Payment payment)?  paymentPending,TResult? Function( Payment payment)?  paymentFailed,TResult? Function( Payment payment)?  paymentMetadataUpdated,TResult? Function( AutoOptimizationEvent optimizationEvent)?  autoOptimization,TResult? Function( LightningAddressInfo? lightningAddress)?  lightningAddressChanged,TResult? Function( List<DepositInfo> newDeposits)?  newDeposits,TResult? Function()?  unilateralExitStateChanged,TResult? Function( StableBalanceConversionKind conversion,  String error,  BigInt? retryInSecs)?  stableBalanceConversionFailed,TResult? Function( BigInt recoverableFundsSats)?  recoverableFunds,}) {final _that = this;
 switch (_that) {
 case SdkEvent_Synced() when synced != null:
 return synced();case SdkEvent_UnclaimedDeposits() when unclaimedDeposits != null:
@@ -697,7 +707,9 @@ return paymentMetadataUpdated(_that.payment);case SdkEvent_AutoOptimization() wh
 return autoOptimization(_that.optimizationEvent);case SdkEvent_LightningAddressChanged() when lightningAddressChanged != null:
 return lightningAddressChanged(_that.lightningAddress);case SdkEvent_NewDeposits() when newDeposits != null:
 return newDeposits(_that.newDeposits);case SdkEvent_UnilateralExitStateChanged() when unilateralExitStateChanged != null:
-return unilateralExitStateChanged();case _:
+return unilateralExitStateChanged();case SdkEvent_StableBalanceConversionFailed() when stableBalanceConversionFailed != null:
+return stableBalanceConversionFailed(_that.conversion,_that.error,_that.retryInSecs);case SdkEvent_RecoverableFunds() when recoverableFunds != null:
+return recoverableFunds(_that.recoverableFundsSats);case _:
   return null;
 
 }
@@ -1389,5 +1401,141 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class SdkEvent_StableBalanceConversionFailed extends SdkEvent {
+  const SdkEvent_StableBalanceConversionFailed({required this.conversion, required this.error, this.retryInSecs}): super._();
+  
+
+ final  StableBalanceConversionKind conversion;
+ final  String error;
+ final  BigInt? retryInSecs;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkEvent_StableBalanceConversionFailedCopyWith<SdkEvent_StableBalanceConversionFailed> get copyWith => _$SdkEvent_StableBalanceConversionFailedCopyWithImpl<SdkEvent_StableBalanceConversionFailed>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkEvent_StableBalanceConversionFailed&&(identical(other.conversion, conversion) || other.conversion == conversion)&&(identical(other.error, error) || other.error == error)&&(identical(other.retryInSecs, retryInSecs) || other.retryInSecs == retryInSecs));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,conversion,error,retryInSecs);
+
+@override
+String toString() {
+  return 'SdkEvent.stableBalanceConversionFailed(conversion: $conversion, error: $error, retryInSecs: $retryInSecs)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkEvent_StableBalanceConversionFailedCopyWith<$Res> implements $SdkEventCopyWith<$Res> {
+  factory $SdkEvent_StableBalanceConversionFailedCopyWith(SdkEvent_StableBalanceConversionFailed value, $Res Function(SdkEvent_StableBalanceConversionFailed) _then) = _$SdkEvent_StableBalanceConversionFailedCopyWithImpl;
+@useResult
+$Res call({
+ StableBalanceConversionKind conversion, String error, BigInt? retryInSecs
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkEvent_StableBalanceConversionFailedCopyWithImpl<$Res>
+    implements $SdkEvent_StableBalanceConversionFailedCopyWith<$Res> {
+  _$SdkEvent_StableBalanceConversionFailedCopyWithImpl(this._self, this._then);
+
+  final SdkEvent_StableBalanceConversionFailed _self;
+  final $Res Function(SdkEvent_StableBalanceConversionFailed) _then;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? conversion = null,Object? error = null,Object? retryInSecs = freezed,}) {
+  return _then(SdkEvent_StableBalanceConversionFailed(
+conversion: null == conversion ? _self.conversion : conversion // ignore: cast_nullable_to_non_nullable
+as StableBalanceConversionKind,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String,retryInSecs: freezed == retryInSecs ? _self.retryInSecs : retryInSecs // ignore: cast_nullable_to_non_nullable
+as BigInt?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkEvent_RecoverableFunds extends SdkEvent {
+  const SdkEvent_RecoverableFunds({required this.recoverableFundsSats}): super._();
+  
+
+ final  BigInt recoverableFundsSats;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkEvent_RecoverableFundsCopyWith<SdkEvent_RecoverableFunds> get copyWith => _$SdkEvent_RecoverableFundsCopyWithImpl<SdkEvent_RecoverableFunds>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkEvent_RecoverableFunds&&(identical(other.recoverableFundsSats, recoverableFundsSats) || other.recoverableFundsSats == recoverableFundsSats));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,recoverableFundsSats);
+
+@override
+String toString() {
+  return 'SdkEvent.recoverableFunds(recoverableFundsSats: $recoverableFundsSats)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkEvent_RecoverableFundsCopyWith<$Res> implements $SdkEventCopyWith<$Res> {
+  factory $SdkEvent_RecoverableFundsCopyWith(SdkEvent_RecoverableFunds value, $Res Function(SdkEvent_RecoverableFunds) _then) = _$SdkEvent_RecoverableFundsCopyWithImpl;
+@useResult
+$Res call({
+ BigInt recoverableFundsSats
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkEvent_RecoverableFundsCopyWithImpl<$Res>
+    implements $SdkEvent_RecoverableFundsCopyWith<$Res> {
+  _$SdkEvent_RecoverableFundsCopyWithImpl(this._self, this._then);
+
+  final SdkEvent_RecoverableFunds _self;
+  final $Res Function(SdkEvent_RecoverableFunds) _then;
+
+/// Create a copy of SdkEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? recoverableFundsSats = null,}) {
+  return _then(SdkEvent_RecoverableFunds(
+recoverableFundsSats: null == recoverableFundsSats ? _self.recoverableFundsSats : recoverableFundsSats // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
 
 // dart format on

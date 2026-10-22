@@ -12,6 +12,372 @@ part of 'errors.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
+mixin _$CooperativeRecoveryError {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CooperativeRecoveryError);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CooperativeRecoveryError()';
+}
+
+
+}
+
+/// @nodoc
+class $CooperativeRecoveryErrorCopyWith<$Res>  {
+$CooperativeRecoveryErrorCopyWith(CooperativeRecoveryError _, $Res Function(CooperativeRecoveryError) __);
+}
+
+
+/// Adds pattern-matching-related methods to [CooperativeRecoveryError].
+extension CooperativeRecoveryErrorPatterns on CooperativeRecoveryError {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CooperativeRecoveryError_ReplacementFeeTooLow value)?  replacementFeeTooLow,TResult Function( CooperativeRecoveryError_OperatorsUnavailable value)?  operatorsUnavailable,TResult Function( CooperativeRecoveryError_Generic value)?  generic,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow() when replacementFeeTooLow != null:
+return replacementFeeTooLow(_that);case CooperativeRecoveryError_OperatorsUnavailable() when operatorsUnavailable != null:
+return operatorsUnavailable(_that);case CooperativeRecoveryError_Generic() when generic != null:
+return generic(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CooperativeRecoveryError_ReplacementFeeTooLow value)  replacementFeeTooLow,required TResult Function( CooperativeRecoveryError_OperatorsUnavailable value)  operatorsUnavailable,required TResult Function( CooperativeRecoveryError_Generic value)  generic,}){
+final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow():
+return replacementFeeTooLow(_that);case CooperativeRecoveryError_OperatorsUnavailable():
+return operatorsUnavailable(_that);case CooperativeRecoveryError_Generic():
+return generic(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CooperativeRecoveryError_ReplacementFeeTooLow value)?  replacementFeeTooLow,TResult? Function( CooperativeRecoveryError_OperatorsUnavailable value)?  operatorsUnavailable,TResult? Function( CooperativeRecoveryError_Generic value)?  generic,}){
+final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow() when replacementFeeTooLow != null:
+return replacementFeeTooLow(_that);case CooperativeRecoveryError_OperatorsUnavailable() when operatorsUnavailable != null:
+return operatorsUnavailable(_that);case CooperativeRecoveryError_Generic() when generic != null:
+return generic(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  replacementFeeTooLow,TResult Function( String message)?  operatorsUnavailable,TResult Function( String message)?  generic,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow() when replacementFeeTooLow != null:
+return replacementFeeTooLow(_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case CooperativeRecoveryError_OperatorsUnavailable() when operatorsUnavailable != null:
+return operatorsUnavailable(_that.message);case CooperativeRecoveryError_Generic() when generic != null:
+return generic(_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  replacementFeeTooLow,required TResult Function( String message)  operatorsUnavailable,required TResult Function( String message)  generic,}) {final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow():
+return replacementFeeTooLow(_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case CooperativeRecoveryError_OperatorsUnavailable():
+return operatorsUnavailable(_that.message);case CooperativeRecoveryError_Generic():
+return generic(_that.message);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  replacementFeeTooLow,TResult? Function( String message)?  operatorsUnavailable,TResult? Function( String message)?  generic,}) {final _that = this;
+switch (_that) {
+case CooperativeRecoveryError_ReplacementFeeTooLow() when replacementFeeTooLow != null:
+return replacementFeeTooLow(_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case CooperativeRecoveryError_OperatorsUnavailable() when operatorsUnavailable != null:
+return operatorsUnavailable(_that.message);case CooperativeRecoveryError_Generic() when generic != null:
+return generic(_that.message);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class CooperativeRecoveryError_ReplacementFeeTooLow extends CooperativeRecoveryError {
+  const CooperativeRecoveryError_ReplacementFeeTooLow({required this.requiredFeeSats, required this.requiredFeeRateSatPerVbyte}): super._();
+  
+
+ final  BigInt requiredFeeSats;
+ final  BigInt requiredFeeRateSatPerVbyte;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CooperativeRecoveryError_ReplacementFeeTooLowCopyWith<CooperativeRecoveryError_ReplacementFeeTooLow> get copyWith => _$CooperativeRecoveryError_ReplacementFeeTooLowCopyWithImpl<CooperativeRecoveryError_ReplacementFeeTooLow>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CooperativeRecoveryError_ReplacementFeeTooLow&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats)&&(identical(other.requiredFeeRateSatPerVbyte, requiredFeeRateSatPerVbyte) || other.requiredFeeRateSatPerVbyte == requiredFeeRateSatPerVbyte));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,requiredFeeSats,requiredFeeRateSatPerVbyte);
+
+@override
+String toString() {
+  return 'CooperativeRecoveryError.replacementFeeTooLow(requiredFeeSats: $requiredFeeSats, requiredFeeRateSatPerVbyte: $requiredFeeRateSatPerVbyte)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CooperativeRecoveryError_ReplacementFeeTooLowCopyWith<$Res> implements $CooperativeRecoveryErrorCopyWith<$Res> {
+  factory $CooperativeRecoveryError_ReplacementFeeTooLowCopyWith(CooperativeRecoveryError_ReplacementFeeTooLow value, $Res Function(CooperativeRecoveryError_ReplacementFeeTooLow) _then) = _$CooperativeRecoveryError_ReplacementFeeTooLowCopyWithImpl;
+@useResult
+$Res call({
+ BigInt requiredFeeSats, BigInt requiredFeeRateSatPerVbyte
+});
+
+
+
+
+}
+/// @nodoc
+class _$CooperativeRecoveryError_ReplacementFeeTooLowCopyWithImpl<$Res>
+    implements $CooperativeRecoveryError_ReplacementFeeTooLowCopyWith<$Res> {
+  _$CooperativeRecoveryError_ReplacementFeeTooLowCopyWithImpl(this._self, this._then);
+
+  final CooperativeRecoveryError_ReplacementFeeTooLow _self;
+  final $Res Function(CooperativeRecoveryError_ReplacementFeeTooLow) _then;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? requiredFeeSats = null,Object? requiredFeeRateSatPerVbyte = null,}) {
+  return _then(CooperativeRecoveryError_ReplacementFeeTooLow(
+requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt,requiredFeeRateSatPerVbyte: null == requiredFeeRateSatPerVbyte ? _self.requiredFeeRateSatPerVbyte : requiredFeeRateSatPerVbyte // ignore: cast_nullable_to_non_nullable
+as BigInt,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CooperativeRecoveryError_OperatorsUnavailable extends CooperativeRecoveryError {
+  const CooperativeRecoveryError_OperatorsUnavailable({required this.message}): super._();
+  
+
+ final  String message;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CooperativeRecoveryError_OperatorsUnavailableCopyWith<CooperativeRecoveryError_OperatorsUnavailable> get copyWith => _$CooperativeRecoveryError_OperatorsUnavailableCopyWithImpl<CooperativeRecoveryError_OperatorsUnavailable>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CooperativeRecoveryError_OperatorsUnavailable&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'CooperativeRecoveryError.operatorsUnavailable(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CooperativeRecoveryError_OperatorsUnavailableCopyWith<$Res> implements $CooperativeRecoveryErrorCopyWith<$Res> {
+  factory $CooperativeRecoveryError_OperatorsUnavailableCopyWith(CooperativeRecoveryError_OperatorsUnavailable value, $Res Function(CooperativeRecoveryError_OperatorsUnavailable) _then) = _$CooperativeRecoveryError_OperatorsUnavailableCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$CooperativeRecoveryError_OperatorsUnavailableCopyWithImpl<$Res>
+    implements $CooperativeRecoveryError_OperatorsUnavailableCopyWith<$Res> {
+  _$CooperativeRecoveryError_OperatorsUnavailableCopyWithImpl(this._self, this._then);
+
+  final CooperativeRecoveryError_OperatorsUnavailable _self;
+  final $Res Function(CooperativeRecoveryError_OperatorsUnavailable) _then;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(CooperativeRecoveryError_OperatorsUnavailable(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CooperativeRecoveryError_Generic extends CooperativeRecoveryError {
+  const CooperativeRecoveryError_Generic({required this.message}): super._();
+  
+
+ final  String message;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CooperativeRecoveryError_GenericCopyWith<CooperativeRecoveryError_Generic> get copyWith => _$CooperativeRecoveryError_GenericCopyWithImpl<CooperativeRecoveryError_Generic>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CooperativeRecoveryError_Generic&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'CooperativeRecoveryError.generic(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CooperativeRecoveryError_GenericCopyWith<$Res> implements $CooperativeRecoveryErrorCopyWith<$Res> {
+  factory $CooperativeRecoveryError_GenericCopyWith(CooperativeRecoveryError_Generic value, $Res Function(CooperativeRecoveryError_Generic) _then) = _$CooperativeRecoveryError_GenericCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$CooperativeRecoveryError_GenericCopyWithImpl<$Res>
+    implements $CooperativeRecoveryError_GenericCopyWith<$Res> {
+  _$CooperativeRecoveryError_GenericCopyWithImpl(this._self, this._then);
+
+  final CooperativeRecoveryError_Generic _self;
+  final $Res Function(CooperativeRecoveryError_Generic) _then;
+
+/// Create a copy of CooperativeRecoveryError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(CooperativeRecoveryError_Generic(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$DepositClaimError {
 
 
@@ -55,12 +421,13 @@ extension DepositClaimErrorPatterns on DepositClaimError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( DepositClaimError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( DepositClaimError_MissingUtxo value)?  missingUtxo,TResult Function( DepositClaimError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( DepositClaimError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( DepositClaimError_MissingUtxo value)?  missingUtxo,TResult Function( DepositClaimError_DepositTooSmall value)?  depositTooSmall,TResult Function( DepositClaimError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case DepositClaimError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case DepositClaimError_Generic() when generic != null:
+return missingUtxo(_that);case DepositClaimError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that);case DepositClaimError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -79,12 +446,13 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( DepositClaimError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( DepositClaimError_MissingUtxo value)  missingUtxo,required TResult Function( DepositClaimError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( DepositClaimError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( DepositClaimError_MissingUtxo value)  missingUtxo,required TResult Function( DepositClaimError_DepositTooSmall value)  depositTooSmall,required TResult Function( DepositClaimError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded():
 return maxDepositClaimFeeExceeded(_that);case DepositClaimError_MissingUtxo():
-return missingUtxo(_that);case DepositClaimError_Generic():
+return missingUtxo(_that);case DepositClaimError_DepositTooSmall():
+return depositTooSmall(_that);case DepositClaimError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -99,12 +467,13 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( DepositClaimError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( DepositClaimError_MissingUtxo value)?  missingUtxo,TResult? Function( DepositClaimError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( DepositClaimError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( DepositClaimError_MissingUtxo value)?  missingUtxo,TResult? Function( DepositClaimError_DepositTooSmall value)?  depositTooSmall,TResult? Function( DepositClaimError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case DepositClaimError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case DepositClaimError_Generic() when generic != null:
+return missingUtxo(_that);case DepositClaimError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that);case DepositClaimError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -122,11 +491,12 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String message)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout)?  depositTooSmall,TResult Function( String message)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case DepositClaimError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case DepositClaimError_Generic() when generic != null:
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats);case DepositClaimError_MissingUtxo() when missingUtxo != null:
+return missingUtxo(_that.tx,_that.vout);case DepositClaimError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that.tx,_that.vout);case DepositClaimError_Generic() when generic != null:
 return generic(_that.message);case _:
   return orElse();
 
@@ -145,11 +515,12 @@ return generic(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String message)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout)  depositTooSmall,required TResult Function( String message)  generic,}) {final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded():
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case DepositClaimError_MissingUtxo():
-return missingUtxo(_that.tx,_that.vout);case DepositClaimError_Generic():
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats);case DepositClaimError_MissingUtxo():
+return missingUtxo(_that.tx,_that.vout);case DepositClaimError_DepositTooSmall():
+return depositTooSmall(_that.tx,_that.vout);case DepositClaimError_Generic():
 return generic(_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -164,11 +535,12 @@ return generic(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String message)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout)?  depositTooSmall,TResult? Function( String message)?  generic,}) {final _that = this;
 switch (_that) {
 case DepositClaimError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case DepositClaimError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case DepositClaimError_Generic() when generic != null:
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats);case DepositClaimError_MissingUtxo() when missingUtxo != null:
+return missingUtxo(_that.tx,_that.vout);case DepositClaimError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that.tx,_that.vout);case DepositClaimError_Generic() when generic != null:
 return generic(_that.message);case _:
   return null;
 
@@ -181,14 +553,13 @@ return generic(_that.message);case _:
 
 
 class DepositClaimError_MaxDepositClaimFeeExceeded extends DepositClaimError {
-  const DepositClaimError_MaxDepositClaimFeeExceeded({required this.tx, required this.vout, this.maxFee, required this.requiredFeeSats, required this.requiredFeeRateSatPerVbyte}): super._();
+  const DepositClaimError_MaxDepositClaimFeeExceeded({required this.tx, required this.vout, this.maxFeeSats, required this.requiredFeeSats}): super._();
   
 
  final  String tx;
  final  int vout;
- final  Fee? maxFee;
+ final  BigInt? maxFeeSats;
  final  BigInt requiredFeeSats;
- final  BigInt requiredFeeRateSatPerVbyte;
 
 /// Create a copy of DepositClaimError
 /// with the given fields replaced by the non-null parameter values.
@@ -200,16 +571,16 @@ $DepositClaimError_MaxDepositClaimFeeExceededCopyWith<DepositClaimError_MaxDepos
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DepositClaimError_MaxDepositClaimFeeExceeded&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.maxFee, maxFee) || other.maxFee == maxFee)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats)&&(identical(other.requiredFeeRateSatPerVbyte, requiredFeeRateSatPerVbyte) || other.requiredFeeRateSatPerVbyte == requiredFeeRateSatPerVbyte));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DepositClaimError_MaxDepositClaimFeeExceeded&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.maxFeeSats, maxFeeSats) || other.maxFeeSats == maxFeeSats)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tx,vout,maxFee,requiredFeeSats,requiredFeeRateSatPerVbyte);
+int get hashCode => Object.hash(runtimeType,tx,vout,maxFeeSats,requiredFeeSats);
 
 @override
 String toString() {
-  return 'DepositClaimError.maxDepositClaimFeeExceeded(tx: $tx, vout: $vout, maxFee: $maxFee, requiredFeeSats: $requiredFeeSats, requiredFeeRateSatPerVbyte: $requiredFeeRateSatPerVbyte)';
+  return 'DepositClaimError.maxDepositClaimFeeExceeded(tx: $tx, vout: $vout, maxFeeSats: $maxFeeSats, requiredFeeSats: $requiredFeeSats)';
 }
 
 
@@ -220,11 +591,11 @@ abstract mixin class $DepositClaimError_MaxDepositClaimFeeExceededCopyWith<$Res>
   factory $DepositClaimError_MaxDepositClaimFeeExceededCopyWith(DepositClaimError_MaxDepositClaimFeeExceeded value, $Res Function(DepositClaimError_MaxDepositClaimFeeExceeded) _then) = _$DepositClaimError_MaxDepositClaimFeeExceededCopyWithImpl;
 @useResult
 $Res call({
- String tx, int vout, Fee? maxFee, BigInt requiredFeeSats, BigInt requiredFeeRateSatPerVbyte
+ String tx, int vout, BigInt? maxFeeSats, BigInt requiredFeeSats
 });
 
 
-$FeeCopyWith<$Res>? get maxFee;
+
 
 }
 /// @nodoc
@@ -237,30 +608,17 @@ class _$DepositClaimError_MaxDepositClaimFeeExceededCopyWithImpl<$Res>
 
 /// Create a copy of DepositClaimError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? maxFee = freezed,Object? requiredFeeSats = null,Object? requiredFeeRateSatPerVbyte = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? maxFeeSats = freezed,Object? requiredFeeSats = null,}) {
   return _then(DepositClaimError_MaxDepositClaimFeeExceeded(
 tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
 as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
-as int,maxFee: freezed == maxFee ? _self.maxFee : maxFee // ignore: cast_nullable_to_non_nullable
-as Fee?,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
-as BigInt,requiredFeeRateSatPerVbyte: null == requiredFeeRateSatPerVbyte ? _self.requiredFeeRateSatPerVbyte : requiredFeeRateSatPerVbyte // ignore: cast_nullable_to_non_nullable
+as int,maxFeeSats: freezed == maxFeeSats ? _self.maxFeeSats : maxFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt?,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
 as BigInt,
   ));
 }
 
-/// Create a copy of DepositClaimError
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$FeeCopyWith<$Res>? get maxFee {
-    if (_self.maxFee == null) {
-    return null;
-  }
 
-  return $FeeCopyWith<$Res>(_self.maxFee!, (value) {
-    return _then(_self.copyWith(maxFee: value));
-  });
-}
 }
 
 /// @nodoc
@@ -322,6 +680,74 @@ class _$DepositClaimError_MissingUtxoCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,}) {
   return _then(DepositClaimError_MissingUtxo(
+tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class DepositClaimError_DepositTooSmall extends DepositClaimError {
+  const DepositClaimError_DepositTooSmall({required this.tx, required this.vout}): super._();
+  
+
+ final  String tx;
+ final  int vout;
+
+/// Create a copy of DepositClaimError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DepositClaimError_DepositTooSmallCopyWith<DepositClaimError_DepositTooSmall> get copyWith => _$DepositClaimError_DepositTooSmallCopyWithImpl<DepositClaimError_DepositTooSmall>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DepositClaimError_DepositTooSmall&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,tx,vout);
+
+@override
+String toString() {
+  return 'DepositClaimError.depositTooSmall(tx: $tx, vout: $vout)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $DepositClaimError_DepositTooSmallCopyWith<$Res> implements $DepositClaimErrorCopyWith<$Res> {
+  factory $DepositClaimError_DepositTooSmallCopyWith(DepositClaimError_DepositTooSmall value, $Res Function(DepositClaimError_DepositTooSmall) _then) = _$DepositClaimError_DepositTooSmallCopyWithImpl;
+@useResult
+$Res call({
+ String tx, int vout
+});
+
+
+
+
+}
+/// @nodoc
+class _$DepositClaimError_DepositTooSmallCopyWithImpl<$Res>
+    implements $DepositClaimError_DepositTooSmallCopyWith<$Res> {
+  _$DepositClaimError_DepositTooSmallCopyWithImpl(this._self, this._then);
+
+  final DepositClaimError_DepositTooSmall _self;
+  final $Res Function(DepositClaimError_DepositTooSmall) _then;
+
+/// Create a copy of DepositClaimError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,}) {
+  return _then(DepositClaimError_DepositTooSmall(
 tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
 as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
 as int,
@@ -2095,7 +2521,7 @@ extension SdkErrorPatterns on SdkError {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SdkError_SparkError value)?  sparkError,TResult Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult Function( SdkError_InvalidUuid value)?  invalidUuid,TResult Function( SdkError_InvalidInput value)?  invalidInput,TResult Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult Function( SdkError_CrossChainDisabled value)?  crossChainDisabled,TResult Function( SdkError_NetworkError value)?  networkError,TResult Function( SdkError_StorageError value)?  storageError,TResult Function( SdkError_ChainServiceError value)?  chainServiceError,TResult Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult Function( SdkError_MissingUtxo value)?  missingUtxo,TResult Function( SdkError_DepositTooSmall value)?  depositTooSmall,TResult Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult Function( SdkError_LnurlError value)?  lnurlError,TResult Function( SdkError_Signer value)?  signer,TResult Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult Function( SdkError_TokenAllowance value)?  tokenAllowance,TResult Function( SdkError_Generic value)?  generic,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -2104,19 +2530,22 @@ return insufficientFunds(_that);case SdkError_InvalidUuid() when invalidUuid != 
 return invalidUuid(_that);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
 return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
-return crossChainRouteUnavailable(_that);case SdkError_NetworkError() when networkError != null:
+return crossChainRouteUnavailable(_that);case SdkError_CrossChainDisabled() when crossChainDisabled != null:
+return crossChainDisabled(_that);case SdkError_NetworkError() when networkError != null:
 return networkError(_that);case SdkError_StorageError() when storageError != null:
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return missingUtxo(_that);case SdkError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
 return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
 return refundReplacementFeeTooLow(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
 return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
 return optimizationCancelled(_that);case SdkError_InsufficientCpfpFunds() when insufficientCpfpFunds != null:
-return insufficientCpfpFunds(_that);case SdkError_Generic() when generic != null:
+return insufficientCpfpFunds(_that);case SdkError_TokenAllowance() when tokenAllowance != null:
+return tokenAllowance(_that);case SdkError_Generic() when generic != null:
 return generic(_that);case _:
   return orElse();
 
@@ -2135,7 +2564,7 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_CrossChainAmountOutOfRange value)  crossChainAmountOutOfRange,required TResult Function( SdkError_CrossChainRouteUnavailable value)  crossChainRouteUnavailable,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_DepositClaimInProgress value)  depositClaimInProgress,required TResult Function( SdkError_RefundReplacementFeeTooLow value)  refundReplacementFeeTooLow,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_Generic value)  generic,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SdkError_SparkError value)  sparkError,required TResult Function( SdkError_InsufficientFunds value)  insufficientFunds,required TResult Function( SdkError_InvalidUuid value)  invalidUuid,required TResult Function( SdkError_InvalidInput value)  invalidInput,required TResult Function( SdkError_CrossChainAmountOutOfRange value)  crossChainAmountOutOfRange,required TResult Function( SdkError_CrossChainRouteUnavailable value)  crossChainRouteUnavailable,required TResult Function( SdkError_CrossChainDisabled value)  crossChainDisabled,required TResult Function( SdkError_NetworkError value)  networkError,required TResult Function( SdkError_StorageError value)  storageError,required TResult Function( SdkError_ChainServiceError value)  chainServiceError,required TResult Function( SdkError_MaxDepositClaimFeeExceeded value)  maxDepositClaimFeeExceeded,required TResult Function( SdkError_MissingUtxo value)  missingUtxo,required TResult Function( SdkError_DepositTooSmall value)  depositTooSmall,required TResult Function( SdkError_DepositClaimInProgress value)  depositClaimInProgress,required TResult Function( SdkError_RefundReplacementFeeTooLow value)  refundReplacementFeeTooLow,required TResult Function( SdkError_LnurlError value)  lnurlError,required TResult Function( SdkError_Signer value)  signer,required TResult Function( SdkError_OptimizationAlreadyRunning value)  optimizationAlreadyRunning,required TResult Function( SdkError_OptimizationCancelled value)  optimizationCancelled,required TResult Function( SdkError_InsufficientCpfpFunds value)  insufficientCpfpFunds,required TResult Function( SdkError_TokenAllowance value)  tokenAllowance,required TResult Function( SdkError_Generic value)  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError():
@@ -2144,19 +2573,22 @@ return insufficientFunds(_that);case SdkError_InvalidUuid():
 return invalidUuid(_that);case SdkError_InvalidInput():
 return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange():
 return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable():
-return crossChainRouteUnavailable(_that);case SdkError_NetworkError():
+return crossChainRouteUnavailable(_that);case SdkError_CrossChainDisabled():
+return crossChainDisabled(_that);case SdkError_NetworkError():
 return networkError(_that);case SdkError_StorageError():
 return storageError(_that);case SdkError_ChainServiceError():
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded():
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo():
-return missingUtxo(_that);case SdkError_DepositClaimInProgress():
+return missingUtxo(_that);case SdkError_DepositTooSmall():
+return depositTooSmall(_that);case SdkError_DepositClaimInProgress():
 return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow():
 return refundReplacementFeeTooLow(_that);case SdkError_LnurlError():
 return lnurlError(_that);case SdkError_Signer():
 return signer(_that);case SdkError_OptimizationAlreadyRunning():
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled():
 return optimizationCancelled(_that);case SdkError_InsufficientCpfpFunds():
-return insufficientCpfpFunds(_that);case SdkError_Generic():
+return insufficientCpfpFunds(_that);case SdkError_TokenAllowance():
+return tokenAllowance(_that);case SdkError_Generic():
 return generic(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -2171,7 +2603,7 @@ return generic(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult? Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult? Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_Generic value)?  generic,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SdkError_SparkError value)?  sparkError,TResult? Function( SdkError_InsufficientFunds value)?  insufficientFunds,TResult? Function( SdkError_InvalidUuid value)?  invalidUuid,TResult? Function( SdkError_InvalidInput value)?  invalidInput,TResult? Function( SdkError_CrossChainAmountOutOfRange value)?  crossChainAmountOutOfRange,TResult? Function( SdkError_CrossChainRouteUnavailable value)?  crossChainRouteUnavailable,TResult? Function( SdkError_CrossChainDisabled value)?  crossChainDisabled,TResult? Function( SdkError_NetworkError value)?  networkError,TResult? Function( SdkError_StorageError value)?  storageError,TResult? Function( SdkError_ChainServiceError value)?  chainServiceError,TResult? Function( SdkError_MaxDepositClaimFeeExceeded value)?  maxDepositClaimFeeExceeded,TResult? Function( SdkError_MissingUtxo value)?  missingUtxo,TResult? Function( SdkError_DepositTooSmall value)?  depositTooSmall,TResult? Function( SdkError_DepositClaimInProgress value)?  depositClaimInProgress,TResult? Function( SdkError_RefundReplacementFeeTooLow value)?  refundReplacementFeeTooLow,TResult? Function( SdkError_LnurlError value)?  lnurlError,TResult? Function( SdkError_Signer value)?  signer,TResult? Function( SdkError_OptimizationAlreadyRunning value)?  optimizationAlreadyRunning,TResult? Function( SdkError_OptimizationCancelled value)?  optimizationCancelled,TResult? Function( SdkError_InsufficientCpfpFunds value)?  insufficientCpfpFunds,TResult? Function( SdkError_TokenAllowance value)?  tokenAllowance,TResult? Function( SdkError_Generic value)?  generic,}){
 final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
@@ -2180,19 +2612,22 @@ return insufficientFunds(_that);case SdkError_InvalidUuid() when invalidUuid != 
 return invalidUuid(_that);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
 return crossChainAmountOutOfRange(_that);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
-return crossChainRouteUnavailable(_that);case SdkError_NetworkError() when networkError != null:
+return crossChainRouteUnavailable(_that);case SdkError_CrossChainDisabled() when crossChainDisabled != null:
+return crossChainDisabled(_that);case SdkError_NetworkError() when networkError != null:
 return networkError(_that);case SdkError_StorageError() when storageError != null:
 return storageError(_that);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
 return maxDepositClaimFeeExceeded(_that);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return missingUtxo(_that);case SdkError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
 return depositClaimInProgress(_that);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
 return refundReplacementFeeTooLow(_that);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that);case SdkError_Signer() when signer != null:
 return signer(_that);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning(_that);case SdkError_OptimizationCancelled() when optimizationCancelled != null:
 return optimizationCancelled(_that);case SdkError_InsufficientCpfpFunds() when insufficientCpfpFunds != null:
-return insufficientCpfpFunds(_that);case SdkError_Generic() when generic != null:
+return insufficientCpfpFunds(_that);case SdkError_TokenAllowance() when tokenAllowance != null:
+return tokenAllowance(_that);case SdkError_Generic() when generic != null:
 return generic(_that);case _:
   return null;
 
@@ -2210,27 +2645,30 @@ return generic(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)?  crossChainAmountOutOfRange,TResult Function( String reason,  bool temporary)?  crossChainRouteUnavailable,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout)?  depositClaimInProgress,TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String field0)?  sparkError,TResult Function( String? tokenIdentifier)?  insufficientFunds,TResult Function( String field0)?  invalidUuid,TResult Function( String field0)?  invalidInput,TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents,  String docsUrl)?  crossChainAmountOutOfRange,TResult Function( String reason,  bool temporary,  String docsUrl)?  crossChainRouteUnavailable,TResult Function( String docsUrl)?  crossChainDisabled,TResult Function( String field0)?  networkError,TResult Function( String field0)?  storageError,TResult Function( String field0)?  chainServiceError,TResult Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats,  String docsUrl)?  maxDepositClaimFeeExceeded,TResult Function( String tx,  int vout)?  missingUtxo,TResult Function( String tx,  int vout,  String docsUrl)?  depositTooSmall,TResult Function( String tx,  int vout,  String docsUrl)?  depositClaimInProgress,TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats,  String docsUrl)?  refundReplacementFeeTooLow,TResult Function( String field0)?  lnurlError,TResult Function( String field0)?  signer,TResult Function()?  optimizationAlreadyRunning,TResult Function()?  optimizationCancelled,TResult Function( BigInt requiredSats,  String docsUrl)?  insufficientCpfpFunds,TResult Function( TokenAllowanceErrorReason reason,  String details,  String docsUrl)?  tokenAllowance,TResult Function( String field0)?  generic,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
-return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
-return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError() when networkError != null:
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents,_that.docsUrl);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that.reason,_that.temporary,_that.docsUrl);case SdkError_CrossChainDisabled() when crossChainDisabled != null:
+return crossChainDisabled(_that.docsUrl);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
-return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
-return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError() when lnurlError != null:
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_MissingUtxo() when missingUtxo != null:
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that.tx,_that.vout,_that.docsUrl);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that.tx,_that.vout,_that.docsUrl);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
 return optimizationCancelled();case SdkError_InsufficientCpfpFunds() when insufficientCpfpFunds != null:
-return insufficientCpfpFunds(_that.requiredSat);case SdkError_Generic() when generic != null:
+return insufficientCpfpFunds(_that.requiredSats,_that.docsUrl);case SdkError_TokenAllowance() when tokenAllowance != null:
+return tokenAllowance(_that.reason,_that.details,_that.docsUrl);case SdkError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return orElse();
 
@@ -2249,27 +2687,30 @@ return generic(_that.field0);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)  crossChainAmountOutOfRange,required TResult Function( String reason,  bool temporary)  crossChainRouteUnavailable,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout)  depositClaimInProgress,required TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)  refundReplacementFeeTooLow,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSat)  insufficientCpfpFunds,required TResult Function( String field0)  generic,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String field0)  sparkError,required TResult Function( String? tokenIdentifier)  insufficientFunds,required TResult Function( String field0)  invalidUuid,required TResult Function( String field0)  invalidInput,required TResult Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents,  String docsUrl)  crossChainAmountOutOfRange,required TResult Function( String reason,  bool temporary,  String docsUrl)  crossChainRouteUnavailable,required TResult Function( String docsUrl)  crossChainDisabled,required TResult Function( String field0)  networkError,required TResult Function( String field0)  storageError,required TResult Function( String field0)  chainServiceError,required TResult Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats,  String docsUrl)  maxDepositClaimFeeExceeded,required TResult Function( String tx,  int vout)  missingUtxo,required TResult Function( String tx,  int vout,  String docsUrl)  depositTooSmall,required TResult Function( String tx,  int vout,  String docsUrl)  depositClaimInProgress,required TResult Function( BigInt pendingFeeSats,  BigInt requiredFeeSats,  String docsUrl)  refundReplacementFeeTooLow,required TResult Function( String field0)  lnurlError,required TResult Function( String field0)  signer,required TResult Function()  optimizationAlreadyRunning,required TResult Function()  optimizationCancelled,required TResult Function( BigInt requiredSats,  String docsUrl)  insufficientCpfpFunds,required TResult Function( TokenAllowanceErrorReason reason,  String details,  String docsUrl)  tokenAllowance,required TResult Function( String field0)  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError():
 return sparkError(_that.field0);case SdkError_InsufficientFunds():
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid():
 return invalidUuid(_that.field0);case SdkError_InvalidInput():
 return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange():
-return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable():
-return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError():
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents,_that.docsUrl);case SdkError_CrossChainRouteUnavailable():
+return crossChainRouteUnavailable(_that.reason,_that.temporary,_that.docsUrl);case SdkError_CrossChainDisabled():
+return crossChainDisabled(_that.docsUrl);case SdkError_NetworkError():
 return networkError(_that.field0);case SdkError_StorageError():
 return storageError(_that.field0);case SdkError_ChainServiceError():
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded():
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo():
-return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress():
-return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow():
-return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError():
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_MissingUtxo():
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositTooSmall():
+return depositTooSmall(_that.tx,_that.vout,_that.docsUrl);case SdkError_DepositClaimInProgress():
+return depositClaimInProgress(_that.tx,_that.vout,_that.docsUrl);case SdkError_RefundReplacementFeeTooLow():
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_LnurlError():
 return lnurlError(_that.field0);case SdkError_Signer():
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning():
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled():
 return optimizationCancelled();case SdkError_InsufficientCpfpFunds():
-return insufficientCpfpFunds(_that.requiredSat);case SdkError_Generic():
+return insufficientCpfpFunds(_that.requiredSats,_that.docsUrl);case SdkError_TokenAllowance():
+return tokenAllowance(_that.reason,_that.details,_that.docsUrl);case SdkError_Generic():
 return generic(_that.field0);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -2284,27 +2725,30 @@ return generic(_that.field0);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents)?  crossChainAmountOutOfRange,TResult? Function( String reason,  bool temporary)?  crossChainRouteUnavailable,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  Fee? maxFee,  BigInt requiredFeeSats,  BigInt requiredFeeRateSatPerVbyte)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout)?  depositClaimInProgress,TResult? Function( BigInt pendingFeeSats,  BigInt requiredFeeSats)?  refundReplacementFeeTooLow,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSat)?  insufficientCpfpFunds,TResult? Function( String field0)?  generic,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String field0)?  sparkError,TResult? Function( String? tokenIdentifier)?  insufficientFunds,TResult? Function( String field0)?  invalidUuid,TResult? Function( String field0)?  invalidInput,TResult? Function( String reason,  bool tooSmall,  BigInt? boundAmount,  BigInt? boundUsdCents,  String docsUrl)?  crossChainAmountOutOfRange,TResult? Function( String reason,  bool temporary,  String docsUrl)?  crossChainRouteUnavailable,TResult? Function( String docsUrl)?  crossChainDisabled,TResult? Function( String field0)?  networkError,TResult? Function( String field0)?  storageError,TResult? Function( String field0)?  chainServiceError,TResult? Function( String tx,  int vout,  BigInt? maxFeeSats,  BigInt requiredFeeSats,  String docsUrl)?  maxDepositClaimFeeExceeded,TResult? Function( String tx,  int vout)?  missingUtxo,TResult? Function( String tx,  int vout,  String docsUrl)?  depositTooSmall,TResult? Function( String tx,  int vout,  String docsUrl)?  depositClaimInProgress,TResult? Function( BigInt pendingFeeSats,  BigInt requiredFeeSats,  String docsUrl)?  refundReplacementFeeTooLow,TResult? Function( String field0)?  lnurlError,TResult? Function( String field0)?  signer,TResult? Function()?  optimizationAlreadyRunning,TResult? Function()?  optimizationCancelled,TResult? Function( BigInt requiredSats,  String docsUrl)?  insufficientCpfpFunds,TResult? Function( TokenAllowanceErrorReason reason,  String details,  String docsUrl)?  tokenAllowance,TResult? Function( String field0)?  generic,}) {final _that = this;
 switch (_that) {
 case SdkError_SparkError() when sparkError != null:
 return sparkError(_that.field0);case SdkError_InsufficientFunds() when insufficientFunds != null:
 return insufficientFunds(_that.tokenIdentifier);case SdkError_InvalidUuid() when invalidUuid != null:
 return invalidUuid(_that.field0);case SdkError_InvalidInput() when invalidInput != null:
 return invalidInput(_that.field0);case SdkError_CrossChainAmountOutOfRange() when crossChainAmountOutOfRange != null:
-return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
-return crossChainRouteUnavailable(_that.reason,_that.temporary);case SdkError_NetworkError() when networkError != null:
+return crossChainAmountOutOfRange(_that.reason,_that.tooSmall,_that.boundAmount,_that.boundUsdCents,_that.docsUrl);case SdkError_CrossChainRouteUnavailable() when crossChainRouteUnavailable != null:
+return crossChainRouteUnavailable(_that.reason,_that.temporary,_that.docsUrl);case SdkError_CrossChainDisabled() when crossChainDisabled != null:
+return crossChainDisabled(_that.docsUrl);case SdkError_NetworkError() when networkError != null:
 return networkError(_that.field0);case SdkError_StorageError() when storageError != null:
 return storageError(_that.field0);case SdkError_ChainServiceError() when chainServiceError != null:
 return chainServiceError(_that.field0);case SdkError_MaxDepositClaimFeeExceeded() when maxDepositClaimFeeExceeded != null:
-return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFee,_that.requiredFeeSats,_that.requiredFeeRateSatPerVbyte);case SdkError_MissingUtxo() when missingUtxo != null:
-return missingUtxo(_that.tx,_that.vout);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
-return depositClaimInProgress(_that.tx,_that.vout);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
-return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats);case SdkError_LnurlError() when lnurlError != null:
+return maxDepositClaimFeeExceeded(_that.tx,_that.vout,_that.maxFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_MissingUtxo() when missingUtxo != null:
+return missingUtxo(_that.tx,_that.vout);case SdkError_DepositTooSmall() when depositTooSmall != null:
+return depositTooSmall(_that.tx,_that.vout,_that.docsUrl);case SdkError_DepositClaimInProgress() when depositClaimInProgress != null:
+return depositClaimInProgress(_that.tx,_that.vout,_that.docsUrl);case SdkError_RefundReplacementFeeTooLow() when refundReplacementFeeTooLow != null:
+return refundReplacementFeeTooLow(_that.pendingFeeSats,_that.requiredFeeSats,_that.docsUrl);case SdkError_LnurlError() when lnurlError != null:
 return lnurlError(_that.field0);case SdkError_Signer() when signer != null:
 return signer(_that.field0);case SdkError_OptimizationAlreadyRunning() when optimizationAlreadyRunning != null:
 return optimizationAlreadyRunning();case SdkError_OptimizationCancelled() when optimizationCancelled != null:
 return optimizationCancelled();case SdkError_InsufficientCpfpFunds() when insufficientCpfpFunds != null:
-return insufficientCpfpFunds(_that.requiredSat);case SdkError_Generic() when generic != null:
+return insufficientCpfpFunds(_that.requiredSats,_that.docsUrl);case SdkError_TokenAllowance() when tokenAllowance != null:
+return tokenAllowance(_that.reason,_that.details,_that.docsUrl);case SdkError_Generic() when generic != null:
 return generic(_that.field0);case _:
   return null;
 
@@ -2581,13 +3025,14 @@ as String,
 
 
 class SdkError_CrossChainAmountOutOfRange extends SdkError {
-  const SdkError_CrossChainAmountOutOfRange({required this.reason, required this.tooSmall, this.boundAmount, this.boundUsdCents}): super._();
+  const SdkError_CrossChainAmountOutOfRange({required this.reason, required this.tooSmall, this.boundAmount, this.boundUsdCents, required this.docsUrl}): super._();
   
 
  final  String reason;
  final  bool tooSmall;
  final  BigInt? boundAmount;
  final  BigInt? boundUsdCents;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -2599,16 +3044,16 @@ $SdkError_CrossChainAmountOutOfRangeCopyWith<SdkError_CrossChainAmountOutOfRange
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainAmountOutOfRange&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.tooSmall, tooSmall) || other.tooSmall == tooSmall)&&(identical(other.boundAmount, boundAmount) || other.boundAmount == boundAmount)&&(identical(other.boundUsdCents, boundUsdCents) || other.boundUsdCents == boundUsdCents));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainAmountOutOfRange&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.tooSmall, tooSmall) || other.tooSmall == tooSmall)&&(identical(other.boundAmount, boundAmount) || other.boundAmount == boundAmount)&&(identical(other.boundUsdCents, boundUsdCents) || other.boundUsdCents == boundUsdCents)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,reason,tooSmall,boundAmount,boundUsdCents);
+int get hashCode => Object.hash(runtimeType,reason,tooSmall,boundAmount,boundUsdCents,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.crossChainAmountOutOfRange(reason: $reason, tooSmall: $tooSmall, boundAmount: $boundAmount, boundUsdCents: $boundUsdCents)';
+  return 'SdkError.crossChainAmountOutOfRange(reason: $reason, tooSmall: $tooSmall, boundAmount: $boundAmount, boundUsdCents: $boundUsdCents, docsUrl: $docsUrl)';
 }
 
 
@@ -2619,7 +3064,7 @@ abstract mixin class $SdkError_CrossChainAmountOutOfRangeCopyWith<$Res> implemen
   factory $SdkError_CrossChainAmountOutOfRangeCopyWith(SdkError_CrossChainAmountOutOfRange value, $Res Function(SdkError_CrossChainAmountOutOfRange) _then) = _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl;
 @useResult
 $Res call({
- String reason, bool tooSmall, BigInt? boundAmount, BigInt? boundUsdCents
+ String reason, bool tooSmall, BigInt? boundAmount, BigInt? boundUsdCents, String docsUrl
 });
 
 
@@ -2636,13 +3081,14 @@ class _$SdkError_CrossChainAmountOutOfRangeCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? tooSmall = null,Object? boundAmount = freezed,Object? boundUsdCents = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? tooSmall = null,Object? boundAmount = freezed,Object? boundUsdCents = freezed,Object? docsUrl = null,}) {
   return _then(SdkError_CrossChainAmountOutOfRange(
 reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
 as String,tooSmall: null == tooSmall ? _self.tooSmall : tooSmall // ignore: cast_nullable_to_non_nullable
 as bool,boundAmount: freezed == boundAmount ? _self.boundAmount : boundAmount // ignore: cast_nullable_to_non_nullable
 as BigInt?,boundUsdCents: freezed == boundUsdCents ? _self.boundUsdCents : boundUsdCents // ignore: cast_nullable_to_non_nullable
-as BigInt?,
+as BigInt?,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -2653,11 +3099,12 @@ as BigInt?,
 
 
 class SdkError_CrossChainRouteUnavailable extends SdkError {
-  const SdkError_CrossChainRouteUnavailable({required this.reason, required this.temporary}): super._();
+  const SdkError_CrossChainRouteUnavailable({required this.reason, required this.temporary, required this.docsUrl}): super._();
   
 
  final  String reason;
  final  bool temporary;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -2669,16 +3116,16 @@ $SdkError_CrossChainRouteUnavailableCopyWith<SdkError_CrossChainRouteUnavailable
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainRouteUnavailable&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.temporary, temporary) || other.temporary == temporary));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainRouteUnavailable&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.temporary, temporary) || other.temporary == temporary)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,reason,temporary);
+int get hashCode => Object.hash(runtimeType,reason,temporary,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.crossChainRouteUnavailable(reason: $reason, temporary: $temporary)';
+  return 'SdkError.crossChainRouteUnavailable(reason: $reason, temporary: $temporary, docsUrl: $docsUrl)';
 }
 
 
@@ -2689,7 +3136,7 @@ abstract mixin class $SdkError_CrossChainRouteUnavailableCopyWith<$Res> implemen
   factory $SdkError_CrossChainRouteUnavailableCopyWith(SdkError_CrossChainRouteUnavailable value, $Res Function(SdkError_CrossChainRouteUnavailable) _then) = _$SdkError_CrossChainRouteUnavailableCopyWithImpl;
 @useResult
 $Res call({
- String reason, bool temporary
+ String reason, bool temporary, String docsUrl
 });
 
 
@@ -2706,11 +3153,78 @@ class _$SdkError_CrossChainRouteUnavailableCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? temporary = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? temporary = null,Object? docsUrl = null,}) {
   return _then(SdkError_CrossChainRouteUnavailable(
 reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
 as String,temporary: null == temporary ? _self.temporary : temporary // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_CrossChainDisabled extends SdkError {
+  const SdkError_CrossChainDisabled({required this.docsUrl}): super._();
+  
+
+ final  String docsUrl;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_CrossChainDisabledCopyWith<SdkError_CrossChainDisabled> get copyWith => _$SdkError_CrossChainDisabledCopyWithImpl<SdkError_CrossChainDisabled>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_CrossChainDisabled&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,docsUrl);
+
+@override
+String toString() {
+  return 'SdkError.crossChainDisabled(docsUrl: $docsUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_CrossChainDisabledCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_CrossChainDisabledCopyWith(SdkError_CrossChainDisabled value, $Res Function(SdkError_CrossChainDisabled) _then) = _$SdkError_CrossChainDisabledCopyWithImpl;
+@useResult
+$Res call({
+ String docsUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_CrossChainDisabledCopyWithImpl<$Res>
+    implements $SdkError_CrossChainDisabledCopyWith<$Res> {
+  _$SdkError_CrossChainDisabledCopyWithImpl(this._self, this._then);
+
+  final SdkError_CrossChainDisabled _self;
+  final $Res Function(SdkError_CrossChainDisabled) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? docsUrl = null,}) {
+  return _then(SdkError_CrossChainDisabled(
+docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -2919,14 +3433,14 @@ as String,
 
 
 class SdkError_MaxDepositClaimFeeExceeded extends SdkError {
-  const SdkError_MaxDepositClaimFeeExceeded({required this.tx, required this.vout, this.maxFee, required this.requiredFeeSats, required this.requiredFeeRateSatPerVbyte}): super._();
+  const SdkError_MaxDepositClaimFeeExceeded({required this.tx, required this.vout, this.maxFeeSats, required this.requiredFeeSats, required this.docsUrl}): super._();
   
 
  final  String tx;
  final  int vout;
- final  Fee? maxFee;
+ final  BigInt? maxFeeSats;
  final  BigInt requiredFeeSats;
- final  BigInt requiredFeeRateSatPerVbyte;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -2938,16 +3452,16 @@ $SdkError_MaxDepositClaimFeeExceededCopyWith<SdkError_MaxDepositClaimFeeExceeded
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_MaxDepositClaimFeeExceeded&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.maxFee, maxFee) || other.maxFee == maxFee)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats)&&(identical(other.requiredFeeRateSatPerVbyte, requiredFeeRateSatPerVbyte) || other.requiredFeeRateSatPerVbyte == requiredFeeRateSatPerVbyte));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_MaxDepositClaimFeeExceeded&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.maxFeeSats, maxFeeSats) || other.maxFeeSats == maxFeeSats)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tx,vout,maxFee,requiredFeeSats,requiredFeeRateSatPerVbyte);
+int get hashCode => Object.hash(runtimeType,tx,vout,maxFeeSats,requiredFeeSats,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.maxDepositClaimFeeExceeded(tx: $tx, vout: $vout, maxFee: $maxFee, requiredFeeSats: $requiredFeeSats, requiredFeeRateSatPerVbyte: $requiredFeeRateSatPerVbyte)';
+  return 'SdkError.maxDepositClaimFeeExceeded(tx: $tx, vout: $vout, maxFeeSats: $maxFeeSats, requiredFeeSats: $requiredFeeSats, docsUrl: $docsUrl)';
 }
 
 
@@ -2958,11 +3472,11 @@ abstract mixin class $SdkError_MaxDepositClaimFeeExceededCopyWith<$Res> implemen
   factory $SdkError_MaxDepositClaimFeeExceededCopyWith(SdkError_MaxDepositClaimFeeExceeded value, $Res Function(SdkError_MaxDepositClaimFeeExceeded) _then) = _$SdkError_MaxDepositClaimFeeExceededCopyWithImpl;
 @useResult
 $Res call({
- String tx, int vout, Fee? maxFee, BigInt requiredFeeSats, BigInt requiredFeeRateSatPerVbyte
+ String tx, int vout, BigInt? maxFeeSats, BigInt requiredFeeSats, String docsUrl
 });
 
 
-$FeeCopyWith<$Res>? get maxFee;
+
 
 }
 /// @nodoc
@@ -2975,30 +3489,18 @@ class _$SdkError_MaxDepositClaimFeeExceededCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? maxFee = freezed,Object? requiredFeeSats = null,Object? requiredFeeRateSatPerVbyte = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? maxFeeSats = freezed,Object? requiredFeeSats = null,Object? docsUrl = null,}) {
   return _then(SdkError_MaxDepositClaimFeeExceeded(
 tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
 as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
-as int,maxFee: freezed == maxFee ? _self.maxFee : maxFee // ignore: cast_nullable_to_non_nullable
-as Fee?,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
-as BigInt,requiredFeeRateSatPerVbyte: null == requiredFeeRateSatPerVbyte ? _self.requiredFeeRateSatPerVbyte : requiredFeeRateSatPerVbyte // ignore: cast_nullable_to_non_nullable
-as BigInt,
+as int,maxFeeSats: freezed == maxFeeSats ? _self.maxFeeSats : maxFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt?,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
+as BigInt,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
-/// Create a copy of SdkError
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$FeeCopyWith<$Res>? get maxFee {
-    if (_self.maxFee == null) {
-    return null;
-  }
 
-  return $FeeCopyWith<$Res>(_self.maxFee!, (value) {
-    return _then(_self.copyWith(maxFee: value));
-  });
-}
 }
 
 /// @nodoc
@@ -3072,12 +3574,83 @@ as int,
 /// @nodoc
 
 
-class SdkError_DepositClaimInProgress extends SdkError {
-  const SdkError_DepositClaimInProgress({required this.tx, required this.vout}): super._();
+class SdkError_DepositTooSmall extends SdkError {
+  const SdkError_DepositTooSmall({required this.tx, required this.vout, required this.docsUrl}): super._();
   
 
  final  String tx;
  final  int vout;
+ final  String docsUrl;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_DepositTooSmallCopyWith<SdkError_DepositTooSmall> get copyWith => _$SdkError_DepositTooSmallCopyWithImpl<SdkError_DepositTooSmall>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_DepositTooSmall&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,tx,vout,docsUrl);
+
+@override
+String toString() {
+  return 'SdkError.depositTooSmall(tx: $tx, vout: $vout, docsUrl: $docsUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_DepositTooSmallCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_DepositTooSmallCopyWith(SdkError_DepositTooSmall value, $Res Function(SdkError_DepositTooSmall) _then) = _$SdkError_DepositTooSmallCopyWithImpl;
+@useResult
+$Res call({
+ String tx, int vout, String docsUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_DepositTooSmallCopyWithImpl<$Res>
+    implements $SdkError_DepositTooSmallCopyWith<$Res> {
+  _$SdkError_DepositTooSmallCopyWithImpl(this._self, this._then);
+
+  final SdkError_DepositTooSmall _self;
+  final $Res Function(SdkError_DepositTooSmall) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? docsUrl = null,}) {
+  return _then(SdkError_DepositTooSmall(
+tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
+as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
+as int,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_DepositClaimInProgress extends SdkError {
+  const SdkError_DepositClaimInProgress({required this.tx, required this.vout, required this.docsUrl}): super._();
+  
+
+ final  String tx;
+ final  int vout;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -3089,16 +3662,16 @@ $SdkError_DepositClaimInProgressCopyWith<SdkError_DepositClaimInProgress> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_DepositClaimInProgress&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_DepositClaimInProgress&&(identical(other.tx, tx) || other.tx == tx)&&(identical(other.vout, vout) || other.vout == vout)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,tx,vout);
+int get hashCode => Object.hash(runtimeType,tx,vout,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.depositClaimInProgress(tx: $tx, vout: $vout)';
+  return 'SdkError.depositClaimInProgress(tx: $tx, vout: $vout, docsUrl: $docsUrl)';
 }
 
 
@@ -3109,7 +3682,7 @@ abstract mixin class $SdkError_DepositClaimInProgressCopyWith<$Res> implements $
   factory $SdkError_DepositClaimInProgressCopyWith(SdkError_DepositClaimInProgress value, $Res Function(SdkError_DepositClaimInProgress) _then) = _$SdkError_DepositClaimInProgressCopyWithImpl;
 @useResult
 $Res call({
- String tx, int vout
+ String tx, int vout, String docsUrl
 });
 
 
@@ -3126,11 +3699,12 @@ class _$SdkError_DepositClaimInProgressCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? tx = null,Object? vout = null,Object? docsUrl = null,}) {
   return _then(SdkError_DepositClaimInProgress(
 tx: null == tx ? _self.tx : tx // ignore: cast_nullable_to_non_nullable
 as String,vout: null == vout ? _self.vout : vout // ignore: cast_nullable_to_non_nullable
-as int,
+as int,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -3141,11 +3715,12 @@ as int,
 
 
 class SdkError_RefundReplacementFeeTooLow extends SdkError {
-  const SdkError_RefundReplacementFeeTooLow({required this.pendingFeeSats, required this.requiredFeeSats}): super._();
+  const SdkError_RefundReplacementFeeTooLow({required this.pendingFeeSats, required this.requiredFeeSats, required this.docsUrl}): super._();
   
 
  final  BigInt pendingFeeSats;
  final  BigInt requiredFeeSats;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -3157,16 +3732,16 @@ $SdkError_RefundReplacementFeeTooLowCopyWith<SdkError_RefundReplacementFeeTooLow
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_RefundReplacementFeeTooLow&&(identical(other.pendingFeeSats, pendingFeeSats) || other.pendingFeeSats == pendingFeeSats)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_RefundReplacementFeeTooLow&&(identical(other.pendingFeeSats, pendingFeeSats) || other.pendingFeeSats == pendingFeeSats)&&(identical(other.requiredFeeSats, requiredFeeSats) || other.requiredFeeSats == requiredFeeSats)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,pendingFeeSats,requiredFeeSats);
+int get hashCode => Object.hash(runtimeType,pendingFeeSats,requiredFeeSats,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.refundReplacementFeeTooLow(pendingFeeSats: $pendingFeeSats, requiredFeeSats: $requiredFeeSats)';
+  return 'SdkError.refundReplacementFeeTooLow(pendingFeeSats: $pendingFeeSats, requiredFeeSats: $requiredFeeSats, docsUrl: $docsUrl)';
 }
 
 
@@ -3177,7 +3752,7 @@ abstract mixin class $SdkError_RefundReplacementFeeTooLowCopyWith<$Res> implemen
   factory $SdkError_RefundReplacementFeeTooLowCopyWith(SdkError_RefundReplacementFeeTooLow value, $Res Function(SdkError_RefundReplacementFeeTooLow) _then) = _$SdkError_RefundReplacementFeeTooLowCopyWithImpl;
 @useResult
 $Res call({
- BigInt pendingFeeSats, BigInt requiredFeeSats
+ BigInt pendingFeeSats, BigInt requiredFeeSats, String docsUrl
 });
 
 
@@ -3194,11 +3769,12 @@ class _$SdkError_RefundReplacementFeeTooLowCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? pendingFeeSats = null,Object? requiredFeeSats = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? pendingFeeSats = null,Object? requiredFeeSats = null,Object? docsUrl = null,}) {
   return _then(SdkError_RefundReplacementFeeTooLow(
 pendingFeeSats: null == pendingFeeSats ? _self.pendingFeeSats : pendingFeeSats // ignore: cast_nullable_to_non_nullable
 as BigInt,requiredFeeSats: null == requiredFeeSats ? _self.requiredFeeSats : requiredFeeSats // ignore: cast_nullable_to_non_nullable
-as BigInt,
+as BigInt,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -3405,10 +3981,11 @@ String toString() {
 
 
 class SdkError_InsufficientCpfpFunds extends SdkError {
-  const SdkError_InsufficientCpfpFunds({required this.requiredSat}): super._();
+  const SdkError_InsufficientCpfpFunds({required this.requiredSats, required this.docsUrl}): super._();
   
 
- final  BigInt requiredSat;
+ final  BigInt requiredSats;
+ final  String docsUrl;
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
@@ -3420,16 +3997,16 @@ $SdkError_InsufficientCpfpFundsCopyWith<SdkError_InsufficientCpfpFunds> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_InsufficientCpfpFunds&&(identical(other.requiredSat, requiredSat) || other.requiredSat == requiredSat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_InsufficientCpfpFunds&&(identical(other.requiredSats, requiredSats) || other.requiredSats == requiredSats)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,requiredSat);
+int get hashCode => Object.hash(runtimeType,requiredSats,docsUrl);
 
 @override
 String toString() {
-  return 'SdkError.insufficientCpfpFunds(requiredSat: $requiredSat)';
+  return 'SdkError.insufficientCpfpFunds(requiredSats: $requiredSats, docsUrl: $docsUrl)';
 }
 
 
@@ -3440,7 +4017,7 @@ abstract mixin class $SdkError_InsufficientCpfpFundsCopyWith<$Res> implements $S
   factory $SdkError_InsufficientCpfpFundsCopyWith(SdkError_InsufficientCpfpFunds value, $Res Function(SdkError_InsufficientCpfpFunds) _then) = _$SdkError_InsufficientCpfpFundsCopyWithImpl;
 @useResult
 $Res call({
- BigInt requiredSat
+ BigInt requiredSats, String docsUrl
 });
 
 
@@ -3457,10 +4034,81 @@ class _$SdkError_InsufficientCpfpFundsCopyWithImpl<$Res>
 
 /// Create a copy of SdkError
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? requiredSat = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? requiredSats = null,Object? docsUrl = null,}) {
   return _then(SdkError_InsufficientCpfpFunds(
-requiredSat: null == requiredSat ? _self.requiredSat : requiredSat // ignore: cast_nullable_to_non_nullable
-as BigInt,
+requiredSats: null == requiredSats ? _self.requiredSats : requiredSats // ignore: cast_nullable_to_non_nullable
+as BigInt,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SdkError_TokenAllowance extends SdkError {
+  const SdkError_TokenAllowance({required this.reason, required this.details, required this.docsUrl}): super._();
+  
+
+ final  TokenAllowanceErrorReason reason;
+ final  String details;
+ final  String docsUrl;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SdkError_TokenAllowanceCopyWith<SdkError_TokenAllowance> get copyWith => _$SdkError_TokenAllowanceCopyWithImpl<SdkError_TokenAllowance>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SdkError_TokenAllowance&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.details, details) || other.details == details)&&(identical(other.docsUrl, docsUrl) || other.docsUrl == docsUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason,details,docsUrl);
+
+@override
+String toString() {
+  return 'SdkError.tokenAllowance(reason: $reason, details: $details, docsUrl: $docsUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SdkError_TokenAllowanceCopyWith<$Res> implements $SdkErrorCopyWith<$Res> {
+  factory $SdkError_TokenAllowanceCopyWith(SdkError_TokenAllowance value, $Res Function(SdkError_TokenAllowance) _then) = _$SdkError_TokenAllowanceCopyWithImpl;
+@useResult
+$Res call({
+ TokenAllowanceErrorReason reason, String details, String docsUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$SdkError_TokenAllowanceCopyWithImpl<$Res>
+    implements $SdkError_TokenAllowanceCopyWith<$Res> {
+  _$SdkError_TokenAllowanceCopyWithImpl(this._self, this._then);
+
+  final SdkError_TokenAllowance _self;
+  final $Res Function(SdkError_TokenAllowance) _then;
+
+/// Create a copy of SdkError
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,Object? details = null,Object? docsUrl = null,}) {
+  return _then(SdkError_TokenAllowance(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as TokenAllowanceErrorReason,details: null == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
+as String,docsUrl: null == docsUrl ? _self.docsUrl : docsUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

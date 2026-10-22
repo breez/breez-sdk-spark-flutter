@@ -4,12 +4,25 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import 'frb_generated.dart';
-import 'models.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'errors.freezed.dart';
 
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `StorageError`
+
+@freezed
+sealed class CooperativeRecoveryError with _$CooperativeRecoveryError {
+  const CooperativeRecoveryError._();
+
+  const factory CooperativeRecoveryError.replacementFeeTooLow({
+    required BigInt requiredFeeSats,
+    required BigInt requiredFeeRateSatPerVbyte,
+  }) = CooperativeRecoveryError_ReplacementFeeTooLow;
+  const factory CooperativeRecoveryError.operatorsUnavailable({required String message}) =
+      CooperativeRecoveryError_OperatorsUnavailable;
+  const factory CooperativeRecoveryError.generic({required String message}) =
+      CooperativeRecoveryError_Generic;
+}
 
 @freezed
 sealed class DepositClaimError with _$DepositClaimError {
@@ -18,12 +31,13 @@ sealed class DepositClaimError with _$DepositClaimError {
   const factory DepositClaimError.maxDepositClaimFeeExceeded({
     required String tx,
     required int vout,
-    Fee? maxFee,
+    BigInt? maxFeeSats,
     required BigInt requiredFeeSats,
-    required BigInt requiredFeeRateSatPerVbyte,
   }) = DepositClaimError_MaxDepositClaimFeeExceeded;
   const factory DepositClaimError.missingUtxo({required String tx, required int vout}) =
       DepositClaimError_MissingUtxo;
+  const factory DepositClaimError.depositTooSmall({required String tx, required int vout}) =
+      DepositClaimError_DepositTooSmall;
   const factory DepositClaimError.generic({required String message}) = DepositClaimError_Generic;
 }
 
@@ -76,31 +90,62 @@ sealed class SdkError with _$SdkError implements FrbException {
     required bool tooSmall,
     BigInt? boundAmount,
     BigInt? boundUsdCents,
+    required String docsUrl,
   }) = SdkError_CrossChainAmountOutOfRange;
-  const factory SdkError.crossChainRouteUnavailable({required String reason, required bool temporary}) =
-      SdkError_CrossChainRouteUnavailable;
+  const factory SdkError.crossChainRouteUnavailable({
+    required String reason,
+    required bool temporary,
+    required String docsUrl,
+  }) = SdkError_CrossChainRouteUnavailable;
+  const factory SdkError.crossChainDisabled({required String docsUrl}) = SdkError_CrossChainDisabled;
   const factory SdkError.networkError(String field0) = SdkError_NetworkError;
   const factory SdkError.storageError(String field0) = SdkError_StorageError;
   const factory SdkError.chainServiceError(String field0) = SdkError_ChainServiceError;
   const factory SdkError.maxDepositClaimFeeExceeded({
     required String tx,
     required int vout,
-    Fee? maxFee,
+    BigInt? maxFeeSats,
     required BigInt requiredFeeSats,
-    required BigInt requiredFeeRateSatPerVbyte,
+    required String docsUrl,
   }) = SdkError_MaxDepositClaimFeeExceeded;
   const factory SdkError.missingUtxo({required String tx, required int vout}) = SdkError_MissingUtxo;
-  const factory SdkError.depositClaimInProgress({required String tx, required int vout}) =
-      SdkError_DepositClaimInProgress;
+  const factory SdkError.depositTooSmall({required String tx, required int vout, required String docsUrl}) =
+      SdkError_DepositTooSmall;
+  const factory SdkError.depositClaimInProgress({
+    required String tx,
+    required int vout,
+    required String docsUrl,
+  }) = SdkError_DepositClaimInProgress;
   const factory SdkError.refundReplacementFeeTooLow({
     required BigInt pendingFeeSats,
     required BigInt requiredFeeSats,
+    required String docsUrl,
   }) = SdkError_RefundReplacementFeeTooLow;
   const factory SdkError.lnurlError(String field0) = SdkError_LnurlError;
   const factory SdkError.signer(String field0) = SdkError_Signer;
   const factory SdkError.optimizationAlreadyRunning() = SdkError_OptimizationAlreadyRunning;
   const factory SdkError.optimizationCancelled() = SdkError_OptimizationCancelled;
-  const factory SdkError.insufficientCpfpFunds({required BigInt requiredSat}) =
+  const factory SdkError.insufficientCpfpFunds({required BigInt requiredSats, required String docsUrl}) =
       SdkError_InsufficientCpfpFunds;
+  const factory SdkError.tokenAllowance({
+    required TokenAllowanceErrorReason reason,
+    required String details,
+    required String docsUrl,
+  }) = SdkError_TokenAllowance;
   const factory SdkError.generic(String field0) = SdkError_Generic;
+}
+
+enum TokenAllowanceErrorReason {
+  notEnabled,
+  notFound,
+  revoked,
+  expired,
+  notSpendable,
+  overPerPaymentLimit,
+  overTotalLimit,
+  recipientNotAllowed,
+  payerInsufficientFunds,
+  alreadyActive,
+  quotaExceeded,
+  preparedPullStale,
 }

@@ -17,6 +17,12 @@ Future<SparkStatus> getSparkStatus({required GetSparkStatusRequest request}) =>
 Future<BreezSdk> connect({required ConnectRequest request}) =>
     BreezSdkSparkLib.instance.api.crateSdkConnect(request: request);
 
+/// Reads a [`SparkConfig`] from JSON, for a deployment that publishes its
+/// operators, service provider and certificates as a file. Set it on
+/// [`Config::spark_config`] to connect a wallet to that deployment.
+SparkConfig parseSparkConfig({required String json}) =>
+    BreezSdkSparkLib.instance.api.crateSdkParseSparkConfig(json: json);
+
 Config defaultConfig({required Network network}) =>
     BreezSdkSparkLib.instance.api.crateSdkDefaultConfig(network: network);
 
@@ -36,12 +42,20 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required AuthorizeTransferRequest request,
   });
 
+  Future<BridgeFromCashAppResponse> bridgeFromCashApp({required BridgeFromCashAppRequest request});
+
+  Future<BridgeToCashAppResponse> bridgeToCashApp({required BridgeToCashAppRequest request});
+
   Future<UnsignedTransferPackage> buildUnsignedBatchPackage({
     required BuildUnsignedBatchPackageRequest request,
   });
 
   Future<UnsignedTransferPackage> buildUnsignedLnurlPayPackage({
     required BuildUnsignedLnurlPayPackageRequest request,
+  });
+
+  Future<UnsignedTransferPackage> buildUnsignedPullPackage({
+    required BuildUnsignedPullPackageRequest request,
   });
 
   Future<UnsignedTransferPackage> buildUnsignedTransferPackage({
@@ -54,15 +68,18 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<CheckMessageResponse> checkMessage({required CheckMessageRequest request});
 
-  /// Reads an exit you kept back against the chain: which of its transactions
-  /// are now in a block, and whether it can still be finished as it stands.
-  Future<CheckUnilateralExitResponse> checkUnilateralExit({required CheckUnilateralExitRequest request});
+  /// Reads a recovery you kept back against the chain: which of its
+  /// transactions are now in a block, and whether it can still be finished as
+  /// it stands.
+  Future<CheckRecoverFundsResponse> checkRecoverFunds({required CheckRecoverFundsRequest request});
 
   Future<ClaimDepositResponse> claimDeposit({required ClaimDepositRequest request});
 
   Future<ClaimHtlcPaymentResponse> claimHtlcPayment({required ClaimHtlcPaymentRequest request});
 
   Future<LightningAddressInfo> claimLightningAddressTransfer({required ClaimTransferRequest request});
+
+  Future<CreateTokenAllowanceResponse> createTokenAllowance({required CreateTokenAllowanceRequest request});
 
   Future<void> deleteContact({required String id});
 
@@ -111,6 +128,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<ListPaymentsResponse> listPayments({required ListPaymentsRequest request});
 
+  Future<ListTokenAllowancesResponse> listTokenAllowances({required ListTokenAllowancesRequest request});
+
   Future<ListUnclaimedDepositsResponse> listUnclaimedDeposits({
     required ListUnclaimedDepositsRequest request,
   });
@@ -129,29 +148,56 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
 
+  /// **Deprecated.** Use `bridge_from_cash_app`.
   Future<PreparePaymentLinkResponse> preparePaymentLink({required PreparePaymentLinkRequest request});
+
+  Future<PreparePullPaymentResponse> preparePullPayment({required PreparePullPaymentRequest request});
+
+  /// Prepares a recovery of the selected leaves: how each is recovered, the
+  /// exact fees, and how much to fund.
+  Future<PrepareRecoverFundsResponse> prepareRecoverFunds({required PrepareRecoverFundsRequest request});
 
   Future<PrepareSendBatchResponse> prepareSendBatch({required PrepareSendBatchRequest request});
 
   Future<PrepareSendPaymentResponse> prepareSendPayment({required PrepareSendPaymentRequest request});
 
-  /// Quotes a unilateral exit: which leaves would exit, the exact fee, and how
-  /// much to fund.
-  Future<PrepareUnilateralExitResponse> prepareUnilateralExit({
-    required PrepareUnilateralExitRequest request,
-  });
-
   Future<PublishSignedLnurlPayResponse> publishSignedLnurlPayPackage({
     required PublishSignedLnurlPayPackageRequest request,
   });
+
+  Future<PullPaymentResponse> publishSignedPullPackage({required PublishSignedPullPackageRequest request});
 
   Future<PublishSignedTransferPackageResponse> publishSignedTransferPackage({
     required PublishSignedTransferPackageRequest request,
   });
 
+  Future<PullPaymentResponse> pullPayment({required PullPaymentRequest request});
+
   Future<ReceivePaymentResponse> receivePayment({required ReceivePaymentRequest request});
 
   Future<RecommendedFees> recommendedFees();
+
+  /// Builds and signs the recovery from a quote and the actual funding UTXOs,
+  /// signing the CPFP inputs with the built-in single-key signer: pass the
+  /// funding inputs' secret key bytes as `signer_secret_key`, or nothing when
+  /// the request has no funding inputs. To sign with a custom scheme (custom
+  /// scripts, multisig, a hardware wallet, or keeping key material out of the
+  /// SDK), use [`Self::recover_funds_with_signer`].
+  Future<RecoverFundsResponse> recoverFunds({
+    required RecoverFundsRequest request,
+    Uint8List? signerSecretKey,
+  });
+
+  /// Builds and signs the recovery with a caller-provided signer. The
+  /// `sign_psbt` callback receives the serialized CPFP PSBT, signs the inputs
+  /// that are not already finalized with any scheme (custom scripts, multisig,
+  /// a hardware wallet), and returns the serialized signed PSBT; a throw
+  /// surfaces as an error. For a single funding key, prefer
+  /// [`Self::recover_funds`].
+  Future<RecoverFundsResponse> recoverFundsWithSigner({
+    required RecoverFundsRequest request,
+    required FutureOr<Uint8List> Function(Uint8List) signPsbt,
+  });
 
   Future<RefundDepositResponse> refundDeposit({required RefundDepositRequest request});
 
@@ -163,6 +209,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<bool> removeEventListener({required String id});
 
+  Future<void> revokeTokenAllowance({required RevokeTokenAllowanceRequest request});
+
   Future<SendBatchResponse> sendBatch({required SendBatchRequest request});
 
   Future<SendPaymentResponse> sendPayment({required SendPaymentRequest request});
@@ -170,27 +218,6 @@ abstract class BreezSdk implements RustOpaqueInterface {
   Future<SignMessageResponse> signMessage({required SignMessageRequest request});
 
   Future<SyncWalletResponse> syncWallet({required SyncWalletRequest request});
-
-  /// Builds and signs the unilateral exit from a quote and the actual funding
-  /// UTXOs, signing the CPFP inputs with the built-in single-key signer: pass
-  /// the funding inputs' secret key bytes as `signer_secret_key`. To sign with
-  /// a custom scheme (custom scripts, multisig, a hardware wallet, or keeping
-  /// key material out of the SDK), use [`Self::unilateral_exit_with_signer`].
-  Future<UnilateralExitResponse> unilateralExit({
-    required UnilateralExitRequest request,
-    required List<int> signerSecretKey,
-  });
-
-  /// Builds and signs the unilateral exit with a caller-provided signer. The
-  /// `sign_psbt` callback receives the serialized CPFP PSBT, signs the inputs
-  /// that are not already finalized with any scheme (custom scripts, multisig,
-  /// a hardware wallet), and returns the serialized signed PSBT; a throw
-  /// surfaces as an error. For a single funding key, prefer
-  /// [`Self::unilateral_exit`].
-  Future<UnilateralExitResponse> unilateralExitWithSigner({
-    required UnilateralExitRequest request,
-    required FutureOr<Uint8List> Function(Uint8List) signPsbt,
-  });
 
   Future<void> unregisterWebhook({required UnregisterWebhookRequest request});
 

@@ -31,6 +31,7 @@ pub struct _Config {
     pub lnurl_domain: Option<String>,
     pub prefer_spark_over_lightning: bool,
     pub exit_chain_auto_fetch_enabled: bool,
+    pub watchtower_fee_ladder_enabled: Option<bool>,
     pub external_input_parsers: Option<Vec<ExternalInputParser>>,
     pub use_default_external_input_parsers: bool,
     pub real_time_sync_server_url: Option<String>,
@@ -214,7 +215,7 @@ pub struct _ClaimDepositQuote {
     pub confirmations_required: u32,
     pub credit_amount_sats: u64,
     pub fee_sats: u64,
-    pub fee_rate_sat_per_vbyte: u64,
+    pub max_fee_sats: Option<u64>,
     pub is_estimate: bool,
 }
 
@@ -263,7 +264,13 @@ pub struct _DepositInfo {
 }
 
 #[frb(mirror(MaxFee))]
-pub enum _MaxFee {
+pub struct _MaxFee {
+    pub onchain: MaxOnchainFee,
+    pub proportional_ppm: Option<u32>,
+}
+
+#[frb(mirror(MaxOnchainFee))]
+pub enum _MaxOnchainFee {
     Fixed { amount: u64 },
     Rate { sat_per_vbyte: u64 },
     NetworkRecommended { leeway_sat_per_vbyte: u64 },
@@ -280,19 +287,19 @@ pub enum _CpfpInput {
     P2wpkh {
         txid: String,
         vout: u32,
-        value: u64,
+        value_sats: u64,
         pubkey: String,
     },
     P2tr {
         txid: String,
         vout: u32,
-        value: u64,
+        value_sats: u64,
         pubkey: String,
     },
     Custom {
         txid: String,
         vout: u32,
-        value: u64,
+        value_sats: u64,
         script_pubkey_hex: String,
         signed_input_weight: u64,
     },
@@ -310,16 +317,9 @@ pub enum _CpfpFundingKind {
 
 #[frb(mirror(ExitLeafSelection))]
 pub enum _ExitLeafSelection {
-    Auto,
+    All,
+    RecoverableOnly,
     Specific { leaf_ids: Vec<String> },
-}
-
-#[frb(mirror(UnilateralExitTxKind))]
-pub enum _UnilateralExitTxKind {
-    FanOut,
-    Node,
-    Refund,
-    Sweep,
 }
 
 #[frb(mirror(ExitTransactionStatus))]
@@ -331,36 +331,10 @@ pub enum _ExitTransactionStatus {
     Unverified,
 }
 
-#[frb(mirror(UnilateralExitTransaction))]
-pub struct _UnilateralExitTransaction {
-    pub kind: UnilateralExitTxKind,
-    pub node_id: Option<String>,
-    pub txid: String,
-    pub tx_hex: String,
-    pub cpfp_tx_hex: Option<String>,
-    pub csv_timelock_blocks: Option<u32>,
-    pub depends_on: Vec<String>,
-    pub status: ExitTransactionStatus,
-}
-
-#[frb(mirror(UnilateralExitLeaf))]
-pub struct _UnilateralExitLeaf {
-    pub leaf_id: String,
-    pub value: u64,
-}
-
 #[frb(mirror(PerBranchFunding))]
 pub struct _PerBranchFunding {
     pub leaf_id: String,
-    pub funding_sat: u64,
-}
-
-#[frb(mirror(PrepareUnilateralExitRequest))]
-pub struct _PrepareUnilateralExitRequest {
-    pub fee_rate_sat_per_vbyte: u64,
-    pub funding_kind: CpfpFundingKind,
-    pub destination: String,
-    pub selection: ExitLeafSelection,
+    pub funding_sats: u64,
 }
 
 #[frb(mirror(ExitChainState))]
@@ -396,66 +370,10 @@ pub enum _ExitRefundState {
     OnChain {
         tx_hex: String,
         vout: u32,
-        value_sat: u64,
+        value_sats: u64,
         block_height: Option<u32>,
     },
     Swept,
-}
-
-#[frb(mirror(PrepareUnilateralExitResponse))]
-pub struct _PrepareUnilateralExitResponse {
-    pub leaves: Vec<UnilateralExitLeaf>,
-    pub recoverable_value_sat: u64,
-    pub total_fee_sat: u64,
-    pub cpfp_fee_sat: u64,
-    pub fanout_fee_sat: u64,
-    pub sweep_fee_sat: u64,
-    pub single_utxo_funding_sat: u64,
-    pub per_branch_funding: Vec<PerBranchFunding>,
-    pub fee_rate_sat_per_vbyte: u64,
-    pub destination: String,
-    pub exit_chain_state: ExitChainState,
-}
-
-#[frb(mirror(UnilateralExitRequest))]
-pub struct _UnilateralExitRequest {
-    pub prepared: PrepareUnilateralExitResponse,
-    pub funding_inputs: Vec<CpfpInput>,
-}
-
-#[frb(mirror(CheckUnilateralExitRequest))]
-pub struct _CheckUnilateralExitRequest {
-    pub exit: UnilateralExitResponse,
-}
-
-#[frb(mirror(CheckUnilateralExitResponse))]
-pub struct _CheckUnilateralExitResponse {
-    pub exit: UnilateralExitResponse,
-    pub verdict: UnilateralExitVerdict,
-}
-
-#[frb(mirror(UnilateralExitVerdict))]
-pub enum _UnilateralExitVerdict {
-    Valid,
-    Done,
-    Redo { reason: UnilateralExitRedoReason },
-}
-
-#[frb(mirror(UnilateralExitRedoReason))]
-pub enum _UnilateralExitRedoReason {
-    OnChainStateDiverged,
-}
-
-#[frb(mirror(UnilateralExitResponse))]
-pub struct _UnilateralExitResponse {
-    pub recoverable_value_sat: u64,
-    pub total_fee_sat: u64,
-    pub cpfp_fee_sat: u64,
-    pub fanout_fee_sat: u64,
-    pub sweep_fee_sat: u64,
-    pub leaves: Vec<UnilateralExitLeaf>,
-    pub transactions: Vec<UnilateralExitTransaction>,
-    pub funding_inputs: Vec<CpfpInput>,
 }
 
 #[frb(mirror(ExportUnilateralExitStateResponse))]
@@ -476,6 +394,140 @@ pub struct _ImportUnilateralExitStateResponse {
     pub skipped_chains: u32,
 }
 
+#[frb(mirror(PrepareRecoverFundsRequest))]
+pub struct _PrepareRecoverFundsRequest {
+    pub fee_rate_sat_per_vbyte: u64,
+    pub funding_kind: Option<CpfpFundingKind>,
+    pub destination: String,
+    pub selection: ExitLeafSelection,
+}
+
+#[frb(mirror(PrepareRecoverFundsResponse))]
+pub struct _PrepareRecoverFundsResponse {
+    pub leaves: Vec<RecoverFundsLeaf>,
+    pub skipped: Vec<SkippedLeaf>,
+    pub recoverable_value_sats: u64,
+    pub total_fee_sats: u64,
+    pub cooperative_fee_sats: u64,
+    pub cpfp_fee_sats: u64,
+    pub fanout_fee_sats: u64,
+    pub refund_fee_sats: u64,
+    pub sweep_fee_sats: u64,
+    pub funding: Option<RecoveryFunding>,
+    pub fee_rate_sat_per_vbyte: u64,
+    pub destination: String,
+    pub exit_chain_state: ExitChainState,
+}
+
+#[frb(mirror(RecoveryFunding))]
+pub struct _RecoveryFunding {
+    pub single_utxo_sats: u64,
+    pub per_branch: Vec<PerBranchFunding>,
+}
+
+#[frb(mirror(RecoverFundsLeaf))]
+pub struct _RecoverFundsLeaf {
+    pub leaf_id: String,
+    pub value_sats: u64,
+    pub method: RecoveryMethod,
+}
+
+#[frb(mirror(SkippedLeaf))]
+pub struct _SkippedLeaf {
+    pub leaf_id: String,
+    pub value_sats: u64,
+    pub reason: SkippedLeafReason,
+}
+
+#[frb(mirror(SkippedLeafReason))]
+pub enum _SkippedLeafReason {
+    FeeExceedsValue,
+    FundsNotFound,
+    Unverified,
+    NotRecoverable { message: String },
+}
+
+#[frb(mirror(RecoveryMethod))]
+pub enum _RecoveryMethod {
+    Cooperative,
+    Unilateral,
+}
+
+#[frb(mirror(RecoverFundsRequest))]
+pub struct _RecoverFundsRequest {
+    pub prepared: PrepareRecoverFundsResponse,
+    pub funding_inputs: Vec<CpfpInput>,
+}
+
+#[frb(mirror(RecoverFundsResponse))]
+pub struct _RecoverFundsResponse {
+    pub recoverable_value_sats: u64,
+    pub total_fee_sats: u64,
+    pub cooperative_fee_sats: u64,
+    pub cpfp_fee_sats: u64,
+    pub fanout_fee_sats: u64,
+    pub refund_fee_sats: u64,
+    pub sweep_fee_sats: u64,
+    pub leaves: Vec<RecoverFundsLeaf>,
+    pub failed: Vec<CooperativeRecoveryFailure>,
+    pub transactions: Vec<RecoveryTransaction>,
+    pub funding_inputs: Vec<CpfpInput>,
+    pub fee_rate_sat_per_vbyte: u64,
+    pub destination: String,
+}
+
+#[frb(mirror(CooperativeRecoveryFailure))]
+pub struct _CooperativeRecoveryFailure {
+    pub leaf_id: String,
+    pub output_txid: String,
+    pub output_vout: u32,
+    pub error: CooperativeRecoveryError,
+}
+
+#[frb(mirror(RecoveryTransaction))]
+pub struct _RecoveryTransaction {
+    pub kind: RecoveryTxKind,
+    pub node_id: Option<String>,
+    pub txid: String,
+    pub tx_hex: String,
+    pub cpfp_tx_hex: Option<String>,
+    pub csv_timelock_blocks: Option<u32>,
+    pub depends_on: Vec<String>,
+    pub status: ExitTransactionStatus,
+}
+
+#[frb(mirror(RecoveryTxKind))]
+pub enum _RecoveryTxKind {
+    Cooperative,
+    FanOut,
+    Node,
+    Refund,
+    Sweep,
+}
+
+#[frb(mirror(CheckRecoverFundsRequest))]
+pub struct _CheckRecoverFundsRequest {
+    pub recovery: RecoverFundsResponse,
+}
+
+#[frb(mirror(CheckRecoverFundsResponse))]
+pub struct _CheckRecoverFundsResponse {
+    pub recovery: RecoverFundsResponse,
+    pub verdict: RecoveryVerdict,
+}
+
+#[frb(mirror(RecoveryVerdict))]
+pub enum _RecoveryVerdict {
+    Valid,
+    Done,
+    Redo { reason: RecoveryRedoReason },
+}
+
+#[frb(mirror(RecoveryRedoReason))]
+pub enum _RecoveryRedoReason {
+    OnChainStateDiverged,
+}
+
 #[frb(mirror(GetInfoRequest))]
 pub struct _GetInfoRequest {
     pub ensure_synced: Option<bool>,
@@ -486,6 +538,7 @@ pub struct _GetInfoResponse {
     pub identity_pubkey: String,
     pub balance_sats: u64,
     pub token_balances: HashMap<String, TokenBalance>,
+    pub recoverable_funds_sats: u64,
 }
 
 #[frb(mirror(TokenBalance))]
@@ -628,9 +681,11 @@ pub enum _CrossChainProviderContext {
 pub enum _CrossChainRouteFilter {
     Send {
         address_details: CrossChainAddressDetails,
+        delivery_method: Option<DeliveryMethod>,
     },
     Receive {
         contract_address: Option<String>,
+        delivery_method: Option<DeliveryMethod>,
     },
     PaymentLink {
         address_details: CrossChainAddressDetails,
@@ -872,6 +927,9 @@ pub enum _ExternalTokenTransactionKind {
     Freeze,
     Partial,
     Final,
+    AllowanceGrant,
+    AllowanceRevoke,
+    AllowanceSpend,
 }
 
 #[frb(mirror(ExternalPrepareTokenTransactionRequest))]
@@ -912,6 +970,15 @@ pub enum _UnsignedTransferPackage {
         token_context: Vec<u8>,
         totals: Vec<BatchTotal>,
         is_swap: bool,
+    },
+    TokenPull {
+        prepare_token_transaction: ExternalPrepareTokenTransactionRequest,
+        pull_context: Vec<u8>,
+        payer_address: String,
+        token_identifier: String,
+        receivers: Vec<PullReceiver>,
+        amount: u128,
+        expiry_time: u64,
     },
 }
 
@@ -2045,7 +2112,7 @@ pub struct _FetchConversionLimitsResponse {
 #[frb(mirror(BuyBitcoinRequest))]
 pub enum _BuyBitcoinRequest {
     Moonpay {
-        locked_amount_sat: Option<u64>,
+        delivery: Option<MoonpayDelivery>,
         redirect_url: Option<String>,
     },
     CashApp {
@@ -2053,9 +2120,21 @@ pub enum _BuyBitcoinRequest {
     },
 }
 
+#[frb(mirror(MoonpayDelivery))]
+pub enum _MoonpayDelivery {
+    Bitcoin {
+        amount_sat: Option<u64>,
+    },
+    CrossChain {
+        amount: u128,
+        fee_mode: Option<CrossChainFeeMode>,
+    },
+}
+
 #[frb(mirror(BuyBitcoinResponse))]
 pub struct _BuyBitcoinResponse {
     pub url: String,
+    pub cross_chain_info: Option<CrossChainReceiveInfo>,
 }
 
 #[frb(mirror(RefundPendingConversionsResponse))]
@@ -2084,6 +2163,43 @@ pub struct _PreparePaymentLinkResponse {
     pub service_fee_asset: Option<String>,
     pub service_fee_asset_decimals: Option<u32>,
     pub expires_at: String,
+}
+
+#[frb(mirror(BridgeFromCashAppRequest))]
+pub struct _BridgeFromCashAppRequest {
+    pub address: String,
+    pub route: CrossChainRoutePair,
+    pub amount: u128,
+    pub fee_policy: Option<FeePolicy>,
+    pub max_slippage_bps: Option<u32>,
+}
+
+#[frb(mirror(BridgeFromCashAppResponse))]
+pub struct _BridgeFromCashAppResponse {
+    pub url: String,
+    pub amount_sats: u64,
+    pub estimated_out: u128,
+    pub asset: String,
+    pub service_fee_amount: u128,
+    pub service_fee_asset: Option<String>,
+    pub service_fee_asset_decimals: Option<u32>,
+    pub expires_at: u64,
+}
+
+#[frb(mirror(BridgeToCashAppRequest))]
+pub struct _BridgeToCashAppRequest {
+    pub recipient: String,
+    pub route: CrossChainRoutePair,
+    pub amount: u128,
+    pub fee_policy: Option<FeePolicy>,
+    pub refund_address: String,
+    pub max_slippage_bps: Option<u32>,
+}
+
+#[frb(mirror(BridgeToCashAppResponse))]
+pub struct _BridgeToCashAppResponse {
+    pub payment_request: String,
+    pub info: CrossChainReceiveInfo,
 }
 
 #[frb(mirror(ServiceStatus))]
@@ -2127,6 +2243,123 @@ pub struct _UpdateContactRequest {
 pub struct _ListContactsRequest {
     pub offset: Option<u32>,
     pub limit: Option<u32>,
+}
+
+#[frb(mirror(TokenAllowanceLimit))]
+pub enum _TokenAllowanceLimit {
+    Unlimited,
+    Amount { amount: u128 },
+}
+
+#[frb(mirror(CreateTokenAllowanceRequest))]
+pub struct _CreateTokenAllowanceRequest {
+    pub spender_address: String,
+    pub token_identifier: String,
+    pub max_per_payment: TokenAllowanceLimit,
+    pub max_total: TokenAllowanceLimit,
+    pub expiry_time: u64,
+    pub allowed_recipients: Vec<String>,
+}
+
+#[frb(mirror(CreateTokenAllowanceResponse))]
+pub struct _CreateTokenAllowanceResponse {
+    pub allowance: TokenAllowance,
+}
+
+#[frb(mirror(RevokeTokenAllowanceRequest))]
+pub struct _RevokeTokenAllowanceRequest {
+    pub allowance_id: String,
+}
+
+#[frb(mirror(TokenAllowanceRole))]
+pub enum _TokenAllowanceRole {
+    Owner,
+    Spender,
+}
+
+#[frb(mirror(ListTokenAllowancesRequest))]
+pub struct _ListTokenAllowancesRequest {
+    pub role: TokenAllowanceRole,
+    pub counterparty_address: Option<String>,
+    pub token_identifier: Option<String>,
+    pub include_inactive: Option<bool>,
+    pub offset: Option<u32>,
+    pub limit: Option<u32>,
+}
+
+#[frb(mirror(ListTokenAllowancesResponse))]
+pub struct _ListTokenAllowancesResponse {
+    pub allowances: Vec<TokenAllowance>,
+}
+
+#[frb(mirror(TokenAllowanceStatus))]
+pub enum _TokenAllowanceStatus {
+    Active,
+    Exhausted,
+    Expired,
+    Revoked,
+}
+
+#[frb(mirror(TokenAllowance))]
+pub struct _TokenAllowance {
+    pub id: String,
+    pub owner_address: String,
+    pub spender_address: String,
+    pub token_identifier: String,
+    pub max_per_payment: TokenAllowanceLimit,
+    pub max_total: TokenAllowanceLimit,
+    pub spent_amount: u128,
+    pub allowed_recipients: Vec<String>,
+    pub expiry_time: u64,
+    pub created_at: u64,
+    pub revoked_at: Option<u64>,
+    pub status: TokenAllowanceStatus,
+}
+
+#[frb(mirror(PullReceiver))]
+pub struct _PullReceiver {
+    pub amount: u128,
+    pub receiver_address: Option<String>,
+}
+
+#[frb(mirror(PreparePullPaymentRequest))]
+pub struct _PreparePullPaymentRequest {
+    pub payer_address: String,
+    pub token_identifier: String,
+    pub receivers: Vec<PullReceiver>,
+}
+
+#[frb(mirror(PreparePullPaymentResponse))]
+pub struct _PreparePullPaymentResponse {
+    pub payer_address: String,
+    pub token_identifier: String,
+    pub receivers: Vec<PullReceiver>,
+    pub amount: u128,
+    pub allowance_id: String,
+    pub expiry_time: u64,
+    pub pull_context: Vec<u8>,
+}
+
+#[frb(mirror(PullPaymentRequest))]
+pub struct _PullPaymentRequest {
+    pub prepare_response: PreparePullPaymentResponse,
+}
+
+#[frb(mirror(PullPaymentResponse))]
+pub struct _PullPaymentResponse {
+    pub tx_hash: String,
+    pub status: PaymentStatus,
+    pub payment: Option<Payment>,
+}
+
+#[frb(mirror(BuildUnsignedPullPackageRequest))]
+pub struct _BuildUnsignedPullPackageRequest {
+    pub prepare_response: PreparePullPaymentResponse,
+}
+
+#[frb(mirror(PublishSignedPullPackageRequest))]
+pub struct _PublishSignedPullPackageRequest {
+    pub signed_package: SignedTransferPackage,
 }
 
 #[frb(mirror(WebhookEventType))]
@@ -2175,8 +2408,7 @@ pub struct _PasskeyConfig {
     pub default_label: Option<String>,
     pub provider_options: Option<PasskeyProviderOptions>,
     /// Routes the Nostr relay connections that store wallet labels through a
-    /// SOCKS5 proxy. Relay connections cannot authenticate to a proxy, so one
-    /// carrying credentials is rejected when the client is built.
+    /// SOCKS5 proxy.
     pub proxy: Option<ProxyConfig>,
 }
 
