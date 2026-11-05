@@ -315,6 +315,12 @@ pub enum _CpfpFundingKind {
     },
 }
 
+#[frb(mirror(CpfpFundingStrategy))]
+pub enum _CpfpFundingStrategy {
+    PerBranch,
+    PerNode,
+}
+
 #[frb(mirror(ExitLeafSelection))]
 pub enum _ExitLeafSelection {
     All,
@@ -398,6 +404,7 @@ pub struct _ImportUnilateralExitStateResponse {
 pub struct _PrepareRecoverFundsRequest {
     pub fee_rate_sat_per_vbyte: u64,
     pub funding_kind: Option<CpfpFundingKind>,
+    pub funding_strategy: Option<CpfpFundingStrategy>,
     pub destination: String,
     pub selection: ExitLeafSelection,
 }
@@ -423,6 +430,7 @@ pub struct _PrepareRecoverFundsResponse {
 pub struct _RecoveryFunding {
     pub single_utxo_sats: u64,
     pub per_branch: Vec<PerBranchFunding>,
+    pub strategy: CpfpFundingStrategy,
 }
 
 #[frb(mirror(RecoverFundsLeaf))]
@@ -444,6 +452,7 @@ pub enum _SkippedLeafReason {
     FeeExceedsValue,
     FundsNotFound,
     Unverified,
+    OperatorsUnavailable,
     NotRecoverable { message: String },
 }
 
@@ -539,6 +548,14 @@ pub struct _GetInfoResponse {
     pub balance_sats: u64,
     pub token_balances: HashMap<String, TokenBalance>,
     pub recoverable_funds_sats: u64,
+    pub last_sync_error: Option<SyncError>,
+    pub last_synced_at: Option<u64>,
+}
+
+#[frb(mirror(SyncError))]
+pub enum _SyncError {
+    Network { message: String },
+    Generic { message: String },
 }
 
 #[frb(mirror(TokenBalance))]
@@ -576,7 +593,7 @@ pub enum _InputType {
     Bolt12Offer(Bolt12OfferDetails),
     LightningAddress(LightningAddressDetails),
     LnurlPay(LnurlPayRequestDetails),
-    SilentPaymentAddress(SilentPaymentAddressDetails),
+    SilentPaymentAddress(BitcoinAddressDetails),
     LnurlAuth(LnurlAuthRequestDetails),
     Url(String),
     Bip21(Bip21Details),
@@ -651,6 +668,7 @@ pub struct _CrossChainRoutePair {
 
 #[frb(mirror(CrossChainReceiveInfo))]
 pub struct _CrossChainReceiveInfo {
+    pub quote_id: String,
     pub deposit_address: String,
     pub deposit_amount: u128,
     pub expected_received_amount: u128,
@@ -772,6 +790,7 @@ pub struct _LnurlReceiveMetadata {
     pub nostr_zap_request: Option<String>,
     pub nostr_zap_receipt: Option<String>,
     pub sender_comment: Option<String>,
+    pub lightning_address: Option<String>,
 }
 
 #[frb(mirror(LnurlWithdrawRequest))]
@@ -1078,6 +1097,7 @@ pub enum _ReceivePaymentMethod {
         expiry_secs: Option<u32>,
         payment_hash: Option<String>,
         receiver_identity_public_key: Option<String>,
+        preimage: Option<String>,
     },
     CrossChain {
         route: CrossChainRoutePair,
@@ -1315,7 +1335,10 @@ pub enum _SuccessActionProcessed {
 pub struct _SyncWalletRequest {}
 
 #[frb(mirror(SyncWalletResponse))]
-pub struct _SyncWalletResponse {}
+pub struct _SyncWalletResponse {
+    pub last_sync_error: Option<SyncError>,
+    pub last_synced_at: Option<u64>,
+}
 
 #[frb(mirror(AesSuccessActionData))]
 pub struct _AesSuccessActionData {
@@ -1469,6 +1492,8 @@ pub enum _PaymentDetails {
     },
     Withdraw {
         tx_id: String,
+        vout: u32,
+        destination_address: String,
     },
     Deposit {
         tx_id: String,
@@ -1731,13 +1756,6 @@ pub struct _LnurlWithdrawRequestDetails {
     pub min_withdrawable: u64,
     pub max_withdrawable: u64,
     pub url: String,
-}
-
-#[frb(mirror(SilentPaymentAddressDetails))]
-pub struct _SilentPaymentAddressDetails {
-    pub address: String,
-    pub network: BitcoinNetwork,
-    pub source: PaymentRequestSource,
 }
 
 #[frb(mirror(CheckLightningAddressRequest))]
@@ -2200,6 +2218,88 @@ pub struct _BridgeToCashAppRequest {
 pub struct _BridgeToCashAppResponse {
     pub payment_request: String,
     pub info: CrossChainReceiveInfo,
+}
+
+#[frb(mirror(BridgingConfig))]
+pub struct _BridgingConfig {
+    pub api_key: String,
+    pub proxy: Option<ProxyConfig>,
+    pub cross_chain_config: Option<CrossChainConfig>,
+}
+
+#[frb(mirror(GetBridgeRoutesRequest))]
+pub struct _GetBridgeRoutesRequest {
+    pub recipient: String,
+}
+
+#[frb(mirror(GetBridgeRoutesResponse))]
+pub struct _GetBridgeRoutesResponse {
+    pub routes: Vec<BridgeRoutePair>,
+}
+
+#[frb(mirror(BridgeRoutePair))]
+pub struct _BridgeRoutePair {
+    pub provider: CrossChainProvider,
+    pub source: BridgeRoutePairSide,
+    pub destination: BridgeRoutePairSide,
+    pub limits: Option<CrossChainRouteLimits>,
+}
+
+#[frb(mirror(BridgeRoutePairSide))]
+pub struct _BridgeRoutePairSide {
+    pub chain: String,
+    pub chain_id: Option<String>,
+    pub asset: String,
+    pub contract_address: Option<String>,
+    pub decimals: u8,
+}
+
+#[frb(mirror(CreateBridgeRequest))]
+pub struct _CreateBridgeRequest {
+    pub recipient: String,
+    pub route: BridgeRoutePair,
+    pub amount: u128,
+    pub refund_address: Option<String>,
+    pub fee_policy: Option<FeePolicy>,
+    pub max_slippage_bps: Option<u32>,
+}
+
+#[frb(mirror(CreateBridgeResponse))]
+pub struct _CreateBridgeResponse {
+    pub bridge_id: String,
+    pub status_token: Option<String>,
+    pub payment_request: String,
+    pub info: CrossChainReceiveInfo,
+}
+
+#[frb(mirror(GetBridgeStatusRequest))]
+pub struct _GetBridgeStatusRequest {
+    pub bridge_id: String,
+    pub status_token: Option<String>,
+}
+
+#[frb(mirror(BridgeStatus))]
+pub enum _BridgeStatus {
+    Created,
+    Pending,
+    Refunding,
+    Completed,
+    Refunded,
+    Failed,
+    Expired,
+}
+
+#[frb(mirror(GetBridgeStatusResponse))]
+pub struct _GetBridgeStatusResponse {
+    pub status: BridgeStatus,
+    pub provider_status: Option<String>,
+    pub order_id: Option<String>,
+    pub amount_in: Option<u128>,
+    pub amount_out: Option<u128>,
+    pub deposit_tx_hash: Option<String>,
+    pub delivery_tx_hash: Option<String>,
+    pub refund_tx_hash: Option<String>,
+    pub error_code: Option<String>,
 }
 
 #[frb(mirror(ServiceStatus))]

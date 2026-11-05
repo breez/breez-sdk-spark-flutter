@@ -3,6 +3,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import 'bridging.dart';
 import 'errors.dart';
 import 'events.dart';
 import 'frb_generated.dart';
@@ -42,8 +43,12 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required AuthorizeTransferRequest request,
   });
 
+  /// **Deprecated.** Use `bridge_from_cash_app` on the client from
+  /// `get_bridging_client`.
   Future<BridgeFromCashAppResponse> bridgeFromCashApp({required BridgeFromCashAppRequest request});
 
+  /// **Deprecated.** Use `bridge_to_cash_app` on the client from
+  /// `get_bridging_client`.
   Future<BridgeToCashAppResponse> bridgeToCashApp({required BridgeToCashAppRequest request});
 
   Future<UnsignedTransferPackage> buildUnsignedBatchPackage({
@@ -100,6 +105,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required FetchConversionLimitsRequest request,
   });
 
+  BridgingClient getBridgingClient();
+
   Future<List<CrossChainRoutePair>> getCrossChainRoutes({required CrossChainRouteFilter filter});
 
   Future<GetInfoResponse> getInfo({required GetInfoRequest request});
@@ -148,7 +155,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
 
   Future<PrepareLnurlPayResponse> prepareLnurlPay({required PrepareLnurlPayRequest request});
 
-  /// **Deprecated.** Use `bridge_from_cash_app`.
+  /// **Deprecated.** Use `bridge_from_cash_app` on the client from
+  /// `get_bridging_client`.
   Future<PreparePaymentLinkResponse> preparePaymentLink({required PreparePaymentLinkRequest request});
 
   Future<PreparePullPaymentResponse> preparePullPayment({required PreparePullPaymentRequest request});

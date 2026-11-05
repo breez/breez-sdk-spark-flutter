@@ -3,6 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
+import 'bridging.dart';
 import 'chain_service.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -33,6 +34,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BreezSdkPtr => wire
       ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BridgingClientPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClientPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PasskeyClientPtr => wire
       ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClientPtr;
 
@@ -59,6 +63,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BreezSdk dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    dynamic raw,
+  );
+
+  @protected
+  BridgingClient
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
     dynamic raw,
   );
 
@@ -97,6 +107,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BreezSdk dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    dynamic raw,
+  );
+
+  @protected
+  BridgingClient
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
     dynamic raw,
   );
 
@@ -158,6 +174,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BreezSdk dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(dynamic raw);
+
+  @protected
+  BridgingClient dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    dynamic raw,
+  );
 
   @protected
   PasskeyClient dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClient(
@@ -328,6 +349,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BridgeToCashAppRequest dco_decode_box_autoadd_bridge_to_cash_app_request(dynamic raw);
 
   @protected
+  BridgingConfig dco_decode_box_autoadd_bridging_config(dynamic raw);
+
+  @protected
   BuildTransferPackageOptions dco_decode_box_autoadd_build_transfer_package_options(dynamic raw);
 
   @protected
@@ -404,6 +428,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind dco_decode_box_autoadd_cpfp_funding_kind(dynamic raw);
 
   @protected
+  CpfpFundingStrategy dco_decode_box_autoadd_cpfp_funding_strategy(dynamic raw);
+
+  @protected
+  CreateBridgeRequest dco_decode_box_autoadd_create_bridge_request(dynamic raw);
+
+  @protected
   CreateIssuerTokenRequest dco_decode_box_autoadd_create_issuer_token_request(dynamic raw);
 
   @protected
@@ -467,6 +497,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   FreezeIssuerTokenRequest dco_decode_box_autoadd_freeze_issuer_token_request(dynamic raw);
+
+  @protected
+  GetBridgeRoutesRequest dco_decode_box_autoadd_get_bridge_routes_request(dynamic raw);
+
+  @protected
+  GetBridgeStatusRequest dco_decode_box_autoadd_get_bridge_status_request(dynamic raw);
 
   @protected
   GetInfoRequest dco_decode_box_autoadd_get_info_request(dynamic raw);
@@ -662,9 +698,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SignMessageRequest dco_decode_box_autoadd_sign_message_request(dynamic raw);
 
   @protected
-  SilentPaymentAddressDetails dco_decode_box_autoadd_silent_payment_address_details(dynamic raw);
-
-  @protected
   SparkAddressDetails dco_decode_box_autoadd_spark_address_details(dynamic raw);
 
   @protected
@@ -707,6 +740,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Symbol dco_decode_box_autoadd_symbol(dynamic raw);
 
   @protected
+  SyncError dco_decode_box_autoadd_sync_error(dynamic raw);
+
+  @protected
   SyncWalletRequest dco_decode_box_autoadd_sync_wallet_request(dynamic raw);
 
   @protected
@@ -746,10 +782,22 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BridgeFromCashAppResponse dco_decode_bridge_from_cash_app_response(dynamic raw);
 
   @protected
+  BridgeRoutePair dco_decode_bridge_route_pair(dynamic raw);
+
+  @protected
+  BridgeRoutePairSide dco_decode_bridge_route_pair_side(dynamic raw);
+
+  @protected
+  BridgeStatus dco_decode_bridge_status(dynamic raw);
+
+  @protected
   BridgeToCashAppRequest dco_decode_bridge_to_cash_app_request(dynamic raw);
 
   @protected
   BridgeToCashAppResponse dco_decode_bridge_to_cash_app_response(dynamic raw);
+
+  @protected
+  BridgingConfig dco_decode_bridging_config(dynamic raw);
 
   @protected
   BuildTransferPackageOptions dco_decode_build_transfer_package_options(dynamic raw);
@@ -881,7 +929,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind dco_decode_cpfp_funding_kind(dynamic raw);
 
   @protected
+  CpfpFundingStrategy dco_decode_cpfp_funding_strategy(dynamic raw);
+
+  @protected
   CpfpInput dco_decode_cpfp_input(dynamic raw);
+
+  @protected
+  CreateBridgeRequest dco_decode_create_bridge_request(dynamic raw);
+
+  @protected
+  CreateBridgeResponse dco_decode_create_bridge_response(dynamic raw);
 
   @protected
   CreateIssuerTokenRequest dco_decode_create_issuer_token_request(dynamic raw);
@@ -1043,6 +1100,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FreezeIssuerTokenResponse dco_decode_freeze_issuer_token_response(dynamic raw);
 
   @protected
+  GetBridgeRoutesRequest dco_decode_get_bridge_routes_request(dynamic raw);
+
+  @protected
+  GetBridgeRoutesResponse dco_decode_get_bridge_routes_response(dynamic raw);
+
+  @protected
+  GetBridgeStatusRequest dco_decode_get_bridge_status_request(dynamic raw);
+
+  @protected
+  GetBridgeStatusResponse dco_decode_get_bridge_status_response(dynamic raw);
+
+  @protected
   GetInfoRequest dco_decode_get_info_request(dynamic raw);
 
   @protected
@@ -1110,6 +1179,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<Bolt12OfferBlindedPath> dco_decode_list_bolt_12_offer_blinded_path(dynamic raw);
+
+  @protected
+  List<BridgeRoutePair> dco_decode_list_bridge_route_pair(dynamic raw);
 
   @protected
   List<ConfirmedExitNode> dco_decode_list_confirmed_exit_node(dynamic raw);
@@ -1379,6 +1451,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind? dco_decode_opt_box_autoadd_cpfp_funding_kind(dynamic raw);
 
   @protected
+  CpfpFundingStrategy? dco_decode_opt_box_autoadd_cpfp_funding_strategy(dynamic raw);
+
+  @protected
   Credentials? dco_decode_opt_box_autoadd_credentials(dynamic raw);
 
   @protected
@@ -1488,6 +1563,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol? dco_decode_opt_box_autoadd_symbol(dynamic raw);
+
+  @protected
+  SyncError? dco_decode_opt_box_autoadd_sync_error(dynamic raw);
 
   @protected
   TokenTransactionType? dco_decode_opt_box_autoadd_token_transaction_type(dynamic raw);
@@ -1775,9 +1853,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SignedTransferPackage dco_decode_signed_transfer_package(dynamic raw);
 
   @protected
-  SilentPaymentAddressDetails dco_decode_silent_payment_address_details(dynamic raw);
-
-  @protected
   SkippedLeaf dco_decode_skipped_leaf(dynamic raw);
 
   @protected
@@ -1842,6 +1917,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol dco_decode_symbol(dynamic raw);
+
+  @protected
+  SyncError dco_decode_sync_error(dynamic raw);
 
   @protected
   SyncWalletRequest dco_decode_sync_wallet_request(dynamic raw);
@@ -1951,6 +2029,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  BridgingClient
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   PasskeyClient
   sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClient(
     SseDeserializer deserializer,
@@ -1985,6 +2069,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BreezSdk sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BridgingClient
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
     SseDeserializer deserializer,
   );
 
@@ -2029,6 +2119,11 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   BreezSdk sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
+    SseDeserializer deserializer,
+  );
+
+  @protected
+  BridgingClient sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
     SseDeserializer deserializer,
   );
 
@@ -2211,6 +2306,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BridgeToCashAppRequest sse_decode_box_autoadd_bridge_to_cash_app_request(SseDeserializer deserializer);
 
   @protected
+  BridgingConfig sse_decode_box_autoadd_bridging_config(SseDeserializer deserializer);
+
+  @protected
   BuildTransferPackageOptions sse_decode_box_autoadd_build_transfer_package_options(
     SseDeserializer deserializer,
   );
@@ -2295,6 +2393,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind sse_decode_box_autoadd_cpfp_funding_kind(SseDeserializer deserializer);
 
   @protected
+  CpfpFundingStrategy sse_decode_box_autoadd_cpfp_funding_strategy(SseDeserializer deserializer);
+
+  @protected
+  CreateBridgeRequest sse_decode_box_autoadd_create_bridge_request(SseDeserializer deserializer);
+
+  @protected
   CreateIssuerTokenRequest sse_decode_box_autoadd_create_issuer_token_request(SseDeserializer deserializer);
 
   @protected
@@ -2368,6 +2472,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   FreezeIssuerTokenRequest sse_decode_box_autoadd_freeze_issuer_token_request(SseDeserializer deserializer);
+
+  @protected
+  GetBridgeRoutesRequest sse_decode_box_autoadd_get_bridge_routes_request(SseDeserializer deserializer);
+
+  @protected
+  GetBridgeStatusRequest sse_decode_box_autoadd_get_bridge_status_request(SseDeserializer deserializer);
 
   @protected
   GetInfoRequest sse_decode_box_autoadd_get_info_request(SseDeserializer deserializer);
@@ -2581,11 +2691,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SignMessageRequest sse_decode_box_autoadd_sign_message_request(SseDeserializer deserializer);
 
   @protected
-  SilentPaymentAddressDetails sse_decode_box_autoadd_silent_payment_address_details(
-    SseDeserializer deserializer,
-  );
-
-  @protected
   SparkAddressDetails sse_decode_box_autoadd_spark_address_details(SseDeserializer deserializer);
 
   @protected
@@ -2632,6 +2737,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   Symbol sse_decode_box_autoadd_symbol(SseDeserializer deserializer);
 
   @protected
+  SyncError sse_decode_box_autoadd_sync_error(SseDeserializer deserializer);
+
+  @protected
   SyncWalletRequest sse_decode_box_autoadd_sync_wallet_request(SseDeserializer deserializer);
 
   @protected
@@ -2673,10 +2781,22 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   BridgeFromCashAppResponse sse_decode_bridge_from_cash_app_response(SseDeserializer deserializer);
 
   @protected
+  BridgeRoutePair sse_decode_bridge_route_pair(SseDeserializer deserializer);
+
+  @protected
+  BridgeRoutePairSide sse_decode_bridge_route_pair_side(SseDeserializer deserializer);
+
+  @protected
+  BridgeStatus sse_decode_bridge_status(SseDeserializer deserializer);
+
+  @protected
   BridgeToCashAppRequest sse_decode_bridge_to_cash_app_request(SseDeserializer deserializer);
 
   @protected
   BridgeToCashAppResponse sse_decode_bridge_to_cash_app_response(SseDeserializer deserializer);
+
+  @protected
+  BridgingConfig sse_decode_bridging_config(SseDeserializer deserializer);
 
   @protected
   BuildTransferPackageOptions sse_decode_build_transfer_package_options(SseDeserializer deserializer);
@@ -2816,7 +2936,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind sse_decode_cpfp_funding_kind(SseDeserializer deserializer);
 
   @protected
+  CpfpFundingStrategy sse_decode_cpfp_funding_strategy(SseDeserializer deserializer);
+
+  @protected
   CpfpInput sse_decode_cpfp_input(SseDeserializer deserializer);
+
+  @protected
+  CreateBridgeRequest sse_decode_create_bridge_request(SseDeserializer deserializer);
+
+  @protected
+  CreateBridgeResponse sse_decode_create_bridge_response(SseDeserializer deserializer);
 
   @protected
   CreateIssuerTokenRequest sse_decode_create_issuer_token_request(SseDeserializer deserializer);
@@ -2984,6 +3113,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FreezeIssuerTokenResponse sse_decode_freeze_issuer_token_response(SseDeserializer deserializer);
 
   @protected
+  GetBridgeRoutesRequest sse_decode_get_bridge_routes_request(SseDeserializer deserializer);
+
+  @protected
+  GetBridgeRoutesResponse sse_decode_get_bridge_routes_response(SseDeserializer deserializer);
+
+  @protected
+  GetBridgeStatusRequest sse_decode_get_bridge_status_request(SseDeserializer deserializer);
+
+  @protected
+  GetBridgeStatusResponse sse_decode_get_bridge_status_response(SseDeserializer deserializer);
+
+  @protected
   GetInfoRequest sse_decode_get_info_request(SseDeserializer deserializer);
 
   @protected
@@ -3055,6 +3196,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   List<Bolt12OfferBlindedPath> sse_decode_list_bolt_12_offer_blinded_path(SseDeserializer deserializer);
+
+  @protected
+  List<BridgeRoutePair> sse_decode_list_bridge_route_pair(SseDeserializer deserializer);
 
   @protected
   List<ConfirmedExitNode> sse_decode_list_confirmed_exit_node(SseDeserializer deserializer);
@@ -3326,6 +3470,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   CpfpFundingKind? sse_decode_opt_box_autoadd_cpfp_funding_kind(SseDeserializer deserializer);
 
   @protected
+  CpfpFundingStrategy? sse_decode_opt_box_autoadd_cpfp_funding_strategy(SseDeserializer deserializer);
+
+  @protected
   Credentials? sse_decode_opt_box_autoadd_credentials(SseDeserializer deserializer);
 
   @protected
@@ -3441,6 +3588,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol? sse_decode_opt_box_autoadd_symbol(SseDeserializer deserializer);
+
+  @protected
+  SyncError? sse_decode_opt_box_autoadd_sync_error(SseDeserializer deserializer);
 
   @protected
   TokenTransactionType? sse_decode_opt_box_autoadd_token_transaction_type(SseDeserializer deserializer);
@@ -3738,9 +3888,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   SignedTransferPackage sse_decode_signed_transfer_package(SseDeserializer deserializer);
 
   @protected
-  SilentPaymentAddressDetails sse_decode_silent_payment_address_details(SseDeserializer deserializer);
-
-  @protected
   SkippedLeaf sse_decode_skipped_leaf(SseDeserializer deserializer);
 
   @protected
@@ -3805,6 +3952,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   Symbol sse_decode_symbol(SseDeserializer deserializer);
+
+  @protected
+  SyncError sse_decode_sync_error(SseDeserializer deserializer);
 
   @protected
   SyncWalletRequest sse_decode_sync_wallet_request(SseDeserializer deserializer);
@@ -3916,6 +4066,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    BridgingClient self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPasskeyClient(
     PasskeyClient self,
     SseSerializer serializer,
@@ -3955,6 +4111,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    BridgingClient self,
     SseSerializer serializer,
   );
 
@@ -4028,6 +4190,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk(
     BreezSdk self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    BridgingClient self,
     SseSerializer serializer,
   );
 
@@ -4230,6 +4398,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_bridging_config(BridgingConfig self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_build_transfer_package_options(
     BuildTransferPackageOptions self,
     SseSerializer serializer,
@@ -4332,6 +4503,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_cpfp_funding_kind(CpfpFundingKind self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_cpfp_funding_strategy(CpfpFundingStrategy self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_create_bridge_request(CreateBridgeRequest self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_create_issuer_token_request(
     CreateIssuerTokenRequest self,
     SseSerializer serializer,
@@ -4424,6 +4601,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   @protected
   void sse_encode_box_autoadd_freeze_issuer_token_request(
     FreezeIssuerTokenRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_get_bridge_routes_request(
+    GetBridgeRoutesRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
+  void sse_encode_box_autoadd_get_bridge_status_request(
+    GetBridgeStatusRequest self,
     SseSerializer serializer,
   );
 
@@ -4683,12 +4872,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_sign_message_request(SignMessageRequest self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_silent_payment_address_details(
-    SilentPaymentAddressDetails self,
-    SseSerializer serializer,
-  );
-
-  @protected
   void sse_encode_box_autoadd_spark_address_details(SparkAddressDetails self, SseSerializer serializer);
 
   @protected
@@ -4740,6 +4923,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_symbol(Symbol self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_sync_error(SyncError self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_sync_wallet_request(SyncWalletRequest self, SseSerializer serializer);
 
   @protected
@@ -4788,10 +4974,22 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_bridge_from_cash_app_response(BridgeFromCashAppResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_bridge_route_pair(BridgeRoutePair self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bridge_route_pair_side(BridgeRoutePairSide self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bridge_status(BridgeStatus self, SseSerializer serializer);
+
+  @protected
   void sse_encode_bridge_to_cash_app_request(BridgeToCashAppRequest self, SseSerializer serializer);
 
   @protected
   void sse_encode_bridge_to_cash_app_response(BridgeToCashAppResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bridging_config(BridgingConfig self, SseSerializer serializer);
 
   @protected
   void sse_encode_build_transfer_package_options(BuildTransferPackageOptions self, SseSerializer serializer);
@@ -4938,7 +5136,16 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_cpfp_funding_kind(CpfpFundingKind self, SseSerializer serializer);
 
   @protected
+  void sse_encode_cpfp_funding_strategy(CpfpFundingStrategy self, SseSerializer serializer);
+
+  @protected
   void sse_encode_cpfp_input(CpfpInput self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_create_bridge_request(CreateBridgeRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_create_bridge_response(CreateBridgeResponse self, SseSerializer serializer);
 
   @protected
   void sse_encode_create_issuer_token_request(CreateIssuerTokenRequest self, SseSerializer serializer);
@@ -5130,6 +5337,18 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_freeze_issuer_token_response(FreezeIssuerTokenResponse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_get_bridge_routes_request(GetBridgeRoutesRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_get_bridge_routes_response(GetBridgeRoutesResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_get_bridge_status_request(GetBridgeStatusRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_get_bridge_status_response(GetBridgeStatusResponse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_get_info_request(GetInfoRequest self, SseSerializer serializer);
 
   @protected
@@ -5206,6 +5425,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
     List<Bolt12OfferBlindedPath> self,
     SseSerializer serializer,
   );
+
+  @protected
+  void sse_encode_list_bridge_route_pair(List<BridgeRoutePair> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_confirmed_exit_node(List<ConfirmedExitNode> self, SseSerializer serializer);
@@ -5505,6 +5727,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_opt_box_autoadd_cpfp_funding_kind(CpfpFundingKind? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_cpfp_funding_strategy(CpfpFundingStrategy? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_credentials(Credentials? self, SseSerializer serializer);
 
   @protected
@@ -5641,6 +5866,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_opt_box_autoadd_symbol(Symbol? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_sync_error(SyncError? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_token_transaction_type(
@@ -5952,9 +6180,6 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_signed_transfer_package(SignedTransferPackage self, SseSerializer serializer);
 
   @protected
-  void sse_encode_silent_payment_address_details(SilentPaymentAddressDetails self, SseSerializer serializer);
-
-  @protected
   void sse_encode_skipped_leaf(SkippedLeaf self, SseSerializer serializer);
 
   @protected
@@ -6022,6 +6247,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_symbol(Symbol self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sync_error(SyncError self, SseSerializer serializer);
 
   @protected
   void sse_encode_sync_wallet_request(SyncWalletRequest self, SseSerializer serializer);
@@ -6193,6 +6421,40 @@ class BreezSdkSparkLibWire implements BaseWire {
       );
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdk =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBreezSdkPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClientPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient',
+      );
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClientPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClientPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'frbgen_breez_sdk_spark_flutter_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient',
+      );
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClient =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBridgingClientPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
