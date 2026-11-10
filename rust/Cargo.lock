@@ -376,7 +376,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-common"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "aes",
  "anyhow",
@@ -412,7 +412,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -980,7 +980,7 @@ checksum = "b7ac824320a75a52197e8f2d787f6a38b6718bb6897a35142d749af3c0e8f4fe"
 [[package]]
 name = "flashnet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "async-trait",
  "base64",
@@ -1875,7 +1875,7 @@ checksum = "11d3d7f243d5c5a8b9bb5d6dd2b1602c0cb0b9db1621bafc7ed66e35ff9fe092"
 [[package]]
 name = "lnurl-models"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "serde",
  "sha2",
@@ -1939,7 +1939,7 @@ checksum = "112b39cec0b298b6c1999fee3e31427f74f676e4cb9879ed1a121b43661a4154"
 [[package]]
 name = "macros"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2152,13 +2152,14 @@ checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
 [[package]]
 name = "platform-utils"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "async-trait",
  "base64",
  "encoding_rs",
  "futures",
  "http",
+ "hyper",
  "hyper-util",
  "macros",
  "mime",
@@ -3019,7 +3020,7 @@ dependencies = [
 [[package]]
 name = "spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "async-trait",
  "base64",
@@ -3082,7 +3083,7 @@ dependencies = [
 [[package]]
 name = "spark-sqlite"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "async-trait",
  "macros",
@@ -3097,7 +3098,7 @@ dependencies = [
 [[package]]
 name = "spark-wallet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "bitcoin",
  "frost-secp256k1-tr",
@@ -3777,7 +3778,7 @@ checksum = "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be"
 [[package]]
 name = "utils"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6e79e9fdc92c5cdf12a06906f3d02d13d30281d0#6e79e9fdc92c5cdf12a06906f3d02d13d30281d0"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a296fb0cfe5d9759e911a282c043698341b66025#a296fb0cfe5d9759e911a282c043698341b66025"
 dependencies = [
  "aes-gcm",
  "getrandom 0.2.16",
