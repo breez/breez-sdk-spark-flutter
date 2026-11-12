@@ -9629,7 +9629,7 @@ return deposit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)?  lightning,TResult Function( String txId,  int vout,  String destinationAddress)?  withdraw,TResult Function( String txId,  int vout)?  deposit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult Function( PaymentTokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)?  lightning,TResult Function( String txId,  int vout,  String destinationAddress)?  withdraw,TResult Function( String txId,  int vout)?  deposit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
@@ -9654,7 +9654,7 @@ return deposit(_that.txId,_that.vout);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)  lightning,required TResult Function( String txId,  int vout,  String destinationAddress)  withdraw,required TResult Function( String txId,  int vout)  deposit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)  spark,required TResult Function( PaymentTokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)  token,required TResult Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)  lightning,required TResult Function( String txId,  int vout,  String destinationAddress)  withdraw,required TResult Function( String txId,  int vout)  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark():
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token():
@@ -9675,7 +9675,7 @@ return deposit(_that.txId,_that.vout);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( TokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)?  lightning,TResult? Function( String txId,  int vout,  String destinationAddress)?  withdraw,TResult? Function( String txId,  int vout)?  deposit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( SparkInvoicePaymentDetails? invoiceDetails,  SparkHtlcDetails? htlcDetails,  ConversionInfo? conversionInfo)?  spark,TResult? Function( PaymentTokenMetadata metadata,  String txHash,  TokenTransactionType txType,  SparkInvoicePaymentDetails? invoiceDetails,  ConversionInfo? conversionInfo)?  token,TResult? Function( String? description,  String invoice,  String destinationPubkey,  SparkHtlcDetails htlcDetails,  LnurlPayInfo? lnurlPayInfo,  LnurlWithdrawInfo? lnurlWithdrawInfo,  LnurlReceiveMetadata? lnurlReceiveMetadata,  ConversionInfo? conversionInfo)?  lightning,TResult? Function( String txId,  int vout,  String destinationAddress)?  withdraw,TResult? Function( String txId,  int vout)?  deposit,}) {final _that = this;
 switch (_that) {
 case PaymentDetails_Spark() when spark != null:
 return spark(_that.invoiceDetails,_that.htlcDetails,_that.conversionInfo);case PaymentDetails_Token() when token != null:
@@ -9779,7 +9779,7 @@ class PaymentDetails_Token extends PaymentDetails {
   const PaymentDetails_Token({required this.metadata, required this.txHash, required this.txType, this.invoiceDetails, this.conversionInfo}): super._();
   
 
- final  TokenMetadata metadata;
+ final  PaymentTokenMetadata metadata;
  final  String txHash;
  final  TokenTransactionType txType;
  final  SparkInvoicePaymentDetails? invoiceDetails;
@@ -9815,7 +9815,7 @@ abstract mixin class $PaymentDetails_TokenCopyWith<$Res> implements $PaymentDeta
   factory $PaymentDetails_TokenCopyWith(PaymentDetails_Token value, $Res Function(PaymentDetails_Token) _then) = _$PaymentDetails_TokenCopyWithImpl;
 @useResult
 $Res call({
- TokenMetadata metadata, String txHash, TokenTransactionType txType, SparkInvoicePaymentDetails? invoiceDetails, ConversionInfo? conversionInfo
+ PaymentTokenMetadata metadata, String txHash, TokenTransactionType txType, SparkInvoicePaymentDetails? invoiceDetails, ConversionInfo? conversionInfo
 });
 
 
@@ -9835,7 +9835,7 @@ class _$PaymentDetails_TokenCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? metadata = null,Object? txHash = null,Object? txType = null,Object? invoiceDetails = freezed,Object? conversionInfo = freezed,}) {
   return _then(PaymentDetails_Token(
 metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
-as TokenMetadata,txHash: null == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
+as PaymentTokenMetadata,txHash: null == txHash ? _self.txHash : txHash // ignore: cast_nullable_to_non_nullable
 as String,txType: null == txType ? _self.txType : txType // ignore: cast_nullable_to_non_nullable
 as TokenTransactionType,invoiceDetails: freezed == invoiceDetails ? _self.invoiceDetails : invoiceDetails // ignore: cast_nullable_to_non_nullable
 as SparkInvoicePaymentDetails?,conversionInfo: freezed == conversionInfo ? _self.conversionInfo : conversionInfo // ignore: cast_nullable_to_non_nullable

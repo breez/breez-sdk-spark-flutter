@@ -573,6 +573,18 @@ pub struct _TokenMetadata {
     pub decimals: u32,
     pub max_supply: u128,
     pub is_freezable: bool,
+    pub extra_metadata: Option<Vec<u8>>,
+}
+
+#[frb(mirror(PaymentTokenMetadata))]
+pub struct _PaymentTokenMetadata {
+    pub identifier: String,
+    pub issuer_public_key: String,
+    pub name: String,
+    pub ticker: String,
+    pub decimals: u32,
+    pub max_supply: u128,
+    pub is_freezable: bool,
 }
 
 #[frb(mirror(GetPaymentRequest))]
@@ -583,6 +595,17 @@ pub struct _GetPaymentRequest {
 #[frb(mirror(GetPaymentResponse))]
 pub struct _GetPaymentResponse {
     pub payment: Payment,
+}
+
+#[frb(mirror(FetchLightningSendStatusRequest))]
+pub struct _FetchLightningSendStatusRequest {
+    pub invoice: String,
+}
+
+#[frb(mirror(FetchLightningSendStatusResponse))]
+pub struct _FetchLightningSendStatusResponse {
+    pub status: Option<PaymentStatus>,
+    pub preimage: Option<String>,
 }
 
 #[frb(mirror(InputType))]
@@ -1474,7 +1497,7 @@ pub enum _PaymentDetails {
         conversion_info: Option<ConversionInfo>,
     },
     Token {
-        metadata: TokenMetadata,
+        metadata: PaymentTokenMetadata,
         tx_hash: String,
         tx_type: TokenTransactionType,
         invoice_details: Option<SparkInvoicePaymentDetails>,
@@ -1942,6 +1965,7 @@ pub struct _CreateIssuerTokenRequest {
     pub decimals: u32,
     pub is_freezable: bool,
     pub max_supply: u128,
+    pub extra_metadata: Option<Vec<u8>>,
 }
 
 #[frb(mirror(MintIssuerTokenRequest))]

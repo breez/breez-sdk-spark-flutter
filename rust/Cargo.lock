@@ -376,7 +376,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-common"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "aes",
  "anyhow",
@@ -412,7 +412,7 @@ dependencies = [
 [[package]]
 name = "breez-sdk-spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -726,12 +726,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d7a1e2f27636f116493b8b860f5546edb47c8d8f8ea73e1d2a20be88e28d1fea"
 
 [[package]]
-name = "debugless-unwrap"
-version = "0.0.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f400d0750c0c069e8493f2256cb4da6f604b6d2eeb69a0ca8863acde352f8400"
-
-[[package]]
 name = "delegate-attr"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -980,7 +974,7 @@ checksum = "b7ac824320a75a52197e8f2d787f6a38b6718bb6897a35142d749af3c0e8f4fe"
 [[package]]
 name = "flashnet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "async-trait",
  "base64",
@@ -1061,12 +1055,11 @@ dependencies = [
 
 [[package]]
 name = "frost-core"
-version = "2.1.0"
-source = "git+https://github.com/lightsparkdev/frost?rev=9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180#9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180"
+version = "3.0.0"
+source = "git+https://github.com/lightsparkdev/frost?rev=0248c4be09f878cac5c284244da36ef3a185b001#0248c4be09f878cac5c284244da36ef3a185b001"
 dependencies = [
  "byteorder",
  "const-crc32-nostd",
- "debugless-unwrap",
  "derive-getters",
  "document-features",
  "hex",
@@ -1076,15 +1069,15 @@ dependencies = [
  "serde",
  "serdect",
  "thiserror 2.0.17",
- "thiserror-nostd-notrait",
  "visibility",
  "zeroize",
+ "zeroize_derive",
 ]
 
 [[package]]
 name = "frost-rerandomized"
-version = "2.1.0"
-source = "git+https://github.com/lightsparkdev/frost?rev=9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180#9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180"
+version = "3.0.0"
+source = "git+https://github.com/lightsparkdev/frost?rev=0248c4be09f878cac5c284244da36ef3a185b001#0248c4be09f878cac5c284244da36ef3a185b001"
 dependencies = [
  "derive-getters",
  "document-features",
@@ -1095,8 +1088,8 @@ dependencies = [
 
 [[package]]
 name = "frost-secp256k1-tr"
-version = "2.1.0"
-source = "git+https://github.com/lightsparkdev/frost?rev=9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180#9aaf1b6b9fa3c2c3c2c7c70da83061deda1a9180"
+version = "3.0.0"
+source = "git+https://github.com/lightsparkdev/frost?rev=0248c4be09f878cac5c284244da36ef3a185b001#0248c4be09f878cac5c284244da36ef3a185b001"
 dependencies = [
  "document-features",
  "frost-core",
@@ -1875,7 +1868,7 @@ checksum = "11d3d7f243d5c5a8b9bb5d6dd2b1602c0cb0b9db1621bafc7ed66e35ff9fe092"
 [[package]]
 name = "lnurl-models"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "serde",
  "sha2",
@@ -1939,7 +1932,7 @@ checksum = "112b39cec0b298b6c1999fee3e31427f74f676e4cb9879ed1a121b43661a4154"
 [[package]]
 name = "macros"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2152,7 +2145,7 @@ checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
 [[package]]
 name = "platform-utils"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "async-trait",
  "base64",
@@ -3020,7 +3013,7 @@ dependencies = [
 [[package]]
 name = "spark"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "async-trait",
  "base64",
@@ -3083,7 +3076,7 @@ dependencies = [
 [[package]]
 name = "spark-sqlite"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "async-trait",
  "macros",
@@ -3098,7 +3091,7 @@ dependencies = [
 [[package]]
 name = "spark-wallet"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "bitcoin",
  "frost-secp256k1-tr",
@@ -3251,26 +3244,6 @@ name = "thiserror-impl"
 version = "2.0.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "thiserror-nostd-notrait"
-version = "1.0.57"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8444e638022c44d2a9337031dee8acb732bcc7fbf52ac654edc236b26408b61"
-dependencies = [
- "thiserror-nostd-notrait-impl",
-]
-
-[[package]]
-name = "thiserror-nostd-notrait-impl"
-version = "1.0.57"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "585e5ef40a784ce60b49c67d762110688d211d395d39e096be204535cf64590e"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3778,7 +3751,7 @@ checksum = "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be"
 [[package]]
 name = "utils"
 version = "0.1.0"
-source = "git+https://github.com/breez/spark-sdk.git?rev=6463404a0f1baa50787573955db1a3c609086df8#6463404a0f1baa50787573955db1a3c609086df8"
+source = "git+https://github.com/breez/spark-sdk.git?rev=a273276885f94cdc52366b9c85993648cd1d7445#a273276885f94cdc52366b9c85993648cd1d7445"
 dependencies = [
  "aes-gcm",
  "getrandom 0.2.16",

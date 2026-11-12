@@ -1637,6 +1637,7 @@ class CreateIssuerTokenRequest {
   final int decimals;
   final bool isFreezable;
   final BigInt maxSupply;
+  final Uint8List? extraMetadata;
 
   const CreateIssuerTokenRequest({
     required this.name,
@@ -1644,11 +1645,17 @@ class CreateIssuerTokenRequest {
     required this.decimals,
     required this.isFreezable,
     required this.maxSupply,
+    this.extraMetadata,
   });
 
   @override
   int get hashCode =>
-      name.hashCode ^ ticker.hashCode ^ decimals.hashCode ^ isFreezable.hashCode ^ maxSupply.hashCode;
+      name.hashCode ^
+      ticker.hashCode ^
+      decimals.hashCode ^
+      isFreezable.hashCode ^
+      maxSupply.hashCode ^
+      extraMetadata.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -1659,7 +1666,8 @@ class CreateIssuerTokenRequest {
           ticker == other.ticker &&
           decimals == other.decimals &&
           isFreezable == other.isFreezable &&
-          maxSupply == other.maxSupply;
+          maxSupply == other.maxSupply &&
+          extraMetadata == other.extraMetadata;
 }
 
 class CreatePasskeyOutput {
@@ -2579,6 +2587,40 @@ class FetchConversionLimitsResponse {
           runtimeType == other.runtimeType &&
           minFromAmount == other.minFromAmount &&
           minToAmount == other.minToAmount;
+}
+
+class FetchLightningSendStatusRequest {
+  final String invoice;
+
+  const FetchLightningSendStatusRequest({required this.invoice});
+
+  @override
+  int get hashCode => invoice.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchLightningSendStatusRequest &&
+          runtimeType == other.runtimeType &&
+          invoice == other.invoice;
+}
+
+class FetchLightningSendStatusResponse {
+  final PaymentStatus? status;
+  final String? preimage;
+
+  const FetchLightningSendStatusResponse({this.status, this.preimage});
+
+  @override
+  int get hashCode => status.hashCode ^ preimage.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchLightningSendStatusResponse &&
+          runtimeType == other.runtimeType &&
+          status == other.status &&
+          preimage == other.preimage;
 }
 
 class FiatCurrency {
@@ -3829,7 +3871,7 @@ sealed class PaymentDetails with _$PaymentDetails {
     ConversionInfo? conversionInfo,
   }) = PaymentDetails_Spark;
   const factory PaymentDetails.token({
-    required TokenMetadata metadata,
+    required PaymentTokenMetadata metadata,
     required String txHash,
     required TokenTransactionType txType,
     SparkInvoicePaymentDetails? invoiceDetails,
@@ -3904,6 +3946,49 @@ class PaymentRequestSource {
 }
 
 enum PaymentStatus { completed, pending, failed }
+
+class PaymentTokenMetadata {
+  final String identifier;
+  final String issuerPublicKey;
+  final String name;
+  final String ticker;
+  final int decimals;
+  final BigInt maxSupply;
+  final bool isFreezable;
+
+  const PaymentTokenMetadata({
+    required this.identifier,
+    required this.issuerPublicKey,
+    required this.name,
+    required this.ticker,
+    required this.decimals,
+    required this.maxSupply,
+    required this.isFreezable,
+  });
+
+  @override
+  int get hashCode =>
+      identifier.hashCode ^
+      issuerPublicKey.hashCode ^
+      name.hashCode ^
+      ticker.hashCode ^
+      decimals.hashCode ^
+      maxSupply.hashCode ^
+      isFreezable.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PaymentTokenMetadata &&
+          runtimeType == other.runtimeType &&
+          identifier == other.identifier &&
+          issuerPublicKey == other.issuerPublicKey &&
+          name == other.name &&
+          ticker == other.ticker &&
+          decimals == other.decimals &&
+          maxSupply == other.maxSupply &&
+          isFreezable == other.isFreezable;
+}
 
 enum PaymentType { send, receive }
 
@@ -5876,6 +5961,7 @@ class TokenMetadata {
   final int decimals;
   final BigInt maxSupply;
   final bool isFreezable;
+  final Uint8List? extraMetadata;
 
   const TokenMetadata({
     required this.identifier,
@@ -5885,6 +5971,7 @@ class TokenMetadata {
     required this.decimals,
     required this.maxSupply,
     required this.isFreezable,
+    this.extraMetadata,
   });
 
   @override
@@ -5895,7 +5982,8 @@ class TokenMetadata {
       ticker.hashCode ^
       decimals.hashCode ^
       maxSupply.hashCode ^
-      isFreezable.hashCode;
+      isFreezable.hashCode ^
+      extraMetadata.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -5908,7 +5996,8 @@ class TokenMetadata {
           ticker == other.ticker &&
           decimals == other.decimals &&
           maxSupply == other.maxSupply &&
-          isFreezable == other.isFreezable;
+          isFreezable == other.isFreezable &&
+          extraMetadata == other.extraMetadata;
 }
 
 class TokenOptimizationConfig {
