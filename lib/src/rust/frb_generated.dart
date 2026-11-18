@@ -5977,15 +5977,16 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           estimatedOut: dco_decode_U128(raw[7]),
           deliveredAmount: dco_decode_opt_U128(raw[8]),
           externalTxHash: dco_decode_opt_String(raw[9]),
-          status: dco_decode_conversion_status(raw[10]),
-          feeAmount: dco_decode_opt_U128(raw[11]),
-          serviceFeeAmount: dco_decode_opt_U128(raw[12]),
-          serviceFeeAsset: dco_decode_opt_String(raw[13]),
-          serviceFeeAssetDecimals: dco_decode_opt_box_autoadd_u_32(raw[14]),
-          assetDecimals: dco_decode_u_32(raw[15]),
-          orderId: dco_decode_String(raw[16]),
-          quoteId: dco_decode_String(raw[17]),
-          readToken: dco_decode_opt_String(raw[18]),
+          refundTxHash: dco_decode_opt_String(raw[10]),
+          status: dco_decode_conversion_status(raw[11]),
+          feeAmount: dco_decode_opt_U128(raw[12]),
+          serviceFeeAmount: dco_decode_opt_U128(raw[13]),
+          serviceFeeAsset: dco_decode_opt_String(raw[14]),
+          serviceFeeAssetDecimals: dco_decode_opt_box_autoadd_u_32(raw[15]),
+          assetDecimals: dco_decode_u_32(raw[16]),
+          orderId: dco_decode_String(raw[17]),
+          quoteId: dco_decode_String(raw[18]),
+          readToken: dco_decode_opt_String(raw[19]),
         );
       default:
         throw Exception("unreachable");
@@ -8712,6 +8713,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           feeMode: dco_decode_opt_box_autoadd_cross_chain_fee_mode(raw[4]),
           maxSlippageBps: dco_decode_opt_box_autoadd_u_32(raw[5]),
           targetOverpayBps: dco_decode_opt_box_autoadd_u_32(raw[6]),
+          refundAddress: dco_decode_opt_String(raw[7]),
         );
       default:
         throw Exception("unreachable");
@@ -12246,6 +12248,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_estimatedOut = sse_decode_U128(deserializer);
         var var_deliveredAmount = sse_decode_opt_U128(deserializer);
         var var_externalTxHash = sse_decode_opt_String(deserializer);
+        var var_refundTxHash = sse_decode_opt_String(deserializer);
         var var_status = sse_decode_conversion_status(deserializer);
         var var_feeAmount = sse_decode_opt_U128(deserializer);
         var var_serviceFeeAmount = sse_decode_opt_U128(deserializer);
@@ -12265,6 +12268,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           estimatedOut: var_estimatedOut,
           deliveredAmount: var_deliveredAmount,
           externalTxHash: var_externalTxHash,
+          refundTxHash: var_refundTxHash,
           status: var_status,
           feeAmount: var_feeAmount,
           serviceFeeAmount: var_serviceFeeAmount,
@@ -15880,6 +15884,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         var var_feeMode = sse_decode_opt_box_autoadd_cross_chain_fee_mode(deserializer);
         var var_maxSlippageBps = sse_decode_opt_box_autoadd_u_32(deserializer);
         var var_targetOverpayBps = sse_decode_opt_box_autoadd_u_32(deserializer);
+        var var_refundAddress = sse_decode_opt_String(deserializer);
         return ReceivePaymentMethod_CrossChain(
           route: var_route,
           amount: var_amount,
@@ -15887,6 +15892,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
           feeMode: var_feeMode,
           maxSlippageBps: var_maxSlippageBps,
           targetOverpayBps: var_targetOverpayBps,
+          refundAddress: var_refundAddress,
         );
       default:
         throw UnimplementedError('');
@@ -19532,6 +19538,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         estimatedOut: final estimatedOut,
         deliveredAmount: final deliveredAmount,
         externalTxHash: final externalTxHash,
+        refundTxHash: final refundTxHash,
         status: final status,
         feeAmount: final feeAmount,
         serviceFeeAmount: final serviceFeeAmount,
@@ -19552,6 +19559,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_U128(estimatedOut, serializer);
         sse_encode_opt_U128(deliveredAmount, serializer);
         sse_encode_opt_String(externalTxHash, serializer);
+        sse_encode_opt_String(refundTxHash, serializer);
         sse_encode_conversion_status(status, serializer);
         sse_encode_opt_U128(feeAmount, serializer);
         sse_encode_opt_U128(serviceFeeAmount, serializer);
@@ -22498,6 +22506,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         feeMode: final feeMode,
         maxSlippageBps: final maxSlippageBps,
         targetOverpayBps: final targetOverpayBps,
+        refundAddress: final refundAddress,
       ):
         sse_encode_i_32(4, serializer);
         sse_encode_box_autoadd_cross_chain_route_pair(route, serializer);
@@ -22506,6 +22515,7 @@ class BreezSdkSparkLibApiImpl extends BreezSdkSparkLibApiImplPlatform implements
         sse_encode_opt_box_autoadd_cross_chain_fee_mode(feeMode, serializer);
         sse_encode_opt_box_autoadd_u_32(maxSlippageBps, serializer);
         sse_encode_opt_box_autoadd_u_32(targetOverpayBps, serializer);
+        sse_encode_opt_String(refundAddress, serializer);
     }
   }
 

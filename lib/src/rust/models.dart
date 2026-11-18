@@ -1425,6 +1425,7 @@ sealed class ConversionInfo with _$ConversionInfo {
     required BigInt estimatedOut,
     BigInt? deliveredAmount,
     String? externalTxHash,
+    String? refundTxHash,
     required ConversionStatus status,
     BigInt? feeAmount,
     BigInt? serviceFeeAmount,
@@ -4640,6 +4641,7 @@ sealed class ReceivePaymentMethod with _$ReceivePaymentMethod {
     CrossChainFeeMode? feeMode,
     int? maxSlippageBps,
     int? targetOverpayBps,
+    String? refundAddress,
   }) = ReceivePaymentMethod_CrossChain;
 }
 

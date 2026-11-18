@@ -6563,6 +6563,7 @@ const _: fn() = || {
             estimated_out,
             delivered_amount,
             external_tx_hash,
+            refund_tx_hash,
             status,
             fee_amount,
             service_fee_amount,
@@ -6582,6 +6583,7 @@ const _: fn() = || {
             let _: u128 = estimated_out;
             let _: Option<u128> = delivered_amount;
             let _: Option<String> = external_tx_hash;
+            let _: Option<String> = refund_tx_hash;
             let _: crate::models::ConversionStatus = status;
             let _: Option<u128> = fee_amount;
             let _: Option<u128> = service_fee_amount;
@@ -7869,6 +7871,7 @@ const _: fn() = || {
             fee_mode,
             max_slippage_bps,
             target_overpay_bps,
+            refund_address,
         } => {
             let _: crate::models::CrossChainRoutePair = route;
             let _: u128 = amount;
@@ -7876,6 +7879,7 @@ const _: fn() = || {
             let _: Option<crate::models::CrossChainFeeMode> = fee_mode;
             let _: Option<u32> = max_slippage_bps;
             let _: Option<u32> = target_overpay_bps;
+            let _: Option<String> = refund_address;
         }
     }
     {
@@ -10308,6 +10312,7 @@ impl SseDecode for crate::models::ConversionInfo {
                 let mut var_estimatedOut = <u128>::sse_decode(deserializer);
                 let mut var_deliveredAmount = <Option<u128>>::sse_decode(deserializer);
                 let mut var_externalTxHash = <Option<String>>::sse_decode(deserializer);
+                let mut var_refundTxHash = <Option<String>>::sse_decode(deserializer);
                 let mut var_status = <crate::models::ConversionStatus>::sse_decode(deserializer);
                 let mut var_feeAmount = <Option<u128>>::sse_decode(deserializer);
                 let mut var_serviceFeeAmount = <Option<u128>>::sse_decode(deserializer);
@@ -10327,6 +10332,7 @@ impl SseDecode for crate::models::ConversionInfo {
                     estimated_out: var_estimatedOut,
                     delivered_amount: var_deliveredAmount,
                     external_tx_hash: var_externalTxHash,
+                    refund_tx_hash: var_refundTxHash,
                     status: var_status,
                     fee_amount: var_feeAmount,
                     service_fee_amount: var_serviceFeeAmount,
@@ -14656,6 +14662,7 @@ impl SseDecode for crate::models::ReceivePaymentMethod {
                     <Option<crate::models::CrossChainFeeMode>>::sse_decode(deserializer);
                 let mut var_maxSlippageBps = <Option<u32>>::sse_decode(deserializer);
                 let mut var_targetOverpayBps = <Option<u32>>::sse_decode(deserializer);
+                let mut var_refundAddress = <Option<String>>::sse_decode(deserializer);
                 return crate::models::ReceivePaymentMethod::CrossChain {
                     route: var_route,
                     amount: var_amount,
@@ -14663,6 +14670,7 @@ impl SseDecode for crate::models::ReceivePaymentMethod {
                     fee_mode: var_feeMode,
                     max_slippage_bps: var_maxSlippageBps,
                     target_overpay_bps: var_targetOverpayBps,
+                    refund_address: var_refundAddress,
                 };
             }
             _ => {
@@ -18720,6 +18728,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionInfo>
                 estimated_out,
                 delivered_amount,
                 external_tx_hash,
+                refund_tx_hash,
                 status,
                 fee_amount,
                 service_fee_amount,
@@ -18740,6 +18749,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ConversionInfo>
                 estimated_out.into_into_dart().into_dart(),
                 delivered_amount.into_into_dart().into_dart(),
                 external_tx_hash.into_into_dart().into_dart(),
+                refund_tx_hash.into_into_dart().into_dart(),
                 status.into_into_dart().into_dart(),
                 fee_amount.into_into_dart().into_dart(),
                 service_fee_amount.into_into_dart().into_dart(),
@@ -22757,6 +22767,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ReceivePaymentM
                 fee_mode,
                 max_slippage_bps,
                 target_overpay_bps,
+                refund_address,
             } => [
                 4.into_dart(),
                 route.into_into_dart().into_dart(),
@@ -22765,6 +22776,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::models::ReceivePaymentM
                 fee_mode.into_into_dart().into_dart(),
                 max_slippage_bps.into_into_dart().into_dart(),
                 target_overpay_bps.into_into_dart().into_dart(),
+                refund_address.into_into_dart().into_dart(),
             ]
             .into_dart(),
             _ => {
@@ -26339,6 +26351,7 @@ impl SseEncode for crate::models::ConversionInfo {
                 estimated_out,
                 delivered_amount,
                 external_tx_hash,
+                refund_tx_hash,
                 status,
                 fee_amount,
                 service_fee_amount,
@@ -26359,6 +26372,7 @@ impl SseEncode for crate::models::ConversionInfo {
                 <u128>::sse_encode(estimated_out, serializer);
                 <Option<u128>>::sse_encode(delivered_amount, serializer);
                 <Option<String>>::sse_encode(external_tx_hash, serializer);
+                <Option<String>>::sse_encode(refund_tx_hash, serializer);
                 <crate::models::ConversionStatus>::sse_encode(status, serializer);
                 <Option<u128>>::sse_encode(fee_amount, serializer);
                 <Option<u128>>::sse_encode(service_fee_amount, serializer);
@@ -29804,6 +29818,7 @@ impl SseEncode for crate::models::ReceivePaymentMethod {
                 fee_mode,
                 max_slippage_bps,
                 target_overpay_bps,
+                refund_address,
             } => {
                 <i32>::sse_encode(4, serializer);
                 <crate::models::CrossChainRoutePair>::sse_encode(route, serializer);
@@ -29812,6 +29827,7 @@ impl SseEncode for crate::models::ReceivePaymentMethod {
                 <Option<crate::models::CrossChainFeeMode>>::sse_encode(fee_mode, serializer);
                 <Option<u32>>::sse_encode(max_slippage_bps, serializer);
                 <Option<u32>>::sse_encode(target_overpay_bps, serializer);
+                <Option<String>>::sse_encode(refund_address, serializer);
             }
             _ => {
                 unimplemented!("");
