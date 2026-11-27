@@ -105,6 +105,8 @@ abstract class BreezSdk implements RustOpaqueInterface {
     required FetchConversionLimitsRequest request,
   });
 
+  Future<FetchHtlcPaymentsResponse> fetchHtlcPayments({required FetchHtlcPaymentsRequest request});
+
   Future<FetchLightningSendStatusResponse> fetchLightningSendStatus({
     required FetchLightningSendStatusRequest request,
   });

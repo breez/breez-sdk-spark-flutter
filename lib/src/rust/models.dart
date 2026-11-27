@@ -503,6 +503,8 @@ class Bolt12OfferDetails {
           signingPubkey == other.signingPubkey;
 }
 
+enum BridgeAmountSide { source, destination }
+
 class BridgeFromCashAppRequest {
   final String address;
   final CrossChainRoutePair route;
@@ -586,16 +588,19 @@ class BridgeRoutePair {
   final BridgeRoutePairSide source;
   final BridgeRoutePairSide destination;
   final CrossChainRouteLimits? limits;
+  final BridgeAmountSide amountSide;
 
   const BridgeRoutePair({
     required this.provider,
     required this.source,
     required this.destination,
     this.limits,
+    required this.amountSide,
   });
 
   @override
-  int get hashCode => provider.hashCode ^ source.hashCode ^ destination.hashCode ^ limits.hashCode;
+  int get hashCode =>
+      provider.hashCode ^ source.hashCode ^ destination.hashCode ^ limits.hashCode ^ amountSide.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -605,7 +610,8 @@ class BridgeRoutePair {
           provider == other.provider &&
           source == other.source &&
           destination == other.destination &&
-          limits == other.limits;
+          limits == other.limits &&
+          amountSide == other.amountSide;
 }
 
 class BridgeRoutePairSide {
@@ -1014,16 +1020,20 @@ class ClaimDepositResponse {
 
 class ClaimHtlcPaymentRequest {
   final String preimage;
+  final String? transferId;
 
-  const ClaimHtlcPaymentRequest({required this.preimage});
+  const ClaimHtlcPaymentRequest({required this.preimage, this.transferId});
 
   @override
-  int get hashCode => preimage.hashCode;
+  int get hashCode => preimage.hashCode ^ transferId.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ClaimHtlcPaymentRequest && runtimeType == other.runtimeType && preimage == other.preimage;
+      other is ClaimHtlcPaymentRequest &&
+          runtimeType == other.runtimeType &&
+          preimage == other.preimage &&
+          transferId == other.transferId;
 }
 
 class ClaimHtlcPaymentResponse {
@@ -1815,7 +1825,7 @@ class CrossChainAddressDetails {
           amount == other.amount;
 }
 
-enum CrossChainAddressFamily { evm, solana, tron }
+enum CrossChainAddressFamily { evm, solana, tron, xrp, zcash }
 
 class CrossChainConfig {
   final int? defaultSlippageBps;
@@ -2590,6 +2600,36 @@ class FetchConversionLimitsResponse {
           minToAmount == other.minToAmount;
 }
 
+class FetchHtlcPaymentsRequest {
+  final String paymentHash;
+
+  const FetchHtlcPaymentsRequest({required this.paymentHash});
+
+  @override
+  int get hashCode => paymentHash.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchHtlcPaymentsRequest &&
+          runtimeType == other.runtimeType &&
+          paymentHash == other.paymentHash;
+}
+
+class FetchHtlcPaymentsResponse {
+  final List<HtlcPayment> payments;
+
+  const FetchHtlcPaymentsResponse({required this.payments});
+
+  @override
+  int get hashCode => payments.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FetchHtlcPaymentsResponse && runtimeType == other.runtimeType && payments == other.payments;
+}
+
 class FetchLightningSendStatusRequest {
   final String invoice;
 
@@ -2896,6 +2936,37 @@ class GetTokensMetadataResponse {
       other is GetTokensMetadataResponse &&
           runtimeType == other.runtimeType &&
           tokensMetadata == other.tokensMetadata;
+}
+
+class HtlcPayment {
+  final String id;
+  final PaymentType paymentType;
+  final BigInt amountSats;
+  final BigInt timestamp;
+  final SparkHtlcDetails htlcDetails;
+
+  const HtlcPayment({
+    required this.id,
+    required this.paymentType,
+    required this.amountSats,
+    required this.timestamp,
+    required this.htlcDetails,
+  });
+
+  @override
+  int get hashCode =>
+      id.hashCode ^ paymentType.hashCode ^ amountSats.hashCode ^ timestamp.hashCode ^ htlcDetails.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HtlcPayment &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          paymentType == other.paymentType &&
+          amountSats == other.amountSats &&
+          timestamp == other.timestamp &&
+          htlcDetails == other.htlcDetails;
 }
 
 class ImportUnilateralExitStateRequest {

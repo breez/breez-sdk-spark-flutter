@@ -496,6 +496,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FetchConversionLimitsRequest dco_decode_box_autoadd_fetch_conversion_limits_request(dynamic raw);
 
   @protected
+  FetchHtlcPaymentsRequest dco_decode_box_autoadd_fetch_htlc_payments_request(dynamic raw);
+
+  @protected
   FetchLightningSendStatusRequest dco_decode_box_autoadd_fetch_lightning_send_status_request(dynamic raw);
 
   @protected
@@ -780,6 +783,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UrlSuccessActionData dco_decode_box_autoadd_url_success_action_data(dynamic raw);
+
+  @protected
+  BridgeAmountSide dco_decode_bridge_amount_side(dynamic raw);
 
   @protected
   BridgeFromCashAppRequest dco_decode_bridge_from_cash_app_request(dynamic raw);
@@ -1097,6 +1103,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FetchConversionLimitsResponse dco_decode_fetch_conversion_limits_response(dynamic raw);
 
   @protected
+  FetchHtlcPaymentsRequest dco_decode_fetch_htlc_payments_request(dynamic raw);
+
+  @protected
+  FetchHtlcPaymentsResponse dco_decode_fetch_htlc_payments_response(dynamic raw);
+
+  @protected
   FetchLightningSendStatusRequest dco_decode_fetch_lightning_send_status_request(dynamic raw);
 
   @protected
@@ -1143,6 +1155,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   GetTokensMetadataResponse dco_decode_get_tokens_metadata_response(dynamic raw);
+
+  @protected
+  HtlcPayment dco_decode_htlc_payment(dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
@@ -1251,6 +1266,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListFiatRatesResponse dco_decode_list_fiat_rates_response(dynamic raw);
+
+  @protected
+  List<HtlcPayment> dco_decode_list_htlc_payment(dynamic raw);
 
   @protected
   List<InputType> dco_decode_list_input_type(dynamic raw);
@@ -2489,6 +2507,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  FetchHtlcPaymentsRequest sse_decode_box_autoadd_fetch_htlc_payments_request(SseDeserializer deserializer);
+
+  @protected
   FetchLightningSendStatusRequest sse_decode_box_autoadd_fetch_lightning_send_status_request(
     SseDeserializer deserializer,
   );
@@ -2799,6 +2820,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   UrlSuccessActionData sse_decode_box_autoadd_url_success_action_data(SseDeserializer deserializer);
+
+  @protected
+  BridgeAmountSide sse_decode_bridge_amount_side(SseDeserializer deserializer);
 
   @protected
   BridgeFromCashAppRequest sse_decode_bridge_from_cash_app_request(SseDeserializer deserializer);
@@ -3130,6 +3154,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   FetchConversionLimitsResponse sse_decode_fetch_conversion_limits_response(SseDeserializer deserializer);
 
   @protected
+  FetchHtlcPaymentsRequest sse_decode_fetch_htlc_payments_request(SseDeserializer deserializer);
+
+  @protected
+  FetchHtlcPaymentsResponse sse_decode_fetch_htlc_payments_response(SseDeserializer deserializer);
+
+  @protected
   FetchLightningSendStatusRequest sse_decode_fetch_lightning_send_status_request(
     SseDeserializer deserializer,
   );
@@ -3180,6 +3210,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   GetTokensMetadataResponse sse_decode_get_tokens_metadata_response(SseDeserializer deserializer);
+
+  @protected
+  HtlcPayment sse_decode_htlc_payment(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -3292,6 +3325,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   ListFiatRatesResponse sse_decode_list_fiat_rates_response(SseDeserializer deserializer);
+
+  @protected
+  List<HtlcPayment> sse_decode_list_htlc_payment(SseDeserializer deserializer);
 
   @protected
   List<InputType> sse_decode_list_input_type(SseDeserializer deserializer);
@@ -4641,6 +4677,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_box_autoadd_fetch_htlc_payments_request(
+    FetchHtlcPaymentsRequest self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_box_autoadd_fetch_lightning_send_status_request(
     FetchLightningSendStatusRequest self,
     SseSerializer serializer,
@@ -5019,6 +5061,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   void sse_encode_box_autoadd_url_success_action_data(UrlSuccessActionData self, SseSerializer serializer);
 
   @protected
+  void sse_encode_bridge_amount_side(BridgeAmountSide self, SseSerializer serializer);
+
+  @protected
   void sse_encode_bridge_from_cash_app_request(BridgeFromCashAppRequest self, SseSerializer serializer);
 
   @protected
@@ -5379,6 +5424,12 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
   );
 
   @protected
+  void sse_encode_fetch_htlc_payments_request(FetchHtlcPaymentsRequest self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_fetch_htlc_payments_response(FetchHtlcPaymentsResponse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_fetch_lightning_send_status_request(
     FetchLightningSendStatusRequest self,
     SseSerializer serializer,
@@ -5431,6 +5482,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_get_tokens_metadata_response(GetTokensMetadataResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_htlc_payment(HtlcPayment self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
@@ -5563,6 +5617,9 @@ abstract class BreezSdkSparkLibApiImplPlatform extends BaseApiImpl<BreezSdkSpark
 
   @protected
   void sse_encode_list_fiat_rates_response(ListFiatRatesResponse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_htlc_payment(List<HtlcPayment> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_input_type(List<InputType> self, SseSerializer serializer);
